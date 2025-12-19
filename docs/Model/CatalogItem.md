@@ -1,0 +1,16 @@
+# # CatalogItem
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | The internal ID of this entity. |
+**created** | **\DateTime** | The time this entity was created. |
+**sku** | **string** | The stock keeping unit of the item. |
+**price** | **float** | Price of the item. | [optional]
+**catalogid** | **int** | The ID of the catalog the item belongs to. |
+**version** | **int** | The version of the catalog item. |
+**attributes** | [**\TalonOne\Client\Model\ItemAttribute[]**](ItemAttribute.md) |  | [optional]
+**product** | [**\TalonOne\Client\Model\Product**](Product.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

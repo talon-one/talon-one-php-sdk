@@ -1,0 +1,13 @@
+# # CampaignSet
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**applicationId** | **int** | The ID of the Application that owns this entity. |
+**id** | **int** | The internal ID of this entity. |
+**version** | **int** | Version of the campaign set. |
+**set** | [**\TalonOne\Client\Model\CampaignSetBranchNode**](CampaignSetBranchNode.md) |  |
+**updatedBy** | **string** | Name of the user who last updated this campaign set, if available. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,0 +1,12 @@
+# # NewRole
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | Name of the role. |
+**description** | **string** | Description of the role. | [optional]
+**acl** | **string** | The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level. |
+**members** | **int[]** | An array of user identifiers. |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

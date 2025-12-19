@@ -1,0 +1,23 @@
+# # LoyaltyLedgerEntry
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**created** | **\DateTime** |  |
+**programID** | **int** |  |
+**customerProfileID** | **string** |  | [optional]
+**cardID** | **int** |  | [optional]
+**customerSessionID** | **string** |  | [optional]
+**eventID** | **int** |  | [optional]
+**type** | **string** | The type of the ledger transaction. Possible values are: - &#x60;addition&#x60; - &#x60;subtraction&#x60; - &#x60;expire&#x60; - &#x60;expiring&#x60; (for expiring points ledgers) |
+**amount** | **float** |  |
+**startDate** | **\DateTime** |  | [optional]
+**expiryDate** | **\DateTime** |  | [optional]
+**name** | **string** | A name referencing the condition or effect that added this entry, or the specific name provided in an API call. |
+**subLedgerID** | **string** | This specifies if we are adding loyalty points to the main ledger or a subledger. |
+**userID** | **int** | This is the ID of the user who created this entry, if the addition or subtraction was done manually. | [optional]
+**archived** | **bool** | Indicates if the entry belongs to the archived session. | [optional]
+**flags** | [**\TalonOne\Client\Model\LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) | A map of flags providing additional details about the entry. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

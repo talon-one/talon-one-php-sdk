@@ -1,0 +1,19 @@
+# # CollectionWithoutPayload
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | The internal ID of this entity. |
+**created** | **\DateTime** | The time this entity was created. |
+**accountId** | **int** | The ID of the account that owns this entity. |
+**modified** | **\DateTime** | The time this entity was last modified. |
+**description** | **string** | A short description of the purpose of this collection. | [optional]
+**subscribedApplicationsIds** | **int[]** | A list of the IDs of the Applications where this collection is enabled. | [optional]
+**name** | **string** | The name of this collection. |
+**modifiedBy** | **int** | ID of the user who last updated this effect if available. | [optional]
+**createdBy** | **int** | ID of the user who created this effect. |
+**applicationId** | **int** | The ID of the Application that owns this entity. | [optional]
+**campaignId** | **int** | The ID of the campaign that owns this entity. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

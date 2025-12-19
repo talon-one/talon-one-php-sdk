@@ -1,0 +1,20 @@
+# # LoyaltySubLedger
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**total** | **float** | **DEPRECATED** Use &#x60;totalActivePoints&#x60; property instead. Total amount of currently active and available points in the customer&#39;s balance. |
+**totalActivePoints** | **float** | Total amount of currently active and available points in the customer&#39;s balance. |
+**totalPendingPoints** | **float** | Total amount of pending points, which are not active yet but will become active in the future. |
+**totalSpentPoints** | **float** | Total amount of points already spent by this customer. |
+**totalExpiredPoints** | **float** | Total amount of points, that expired without ever being spent. |
+**totalNegativePoints** | **float** | Total amount of negative points. This implies that &#x60;totalActivePoints&#x60; is &#x60;0&#x60;. |
+**transactions** | [**\TalonOne\Client\Model\LoyaltyLedgerEntry[]**](LoyaltyLedgerEntry.md) | List of all events that have happened such as additions, subtractions and expiries. | [optional]
+**expiringPoints** | [**\TalonOne\Client\Model\LoyaltyLedgerEntry[]**](LoyaltyLedgerEntry.md) | List of all points that will expire. | [optional]
+**activePoints** | [**\TalonOne\Client\Model\LoyaltyLedgerEntry[]**](LoyaltyLedgerEntry.md) | List of all currently active points. | [optional]
+**pendingPoints** | [**\TalonOne\Client\Model\LoyaltyLedgerEntry[]**](LoyaltyLedgerEntry.md) | List of all points pending activation. | [optional]
+**expiredPoints** | [**\TalonOne\Client\Model\LoyaltyLedgerEntry[]**](LoyaltyLedgerEntry.md) | List of expired points. | [optional]
+**currentTier** | [**\TalonOne\Client\Model\Tier**](Tier.md) | Tier for which the ledger is eligible. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,0 +1,12 @@
+# # TierWillDowngradeNotificationPolicy
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | The name of the notification. |
+**batchingEnabled** | **bool** | Indicates whether batching is activated. | [optional] [default to true]
+**batchSize** | **int** | The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;. | [optional] [default to 1000]
+**triggers** | [**\TalonOne\Client\Model\TierWillDowngradeNotificationTrigger[]**](TierWillDowngradeNotificationTrigger.md) |  |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

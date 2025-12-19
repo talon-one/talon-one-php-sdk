@@ -1,0 +1,17 @@
+# # PriceType
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | The internal ID of this entity. |
+**created** | **\DateTime** | The time this entity was created. |
+**accountId** | **int** | The ID of the account that owns this price type. | [optional]
+**name** | **string** | The API name of the price type. This is an immutable value. |
+**title** | **string** | The name displayed in the Campaign Manager for the price type. |
+**description** | **string** | A description of the price type. | [optional]
+**modified** | **\DateTime** | The date and time when the price type was last modified. |
+**subscribedCatalogsIds** | **int[]** | A list of the IDs of the catalogs that are subscribed to this price type. |
+**targetedAudiencesIds** | **int[]** | A list of the IDs of the audiences targeted by this price type. |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

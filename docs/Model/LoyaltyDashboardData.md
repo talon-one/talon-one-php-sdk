@@ -1,0 +1,18 @@
+# # LoyaltyDashboardData
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**date** | **\DateTime** | Date at which data point was collected. |
+**totalActivePoints** | **float** | Total of active points for this loyalty program. |
+**totalPendingPoints** | **float** | Total of pending points for this loyalty program. |
+**totalSpentPoints** | **float** | Total of spent points for this loyalty program. |
+**totalExpiredPoints** | **float** | Total of expired points for this loyalty program. |
+**totalNegativePoints** | **float** | Total of negative points for this loyalty program. |
+**totalMembers** | **float** | Number of loyalty program members. |
+**newMembers** | **float** | Number of members who joined on this day. |
+**spentPoints** | [**\TalonOne\Client\Model\LoyaltyDashboardPointsBreakdown**](LoyaltyDashboardPointsBreakdown.md) | Points spent on this day. |
+**earnedPoints** | [**\TalonOne\Client\Model\LoyaltyDashboardPointsBreakdown**](LoyaltyDashboardPointsBreakdown.md) | Points that were earned on this day. |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

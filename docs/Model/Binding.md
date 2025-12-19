@@ -1,0 +1,16 @@
+# # Binding
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | A descriptive name for the value to be bound. |
+**type** | **string** | The kind of binding. Possible values are: - &#x60;bundle&#x60; - &#x60;cartItemFilter&#x60; - &#x60;subledgerBalance&#x60; - &#x60;templateParameter&#x60; | [optional]
+**expression** | **mixed[]** | A Talang expression that will be evaluated and its result attached to the name of the binding. |
+**valueType** | **string** | Can be one of the following: - &#x60;string&#x60; - &#x60;number&#x60; - &#x60;boolean&#x60; | [optional]
+**minValue** | **float** | The minimum value allowed for this placeholder. | [optional]
+**maxValue** | **float** | The maximum value allowed for this placeholder. | [optional]
+**attributeId** | **int** | Id of the attribute attached to the placeholder. | [optional]
+**description** | **string** | Describes the placeholder field and value in the template. This description can be used when creating campaigns from this template. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
