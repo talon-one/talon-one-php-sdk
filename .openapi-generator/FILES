@@ -1238,7 +1238,6 @@ lib/Model/WebhookAuthenticationWebhookRef.php
 lib/Model/WebhookWithOutgoingIntegrationDetails.php
 lib/Model/WillAwardGiveawayEffectProps.php
 lib/ObjectSerializer.php
-managementApi.patch
 phpunit.xml.dist
 test/Api/IntegrationApiTest.php
 test/Api/ManagementApiTest.php
