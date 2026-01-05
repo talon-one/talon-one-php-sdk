@@ -1,0 +1,83 @@
+diff --git a/lib/Api/ManagementApi.php b/lib/Api/ManagementApi.php
+index 7538c67..7ba192f 100644
+--- a/lib/Api/ManagementApi.php
++++ b/lib/Api/ManagementApi.php
+@@ -5146,7 +5146,7 @@ class ManagementApi
+     }
+ 
+     /**
+-     * Operation createCouponsAsync
++     * Operation createCouponsAsynchronously
+      *
+      * Create coupons asynchronously
+      *
+@@ -5161,12 +5161,12 @@ class ManagementApi
+      */
+     public function createCouponsAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+     {
+-        list($response) = $this->createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType);
++        list($response) = $this->createCouponsAsynchronouslyWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+         return $response;
+     }
+ 
+     /**
+-     * Operation createCouponsAsyncWithHttpInfo
++     * Operation createCouponsAsynchronouslyWithHttpInfo
+      *
+      * Create coupons asynchronously
+      *
+@@ -5179,9 +5179,9 @@ class ManagementApi
+      * @throws \InvalidArgumentException
+      * @return array of \TalonOne\Client\Model\AsyncCouponCreationResponse, HTTP status code, HTTP response headers (array of strings)
+      */
+-    public function createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
++    public function createCouponsAsynchronouslyWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+     {
+-        $request = $this->createCouponsAsyncRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
++        $request = $this->createCouponsAsynchronouslyRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+ 
+         try {
+             $options = $this->createHttpClientOption();
+@@ -5293,7 +5293,7 @@ class ManagementApi
+     }
+ 
+     /**
+-     * Operation createCouponsAsyncAsync
++     * Operation createCouponsAsynchronouslyAsync
+      *
+      * Create coupons asynchronously
+      *
+@@ -5305,9 +5305,9 @@ class ManagementApi
+      * @throws \InvalidArgumentException
+      * @return \GuzzleHttp\Promise\PromiseInterface
+      */
+-    public function createCouponsAsyncAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
++    public function createCouponsAsynchronouslyAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+     {
+-        return $this->createCouponsAsyncAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType)
++        return $this->createCouponsAsynchronouslyAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType)
+             ->then(
+                 function ($response) {
+                     return $response[0];
+@@ -5316,7 +5316,7 @@ class ManagementApi
+     }
+ 
+     /**
+-     * Operation createCouponsAsyncAsyncWithHttpInfo
++     * Operation createCouponsAsynchronouslyAsyncWithHttpInfo
+      *
+      * Create coupons asynchronously
+      *
+@@ -5328,10 +5328,10 @@ class ManagementApi
+      * @throws \InvalidArgumentException
+      * @return \GuzzleHttp\Promise\PromiseInterface
+      */
+-    public function createCouponsAsyncAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
++    public function createCouponsAsynchronouslyAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+     {
+         $returnType = '\TalonOne\Client\Model\AsyncCouponCreationResponse';
+-        $request = $this->createCouponsAsyncRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
++        $request = $this->createCouponsAsynchronouslyRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+ 
+         return $this->client
+             ->sendAsync($request, $this->createHttpClientOption())
