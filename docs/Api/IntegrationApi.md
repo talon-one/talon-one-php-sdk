@@ -1,5 +1,7 @@
 # TalonOne\Client\IntegrationApi
 
+
+
 All URIs are relative to https://yourbaseurl.talon.one, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

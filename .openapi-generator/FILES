@@ -626,6 +626,7 @@ lib/Api/IntegrationApi.php
 lib/Api/ManagementApi.php
 lib/ApiException.php
 lib/Configuration.php
+lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/APIError.php
 lib/Model/AcceptCouponEffectProps.php
