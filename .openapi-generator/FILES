@@ -32,6 +32,8 @@ docs/Model/AchievementBase.md
 docs/Model/AchievementProgress.md
 docs/Model/AchievementProgressWithDefinition.md
 docs/Model/AchievementStatusEntry.md
+docs/Model/ActivateLoyaltyPoints.md
+docs/Model/ActivateLoyaltyPointsResponse.md
 docs/Model/ActivateUserRequest.md
 docs/Model/AddFreeItemEffectProps.md
 docs/Model/AddItemCatalogAction.md
@@ -39,6 +41,8 @@ docs/Model/AddLoyaltyPoints.md
 docs/Model/AddLoyaltyPointsEffectProps.md
 docs/Model/AddPriceAdjustmentCatalogAction.md
 docs/Model/AddToAudienceEffectProps.md
+docs/Model/AddedDeductedPointsBalancesAction.md
+docs/Model/AddedDeductedPointsBalancesNotification.md
 docs/Model/AddedDeductedPointsBalancesNotificationPolicy.md
 docs/Model/AddedDeductedPointsNotification.md
 docs/Model/AddedDeductedPointsNotificationPolicy.md
@@ -140,6 +144,7 @@ docs/Model/CampaignTemplateCollection.md
 docs/Model/CampaignTemplateCouponReservationSettings.md
 docs/Model/CampaignTemplateParams.md
 docs/Model/CampaignVersions.md
+docs/Model/CardAddedDeductedPointsBalancesNotification.md
 docs/Model/CardAddedDeductedPointsBalancesNotificationPolicy.md
 docs/Model/CardAddedDeductedPointsNotification.md
 docs/Model/CardAddedDeductedPointsNotificationPolicy.md
@@ -168,8 +173,10 @@ docs/Model/CouponCreationJob.md
 docs/Model/CouponDeletionFilters.md
 docs/Model/CouponDeletionJob.md
 docs/Model/CouponEntity.md
+docs/Model/CouponFailureSummary.md
 docs/Model/CouponLimitConfigs.md
 docs/Model/CouponRejectionReason.md
+docs/Model/CouponRejections.md
 docs/Model/CouponReservations.md
 docs/Model/CouponSearch.md
 docs/Model/CouponValue.md
@@ -238,6 +245,7 @@ docs/Model/FuncArgDef.md
 docs/Model/FunctionDef.md
 docs/Model/GenerateAuditLogSummary.md
 docs/Model/GenerateCampaignDescription.md
+docs/Model/GenerateCampaignSummary.md
 docs/Model/GenerateCampaignTags.md
 docs/Model/GenerateCouponFailureDetailedSummary.md
 docs/Model/GenerateCouponFailureSummary.md
@@ -314,7 +322,6 @@ docs/Model/IntegrationStoreEntity.md
 docs/Model/InventoryCoupon.md
 docs/Model/InventoryReferral.md
 docs/Model/ItemAttribute.md
-docs/Model/JWT.md
 docs/Model/LabelTargetAudience.md
 docs/Model/LabelTargetNone.md
 docs/Model/LedgerEntry.md
@@ -467,6 +474,15 @@ docs/Model/PriceDetail.md
 docs/Model/PriceType.md
 docs/Model/PriceTypeReferenceDetail.md
 docs/Model/PriceTypeReferences.md
+docs/Model/PrismaticConfig.md
+docs/Model/PrismaticEventPayloadCouponBasedNotifications.md
+docs/Model/PrismaticEventPayloadCouponBasedNotificationsLimits.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md
+docs/Model/PrismaticFlow.md
+docs/Model/PrismaticFlowConfig.md
+docs/Model/PrismaticFlowWithConfig.md
+docs/Model/PrismaticPaginatedEventPayload.md
 docs/Model/Product.md
 docs/Model/ProductSearchMatch.md
 docs/Model/ProductUnitAnalytics.md
@@ -500,6 +516,7 @@ docs/Model/RoleV2ApplicationDetails.md
 docs/Model/RoleV2Base.md
 docs/Model/RoleV2PermissionSet.md
 docs/Model/RoleV2Permissions.md
+docs/Model/RoleV2Readonly.md
 docs/Model/RoleV2RolesGroup.md
 docs/Model/RollbackAddedLoyaltyPointsEffectProps.md
 docs/Model/RollbackCouponEffectProps.md
@@ -538,6 +555,7 @@ docs/Model/ScimUser.md
 docs/Model/ScimUsersListResponse.md
 docs/Model/SecondaryDeployment.md
 docs/Model/Session.md
+docs/Model/SessionCoupons.md
 docs/Model/SetDiscountEffectProps.md
 docs/Model/SetDiscountPerAdditionalCostEffectProps.md
 docs/Model/SetDiscountPerAdditionalCostPerItemEffectProps.md
@@ -555,6 +573,7 @@ docs/Model/StrikethroughDebugResponse.md
 docs/Model/StrikethroughEffect.md
 docs/Model/StrikethroughLabelingNotification.md
 docs/Model/StrikethroughSetDiscountPerItemEffectProps.md
+docs/Model/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/Model/StrikethroughTrigger.md
 docs/Model/SummarizeCampaignStoreBudget200Response.md
 docs/Model/SummaryCampaignStoreBudget.md
@@ -649,6 +668,8 @@ lib/Model/AchievementBase.php
 lib/Model/AchievementProgress.php
 lib/Model/AchievementProgressWithDefinition.php
 lib/Model/AchievementStatusEntry.php
+lib/Model/ActivateLoyaltyPoints.php
+lib/Model/ActivateLoyaltyPointsResponse.php
 lib/Model/ActivateUserRequest.php
 lib/Model/AddFreeItemEffectProps.php
 lib/Model/AddItemCatalogAction.php
@@ -656,6 +677,8 @@ lib/Model/AddLoyaltyPoints.php
 lib/Model/AddLoyaltyPointsEffectProps.php
 lib/Model/AddPriceAdjustmentCatalogAction.php
 lib/Model/AddToAudienceEffectProps.php
+lib/Model/AddedDeductedPointsBalancesAction.php
+lib/Model/AddedDeductedPointsBalancesNotification.php
 lib/Model/AddedDeductedPointsBalancesNotificationPolicy.php
 lib/Model/AddedDeductedPointsNotification.php
 lib/Model/AddedDeductedPointsNotificationPolicy.php
@@ -757,6 +780,7 @@ lib/Model/CampaignTemplateCollection.php
 lib/Model/CampaignTemplateCouponReservationSettings.php
 lib/Model/CampaignTemplateParams.php
 lib/Model/CampaignVersions.php
+lib/Model/CardAddedDeductedPointsBalancesNotification.php
 lib/Model/CardAddedDeductedPointsBalancesNotificationPolicy.php
 lib/Model/CardAddedDeductedPointsNotification.php
 lib/Model/CardAddedDeductedPointsNotificationPolicy.php
@@ -785,8 +809,10 @@ lib/Model/CouponCreationJob.php
 lib/Model/CouponDeletionFilters.php
 lib/Model/CouponDeletionJob.php
 lib/Model/CouponEntity.php
+lib/Model/CouponFailureSummary.php
 lib/Model/CouponLimitConfigs.php
 lib/Model/CouponRejectionReason.php
+lib/Model/CouponRejections.php
 lib/Model/CouponReservations.php
 lib/Model/CouponSearch.php
 lib/Model/CouponValue.php
@@ -855,6 +881,7 @@ lib/Model/FuncArgDef.php
 lib/Model/FunctionDef.php
 lib/Model/GenerateAuditLogSummary.php
 lib/Model/GenerateCampaignDescription.php
+lib/Model/GenerateCampaignSummary.php
 lib/Model/GenerateCampaignTags.php
 lib/Model/GenerateCouponFailureDetailedSummary.php
 lib/Model/GenerateCouponFailureSummary.php
@@ -931,7 +958,6 @@ lib/Model/IntegrationStoreEntity.php
 lib/Model/InventoryCoupon.php
 lib/Model/InventoryReferral.php
 lib/Model/ItemAttribute.php
-lib/Model/JWT.php
 lib/Model/LabelTargetAudience.php
 lib/Model/LabelTargetNone.php
 lib/Model/LedgerEntry.php
@@ -1085,6 +1111,15 @@ lib/Model/PriceDetail.php
 lib/Model/PriceType.php
 lib/Model/PriceTypeReferenceDetail.php
 lib/Model/PriceTypeReferences.php
+lib/Model/PrismaticConfig.php
+lib/Model/PrismaticEventPayloadCouponBasedNotifications.php
+lib/Model/PrismaticEventPayloadCouponBasedNotificationsLimits.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedNotifications.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.php
+lib/Model/PrismaticFlow.php
+lib/Model/PrismaticFlowConfig.php
+lib/Model/PrismaticFlowWithConfig.php
+lib/Model/PrismaticPaginatedEventPayload.php
 lib/Model/Product.php
 lib/Model/ProductSearchMatch.php
 lib/Model/ProductUnitAnalytics.php
@@ -1118,6 +1153,7 @@ lib/Model/RoleV2ApplicationDetails.php
 lib/Model/RoleV2Base.php
 lib/Model/RoleV2PermissionSet.php
 lib/Model/RoleV2Permissions.php
+lib/Model/RoleV2Readonly.php
 lib/Model/RoleV2RolesGroup.php
 lib/Model/RollbackAddedLoyaltyPointsEffectProps.php
 lib/Model/RollbackCouponEffectProps.php
@@ -1156,6 +1192,7 @@ lib/Model/ScimUser.php
 lib/Model/ScimUsersListResponse.php
 lib/Model/SecondaryDeployment.php
 lib/Model/Session.php
+lib/Model/SessionCoupons.php
 lib/Model/SetDiscountEffectProps.php
 lib/Model/SetDiscountPerAdditionalCostEffectProps.php
 lib/Model/SetDiscountPerAdditionalCostPerItemEffectProps.php
@@ -1173,6 +1210,7 @@ lib/Model/StrikethroughDebugResponse.php
 lib/Model/StrikethroughEffect.php
 lib/Model/StrikethroughLabelingNotification.php
 lib/Model/StrikethroughSetDiscountPerItemEffectProps.php
+lib/Model/StrikethroughSetDiscountPerItemMemberEffectProps.php
 lib/Model/StrikethroughTrigger.php
 lib/Model/SummarizeCampaignStoreBudget200Response.php
 lib/Model/SummaryCampaignStoreBudget.php
@@ -1264,6 +1302,8 @@ test/Model/AchievementProgressTest.php
 test/Model/AchievementProgressWithDefinitionTest.php
 test/Model/AchievementStatusEntryTest.php
 test/Model/AchievementTest.php
+test/Model/ActivateLoyaltyPointsResponseTest.php
+test/Model/ActivateLoyaltyPointsTest.php
 test/Model/ActivateUserRequestTest.php
 test/Model/AddFreeItemEffectPropsTest.php
 test/Model/AddItemCatalogActionTest.php
@@ -1271,7 +1311,9 @@ test/Model/AddLoyaltyPointsEffectPropsTest.php
 test/Model/AddLoyaltyPointsTest.php
 test/Model/AddPriceAdjustmentCatalogActionTest.php
 test/Model/AddToAudienceEffectPropsTest.php
+test/Model/AddedDeductedPointsBalancesActionTest.php
 test/Model/AddedDeductedPointsBalancesNotificationPolicyTest.php
+test/Model/AddedDeductedPointsBalancesNotificationTest.php
 test/Model/AddedDeductedPointsNotificationPolicyTest.php
 test/Model/AddedDeductedPointsNotificationTest.php
 test/Model/AdditionalCampaignPropertiesTest.php
@@ -1373,6 +1415,7 @@ test/Model/CampaignTemplateTest.php
 test/Model/CampaignTest.php
 test/Model/CampaignVersionsTest.php
 test/Model/CardAddedDeductedPointsBalancesNotificationPolicyTest.php
+test/Model/CardAddedDeductedPointsBalancesNotificationTest.php
 test/Model/CardAddedDeductedPointsNotificationPolicyTest.php
 test/Model/CardAddedDeductedPointsNotificationTest.php
 test/Model/CardExpiringPointsNotificationPolicyTest.php
@@ -1399,8 +1442,10 @@ test/Model/CouponCreationJobTest.php
 test/Model/CouponDeletionFiltersTest.php
 test/Model/CouponDeletionJobTest.php
 test/Model/CouponEntityTest.php
+test/Model/CouponFailureSummaryTest.php
 test/Model/CouponLimitConfigsTest.php
 test/Model/CouponRejectionReasonTest.php
+test/Model/CouponRejectionsTest.php
 test/Model/CouponReservationsTest.php
 test/Model/CouponSearchTest.php
 test/Model/CouponTest.php
@@ -1470,6 +1515,7 @@ test/Model/FuncArgDefTest.php
 test/Model/FunctionDefTest.php
 test/Model/GenerateAuditLogSummaryTest.php
 test/Model/GenerateCampaignDescriptionTest.php
+test/Model/GenerateCampaignSummaryTest.php
 test/Model/GenerateCampaignTagsTest.php
 test/Model/GenerateCouponFailureDetailedSummaryTest.php
 test/Model/GenerateCouponFailureSummaryTest.php
@@ -1546,7 +1592,6 @@ test/Model/IntegrationStoreEntityTest.php
 test/Model/InventoryCouponTest.php
 test/Model/InventoryReferralTest.php
 test/Model/ItemAttributeTest.php
-test/Model/JWTTest.php
 test/Model/LabelTargetAudienceTest.php
 test/Model/LabelTargetNoneTest.php
 test/Model/LedgerEntryTest.php
@@ -1699,6 +1744,15 @@ test/Model/PriceDetailTest.php
 test/Model/PriceTypeReferenceDetailTest.php
 test/Model/PriceTypeReferencesTest.php
 test/Model/PriceTypeTest.php
+test/Model/PrismaticConfigTest.php
+test/Model/PrismaticEventPayloadCouponBasedNotificationsLimitsTest.php
+test/Model/PrismaticEventPayloadCouponBasedNotificationsTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsActionTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsTest.php
+test/Model/PrismaticFlowConfigTest.php
+test/Model/PrismaticFlowTest.php
+test/Model/PrismaticFlowWithConfigTest.php
+test/Model/PrismaticPaginatedEventPayloadTest.php
 test/Model/ProductSearchMatchTest.php
 test/Model/ProductTest.php
 test/Model/ProductUnitAnalyticsDataPointTest.php
@@ -1731,6 +1785,7 @@ test/Model/RoleV2ApplicationDetailsTest.php
 test/Model/RoleV2BaseTest.php
 test/Model/RoleV2PermissionSetTest.php
 test/Model/RoleV2PermissionsTest.php
+test/Model/RoleV2ReadonlyTest.php
 test/Model/RoleV2RolesGroupTest.php
 test/Model/RoleV2Test.php
 test/Model/RollbackAddedLoyaltyPointsEffectPropsTest.php
@@ -1769,6 +1824,7 @@ test/Model/ScimServiceProviderConfigResponseTest.php
 test/Model/ScimUserTest.php
 test/Model/ScimUsersListResponseTest.php
 test/Model/SecondaryDeploymentTest.php
+test/Model/SessionCouponsTest.php
 test/Model/SessionTest.php
 test/Model/SetDiscountEffectPropsTest.php
 test/Model/SetDiscountPerAdditionalCostEffectPropsTest.php
@@ -1787,6 +1843,7 @@ test/Model/StrikethroughDebugResponseTest.php
 test/Model/StrikethroughEffectTest.php
 test/Model/StrikethroughLabelingNotificationTest.php
 test/Model/StrikethroughSetDiscountPerItemEffectPropsTest.php
+test/Model/StrikethroughSetDiscountPerItemMemberEffectPropsTest.php
 test/Model/StrikethroughTriggerTest.php
 test/Model/SummarizeCampaignStoreBudget200ResponseTest.php
 test/Model/SummaryCampaignStoreBudgetTest.php

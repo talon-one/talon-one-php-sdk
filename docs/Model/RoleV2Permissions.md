@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **permissionSets** | [**\TalonOne\Client\Model\RoleV2PermissionSet[]**](RoleV2PermissionSet.md) | List of grouped logical operations referenced by roles. | [optional]
-**roles** | [**\TalonOne\Client\Model\RoleV2RolesGroup**](RoleV2RolesGroup.md) |  | [optional]
+**roles** | [**\TalonOne\Client\Model\RoleV2RolesGroup**](.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

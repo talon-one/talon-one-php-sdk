@@ -1,10 +1,10 @@
-# # JWT
+# # SessionCoupons
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessToken** | **string** | Access token used to authenticate a user in Talon.One. |
-**expiresIn** | **int** | Time until the token expires (in seconds). |
+**sessionIntegrationId** | **string** | The integration ID of the session in which the coupons were applied. |
+**couponCode** | **string** | The coupon codes for which rejection reason is needed. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

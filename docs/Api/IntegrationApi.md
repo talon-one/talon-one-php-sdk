@@ -1179,7 +1179,7 @@ try {
 ## `getLoyaltyCardTransactions()`
 
 ```php
-getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyCardTransactions200Response
+getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip): \TalonOne\Client\Model\GetLoyaltyCardTransactions200Response
 ```
 
 List card's transactions
@@ -1215,10 +1215,9 @@ $customerSessionIDs = array('customerSessionIDs_example'); // string[] | Filter 
 $transactionUUIDs = array('transactionUUIDs_example'); // string[] | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$awaitsActivation = True; // bool | If `true`: Filters results to include only point transactions that have action-based activation and have not expired. If `false`: Returns an error.
 
 try {
-    $result = $apiInstance->getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip, $awaitsActivation);
+    $result = $apiInstance->getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->getLoyaltyCardTransactions: ', $e->getMessage(), PHP_EOL;
@@ -1239,7 +1238,6 @@ try {
 | **transactionUUIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **awaitsActivation** | **bool**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired. If &#x60;false&#x60;: Returns an error. | [optional] |
 
 ### Return type
 
@@ -1339,7 +1337,7 @@ try {
 ## `getLoyaltyProgramProfileTransactions()`
 
 ```php
-getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response
+getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip): \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response
 ```
 
 List customer's loyalty transactions
@@ -1375,10 +1373,9 @@ $startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and
 $endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$awaitsActivation = True; // bool | If `true`: Filters results to include only point transactions that have action-based activation and have not expired. If `false`: Returns an error.
 
 try {
-    $result = $apiInstance->getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation);
+    $result = $apiInstance->getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->getLoyaltyProgramProfileTransactions: ', $e->getMessage(), PHP_EOL;
@@ -1399,7 +1396,6 @@ try {
 | **endDate** | **\DateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **awaitsActivation** | **bool**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired. If &#x60;false&#x60;: Returns an error. | [optional] |
 
 ### Return type
 

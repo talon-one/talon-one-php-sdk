@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **applicationId** | **int** | The ID of the Application to which the catalog items labels belongs. |
 **currentBatch** | **int** | The batch number of the notification. Notifications might be sent in different batches. |
 **totalBatches** | **int** | The total number of batches for the notification. |
-**trigger** | [**\TalonOne\Client\Model\StrikethroughTrigger**](StrikethroughTrigger.md) |  |
+**trigger** | [**\TalonOne\Client\Model\StrikethroughTrigger**](.md) |  |
 **changedItems** | [**\TalonOne\Client\Model\StrikethroughChangedItem[]**](StrikethroughChangedItem.md) |  |
-**notificationType** | **string** | The type of the notification |
+**notificationType** | **string** | The type of notification. |
+**sentAt** | **\DateTime** | Timestamp at which the notification was sent. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

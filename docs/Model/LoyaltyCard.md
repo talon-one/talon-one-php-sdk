@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **ledger** | [**\TalonOne\Client\Model\LedgerInfo**](LedgerInfo.md) | Displays point balances of the card in the main ledger of the loyalty program. | [optional]
 **subledgers** | [**array<string,\TalonOne\Client\Model\LedgerInfo>**](LedgerInfo.md) | Displays point balances of the card in the subledgers of the loyalty program. | [optional]
 **modified** | **\DateTime** | Timestamp of the most recent update of the loyalty card. | [optional]
-**oldCardIdentifier** | **string** | The alphanumeric identifier of the loyalty card. | [optional]
-**newCardIdentifier** | **string** | The alphanumeric identifier of the loyalty card. | [optional]
+**oldCardIdentifier** | **string** | The identifier of the card from which the points were transferred. | [optional]
+**newCardIdentifier** | **string** | The identifier of the card to which the points were transferred. | [optional]
 **batchId** | **string** | The ID of the batch in which the loyalty card was created. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

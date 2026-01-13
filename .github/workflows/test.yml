@@ -28,7 +28,7 @@ jobs:
       - name: Setup PHP Action
         uses: shivammathur/setup-php@2.31.1
         with:
-          php-version: "8.1"
+          php-version: "7.4"
           tools: composer
       - name: Get composer cache directory
         id: composer-cache
