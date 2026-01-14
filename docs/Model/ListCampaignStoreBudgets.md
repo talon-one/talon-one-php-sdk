@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**store** | [**\TalonOne\Client\Model\ListCampaignStoreBudgetsStore**](ListCampaignStoreBudgetsStore.md) |  |
+**store** | [**\TalonOne\Client\Model\ListCampaignStoreBudgetsStore**](.md) |  |
 **limit** | **int** |  |
 **action** | **string** |  |
 **period** | **string** |  | [optional]

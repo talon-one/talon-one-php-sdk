@@ -6617,7 +6617,7 @@ try {
 ## `getCampaigns()`
 
 ```php
-getCampaigns($applicationId, $pageSize, $skip, $sort, $campaignState, $name, $tags, $createdBefore, $createdAfter, $campaignGroupId, $templateId, $storeId): \TalonOne\Client\Model\GetCampaigns200Response
+getCampaigns($applicationId, $pageSize, $skip, $sort, $campaignState, $name, $tags, $createdBefore, $createdAfter, $startBefore, $startAfter, $endBefore, $endAfter, $campaignGroupId, $templateId, $storeId): \TalonOne\Client\Model\GetCampaigns200Response
 ```
 
 List campaigns
@@ -6662,12 +6662,16 @@ $name = 'name_example'; // string | Filter results performing case-insensitive m
 $tags = 'tags_example'; // string | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values
 $createdBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
 $createdAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+$startBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+$startAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+$endBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+$endAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
 $campaignGroupId = 56; // int | Filter results to campaigns owned by the specified campaign access group ID.
 $templateId = 56; // int | The ID of the campaign template this campaign was created from.
 $storeId = 56; // int | Filter results to campaigns linked to the specified store ID.
 
 try {
-    $result = $apiInstance->getCampaigns($applicationId, $pageSize, $skip, $sort, $campaignState, $name, $tags, $createdBefore, $createdAfter, $campaignGroupId, $templateId, $storeId);
+    $result = $apiInstance->getCampaigns($applicationId, $pageSize, $skip, $sort, $campaignState, $name, $tags, $createdBefore, $createdAfter, $startBefore, $startAfter, $endBefore, $endAfter, $campaignGroupId, $templateId, $storeId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->getCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -6687,6 +6691,10 @@ try {
 | **tags** | **string**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values | [optional] |
 | **createdBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
 | **createdAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
+| **startBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
+| **startAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
+| **endBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
+| **endAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign end time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
 | **campaignGroupId** | **int**| Filter results to campaigns owned by the specified campaign access group ID. | [optional] |
 | **templateId** | **int**| The ID of the campaign template this campaign was created from. | [optional] |
 | **storeId** | **int**| Filter results to campaigns linked to the specified store ID. | [optional] |
@@ -8255,7 +8263,7 @@ try {
 ## `getLoyaltyProgramTransactions()`
 
 ```php
-getLoyaltyProgramTransactions($loyaltyProgramId, $loyaltyTransactionType, $subledgerId, $customerSessionIDs, $transactionUUIDs, $startDate, $endDate, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyProgramTransactions200Response
+getLoyaltyProgramTransactions($loyaltyProgramId, $loyaltyTransactionType, $subledgerId, $customerSessionIDs, $transactionUUIDs, $startDate, $endDate, $pageSize, $skip): \TalonOne\Client\Model\GetLoyaltyProgramTransactions200Response
 ```
 
 List loyalty program transactions
@@ -8300,10 +8308,9 @@ $startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and
 $endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$awaitsActivation = True; // bool | If `true`: Filters results to include only point transactions that have action-based activation and have not expired. If `false`: Returns an error.
 
 try {
-    $result = $apiInstance->getLoyaltyProgramTransactions($loyaltyProgramId, $loyaltyTransactionType, $subledgerId, $customerSessionIDs, $transactionUUIDs, $startDate, $endDate, $pageSize, $skip, $awaitsActivation);
+    $result = $apiInstance->getLoyaltyProgramTransactions($loyaltyProgramId, $loyaltyTransactionType, $subledgerId, $customerSessionIDs, $transactionUUIDs, $startDate, $endDate, $pageSize, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->getLoyaltyProgramTransactions: ', $e->getMessage(), PHP_EOL;
@@ -8323,7 +8330,6 @@ try {
 | **endDate** | **\DateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **awaitsActivation** | **bool**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired. If &#x60;false&#x60;: Returns an error. | [optional] |
 
 ### Return type
 
@@ -9971,7 +9977,7 @@ importLoyaltyPoints($loyaltyProgramId, $notificationsEnabled, $upFile): \TalonOn
 
 Import loyalty points
 
-Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - `customerprofileid` (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - `identifier` (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - `amount`: The amount of points to award to the customer profile. - `startdate` (optional): The earliest date when the points can be redeemed. The points are `active` from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - `immediate`   - `on_action`      **Note**:   Empty or missing values default to `immediate`. - `expirydate` (optional): The latest date when the points can be redeemed. The points are `expired` after this date.    **Note**: It must be an RFC3339 timestamp string or string `unlimited`. Empty or missing values are considered `unlimited`. - `subledgerid` (optional): The ID of the subledger that should received the points. - `reason` (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for `startdate`. If `startdate` matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for `startdate` is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  ```text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement ```  **Example for card-based programs:**  ```text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement ```
+Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the type of loyalty program, you can import points into a given customer profile or loyalty card.  The CSV file contains the following columns:  - `customerprofileid` (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - `identifier` (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - `amount`: The amount of points to award to the customer profile. - `startdate` (optional): The earliest date when the points can be redeemed. The points are `active` from this date until the expiration date.    This parameter accepts one of the following values:   - A timestamp string in RFC3339 format.   - `immediate`   - `on_action`      **Note**:   Empty or missing values default to `immediate`. - `expirydate` (optional): The latest date when the points can be redeemed. The points are `expired` after this date.    **Note**: It must be an RFC3339 timestamp string or string `unlimited`. Empty or missing values are considered `unlimited`.      If passed, `validityDuration` should be omitted. - `validityDuration` (optional): The duration for which the points remain active, relative to the    activation date.    The time format is an **integer** followed by one letter indicating the time unit.     Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.     Available units:     - `s`: seconds   - `m`: minutes   - `h`: hours   - `D`: days   - `W`: weeks   - `M`: months   - `Y`: years     You can round certain units up or down:    - `_D` for rounding down days only. Signifies the start of the day.   - `_U` for rounding up days, weeks, months and years. Signifies the end of   the day, week, month or year.    If passed, `expirydate` should be omitted. - `subledgerid` (optional): The ID of the subledger that should received the points. - `reason` (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for `startdate`. If `startdate` matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for `startdate` is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  ```text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement ```  **Example for card-based programs:**  ```text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement ```
 
 ### Example
 
