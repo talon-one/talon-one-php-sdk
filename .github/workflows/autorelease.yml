@@ -5,6 +5,11 @@ on:
     branches: [ main ]
     types: [ closed ]
   workflow_dispatch:
+    inputs:
+      SDK_VERSION:
+        required: true
+        type: string
+        description: the release version to create
 
 permissions:
   contents: write
@@ -12,23 +17,27 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
 
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # get full history so we can diff
+          fetch-depth: 0 # get full history so we can diff
 
-      - name: Extract version from PR title
+      - name: Extract version from PR title or use input
         id: get_version
         run: |
-          msg='${{ github.event.pull_request.title }}'
-          if [[ "$msg" =~ [Uu]pdate.*[Tt]o[[:space:]]+([0-9]+\.[0-9]+(\.[0-9]+)?) ]]; then
-            ver="${BASH_REMATCH[1]}"
-            echo "version=$ver" >> $GITHUB_OUTPUT
+          if [ -n "${{ inputs.SDK_VERSION }}" ]; then
+            echo "version=${{ inputs.SDK_VERSION }}" >> $GITHUB_OUTPUT
           else
-            echo "PR title does not match pattern - skipping release."
-            echo "version=" >> $GITHUB_OUTPUT
+            msg='${{ github.event.pull_request.title }}'
+            if [[ "$msg" =~ [Uu]pdate.*[Tt]o[[:space:]]+([0-9]+\.[0-9]+(\.[0-9]+)?) ]]; then
+              ver="${BASH_REMATCH[1]}"
+              echo "version=$ver" >> $GITHUB_OUTPUT
+            else
+              echo "PR title does not match pattern - skipping release."
+              echo "version=" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Skip when no version
@@ -92,7 +101,7 @@ jobs:
       - name: Create Git tag
         if: ${{ steps.get_version.outputs.version != '' }}
         run: |
-          ver="v${{ steps.get_version.outputs.version }}"
+          ver="${{ steps.get_version.outputs.version }}"
           git tag -f "$ver" "$GITHUB_SHA"
           git push -f origin "refs/tags/$ver"
 
@@ -101,7 +110,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ver="v${{ steps.get_version.outputs.version }}"
+          ver="${{ steps.get_version.outputs.version }}"
           notes_file="${{ steps.relnotes.outputs.notes_file }}"
 
           if gh release view "$ver" &>/dev/null; then
