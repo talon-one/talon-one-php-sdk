@@ -8,27 +8,29 @@ This SDK supports all of the operations of Talon.One's Integration API and Manag
 
 ## Requirements
 
-- [PHP 7.1 and later](https://www.php.net/)
+- [PHP 8.1 and later](https://www.php.net/)
 
 ## Installation and usage
 
 ### Using Composer
 
-This is the recommended method.
+To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
 
-1. Install [Composer](https://getcomposer.org/) following the [installation instructions](https://getcomposer.org/doc/00-intro.md).
-1. Execute the following command in your project root to install this library:
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/talon-one/talon-one-php-sdk.git"
+    }
+  ],
+  "require": {
+    "talon-one/talon-one-php-sdk": "*@dev"
+  }
+}
+```
 
-   ```sh
-   composer require talon-one/talon-one-client
-   ```
-
-1. Include the autoloader:
-
-   ```php
-   require_once '/path/to/your-project/vendor/autoload.php';
-   ```
-
+Then run `composer install`
 ### Using the release's source
 
 If you prefer not to use Composer, you can download the package in its entirety.
