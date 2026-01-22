@@ -6,6 +6,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**activateLoyaltyPoints()**](IntegrationApi.md#activateLoyaltyPoints) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/activate_points | Activate loyalty points |
 | [**bestPriorPrice()**](IntegrationApi.md#bestPriorPrice) | **POST** /v1/best_prior_price | Fetch best prior price |
 | [**createAudienceV2()**](IntegrationApi.md#createAudienceV2) | **POST** /v2/audiences | Create audience |
 | [**createCouponReservation()**](IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create coupon reservation |
@@ -15,6 +16,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**deleteAudienceV2()**](IntegrationApi.md#deleteAudienceV2) | **DELETE** /v2/audiences/{audienceId} | Delete audience |
 | [**deleteCouponReservation()**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations |
 | [**deleteCustomerData()**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete customer&#39;s personal data |
+| [**deleteLoyaltyTransactionsFromLedgers()**](IntegrationApi.md#deleteLoyaltyTransactionsFromLedgers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/delete_transactions | Delete customer&#39;s transactions from loyalty ledgers |
 | [**generateLoyaltyCard()**](IntegrationApi.md#generateLoyaltyCard) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards | Generate loyalty card |
 | [**getCustomerAchievementHistory()**](IntegrationApi.md#getCustomerAchievementHistory) | **GET** /v1/customer_profiles/{integrationId}/achievements/{achievementId} | List customer&#39;s achievement history |
 | [**getCustomerAchievements()**](IntegrationApi.md#getCustomerAchievements) | **GET** /v1/customer_profiles/{integrationId}/achievements | List customer&#39;s available achievements |
@@ -32,6 +34,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**returnCartItems()**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items |
 | [**syncCatalog()**](IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog |
 | [**trackEventV2()**](IntegrationApi.md#trackEventV2) | **POST** /v2/events | Track event |
+| [**unlinkLoyaltyCardFromProfile()**](IntegrationApi.md#unlinkLoyaltyCardFromProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card |
 | [**updateAudienceCustomersAttributes()**](IntegrationApi.md#updateAudienceCustomersAttributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience |
 | [**updateAudienceV2()**](IntegrationApi.md#updateAudienceV2) | **PUT** /v2/audiences/{audienceId} | Update audience name |
 | [**updateCustomerProfileAudiences()**](IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update multiple customer profiles&#39; audiences |
@@ -39,6 +42,70 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**updateCustomerProfilesV2()**](IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple customer profiles |
 | [**updateCustomerSessionV2()**](IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update customer session |
 
+
+## `activateLoyaltyPoints()`
+
+```php
+activateLoyaltyPoints($loyaltyProgramId, $activateLoyaltyPoints): \TalonOne\Client\Model\ActivateLoyaltyPointsResponse
+```
+
+Activate loyalty points
+
+Activate points when a defined action occurs.  You can activate pending points using one of the following parameters: - `sessionId`: Activates all points earned in the specified session.  - `transactionUUIDs`: Activates points earned in the transactions specified by the  given UUIDs.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$loyaltyProgramId = 56; // int | The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+$activateLoyaltyPoints = {transactionUUIDs=[8f1a8d7c-9c3e-4a5e-9f0d-2c5f7a3b1cde, 12b3c456-78d9-4e0f-a1b2-3456789abcde]}; // \TalonOne\Client\Model\ActivateLoyaltyPoints | body
+
+try {
+    $result = $apiInstance->activateLoyaltyPoints($loyaltyProgramId, $activateLoyaltyPoints);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->activateLoyaltyPoints: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **loyaltyProgramId** | **int**| The identifier for the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
+| **activateLoyaltyPoints** | [**\TalonOne\Client\Model\ActivateLoyaltyPoints**](../Model/ActivateLoyaltyPoints.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\ActivateLoyaltyPointsResponse**](../Model/ActivateLoyaltyPointsResponse.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `bestPriorPrice()`
 
@@ -604,6 +671,71 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteLoyaltyTransactionsFromLedgers()`
+
+```php
+deleteLoyaltyTransactionsFromLedgers($loyaltyProgramId, $integrationId, $deleteLoyaltyTransactionsRequest)
+```
+
+Delete customer's transactions from loyalty ledgers
+
+Delete a customer's transactions in all loyalty ledgers or a specified ledger.  **Note:** To retrieve loyalty transaction logs for a specific customer in a given loyalty program, use the [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions) endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$loyaltyProgramId = 56; // int | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+$integrationId = 'integrationId_example'; // string | The integration ID of the customer profile. You can get the `integrationId` of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.
+$deleteLoyaltyTransactionsRequest = new \TalonOne\Client\Model\DeleteLoyaltyTransactionsRequest(); // \TalonOne\Client\Model\DeleteLoyaltyTransactionsRequest
+
+try {
+    $apiInstance->deleteLoyaltyTransactionsFromLedgers($loyaltyProgramId, $integrationId, $deleteLoyaltyTransactionsRequest);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->deleteLoyaltyTransactionsFromLedgers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **loyaltyProgramId** | **int**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
+| **integrationId** | **string**| The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. | |
+| **deleteLoyaltyTransactionsRequest** | [**\TalonOne\Client\Model\DeleteLoyaltyTransactionsRequest**](../Model/DeleteLoyaltyTransactionsRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1179,7 +1311,7 @@ try {
 ## `getLoyaltyCardTransactions()`
 
 ```php
-getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip): \TalonOne\Client\Model\GetLoyaltyCardTransactions200Response
+getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyCardTransactions200Response
 ```
 
 List card's transactions
@@ -1215,9 +1347,10 @@ $customerSessionIDs = array('customerSessionIDs_example'); // string[] | Filter 
 $transactionUUIDs = array('transactionUUIDs_example'); // string[] | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
+$awaitsActivation = True; // bool | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response.
 
 try {
-    $result = $apiInstance->getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip);
+    $result = $apiInstance->getLoyaltyCardTransactions($loyaltyProgramId, $loyaltyCardId, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip, $awaitsActivation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->getLoyaltyCardTransactions: ', $e->getMessage(), PHP_EOL;
@@ -1238,6 +1371,7 @@ try {
 | **transactionUUIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **awaitsActivation** | **bool**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. | [optional] |
 
 ### Return type
 
@@ -1337,7 +1471,7 @@ try {
 ## `getLoyaltyProgramProfileTransactions()`
 
 ```php
-getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip): \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response
+getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response
 ```
 
 List customer's loyalty transactions
@@ -1373,9 +1507,10 @@ $startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and
 $endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
+$awaitsActivation = True; // bool | If `true`: Filters results to include only point transactions that have action-based activation and have not expired.  If `false`: Returns a `400` response.
 
 try {
-    $result = $apiInstance->getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip);
+    $result = $apiInstance->getLoyaltyProgramProfileTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->getLoyaltyProgramProfileTransactions: ', $e->getMessage(), PHP_EOL;
@@ -1396,6 +1531,7 @@ try {
 | **endDate** | **\DateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **awaitsActivation** | **bool**| If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. | [optional] |
 
 ### Return type
 
@@ -1550,7 +1686,7 @@ reopenCustomerSession($customerSessionId): \TalonOne\Client\Model\ReopenSessionR
 
 Reopen customer session
 
-Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The `talon_session_reopened` event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to `open`. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   <details>   <summary><strong>Effects and budgets unimpacted by a session reopening</strong></summary>   <div>     <p>The following effects and budgets remain in the state they were in when the session closed:</p>     <ul>       <li>Add free item effect</li>       <li>Award giveaway</li>       <li>Coupon and referral creation</li>       <li>Coupon reservation</li>       <li>Custom effect</li>       <li>Update attribute value</li>       <li>Update cart item attribute value</li>     </ul>   </div>   </details> <p>To see an example of a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\">Cancelling a session with campaign budgets</a>tutorial.</p>  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one.
+Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The `talon_session_reopened` event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to `open`. - Any modified budgets and triggered effects are rolled back when the session closes. - Depending on the [return policy](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-programs#return-policy)  in your loyalty programs, points are rolled back in the following ways:   - Pending points are rolled back automatically.   - If **Active points deduction** setting is enabled, any points that were earned and activated when the session closed    are rolled back.   - If **Negative balance** is enabled, the rollback can create a negative points balance.   <details>   <summary><strong>Effects and budgets unimpacted by a session reopening</strong></summary>   <div>     <p>The following effects and budgets remain in the state they were in when the session closed:</p>     <ul>       <li>Add free item effect</li>       <li>Award giveaway</li>       <li>Coupon and referral creation</li>       <li>Coupon reservation</li>       <li>Custom effect</li>       <li>Update attribute value</li>       <li>Update cart item attribute value</li>     </ul>   </div>   </details> <p>To see an example of a rollback, see the <a href=\"https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\">Cancelling a session with campaign budgets</a> tutorial.</p>  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one.
 
 ### Example
 
@@ -1788,6 +1924,72 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\TrackEventV2Response**](../Model/TrackEventV2Response.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unlinkLoyaltyCardFromProfile()`
+
+```php
+unlinkLoyaltyCardFromProfile($loyaltyProgramId, $loyaltyCardId, $loyaltyCardRegistration): \TalonOne\Client\Model\LoyaltyCard
+```
+
+Unlink customer profile from a loyalty card
+
+Unlink a customer profile from a [registered](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card) loyalty card.  To get the `integrationId` of a customer profile, you can use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$loyaltyProgramId = 56; // int | The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+$loyaltyCardId = 'loyaltyCardId_example'; // string | The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
+$loyaltyCardRegistration = new \TalonOne\Client\Model\LoyaltyCardRegistration(); // \TalonOne\Client\Model\LoyaltyCardRegistration | body
+
+try {
+    $result = $apiInstance->unlinkLoyaltyCardFromProfile($loyaltyProgramId, $loyaltyCardId, $loyaltyCardRegistration);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->unlinkLoyaltyCardFromProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **loyaltyProgramId** | **int**| The identifier of the card-based loyalty program containing the loyalty card. You can get this ID using the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
+| **loyaltyCardId** | **string**| The identifier of the loyalty card. You can get this ID using the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. | |
+| **loyaltyCardRegistration** | [**\TalonOne\Client\Model\LoyaltyCardRegistration**](../Model/LoyaltyCardRegistration.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\LoyaltyCard**](../Model/LoyaltyCard.md)
 
 ### Authorization
 
