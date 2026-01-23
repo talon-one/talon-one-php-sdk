@@ -22,5 +22,7 @@ Name | Type | Description | Notes
 **batchId** | **string** |  | [optional]
 **attributes** | **object** |  | [optional]
 **limits** | [**\TalonOne\Client\Model\PrismaticEventPayloadCouponBasedNotificationsLimits[]**](PrismaticEventPayloadCouponBasedNotificationsLimits.md) |  | [optional]
+**sourceOfEvent** | **string** |  |
+**employeeName** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

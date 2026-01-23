@@ -95,7 +95,7 @@ docs/Model/BaseSamlConnection.md
 docs/Model/BestPriorPrice.md
 docs/Model/BestPriorPriceMetadata.md
 docs/Model/BestPriorPriceRequest.md
-docs/Model/BestPriorPriceRequestTarget.md
+docs/Model/BestPriorTarget.md
 docs/Model/Binding.md
 docs/Model/BulkApplicationNotification.md
 docs/Model/BulkOperationOnCampaigns.md
@@ -154,9 +154,11 @@ docs/Model/CardLedgerPointsEntryIntegrationAPI.md
 docs/Model/CardLedgerTransactionLogEntry.md
 docs/Model/CardLedgerTransactionLogEntryIntegrationAPI.md
 docs/Model/CartItem.md
+docs/Model/CartItemFilterTemplate.md
 docs/Model/Catalog.md
 docs/Model/CatalogActionFilter.md
 docs/Model/CatalogItem.md
+docs/Model/CatalogRule.md
 docs/Model/CatalogSyncRequest.md
 docs/Model/CatalogsStrikethroughNotificationPolicy.md
 docs/Model/Change.md
@@ -166,6 +168,7 @@ docs/Model/CodeGeneratorSettings.md
 docs/Model/Collection.md
 docs/Model/CollectionItem.md
 docs/Model/CollectionWithoutPayload.md
+docs/Model/CollectionsCatalog.md
 docs/Model/Coupon.md
 docs/Model/CouponConstraints.md
 docs/Model/CouponCreatedEffectProps.md
@@ -176,7 +179,6 @@ docs/Model/CouponEntity.md
 docs/Model/CouponFailureSummary.md
 docs/Model/CouponLimitConfigs.md
 docs/Model/CouponRejectionReason.md
-docs/Model/CouponRejections.md
 docs/Model/CouponReservations.md
 docs/Model/CouponSearch.md
 docs/Model/CouponValue.md
@@ -209,6 +211,7 @@ docs/Model/DeactivateUserRequest.md
 docs/Model/DeductLoyaltyPoints.md
 docs/Model/DeductLoyaltyPointsEffectProps.md
 docs/Model/DeleteCouponsData.md
+docs/Model/DeleteLoyaltyTransactionsRequest.md
 docs/Model/DeleteUserRequest.md
 docs/Model/Effect.md
 docs/Model/EffectEntity.md
@@ -249,6 +252,7 @@ docs/Model/GenerateCampaignSummary.md
 docs/Model/GenerateCampaignTags.md
 docs/Model/GenerateCouponFailureDetailedSummary.md
 docs/Model/GenerateCouponFailureSummary.md
+docs/Model/GenerateCouponRejections200Response.md
 docs/Model/GenerateItemFilterDescription.md
 docs/Model/GenerateLoyaltyCard.md
 docs/Model/GenerateRuleTitle.md
@@ -406,6 +410,7 @@ docs/Model/NewCampaignStoreBudgetStoreLimit.md
 docs/Model/NewCampaignTemplate.md
 docs/Model/NewCatalog.md
 docs/Model/NewCollection.md
+docs/Model/NewCollectionsCatalog.md
 docs/Model/NewCouponCreationJob.md
 docs/Model/NewCouponDeletionJob.md
 docs/Model/NewCoupons.md
@@ -555,7 +560,6 @@ docs/Model/ScimUser.md
 docs/Model/ScimUsersListResponse.md
 docs/Model/SecondaryDeployment.md
 docs/Model/Session.md
-docs/Model/SessionCoupons.md
 docs/Model/SetDiscountEffectProps.md
 docs/Model/SetDiscountPerAdditionalCostEffectProps.md
 docs/Model/SetDiscountPerAdditionalCostPerItemEffectProps.md
@@ -612,6 +616,7 @@ docs/Model/UpdateCampaignGroup.md
 docs/Model/UpdateCampaignTemplate.md
 docs/Model/UpdateCatalog.md
 docs/Model/UpdateCollection.md
+docs/Model/UpdateCollectionsCatalog.md
 docs/Model/UpdateCoupon.md
 docs/Model/UpdateCouponBatch.md
 docs/Model/UpdateCouponsData.md
@@ -633,7 +638,6 @@ docs/Model/UserEntity.md
 docs/Model/ValueMap.md
 docs/Model/Webhook.md
 docs/Model/WebhookAuthentication.md
-docs/Model/WebhookAuthenticationBase.md
 docs/Model/WebhookAuthenticationDataBasic.md
 docs/Model/WebhookAuthenticationDataCustom.md
 docs/Model/WebhookAuthenticationWebhookRef.md
@@ -731,7 +735,7 @@ lib/Model/BaseSamlConnection.php
 lib/Model/BestPriorPrice.php
 lib/Model/BestPriorPriceMetadata.php
 lib/Model/BestPriorPriceRequest.php
-lib/Model/BestPriorPriceRequestTarget.php
+lib/Model/BestPriorTarget.php
 lib/Model/Binding.php
 lib/Model/BulkApplicationNotification.php
 lib/Model/BulkOperationOnCampaigns.php
@@ -790,9 +794,11 @@ lib/Model/CardLedgerPointsEntryIntegrationAPI.php
 lib/Model/CardLedgerTransactionLogEntry.php
 lib/Model/CardLedgerTransactionLogEntryIntegrationAPI.php
 lib/Model/CartItem.php
+lib/Model/CartItemFilterTemplate.php
 lib/Model/Catalog.php
 lib/Model/CatalogActionFilter.php
 lib/Model/CatalogItem.php
+lib/Model/CatalogRule.php
 lib/Model/CatalogSyncRequest.php
 lib/Model/CatalogsStrikethroughNotificationPolicy.php
 lib/Model/Change.php
@@ -802,6 +808,7 @@ lib/Model/CodeGeneratorSettings.php
 lib/Model/Collection.php
 lib/Model/CollectionItem.php
 lib/Model/CollectionWithoutPayload.php
+lib/Model/CollectionsCatalog.php
 lib/Model/Coupon.php
 lib/Model/CouponConstraints.php
 lib/Model/CouponCreatedEffectProps.php
@@ -812,7 +819,6 @@ lib/Model/CouponEntity.php
 lib/Model/CouponFailureSummary.php
 lib/Model/CouponLimitConfigs.php
 lib/Model/CouponRejectionReason.php
-lib/Model/CouponRejections.php
 lib/Model/CouponReservations.php
 lib/Model/CouponSearch.php
 lib/Model/CouponValue.php
@@ -845,6 +851,7 @@ lib/Model/DeactivateUserRequest.php
 lib/Model/DeductLoyaltyPoints.php
 lib/Model/DeductLoyaltyPointsEffectProps.php
 lib/Model/DeleteCouponsData.php
+lib/Model/DeleteLoyaltyTransactionsRequest.php
 lib/Model/DeleteUserRequest.php
 lib/Model/Effect.php
 lib/Model/EffectEntity.php
@@ -885,6 +892,7 @@ lib/Model/GenerateCampaignSummary.php
 lib/Model/GenerateCampaignTags.php
 lib/Model/GenerateCouponFailureDetailedSummary.php
 lib/Model/GenerateCouponFailureSummary.php
+lib/Model/GenerateCouponRejections200Response.php
 lib/Model/GenerateItemFilterDescription.php
 lib/Model/GenerateLoyaltyCard.php
 lib/Model/GenerateRuleTitle.php
@@ -1043,6 +1051,7 @@ lib/Model/NewCampaignStoreBudgetStoreLimit.php
 lib/Model/NewCampaignTemplate.php
 lib/Model/NewCatalog.php
 lib/Model/NewCollection.php
+lib/Model/NewCollectionsCatalog.php
 lib/Model/NewCouponCreationJob.php
 lib/Model/NewCouponDeletionJob.php
 lib/Model/NewCoupons.php
@@ -1192,7 +1201,6 @@ lib/Model/ScimUser.php
 lib/Model/ScimUsersListResponse.php
 lib/Model/SecondaryDeployment.php
 lib/Model/Session.php
-lib/Model/SessionCoupons.php
 lib/Model/SetDiscountEffectProps.php
 lib/Model/SetDiscountPerAdditionalCostEffectProps.php
 lib/Model/SetDiscountPerAdditionalCostPerItemEffectProps.php
@@ -1249,6 +1257,7 @@ lib/Model/UpdateCampaignGroup.php
 lib/Model/UpdateCampaignTemplate.php
 lib/Model/UpdateCatalog.php
 lib/Model/UpdateCollection.php
+lib/Model/UpdateCollectionsCatalog.php
 lib/Model/UpdateCoupon.php
 lib/Model/UpdateCouponBatch.php
 lib/Model/UpdateCouponsData.php
@@ -1270,7 +1279,6 @@ lib/Model/UserEntity.php
 lib/Model/ValueMap.php
 lib/Model/Webhook.php
 lib/Model/WebhookAuthentication.php
-lib/Model/WebhookAuthenticationBase.php
 lib/Model/WebhookAuthenticationDataBasic.php
 lib/Model/WebhookAuthenticationDataCustom.php
 lib/Model/WebhookAuthenticationWebhookRef.php
@@ -1363,9 +1371,9 @@ test/Model/BaseNotificationWebhookTest.php
 test/Model/BaseNotificationsTest.php
 test/Model/BaseSamlConnectionTest.php
 test/Model/BestPriorPriceMetadataTest.php
-test/Model/BestPriorPriceRequestTargetTest.php
 test/Model/BestPriorPriceRequestTest.php
 test/Model/BestPriorPriceTest.php
+test/Model/BestPriorTargetTest.php
 test/Model/BindingTest.php
 test/Model/BulkApplicationNotificationTest.php
 test/Model/BulkOperationOnCampaignsTest.php
@@ -1423,9 +1431,11 @@ test/Model/CardExpiringPointsNotificationTriggerTest.php
 test/Model/CardLedgerPointsEntryIntegrationAPITest.php
 test/Model/CardLedgerTransactionLogEntryIntegrationAPITest.php
 test/Model/CardLedgerTransactionLogEntryTest.php
+test/Model/CartItemFilterTemplateTest.php
 test/Model/CartItemTest.php
 test/Model/CatalogActionFilterTest.php
 test/Model/CatalogItemTest.php
+test/Model/CatalogRuleTest.php
 test/Model/CatalogSyncRequestTest.php
 test/Model/CatalogTest.php
 test/Model/CatalogsStrikethroughNotificationPolicyTest.php
@@ -1436,6 +1446,7 @@ test/Model/CodeGeneratorSettingsTest.php
 test/Model/CollectionItemTest.php
 test/Model/CollectionTest.php
 test/Model/CollectionWithoutPayloadTest.php
+test/Model/CollectionsCatalogTest.php
 test/Model/CouponConstraintsTest.php
 test/Model/CouponCreatedEffectPropsTest.php
 test/Model/CouponCreationJobTest.php
@@ -1445,7 +1456,6 @@ test/Model/CouponEntityTest.php
 test/Model/CouponFailureSummaryTest.php
 test/Model/CouponLimitConfigsTest.php
 test/Model/CouponRejectionReasonTest.php
-test/Model/CouponRejectionsTest.php
 test/Model/CouponReservationsTest.php
 test/Model/CouponSearchTest.php
 test/Model/CouponTest.php
@@ -1479,6 +1489,7 @@ test/Model/DeactivateUserRequestTest.php
 test/Model/DeductLoyaltyPointsEffectPropsTest.php
 test/Model/DeductLoyaltyPointsTest.php
 test/Model/DeleteCouponsDataTest.php
+test/Model/DeleteLoyaltyTransactionsRequestTest.php
 test/Model/DeleteUserRequestTest.php
 test/Model/EffectEntityTest.php
 test/Model/EffectTest.php
@@ -1519,6 +1530,7 @@ test/Model/GenerateCampaignSummaryTest.php
 test/Model/GenerateCampaignTagsTest.php
 test/Model/GenerateCouponFailureDetailedSummaryTest.php
 test/Model/GenerateCouponFailureSummaryTest.php
+test/Model/GenerateCouponRejections200ResponseTest.php
 test/Model/GenerateItemFilterDescriptionTest.php
 test/Model/GenerateLoyaltyCardTest.php
 test/Model/GenerateRuleTitleRuleTest.php
@@ -1676,6 +1688,7 @@ test/Model/NewCampaignTemplateTest.php
 test/Model/NewCampaignTest.php
 test/Model/NewCatalogTest.php
 test/Model/NewCollectionTest.php
+test/Model/NewCollectionsCatalogTest.php
 test/Model/NewCouponCreationJobTest.php
 test/Model/NewCouponDeletionJobTest.php
 test/Model/NewCouponsForMultipleRecipientsTest.php
@@ -1824,7 +1837,6 @@ test/Model/ScimServiceProviderConfigResponseTest.php
 test/Model/ScimUserTest.php
 test/Model/ScimUsersListResponseTest.php
 test/Model/SecondaryDeploymentTest.php
-test/Model/SessionCouponsTest.php
 test/Model/SessionTest.php
 test/Model/SetDiscountEffectPropsTest.php
 test/Model/SetDiscountPerAdditionalCostEffectPropsTest.php
@@ -1882,6 +1894,7 @@ test/Model/UpdateCampaignTemplateTest.php
 test/Model/UpdateCampaignTest.php
 test/Model/UpdateCatalogTest.php
 test/Model/UpdateCollectionTest.php
+test/Model/UpdateCollectionsCatalogTest.php
 test/Model/UpdateCouponBatchTest.php
 test/Model/UpdateCouponTest.php
 test/Model/UpdateCouponsDataTest.php
@@ -1901,7 +1914,6 @@ test/Model/UpdateUserTest.php
 test/Model/UserEntityTest.php
 test/Model/UserTest.php
 test/Model/ValueMapTest.php
-test/Model/WebhookAuthenticationBaseTest.php
 test/Model/WebhookAuthenticationDataBasicTest.php
 test/Model/WebhookAuthenticationDataCustomTest.php
 test/Model/WebhookAuthenticationTest.php
