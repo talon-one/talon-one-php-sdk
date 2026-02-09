@@ -188,6 +188,15 @@ class CampaignTest extends TestCase
     }
 
     /**
+     * Test attribute "reevaluateOnReturn"
+     */
+    public function testPropertyReevaluateOnReturn()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "features"
      */
     public function testPropertyFeatures()
@@ -461,6 +470,15 @@ class CampaignTest extends TestCase
      * Test attribute "valueMapsIds"
      */
     public function testPropertyValueMapsIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "experimentId"
+     */
+    public function testPropertyExperimentId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

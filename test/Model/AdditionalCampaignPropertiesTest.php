@@ -294,4 +294,13 @@ class AdditionalCampaignPropertiesTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "experimentId"
+     */
+    public function testPropertyExperimentId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

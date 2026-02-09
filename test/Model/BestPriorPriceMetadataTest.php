@@ -80,18 +80,18 @@ class BestPriorPriceMetadataTest extends TestCase
     }
 
     /**
-     * Test attribute "influencingCampaignIDs"
+     * Test attribute "influencingCampaignDetails"
      */
-    public function testPropertyInfluencingCampaignIDs()
+    public function testPropertyInfluencingCampaignDetails()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "adjustmentReferenceID"
+     * Test attribute "adjustmentDetails"
      */
-    public function testPropertyAdjustmentReferenceID()
+    public function testPropertyAdjustmentDetails()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

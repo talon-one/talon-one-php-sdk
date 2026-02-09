@@ -69,6 +69,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'string',
         'activeRulesetId' => 'int',
         'tags' => 'string[]',
+        'reevaluateOnReturn' => 'bool',
         'features' => 'string[]',
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'couponReservationSettings' => '\TalonOne\Client\Model\CampaignTemplateCouponReservationSettings',
@@ -106,6 +107,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => null,
         'activeRulesetId' => 'int64',
         'tags' => null,
+        'reevaluateOnReturn' => null,
         'features' => null,
         'couponSettings' => null,
         'couponReservationSettings' => null,
@@ -141,6 +143,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => false,
         'activeRulesetId' => false,
         'tags' => false,
+        'reevaluateOnReturn' => false,
         'features' => false,
         'couponSettings' => false,
         'couponReservationSettings' => false,
@@ -256,6 +259,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'state',
         'activeRulesetId' => 'activeRulesetId',
         'tags' => 'tags',
+        'reevaluateOnReturn' => 'reevaluateOnReturn',
         'features' => 'features',
         'couponSettings' => 'couponSettings',
         'couponReservationSettings' => 'couponReservationSettings',
@@ -291,6 +295,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'setState',
         'activeRulesetId' => 'setActiveRulesetId',
         'tags' => 'setTags',
+        'reevaluateOnReturn' => 'setReevaluateOnReturn',
         'features' => 'setFeatures',
         'couponSettings' => 'setCouponSettings',
         'couponReservationSettings' => 'setCouponReservationSettings',
@@ -326,6 +331,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'getState',
         'activeRulesetId' => 'getActiveRulesetId',
         'tags' => 'getTags',
+        'reevaluateOnReturn' => 'getReevaluateOnReturn',
         'features' => 'getFeatures',
         'couponSettings' => 'getCouponSettings',
         'couponReservationSettings' => 'getCouponReservationSettings',
@@ -467,6 +473,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('activeRulesetId', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('reevaluateOnReturn', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('couponReservationSettings', $data ?? [], null);
@@ -552,6 +559,9 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'tags', number of items must be less than or equal to 50.";
         }
 
+        if ($this->container['reevaluateOnReturn'] === null) {
+            $invalidProperties[] = "'reevaluateOnReturn' can't be null";
+        }
         if ($this->container['applicationsIds'] === null) {
             $invalidProperties[] = "'applicationsIds' can't be null";
         }
@@ -921,6 +931,33 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid value for $tags when calling CampaignTemplate., number of items must be less than or equal to 50.');
         }
         $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets reevaluateOnReturn
+     *
+     * @return bool
+     */
+    public function getReevaluateOnReturn()
+    {
+        return $this->container['reevaluateOnReturn'];
+    }
+
+    /**
+     * Sets reevaluateOnReturn
+     *
+     * @param bool $reevaluateOnReturn Indicates whether campaigns created from this template should be reevaluated when a customer returns an item.
+     *
+     * @return self
+     */
+    public function setReevaluateOnReturn($reevaluateOnReturn)
+    {
+        if (is_null($reevaluateOnReturn)) {
+            throw new \InvalidArgumentException('non-nullable reevaluateOnReturn cannot be null');
+        }
+        $this->container['reevaluateOnReturn'] = $reevaluateOnReturn;
 
         return $this;
     }

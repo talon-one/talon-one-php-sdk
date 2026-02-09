@@ -80,6 +80,15 @@ class EffectEntityTest extends TestCase
     }
 
     /**
+     * Test attribute "experimentId"
+     */
+    public function testPropertyExperimentId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "campaignId"
      */
     public function testPropertyCampaignId()

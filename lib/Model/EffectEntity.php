@@ -58,6 +58,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'experimentId' => 'int',
         'campaignId' => 'int',
         'rulesetId' => 'int',
         'ruleIndex' => 'int',
@@ -83,6 +84,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'experimentId' => 'int64',
         'campaignId' => 'int64',
         'rulesetId' => 'int64',
         'ruleIndex' => 'int64',
@@ -106,6 +108,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'experimentId' => false,
         'campaignId' => false,
         'rulesetId' => false,
         'ruleIndex' => false,
@@ -209,6 +212,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'experimentId' => 'experimentId',
         'campaignId' => 'campaignId',
         'rulesetId' => 'rulesetId',
         'ruleIndex' => 'ruleIndex',
@@ -232,6 +236,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'experimentId' => 'setExperimentId',
         'campaignId' => 'setCampaignId',
         'rulesetId' => 'setRulesetId',
         'ruleIndex' => 'setRuleIndex',
@@ -255,6 +260,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'experimentId' => 'getExperimentId',
         'campaignId' => 'getCampaignId',
         'rulesetId' => 'getRulesetId',
         'ruleIndex' => 'getRuleIndex',
@@ -329,6 +335,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('experimentId', $data ?? [], null);
         $this->setIfExists('campaignId', $data ?? [], null);
         $this->setIfExists('rulesetId', $data ?? [], null);
         $this->setIfExists('ruleIndex', $data ?? [], null);
@@ -402,6 +409,33 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets experimentId
+     *
+     * @return int|null
+     */
+    public function getExperimentId()
+    {
+        return $this->container['experimentId'];
+    }
+
+    /**
+     * Sets experimentId
+     *
+     * @param int|null $experimentId The ID of the experiment that campaign belongs to.
+     *
+     * @return self
+     */
+    public function setExperimentId($experimentId)
+    {
+        if (is_null($experimentId)) {
+            throw new \InvalidArgumentException('non-nullable experimentId cannot be null');
+        }
+        $this->container['experimentId'] = $experimentId;
+
+        return $this;
+    }
 
     /**
      * Gets campaignId

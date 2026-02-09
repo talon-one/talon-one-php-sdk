@@ -87,4 +87,31 @@ class PrismaticFlowConfigTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "workerCount"
+     */
+    public function testPropertyWorkerCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "maxEventsPerMessage"
+     */
+    public function testPropertyMaxEventsPerMessage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "maxRetries"
+     */
+    public function testPropertyMaxRetries()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

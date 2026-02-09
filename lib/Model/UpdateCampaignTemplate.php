@@ -65,6 +65,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => 'string',
         'activeRulesetId' => 'int',
         'tags' => 'string[]',
+        'reevaluateOnReturn' => 'bool',
         'features' => 'string[]',
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'couponReservationSettings' => '\TalonOne\Client\Model\CampaignTemplateCouponReservationSettings',
@@ -93,6 +94,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => null,
         'activeRulesetId' => 'int64',
         'tags' => null,
+        'reevaluateOnReturn' => null,
         'features' => null,
         'couponSettings' => null,
         'couponReservationSettings' => null,
@@ -119,6 +121,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => false,
         'activeRulesetId' => false,
         'tags' => false,
+        'reevaluateOnReturn' => false,
         'features' => false,
         'couponSettings' => false,
         'couponReservationSettings' => false,
@@ -225,6 +228,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => 'state',
         'activeRulesetId' => 'activeRulesetId',
         'tags' => 'tags',
+        'reevaluateOnReturn' => 'reevaluateOnReturn',
         'features' => 'features',
         'couponSettings' => 'couponSettings',
         'couponReservationSettings' => 'couponReservationSettings',
@@ -251,6 +255,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => 'setState',
         'activeRulesetId' => 'setActiveRulesetId',
         'tags' => 'setTags',
+        'reevaluateOnReturn' => 'setReevaluateOnReturn',
         'features' => 'setFeatures',
         'couponSettings' => 'setCouponSettings',
         'couponReservationSettings' => 'setCouponReservationSettings',
@@ -277,6 +282,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         'state' => 'getState',
         'activeRulesetId' => 'getActiveRulesetId',
         'tags' => 'getTags',
+        'reevaluateOnReturn' => 'getReevaluateOnReturn',
         'features' => 'getFeatures',
         'couponSettings' => 'getCouponSettings',
         'couponReservationSettings' => 'getCouponReservationSettings',
@@ -409,6 +415,7 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('activeRulesetId', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('reevaluateOnReturn', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('couponReservationSettings', $data ?? [], null);
@@ -735,6 +742,33 @@ class UpdateCampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('invalid value for $tags when calling UpdateCampaignTemplate., number of items must be less than or equal to 50.');
         }
         $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets reevaluateOnReturn
+     *
+     * @return bool|null
+     */
+    public function getReevaluateOnReturn()
+    {
+        return $this->container['reevaluateOnReturn'];
+    }
+
+    /**
+     * Sets reevaluateOnReturn
+     *
+     * @param bool|null $reevaluateOnReturn Indicates whether campaigns created from this template should be reevaluated when a customer returns an item.
+     *
+     * @return self
+     */
+    public function setReevaluateOnReturn($reevaluateOnReturn)
+    {
+        if (is_null($reevaluateOnReturn)) {
+            throw new \InvalidArgumentException('non-nullable reevaluateOnReturn cannot be null');
+        }
+        $this->container['reevaluateOnReturn'] = $reevaluateOnReturn;
 
         return $this;
     }

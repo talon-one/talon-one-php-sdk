@@ -69,6 +69,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => 'string[]',
         'state' => 'string',
         'cartItems' => '\TalonOne\Client\Model\CartItem[]',
+        'experimentVariantAllocations' => '\TalonOne\Client\Model\ExperimentVariantAllocation[]',
         'additionalCosts' => 'array<string,\TalonOne\Client\Model\AdditionalCost>',
         'identifiers' => 'string[]',
         'attributes' => 'object',
@@ -100,6 +101,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => null,
         'state' => null,
         'cartItems' => null,
+        'experimentVariantAllocations' => null,
         'additionalCosts' => null,
         'identifiers' => null,
         'attributes' => null,
@@ -129,6 +131,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => false,
         'state' => false,
         'cartItems' => false,
+        'experimentVariantAllocations' => false,
         'additionalCosts' => false,
         'identifiers' => false,
         'attributes' => false,
@@ -238,6 +241,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => 'loyaltyCards',
         'state' => 'state',
         'cartItems' => 'cartItems',
+        'experimentVariantAllocations' => 'experimentVariantAllocations',
         'additionalCosts' => 'additionalCosts',
         'identifiers' => 'identifiers',
         'attributes' => 'attributes',
@@ -267,6 +271,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => 'setLoyaltyCards',
         'state' => 'setState',
         'cartItems' => 'setCartItems',
+        'experimentVariantAllocations' => 'setExperimentVariantAllocations',
         'additionalCosts' => 'setAdditionalCosts',
         'identifiers' => 'setIdentifiers',
         'attributes' => 'setAttributes',
@@ -296,6 +301,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'loyaltyCards' => 'getLoyaltyCards',
         'state' => 'getState',
         'cartItems' => 'getCartItems',
+        'experimentVariantAllocations' => 'getExperimentVariantAllocations',
         'additionalCosts' => 'getAdditionalCosts',
         'identifiers' => 'getIdentifiers',
         'attributes' => 'getAttributes',
@@ -395,6 +401,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('loyaltyCards', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], 'open');
         $this->setIfExists('cartItems', $data ?? [], null);
+        $this->setIfExists('experimentVariantAllocations', $data ?? [], null);
         $this->setIfExists('additionalCosts', $data ?? [], null);
         $this->setIfExists('identifiers', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
@@ -860,6 +867,33 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable cartItems cannot be null');
         }
         $this->container['cartItems'] = $cartItems;
+
+        return $this;
+    }
+
+    /**
+     * Gets experimentVariantAllocations
+     *
+     * @return \TalonOne\Client\Model\ExperimentVariantAllocation[]|null
+     */
+    public function getExperimentVariantAllocations()
+    {
+        return $this->container['experimentVariantAllocations'];
+    }
+
+    /**
+     * Sets experimentVariantAllocations
+     *
+     * @param \TalonOne\Client\Model\ExperimentVariantAllocation[]|null $experimentVariantAllocations The experiment variant allocations to add to this session.
+     *
+     * @return self
+     */
+    public function setExperimentVariantAllocations($experimentVariantAllocations)
+    {
+        if (is_null($experimentVariantAllocations)) {
+            throw new \InvalidArgumentException('non-nullable experimentVariantAllocations cannot be null');
+        }
+        $this->container['experimentVariantAllocations'] = $experimentVariantAllocations;
 
         return $this;
     }
