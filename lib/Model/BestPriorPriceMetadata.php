@@ -58,8 +58,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'influencingCampaignIDs' => 'int[]',
-        'adjustmentReferenceID' => 'string'
+        'influencingCampaignDetails' => '\TalonOne\Client\Model\InfluencingCampaignDetails[]',
+        'adjustmentDetails' => '\TalonOne\Client\Model\AdjustmentDetails'
     ];
 
     /**
@@ -70,8 +70,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'influencingCampaignIDs' => 'int64',
-        'adjustmentReferenceID' => null
+        'influencingCampaignDetails' => null,
+        'adjustmentDetails' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'influencingCampaignIDs' => false,
-        'adjustmentReferenceID' => false
+        'influencingCampaignDetails' => false,
+        'adjustmentDetails' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'influencingCampaignIDs' => 'influencingCampaignIDs',
-        'adjustmentReferenceID' => 'adjustmentReferenceID'
+        'influencingCampaignDetails' => 'influencingCampaignDetails',
+        'adjustmentDetails' => 'adjustmentDetails'
     ];
 
     /**
@@ -180,8 +180,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'influencingCampaignIDs' => 'setInfluencingCampaignIDs',
-        'adjustmentReferenceID' => 'setAdjustmentReferenceID'
+        'influencingCampaignDetails' => 'setInfluencingCampaignDetails',
+        'adjustmentDetails' => 'setAdjustmentDetails'
     ];
 
     /**
@@ -190,8 +190,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'influencingCampaignIDs' => 'getInfluencingCampaignIDs',
-        'adjustmentReferenceID' => 'getAdjustmentReferenceID'
+        'influencingCampaignDetails' => 'getInfluencingCampaignDetails',
+        'adjustmentDetails' => 'getAdjustmentDetails'
     ];
 
     /**
@@ -251,8 +251,8 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('influencingCampaignIDs', $data ?? [], null);
-        $this->setIfExists('adjustmentReferenceID', $data ?? [], null);
+        $this->setIfExists('influencingCampaignDetails', $data ?? [], null);
+        $this->setIfExists('adjustmentDetails', $data ?? [], null);
     }
 
     /**
@@ -282,6 +282,9 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['influencingCampaignDetails'] === null) {
+            $invalidProperties[] = "'influencingCampaignDetails' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,55 +301,55 @@ class BestPriorPriceMetadata implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets influencingCampaignIDs
+     * Gets influencingCampaignDetails
      *
-     * @return int[]|null
+     * @return \TalonOne\Client\Model\InfluencingCampaignDetails[]
      */
-    public function getInfluencingCampaignIDs()
+    public function getInfluencingCampaignDetails()
     {
-        return $this->container['influencingCampaignIDs'];
+        return $this->container['influencingCampaignDetails'];
     }
 
     /**
-     * Sets influencingCampaignIDs
+     * Sets influencingCampaignDetails
      *
-     * @param int[]|null $influencingCampaignIDs influencingCampaignIDs
+     * @param \TalonOne\Client\Model\InfluencingCampaignDetails[] $influencingCampaignDetails Details about campaigns that influenced the final price.
      *
      * @return self
      */
-    public function setInfluencingCampaignIDs($influencingCampaignIDs)
+    public function setInfluencingCampaignDetails($influencingCampaignDetails)
     {
-        if (is_null($influencingCampaignIDs)) {
-            throw new \InvalidArgumentException('non-nullable influencingCampaignIDs cannot be null');
+        if (is_null($influencingCampaignDetails)) {
+            throw new \InvalidArgumentException('non-nullable influencingCampaignDetails cannot be null');
         }
-        $this->container['influencingCampaignIDs'] = $influencingCampaignIDs;
+        $this->container['influencingCampaignDetails'] = $influencingCampaignDetails;
 
         return $this;
     }
 
     /**
-     * Gets adjustmentReferenceID
+     * Gets adjustmentDetails
      *
-     * @return string|null
+     * @return \TalonOne\Client\Model\AdjustmentDetails|null
      */
-    public function getAdjustmentReferenceID()
+    public function getAdjustmentDetails()
     {
-        return $this->container['adjustmentReferenceID'];
+        return $this->container['adjustmentDetails'];
     }
 
     /**
-     * Sets adjustmentReferenceID
+     * Sets adjustmentDetails
      *
-     * @param string|null $adjustmentReferenceID Identifier related to the `referenceId` used during a `ADD_PRICE_ADJUSTMENT` action  using the [Sync cart item catalog endpoint](https://docs.talon.one/integration-api#tag/Catalogs/operation/syncCatalog).
+     * @param \TalonOne\Client\Model\AdjustmentDetails|null $adjustmentDetails Details about the applied price adjustment.
      *
      * @return self
      */
-    public function setAdjustmentReferenceID($adjustmentReferenceID)
+    public function setAdjustmentDetails($adjustmentDetails)
     {
-        if (is_null($adjustmentReferenceID)) {
-            throw new \InvalidArgumentException('non-nullable adjustmentReferenceID cannot be null');
+        if (is_null($adjustmentDetails)) {
+            throw new \InvalidArgumentException('non-nullable adjustmentDetails cannot be null');
         }
-        $this->container['adjustmentReferenceID'] = $adjustmentReferenceID;
+        $this->container['adjustmentDetails'] = $adjustmentDetails;
 
         return $this;
     }

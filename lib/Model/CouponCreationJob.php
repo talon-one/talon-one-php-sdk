@@ -70,6 +70,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => 'int',
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'attributes' => 'object',
+        'isReservationMandatory' => 'bool',
         'batchId' => 'string',
         'status' => 'string',
         'createdAmount' => 'int',
@@ -102,6 +103,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => 'int64',
         'couponSettings' => null,
         'attributes' => null,
+        'isReservationMandatory' => null,
         'batchId' => null,
         'status' => null,
         'createdAmount' => 'int64',
@@ -132,6 +134,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => false,
         'couponSettings' => false,
         'attributes' => false,
+        'isReservationMandatory' => false,
         'batchId' => false,
         'status' => false,
         'createdAmount' => false,
@@ -242,6 +245,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => 'numberOfCoupons',
         'couponSettings' => 'couponSettings',
         'attributes' => 'attributes',
+        'isReservationMandatory' => 'isReservationMandatory',
         'batchId' => 'batchId',
         'status' => 'status',
         'createdAmount' => 'createdAmount',
@@ -272,6 +276,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => 'setNumberOfCoupons',
         'couponSettings' => 'setCouponSettings',
         'attributes' => 'setAttributes',
+        'isReservationMandatory' => 'setIsReservationMandatory',
         'batchId' => 'setBatchId',
         'status' => 'setStatus',
         'createdAmount' => 'setCreatedAmount',
@@ -302,6 +307,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         'numberOfCoupons' => 'getNumberOfCoupons',
         'couponSettings' => 'getCouponSettings',
         'attributes' => 'getAttributes',
+        'isReservationMandatory' => 'getIsReservationMandatory',
         'batchId' => 'getBatchId',
         'status' => 'getStatus',
         'createdAmount' => 'getCreatedAmount',
@@ -383,6 +389,7 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('numberOfCoupons', $data ?? [], null);
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('isReservationMandatory', $data ?? [], false);
         $this->setIfExists('batchId', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('createdAmount', $data ?? [], null);
@@ -895,6 +902,33 @@ class CouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets isReservationMandatory
+     *
+     * @return bool|null
+     */
+    public function getIsReservationMandatory()
+    {
+        return $this->container['isReservationMandatory'];
+    }
+
+    /**
+     * Sets isReservationMandatory
+     *
+     * @param bool|null $isReservationMandatory An indication of whether the code can be redeemed only if it has been reserved first.
+     *
+     * @return self
+     */
+    public function setIsReservationMandatory($isReservationMandatory)
+    {
+        if (is_null($isReservationMandatory)) {
+            throw new \InvalidArgumentException('non-nullable isReservationMandatory cannot be null');
+        }
+        $this->container['isReservationMandatory'] = $isReservationMandatory;
 
         return $this;
     }

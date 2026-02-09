@@ -150,4 +150,13 @@ class NewCouponCreationJobTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "isReservationMandatory"
+     */
+    public function testPropertyIsReservationMandatory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

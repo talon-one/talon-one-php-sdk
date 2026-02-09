@@ -80,7 +80,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => 'int',
         'frontendState' => 'string',
         'storesImported' => 'bool',
-        'valueMapsIds' => 'int[]'
+        'valueMapsIds' => 'int[]',
+        'experimentId' => 'int'
     ];
 
     /**
@@ -114,7 +115,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => 'int64',
         'frontendState' => null,
         'storesImported' => null,
-        'valueMapsIds' => 'int64'
+        'valueMapsIds' => 'int64',
+        'experimentId' => 'int64'
     ];
 
     /**
@@ -146,7 +148,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => false,
         'frontendState' => false,
         'storesImported' => false,
-        'valueMapsIds' => false
+        'valueMapsIds' => false,
+        'experimentId' => false
     ];
 
     /**
@@ -258,7 +261,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => 'templateId',
         'frontendState' => 'frontendState',
         'storesImported' => 'storesImported',
-        'valueMapsIds' => 'valueMapsIds'
+        'valueMapsIds' => 'valueMapsIds',
+        'experimentId' => 'experimentId'
     ];
 
     /**
@@ -290,7 +294,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => 'setTemplateId',
         'frontendState' => 'setFrontendState',
         'storesImported' => 'setStoresImported',
-        'valueMapsIds' => 'setValueMapsIds'
+        'valueMapsIds' => 'setValueMapsIds',
+        'experimentId' => 'setExperimentId'
     ];
 
     /**
@@ -322,7 +327,8 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         'templateId' => 'getTemplateId',
         'frontendState' => 'getFrontendState',
         'storesImported' => 'getStoresImported',
-        'valueMapsIds' => 'getValueMapsIds'
+        'valueMapsIds' => 'getValueMapsIds',
+        'experimentId' => 'getExperimentId'
     ];
 
     /**
@@ -429,6 +435,7 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('frontendState', $data ?? [], null);
         $this->setIfExists('storesImported', $data ?? [], null);
         $this->setIfExists('valueMapsIds', $data ?? [], null);
+        $this->setIfExists('experimentId', $data ?? [], null);
     }
 
     /**
@@ -1142,6 +1149,33 @@ class AdditionalCampaignProperties implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable valueMapsIds cannot be null');
         }
         $this->container['valueMapsIds'] = $valueMapsIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets experimentId
+     *
+     * @return int|null
+     */
+    public function getExperimentId()
+    {
+        return $this->container['experimentId'];
+    }
+
+    /**
+     * Sets experimentId
+     *
+     * @param int|null $experimentId The ID of the Experiment this Campaign is part of.
+     *
+     * @return self
+     */
+    public function setExperimentId($experimentId)
+    {
+        if (is_null($experimentId)) {
+            throw new \InvalidArgumentException('non-nullable experimentId cannot be null');
+        }
+        $this->container['experimentId'] = $experimentId;
 
         return $this;
     }

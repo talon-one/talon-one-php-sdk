@@ -64,7 +64,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => '\DateTime',
         'numberOfCoupons' => 'int',
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
-        'attributes' => 'object'
+        'attributes' => 'object',
+        'isReservationMandatory' => 'bool'
     ];
 
     /**
@@ -82,7 +83,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => 'date-time',
         'numberOfCoupons' => 'int64',
         'couponSettings' => null,
-        'attributes' => null
+        'attributes' => null,
+        'isReservationMandatory' => null
     ];
 
     /**
@@ -98,7 +100,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => false,
         'numberOfCoupons' => false,
         'couponSettings' => false,
-        'attributes' => false
+        'attributes' => false,
+        'isReservationMandatory' => false
     ];
 
     /**
@@ -194,7 +197,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => 'expiryDate',
         'numberOfCoupons' => 'numberOfCoupons',
         'couponSettings' => 'couponSettings',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'isReservationMandatory' => 'isReservationMandatory'
     ];
 
     /**
@@ -210,7 +214,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => 'setExpiryDate',
         'numberOfCoupons' => 'setNumberOfCoupons',
         'couponSettings' => 'setCouponSettings',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'isReservationMandatory' => 'setIsReservationMandatory'
     ];
 
     /**
@@ -226,7 +231,8 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         'expiryDate' => 'getExpiryDate',
         'numberOfCoupons' => 'getNumberOfCoupons',
         'couponSettings' => 'getCouponSettings',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'isReservationMandatory' => 'getIsReservationMandatory'
     ];
 
     /**
@@ -294,6 +300,7 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('numberOfCoupons', $data ?? [], null);
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('isReservationMandatory', $data ?? [], false);
     }
 
     /**
@@ -620,6 +627,33 @@ class NewCouponCreationJob implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets isReservationMandatory
+     *
+     * @return bool|null
+     */
+    public function getIsReservationMandatory()
+    {
+        return $this->container['isReservationMandatory'];
+    }
+
+    /**
+     * Sets isReservationMandatory
+     *
+     * @param bool|null $isReservationMandatory An indication of whether the code can be redeemed only if it has been reserved first.
+     *
+     * @return self
+     */
+    public function setIsReservationMandatory($isReservationMandatory)
+    {
+        if (is_null($isReservationMandatory)) {
+            throw new \InvalidArgumentException('non-nullable isReservationMandatory cannot be null');
+        }
+        $this->container['isReservationMandatory'] = $isReservationMandatory;
 
         return $this;
     }

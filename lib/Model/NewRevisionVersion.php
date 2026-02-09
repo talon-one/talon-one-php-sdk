@@ -67,6 +67,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'referralSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'limits' => '\TalonOne\Client\Model\LimitConfig[]',
+        'reevaluateOnReturn' => 'bool',
         'features' => 'string[]'
     ];
 
@@ -88,6 +89,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => null,
         'referralSettings' => null,
         'limits' => null,
+        'reevaluateOnReturn' => null,
         'features' => null
     ];
 
@@ -107,6 +109,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => false,
         'referralSettings' => false,
         'limits' => false,
+        'reevaluateOnReturn' => false,
         'features' => false
     ];
 
@@ -206,6 +209,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => 'couponSettings',
         'referralSettings' => 'referralSettings',
         'limits' => 'limits',
+        'reevaluateOnReturn' => 'reevaluateOnReturn',
         'features' => 'features'
     ];
 
@@ -225,6 +229,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => 'setCouponSettings',
         'referralSettings' => 'setReferralSettings',
         'limits' => 'setLimits',
+        'reevaluateOnReturn' => 'setReevaluateOnReturn',
         'features' => 'setFeatures'
     ];
 
@@ -244,6 +249,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         'couponSettings' => 'getCouponSettings',
         'referralSettings' => 'getReferralSettings',
         'limits' => 'getLimits',
+        'reevaluateOnReturn' => 'getReevaluateOnReturn',
         'features' => 'getFeatures'
     ];
 
@@ -337,6 +343,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('referralSettings', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);
+        $this->setIfExists('reevaluateOnReturn', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
     }
 
@@ -564,7 +571,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets activeRulesetId
      *
-     * @param int|null $activeRulesetId The ID of the ruleset this campaign template will use.
+     * @param int|null $activeRulesetId The ID of the ruleset this campaign will use.
      *
      * @return self
      */
@@ -598,7 +605,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tags
      *
-     * @param string[]|null $tags A list of tags for the campaign template.
+     * @param string[]|null $tags A list of tags for the campaign.
      *
      * @return self
      */
@@ -698,6 +705,33 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets reevaluateOnReturn
+     *
+     * @return bool|null
+     */
+    public function getReevaluateOnReturn()
+    {
+        return $this->container['reevaluateOnReturn'];
+    }
+
+    /**
+     * Sets reevaluateOnReturn
+     *
+     * @param bool|null $reevaluateOnReturn Indicates whether this campaign should be reevaluated when a customer returns an item.
+     *
+     * @return self
+     */
+    public function setReevaluateOnReturn($reevaluateOnReturn)
+    {
+        if (is_null($reevaluateOnReturn)) {
+            throw new \InvalidArgumentException('non-nullable reevaluateOnReturn cannot be null');
+        }
+        $this->container['reevaluateOnReturn'] = $reevaluateOnReturn;
+
+        return $this;
+    }
+
+    /**
      * Gets features
      *
      * @return string[]|null
@@ -710,7 +744,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets features
      *
-     * @param string[]|null $features A list of features for the campaign template.
+     * @param string[]|null $features A list of features for the campaign.
      *
      * @return self
      */

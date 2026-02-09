@@ -188,6 +188,15 @@ class CustomerSessionV2Test extends TestCase
     }
 
     /**
+     * Test attribute "experimentVariantAllocations"
+     */
+    public function testPropertyExperimentVariantAllocations()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "additionalCosts"
      */
     public function testPropertyAdditionalCosts()

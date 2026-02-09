@@ -197,6 +197,15 @@ class CouponCreationJobTest extends TestCase
     }
 
     /**
+     * Test attribute "isReservationMandatory"
+     */
+    public function testPropertyIsReservationMandatory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "batchId"
      */
     public function testPropertyBatchId()

@@ -1,8 +1,7 @@
 # Talon.One PHP SDK
 
-> [!WARNING]
-This project is in beta. Use is "AS IS" and at your own risk.
-The stable version of this SDK is available [here](https://github.com/talon-one/TalonOnePHPsdk).
+> [!NOTE]
+The legacy version of this SDK is available [here](https://github.com/talon-one/TalonOnePHPsdk).
 
 This SDK supports all of the operations of Talon.One's Integration API and Management API.
 
@@ -429,6 +428,7 @@ Class | Method | HTTP request | Description
 - [AddedDeductedPointsNotificationPolicy](docs/Model/AddedDeductedPointsNotificationPolicy.md)
 - [AdditionalCampaignProperties](docs/Model/AdditionalCampaignProperties.md)
 - [AdditionalCost](docs/Model/AdditionalCost.md)
+- [AdjustmentDetails](docs/Model/AdjustmentDetails.md)
 - [AnalyticsDataPoint](docs/Model/AnalyticsDataPoint.md)
 - [AnalyticsDataPointWithTrend](docs/Model/AnalyticsDataPointWithTrend.md)
 - [AnalyticsDataPointWithTrendAndInfluencedRate](docs/Model/AnalyticsDataPointWithTrendAndInfluencedRate.md)
@@ -610,6 +610,12 @@ Class | Method | HTTP request | Description
 - [EventType](docs/Model/EventType.md)
 - [EventV2](docs/Model/EventV2.md)
 - [EventV3](docs/Model/EventV3.md)
+- [Experiment](docs/Model/Experiment.md)
+- [ExperimentResults](docs/Model/ExperimentResults.md)
+- [ExperimentVariant](docs/Model/ExperimentVariant.md)
+- [ExperimentVariantAllocation](docs/Model/ExperimentVariantAllocation.md)
+- [ExperimentVariantResult](docs/Model/ExperimentVariantResult.md)
+- [ExperimentVariantResultConfidence](docs/Model/ExperimentVariantResultConfidence.md)
 - [ExpiringCardPointsData](docs/Model/ExpiringCardPointsData.md)
 - [ExpiringCardPointsNotification](docs/Model/ExpiringCardPointsNotification.md)
 - [ExpiringCouponsData](docs/Model/ExpiringCouponsData.md)
@@ -689,6 +695,7 @@ Class | Method | HTTP request | Description
 - [Import](docs/Model/Import.md)
 - [ImportEntity](docs/Model/ImportEntity.md)
 - [IncreaseAchievementProgressEffectProps](docs/Model/IncreaseAchievementProgressEffectProps.md)
+- [InfluencingCampaignDetails](docs/Model/InfluencingCampaignDetails.md)
 - [IntegrationCoupon](docs/Model/IntegrationCoupon.md)
 - [IntegrationCustomerProfileAudienceRequest](docs/Model/IntegrationCustomerProfileAudienceRequest.md)
 - [IntegrationCustomerProfileAudienceRequestItem](docs/Model/IntegrationCustomerProfileAudienceRequestItem.md)
@@ -802,6 +809,9 @@ Class | Method | HTTP request | Description
 - [NewCustomerSessionV2](docs/Model/NewCustomerSessionV2.md)
 - [NewEvent](docs/Model/NewEvent.md)
 - [NewEventType](docs/Model/NewEventType.md)
+- [NewExperiment](docs/Model/NewExperiment.md)
+- [NewExperimentVariant](docs/Model/NewExperimentVariant.md)
+- [NewExperimentVariantArray](docs/Model/NewExperimentVariantArray.md)
 - [NewExternalInvitation](docs/Model/NewExternalInvitation.md)
 - [NewGiveawaysPool](docs/Model/NewGiveawaysPool.md)
 - [NewInternalAudience](docs/Model/NewInternalAudience.md)
@@ -1004,6 +1014,9 @@ Class | Method | HTTP request | Description
 - [UpdateCustomEffect](docs/Model/UpdateCustomEffect.md)
 - [UpdateCustomerProfileV2409Response](docs/Model/UpdateCustomerProfileV2409Response.md)
 - [UpdateCustomerSessionV2409Response](docs/Model/UpdateCustomerSessionV2409Response.md)
+- [UpdateExperiment](docs/Model/UpdateExperiment.md)
+- [UpdateExperimentVariant](docs/Model/UpdateExperimentVariant.md)
+- [UpdateExperimentVariantArray](docs/Model/UpdateExperimentVariantArray.md)
 - [UpdateLoyaltyCard](docs/Model/UpdateLoyaltyCard.md)
 - [UpdateLoyaltyProgram](docs/Model/UpdateLoyaltyProgram.md)
 - [UpdateLoyaltyProgramTier](docs/Model/UpdateLoyaltyProgramTier.md)

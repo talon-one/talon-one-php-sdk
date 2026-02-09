@@ -269,6 +269,7 @@ class TemplateArgDef implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_NUMBER = 'number';
     public const TYPE_TIME = 'time';
     public const TYPE_LIST_STRING = '(list string)';
+    public const TYPE_LIST_NUMBER = '(list number)';
 
     /**
      * Gets allowable values of the enum
@@ -283,6 +284,7 @@ class TemplateArgDef implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_NUMBER,
             self::TYPE_TIME,
             self::TYPE_LIST_STRING,
+            self::TYPE_LIST_NUMBER,
         ];
     }
 

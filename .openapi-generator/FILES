@@ -48,6 +48,7 @@ docs/Model/AddedDeductedPointsNotification.md
 docs/Model/AddedDeductedPointsNotificationPolicy.md
 docs/Model/AdditionalCampaignProperties.md
 docs/Model/AdditionalCost.md
+docs/Model/AdjustmentDetails.md
 docs/Model/AnalyticsDataPoint.md
 docs/Model/AnalyticsDataPointWithTrend.md
 docs/Model/AnalyticsDataPointWithTrendAndInfluencedRate.md
@@ -229,6 +230,12 @@ docs/Model/Event.md
 docs/Model/EventType.md
 docs/Model/EventV2.md
 docs/Model/EventV3.md
+docs/Model/Experiment.md
+docs/Model/ExperimentResults.md
+docs/Model/ExperimentVariant.md
+docs/Model/ExperimentVariantAllocation.md
+docs/Model/ExperimentVariantResult.md
+docs/Model/ExperimentVariantResultConfidence.md
 docs/Model/ExpiringCardPointsData.md
 docs/Model/ExpiringCardPointsNotification.md
 docs/Model/ExpiringCouponsData.md
@@ -308,6 +315,7 @@ docs/Model/IdentifiableEntity.md
 docs/Model/Import.md
 docs/Model/ImportEntity.md
 docs/Model/IncreaseAchievementProgressEffectProps.md
+docs/Model/InfluencingCampaignDetails.md
 docs/Model/IntegrationCoupon.md
 docs/Model/IntegrationCustomerProfileAudienceRequest.md
 docs/Model/IntegrationCustomerProfileAudienceRequestItem.md
@@ -421,6 +429,9 @@ docs/Model/NewCustomerSession.md
 docs/Model/NewCustomerSessionV2.md
 docs/Model/NewEvent.md
 docs/Model/NewEventType.md
+docs/Model/NewExperiment.md
+docs/Model/NewExperimentVariant.md
+docs/Model/NewExperimentVariantArray.md
 docs/Model/NewExternalInvitation.md
 docs/Model/NewGiveawaysPool.md
 docs/Model/NewInternalAudience.md
@@ -623,6 +634,9 @@ docs/Model/UpdateCouponsData.md
 docs/Model/UpdateCustomEffect.md
 docs/Model/UpdateCustomerProfileV2409Response.md
 docs/Model/UpdateCustomerSessionV2409Response.md
+docs/Model/UpdateExperiment.md
+docs/Model/UpdateExperimentVariant.md
+docs/Model/UpdateExperimentVariantArray.md
 docs/Model/UpdateLoyaltyCard.md
 docs/Model/UpdateLoyaltyProgram.md
 docs/Model/UpdateLoyaltyProgramTier.md
@@ -688,6 +702,7 @@ lib/Model/AddedDeductedPointsNotification.php
 lib/Model/AddedDeductedPointsNotificationPolicy.php
 lib/Model/AdditionalCampaignProperties.php
 lib/Model/AdditionalCost.php
+lib/Model/AdjustmentDetails.php
 lib/Model/AnalyticsDataPoint.php
 lib/Model/AnalyticsDataPointWithTrend.php
 lib/Model/AnalyticsDataPointWithTrendAndInfluencedRate.php
@@ -869,6 +884,12 @@ lib/Model/Event.php
 lib/Model/EventType.php
 lib/Model/EventV2.php
 lib/Model/EventV3.php
+lib/Model/Experiment.php
+lib/Model/ExperimentResults.php
+lib/Model/ExperimentVariant.php
+lib/Model/ExperimentVariantAllocation.php
+lib/Model/ExperimentVariantResult.php
+lib/Model/ExperimentVariantResultConfidence.php
 lib/Model/ExpiringCardPointsData.php
 lib/Model/ExpiringCardPointsNotification.php
 lib/Model/ExpiringCouponsData.php
@@ -948,6 +969,7 @@ lib/Model/IdentifiableEntity.php
 lib/Model/Import.php
 lib/Model/ImportEntity.php
 lib/Model/IncreaseAchievementProgressEffectProps.php
+lib/Model/InfluencingCampaignDetails.php
 lib/Model/IntegrationCoupon.php
 lib/Model/IntegrationCustomerProfileAudienceRequest.php
 lib/Model/IntegrationCustomerProfileAudienceRequestItem.php
@@ -1062,6 +1084,9 @@ lib/Model/NewCustomerSession.php
 lib/Model/NewCustomerSessionV2.php
 lib/Model/NewEvent.php
 lib/Model/NewEventType.php
+lib/Model/NewExperiment.php
+lib/Model/NewExperimentVariant.php
+lib/Model/NewExperimentVariantArray.php
 lib/Model/NewExternalInvitation.php
 lib/Model/NewGiveawaysPool.php
 lib/Model/NewInternalAudience.php
@@ -1264,6 +1289,9 @@ lib/Model/UpdateCouponsData.php
 lib/Model/UpdateCustomEffect.php
 lib/Model/UpdateCustomerProfileV2409Response.php
 lib/Model/UpdateCustomerSessionV2409Response.php
+lib/Model/UpdateExperiment.php
+lib/Model/UpdateExperimentVariant.php
+lib/Model/UpdateExperimentVariantArray.php
 lib/Model/UpdateLoyaltyCard.php
 lib/Model/UpdateLoyaltyProgram.php
 lib/Model/UpdateLoyaltyProgramTier.php
@@ -1326,6 +1354,7 @@ test/Model/AddedDeductedPointsNotificationPolicyTest.php
 test/Model/AddedDeductedPointsNotificationTest.php
 test/Model/AdditionalCampaignPropertiesTest.php
 test/Model/AdditionalCostTest.php
+test/Model/AdjustmentDetailsTest.php
 test/Model/AnalyticsDataPointTest.php
 test/Model/AnalyticsDataPointWithTrendAndInfluencedRateTest.php
 test/Model/AnalyticsDataPointWithTrendAndUpliftTest.php
@@ -1507,6 +1536,12 @@ test/Model/EventTest.php
 test/Model/EventTypeTest.php
 test/Model/EventV2Test.php
 test/Model/EventV3Test.php
+test/Model/ExperimentResultsTest.php
+test/Model/ExperimentTest.php
+test/Model/ExperimentVariantAllocationTest.php
+test/Model/ExperimentVariantResultConfidenceTest.php
+test/Model/ExperimentVariantResultTest.php
+test/Model/ExperimentVariantTest.php
 test/Model/ExpiringCardPointsDataTest.php
 test/Model/ExpiringCardPointsNotificationTest.php
 test/Model/ExpiringCouponsDataTest.php
@@ -1586,6 +1621,7 @@ test/Model/IdentifiableEntityTest.php
 test/Model/ImportEntityTest.php
 test/Model/ImportTest.php
 test/Model/IncreaseAchievementProgressEffectPropsTest.php
+test/Model/InfluencingCampaignDetailsTest.php
 test/Model/IntegrationCouponTest.php
 test/Model/IntegrationCustomerProfileAudienceRequestItemTest.php
 test/Model/IntegrationCustomerProfileAudienceRequestTest.php
@@ -1699,6 +1735,9 @@ test/Model/NewCustomerSessionTest.php
 test/Model/NewCustomerSessionV2Test.php
 test/Model/NewEventTest.php
 test/Model/NewEventTypeTest.php
+test/Model/NewExperimentTest.php
+test/Model/NewExperimentVariantArrayTest.php
+test/Model/NewExperimentVariantTest.php
 test/Model/NewExternalInvitationTest.php
 test/Model/NewGiveawaysPoolTest.php
 test/Model/NewInternalAudienceTest.php
@@ -1901,6 +1940,9 @@ test/Model/UpdateCouponsDataTest.php
 test/Model/UpdateCustomEffectTest.php
 test/Model/UpdateCustomerProfileV2409ResponseTest.php
 test/Model/UpdateCustomerSessionV2409ResponseTest.php
+test/Model/UpdateExperimentTest.php
+test/Model/UpdateExperimentVariantArrayTest.php
+test/Model/UpdateExperimentVariantTest.php
 test/Model/UpdateLoyaltyCardTest.php
 test/Model/UpdateLoyaltyProgramTest.php
 test/Model/UpdateLoyaltyProgramTierTest.php

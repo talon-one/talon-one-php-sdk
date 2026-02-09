@@ -69,6 +69,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'string',
         'activeRulesetId' => 'int',
         'tags' => 'string[]',
+        'reevaluateOnReturn' => 'bool',
         'features' => 'string[]',
         'couponSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
         'referralSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings',
@@ -100,6 +101,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => 'string',
         'storesImported' => 'bool',
         'valueMapsIds' => 'int[]',
+        'experimentId' => 'int',
         'revisionFrontendState' => 'string',
         'activeRevisionId' => 'int',
         'activeRevisionVersionId' => 'int',
@@ -129,6 +131,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => null,
         'activeRulesetId' => 'int64',
         'tags' => null,
+        'reevaluateOnReturn' => null,
         'features' => null,
         'couponSettings' => null,
         'referralSettings' => null,
@@ -160,6 +163,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => null,
         'storesImported' => null,
         'valueMapsIds' => 'int64',
+        'experimentId' => 'int64',
         'revisionFrontendState' => null,
         'activeRevisionId' => 'int64',
         'activeRevisionVersionId' => 'int64',
@@ -187,6 +191,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => false,
         'activeRulesetId' => false,
         'tags' => false,
+        'reevaluateOnReturn' => false,
         'features' => false,
         'couponSettings' => false,
         'referralSettings' => false,
@@ -218,6 +223,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => false,
         'storesImported' => false,
         'valueMapsIds' => false,
+        'experimentId' => false,
         'revisionFrontendState' => false,
         'activeRevisionId' => false,
         'activeRevisionVersionId' => false,
@@ -325,6 +331,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'state',
         'activeRulesetId' => 'activeRulesetId',
         'tags' => 'tags',
+        'reevaluateOnReturn' => 'reevaluateOnReturn',
         'features' => 'features',
         'couponSettings' => 'couponSettings',
         'referralSettings' => 'referralSettings',
@@ -356,6 +363,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => 'frontendState',
         'storesImported' => 'storesImported',
         'valueMapsIds' => 'valueMapsIds',
+        'experimentId' => 'experimentId',
         'revisionFrontendState' => 'revisionFrontendState',
         'activeRevisionId' => 'activeRevisionId',
         'activeRevisionVersionId' => 'activeRevisionVersionId',
@@ -383,6 +391,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'setState',
         'activeRulesetId' => 'setActiveRulesetId',
         'tags' => 'setTags',
+        'reevaluateOnReturn' => 'setReevaluateOnReturn',
         'features' => 'setFeatures',
         'couponSettings' => 'setCouponSettings',
         'referralSettings' => 'setReferralSettings',
@@ -414,6 +423,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => 'setFrontendState',
         'storesImported' => 'setStoresImported',
         'valueMapsIds' => 'setValueMapsIds',
+        'experimentId' => 'setExperimentId',
         'revisionFrontendState' => 'setRevisionFrontendState',
         'activeRevisionId' => 'setActiveRevisionId',
         'activeRevisionVersionId' => 'setActiveRevisionVersionId',
@@ -441,6 +451,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'getState',
         'activeRulesetId' => 'getActiveRulesetId',
         'tags' => 'getTags',
+        'reevaluateOnReturn' => 'getReevaluateOnReturn',
         'features' => 'getFeatures',
         'couponSettings' => 'getCouponSettings',
         'referralSettings' => 'getReferralSettings',
@@ -472,6 +483,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'frontendState' => 'getFrontendState',
         'storesImported' => 'getStoresImported',
         'valueMapsIds' => 'getValueMapsIds',
+        'experimentId' => 'getExperimentId',
         'revisionFrontendState' => 'getRevisionFrontendState',
         'activeRevisionId' => 'getActiveRevisionId',
         'activeRevisionVersionId' => 'getActiveRevisionVersionId',
@@ -643,6 +655,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('state', $data ?? [], 'enabled');
         $this->setIfExists('activeRulesetId', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('reevaluateOnReturn', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
         $this->setIfExists('couponSettings', $data ?? [], null);
         $this->setIfExists('referralSettings', $data ?? [], null);
@@ -674,6 +687,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('frontendState', $data ?? [], null);
         $this->setIfExists('storesImported', $data ?? [], null);
         $this->setIfExists('valueMapsIds', $data ?? [], null);
+        $this->setIfExists('experimentId', $data ?? [], null);
         $this->setIfExists('revisionFrontendState', $data ?? [], null);
         $this->setIfExists('activeRevisionId', $data ?? [], null);
         $this->setIfExists('activeRevisionVersionId', $data ?? [], null);
@@ -748,6 +762,9 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'tags', number of items must be less than or equal to 50.";
         }
 
+        if ($this->container['reevaluateOnReturn'] === null) {
+            $invalidProperties[] = "'reevaluateOnReturn' can't be null";
+        }
         if ($this->container['features'] === null) {
             $invalidProperties[] = "'features' can't be null";
         }
@@ -1141,6 +1158,33 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid value for $tags when calling Campaign., number of items must be less than or equal to 50.');
         }
         $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets reevaluateOnReturn
+     *
+     * @return bool
+     */
+    public function getReevaluateOnReturn()
+    {
+        return $this->container['reevaluateOnReturn'];
+    }
+
+    /**
+     * Sets reevaluateOnReturn
+     *
+     * @param bool $reevaluateOnReturn Indicates whether this campaign should be reevaluated when a customer returns an item.
+     *
+     * @return self
+     */
+    public function setReevaluateOnReturn($reevaluateOnReturn)
+    {
+        if (is_null($reevaluateOnReturn)) {
+            throw new \InvalidArgumentException('non-nullable reevaluateOnReturn cannot be null');
+        }
+        $this->container['reevaluateOnReturn'] = $reevaluateOnReturn;
 
         return $this;
     }
@@ -2007,6 +2051,33 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable valueMapsIds cannot be null');
         }
         $this->container['valueMapsIds'] = $valueMapsIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets experimentId
+     *
+     * @return int|null
+     */
+    public function getExperimentId()
+    {
+        return $this->container['experimentId'];
+    }
+
+    /**
+     * Sets experimentId
+     *
+     * @param int|null $experimentId The ID of the Experiment this Campaign is part of.
+     *
+     * @return self
+     */
+    public function setExperimentId($experimentId)
+    {
+        if (is_null($experimentId)) {
+            throw new \InvalidArgumentException('non-nullable experimentId cannot be null');
+        }
+        $this->container['experimentId'] = $experimentId;
 
         return $this;
     }

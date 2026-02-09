@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **state** | **string** | A disabled or archived campaign is not evaluated for rules or coupons. | [default to 'enabled']
 **activeRulesetId** | **int** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. | [optional]
 **tags** | **string[]** | A list of tags for the campaign. |
+**reevaluateOnReturn** | **bool** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional]
 **features** | **string[]** | The features enabled in this campaign. |
 **couponSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]
 **referralSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **state** | **string** | A disabled or archived campaign is not evaluated for rules or coupons. | [default to 'enabled']
 **activeRulesetId** | **int** | [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. | [optional]
 **tags** | **string[]** | A list of tags for the campaign. |
+**reevaluateOnReturn** | **bool** | Indicates whether this campaign should be reevaluated when a customer returns an item. |
 **features** | **string[]** | The features enabled in this campaign. |
 **couponSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]
 **referralSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]
@@ -47,6 +48,7 @@ Name | Type | Description | Notes
 **frontendState** | **string** | The campaign state displayed in the Campaign Manager. |
 **storesImported** | **bool** | Indicates whether the linked stores were imported via a CSV file. |
 **valueMapsIds** | **int[]** | A list of value map IDs for the campaign. | [optional]
+**experimentId** | **int** | The ID of the Experiment this Campaign is part of. | [optional]
 **revisionFrontendState** | **string** | The campaign revision state displayed in the Campaign Manager. | [optional]
 **activeRevisionId** | **int** | ID of the revision that was last activated on this campaign. | [optional]
 **activeRevisionVersionId** | **int** | ID of the revision version that is active on the campaign. | [optional]

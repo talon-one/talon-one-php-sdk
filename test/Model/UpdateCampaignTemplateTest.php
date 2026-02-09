@@ -152,6 +152,15 @@ class UpdateCampaignTemplateTest extends TestCase
     }
 
     /**
+     * Test attribute "reevaluateOnReturn"
+     */
+    public function testPropertyReevaluateOnReturn()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "features"
      */
     public function testPropertyFeatures()

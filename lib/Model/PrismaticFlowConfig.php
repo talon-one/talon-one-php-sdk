@@ -57,7 +57,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'apiKey' => 'string'
+        'apiKey' => 'string',
+        'workerCount' => 'int',
+        'maxEventsPerMessage' => 'int',
+        'maxRetries' => 'int'
     ];
 
     /**
@@ -68,7 +71,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'apiKey' => null
+        'apiKey' => null,
+        'workerCount' => 'int64',
+        'maxEventsPerMessage' => 'int64',
+        'maxRetries' => 'int64'
     ];
 
     /**
@@ -77,7 +83,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'apiKey' => false
+        'apiKey' => false,
+        'workerCount' => false,
+        'maxEventsPerMessage' => false,
+        'maxRetries' => false
     ];
 
     /**
@@ -166,7 +175,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'apiKey' => 'ApiKey'
+        'apiKey' => 'ApiKey',
+        'workerCount' => 'WorkerCount',
+        'maxEventsPerMessage' => 'MaxEventsPerMessage',
+        'maxRetries' => 'MaxRetries'
     ];
 
     /**
@@ -175,7 +187,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'apiKey' => 'setApiKey'
+        'apiKey' => 'setApiKey',
+        'workerCount' => 'setWorkerCount',
+        'maxEventsPerMessage' => 'setMaxEventsPerMessage',
+        'maxRetries' => 'setMaxRetries'
     ];
 
     /**
@@ -184,7 +199,10 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'apiKey' => 'getApiKey'
+        'apiKey' => 'getApiKey',
+        'workerCount' => 'getWorkerCount',
+        'maxEventsPerMessage' => 'getMaxEventsPerMessage',
+        'maxRetries' => 'getMaxRetries'
     ];
 
     /**
@@ -245,6 +263,9 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(?array $data = null)
     {
         $this->setIfExists('apiKey', $data ?? [], null);
+        $this->setIfExists('workerCount', $data ?? [], 10);
+        $this->setIfExists('maxEventsPerMessage', $data ?? [], 1000);
+        $this->setIfExists('maxRetries', $data ?? [], 10);
     }
 
     /**
@@ -277,6 +298,22 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['apiKey'] === null) {
             $invalidProperties[] = "'apiKey' can't be null";
         }
+        if (!is_null($this->container['workerCount']) && ($this->container['workerCount'] > 500)) {
+            $invalidProperties[] = "invalid value for 'workerCount', must be smaller than or equal to 500.";
+        }
+
+        if (!is_null($this->container['workerCount']) && ($this->container['workerCount'] < 1)) {
+            $invalidProperties[] = "invalid value for 'workerCount', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['maxEventsPerMessage']) && ($this->container['maxEventsPerMessage'] < 1)) {
+            $invalidProperties[] = "invalid value for 'maxEventsPerMessage', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['maxRetries']) && ($this->container['maxRetries'] < 0)) {
+            $invalidProperties[] = "invalid value for 'maxRetries', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -315,6 +352,105 @@ class PrismaticFlowConfig implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable apiKey cannot be null');
         }
         $this->container['apiKey'] = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * Gets workerCount
+     *
+     * @return int|null
+     */
+    public function getWorkerCount()
+    {
+        return $this->container['workerCount'];
+    }
+
+    /**
+     * Sets workerCount
+     *
+     * @param int|null $workerCount Number of Prismatic workers to run in parallel for this flow (maximum 500).
+     *
+     * @return self
+     */
+    public function setWorkerCount($workerCount)
+    {
+        if (is_null($workerCount)) {
+            throw new \InvalidArgumentException('non-nullable workerCount cannot be null');
+        }
+
+        if (($workerCount > 500)) {
+            throw new \InvalidArgumentException('invalid value for $workerCount when calling PrismaticFlowConfig., must be smaller than or equal to 500.');
+        }
+        if (($workerCount < 1)) {
+            throw new \InvalidArgumentException('invalid value for $workerCount when calling PrismaticFlowConfig., must be bigger than or equal to 1.');
+        }
+
+        $this->container['workerCount'] = $workerCount;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxEventsPerMessage
+     *
+     * @return int|null
+     */
+    public function getMaxEventsPerMessage()
+    {
+        return $this->container['maxEventsPerMessage'];
+    }
+
+    /**
+     * Sets maxEventsPerMessage
+     *
+     * @param int|null $maxEventsPerMessage Maximum number of events to send in a single message to Prismatic.
+     *
+     * @return self
+     */
+    public function setMaxEventsPerMessage($maxEventsPerMessage)
+    {
+        if (is_null($maxEventsPerMessage)) {
+            throw new \InvalidArgumentException('non-nullable maxEventsPerMessage cannot be null');
+        }
+
+        if (($maxEventsPerMessage < 1)) {
+            throw new \InvalidArgumentException('invalid value for $maxEventsPerMessage when calling PrismaticFlowConfig., must be bigger than or equal to 1.');
+        }
+
+        $this->container['maxEventsPerMessage'] = $maxEventsPerMessage;
+
+        return $this;
+    }
+
+    /**
+     * Gets maxRetries
+     *
+     * @return int|null
+     */
+    public function getMaxRetries()
+    {
+        return $this->container['maxRetries'];
+    }
+
+    /**
+     * Sets maxRetries
+     *
+     * @param int|null $maxRetries Maximum number of retries for a Prismatic event before it is ignored.
+     *
+     * @return self
+     */
+    public function setMaxRetries($maxRetries)
+    {
+        if (is_null($maxRetries)) {
+            throw new \InvalidArgumentException('non-nullable maxRetries cannot be null');
+        }
+
+        if (($maxRetries < 0)) {
+            throw new \InvalidArgumentException('invalid value for $maxRetries when calling PrismaticFlowConfig., must be bigger than or equal to 0.');
+        }
+
+        $this->container['maxRetries'] = $maxRetries;
 
         return $this;
     }
