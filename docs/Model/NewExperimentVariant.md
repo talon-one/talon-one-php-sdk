@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | The name of this variant. |
-**weight** | **int** |  | [optional]
+**weight** | **int** | The percentage split of this variant. The sum of all variant percentages must be 100. |
 **ruleset** | [**\TalonOne\Client\Model\NewRuleset**](NewRuleset.md) |  |
 **isPrimary** | **bool** |  |
 

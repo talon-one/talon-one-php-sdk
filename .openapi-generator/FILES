@@ -98,6 +98,7 @@ docs/Model/BestPriorPriceMetadata.md
 docs/Model/BestPriorPriceRequest.md
 docs/Model/BestPriorTarget.md
 docs/Model/Binding.md
+docs/Model/Blueprint.md
 docs/Model/BulkApplicationNotification.md
 docs/Model/BulkOperationOnCampaigns.md
 docs/Model/Campaign.md
@@ -169,7 +170,6 @@ docs/Model/CodeGeneratorSettings.md
 docs/Model/Collection.md
 docs/Model/CollectionItem.md
 docs/Model/CollectionWithoutPayload.md
-docs/Model/CollectionsCatalog.md
 docs/Model/Coupon.md
 docs/Model/CouponConstraints.md
 docs/Model/CouponCreatedEffectProps.md
@@ -183,6 +183,7 @@ docs/Model/CouponRejectionReason.md
 docs/Model/CouponReservations.md
 docs/Model/CouponSearch.md
 docs/Model/CouponValue.md
+docs/Model/CouponWithApplication.md
 docs/Model/CouponsNotificationData.md
 docs/Model/CouponsNotificationPolicy.md
 docs/Model/CreateAchievement.md
@@ -227,6 +228,7 @@ docs/Model/ErrorResponseWithStatus.md
 docs/Model/ErrorSource.md
 docs/Model/EvaluableCampaignIds.md
 docs/Model/Event.md
+docs/Model/EventAttributesEntity.md
 docs/Model/EventType.md
 docs/Model/EventV2.md
 docs/Model/EventV3.md
@@ -323,11 +325,13 @@ docs/Model/IntegrationCustomerSessionResponse.md
 docs/Model/IntegrationEntity.md
 docs/Model/IntegrationEvent.md
 docs/Model/IntegrationEventV2Request.md
+docs/Model/IntegrationEventV2Response.md
 docs/Model/IntegrationEventV3Request.md
 docs/Model/IntegrationEventV3Response.md
 docs/Model/IntegrationProfileEntity.md
 docs/Model/IntegrationProfileEntityV3.md
 docs/Model/IntegrationRequest.md
+docs/Model/IntegrationResponse.md
 docs/Model/IntegrationState.md
 docs/Model/IntegrationStateV2.md
 docs/Model/IntegrationStoreEntity.md
@@ -408,6 +412,7 @@ docs/Model/NewApplicationCIFExpression.md
 docs/Model/NewAttribute.md
 docs/Model/NewAudience.md
 docs/Model/NewBaseNotification.md
+docs/Model/NewBlueprint.md
 docs/Model/NewCampaign.md
 docs/Model/NewCampaignCollection.md
 docs/Model/NewCampaignEvaluationGroup.md
@@ -418,7 +423,6 @@ docs/Model/NewCampaignStoreBudgetStoreLimit.md
 docs/Model/NewCampaignTemplate.md
 docs/Model/NewCatalog.md
 docs/Model/NewCollection.md
-docs/Model/NewCollectionsCatalog.md
 docs/Model/NewCouponCreationJob.md
 docs/Model/NewCouponDeletionJob.md
 docs/Model/NewCoupons.md
@@ -486,6 +490,7 @@ docs/Model/PendingActivePointsData.md
 docs/Model/PendingActivePointsNotification.md
 docs/Model/PendingPointsNotificationPolicy.md
 docs/Model/Picklist.md
+docs/Model/PlaceholderDetails.md
 docs/Model/PriceDetail.md
 docs/Model/PriceType.md
 docs/Model/PriceTypeReferenceDetail.md
@@ -493,10 +498,16 @@ docs/Model/PriceTypeReferences.md
 docs/Model/PrismaticConfig.md
 docs/Model/PrismaticEventPayloadCouponBasedNotifications.md
 docs/Model/PrismaticEventPayloadCouponBasedNotificationsLimits.md
-docs/Model/PrismaticEventPayloadLoyaltyProfileBasedNotifications.md
-docs/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedNotification.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
+docs/Model/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
+docs/Model/PrismaticEventRecord.md
 docs/Model/PrismaticFlow.md
 docs/Model/PrismaticFlowConfig.md
+docs/Model/PrismaticFlowConfigResponse.md
+docs/Model/PrismaticFlowResponse.md
 docs/Model/PrismaticFlowWithConfig.md
 docs/Model/PrismaticPaginatedEventPayload.md
 docs/Model/Product.md
@@ -518,6 +529,7 @@ docs/Model/RemoveItemCatalogAction.md
 docs/Model/RemoveManyItemsCatalogAction.md
 docs/Model/ReopenSessionResponse.md
 docs/Model/ReserveCouponEffectProps.md
+docs/Model/ResponseContentObject.md
 docs/Model/ReturnIntegrationRequest.md
 docs/Model/ReturnedCartItem.md
 docs/Model/Revision.md
@@ -609,7 +621,6 @@ docs/Model/TierWillDowngradeNotification.md
 docs/Model/TierWillDowngradeNotificationPolicy.md
 docs/Model/TierWillDowngradeNotificationTrigger.md
 docs/Model/TimePoint.md
-docs/Model/TrackEventV2Response.md
 docs/Model/TransferLoyaltyCard.md
 docs/Model/TriggerWebhookEffectProps.md
 docs/Model/TwoFAConfig.md
@@ -620,6 +631,7 @@ docs/Model/UpdateApplicationAPIKey.md
 docs/Model/UpdateApplicationCIF.md
 docs/Model/UpdateAttributeEffectProps.md
 docs/Model/UpdateAudience.md
+docs/Model/UpdateBlueprint.md
 docs/Model/UpdateCampaign.md
 docs/Model/UpdateCampaignCollection.md
 docs/Model/UpdateCampaignEvaluationGroup.md
@@ -627,7 +639,6 @@ docs/Model/UpdateCampaignGroup.md
 docs/Model/UpdateCampaignTemplate.md
 docs/Model/UpdateCatalog.md
 docs/Model/UpdateCollection.md
-docs/Model/UpdateCollectionsCatalog.md
 docs/Model/UpdateCoupon.md
 docs/Model/UpdateCouponBatch.md
 docs/Model/UpdateCouponsData.md
@@ -637,7 +648,9 @@ docs/Model/UpdateCustomerSessionV2409Response.md
 docs/Model/UpdateExperiment.md
 docs/Model/UpdateExperimentVariant.md
 docs/Model/UpdateExperimentVariantArray.md
+docs/Model/UpdateExperimentVariantName.md
 docs/Model/UpdateLoyaltyCard.md
+docs/Model/UpdateLoyaltyCardRequest.md
 docs/Model/UpdateLoyaltyProgram.md
 docs/Model/UpdateLoyaltyProgramTier.md
 docs/Model/UpdatePicklist.md
@@ -752,6 +765,7 @@ lib/Model/BestPriorPriceMetadata.php
 lib/Model/BestPriorPriceRequest.php
 lib/Model/BestPriorTarget.php
 lib/Model/Binding.php
+lib/Model/Blueprint.php
 lib/Model/BulkApplicationNotification.php
 lib/Model/BulkOperationOnCampaigns.php
 lib/Model/Campaign.php
@@ -823,7 +837,6 @@ lib/Model/CodeGeneratorSettings.php
 lib/Model/Collection.php
 lib/Model/CollectionItem.php
 lib/Model/CollectionWithoutPayload.php
-lib/Model/CollectionsCatalog.php
 lib/Model/Coupon.php
 lib/Model/CouponConstraints.php
 lib/Model/CouponCreatedEffectProps.php
@@ -837,6 +850,7 @@ lib/Model/CouponRejectionReason.php
 lib/Model/CouponReservations.php
 lib/Model/CouponSearch.php
 lib/Model/CouponValue.php
+lib/Model/CouponWithApplication.php
 lib/Model/CouponsNotificationData.php
 lib/Model/CouponsNotificationPolicy.php
 lib/Model/CreateAchievement.php
@@ -881,6 +895,7 @@ lib/Model/ErrorResponseWithStatus.php
 lib/Model/ErrorSource.php
 lib/Model/EvaluableCampaignIds.php
 lib/Model/Event.php
+lib/Model/EventAttributesEntity.php
 lib/Model/EventType.php
 lib/Model/EventV2.php
 lib/Model/EventV3.php
@@ -977,11 +992,13 @@ lib/Model/IntegrationCustomerSessionResponse.php
 lib/Model/IntegrationEntity.php
 lib/Model/IntegrationEvent.php
 lib/Model/IntegrationEventV2Request.php
+lib/Model/IntegrationEventV2Response.php
 lib/Model/IntegrationEventV3Request.php
 lib/Model/IntegrationEventV3Response.php
 lib/Model/IntegrationProfileEntity.php
 lib/Model/IntegrationProfileEntityV3.php
 lib/Model/IntegrationRequest.php
+lib/Model/IntegrationResponse.php
 lib/Model/IntegrationState.php
 lib/Model/IntegrationStateV2.php
 lib/Model/IntegrationStoreEntity.php
@@ -1063,6 +1080,7 @@ lib/Model/NewApplicationCIFExpression.php
 lib/Model/NewAttribute.php
 lib/Model/NewAudience.php
 lib/Model/NewBaseNotification.php
+lib/Model/NewBlueprint.php
 lib/Model/NewCampaign.php
 lib/Model/NewCampaignCollection.php
 lib/Model/NewCampaignEvaluationGroup.php
@@ -1073,7 +1091,6 @@ lib/Model/NewCampaignStoreBudgetStoreLimit.php
 lib/Model/NewCampaignTemplate.php
 lib/Model/NewCatalog.php
 lib/Model/NewCollection.php
-lib/Model/NewCollectionsCatalog.php
 lib/Model/NewCouponCreationJob.php
 lib/Model/NewCouponDeletionJob.php
 lib/Model/NewCoupons.php
@@ -1141,6 +1158,7 @@ lib/Model/PendingActivePointsData.php
 lib/Model/PendingActivePointsNotification.php
 lib/Model/PendingPointsNotificationPolicy.php
 lib/Model/Picklist.php
+lib/Model/PlaceholderDetails.php
 lib/Model/PriceDetail.php
 lib/Model/PriceType.php
 lib/Model/PriceTypeReferenceDetail.php
@@ -1148,10 +1166,16 @@ lib/Model/PriceTypeReferences.php
 lib/Model/PrismaticConfig.php
 lib/Model/PrismaticEventPayloadCouponBasedNotifications.php
 lib/Model/PrismaticEventPayloadCouponBasedNotificationsLimits.php
-lib/Model/PrismaticEventPayloadLoyaltyProfileBasedNotifications.php
-lib/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsAction.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedNotification.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotification.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotification.php
+lib/Model/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotification.php
+lib/Model/PrismaticEventRecord.php
 lib/Model/PrismaticFlow.php
 lib/Model/PrismaticFlowConfig.php
+lib/Model/PrismaticFlowConfigResponse.php
+lib/Model/PrismaticFlowResponse.php
 lib/Model/PrismaticFlowWithConfig.php
 lib/Model/PrismaticPaginatedEventPayload.php
 lib/Model/Product.php
@@ -1173,6 +1197,7 @@ lib/Model/RemoveItemCatalogAction.php
 lib/Model/RemoveManyItemsCatalogAction.php
 lib/Model/ReopenSessionResponse.php
 lib/Model/ReserveCouponEffectProps.php
+lib/Model/ResponseContentObject.php
 lib/Model/ReturnIntegrationRequest.php
 lib/Model/ReturnedCartItem.php
 lib/Model/Revision.php
@@ -1264,7 +1289,6 @@ lib/Model/TierWillDowngradeNotification.php
 lib/Model/TierWillDowngradeNotificationPolicy.php
 lib/Model/TierWillDowngradeNotificationTrigger.php
 lib/Model/TimePoint.php
-lib/Model/TrackEventV2Response.php
 lib/Model/TransferLoyaltyCard.php
 lib/Model/TriggerWebhookEffectProps.php
 lib/Model/TwoFAConfig.php
@@ -1275,6 +1299,7 @@ lib/Model/UpdateApplicationAPIKey.php
 lib/Model/UpdateApplicationCIF.php
 lib/Model/UpdateAttributeEffectProps.php
 lib/Model/UpdateAudience.php
+lib/Model/UpdateBlueprint.php
 lib/Model/UpdateCampaign.php
 lib/Model/UpdateCampaignCollection.php
 lib/Model/UpdateCampaignEvaluationGroup.php
@@ -1282,7 +1307,6 @@ lib/Model/UpdateCampaignGroup.php
 lib/Model/UpdateCampaignTemplate.php
 lib/Model/UpdateCatalog.php
 lib/Model/UpdateCollection.php
-lib/Model/UpdateCollectionsCatalog.php
 lib/Model/UpdateCoupon.php
 lib/Model/UpdateCouponBatch.php
 lib/Model/UpdateCouponsData.php
@@ -1292,7 +1316,9 @@ lib/Model/UpdateCustomerSessionV2409Response.php
 lib/Model/UpdateExperiment.php
 lib/Model/UpdateExperimentVariant.php
 lib/Model/UpdateExperimentVariantArray.php
+lib/Model/UpdateExperimentVariantName.php
 lib/Model/UpdateLoyaltyCard.php
+lib/Model/UpdateLoyaltyCardRequest.php
 lib/Model/UpdateLoyaltyProgram.php
 lib/Model/UpdateLoyaltyProgramTier.php
 lib/Model/UpdatePicklist.php
@@ -1404,6 +1430,7 @@ test/Model/BestPriorPriceRequestTest.php
 test/Model/BestPriorPriceTest.php
 test/Model/BestPriorTargetTest.php
 test/Model/BindingTest.php
+test/Model/BlueprintTest.php
 test/Model/BulkApplicationNotificationTest.php
 test/Model/BulkOperationOnCampaignsTest.php
 test/Model/CampaignActivationRequestTest.php
@@ -1475,7 +1502,6 @@ test/Model/CodeGeneratorSettingsTest.php
 test/Model/CollectionItemTest.php
 test/Model/CollectionTest.php
 test/Model/CollectionWithoutPayloadTest.php
-test/Model/CollectionsCatalogTest.php
 test/Model/CouponConstraintsTest.php
 test/Model/CouponCreatedEffectPropsTest.php
 test/Model/CouponCreationJobTest.php
@@ -1489,6 +1515,7 @@ test/Model/CouponReservationsTest.php
 test/Model/CouponSearchTest.php
 test/Model/CouponTest.php
 test/Model/CouponValueTest.php
+test/Model/CouponWithApplicationTest.php
 test/Model/CouponsNotificationDataTest.php
 test/Model/CouponsNotificationPolicyTest.php
 test/Model/CreateAchievementTest.php
@@ -1532,6 +1559,7 @@ test/Model/ErrorResponseTest.php
 test/Model/ErrorResponseWithStatusTest.php
 test/Model/ErrorSourceTest.php
 test/Model/EvaluableCampaignIdsTest.php
+test/Model/EventAttributesEntityTest.php
 test/Model/EventTest.php
 test/Model/EventTypeTest.php
 test/Model/EventV2Test.php
@@ -1629,11 +1657,13 @@ test/Model/IntegrationCustomerSessionResponseTest.php
 test/Model/IntegrationEntityTest.php
 test/Model/IntegrationEventTest.php
 test/Model/IntegrationEventV2RequestTest.php
+test/Model/IntegrationEventV2ResponseTest.php
 test/Model/IntegrationEventV3RequestTest.php
 test/Model/IntegrationEventV3ResponseTest.php
 test/Model/IntegrationProfileEntityTest.php
 test/Model/IntegrationProfileEntityV3Test.php
 test/Model/IntegrationRequestTest.php
+test/Model/IntegrationResponseTest.php
 test/Model/IntegrationStateTest.php
 test/Model/IntegrationStateV2Test.php
 test/Model/IntegrationStoreEntityTest.php
@@ -1714,6 +1744,7 @@ test/Model/NewApplicationTest.php
 test/Model/NewAttributeTest.php
 test/Model/NewAudienceTest.php
 test/Model/NewBaseNotificationTest.php
+test/Model/NewBlueprintTest.php
 test/Model/NewCampaignCollectionTest.php
 test/Model/NewCampaignEvaluationGroupTest.php
 test/Model/NewCampaignGroupTest.php
@@ -1724,7 +1755,6 @@ test/Model/NewCampaignTemplateTest.php
 test/Model/NewCampaignTest.php
 test/Model/NewCatalogTest.php
 test/Model/NewCollectionTest.php
-test/Model/NewCollectionsCatalogTest.php
 test/Model/NewCouponCreationJobTest.php
 test/Model/NewCouponDeletionJobTest.php
 test/Model/NewCouponsForMultipleRecipientsTest.php
@@ -1792,6 +1822,7 @@ test/Model/PendingActivePointsDataTest.php
 test/Model/PendingActivePointsNotificationTest.php
 test/Model/PendingPointsNotificationPolicyTest.php
 test/Model/PicklistTest.php
+test/Model/PlaceholderDetailsTest.php
 test/Model/PriceDetailTest.php
 test/Model/PriceTypeReferenceDetailTest.php
 test/Model/PriceTypeReferencesTest.php
@@ -1799,9 +1830,15 @@ test/Model/PriceTypeTest.php
 test/Model/PrismaticConfigTest.php
 test/Model/PrismaticEventPayloadCouponBasedNotificationsLimitsTest.php
 test/Model/PrismaticEventPayloadCouponBasedNotificationsTest.php
-test/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsActionTest.php
-test/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationsTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedNotificationTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationActionTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedPointsChangedNotificationTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedTierDowngradeNotificationTest.php
+test/Model/PrismaticEventPayloadLoyaltyProfileBasedTierUpgradeNotificationTest.php
+test/Model/PrismaticEventRecordTest.php
+test/Model/PrismaticFlowConfigResponseTest.php
 test/Model/PrismaticFlowConfigTest.php
+test/Model/PrismaticFlowResponseTest.php
 test/Model/PrismaticFlowTest.php
 test/Model/PrismaticFlowWithConfigTest.php
 test/Model/PrismaticPaginatedEventPayloadTest.php
@@ -1824,6 +1861,7 @@ test/Model/RemoveItemCatalogActionTest.php
 test/Model/RemoveManyItemsCatalogActionTest.php
 test/Model/ReopenSessionResponseTest.php
 test/Model/ReserveCouponEffectPropsTest.php
+test/Model/ResponseContentObjectTest.php
 test/Model/ReturnIntegrationRequestTest.php
 test/Model/ReturnedCartItemTest.php
 test/Model/RevisionActivationRequestTest.php
@@ -1915,7 +1953,6 @@ test/Model/TierWillDowngradeNotificationPolicyTest.php
 test/Model/TierWillDowngradeNotificationTest.php
 test/Model/TierWillDowngradeNotificationTriggerTest.php
 test/Model/TimePointTest.php
-test/Model/TrackEventV2ResponseTest.php
 test/Model/TransferLoyaltyCardTest.php
 test/Model/TriggerWebhookEffectPropsTest.php
 test/Model/TwoFAConfigTest.php
@@ -1926,6 +1963,7 @@ test/Model/UpdateApplicationCIFTest.php
 test/Model/UpdateApplicationTest.php
 test/Model/UpdateAttributeEffectPropsTest.php
 test/Model/UpdateAudienceTest.php
+test/Model/UpdateBlueprintTest.php
 test/Model/UpdateCampaignCollectionTest.php
 test/Model/UpdateCampaignEvaluationGroupTest.php
 test/Model/UpdateCampaignGroupTest.php
@@ -1933,7 +1971,6 @@ test/Model/UpdateCampaignTemplateTest.php
 test/Model/UpdateCampaignTest.php
 test/Model/UpdateCatalogTest.php
 test/Model/UpdateCollectionTest.php
-test/Model/UpdateCollectionsCatalogTest.php
 test/Model/UpdateCouponBatchTest.php
 test/Model/UpdateCouponTest.php
 test/Model/UpdateCouponsDataTest.php
@@ -1942,7 +1979,9 @@ test/Model/UpdateCustomerProfileV2409ResponseTest.php
 test/Model/UpdateCustomerSessionV2409ResponseTest.php
 test/Model/UpdateExperimentTest.php
 test/Model/UpdateExperimentVariantArrayTest.php
+test/Model/UpdateExperimentVariantNameTest.php
 test/Model/UpdateExperimentVariantTest.php
+test/Model/UpdateLoyaltyCardRequestTest.php
 test/Model/UpdateLoyaltyCardTest.php
 test/Model/UpdateLoyaltyProgramTest.php
 test/Model/UpdateLoyaltyProgramTierTest.php

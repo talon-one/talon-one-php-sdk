@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **int** |  |
+**batchedAt** | **\DateTime** | Timestamp when the batch was created. | [optional]
 **eventType** | **string** |  |
 **data** | **mixed[]** |  |
 

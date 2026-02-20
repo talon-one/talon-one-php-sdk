@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **batchId** | **string** |  | [optional]
 **attributes** | **object** |  | [optional]
 **limits** | [**\TalonOne\Client\Model\PrismaticEventPayloadCouponBasedNotificationsLimits[]**](PrismaticEventPayloadCouponBasedNotificationsLimits.md) |  | [optional]
+**publishedAt** | **\DateTime** | Timestamp when the event was published. |
 **sourceOfEvent** | **string** |  |
 **employeeName** | **string** |  |
 
