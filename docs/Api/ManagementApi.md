@@ -177,7 +177,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**updateCollection()**](ManagementApi.md#updateCollection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update campaign-level collection&#39;s description |
 | [**updateCoupon()**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon |
 | [**updateCouponBatch()**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update coupons |
-| [**updateLoyaltyCard()**](ManagementApi.md#updateLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card status |
+| [**updateLoyaltyCard()**](ManagementApi.md#updateLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card |
 | [**updateReferral()**](ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral |
 | [**updateRoleV2()**](ManagementApi.md#updateRoleV2) | **PUT** /v2/roles/{roleId} | Update role |
 | [**updateStore()**](ManagementApi.md#updateStore) | **PUT** /v1/applications/{applicationId}/stores/{storeId} | Update store |
@@ -13411,12 +13411,12 @@ void (empty response body)
 ## `updateLoyaltyCard()`
 
 ```php
-updateLoyaltyCard($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCard): \TalonOne\Client\Model\LoyaltyCard
+updateLoyaltyCard($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest): \TalonOne\Client\Model\LoyaltyCard
 ```
 
-Update loyalty card status
+Update loyalty card
 
-Update the status of the given loyalty card. A card can be _active_ or _inactive_.
+Update the details of a specific loyalty card. You can set the card's status to `active` or `inactive` through this endpoint. At least one of `status` or `attributes` must be provided.
 
 ### Example
 
@@ -13449,10 +13449,10 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 );
 $loyaltyProgramId = 56; // int | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
 $loyaltyCardId = 'loyaltyCardId_example'; // string | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
-$updateLoyaltyCard = new \TalonOne\Client\Model\UpdateLoyaltyCard(); // \TalonOne\Client\Model\UpdateLoyaltyCard | body
+$updateLoyaltyCardRequest = new \TalonOne\Client\Model\UpdateLoyaltyCardRequest(); // \TalonOne\Client\Model\UpdateLoyaltyCardRequest | body
 
 try {
-    $result = $apiInstance->updateLoyaltyCard($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCard);
+    $result = $apiInstance->updateLoyaltyCard($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->updateLoyaltyCard: ', $e->getMessage(), PHP_EOL;
@@ -13465,7 +13465,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **loyaltyProgramId** | **int**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
 | **loyaltyCardId** | **string**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. | |
-| **updateLoyaltyCard** | [**\TalonOne\Client\Model\UpdateLoyaltyCard**](../Model/UpdateLoyaltyCard.md)| body | |
+| **updateLoyaltyCardRequest** | [**\TalonOne\Client\Model\UpdateLoyaltyCardRequest**](../Model/UpdateLoyaltyCardRequest.md)| body | |
 
 ### Return type
 

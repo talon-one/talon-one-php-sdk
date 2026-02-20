@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **event** | **string** | The type of the event. Can be one of the following: [&#39;campaign_state_changed&#39;, &#39;campaign_ruleset_changed&#39;, &#39;campaign_edited&#39;, &#39;campaign_created&#39;, &#39;campaign_deleted&#39;] |
-**campaign** | **mixed** | The campaign whose state changed. |
-**oldCampaign** | **mixed** | The campaign before the change. |
-**ruleset** | **mixed** | The current ruleset. | [optional]
+**campaign** | [**\TalonOne\Client\Model\Campaign**](Campaign.md) | The campaign whose state changed. |
+**oldCampaign** | [**\TalonOne\Client\Model\Campaign**](Campaign.md) | The campaign before the change. |
+**ruleset** | [**\TalonOne\Client\Model\Ruleset**](Ruleset.md) | The current ruleset. | [optional]
+**placeholders** | [**\TalonOne\Client\Model\PlaceholderDetails[]**](PlaceholderDetails.md) | The current details of the [placeholders](https://docs.talon.one/docs/product/campaigns/templates/create-templates#use-placeholders) in the campaign. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

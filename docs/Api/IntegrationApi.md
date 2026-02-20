@@ -750,7 +750,7 @@ generateLoyaltyCard($loyaltyProgramId, $generateLoyaltyCard): \TalonOne\Client\M
 
 Generate loyalty card
 
-Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the `customerProfileIds` parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program's `usersPerCardLimit`. To find the program's limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier.
+Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the `customerProfileIds` parameter in the request body.  **Note:**  - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program's `usersPerCardLimit`. To find the program's limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint.  - If the loyalty program has a defined code format, it will be used for the loyalty card identifier.
 
 ### Example
 
@@ -1873,7 +1873,7 @@ try {
 ## `trackEventV2()`
 
 ```php
-trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation): \TalonOne\Client\Model\TrackEventV2Response
+trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation): \TalonOne\Client\Model\IntegrationEventV2Response
 ```
 
 Track event
@@ -1923,7 +1923,7 @@ try {
 
 ### Return type
 
-[**\TalonOne\Client\Model\TrackEventV2Response**](../Model/TrackEventV2Response.md)
+[**\TalonOne\Client\Model\IntegrationEventV2Response**](../Model/IntegrationEventV2Response.md)
 
 ### Authorization
 
