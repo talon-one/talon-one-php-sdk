@@ -5,6 +5,10 @@ The legacy version of this SDK is available [here](https://github.com/talon-one/
 
 This SDK supports all of the operations of Talon.One's Integration API and Management API.
 
+## Migrating from the legacy SDK
+
+See our [migration guide](MIGRATION.md).
+
 ## Requirements
 
 - [PHP 8.1 and later](https://www.php.net/)

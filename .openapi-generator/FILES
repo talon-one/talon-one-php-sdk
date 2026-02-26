@@ -5,6 +5,7 @@
 .openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
+MIGRATION.md
 Makefile
 README.md
 composer.json
