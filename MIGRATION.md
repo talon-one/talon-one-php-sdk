@@ -51,8 +51,10 @@ statements for API clients or models.
 
 The client initialization code is mostly unchanged. You can still use
 `\TalonOne\Client\Configuration::getDefaultConfiguration()` to configure the client and
-instantiate the API clients (`\TalonOne\Client\Api\IntegrationApi` and
-`\TalonOne\Client\Api\ManagementApi()`).
+instantiate the API clients:
+
+- `\TalonOne\Client\Api\IntegrationApi`
+- `\TalonOne\Client\Api\ManagementApi`
 
 ### API method signatures
 
@@ -69,7 +71,7 @@ required.
 The new methods also include an optional `$contentType` parameter, which you can generally
 ignore unless you have specific needs.
 
-**Example 1: `IntegrationApi`**
+#### Example 1: Integration API
 
 A common example is the `updateCustomerSessionV2` method.
 
@@ -87,7 +89,7 @@ The parameter for the request body is now named `$integration_request`.
 $integrationApi->updateCustomerSessionV2($customer_session_id, $integration_request);
 ```
 
-**Example 2: `ManagementApi`**
+#### Example 2: Management API
 
 The same applies to the `updateCampaign` method in the `ManagementApi`.
 
@@ -116,7 +118,7 @@ serialized and deserialized.
 While most request and response payloads remain backward-compatible, there are some
 important changes and additions to be aware of.
 
-### `returnCartItems` (Breaking Change)
+### returnCartItems (breaking change)
 
 - **Request:** The `ReturnIntegrationRequest` payload is backward-compatible.
 - **Response:** This method's response has a **breaking change**.
