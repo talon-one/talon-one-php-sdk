@@ -80,6 +80,15 @@ class BestPriorPriceTest extends TestCase
     }
 
     /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "sku"
      */
     public function testPropertySku()

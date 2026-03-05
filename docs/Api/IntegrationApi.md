@@ -30,6 +30,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getLoyaltyProgramProfileTransactions()**](IntegrationApi.md#getLoyaltyProgramProfileTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions |
 | [**getReservedCustomers()**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved |
 | [**linkLoyaltyCardToProfile()**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card |
+| [**priceHistory()**](IntegrationApi.md#priceHistory) | **POST** /v1/best_prior_price_history | Get summary of price history |
 | [**reopenCustomerSession()**](IntegrationApi.md#reopenCustomerSession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session |
 | [**returnCartItems()**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items |
 | [**syncCatalog()**](IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog |
@@ -1668,6 +1669,78 @@ try {
 ### Authorization
 
 [api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `priceHistory()`
+
+```php
+priceHistory($priceHistoryRequest): \TalonOne\Client\Model\PriceHistoryResponse
+```
+
+Get summary of price history
+
+Fetch the historical price data for a given SKU within a defined timeframe.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: management_key
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: manager_auth
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$priceHistoryRequest = new \TalonOne\Client\Model\PriceHistoryRequest(); // \TalonOne\Client\Model\PriceHistoryRequest | body
+
+try {
+    $result = $apiInstance->priceHistory($priceHistoryRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->priceHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **priceHistoryRequest** | [**\TalonOne\Client\Model\PriceHistoryRequest**](../Model/PriceHistoryRequest.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\PriceHistoryResponse**](../Model/PriceHistoryResponse.md)
+
+### Authorization
+
+[management_key](../../README.md#management_key), [manager_auth](../../README.md#manager_auth), [api_key_v1](../../README.md#api_key_v1)
 
 ### HTTP request headers
 

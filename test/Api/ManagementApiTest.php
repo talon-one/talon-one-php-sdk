@@ -540,6 +540,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for exportApplicationCampaignAnalytics
+     *
+     * Export Application analytics aggregated by campaign.
+     *
+     */
+    public function testExportApplicationCampaignAnalytics()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for exportAudiencesMemberships
      *
      * Export audience members.
@@ -690,6 +702,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testExportLoyaltyCards()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for exportLoyaltyJoinDates
+     *
+     * Export customers' loyalty program join dates.
+     *
+     */
+    public function testExportLoyaltyJoinDates()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -1260,6 +1284,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for getExperiment
+     *
+     * Get experiment in Application.
+     *
+     */
+    public function testGetExperiment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getExports
      *
      * Get exports.
@@ -1746,6 +1782,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testListCollectionsInApplication()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for listExperiments
+     *
+     * List experiments.
+     *
+     */
+    public function testListExperiments()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
