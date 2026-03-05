@@ -61,6 +61,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => '\DateTime',
         'timeframe' => 'string',
         'strictEndDate' => 'bool',
+        'timeframeEndDateType' => 'string',
         'target' => '\TalonOne\Client\Model\BestPriorTarget'
     ];
 
@@ -76,6 +77,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => 'date-time',
         'timeframe' => null,
         'strictEndDate' => null,
+        'timeframeEndDateType' => null,
         'target' => null
     ];
 
@@ -89,6 +91,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => false,
         'timeframe' => false,
         'strictEndDate' => false,
+        'timeframeEndDateType' => false,
         'target' => false
     ];
 
@@ -182,6 +185,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => 'timeframeEndDate',
         'timeframe' => 'timeframe',
         'strictEndDate' => 'strictEndDate',
+        'timeframeEndDateType' => 'timeframeEndDateType',
         'target' => 'target'
     ];
 
@@ -195,6 +199,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => 'setTimeframeEndDate',
         'timeframe' => 'setTimeframe',
         'strictEndDate' => 'setStrictEndDate',
+        'timeframeEndDateType' => 'setTimeframeEndDateType',
         'target' => 'setTarget'
     ];
 
@@ -208,6 +213,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'timeframeEndDate' => 'getTimeframeEndDate',
         'timeframe' => 'getTimeframe',
         'strictEndDate' => 'getStrictEndDate',
+        'timeframeEndDateType' => 'getTimeframeEndDateType',
         'target' => 'getTarget'
     ];
 
@@ -252,6 +258,23 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const TIMEFRAME_END_DATE_TYPE_STRICT = 'strict';
+    public const TIMEFRAME_END_DATE_TYPE_PRICE = 'price';
+    public const TIMEFRAME_END_DATE_TYPE_SALE = 'sale';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTimeframeEndDateTypeAllowableValues()
+    {
+        return [
+            self::TIMEFRAME_END_DATE_TYPE_STRICT,
+            self::TIMEFRAME_END_DATE_TYPE_PRICE,
+            self::TIMEFRAME_END_DATE_TYPE_SALE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -272,6 +295,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('timeframeEndDate', $data ?? [], null);
         $this->setIfExists('timeframe', $data ?? [], null);
         $this->setIfExists('strictEndDate', $data ?? [], null);
+        $this->setIfExists('timeframeEndDateType', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
     }
 
@@ -318,6 +342,15 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['strictEndDate'] === null) {
             $invalidProperties[] = "'strictEndDate' can't be null";
         }
+        $allowedValues = $this->getTimeframeEndDateTypeAllowableValues();
+        if (!is_null($this->container['timeframeEndDateType']) && !in_array($this->container['timeframeEndDateType'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'timeframeEndDateType', must be one of '%s'",
+                $this->container['timeframeEndDateType'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -423,6 +456,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * Gets strictEndDate
      *
      * @return bool
+     * @deprecated
      */
     public function getStrictEndDate()
     {
@@ -432,9 +466,10 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets strictEndDate
      *
-     * @param bool $strictEndDate Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe striclty uses the number of days specified in `timeframe`.
+     * @param bool $strictEndDate This property is **deprecated**. Use `timeframeEndDateType` instead.  Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe strictly uses the number of days specified in `timeframe`.
      *
      * @return self
+     * @deprecated
      */
     public function setStrictEndDate($strictEndDate)
     {
@@ -442,6 +477,43 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable strictEndDate cannot be null');
         }
         $this->container['strictEndDate'] = $strictEndDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets timeframeEndDateType
+     *
+     * @return string|null
+     */
+    public function getTimeframeEndDateType()
+    {
+        return $this->container['timeframeEndDateType'];
+    }
+
+    /**
+     * Sets timeframeEndDateType
+     *
+     * @param string|null $timeframeEndDateType Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of the current `contextId` with the current price value. Identical price records are merged. If there is no `contextId` for the most recent price, the most recent timestamp for the price is used.  - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account.
+     *
+     * @return self
+     */
+    public function setTimeframeEndDateType($timeframeEndDateType)
+    {
+        if (is_null($timeframeEndDateType)) {
+            throw new \InvalidArgumentException('non-nullable timeframeEndDateType cannot be null');
+        }
+        $allowedValues = $this->getTimeframeEndDateTypeAllowableValues();
+        if (!in_array($timeframeEndDateType, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'timeframeEndDateType', must be one of '%s'",
+                    $timeframeEndDateType,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['timeframeEndDateType'] = $timeframeEndDateType;
 
         return $this;
     }

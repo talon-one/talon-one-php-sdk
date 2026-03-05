@@ -146,6 +146,9 @@ class IntegrationApi
         'linkLoyaltyCardToProfile' => [
             'application/json',
         ],
+        'priceHistory' => [
+            'application/json',
+        ],
         'reopenCustomerSession' => [
             'application/json',
         ],
@@ -8492,6 +8495,288 @@ class IntegrationApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation priceHistory
+     *
+     * Get summary of price history
+     *
+     * @param  \TalonOne\Client\Model\PriceHistoryRequest $priceHistoryRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['priceHistory'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\PriceHistoryResponse
+     */
+    public function priceHistory($priceHistoryRequest, string $contentType = self::contentTypes['priceHistory'][0])
+    {
+        list($response) = $this->priceHistoryWithHttpInfo($priceHistoryRequest, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation priceHistoryWithHttpInfo
+     *
+     * Get summary of price history
+     *
+     * @param  \TalonOne\Client\Model\PriceHistoryRequest $priceHistoryRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['priceHistory'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\PriceHistoryResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function priceHistoryWithHttpInfo($priceHistoryRequest, string $contentType = self::contentTypes['priceHistory'][0])
+    {
+        $request = $this->priceHistoryRequest($priceHistoryRequest, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\PriceHistoryResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\PriceHistoryResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\PriceHistoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation priceHistoryAsync
+     *
+     * Get summary of price history
+     *
+     * @param  \TalonOne\Client\Model\PriceHistoryRequest $priceHistoryRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['priceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function priceHistoryAsync($priceHistoryRequest, string $contentType = self::contentTypes['priceHistory'][0])
+    {
+        return $this->priceHistoryAsyncWithHttpInfo($priceHistoryRequest, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation priceHistoryAsyncWithHttpInfo
+     *
+     * Get summary of price history
+     *
+     * @param  \TalonOne\Client\Model\PriceHistoryRequest $priceHistoryRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['priceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function priceHistoryAsyncWithHttpInfo($priceHistoryRequest, string $contentType = self::contentTypes['priceHistory'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\PriceHistoryResponse';
+        $request = $this->priceHistoryRequest($priceHistoryRequest, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'priceHistory'
+     *
+     * @param  \TalonOne\Client\Model\PriceHistoryRequest $priceHistoryRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['priceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function priceHistoryRequest($priceHistoryRequest, string $contentType = self::contentTypes['priceHistory'][0])
+    {
+
+        // verify the required parameter 'priceHistoryRequest' is set
+        if ($priceHistoryRequest === null || (is_array($priceHistoryRequest) && count($priceHistoryRequest) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $priceHistoryRequest when calling priceHistory'
+            );
+        }
+
+
+        $resourcePath = '/v1/best_prior_price_history';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($priceHistoryRequest)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($priceHistoryRequest));
+            } else {
+                $httpBody = $priceHistoryRequest;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
         if ($apiKey !== null) {

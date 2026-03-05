@@ -298,12 +298,12 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
-        if (!preg_match("/^[A-Za-z](\\w|\\s)*$/", $this->container['name'])) {
-            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[A-Za-z](\\w|\\s)*$/.";
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['weight'] === null) {
@@ -360,12 +360,11 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling NewExperimentVariant., must be smaller than or equal to 255.');
+        }
         if ((mb_strlen($name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $name when calling NewExperimentVariant., must be bigger than or equal to 1.');
-        }
-        if ((!preg_match("/^[A-Za-z](\\w|\\s)*$/", ObjectSerializer::toString($name)))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling NewExperimentVariant., must conform to the pattern /^[A-Za-z](\\w|\\s)*$/.");
         }
 
         $this->container['name'] = $name;

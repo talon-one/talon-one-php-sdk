@@ -116,6 +116,15 @@ class BestPriorPriceRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "timeframeEndDateType"
+     */
+    public function testPropertyTimeframeEndDateType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "target"
      */
     public function testPropertyTarget()

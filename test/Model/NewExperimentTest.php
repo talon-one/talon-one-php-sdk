@@ -89,24 +89,6 @@ class NewExperimentTest extends TestCase
     }
 
     /**
-     * Test attribute "activated"
-     */
-    public function testPropertyActivated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "state"
-     */
-    public function testPropertyState()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "campaign"
      */
     public function testPropertyCampaign()

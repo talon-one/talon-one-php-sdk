@@ -191,6 +191,9 @@ class ManagementApi
         'exportAchievements' => [
             'application/json',
         ],
+        'exportApplicationCampaignAnalytics' => [
+            'application/json',
+        ],
         'exportAudiencesMemberships' => [
             'application/json',
         ],
@@ -228,6 +231,9 @@ class ManagementApi
             'application/json',
         ],
         'exportLoyaltyCards' => [
+            'application/json',
+        ],
+        'exportLoyaltyJoinDates' => [
             'application/json',
         ],
         'exportLoyaltyLedger' => [
@@ -371,6 +377,9 @@ class ManagementApi
         'getEventTypes' => [
             'application/json',
         ],
+        'getExperiment' => [
+            'application/json',
+        ],
         'getExports' => [
             'application/json',
         ],
@@ -492,6 +501,9 @@ class ManagementApi
             'application/json',
         ],
         'listCollectionsInApplication' => [
+            'application/json',
+        ],
+        'listExperiments' => [
             'application/json',
         ],
         'listStores' => [
@@ -12123,6 +12135,346 @@ class ManagementApi
     }
 
     /**
+     * Operation exportApplicationCampaignAnalytics
+     *
+     * Export Application analytics aggregated by campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \DateTime $rangeStart Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  \DateTime $rangeEnd Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  string[]|null $campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportApplicationCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function exportApplicationCampaignAnalytics($applicationId, $rangeStart, $rangeEnd, $campaignIds = null, string $contentType = self::contentTypes['exportApplicationCampaignAnalytics'][0])
+    {
+        list($response) = $this->exportApplicationCampaignAnalyticsWithHttpInfo($applicationId, $rangeStart, $rangeEnd, $campaignIds, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation exportApplicationCampaignAnalyticsWithHttpInfo
+     *
+     * Export Application analytics aggregated by campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \DateTime $rangeStart Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  \DateTime $rangeEnd Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  string[]|null $campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportApplicationCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function exportApplicationCampaignAnalyticsWithHttpInfo($applicationId, $rangeStart, $rangeEnd, $campaignIds = null, string $contentType = self::contentTypes['exportApplicationCampaignAnalytics'][0])
+    {
+        $request = $this->exportApplicationCampaignAnalyticsRequest($applicationId, $rangeStart, $rangeEnd, $campaignIds, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'string',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'string',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation exportApplicationCampaignAnalyticsAsync
+     *
+     * Export Application analytics aggregated by campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \DateTime $rangeStart Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  \DateTime $rangeEnd Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  string[]|null $campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportApplicationCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportApplicationCampaignAnalyticsAsync($applicationId, $rangeStart, $rangeEnd, $campaignIds = null, string $contentType = self::contentTypes['exportApplicationCampaignAnalytics'][0])
+    {
+        return $this->exportApplicationCampaignAnalyticsAsyncWithHttpInfo($applicationId, $rangeStart, $rangeEnd, $campaignIds, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation exportApplicationCampaignAnalyticsAsyncWithHttpInfo
+     *
+     * Export Application analytics aggregated by campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \DateTime $rangeStart Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  \DateTime $rangeEnd Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  string[]|null $campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportApplicationCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportApplicationCampaignAnalyticsAsyncWithHttpInfo($applicationId, $rangeStart, $rangeEnd, $campaignIds = null, string $contentType = self::contentTypes['exportApplicationCampaignAnalytics'][0])
+    {
+        $returnType = 'string';
+        $request = $this->exportApplicationCampaignAnalyticsRequest($applicationId, $rangeStart, $rangeEnd, $campaignIds, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'exportApplicationCampaignAnalytics'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \DateTime $rangeStart Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  \DateTime $rangeEnd Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
+     * @param  string[]|null $campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportApplicationCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function exportApplicationCampaignAnalyticsRequest($applicationId, $rangeStart, $rangeEnd, $campaignIds = null, string $contentType = self::contentTypes['exportApplicationCampaignAnalytics'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling exportApplicationCampaignAnalytics'
+            );
+        }
+
+        // verify the required parameter 'rangeStart' is set
+        if ($rangeStart === null || (is_array($rangeStart) && count($rangeStart) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rangeStart when calling exportApplicationCampaignAnalytics'
+            );
+        }
+
+        // verify the required parameter 'rangeEnd' is set
+        if ($rangeEnd === null || (is_array($rangeEnd) && count($rangeEnd) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rangeEnd when calling exportApplicationCampaignAnalytics'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/applications/{applicationId}/campaign_analytics/export';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignIds,
+            'campaignIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $rangeStart,
+            'rangeStart', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $rangeEnd,
+            'rangeEnd', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/csv', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation exportAudiencesMemberships
      *
      * Export audience members
@@ -16693,6 +17045,317 @@ class ManagementApi
             true, // explode
             false // required
         ) ?? []);
+
+
+        // path params
+        if ($loyaltyProgramId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'loyaltyProgramId' . '}',
+                ObjectSerializer::toPathValue($loyaltyProgramId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/csv', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation exportLoyaltyJoinDates
+     *
+     * Export customers&#39; loyalty program join dates
+     *
+     * @param  string $loyaltyProgramId The identifier of the loyalty program. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyJoinDates'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function exportLoyaltyJoinDates($loyaltyProgramId, string $contentType = self::contentTypes['exportLoyaltyJoinDates'][0])
+    {
+        list($response) = $this->exportLoyaltyJoinDatesWithHttpInfo($loyaltyProgramId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation exportLoyaltyJoinDatesWithHttpInfo
+     *
+     * Export customers&#39; loyalty program join dates
+     *
+     * @param  string $loyaltyProgramId The identifier of the loyalty program. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyJoinDates'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function exportLoyaltyJoinDatesWithHttpInfo($loyaltyProgramId, string $contentType = self::contentTypes['exportLoyaltyJoinDates'][0])
+    {
+        $request = $this->exportLoyaltyJoinDatesRequest($loyaltyProgramId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'string',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'string',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation exportLoyaltyJoinDatesAsync
+     *
+     * Export customers&#39; loyalty program join dates
+     *
+     * @param  string $loyaltyProgramId The identifier of the loyalty program. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyJoinDates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportLoyaltyJoinDatesAsync($loyaltyProgramId, string $contentType = self::contentTypes['exportLoyaltyJoinDates'][0])
+    {
+        return $this->exportLoyaltyJoinDatesAsyncWithHttpInfo($loyaltyProgramId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation exportLoyaltyJoinDatesAsyncWithHttpInfo
+     *
+     * Export customers&#39; loyalty program join dates
+     *
+     * @param  string $loyaltyProgramId The identifier of the loyalty program. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyJoinDates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportLoyaltyJoinDatesAsyncWithHttpInfo($loyaltyProgramId, string $contentType = self::contentTypes['exportLoyaltyJoinDates'][0])
+    {
+        $returnType = 'string';
+        $request = $this->exportLoyaltyJoinDatesRequest($loyaltyProgramId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'exportLoyaltyJoinDates'
+     *
+     * @param  string $loyaltyProgramId The identifier of the loyalty program. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyJoinDates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function exportLoyaltyJoinDatesRequest($loyaltyProgramId, string $contentType = self::contentTypes['exportLoyaltyJoinDates'][0])
+    {
+
+        // verify the required parameter 'loyaltyProgramId' is set
+        if ($loyaltyProgramId === null || (is_array($loyaltyProgramId) && count($loyaltyProgramId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $loyaltyProgramId when calling exportLoyaltyJoinDates'
+            );
+        }
+
+
+        $resourcePath = '/v1/loyalty_programs/{loyaltyProgramId}/export_join_dates';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // path params
@@ -33333,6 +33996,309 @@ class ManagementApi
     }
 
     /**
+     * Operation getExperiment
+     *
+     * Get experiment in Application
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $experimentId The ID of the experiment. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExperiment'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\Experiment
+     */
+    public function getExperiment($applicationId, $experimentId, string $contentType = self::contentTypes['getExperiment'][0])
+    {
+        list($response) = $this->getExperimentWithHttpInfo($applicationId, $experimentId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getExperimentWithHttpInfo
+     *
+     * Get experiment in Application
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $experimentId The ID of the experiment. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExperiment'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\Experiment, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getExperimentWithHttpInfo($applicationId, $experimentId, string $contentType = self::contentTypes['getExperiment'][0])
+    {
+        $request = $this->getExperimentRequest($applicationId, $experimentId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\Experiment',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\Experiment',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\Experiment',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getExperimentAsync
+     *
+     * Get experiment in Application
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $experimentId The ID of the experiment. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExperiment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getExperimentAsync($applicationId, $experimentId, string $contentType = self::contentTypes['getExperiment'][0])
+    {
+        return $this->getExperimentAsyncWithHttpInfo($applicationId, $experimentId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getExperimentAsyncWithHttpInfo
+     *
+     * Get experiment in Application
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $experimentId The ID of the experiment. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExperiment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getExperimentAsyncWithHttpInfo($applicationId, $experimentId, string $contentType = self::contentTypes['getExperiment'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\Experiment';
+        $request = $this->getExperimentRequest($applicationId, $experimentId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getExperiment'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $experimentId The ID of the experiment. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExperiment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getExperimentRequest($applicationId, $experimentId, string $contentType = self::contentTypes['getExperiment'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling getExperiment'
+            );
+        }
+
+        // verify the required parameter 'experimentId' is set
+        if ($experimentId === null || (is_array($experimentId) && count($experimentId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $experimentId when calling getExperiment'
+            );
+        }
+
+
+        $resourcePath = '/v1/applications/{applicationId}/experiments/{experimentId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($experimentId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'experimentId' . '}',
+                ObjectSerializer::toPathValue($experimentId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getExports
      *
      * Get exports
@@ -47541,6 +48507,340 @@ class ManagementApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $name,
             'name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listExperiments
+     *
+     * List experiments
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listExperiments'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\ListExperiments200Response
+     */
+    public function listExperiments($applicationId, $pageSize = 1000, $skip = null, $sort = null, string $contentType = self::contentTypes['listExperiments'][0])
+    {
+        list($response) = $this->listExperimentsWithHttpInfo($applicationId, $pageSize, $skip, $sort, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listExperimentsWithHttpInfo
+     *
+     * List experiments
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listExperiments'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\ListExperiments200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listExperimentsWithHttpInfo($applicationId, $pageSize = 1000, $skip = null, $sort = null, string $contentType = self::contentTypes['listExperiments'][0])
+    {
+        $request = $this->listExperimentsRequest($applicationId, $pageSize, $skip, $sort, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ListExperiments200Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\ListExperiments200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ListExperiments200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listExperimentsAsync
+     *
+     * List experiments
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listExperiments'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listExperimentsAsync($applicationId, $pageSize = 1000, $skip = null, $sort = null, string $contentType = self::contentTypes['listExperiments'][0])
+    {
+        return $this->listExperimentsAsyncWithHttpInfo($applicationId, $pageSize, $skip, $sort, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listExperimentsAsyncWithHttpInfo
+     *
+     * List experiments
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listExperiments'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listExperimentsAsyncWithHttpInfo($applicationId, $pageSize = 1000, $skip = null, $sort = null, string $contentType = self::contentTypes['listExperiments'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\ListExperiments200Response';
+        $request = $this->listExperimentsRequest($applicationId, $pageSize, $skip, $sort, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listExperiments'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listExperiments'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listExperimentsRequest($applicationId, $pageSize = 1000, $skip = null, $sort = null, string $contentType = self::contentTypes['listExperiments'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling listExperiments'
+            );
+        }
+
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listExperiments, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listExperiments, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/applications/{applicationId}/experiments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

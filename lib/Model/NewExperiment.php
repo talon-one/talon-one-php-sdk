@@ -58,8 +58,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'isVariantAssignmentExternal' => 'bool',
-        'activated' => '\DateTime',
-        'state' => 'string',
         'campaign' => '\TalonOne\Client\Model\NewCampaign'
     ];
 
@@ -72,8 +70,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'isVariantAssignmentExternal' => null,
-        'activated' => 'date-time',
-        'state' => null,
         'campaign' => null
     ];
 
@@ -84,8 +80,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'isVariantAssignmentExternal' => false,
-        'activated' => false,
-        'state' => false,
         'campaign' => false
     ];
 
@@ -176,8 +170,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'isVariantAssignmentExternal' => 'isVariantAssignmentExternal',
-        'activated' => 'activated',
-        'state' => 'state',
         'campaign' => 'campaign'
     ];
 
@@ -188,8 +180,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'isVariantAssignmentExternal' => 'setIsVariantAssignmentExternal',
-        'activated' => 'setActivated',
-        'state' => 'setState',
         'campaign' => 'setCampaign'
     ];
 
@@ -200,8 +190,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'isVariantAssignmentExternal' => 'getIsVariantAssignmentExternal',
-        'activated' => 'getActivated',
-        'state' => 'getState',
         'campaign' => 'getCampaign'
     ];
 
@@ -246,21 +234,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATE_ENABLED = 'enabled';
-    public const STATE_DISABLED = 'disabled';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStateAllowableValues()
-    {
-        return [
-            self::STATE_ENABLED,
-            self::STATE_DISABLED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,8 +251,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('isVariantAssignmentExternal', $data ?? [], null);
-        $this->setIfExists('activated', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], 'disabled');
         $this->setIfExists('campaign', $data ?? [], null);
     }
 
@@ -313,15 +284,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['isVariantAssignmentExternal'] === null) {
             $invalidProperties[] = "'isVariantAssignmentExternal' can't be null";
         }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['campaign'] === null) {
             $invalidProperties[] = "'campaign' can't be null";
         }
@@ -353,7 +315,7 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets isVariantAssignmentExternal
      *
-     * @param bool $isVariantAssignmentExternal The source of the assignment. - false - The assignment to the variant is handled internally by the Talon.Oneandled internally by the Talon.One. - true - The assignment to the variant handled externally.
+     * @param bool $isVariantAssignmentExternal The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally.
      *
      * @return self
      */
@@ -363,70 +325,6 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable isVariantAssignmentExternal cannot be null');
         }
         $this->container['isVariantAssignmentExternal'] = $isVariantAssignmentExternal;
-
-        return $this;
-    }
-
-    /**
-     * Gets activated
-     *
-     * @return \DateTime|null
-     */
-    public function getActivated()
-    {
-        return $this->container['activated'];
-    }
-
-    /**
-     * Sets activated
-     *
-     * @param \DateTime|null $activated The date and time the experiment was activated.
-     *
-     * @return self
-     */
-    public function setActivated($activated)
-    {
-        if (is_null($activated)) {
-            throw new \InvalidArgumentException('non-nullable activated cannot be null');
-        }
-        $this->container['activated'] = $activated;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string|null $state A disabled experiment is not evaluated for rules or coupons.
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
-        }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!in_array($state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['state'] = $state;
 
         return $this;
     }

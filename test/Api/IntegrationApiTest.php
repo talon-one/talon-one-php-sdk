@@ -360,6 +360,18 @@ class IntegrationApiTest extends TestCase
     }
 
     /**
+     * Test case for priceHistory
+     *
+     * Get summary of price history.
+     *
+     */
+    public function testPriceHistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for reopenCustomerSession
      *
      * Reopen customer session.

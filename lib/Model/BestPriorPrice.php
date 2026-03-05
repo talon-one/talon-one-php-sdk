@@ -57,6 +57,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
         'sku' => 'string',
         'observedAt' => '\DateTime',
         'contextId' => 'string',
@@ -73,6 +74,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'int64',
         'sku' => null,
         'observedAt' => 'date-time',
         'contextId' => null,
@@ -87,6 +89,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'sku' => false,
         'observedAt' => false,
         'contextId' => false,
@@ -181,6 +184,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'sku' => 'sku',
         'observedAt' => 'observedAt',
         'contextId' => 'contextId',
@@ -195,6 +199,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'sku' => 'setSku',
         'observedAt' => 'setObservedAt',
         'contextId' => 'setContextId',
@@ -209,6 +214,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'sku' => 'getSku',
         'observedAt' => 'getObservedAt',
         'contextId' => 'getContextId',
@@ -274,6 +280,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('observedAt', $data ?? [], null);
         $this->setIfExists('contextId', $data ?? [], null);
@@ -309,6 +316,9 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['sku'] === null) {
             $invalidProperties[] = "'sku' can't be null";
         }
@@ -341,6 +351,33 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id The ID of the historical price.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets sku
@@ -382,7 +419,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets observedAt
      *
-     * @param \DateTime $observedAt The date and time when the best price was observed.
+     * @param \DateTime $observedAt The date and time when the price was observed.
      *
      * @return self
      */
