@@ -295,8 +295,8 @@ class CodeGeneratorSettings implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'couponPattern', the character length must be bigger than or equal to 3.";
         }
 
-        if (!preg_match("/^[A-Za-z0-9_#-]*$/", $this->container['couponPattern'])) {
-            $invalidProperties[] = "invalid value for 'couponPattern', must be conform to the pattern /^[A-Za-z0-9_#-]*$/.";
+        if (!preg_match("/^[A-Za-z0-9._%+@#-]+$/", $this->container['couponPattern'])) {
+            $invalidProperties[] = "invalid value for 'couponPattern', must be conform to the pattern /^[A-Za-z0-9._%+@#-]+$/.";
         }
 
         return $invalidProperties;
@@ -369,8 +369,8 @@ class CodeGeneratorSettings implements ModelInterface, ArrayAccess, \JsonSeriali
         if ((mb_strlen($couponPattern) < 3)) {
             throw new \InvalidArgumentException('invalid length for $couponPattern when calling CodeGeneratorSettings., must be bigger than or equal to 3.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_#-]*$/", ObjectSerializer::toString($couponPattern)))) {
-            throw new \InvalidArgumentException("invalid value for \$couponPattern when calling CodeGeneratorSettings., must conform to the pattern /^[A-Za-z0-9_#-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@#-]+$/", ObjectSerializer::toString($couponPattern)))) {
+            throw new \InvalidArgumentException("invalid value for \$couponPattern when calling CodeGeneratorSettings., must conform to the pattern /^[A-Za-z0-9._%+@#-]+$/.");
         }
 
         $this->container['couponPattern'] = $couponPattern;

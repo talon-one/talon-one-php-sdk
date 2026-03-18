@@ -59,7 +59,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'value' => 'mixed'
+        'value' => 'mixed',
+        'excludeFromBestPriorPriceHistory' => 'bool'
     ];
 
     /**
@@ -71,7 +72,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'value' => null
+        'value' => null,
+        'excludeFromBestPriorPriceHistory' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'value' => true
+        'value' => true,
+        'excludeFromBestPriorPriceHistory' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'value' => 'value'
+        'value' => 'value',
+        'excludeFromBestPriorPriceHistory' => 'excludeFromBestPriorPriceHistory'
     ];
 
     /**
@@ -181,7 +185,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $setters = [
         'name' => 'setName',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'excludeFromBestPriorPriceHistory' => 'setExcludeFromBestPriorPriceHistory'
     ];
 
     /**
@@ -191,7 +196,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $getters = [
         'name' => 'getName',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'excludeFromBestPriorPriceHistory' => 'getExcludeFromBestPriorPriceHistory'
     ];
 
     /**
@@ -253,6 +259,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('excludeFromBestPriorPriceHistory', $data ?? [], null);
     }
 
     /**
@@ -360,6 +367,33 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
             }
         }
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludeFromBestPriorPriceHistory
+     *
+     * @return bool|null
+     */
+    public function getExcludeFromBestPriorPriceHistory()
+    {
+        return $this->container['excludeFromBestPriorPriceHistory'];
+    }
+
+    /**
+     * Sets excludeFromBestPriorPriceHistory
+     *
+     * @param bool|null $excludeFromBestPriorPriceHistory excludeFromBestPriorPriceHistory
+     *
+     * @return self
+     */
+    public function setExcludeFromBestPriorPriceHistory($excludeFromBestPriorPriceHistory)
+    {
+        if (is_null($excludeFromBestPriorPriceHistory)) {
+            throw new \InvalidArgumentException('non-nullable excludeFromBestPriorPriceHistory cannot be null');
+        }
+        $this->container['excludeFromBestPriorPriceHistory'] = $excludeFromBestPriorPriceHistory;
 
         return $this;
     }

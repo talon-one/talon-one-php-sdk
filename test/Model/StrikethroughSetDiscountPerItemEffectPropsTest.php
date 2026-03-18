@@ -96,4 +96,13 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "excludeFromBestPriorPriceHistory"
+     */
+    public function testPropertyExcludeFromBestPriorPriceHistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

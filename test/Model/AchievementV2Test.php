@@ -1,6 +1,6 @@
 <?php
 /**
- * AddedDeductedPointsNotificationTest
+ * AchievementV2Test
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AddedDeductedPointsNotificationTest Class Doc Comment
+ * AchievementV2Test Class Doc Comment
  *
  * @category    Class
- * @description AddedDeductedPointsNotification
+ * @description AchievementV2
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class AddedDeductedPointsNotificationTest extends TestCase
+class AchievementV2Test extends TestCase
 {
 
     /**
@@ -71,135 +71,180 @@ class AddedDeductedPointsNotificationTest extends TestCase
     }
 
     /**
-     * Test "AddedDeductedPointsNotification"
+     * Test "AchievementV2"
      */
-    public function testAddedDeductedPointsNotification()
+    public function testAchievementV2()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "employeeName"
+     * Test attribute "id"
      */
-    public function testPropertyEmployeeName()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "loyaltyProgramID"
+     * Test attribute "created"
      */
-    public function testPropertyLoyaltyProgramID()
+    public function testPropertyCreated()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notificationType"
+     * Test attribute "name"
      */
-    public function testPropertyNotificationType()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "profileIntegrationID"
+     * Test attribute "title"
      */
-    public function testPropertyProfileIntegrationID()
+    public function testPropertyTitle()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sessionIntegrationID"
+     * Test attribute "description"
      */
-    public function testPropertySessionIntegrationID()
+    public function testPropertyDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "subledgerID"
+     * Test attribute "target"
      */
-    public function testPropertySubledgerID()
+    public function testPropertyTarget()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "typeOfChange"
+     * Test attribute "period"
      */
-    public function testPropertyTypeOfChange()
+    public function testPropertyPeriod()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "userID"
+     * Test attribute "recurrencePolicy"
      */
-    public function testPropertyUserID()
+    public function testPropertyRecurrencePolicy()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "activationPolicy"
      */
-    public function testPropertyAmount()
+    public function testPropertyActivationPolicy()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "expiryDate"
+     * Test attribute "fixedStartDate"
      */
-    public function testPropertyExpiryDate()
+    public function testPropertyFixedStartDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "operation"
+     * Test attribute "endDate"
      */
-    public function testPropertyOperation()
+    public function testPropertyEndDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "reason"
+     * Test attribute "allowRollbackAfterCompletion"
      */
-    public function testPropertyReason()
+    public function testPropertyAllowRollbackAfterCompletion()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "startDate"
+     * Test attribute "sandbox"
      */
-    public function testPropertyStartDate()
+    public function testPropertySandbox()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "transactionUUID"
+     * Test attribute "subscribedApplications"
      */
-    public function testPropertyTransactionUUID()
+    public function testPropertySubscribedApplications()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "timezone"
+     */
+    public function testPropertyTimezone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "userId"
+     */
+    public function testPropertyUserId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "createdBy"
+     */
+    public function testPropertyCreatedBy()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "hasProgress"
+     */
+    public function testPropertyHasProgress()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

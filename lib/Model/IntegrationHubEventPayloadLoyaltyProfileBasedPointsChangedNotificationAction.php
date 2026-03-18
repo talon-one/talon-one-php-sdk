@@ -61,7 +61,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => 'string',
         'operation' => 'string',
         'startDate' => '\DateTime',
-        'expiryDate' => '\DateTime'
+        'expiryDate' => '\DateTime',
+        'transactionUUID' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => null,
         'operation' => null,
         'startDate' => 'date-time',
-        'expiryDate' => 'date-time'
+        'expiryDate' => 'date-time',
+        'transactionUUID' => 'uuid'
     ];
 
     /**
@@ -89,7 +91,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => false,
         'operation' => false,
         'startDate' => false,
-        'expiryDate' => false
+        'expiryDate' => false,
+        'transactionUUID' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => 'Reason',
         'operation' => 'Operation',
         'startDate' => 'StartDate',
-        'expiryDate' => 'ExpiryDate'
+        'expiryDate' => 'ExpiryDate',
+        'transactionUUID' => 'TransactionUUID'
     ];
 
     /**
@@ -195,7 +199,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => 'setReason',
         'operation' => 'setOperation',
         'startDate' => 'setStartDate',
-        'expiryDate' => 'setExpiryDate'
+        'expiryDate' => 'setExpiryDate',
+        'transactionUUID' => 'setTransactionUUID'
     ];
 
     /**
@@ -208,7 +213,8 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         'reason' => 'getReason',
         'operation' => 'getOperation',
         'startDate' => 'getStartDate',
-        'expiryDate' => 'getExpiryDate'
+        'expiryDate' => 'getExpiryDate',
+        'transactionUUID' => 'getTransactionUUID'
     ];
 
     /**
@@ -253,7 +259,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
     }
 
     public const OPERATION_ADDITION = 'addition';
-    public const OPERATION_DEDUCTION = 'deduction';
+    public const OPERATION_SUBTRACTION = 'subtraction';
 
     /**
      * Gets allowable values of the enum
@@ -264,7 +270,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
     {
         return [
             self::OPERATION_ADDITION,
-            self::OPERATION_DEDUCTION,
+            self::OPERATION_SUBTRACTION,
         ];
     }
 
@@ -288,6 +294,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
         $this->setIfExists('operation', $data ?? [], null);
         $this->setIfExists('startDate', $data ?? [], null);
         $this->setIfExists('expiryDate', $data ?? [], null);
+        $this->setIfExists('transactionUUID', $data ?? [], null);
     }
 
     /**
@@ -332,6 +339,9 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
             );
         }
 
+        if ($this->container['transactionUUID'] === null) {
+            $invalidProperties[] = "'transactionUUID' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -488,6 +498,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActi
             throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
         }
         $this->container['expiryDate'] = $expiryDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactionUUID
+     *
+     * @return string
+     */
+    public function getTransactionUUID()
+    {
+        return $this->container['transactionUUID'];
+    }
+
+    /**
+     * Sets transactionUUID
+     *
+     * @param string $transactionUUID The identifier of the transaction in the loyalty ledger.
+     *
+     * @return self
+     */
+    public function setTransactionUUID($transactionUUID)
+    {
+        if (is_null($transactionUUID)) {
+            throw new \InvalidArgumentException('non-nullable transactionUUID cannot be null');
+        }
+        $this->container['transactionUUID'] = $transactionUUID;
 
         return $this;
     }

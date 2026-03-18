@@ -486,7 +486,7 @@ class ExpiringCardPointsData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets cardIdentifier
      *
-     * @param string $cardIdentifier The alphanumeric identifier of the loyalty card.
+     * @param string $cardIdentifier The identifier of the loyalty card, `which must match the regular expression `^[A-Za-z0-9._%+@-]+$`.
      *
      * @return self
      */

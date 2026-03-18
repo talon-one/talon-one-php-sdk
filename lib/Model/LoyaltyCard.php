@@ -402,8 +402,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'identifier', the character length must be bigger than or equal to 4.";
         }
 
-        if (!preg_match("/^[A-Za-z0-9_-]*$/", $this->container['identifier'])) {
-            $invalidProperties[] = "invalid value for 'identifier', must be conform to the pattern /^[A-Za-z0-9_-]*$/.";
+        if (!preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['identifier'])) {
+            $invalidProperties[] = "invalid value for 'identifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         if ($this->container['usersPerCardLimit'] === null) {
@@ -421,8 +421,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'oldCardIdentifier', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['oldCardIdentifier']) && !preg_match("/^[A-Za-z0-9_-]*$/", $this->container['oldCardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'oldCardIdentifier', must be conform to the pattern /^[A-Za-z0-9_-]*$/.";
+        if (!is_null($this->container['oldCardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['oldCardIdentifier'])) {
+            $invalidProperties[] = "invalid value for 'oldCardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         if (!is_null($this->container['newCardIdentifier']) && (mb_strlen($this->container['newCardIdentifier']) > 108)) {
@@ -433,8 +433,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'newCardIdentifier', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['newCardIdentifier']) && !preg_match("/^[A-Za-z0-9_-]*$/", $this->container['newCardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', must be conform to the pattern /^[A-Za-z0-9_-]*$/.";
+        if (!is_null($this->container['newCardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['newCardIdentifier'])) {
+            $invalidProperties[] = "invalid value for 'newCardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         return $invalidProperties;
@@ -654,7 +654,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param string $identifier The alphanumeric identifier of the loyalty card.
+     * @param string $identifier The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`.
      *
      * @return self
      */
@@ -669,8 +669,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         if ((mb_strlen($identifier) < 4)) {
             throw new \InvalidArgumentException('invalid length for $identifier when calling LoyaltyCard., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_-]*$/", ObjectSerializer::toString($identifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$identifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9_-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($identifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$identifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
         $this->container['identifier'] = $identifier;
@@ -846,8 +846,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         if ((mb_strlen($oldCardIdentifier) < 4)) {
             throw new \InvalidArgumentException('invalid length for $oldCardIdentifier when calling LoyaltyCard., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_-]*$/", ObjectSerializer::toString($oldCardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$oldCardIdentifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9_-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($oldCardIdentifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$oldCardIdentifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
         $this->container['oldCardIdentifier'] = $oldCardIdentifier;
@@ -883,8 +883,8 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         if ((mb_strlen($newCardIdentifier) < 4)) {
             throw new \InvalidArgumentException('invalid length for $newCardIdentifier when calling LoyaltyCard., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_-]*$/", ObjectSerializer::toString($newCardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$newCardIdentifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9_-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($newCardIdentifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$newCardIdentifier when calling LoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
         $this->container['newCardIdentifier'] = $newCardIdentifier;

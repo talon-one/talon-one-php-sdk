@@ -1,6 +1,6 @@
 <?php
 /**
- * AddedDeductedPointsNotificationTest
+ * UpdateAchievementV2Test
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AddedDeductedPointsNotificationTest Class Doc Comment
+ * UpdateAchievementV2Test Class Doc Comment
  *
  * @category    Class
- * @description AddedDeductedPointsNotification
+ * @description UpdateAchievementV2
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class AddedDeductedPointsNotificationTest extends TestCase
+class UpdateAchievementV2Test extends TestCase
 {
 
     /**
@@ -71,135 +71,126 @@ class AddedDeductedPointsNotificationTest extends TestCase
     }
 
     /**
-     * Test "AddedDeductedPointsNotification"
+     * Test "UpdateAchievementV2"
      */
-    public function testAddedDeductedPointsNotification()
+    public function testUpdateAchievementV2()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "employeeName"
+     * Test attribute "name"
      */
-    public function testPropertyEmployeeName()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "loyaltyProgramID"
+     * Test attribute "title"
      */
-    public function testPropertyLoyaltyProgramID()
+    public function testPropertyTitle()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notificationType"
+     * Test attribute "description"
      */
-    public function testPropertyNotificationType()
+    public function testPropertyDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "profileIntegrationID"
+     * Test attribute "target"
      */
-    public function testPropertyProfileIntegrationID()
+    public function testPropertyTarget()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sessionIntegrationID"
+     * Test attribute "period"
      */
-    public function testPropertySessionIntegrationID()
+    public function testPropertyPeriod()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "subledgerID"
+     * Test attribute "recurrencePolicy"
      */
-    public function testPropertySubledgerID()
+    public function testPropertyRecurrencePolicy()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "typeOfChange"
+     * Test attribute "activationPolicy"
      */
-    public function testPropertyTypeOfChange()
+    public function testPropertyActivationPolicy()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "userID"
+     * Test attribute "fixedStartDate"
      */
-    public function testPropertyUserID()
+    public function testPropertyFixedStartDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "endDate"
      */
-    public function testPropertyAmount()
+    public function testPropertyEndDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "expiryDate"
+     * Test attribute "allowRollbackAfterCompletion"
      */
-    public function testPropertyExpiryDate()
+    public function testPropertyAllowRollbackAfterCompletion()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "operation"
+     * Test attribute "sandbox"
      */
-    public function testPropertyOperation()
+    public function testPropertySandbox()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "reason"
+     * Test attribute "subscribedApplications"
      */
-    public function testPropertyReason()
+    public function testPropertySubscribedApplications()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "startDate"
+     * Test attribute "timezone"
      */
-    public function testPropertyStartDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "transactionUUID"
-     */
-    public function testPropertyTransactionUUID()
+    public function testPropertyTimezone()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

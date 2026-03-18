@@ -71,7 +71,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => '\DateTime',
         'operation' => 'string',
         'reason' => 'string',
-        'startDate' => '\DateTime'
+        'startDate' => '\DateTime',
+        'transactionUUID' => 'string'
     ];
 
     /**
@@ -96,7 +97,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => 'date-time',
         'operation' => null,
         'reason' => null,
-        'startDate' => 'date-time'
+        'startDate' => 'date-time',
+        'transactionUUID' => 'uuid'
     ];
 
     /**
@@ -119,7 +121,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => false,
         'operation' => false,
         'reason' => false,
-        'startDate' => false
+        'startDate' => false,
+        'transactionUUID' => false
     ];
 
     /**
@@ -222,7 +225,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => 'ExpiryDate',
         'operation' => 'Operation',
         'reason' => 'Reason',
-        'startDate' => 'StartDate'
+        'startDate' => 'StartDate',
+        'transactionUUID' => 'TransactionUUID'
     ];
 
     /**
@@ -245,7 +249,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => 'setExpiryDate',
         'operation' => 'setOperation',
         'reason' => 'setReason',
-        'startDate' => 'setStartDate'
+        'startDate' => 'setStartDate',
+        'transactionUUID' => 'setTransactionUUID'
     ];
 
     /**
@@ -268,7 +273,8 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         'expiryDate' => 'getExpiryDate',
         'operation' => 'getOperation',
         'reason' => 'getReason',
-        'startDate' => 'getStartDate'
+        'startDate' => 'getStartDate',
+        'transactionUUID' => 'getTransactionUUID'
     ];
 
     /**
@@ -318,7 +324,7 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
     public const TYPE_OF_CHANGE_RULE_ENGINE = 'rule_engine';
     public const TYPE_OF_CHANGE_MANAGEMENT_API = 'management_api';
     public const OPERATION_ADDITION = 'addition';
-    public const OPERATION_DEDUCTION = 'deduction';
+    public const OPERATION_SUBTRACTION = 'subtraction';
 
     /**
      * Gets allowable values of the enum
@@ -356,7 +362,7 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
     {
         return [
             self::OPERATION_ADDITION,
-            self::OPERATION_DEDUCTION,
+            self::OPERATION_SUBTRACTION,
         ];
     }
 
@@ -390,6 +396,7 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
         $this->setIfExists('operation', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('startDate', $data ?? [], null);
+        $this->setIfExists('transactionUUID', $data ?? [], null);
     }
 
     /**
@@ -488,6 +495,9 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
 
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
+        }
+        if ($this->container['transactionUUID'] === null) {
+            $invalidProperties[] = "'transactionUUID' can't be null";
         }
         return $invalidProperties;
     }
@@ -866,7 +876,7 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
     /**
      * Sets operation
      *
-     * @param string $operation The action (addition or deduction) made with loyalty points.
+     * @param string $operation The action (addition or subtraction) made with loyalty points.
      *
      * @return self
      */
@@ -940,6 +950,33 @@ class CardAddedDeductedPointsNotification implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable startDate cannot be null');
         }
         $this->container['startDate'] = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactionUUID
+     *
+     * @return string
+     */
+    public function getTransactionUUID()
+    {
+        return $this->container['transactionUUID'];
+    }
+
+    /**
+     * Sets transactionUUID
+     *
+     * @param string $transactionUUID The identifier of the transaction in the loyalty ledger.
+     *
+     * @return self
+     */
+    public function setTransactionUUID($transactionUUID)
+    {
+        if (is_null($transactionUUID)) {
+            throw new \InvalidArgumentException('non-nullable transactionUUID cannot be null');
+        }
+        $this->container['transactionUUID'] = $transactionUUID;
 
         return $this;
     }
