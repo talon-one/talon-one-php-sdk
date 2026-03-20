@@ -1,6 +1,6 @@
 <?php
 /**
- * TransferLoyaltyCard
+ * AchievementReference
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * TransferLoyaltyCard Class Doc Comment
+ * AchievementReference Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
+class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TransferLoyaltyCard';
+    protected static $openAPIModelName = 'AchievementReference';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'newCardIdentifier' => 'string',
-        'blockReason' => 'string'
+        'achievementId' => 'int',
+        'applicationId' => 'int',
+        'applicationName' => 'string',
+        'campaignId' => 'int'
     ];
 
     /**
@@ -69,8 +71,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'newCardIdentifier' => null,
-        'blockReason' => null
+        'achievementId' => 'int64',
+        'applicationId' => 'int64',
+        'applicationName' => null,
+        'campaignId' => 'int64'
     ];
 
     /**
@@ -79,8 +83,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'newCardIdentifier' => false,
-        'blockReason' => false
+        'achievementId' => false,
+        'applicationId' => false,
+        'applicationName' => false,
+        'campaignId' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'newCardIdentifier' => 'newCardIdentifier',
-        'blockReason' => 'blockReason'
+        'achievementId' => 'achievementId',
+        'applicationId' => 'applicationId',
+        'applicationName' => 'applicationName',
+        'campaignId' => 'campaignId'
     ];
 
     /**
@@ -179,8 +187,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'newCardIdentifier' => 'setNewCardIdentifier',
-        'blockReason' => 'setBlockReason'
+        'achievementId' => 'setAchievementId',
+        'applicationId' => 'setApplicationId',
+        'applicationName' => 'setApplicationName',
+        'campaignId' => 'setCampaignId'
     ];
 
     /**
@@ -189,8 +199,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'newCardIdentifier' => 'getNewCardIdentifier',
-        'blockReason' => 'getBlockReason'
+        'achievementId' => 'getAchievementId',
+        'applicationId' => 'getApplicationId',
+        'applicationName' => 'getApplicationName',
+        'campaignId' => 'getCampaignId'
     ];
 
     /**
@@ -250,8 +262,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('newCardIdentifier', $data ?? [], null);
-        $this->setIfExists('blockReason', $data ?? [], null);
+        $this->setIfExists('achievementId', $data ?? [], null);
+        $this->setIfExists('applicationId', $data ?? [], null);
+        $this->setIfExists('applicationName', $data ?? [], null);
+        $this->setIfExists('campaignId', $data ?? [], null);
     }
 
     /**
@@ -281,21 +295,18 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['newCardIdentifier'] === null) {
-            $invalidProperties[] = "'newCardIdentifier' can't be null";
+        if ($this->container['achievementId'] === null) {
+            $invalidProperties[] = "'achievementId' can't be null";
         }
-        if ((mb_strlen($this->container['newCardIdentifier']) > 108)) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', the character length must be smaller than or equal to 108.";
+        if ($this->container['applicationId'] === null) {
+            $invalidProperties[] = "'applicationId' can't be null";
         }
-
-        if ((mb_strlen($this->container['newCardIdentifier']) < 4)) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', the character length must be bigger than or equal to 4.";
+        if ($this->container['applicationName'] === null) {
+            $invalidProperties[] = "'applicationName' can't be null";
         }
-
-        if (!preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['newCardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
+        if ($this->container['campaignId'] === null) {
+            $invalidProperties[] = "'campaignId' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -312,65 +323,109 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets newCardIdentifier
+     * Gets achievementId
      *
-     * @return string
+     * @return int
      */
-    public function getNewCardIdentifier()
+    public function getAchievementId()
     {
-        return $this->container['newCardIdentifier'];
+        return $this->container['achievementId'];
     }
 
     /**
-     * Sets newCardIdentifier
+     * Sets achievementId
      *
-     * @param string $newCardIdentifier The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`.
+     * @param int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
      *
      * @return self
      */
-    public function setNewCardIdentifier($newCardIdentifier)
+    public function setAchievementId($achievementId)
     {
-        if (is_null($newCardIdentifier)) {
-            throw new \InvalidArgumentException('non-nullable newCardIdentifier cannot be null');
+        if (is_null($achievementId)) {
+            throw new \InvalidArgumentException('non-nullable achievementId cannot be null');
         }
-        if ((mb_strlen($newCardIdentifier) > 108)) {
-            throw new \InvalidArgumentException('invalid length for $newCardIdentifier when calling TransferLoyaltyCard., must be smaller than or equal to 108.');
-        }
-        if ((mb_strlen($newCardIdentifier) < 4)) {
-            throw new \InvalidArgumentException('invalid length for $newCardIdentifier when calling TransferLoyaltyCard., must be bigger than or equal to 4.');
-        }
-        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($newCardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$newCardIdentifier when calling TransferLoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
-        }
-
-        $this->container['newCardIdentifier'] = $newCardIdentifier;
+        $this->container['achievementId'] = $achievementId;
 
         return $this;
     }
 
     /**
-     * Gets blockReason
+     * Gets applicationId
      *
-     * @return string|null
+     * @return int
      */
-    public function getBlockReason()
+    public function getApplicationId()
     {
-        return $this->container['blockReason'];
+        return $this->container['applicationId'];
     }
 
     /**
-     * Sets blockReason
+     * Sets applicationId
      *
-     * @param string|null $blockReason Reason for transferring and blocking the loyalty card.
+     * @param int $applicationId The ID of the Application associated with the campaign that references this achievement.
      *
      * @return self
      */
-    public function setBlockReason($blockReason)
+    public function setApplicationId($applicationId)
     {
-        if (is_null($blockReason)) {
-            throw new \InvalidArgumentException('non-nullable blockReason cannot be null');
+        if (is_null($applicationId)) {
+            throw new \InvalidArgumentException('non-nullable applicationId cannot be null');
         }
-        $this->container['blockReason'] = $blockReason;
+        $this->container['applicationId'] = $applicationId;
+
+        return $this;
+    }
+
+    /**
+     * Gets applicationName
+     *
+     * @return string
+     */
+    public function getApplicationName()
+    {
+        return $this->container['applicationName'];
+    }
+
+    /**
+     * Sets applicationName
+     *
+     * @param string $applicationName The name of the Application associated with the campaign that references this achievement.
+     *
+     * @return self
+     */
+    public function setApplicationName($applicationName)
+    {
+        if (is_null($applicationName)) {
+            throw new \InvalidArgumentException('non-nullable applicationName cannot be null');
+        }
+        $this->container['applicationName'] = $applicationName;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignId
+     *
+     * @return int
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaignId'];
+    }
+
+    /**
+     * Sets campaignId
+     *
+     * @param int $campaignId The ID of the campaign that references this achievement.
+     *
+     * @return self
+     */
+    public function setCampaignId($campaignId)
+    {
+        if (is_null($campaignId)) {
+            throw new \InvalidArgumentException('non-nullable campaignId cannot be null');
+        }
+        $this->container['campaignId'] = $campaignId;
 
         return $this;
     }

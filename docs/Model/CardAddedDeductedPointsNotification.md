@@ -16,8 +16,9 @@ Name | Type | Description | Notes
 **usersPerCardLimit** | **int** | The max amount of user profiles with whom a card can be shared. This can be set to &#x60;0&#x60; for no limit. |
 **amount** | **float** | The amount of added or deducted loyalty points. |
 **expiryDate** | **\DateTime** | The expiration date for loyalty points. | [optional]
-**operation** | **string** | The action (addition or deduction) made with loyalty points. |
+**operation** | **string** | The action (addition or subtraction) made with loyalty points. |
 **reason** | **string** | The reason for the points addition or deduction. |
 **startDate** | **\DateTime** | The start date for loyalty points. | [optional]
+**transactionUUID** | **string** | The identifier of the transaction in the loyalty ledger. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

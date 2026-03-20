@@ -1,6 +1,6 @@
 <?php
 /**
- * TransferLoyaltyCard
+ * AchievementAdditionalPropertiesV2
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * TransferLoyaltyCard Class Doc Comment
+ * AchievementAdditionalPropertiesV2 Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
+class AchievementAdditionalPropertiesV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TransferLoyaltyCard';
+    protected static $openAPIModelName = 'AchievementAdditionalPropertiesV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'newCardIdentifier' => 'string',
-        'blockReason' => 'string'
+        'userId' => 'int',
+        'createdBy' => 'string',
+        'hasProgress' => 'bool',
+        'status' => 'string'
     ];
 
     /**
@@ -69,8 +71,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'newCardIdentifier' => null,
-        'blockReason' => null
+        'userId' => 'int64',
+        'createdBy' => null,
+        'hasProgress' => null,
+        'status' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'newCardIdentifier' => false,
-        'blockReason' => false
+        'userId' => false,
+        'createdBy' => false,
+        'hasProgress' => false,
+        'status' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'newCardIdentifier' => 'newCardIdentifier',
-        'blockReason' => 'blockReason'
+        'userId' => 'userId',
+        'createdBy' => 'createdBy',
+        'hasProgress' => 'hasProgress',
+        'status' => 'status'
     ];
 
     /**
@@ -179,8 +187,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'newCardIdentifier' => 'setNewCardIdentifier',
-        'blockReason' => 'setBlockReason'
+        'userId' => 'setUserId',
+        'createdBy' => 'setCreatedBy',
+        'hasProgress' => 'setHasProgress',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -189,8 +199,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'newCardIdentifier' => 'getNewCardIdentifier',
-        'blockReason' => 'getBlockReason'
+        'userId' => 'getUserId',
+        'createdBy' => 'getCreatedBy',
+        'hasProgress' => 'getHasProgress',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -234,6 +246,25 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const STATUS_INPROGRESS = 'inprogress';
+    public const STATUS_EXPIRED = 'expired';
+    public const STATUS_NOT_STARTED = 'not_started';
+    public const STATUS_COMPLETED = 'completed';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_INPROGRESS,
+            self::STATUS_EXPIRED,
+            self::STATUS_NOT_STARTED,
+            self::STATUS_COMPLETED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -250,8 +281,10 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('newCardIdentifier', $data ?? [], null);
-        $this->setIfExists('blockReason', $data ?? [], null);
+        $this->setIfExists('userId', $data ?? [], null);
+        $this->setIfExists('createdBy', $data ?? [], null);
+        $this->setIfExists('hasProgress', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -281,19 +314,16 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['newCardIdentifier'] === null) {
-            $invalidProperties[] = "'newCardIdentifier' can't be null";
+        if ($this->container['userId'] === null) {
+            $invalidProperties[] = "'userId' can't be null";
         }
-        if ((mb_strlen($this->container['newCardIdentifier']) > 108)) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', the character length must be smaller than or equal to 108.";
-        }
-
-        if ((mb_strlen($this->container['newCardIdentifier']) < 4)) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', the character length must be bigger than or equal to 4.";
-        }
-
-        if (!preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['newCardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'newCardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -312,65 +342,119 @@ class TransferLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets newCardIdentifier
+     * Gets userId
      *
-     * @return string
+     * @return int
      */
-    public function getNewCardIdentifier()
+    public function getUserId()
     {
-        return $this->container['newCardIdentifier'];
+        return $this->container['userId'];
     }
 
     /**
-     * Sets newCardIdentifier
+     * Sets userId
      *
-     * @param string $newCardIdentifier The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`.
+     * @param int $userId The ID of the user that created this achievement.
      *
      * @return self
      */
-    public function setNewCardIdentifier($newCardIdentifier)
+    public function setUserId($userId)
     {
-        if (is_null($newCardIdentifier)) {
-            throw new \InvalidArgumentException('non-nullable newCardIdentifier cannot be null');
+        if (is_null($userId)) {
+            throw new \InvalidArgumentException('non-nullable userId cannot be null');
         }
-        if ((mb_strlen($newCardIdentifier) > 108)) {
-            throw new \InvalidArgumentException('invalid length for $newCardIdentifier when calling TransferLoyaltyCard., must be smaller than or equal to 108.');
-        }
-        if ((mb_strlen($newCardIdentifier) < 4)) {
-            throw new \InvalidArgumentException('invalid length for $newCardIdentifier when calling TransferLoyaltyCard., must be bigger than or equal to 4.');
-        }
-        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($newCardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$newCardIdentifier when calling TransferLoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
-        }
-
-        $this->container['newCardIdentifier'] = $newCardIdentifier;
+        $this->container['userId'] = $userId;
 
         return $this;
     }
 
     /**
-     * Gets blockReason
+     * Gets createdBy
      *
      * @return string|null
      */
-    public function getBlockReason()
+    public function getCreatedBy()
     {
-        return $this->container['blockReason'];
+        return $this->container['createdBy'];
     }
 
     /**
-     * Sets blockReason
+     * Sets createdBy
      *
-     * @param string|null $blockReason Reason for transferring and blocking the loyalty card.
+     * @param string|null $createdBy Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted.
      *
      * @return self
      */
-    public function setBlockReason($blockReason)
+    public function setCreatedBy($createdBy)
     {
-        if (is_null($blockReason)) {
-            throw new \InvalidArgumentException('non-nullable blockReason cannot be null');
+        if (is_null($createdBy)) {
+            throw new \InvalidArgumentException('non-nullable createdBy cannot be null');
         }
-        $this->container['blockReason'] = $blockReason;
+        $this->container['createdBy'] = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Gets hasProgress
+     *
+     * @return bool|null
+     */
+    public function getHasProgress()
+    {
+        return $this->container['hasProgress'];
+    }
+
+    /**
+     * Sets hasProgress
+     *
+     * @param bool|null $hasProgress Indicates if a customer has made progress in the achievement.
+     *
+     * @return self
+     */
+    public function setHasProgress($hasProgress)
+    {
+        if (is_null($hasProgress)) {
+            throw new \InvalidArgumentException('non-nullable hasProgress cannot be null');
+        }
+        $this->container['hasProgress'] = $hasProgress;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The status of the achievement.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

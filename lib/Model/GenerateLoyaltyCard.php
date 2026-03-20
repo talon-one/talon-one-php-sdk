@@ -321,8 +321,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9_-]*$/", $this->container['cardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9_-]*$/.";
+        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['cardIdentifier'])) {
+            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         return $invalidProperties;
@@ -417,7 +417,7 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets cardIdentifier
      *
-     * @param string|null $cardIdentifier The alphanumeric identifier of the loyalty card.
+     * @param string|null $cardIdentifier The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`.
      *
      * @return self
      */
@@ -432,8 +432,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
         if ((mb_strlen($cardIdentifier) < 4)) {
             throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling GenerateLoyaltyCard., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_-]*$/", ObjectSerializer::toString($cardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling GenerateLoyaltyCard., must conform to the pattern /^[A-Za-z0-9_-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($cardIdentifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling GenerateLoyaltyCard., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
         $this->container['cardIdentifier'] = $cardIdentifier;

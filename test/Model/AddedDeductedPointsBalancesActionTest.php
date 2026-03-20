@@ -123,4 +123,13 @@ class AddedDeductedPointsBalancesActionTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "transactionUUID"
+     */
+    public function testPropertyTransactionUUID()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

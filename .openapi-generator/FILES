@@ -29,10 +29,14 @@ docs/Model/AccountEntity.md
 docs/Model/AccountLimits.md
 docs/Model/Achievement.md
 docs/Model/AchievementAdditionalProperties.md
+docs/Model/AchievementAdditionalPropertiesV2.md
 docs/Model/AchievementBase.md
+docs/Model/AchievementBaseV2.md
 docs/Model/AchievementProgress.md
 docs/Model/AchievementProgressWithDefinition.md
+docs/Model/AchievementReference.md
 docs/Model/AchievementStatusEntry.md
+docs/Model/AchievementV2.md
 docs/Model/ActivateLoyaltyPoints.md
 docs/Model/ActivateLoyaltyPointsResponse.md
 docs/Model/ActivateUserRequest.md
@@ -188,6 +192,7 @@ docs/Model/CouponWithApplication.md
 docs/Model/CouponsNotificationData.md
 docs/Model/CouponsNotificationPolicy.md
 docs/Model/CreateAchievement.md
+docs/Model/CreateAchievementV2.md
 docs/Model/CreateApplicationAPIKey.md
 docs/Model/CreateCouponData.md
 docs/Model/CreateCoupons200Response.md
@@ -323,6 +328,7 @@ docs/Model/Import.md
 docs/Model/ImportEntity.md
 docs/Model/IncreaseAchievementProgressEffectProps.md
 docs/Model/InfluencingCampaignDetails.md
+docs/Model/IntegrationCampaign.md
 docs/Model/IntegrationCoupon.md
 docs/Model/IntegrationCustomerProfileAudienceRequest.md
 docs/Model/IntegrationCustomerProfileAudienceRequestItem.md
@@ -635,6 +641,7 @@ docs/Model/TriggerWebhookEffectProps.md
 docs/Model/TwoFAConfig.md
 docs/Model/UpdateAccount.md
 docs/Model/UpdateAchievement.md
+docs/Model/UpdateAchievementV2.md
 docs/Model/UpdateApplication.md
 docs/Model/UpdateApplicationAPIKey.md
 docs/Model/UpdateApplicationCIF.md
@@ -704,10 +711,14 @@ lib/Model/AccountEntity.php
 lib/Model/AccountLimits.php
 lib/Model/Achievement.php
 lib/Model/AchievementAdditionalProperties.php
+lib/Model/AchievementAdditionalPropertiesV2.php
 lib/Model/AchievementBase.php
+lib/Model/AchievementBaseV2.php
 lib/Model/AchievementProgress.php
 lib/Model/AchievementProgressWithDefinition.php
+lib/Model/AchievementReference.php
 lib/Model/AchievementStatusEntry.php
+lib/Model/AchievementV2.php
 lib/Model/ActivateLoyaltyPoints.php
 lib/Model/ActivateLoyaltyPointsResponse.php
 lib/Model/ActivateUserRequest.php
@@ -863,6 +874,7 @@ lib/Model/CouponWithApplication.php
 lib/Model/CouponsNotificationData.php
 lib/Model/CouponsNotificationPolicy.php
 lib/Model/CreateAchievement.php
+lib/Model/CreateAchievementV2.php
 lib/Model/CreateApplicationAPIKey.php
 lib/Model/CreateCouponData.php
 lib/Model/CreateCoupons200Response.php
@@ -998,6 +1010,7 @@ lib/Model/Import.php
 lib/Model/ImportEntity.php
 lib/Model/IncreaseAchievementProgressEffectProps.php
 lib/Model/InfluencingCampaignDetails.php
+lib/Model/IntegrationCampaign.php
 lib/Model/IntegrationCoupon.php
 lib/Model/IntegrationCustomerProfileAudienceRequest.php
 lib/Model/IntegrationCustomerProfileAudienceRequestItem.php
@@ -1311,6 +1324,7 @@ lib/Model/TriggerWebhookEffectProps.php
 lib/Model/TwoFAConfig.php
 lib/Model/UpdateAccount.php
 lib/Model/UpdateAchievement.php
+lib/Model/UpdateAchievementV2.php
 lib/Model/UpdateApplication.php
 lib/Model/UpdateApplicationAPIKey.php
 lib/Model/UpdateApplicationCIF.php
@@ -1376,11 +1390,15 @@ test/Model/AccountEntityTest.php
 test/Model/AccountLimitsTest.php
 test/Model/AccountTest.php
 test/Model/AchievementAdditionalPropertiesTest.php
+test/Model/AchievementAdditionalPropertiesV2Test.php
 test/Model/AchievementBaseTest.php
+test/Model/AchievementBaseV2Test.php
 test/Model/AchievementProgressTest.php
 test/Model/AchievementProgressWithDefinitionTest.php
+test/Model/AchievementReferenceTest.php
 test/Model/AchievementStatusEntryTest.php
 test/Model/AchievementTest.php
+test/Model/AchievementV2Test.php
 test/Model/ActivateLoyaltyPointsResponseTest.php
 test/Model/ActivateLoyaltyPointsTest.php
 test/Model/ActivateUserRequestTest.php
@@ -1536,6 +1554,7 @@ test/Model/CouponWithApplicationTest.php
 test/Model/CouponsNotificationDataTest.php
 test/Model/CouponsNotificationPolicyTest.php
 test/Model/CreateAchievementTest.php
+test/Model/CreateAchievementV2Test.php
 test/Model/CreateApplicationAPIKeyTest.php
 test/Model/CreateCouponDataTest.php
 test/Model/CreateCoupons200ResponseTest.php
@@ -1671,6 +1690,7 @@ test/Model/ImportEntityTest.php
 test/Model/ImportTest.php
 test/Model/IncreaseAchievementProgressEffectPropsTest.php
 test/Model/InfluencingCampaignDetailsTest.php
+test/Model/IntegrationCampaignTest.php
 test/Model/IntegrationCouponTest.php
 test/Model/IntegrationCustomerProfileAudienceRequestItemTest.php
 test/Model/IntegrationCustomerProfileAudienceRequestTest.php
@@ -1983,6 +2003,7 @@ test/Model/TriggerWebhookEffectPropsTest.php
 test/Model/TwoFAConfigTest.php
 test/Model/UpdateAccountTest.php
 test/Model/UpdateAchievementTest.php
+test/Model/UpdateAchievementV2Test.php
 test/Model/UpdateApplicationAPIKeyTest.php
 test/Model/UpdateApplicationCIFTest.php
 test/Model/UpdateApplicationTest.php

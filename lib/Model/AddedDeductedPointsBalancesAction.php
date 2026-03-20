@@ -61,7 +61,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => 'string',
         'operation' => 'string',
         'startDate' => '\DateTime',
-        'expiryDate' => '\DateTime'
+        'expiryDate' => '\DateTime',
+        'transactionUUID' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => null,
         'operation' => null,
         'startDate' => 'date-time',
-        'expiryDate' => 'date-time'
+        'expiryDate' => 'date-time',
+        'transactionUUID' => 'uuid'
     ];
 
     /**
@@ -89,7 +91,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => false,
         'operation' => false,
         'startDate' => false,
-        'expiryDate' => false
+        'expiryDate' => false,
+        'transactionUUID' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => 'Reason',
         'operation' => 'Operation',
         'startDate' => 'StartDate',
-        'expiryDate' => 'ExpiryDate'
+        'expiryDate' => 'ExpiryDate',
+        'transactionUUID' => 'TransactionUUID'
     ];
 
     /**
@@ -195,7 +199,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => 'setReason',
         'operation' => 'setOperation',
         'startDate' => 'setStartDate',
-        'expiryDate' => 'setExpiryDate'
+        'expiryDate' => 'setExpiryDate',
+        'transactionUUID' => 'setTransactionUUID'
     ];
 
     /**
@@ -208,7 +213,8 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         'reason' => 'getReason',
         'operation' => 'getOperation',
         'startDate' => 'getStartDate',
-        'expiryDate' => 'getExpiryDate'
+        'expiryDate' => 'getExpiryDate',
+        'transactionUUID' => 'getTransactionUUID'
     ];
 
     /**
@@ -253,7 +259,7 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
     }
 
     public const OPERATION_ADDITION = 'addition';
-    public const OPERATION_DEDUCTION = 'deduction';
+    public const OPERATION_SUBTRACTION = 'subtraction';
 
     /**
      * Gets allowable values of the enum
@@ -264,7 +270,7 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
     {
         return [
             self::OPERATION_ADDITION,
-            self::OPERATION_DEDUCTION,
+            self::OPERATION_SUBTRACTION,
         ];
     }
 
@@ -288,6 +294,7 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
         $this->setIfExists('operation', $data ?? [], null);
         $this->setIfExists('startDate', $data ?? [], null);
         $this->setIfExists('expiryDate', $data ?? [], null);
+        $this->setIfExists('transactionUUID', $data ?? [], null);
     }
 
     /**
@@ -335,6 +342,9 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
             );
         }
 
+        if ($this->container['transactionUUID'] === null) {
+            $invalidProperties[] = "'transactionUUID' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -417,7 +427,7 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
     /**
      * Sets operation
      *
-     * @param string $operation The action (addition or deduction) made with loyalty points.
+     * @param string $operation The action (addition or subtraction) made with loyalty points.
      *
      * @return self
      */
@@ -491,6 +501,33 @@ class AddedDeductedPointsBalancesAction implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
         }
         $this->container['expiryDate'] = $expiryDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactionUUID
+     *
+     * @return string
+     */
+    public function getTransactionUUID()
+    {
+        return $this->container['transactionUUID'];
+    }
+
+    /**
+     * Sets transactionUUID
+     *
+     * @param string $transactionUUID The identifier of the transaction in the loyalty ledger.
+     *
+     * @return self
+     */
+    public function setTransactionUUID($transactionUUID)
+    {
+        if (is_null($transactionUUID)) {
+            throw new \InvalidArgumentException('non-nullable transactionUUID cannot be null');
+        }
+        $this->container['transactionUUID'] = $transactionUUID;
 
         return $this;
     }

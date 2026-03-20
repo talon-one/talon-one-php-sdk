@@ -410,8 +410,8 @@ class AddLoyaltyPointsEffectProps implements ModelInterface, ArrayAccess, \JsonS
             $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9_-]*$/", $this->container['cardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9_-]*$/.";
+        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['cardIdentifier'])) {
+            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         return $invalidProperties;
@@ -758,8 +758,8 @@ class AddLoyaltyPointsEffectProps implements ModelInterface, ArrayAccess, \JsonS
         if ((mb_strlen($cardIdentifier) < 4)) {
             throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling AddLoyaltyPointsEffectProps., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9_-]*$/", ObjectSerializer::toString($cardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling AddLoyaltyPointsEffectProps., must conform to the pattern /^[A-Za-z0-9_-]*$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($cardIdentifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling AddLoyaltyPointsEffectProps., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
         $this->container['cardIdentifier'] = $cardIdentifier;

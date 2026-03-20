@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **transactionUUID** | **string** | Unique identifier of the transaction in the UUID format. |
 **created** | **\DateTime** | Date and time the loyalty card transaction occurred. |
 **programId** | **int** | ID of the loyalty program. |
-**cardIdentifier** | **string** | The alphanumeric identifier of the loyalty card. |
+**cardIdentifier** | **string** | The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;. |
 **customerSessionId** | **string** | ID of the customer session where the transaction occurred. | [optional]
 **type** | **string** | Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. |
 **name** | **string** | Name or reason of the loyalty ledger transaction. |
