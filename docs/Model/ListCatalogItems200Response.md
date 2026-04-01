@@ -1,4 +1,4 @@
-# # ListCatalogItems200Response
+# ListCatalogItems200Response
 
 ## Properties
 

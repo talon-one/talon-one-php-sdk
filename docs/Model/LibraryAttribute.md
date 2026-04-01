@@ -1,4 +1,4 @@
-# # LibraryAttribute
+# LibraryAttribute
 
 ## Properties
 

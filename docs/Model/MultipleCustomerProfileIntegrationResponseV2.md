@@ -1,4 +1,4 @@
-# # MultipleCustomerProfileIntegrationResponseV2
+# MultipleCustomerProfileIntegrationResponseV2
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # LoyaltyProgramLedgers
+# LoyaltyProgramLedgers
 
 ## Properties
 

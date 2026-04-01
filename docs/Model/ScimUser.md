@@ -1,4 +1,4 @@
-# # ScimUser
+# ScimUser
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ExtendLoyaltyPointsExpiryDateEffectProps
+# ExtendLoyaltyPointsExpiryDateEffectProps
 
 ## Properties
 

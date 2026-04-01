@@ -1,4 +1,4 @@
-# # CatalogsStrikethroughNotificationPolicy
+# CatalogsStrikethroughNotificationPolicy
 
 ## Properties
 

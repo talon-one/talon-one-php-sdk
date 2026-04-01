@@ -1,4 +1,4 @@
-# # PendingPointsNotificationPolicy
+# PendingPointsNotificationPolicy
 
 ## Properties
 

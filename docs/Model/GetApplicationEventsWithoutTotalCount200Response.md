@@ -1,4 +1,4 @@
-# # GetApplicationEventsWithoutTotalCount200Response
+# GetApplicationEventsWithoutTotalCount200Response
 
 ## Properties
 

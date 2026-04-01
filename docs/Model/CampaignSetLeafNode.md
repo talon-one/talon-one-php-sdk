@@ -1,4 +1,4 @@
-# # CampaignSetLeafNode
+# CampaignSetLeafNode
 
 ## Properties
 

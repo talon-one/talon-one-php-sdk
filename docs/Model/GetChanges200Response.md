@@ -1,4 +1,4 @@
-# # GetChanges200Response
+# GetChanges200Response
 
 ## Properties
 

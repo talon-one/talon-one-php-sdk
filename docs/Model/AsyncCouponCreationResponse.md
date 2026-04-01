@@ -1,4 +1,4 @@
-# # AsyncCouponCreationResponse
+# AsyncCouponCreationResponse
 
 ## Properties
 

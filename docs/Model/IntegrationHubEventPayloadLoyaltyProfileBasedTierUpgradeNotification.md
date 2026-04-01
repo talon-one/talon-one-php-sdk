@@ -1,4 +1,4 @@
-# # IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification
+# IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification
 
 ## Properties
 

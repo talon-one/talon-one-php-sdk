@@ -1,4 +1,4 @@
-# # SetDiscountPerItemEffectProps
+# SetDiscountPerItemEffectProps
 
 ## Properties
 

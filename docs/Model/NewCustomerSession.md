@@ -1,4 +1,4 @@
-# # NewCustomerSession
+# NewCustomerSession
 
 ## Properties
 

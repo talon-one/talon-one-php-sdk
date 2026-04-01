@@ -1,4 +1,4 @@
-# # MessageLogEntries
+# MessageLogEntries
 
 ## Properties
 

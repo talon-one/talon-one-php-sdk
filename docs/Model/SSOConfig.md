@@ -1,4 +1,4 @@
-# # SSOConfig
+# SSOConfig
 
 ## Properties
 

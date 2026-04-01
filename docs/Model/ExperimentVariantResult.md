@@ -1,4 +1,4 @@
-# # ExperimentVariantResult
+# ExperimentVariantResult
 
 ## Properties
 
@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **variantId** | **int** | The ID of the variant. | [optional]
 **variantName** | **string** | The name of the variant. | [optional]
 **variantWeight** | **int** | The weight of the variant. | [optional]
+**isWinner** | **bool** | Calculated flag if the variant is the winner. | [optional]
 **totalRevenue** | **float** | The total, pre-discount value of all items purchased in a customer session. | [optional]
 **sessionsCount** | **float** | The number of all closed sessions. | [optional]
 **avgItemsPerSession** | **float** | The number of items from sessions divided by the number of sessions. | [optional]

@@ -1,4 +1,4 @@
-# # DeductLoyaltyPointsEffectProps
+# DeductLoyaltyPointsEffectProps
 
 ## Properties
 

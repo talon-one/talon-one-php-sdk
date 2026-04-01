@@ -1,4 +1,4 @@
-# # DeductLoyaltyPoints
+# DeductLoyaltyPoints
 
 ## Properties
 

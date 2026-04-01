@@ -1,4 +1,4 @@
-# # CampaignTemplateCollection
+# CampaignTemplateCollection
 
 ## Properties
 

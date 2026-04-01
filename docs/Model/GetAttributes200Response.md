@@ -1,4 +1,4 @@
-# # GetAttributes200Response
+# GetAttributes200Response
 
 ## Properties
 

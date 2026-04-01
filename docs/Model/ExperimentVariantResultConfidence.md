@@ -1,4 +1,4 @@
-# # ExperimentVariantResultConfidence
+# ExperimentVariantResultConfidence
 
 ## Properties
 

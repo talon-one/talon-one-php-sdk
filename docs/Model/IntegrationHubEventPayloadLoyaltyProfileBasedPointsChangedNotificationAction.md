@@ -1,4 +1,4 @@
-# # IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction
+# IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AchievementAdditionalPropertiesV2
+# AchievementAdditionalPropertiesV2
 
 ## Properties
 

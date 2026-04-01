@@ -1,4 +1,4 @@
-# # CreateCoupons200Response
+# CreateCoupons200Response
 
 ## Properties
 

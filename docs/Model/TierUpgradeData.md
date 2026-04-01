@@ -1,4 +1,4 @@
-# # TierUpgradeData
+# TierUpgradeData
 
 ## Properties
 

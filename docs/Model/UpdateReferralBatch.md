@@ -1,4 +1,4 @@
-# # UpdateReferralBatch
+# UpdateReferralBatch
 
 ## Properties
 

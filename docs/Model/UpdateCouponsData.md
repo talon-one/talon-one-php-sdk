@@ -1,4 +1,4 @@
-# # UpdateCouponsData
+# UpdateCouponsData
 
 ## Properties
 

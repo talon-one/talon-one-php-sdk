@@ -1,4 +1,4 @@
-# # UpdateCustomEffect
+# UpdateCustomEffect
 
 ## Properties
 

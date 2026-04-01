@@ -1,4 +1,4 @@
-# # OutgoingIntegrationConfiguration
+# OutgoingIntegrationConfiguration
 
 ## Properties
 

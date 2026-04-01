@@ -1,4 +1,4 @@
-# # CouponsNotificationPolicy
+# CouponsNotificationPolicy
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateReferralsForMultipleAdvocates201Response
+# CreateReferralsForMultipleAdvocates201Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ProductUnitAnalyticsTotals
+# ProductUnitAnalyticsTotals
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationHubEventPayloadLoyaltyProfileBasedNotification
+# IntegrationHubEventPayloadLoyaltyProfileBasedNotification
 
 ## Properties
 

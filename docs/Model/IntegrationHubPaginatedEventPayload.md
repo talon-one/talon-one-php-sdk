@@ -1,4 +1,4 @@
-# # IntegrationHubPaginatedEventPayload
+# IntegrationHubPaginatedEventPayload
 
 ## Properties
 

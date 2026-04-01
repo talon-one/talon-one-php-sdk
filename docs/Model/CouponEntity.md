@@ -1,4 +1,4 @@
-# # CouponEntity
+# CouponEntity
 
 ## Properties
 

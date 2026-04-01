@@ -1,4 +1,4 @@
-# # TierWillDowngradeNotification
+# TierWillDowngradeNotification
 
 ## Properties
 

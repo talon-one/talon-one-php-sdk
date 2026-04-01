@@ -1,4 +1,4 @@
-# # AchievementStatusEntry
+# AchievementStatusEntry
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CampaignStoreBudgetLimitConfig
+# CampaignStoreBudgetLimitConfig
 
 ## Properties
 

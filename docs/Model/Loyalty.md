@@ -1,4 +1,4 @@
-# # Loyalty
+# Loyalty
 
 ## Properties
 

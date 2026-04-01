@@ -1,4 +1,4 @@
-# # NewCouponsForMultipleRecipients
+# NewCouponsForMultipleRecipients
 
 ## Properties
 

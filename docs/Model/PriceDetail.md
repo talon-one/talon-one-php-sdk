@@ -1,4 +1,4 @@
-# # PriceDetail
+# PriceDetail
 
 ## Properties
 

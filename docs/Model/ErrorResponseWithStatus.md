@@ -1,4 +1,4 @@
-# # ErrorResponseWithStatus
+# ErrorResponseWithStatus
 
 ## Properties
 

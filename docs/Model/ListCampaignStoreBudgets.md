@@ -1,4 +1,4 @@
-# # ListCampaignStoreBudgets
+# ListCampaignStoreBudgets
 
 ## Properties
 

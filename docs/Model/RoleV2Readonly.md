@@ -1,4 +1,4 @@
-# # RoleV2Readonly
+# RoleV2Readonly
 
 ## Properties
 

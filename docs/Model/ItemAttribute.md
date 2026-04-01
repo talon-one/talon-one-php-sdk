@@ -1,4 +1,4 @@
-# # ItemAttribute
+# ItemAttribute
 
 ## Properties
 

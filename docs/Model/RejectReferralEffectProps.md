@@ -1,4 +1,4 @@
-# # RejectReferralEffectProps
+# RejectReferralEffectProps
 
 ## Properties
 

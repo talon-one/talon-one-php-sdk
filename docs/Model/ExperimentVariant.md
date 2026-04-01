@@ -1,4 +1,4 @@
-# # ExperimentVariant
+# ExperimentVariant
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationProfileEntityV3
+# IntegrationProfileEntityV3
 
 ## Properties
 

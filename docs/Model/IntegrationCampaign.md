@@ -1,4 +1,4 @@
-# # IntegrationCampaign
+# IntegrationCampaign
 
 ## Properties
 

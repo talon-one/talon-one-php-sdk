@@ -1,4 +1,4 @@
-# # ValueMap
+# ValueMap
 
 ## Properties
 

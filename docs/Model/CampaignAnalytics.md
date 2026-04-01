@@ -1,4 +1,4 @@
-# # CampaignAnalytics
+# CampaignAnalytics
 
 ## Properties
 

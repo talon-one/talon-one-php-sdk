@@ -1,4 +1,4 @@
-# # CampaignDetail
+# CampaignDetail
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ChangeProfilePassword
+# ChangeProfilePassword
 
 ## Properties
 

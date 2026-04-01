@@ -1,4 +1,4 @@
-# # GetIntegrationCouponRequest
+# GetIntegrationCouponRequest
 
 ## Properties
 

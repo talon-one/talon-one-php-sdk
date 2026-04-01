@@ -1,4 +1,4 @@
-# # LoyaltyCardBatchResponse
+# LoyaltyCardBatchResponse
 
 ## Properties
 

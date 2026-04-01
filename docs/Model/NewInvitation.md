@@ -1,4 +1,4 @@
-# # NewInvitation
+# NewInvitation
 
 ## Properties
 

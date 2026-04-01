@@ -1,4 +1,4 @@
-# # BestPriorTarget
+# BestPriorTarget
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetAudienceMemberships200Response
+# GetAudienceMemberships200Response
 
 ## Properties
 

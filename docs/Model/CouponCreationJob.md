@@ -1,4 +1,4 @@
-# # CouponCreationJob
+# CouponCreationJob
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # BestPriorPrice
+# BestPriorPrice
 
 ## Properties
 

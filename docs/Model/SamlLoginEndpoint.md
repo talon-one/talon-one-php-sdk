@@ -1,4 +1,4 @@
-# # SamlLoginEndpoint
+# SamlLoginEndpoint
 
 ## Properties
 

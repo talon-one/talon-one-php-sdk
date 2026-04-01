@@ -1,4 +1,4 @@
-# # IntegrationCustomerProfileAudienceRequestItem
+# IntegrationCustomerProfileAudienceRequestItem
 
 ## Properties
 

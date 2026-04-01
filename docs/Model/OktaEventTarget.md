@@ -1,4 +1,4 @@
-# # OktaEventTarget
+# OktaEventTarget
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ExperimentCampaignCopy
+# ExperimentCampaignCopy
 
 ## Properties
 

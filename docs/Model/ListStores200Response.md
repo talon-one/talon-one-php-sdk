@@ -1,4 +1,4 @@
-# # ListStores200Response
+# ListStores200Response
 
 ## Properties
 

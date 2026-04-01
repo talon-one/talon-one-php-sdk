@@ -1,4 +1,4 @@
-# # GetApplicationCustomersByAttributes200Response
+# GetApplicationCustomersByAttributes200Response
 
 ## Properties
 

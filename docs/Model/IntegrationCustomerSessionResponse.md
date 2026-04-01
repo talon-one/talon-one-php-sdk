@@ -1,4 +1,4 @@
-# # IntegrationCustomerSessionResponse
+# IntegrationCustomerSessionResponse
 
 ## Properties
 

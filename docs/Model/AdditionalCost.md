@@ -1,4 +1,4 @@
-# # AdditionalCost
+# AdditionalCost
 
 ## Properties
 

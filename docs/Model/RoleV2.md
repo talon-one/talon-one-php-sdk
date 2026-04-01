@@ -1,4 +1,4 @@
-# # RoleV2
+# RoleV2
 
 ## Properties
 

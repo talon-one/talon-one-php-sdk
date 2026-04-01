@@ -1,4 +1,4 @@
-# # AcceptReferralEffectProps
+# AcceptReferralEffectProps
 
 ## Properties
 

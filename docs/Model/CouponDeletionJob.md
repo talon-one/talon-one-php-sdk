@@ -1,4 +1,4 @@
-# # CouponDeletionJob
+# CouponDeletionJob
 
 ## Properties
 

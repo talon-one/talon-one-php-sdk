@@ -1,4 +1,4 @@
-# # NewCatalog
+# NewCatalog
 
 ## Properties
 

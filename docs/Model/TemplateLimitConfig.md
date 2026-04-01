@@ -1,4 +1,4 @@
-# # TemplateLimitConfig
+# TemplateLimitConfig
 
 ## Properties
 

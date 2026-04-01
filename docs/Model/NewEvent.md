@@ -1,4 +1,4 @@
-# # NewEvent
+# NewEvent
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ExperimentVariantAllocation
+# ExperimentVariantAllocation
 
 ## Properties
 

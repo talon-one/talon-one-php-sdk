@@ -1,4 +1,4 @@
-# # PriceHistoryResponse
+# PriceHistoryResponse
 
 ## Properties
 

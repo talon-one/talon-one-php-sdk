@@ -1,4 +1,4 @@
-# # LoyaltyCard
+# LoyaltyCard
 
 ## Properties
 

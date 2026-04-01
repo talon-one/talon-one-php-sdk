@@ -1,4 +1,4 @@
-# # ExpiringCouponsNotificationPolicy
+# ExpiringCouponsNotificationPolicy
 
 ## Properties
 

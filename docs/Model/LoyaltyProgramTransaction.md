@@ -1,4 +1,4 @@
-# # LoyaltyProgramTransaction
+# LoyaltyProgramTransaction
 
 ## Properties
 

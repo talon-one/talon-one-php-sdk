@@ -1,4 +1,4 @@
-# # GetCampaignTemplates200Response
+# GetCampaignTemplates200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationHubConfig
+# IntegrationHubConfig
 
 ## Properties
 

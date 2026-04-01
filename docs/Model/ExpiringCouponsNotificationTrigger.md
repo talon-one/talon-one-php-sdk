@@ -1,4 +1,4 @@
-# # ExpiringCouponsNotificationTrigger
+# ExpiringCouponsNotificationTrigger
 
 ## Properties
 

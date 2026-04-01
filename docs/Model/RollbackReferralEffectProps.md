@@ -1,4 +1,4 @@
-# # RollbackReferralEffectProps
+# RollbackReferralEffectProps
 
 ## Properties
 

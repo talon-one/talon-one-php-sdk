@@ -1,4 +1,4 @@
-# # CampaignEditedNotificationItem
+# CampaignEditedNotificationItem
 
 ## Properties
 

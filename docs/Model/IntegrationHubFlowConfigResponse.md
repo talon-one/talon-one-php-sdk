@@ -1,4 +1,4 @@
-# # IntegrationHubFlowConfigResponse
+# IntegrationHubFlowConfigResponse
 
 ## Properties
 

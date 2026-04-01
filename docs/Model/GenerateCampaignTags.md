@@ -1,4 +1,4 @@
-# # GenerateCampaignTags
+# GenerateCampaignTags
 
 ## Properties
 

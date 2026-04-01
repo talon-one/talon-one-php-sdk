@@ -1,4 +1,4 @@
-# # AudienceMembership
+# AudienceMembership
 
 ## Properties
 

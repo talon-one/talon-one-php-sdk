@@ -1,4 +1,4 @@
-# # TierDowngradeData
+# TierDowngradeData
 
 ## Properties
 

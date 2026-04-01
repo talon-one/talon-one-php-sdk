@@ -1,4 +1,4 @@
-# # UpdateApplication
+# UpdateApplication
 
 ## Properties
 

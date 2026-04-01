@@ -1,4 +1,4 @@
-# # ReferralConstraints
+# ReferralConstraints
 
 ## Properties
 

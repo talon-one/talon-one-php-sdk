@@ -1,4 +1,4 @@
-# # GetAccessLogsWithoutTotalCount200Response
+# GetAccessLogsWithoutTotalCount200Response
 
 ## Properties
 

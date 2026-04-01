@@ -1,4 +1,4 @@
-# # GetApplicationCustomers200Response
+# GetApplicationCustomers200Response
 
 ## Properties
 

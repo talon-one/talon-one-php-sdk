@@ -1,4 +1,4 @@
-# # WebhookAuthenticationDataCustom
+# WebhookAuthenticationDataCustom
 
 ## Properties
 

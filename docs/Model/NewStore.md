@@ -1,4 +1,4 @@
-# # NewStore
+# NewStore
 
 ## Properties
 

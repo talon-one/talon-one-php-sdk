@@ -1,4 +1,4 @@
-# # CampaignSearch
+# CampaignSearch
 
 ## Properties
 

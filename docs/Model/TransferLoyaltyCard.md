@@ -1,4 +1,4 @@
-# # TransferLoyaltyCard
+# TransferLoyaltyCard
 
 ## Properties
 

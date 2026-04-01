@@ -1,4 +1,4 @@
-# # ShowBundleMetadataEffectProps
+# ShowBundleMetadataEffectProps
 
 ## Properties
 

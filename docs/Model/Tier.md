@@ -1,4 +1,4 @@
-# # Tier
+# Tier
 
 ## Properties
 

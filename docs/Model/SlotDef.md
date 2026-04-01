@@ -1,4 +1,4 @@
-# # SlotDef
+# SlotDef
 
 ## Properties
 

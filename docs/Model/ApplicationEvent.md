@@ -1,4 +1,4 @@
-# # ApplicationEvent
+# ApplicationEvent
 
 ## Properties
 

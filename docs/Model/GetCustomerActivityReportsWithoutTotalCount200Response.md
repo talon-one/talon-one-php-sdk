@@ -1,4 +1,4 @@
-# # GetCustomerActivityReportsWithoutTotalCount200Response
+# GetCustomerActivityReportsWithoutTotalCount200Response
 
 ## Properties
 

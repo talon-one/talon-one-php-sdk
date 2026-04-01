@@ -1,4 +1,4 @@
-# # GetCampaignAnalytics200Response
+# GetCampaignAnalytics200Response
 
 ## Properties
 

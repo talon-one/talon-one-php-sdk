@@ -1,4 +1,4 @@
-# # StrikethroughTrigger
+# StrikethroughTrigger
 
 ## Properties
 

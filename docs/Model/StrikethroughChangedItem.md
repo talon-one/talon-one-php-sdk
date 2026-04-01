@@ -1,4 +1,4 @@
-# # StrikethroughChangedItem
+# StrikethroughChangedItem
 
 ## Properties
 

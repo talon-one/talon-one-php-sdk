@@ -1,4 +1,4 @@
-# # NewBaseNotification
+# NewBaseNotification
 
 ## Properties
 

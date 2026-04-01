@@ -1,4 +1,4 @@
-# # BulkOperationOnCampaigns
+# BulkOperationOnCampaigns
 
 ## Properties
 

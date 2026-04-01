@@ -1,4 +1,4 @@
-# # InfluencingCampaignDetails
+# InfluencingCampaignDetails
 
 ## Properties
 

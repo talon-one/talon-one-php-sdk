@@ -1,4 +1,4 @@
-# # IntegrationEventV2Request
+# IntegrationEventV2Request
 
 ## Properties
 

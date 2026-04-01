@@ -1,4 +1,4 @@
-# # CouponDeletionFilters
+# CouponDeletionFilters
 
 ## Properties
 

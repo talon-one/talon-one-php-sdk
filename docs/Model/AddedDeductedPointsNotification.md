@@ -1,4 +1,4 @@
-# # AddedDeductedPointsNotification
+# AddedDeductedPointsNotification
 
 ## Properties
 

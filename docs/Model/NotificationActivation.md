@@ -1,4 +1,4 @@
-# # NotificationActivation
+# NotificationActivation
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # Catalog
+# Catalog
 
 ## Properties
 

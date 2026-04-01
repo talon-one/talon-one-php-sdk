@@ -1,4 +1,4 @@
-# # RoleV2ApplicationDetails
+# RoleV2ApplicationDetails
 
 ## Properties
 
@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **campaign** | **string** | Name of the campaign-related permission set for the given Application. | [optional]
 **draftCampaign** | **string** | Name of the draft campaign-related permission set for the given Application. | [optional]
 **tools** | **string** | Name of the tools-related permission set. | [optional]
+**thresholds** | [**\TalonOne\Client\Model\RolesV2Thresholds**](RolesV2Thresholds.md) | Support user limits for actions that require admin approval within the given application. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

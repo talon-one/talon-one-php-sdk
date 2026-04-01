@@ -1,4 +1,4 @@
-# # RemoveFromAudienceEffectProps
+# RemoveFromAudienceEffectProps
 
 ## Properties
 

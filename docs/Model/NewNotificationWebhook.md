@@ -1,4 +1,4 @@
-# # NewNotificationWebhook
+# NewNotificationWebhook
 
 ## Properties
 

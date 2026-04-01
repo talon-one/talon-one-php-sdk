@@ -1,4 +1,4 @@
-# # AddItemCatalogAction
+# AddItemCatalogAction
 
 ## Properties
 

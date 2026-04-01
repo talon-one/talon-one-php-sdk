@@ -1,4 +1,4 @@
-# # NewReturn
+# NewReturn
 
 ## Properties
 

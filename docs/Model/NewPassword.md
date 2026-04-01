@@ -1,4 +1,4 @@
-# # NewPassword
+# NewPassword
 
 ## Properties
 

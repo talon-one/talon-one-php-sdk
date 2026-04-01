@@ -1,4 +1,4 @@
-# # GetReservedCustomers200Response
+# GetReservedCustomers200Response
 
 ## Properties
 

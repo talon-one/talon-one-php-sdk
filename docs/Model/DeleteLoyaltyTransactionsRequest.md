@@ -1,4 +1,4 @@
-# # DeleteLoyaltyTransactionsRequest
+# DeleteLoyaltyTransactionsRequest
 
 ## Properties
 

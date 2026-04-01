@@ -1,4 +1,4 @@
-# # StrikethroughCustomEffectPerItemProps
+# StrikethroughCustomEffectPerItemProps
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AccountEntity
+# AccountEntity
 
 ## Properties
 

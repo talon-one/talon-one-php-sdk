@@ -1,4 +1,4 @@
-# # LoyaltyLedgerEntry
+# LoyaltyLedgerEntry
 
 ## Properties
 

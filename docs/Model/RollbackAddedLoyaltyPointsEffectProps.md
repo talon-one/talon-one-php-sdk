@@ -1,4 +1,4 @@
-# # RollbackAddedLoyaltyPointsEffectProps
+# RollbackAddedLoyaltyPointsEffectProps
 
 ## Properties
 

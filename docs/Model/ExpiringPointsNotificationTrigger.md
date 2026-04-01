@@ -1,4 +1,4 @@
-# # ExpiringPointsNotificationTrigger
+# ExpiringPointsNotificationTrigger
 
 ## Properties
 

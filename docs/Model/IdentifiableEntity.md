@@ -1,4 +1,4 @@
-# # IdentifiableEntity
+# IdentifiableEntity
 
 ## Properties
 

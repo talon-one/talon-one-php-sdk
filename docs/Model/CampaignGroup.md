@@ -1,4 +1,4 @@
-# # CampaignGroup
+# CampaignGroup
 
 ## Properties
 

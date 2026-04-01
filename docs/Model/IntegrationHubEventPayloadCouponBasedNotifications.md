@@ -1,4 +1,4 @@
-# # IntegrationHubEventPayloadCouponBasedNotifications
+# IntegrationHubEventPayloadCouponBasedNotifications
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # RemoveManyItemsCatalogAction
+# RemoveManyItemsCatalogAction
 
 ## Properties
 

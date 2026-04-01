@@ -1,4 +1,4 @@
-# # AccountDashboardStatisticLoyaltyPoints
+# AccountDashboardStatisticLoyaltyPoints
 
 ## Properties
 

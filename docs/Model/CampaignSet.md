@@ -1,4 +1,4 @@
-# # CampaignSet
+# CampaignSet
 
 ## Properties
 

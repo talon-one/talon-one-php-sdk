@@ -1,4 +1,4 @@
-# # PriceHistoryRequest
+# PriceHistoryRequest
 
 ## Properties
 

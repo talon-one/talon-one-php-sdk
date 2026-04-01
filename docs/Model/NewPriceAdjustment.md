@@ -1,4 +1,4 @@
-# # NewPriceAdjustment
+# NewPriceAdjustment
 
 ## Properties
 

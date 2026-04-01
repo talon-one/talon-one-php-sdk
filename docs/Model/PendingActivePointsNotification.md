@@ -1,4 +1,4 @@
-# # PendingActivePointsNotification
+# PendingActivePointsNotification
 
 ## Properties
 

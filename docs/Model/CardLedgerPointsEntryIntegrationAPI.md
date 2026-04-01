@@ -1,4 +1,4 @@
-# # CardLedgerPointsEntryIntegrationAPI
+# CardLedgerPointsEntryIntegrationAPI
 
 ## Properties
 

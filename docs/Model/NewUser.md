@@ -1,4 +1,4 @@
-# # NewUser
+# NewUser
 
 ## Properties
 

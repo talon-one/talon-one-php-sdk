@@ -1,4 +1,4 @@
-# # ExpiringPointsNotificationPolicy
+# ExpiringPointsNotificationPolicy
 
 ## Properties
 

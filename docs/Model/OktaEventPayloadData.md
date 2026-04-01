@@ -1,4 +1,4 @@
-# # OktaEventPayloadData
+# OktaEventPayloadData
 
 ## Properties
 

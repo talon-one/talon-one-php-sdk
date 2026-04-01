@@ -1,4 +1,4 @@
-# # GetLoyaltyCards200Response
+# GetLoyaltyCards200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # TalangAttribute
+# TalangAttribute
 
 ## Properties
 

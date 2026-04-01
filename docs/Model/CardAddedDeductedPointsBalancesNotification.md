@@ -1,4 +1,4 @@
-# # CardAddedDeductedPointsBalancesNotification
+# CardAddedDeductedPointsBalancesNotification
 
 ## Properties
 

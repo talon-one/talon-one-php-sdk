@@ -1,4 +1,4 @@
-# # ListCampaignStoreBudgetLimits200Response
+# ListCampaignStoreBudgetLimits200Response
 
 ## Properties
 

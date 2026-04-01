@@ -1,4 +1,4 @@
-# # AccountDashboardStatisticCampaigns
+# AccountDashboardStatisticCampaigns
 
 ## Properties
 

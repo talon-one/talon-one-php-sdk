@@ -1,4 +1,4 @@
-# # MultipleAudiencesItem
+# MultipleAudiencesItem
 
 ## Properties
 

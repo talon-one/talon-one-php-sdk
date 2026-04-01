@@ -1,4 +1,4 @@
-# # RoleV2Base
+# RoleV2Base
 
 ## Properties
 

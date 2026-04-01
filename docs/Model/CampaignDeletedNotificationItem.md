@@ -1,4 +1,4 @@
-# # CampaignDeletedNotificationItem
+# CampaignDeletedNotificationItem
 
 ## Properties
 

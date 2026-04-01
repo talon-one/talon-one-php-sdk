@@ -1,4 +1,4 @@
-# # ApplicationCampaignAnalytics
+# ApplicationCampaignAnalytics
 
 ## Properties
 

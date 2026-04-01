@@ -1,4 +1,4 @@
-# # CampaignTemplateParams
+# CampaignTemplateParams
 
 ## Properties
 

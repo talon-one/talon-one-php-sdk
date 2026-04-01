@@ -1,4 +1,4 @@
-# # ScimGroup
+# ScimGroup
 
 ## Properties
 

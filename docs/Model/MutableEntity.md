@@ -1,4 +1,4 @@
-# # MutableEntity
+# MutableEntity
 
 ## Properties
 

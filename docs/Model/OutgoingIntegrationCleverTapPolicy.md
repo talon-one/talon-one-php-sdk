@@ -1,4 +1,4 @@
-# # OutgoingIntegrationCleverTapPolicy
+# OutgoingIntegrationCleverTapPolicy
 
 ## Properties
 

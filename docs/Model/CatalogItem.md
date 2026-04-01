@@ -1,4 +1,4 @@
-# # CatalogItem
+# CatalogItem
 
 ## Properties
 

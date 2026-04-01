@@ -1,4 +1,4 @@
-# # SamlConnectionInternal
+# SamlConnectionInternal
 
 ## Properties
 

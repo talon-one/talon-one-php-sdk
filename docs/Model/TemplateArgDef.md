@@ -1,4 +1,4 @@
-# # TemplateArgDef
+# TemplateArgDef
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ScimPatchOperation
+# ScimPatchOperation
 
 ## Properties
 

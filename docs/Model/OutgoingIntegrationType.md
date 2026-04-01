@@ -1,4 +1,4 @@
-# # OutgoingIntegrationType
+# OutgoingIntegrationType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # BestPriorPriceRequest
+# BestPriorPriceRequest
 
 ## Properties
 

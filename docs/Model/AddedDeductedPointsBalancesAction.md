@@ -1,4 +1,4 @@
-# # AddedDeductedPointsBalancesAction
+# AddedDeductedPointsBalancesAction
 
 ## Properties
 

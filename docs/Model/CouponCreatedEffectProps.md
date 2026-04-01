@@ -1,4 +1,4 @@
-# # CouponCreatedEffectProps
+# CouponCreatedEffectProps
 
 ## Properties
 

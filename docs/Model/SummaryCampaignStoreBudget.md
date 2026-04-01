@@ -1,4 +1,4 @@
-# # SummaryCampaignStoreBudget
+# SummaryCampaignStoreBudget
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CouponSearch
+# CouponSearch
 
 ## Properties
 

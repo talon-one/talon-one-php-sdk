@@ -1,4 +1,4 @@
-# # AdditionalCampaignProperties
+# AdditionalCampaignProperties
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateTemplateCampaignResponse
+# CreateTemplateCampaignResponse
 
 ## Properties
 

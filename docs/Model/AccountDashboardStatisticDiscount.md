@@ -1,4 +1,4 @@
-# # AccountDashboardStatisticDiscount
+# AccountDashboardStatisticDiscount
 
 ## Properties
 

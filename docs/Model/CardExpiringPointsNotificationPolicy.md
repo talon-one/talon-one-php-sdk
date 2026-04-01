@@ -1,4 +1,4 @@
-# # CardExpiringPointsNotificationPolicy
+# CardExpiringPointsNotificationPolicy
 
 ## Properties
 

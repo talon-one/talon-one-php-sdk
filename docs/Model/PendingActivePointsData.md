@@ -1,4 +1,4 @@
-# # PendingActivePointsData
+# PendingActivePointsData
 
 ## Properties
 

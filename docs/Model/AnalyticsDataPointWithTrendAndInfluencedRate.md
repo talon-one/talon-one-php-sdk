@@ -1,4 +1,4 @@
-# # AnalyticsDataPointWithTrendAndInfluencedRate
+# AnalyticsDataPointWithTrendAndInfluencedRate
 
 ## Properties
 

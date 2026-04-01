@@ -1,4 +1,4 @@
-# # IntegrationCoupon
+# IntegrationCoupon
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ApplicationReferee
+# ApplicationReferee
 
 ## Properties
 

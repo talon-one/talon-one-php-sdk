@@ -1,4 +1,4 @@
-# # ReferralRejectionReason
+# ReferralRejectionReason
 
 ## Properties
 

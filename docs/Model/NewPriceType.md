@@ -1,4 +1,4 @@
-# # NewPriceType
+# NewPriceType
 
 ## Properties
 

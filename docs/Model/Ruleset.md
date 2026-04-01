@@ -1,4 +1,4 @@
-# # Ruleset
+# Ruleset
 
 ## Properties
 

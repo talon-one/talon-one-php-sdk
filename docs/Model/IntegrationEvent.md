@@ -1,4 +1,4 @@
-# # IntegrationEvent
+# IntegrationEvent
 
 ## Properties
 

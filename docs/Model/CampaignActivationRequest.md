@@ -1,4 +1,4 @@
-# # CampaignActivationRequest
+# CampaignActivationRequest
 
 ## Properties
 

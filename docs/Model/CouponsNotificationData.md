@@ -1,4 +1,4 @@
-# # CouponsNotificationData
+# CouponsNotificationData
 
 ## Properties
 

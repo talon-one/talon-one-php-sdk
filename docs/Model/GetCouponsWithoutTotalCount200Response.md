@@ -1,4 +1,4 @@
-# # GetCouponsWithoutTotalCount200Response
+# GetCouponsWithoutTotalCount200Response
 
 ## Properties
 

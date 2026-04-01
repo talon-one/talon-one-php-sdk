@@ -1,4 +1,4 @@
-# # HiddenConditionsEffects
+# HiddenConditionsEffects
 
 ## Properties
 

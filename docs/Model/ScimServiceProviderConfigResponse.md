@@ -1,4 +1,4 @@
-# # ScimServiceProviderConfigResponse
+# ScimServiceProviderConfigResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # UpdateCatalog
+# UpdateCatalog
 
 ## Properties
 

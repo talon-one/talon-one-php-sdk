@@ -1,4 +1,4 @@
-# # FuncArgDef
+# FuncArgDef
 
 ## Properties
 

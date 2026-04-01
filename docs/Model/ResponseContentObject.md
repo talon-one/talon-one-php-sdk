@@ -1,4 +1,4 @@
-# # ResponseContentObject
+# ResponseContentObject
 
 ## Properties
 

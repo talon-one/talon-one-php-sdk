@@ -1,4 +1,4 @@
-# # GenerateLoyaltyCard
+# GenerateLoyaltyCard
 
 ## Properties
 

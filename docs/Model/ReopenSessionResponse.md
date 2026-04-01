@@ -1,4 +1,4 @@
-# # ReopenSessionResponse
+# ReopenSessionResponse
 
 ## Properties
 

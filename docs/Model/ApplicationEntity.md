@@ -1,4 +1,4 @@
-# # ApplicationEntity
+# ApplicationEntity
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # LoyaltyLedgerEntryFlags
+# LoyaltyLedgerEntryFlags
 
 ## Properties
 

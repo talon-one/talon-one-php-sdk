@@ -1,4 +1,4 @@
-# # CollectionItem
+# CollectionItem
 
 ## Properties
 

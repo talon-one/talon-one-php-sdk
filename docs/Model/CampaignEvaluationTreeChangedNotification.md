@@ -1,4 +1,4 @@
-# # CampaignEvaluationTreeChangedNotification
+# CampaignEvaluationTreeChangedNotification
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AnalyticsDataPointWithTrend
+# AnalyticsDataPointWithTrend
 
 ## Properties
 

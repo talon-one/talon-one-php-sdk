@@ -1,4 +1,4 @@
-# # CollectionWithoutPayload
+# CollectionWithoutPayload
 
 ## Properties
 
