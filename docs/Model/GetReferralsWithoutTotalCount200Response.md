@@ -1,4 +1,4 @@
-# # GetReferralsWithoutTotalCount200Response
+# GetReferralsWithoutTotalCount200Response
 
 ## Properties
 

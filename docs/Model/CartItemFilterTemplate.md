@@ -1,4 +1,4 @@
-# # CartItemFilterTemplate
+# CartItemFilterTemplate
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AddedDeductedPointsBalancesNotification
+# AddedDeductedPointsBalancesNotification
 
 ## Properties
 

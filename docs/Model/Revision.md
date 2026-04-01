@@ -1,4 +1,4 @@
-# # Revision
+# Revision
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetLoyaltyProgramProfileTransactions200Response
+# GetLoyaltyProgramProfileTransactions200Response
 
 ## Properties
 

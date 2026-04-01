@@ -1,4 +1,4 @@
-# # BulkApplicationNotification
+# BulkApplicationNotification
 
 ## Properties
 

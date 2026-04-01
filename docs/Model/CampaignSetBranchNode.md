@@ -1,4 +1,4 @@
-# # CampaignSetBranchNode
+# CampaignSetBranchNode
 
 ## Properties
 

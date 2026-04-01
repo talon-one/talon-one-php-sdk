@@ -1,4 +1,4 @@
-# # GetLoyaltyCardTransactionLogs200Response
+# GetLoyaltyCardTransactionLogs200Response
 
 ## Properties
 

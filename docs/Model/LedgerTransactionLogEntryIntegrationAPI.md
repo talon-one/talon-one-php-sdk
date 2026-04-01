@@ -1,4 +1,4 @@
-# # LedgerTransactionLogEntryIntegrationAPI
+# LedgerTransactionLogEntryIntegrationAPI
 
 ## Properties
 

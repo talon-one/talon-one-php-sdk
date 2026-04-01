@@ -1,4 +1,4 @@
-# # GetCampaigns200Response
+# GetCampaigns200Response
 
 ## Properties
 

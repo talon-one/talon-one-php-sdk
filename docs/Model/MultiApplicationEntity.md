@@ -1,4 +1,4 @@
-# # MultiApplicationEntity
+# MultiApplicationEntity
 
 ## Properties
 

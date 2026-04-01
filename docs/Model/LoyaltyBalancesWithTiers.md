@@ -1,4 +1,4 @@
-# # LoyaltyBalancesWithTiers
+# LoyaltyBalancesWithTiers
 
 ## Properties
 

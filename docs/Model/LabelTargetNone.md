@@ -1,4 +1,4 @@
-# # LabelTargetNone
+# LabelTargetNone
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationEventV2Response
+# IntegrationEventV2Response
 
 ## Properties
 

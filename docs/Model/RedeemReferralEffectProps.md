@@ -1,4 +1,4 @@
-# # RedeemReferralEffectProps
+# RedeemReferralEffectProps
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GiveawaysPool
+# GiveawaysPool
 
 ## Properties
 

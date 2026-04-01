@@ -1,4 +1,4 @@
-# # NewMessageTest
+# NewMessageTest
 
 ## Properties
 

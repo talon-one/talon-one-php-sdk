@@ -1,4 +1,4 @@
-# # CampaignCollection
+# CampaignCollection
 
 ## Properties
 

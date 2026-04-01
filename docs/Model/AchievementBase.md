@@ -1,4 +1,4 @@
-# # AchievementBase
+# AchievementBase
 
 ## Properties
 

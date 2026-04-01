@@ -1,4 +1,4 @@
-# # GenerateItemFilterDescription
+# GenerateItemFilterDescription
 
 ## Properties
 

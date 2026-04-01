@@ -1,4 +1,4 @@
-# # ApplicationCampaignStats
+# ApplicationCampaignStats
 
 ## Properties
 

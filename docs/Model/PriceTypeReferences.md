@@ -1,4 +1,4 @@
-# # PriceTypeReferences
+# PriceTypeReferences
 
 ## Properties
 

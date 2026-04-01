@@ -1,4 +1,4 @@
-# # NewCampaignSet
+# NewCampaignSet
 
 ## Properties
 

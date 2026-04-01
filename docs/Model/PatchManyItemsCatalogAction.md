@@ -1,4 +1,4 @@
-# # PatchManyItemsCatalogAction
+# PatchManyItemsCatalogAction
 
 ## Properties
 

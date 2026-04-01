@@ -1,4 +1,4 @@
-# # UpdateAttributeEffectProps
+# UpdateAttributeEffectProps
 
 ## Properties
 

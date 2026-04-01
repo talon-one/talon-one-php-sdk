@@ -1,4 +1,4 @@
-# # CatalogSyncRequest
+# CatalogSyncRequest
 
 ## Properties
 

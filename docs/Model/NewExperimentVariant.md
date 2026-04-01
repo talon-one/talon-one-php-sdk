@@ -1,4 +1,4 @@
-# # NewExperimentVariant
+# NewExperimentVariant
 
 ## Properties
 

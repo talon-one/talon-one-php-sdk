@@ -1,4 +1,4 @@
-# # LoyaltySubLedger
+# LoyaltySubLedger
 
 ## Properties
 

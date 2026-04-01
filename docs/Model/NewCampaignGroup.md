@@ -1,4 +1,4 @@
-# # NewCampaignGroup
+# NewCampaignGroup
 
 ## Properties
 

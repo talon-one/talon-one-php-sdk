@@ -1,4 +1,4 @@
-# # ApplicationNotification
+# ApplicationNotification
 
 ## Properties
 

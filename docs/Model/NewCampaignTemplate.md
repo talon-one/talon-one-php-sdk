@@ -1,4 +1,4 @@
-# # NewCampaignTemplate
+# NewCampaignTemplate
 
 ## Properties
 

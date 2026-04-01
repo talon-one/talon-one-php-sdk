@@ -1,4 +1,4 @@
-# # LoyaltyDashboardPointsBreakdown
+# LoyaltyDashboardPointsBreakdown
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ReferralCreatedEffectProps
+# ReferralCreatedEffectProps
 
 ## Properties
 

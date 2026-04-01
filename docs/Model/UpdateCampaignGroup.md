@@ -1,4 +1,4 @@
-# # UpdateCampaignGroup
+# UpdateCampaignGroup
 
 ## Properties
 

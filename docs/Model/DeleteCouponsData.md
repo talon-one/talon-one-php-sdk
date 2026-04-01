@@ -1,4 +1,4 @@
-# # DeleteCouponsData
+# DeleteCouponsData
 
 ## Properties
 

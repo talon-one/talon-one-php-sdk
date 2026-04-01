@@ -1,4 +1,4 @@
-# # GetCustomerProfiles200Response
+# GetCustomerProfiles200Response
 
 ## Properties
 

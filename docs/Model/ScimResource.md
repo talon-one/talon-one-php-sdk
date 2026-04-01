@@ -1,4 +1,4 @@
-# # ScimResource
+# ScimResource
 
 ## Properties
 

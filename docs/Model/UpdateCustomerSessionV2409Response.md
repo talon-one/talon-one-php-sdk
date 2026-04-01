@@ -1,4 +1,4 @@
-# # UpdateCustomerSessionV2409Response
+# UpdateCustomerSessionV2409Response
 
 ## Properties
 

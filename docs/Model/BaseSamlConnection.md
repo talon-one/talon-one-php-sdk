@@ -1,4 +1,4 @@
-# # BaseSamlConnection
+# BaseSamlConnection
 
 ## Properties
 

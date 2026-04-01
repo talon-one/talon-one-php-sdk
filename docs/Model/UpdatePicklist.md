@@ -1,4 +1,4 @@
-# # UpdatePicklist
+# UpdatePicklist
 
 ## Properties
 

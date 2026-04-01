@@ -1,4 +1,4 @@
-# # GetApplications200Response
+# GetApplications200Response
 
 ## Properties
 

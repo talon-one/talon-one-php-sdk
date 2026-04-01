@@ -1,4 +1,4 @@
-# # LoyaltyLedgerTransactions
+# LoyaltyLedgerTransactions
 
 ## Properties
 

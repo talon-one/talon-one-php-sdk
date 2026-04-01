@@ -1,4 +1,4 @@
-# # AccountDashboardStatisticReferrals
+# AccountDashboardStatisticReferrals
 
 ## Properties
 

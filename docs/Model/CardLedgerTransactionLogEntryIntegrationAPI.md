@@ -1,4 +1,4 @@
-# # CardLedgerTransactionLogEntryIntegrationAPI
+# CardLedgerTransactionLogEntryIntegrationAPI
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCollectionItems200Response
+# GetCollectionItems200Response
 
 ## Properties
 

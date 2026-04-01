@@ -1,4 +1,4 @@
-# # IncreaseAchievementProgressEffectProps
+# IncreaseAchievementProgressEffectProps
 
 ## Properties
 

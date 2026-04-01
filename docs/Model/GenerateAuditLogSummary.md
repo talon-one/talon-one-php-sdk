@@ -1,4 +1,4 @@
-# # GenerateAuditLogSummary
+# GenerateAuditLogSummary
 
 ## Properties
 

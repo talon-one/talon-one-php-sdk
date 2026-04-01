@@ -1,4 +1,4 @@
-# # CouponValue
+# CouponValue
 
 ## Properties
 

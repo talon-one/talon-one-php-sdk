@@ -1,4 +1,4 @@
-# # ScimSchemasListResponse
+# ScimSchemasListResponse
 
 ## Properties
 

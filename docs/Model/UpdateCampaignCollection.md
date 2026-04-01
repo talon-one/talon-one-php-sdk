@@ -1,4 +1,4 @@
-# # UpdateCampaignCollection
+# UpdateCampaignCollection
 
 ## Properties
 

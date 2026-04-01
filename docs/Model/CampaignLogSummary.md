@@ -1,4 +1,4 @@
-# # CampaignLogSummary
+# CampaignLogSummary
 
 ## Properties
 

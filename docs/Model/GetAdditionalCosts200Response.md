@@ -1,4 +1,4 @@
-# # GetAdditionalCosts200Response
+# GetAdditionalCosts200Response
 
 ## Properties
 

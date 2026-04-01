@@ -1,4 +1,4 @@
-# # GetCustomerAchievementHistory200Response
+# GetCustomerAchievementHistory200Response
 
 ## Properties
 

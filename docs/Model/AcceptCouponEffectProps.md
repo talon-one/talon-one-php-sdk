@@ -1,4 +1,4 @@
-# # AcceptCouponEffectProps
+# AcceptCouponEffectProps
 
 ## Properties
 

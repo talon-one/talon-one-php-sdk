@@ -1,4 +1,4 @@
-# # CreateManagementKey
+# CreateManagementKey
 
 ## Properties
 

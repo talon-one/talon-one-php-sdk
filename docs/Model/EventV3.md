@@ -1,4 +1,4 @@
-# # EventV3
+# EventV3
 
 ## Properties
 

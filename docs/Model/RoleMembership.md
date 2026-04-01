@@ -1,4 +1,4 @@
-# # RoleMembership
+# RoleMembership
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AdjustmentDetails
+# AdjustmentDetails
 
 ## Properties
 

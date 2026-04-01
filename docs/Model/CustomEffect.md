@@ -1,4 +1,4 @@
-# # CustomEffect
+# CustomEffect
 
 ## Properties
 

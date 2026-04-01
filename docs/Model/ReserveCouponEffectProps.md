@@ -1,4 +1,4 @@
-# # ReserveCouponEffectProps
+# ReserveCouponEffectProps
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationEventV3Response
+# IntegrationEventV3Response
 
 ## Properties
 

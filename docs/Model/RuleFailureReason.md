@@ -1,4 +1,4 @@
-# # RuleFailureReason
+# RuleFailureReason
 
 ## Properties
 

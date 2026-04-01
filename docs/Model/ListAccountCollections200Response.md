@@ -1,4 +1,4 @@
-# # ListAccountCollections200Response
+# ListAccountCollections200Response
 
 ## Properties
 

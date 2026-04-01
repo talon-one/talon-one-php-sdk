@@ -1,4 +1,4 @@
-# # MessageLogRequest
+# MessageLogRequest
 
 ## Properties
 

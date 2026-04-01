@@ -1,4 +1,4 @@
-# # RevisionVersion
+# RevisionVersion
 
 ## Properties
 
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **limits** | [**\TalonOne\Client\Model\LimitConfig[]**](LimitConfig.md) | The set of limits that will operate for this campaign version. | [optional]
 **reevaluateOnReturn** | **bool** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional]
 **features** | **string[]** | A list of features for the campaign. | [optional]
+**couponAttributes** | **object** | Arbitrary properties associated with coupons in this campaign. | [optional]
 **accountId** | **int** |  |
 **applicationId** | **int** |  |
 **campaignId** | **int** |  |

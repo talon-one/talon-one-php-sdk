@@ -1,4 +1,4 @@
-# # Environment
+# Environment
 
 ## Properties
 

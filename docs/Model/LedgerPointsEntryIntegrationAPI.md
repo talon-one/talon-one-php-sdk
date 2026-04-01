@@ -1,4 +1,4 @@
-# # LedgerPointsEntryIntegrationAPI
+# LedgerPointsEntryIntegrationAPI
 
 ## Properties
 

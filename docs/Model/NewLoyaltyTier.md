@@ -1,4 +1,4 @@
-# # NewLoyaltyTier
+# NewLoyaltyTier
 
 ## Properties
 

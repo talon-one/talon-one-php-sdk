@@ -1,4 +1,4 @@
-# # RevisionActivation
+# RevisionActivation
 
 ## Properties
 

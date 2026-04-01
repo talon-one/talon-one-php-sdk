@@ -1,4 +1,4 @@
-# # ProductSearchMatch
+# ProductSearchMatch
 
 ## Properties
 

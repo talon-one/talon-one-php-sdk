@@ -1,4 +1,4 @@
-# # ProductUnitAnalyticsDataPoint
+# ProductUnitAnalyticsDataPoint
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # IntegrationStoreEntity
+# IntegrationStoreEntity
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GenerateCampaignDescription
+# GenerateCampaignDescription
 
 ## Properties
 

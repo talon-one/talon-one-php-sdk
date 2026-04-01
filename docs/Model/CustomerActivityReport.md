@@ -1,4 +1,4 @@
-# # CustomerActivityReport
+# CustomerActivityReport
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GenerateCouponRejections200Response
+# GenerateCouponRejections200Response
 
 ## Properties
 

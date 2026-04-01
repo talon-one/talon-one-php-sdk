@@ -1,4 +1,4 @@
-# # CampaignCopy
+# CampaignCopy
 
 ## Properties
 

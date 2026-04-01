@@ -1,4 +1,4 @@
-# # SetDiscountPerAdditionalCostEffectProps
+# SetDiscountPerAdditionalCostEffectProps
 
 ## Properties
 

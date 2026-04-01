@@ -1,4 +1,4 @@
-# # InventoryReferral
+# InventoryReferral
 
 ## Properties
 

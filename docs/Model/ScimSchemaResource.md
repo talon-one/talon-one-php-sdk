@@ -1,4 +1,4 @@
-# # ScimSchemaResource
+# ScimSchemaResource
 
 ## Properties
 

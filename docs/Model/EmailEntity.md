@@ -1,4 +1,4 @@
-# # EmailEntity
+# EmailEntity
 
 ## Properties
 

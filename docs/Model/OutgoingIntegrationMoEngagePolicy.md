@@ -1,4 +1,4 @@
-# # OutgoingIntegrationMoEngagePolicy
+# OutgoingIntegrationMoEngagePolicy
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCustomerProfileAchievementProgress200Response
+# GetCustomerProfileAchievementProgress200Response
 
 ## Properties
 

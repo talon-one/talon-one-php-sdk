@@ -1,4 +1,4 @@
-# # CampaignNotificationItemBase
+# CampaignNotificationItemBase
 
 ## Properties
 

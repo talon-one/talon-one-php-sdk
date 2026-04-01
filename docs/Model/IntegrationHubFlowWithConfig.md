@@ -1,4 +1,4 @@
-# # IntegrationHubFlowWithConfig
+# IntegrationHubFlowWithConfig
 
 ## Properties
 

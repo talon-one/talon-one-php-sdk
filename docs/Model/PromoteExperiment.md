@@ -1,4 +1,4 @@
-# # PromoteExperiment
+# PromoteExperiment
 
 ## Properties
 

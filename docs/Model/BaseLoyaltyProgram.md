@@ -1,4 +1,4 @@
-# # BaseLoyaltyProgram
+# BaseLoyaltyProgram
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CouponConstraints
+# CouponConstraints
 
 ## Properties
 

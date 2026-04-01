@@ -1,4 +1,4 @@
-# # SkuUnitAnalyticsDataPoint
+# SkuUnitAnalyticsDataPoint
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # NewRole
+# NewRole
 
 ## Properties
 

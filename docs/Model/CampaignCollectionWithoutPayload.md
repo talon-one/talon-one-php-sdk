@@ -1,4 +1,4 @@
-# # CampaignCollectionWithoutPayload
+# CampaignCollectionWithoutPayload
 
 ## Properties
 

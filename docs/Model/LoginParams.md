@@ -1,4 +1,4 @@
-# # LoginParams
+# LoginParams
 
 ## Properties
 

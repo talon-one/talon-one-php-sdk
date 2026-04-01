@@ -1,4 +1,4 @@
-# # SkuUnitAnalytics
+# SkuUnitAnalytics
 
 ## Properties
 

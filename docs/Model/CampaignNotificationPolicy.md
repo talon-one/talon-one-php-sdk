@@ -1,4 +1,4 @@
-# # CampaignNotificationPolicy
+# CampaignNotificationPolicy
 
 ## Properties
 

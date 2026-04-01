@@ -1,4 +1,4 @@
-# # StrikethroughDebugResponse
+# StrikethroughDebugResponse
 
 ## Properties
 

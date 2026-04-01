@@ -1,4 +1,4 @@
-# # GetUsers200Response
+# GetUsers200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AddLoyaltyPointsEffectProps
+# AddLoyaltyPointsEffectProps
 
 ## Properties
 

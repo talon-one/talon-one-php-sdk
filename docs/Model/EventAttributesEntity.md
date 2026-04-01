@@ -1,4 +1,4 @@
-# # EventAttributesEntity
+# EventAttributesEntity
 
 ## Properties
 

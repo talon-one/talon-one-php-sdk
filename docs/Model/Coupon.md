@@ -1,4 +1,4 @@
-# # Coupon
+# Coupon
 
 ## Properties
 

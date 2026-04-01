@@ -1,4 +1,4 @@
-# # NewAudience
+# NewAudience
 
 ## Properties
 

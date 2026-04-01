@@ -1,4 +1,4 @@
-# # EntityWithTalangVisibleID
+# EntityWithTalangVisibleID
 
 ## Properties
 

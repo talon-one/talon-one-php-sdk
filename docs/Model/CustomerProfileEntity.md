@@ -1,4 +1,4 @@
-# # CustomerProfileEntity
+# CustomerProfileEntity
 
 ## Properties
 

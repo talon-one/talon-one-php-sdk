@@ -1,4 +1,4 @@
-# # Referral
+# Referral
 
 ## Properties
 

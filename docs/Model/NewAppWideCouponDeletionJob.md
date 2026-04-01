@@ -1,4 +1,4 @@
-# # NewAppWideCouponDeletionJob
+# NewAppWideCouponDeletionJob
 
 ## Properties
 

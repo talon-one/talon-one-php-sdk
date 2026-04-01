@@ -1,4 +1,4 @@
-# # IntegrationState
+# IntegrationState
 
 ## Properties
 

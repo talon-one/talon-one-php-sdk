@@ -1,4 +1,4 @@
-# # NewRuleset
+# NewRuleset
 
 ## Properties
 

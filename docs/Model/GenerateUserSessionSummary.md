@@ -1,4 +1,4 @@
-# # GenerateUserSessionSummary
+# GenerateUserSessionSummary
 
 ## Properties
 

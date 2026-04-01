@@ -1,4 +1,4 @@
-# # NewAccountSignUp
+# NewAccountSignUp
 
 ## Properties
 

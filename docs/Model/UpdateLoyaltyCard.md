@@ -1,4 +1,4 @@
-# # UpdateLoyaltyCard
+# UpdateLoyaltyCard
 
 ## Properties
 

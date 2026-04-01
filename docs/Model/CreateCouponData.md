@@ -1,4 +1,4 @@
-# # CreateCouponData
+# CreateCouponData
 
 ## Properties
 

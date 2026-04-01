@@ -1,4 +1,4 @@
-# # GetApplicationEventTypes200Response
+# GetApplicationEventTypes200Response
 
 ## Properties
 

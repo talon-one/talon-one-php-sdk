@@ -1,4 +1,4 @@
-# # IntegrationHubEventRecord
+# IntegrationHubEventRecord
 
 ## Properties
 

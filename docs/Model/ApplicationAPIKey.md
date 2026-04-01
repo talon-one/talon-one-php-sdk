@@ -1,4 +1,4 @@
-# # ApplicationAPIKey
+# ApplicationAPIKey
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # MultipleNewAttribute
+# MultipleNewAttribute
 
 ## Properties
 

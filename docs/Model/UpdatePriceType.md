@@ -1,4 +1,4 @@
-# # UpdatePriceType
+# UpdatePriceType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CouponLimitConfigs
+# CouponLimitConfigs
 
 ## Properties
 

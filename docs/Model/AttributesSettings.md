@@ -1,4 +1,4 @@
-# # AttributesSettings
+# AttributesSettings
 
 ## Properties
 

@@ -224,6 +224,9 @@ docs/Model/DeleteUserRequest.md
 docs/Model/Effect.md
 docs/Model/EffectEntity.md
 docs/Model/EmailEntity.md
+docs/Model/EmbeddedAnalyticsConfiguration.md
+docs/Model/EmbeddedAnalyticsConfigurationDashboards.md
+docs/Model/EmbeddedDashboardConfiguration.md
 docs/Model/Endpoint.md
 docs/Model/Entity.md
 docs/Model/EntityWithTalangVisibleID.md
@@ -242,6 +245,9 @@ docs/Model/Experiment.md
 docs/Model/ExperimentCampaignCopy.md
 docs/Model/ExperimentCopy.md
 docs/Model/ExperimentCopyExperiment.md
+docs/Model/ExperimentListResults.md
+docs/Model/ExperimentListResultsRequest.md
+docs/Model/ExperimentResult.md
 docs/Model/ExperimentResults.md
 docs/Model/ExperimentVariant.md
 docs/Model/ExperimentVariantAllocation.md
@@ -320,6 +326,8 @@ docs/Model/GetRulesets200Response.md
 docs/Model/GetUsers200Response.md
 docs/Model/GetWebhooks200Response.md
 docs/Model/Giveaway.md
+docs/Model/GiveawayPoolNotification.md
+docs/Model/GiveawayPoolNotificationData.md
 docs/Model/GiveawaysPool.md
 docs/Model/HiddenConditionsEffects.md
 docs/Model/History.md
@@ -561,6 +569,7 @@ docs/Model/RoleV2PermissionSet.md
 docs/Model/RoleV2Permissions.md
 docs/Model/RoleV2Readonly.md
 docs/Model/RoleV2RolesGroup.md
+docs/Model/RolesV2Thresholds.md
 docs/Model/RollbackAddedLoyaltyPointsEffectProps.md
 docs/Model/RollbackCouponEffectProps.md
 docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md
@@ -569,6 +578,7 @@ docs/Model/RollbackIncreasedAchievementProgressEffectProps.md
 docs/Model/RollbackReferralEffectProps.md
 docs/Model/Rule.md
 docs/Model/RuleFailureReason.md
+docs/Model/RuleMetadata.md
 docs/Model/Ruleset.md
 docs/Model/SSOConfig.md
 docs/Model/SamlConnection.md
@@ -906,6 +916,9 @@ lib/Model/DeleteUserRequest.php
 lib/Model/Effect.php
 lib/Model/EffectEntity.php
 lib/Model/EmailEntity.php
+lib/Model/EmbeddedAnalyticsConfiguration.php
+lib/Model/EmbeddedAnalyticsConfigurationDashboards.php
+lib/Model/EmbeddedDashboardConfiguration.php
 lib/Model/Endpoint.php
 lib/Model/Entity.php
 lib/Model/EntityWithTalangVisibleID.php
@@ -924,6 +937,9 @@ lib/Model/Experiment.php
 lib/Model/ExperimentCampaignCopy.php
 lib/Model/ExperimentCopy.php
 lib/Model/ExperimentCopyExperiment.php
+lib/Model/ExperimentListResults.php
+lib/Model/ExperimentListResultsRequest.php
+lib/Model/ExperimentResult.php
 lib/Model/ExperimentResults.php
 lib/Model/ExperimentVariant.php
 lib/Model/ExperimentVariantAllocation.php
@@ -1002,6 +1018,8 @@ lib/Model/GetRulesets200Response.php
 lib/Model/GetUsers200Response.php
 lib/Model/GetWebhooks200Response.php
 lib/Model/Giveaway.php
+lib/Model/GiveawayPoolNotification.php
+lib/Model/GiveawayPoolNotificationData.php
 lib/Model/GiveawaysPool.php
 lib/Model/HiddenConditionsEffects.php
 lib/Model/History.php
@@ -1244,6 +1262,7 @@ lib/Model/RoleV2PermissionSet.php
 lib/Model/RoleV2Permissions.php
 lib/Model/RoleV2Readonly.php
 lib/Model/RoleV2RolesGroup.php
+lib/Model/RolesV2Thresholds.php
 lib/Model/RollbackAddedLoyaltyPointsEffectProps.php
 lib/Model/RollbackCouponEffectProps.php
 lib/Model/RollbackDeductedLoyaltyPointsEffectProps.php
@@ -1252,6 +1271,7 @@ lib/Model/RollbackIncreasedAchievementProgressEffectProps.php
 lib/Model/RollbackReferralEffectProps.php
 lib/Model/Rule.php
 lib/Model/RuleFailureReason.php
+lib/Model/RuleMetadata.php
 lib/Model/Ruleset.php
 lib/Model/SSOConfig.php
 lib/Model/SamlConnection.php
@@ -1586,6 +1606,9 @@ test/Model/DeleteUserRequestTest.php
 test/Model/EffectEntityTest.php
 test/Model/EffectTest.php
 test/Model/EmailEntityTest.php
+test/Model/EmbeddedAnalyticsConfigurationDashboardsTest.php
+test/Model/EmbeddedAnalyticsConfigurationTest.php
+test/Model/EmbeddedDashboardConfigurationTest.php
 test/Model/EndpointTest.php
 test/Model/EntityTest.php
 test/Model/EntityWithTalangVisibleIDTest.php
@@ -1603,6 +1626,9 @@ test/Model/EventV3Test.php
 test/Model/ExperimentCampaignCopyTest.php
 test/Model/ExperimentCopyExperimentTest.php
 test/Model/ExperimentCopyTest.php
+test/Model/ExperimentListResultsRequestTest.php
+test/Model/ExperimentListResultsTest.php
+test/Model/ExperimentResultTest.php
 test/Model/ExperimentResultsTest.php
 test/Model/ExperimentTest.php
 test/Model/ExperimentVariantAllocationTest.php
@@ -1681,6 +1707,8 @@ test/Model/GetReservedCustomers200ResponseTest.php
 test/Model/GetRulesets200ResponseTest.php
 test/Model/GetUsers200ResponseTest.php
 test/Model/GetWebhooks200ResponseTest.php
+test/Model/GiveawayPoolNotificationDataTest.php
+test/Model/GiveawayPoolNotificationTest.php
 test/Model/GiveawayTest.php
 test/Model/GiveawaysPoolTest.php
 test/Model/HiddenConditionsEffectsTest.php
@@ -1923,6 +1951,7 @@ test/Model/RoleV2PermissionsTest.php
 test/Model/RoleV2ReadonlyTest.php
 test/Model/RoleV2RolesGroupTest.php
 test/Model/RoleV2Test.php
+test/Model/RolesV2ThresholdsTest.php
 test/Model/RollbackAddedLoyaltyPointsEffectPropsTest.php
 test/Model/RollbackCouponEffectPropsTest.php
 test/Model/RollbackDeductedLoyaltyPointsEffectPropsTest.php
@@ -1930,6 +1959,7 @@ test/Model/RollbackDiscountEffectPropsTest.php
 test/Model/RollbackIncreasedAchievementProgressEffectPropsTest.php
 test/Model/RollbackReferralEffectPropsTest.php
 test/Model/RuleFailureReasonTest.php
+test/Model/RuleMetadataTest.php
 test/Model/RuleTest.php
 test/Model/RulesetTest.php
 test/Model/SSOConfigTest.php

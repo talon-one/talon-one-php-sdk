@@ -1,4 +1,4 @@
-# # LedgerInfo
+# LedgerInfo
 
 ## Properties
 

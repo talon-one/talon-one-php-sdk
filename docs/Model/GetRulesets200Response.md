@@ -1,4 +1,4 @@
-# # GetRulesets200Response
+# GetRulesets200Response
 
 ## Properties
 

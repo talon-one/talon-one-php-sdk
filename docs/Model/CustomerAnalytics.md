@@ -1,4 +1,4 @@
-# # CustomerAnalytics
+# CustomerAnalytics
 
 ## Properties
 

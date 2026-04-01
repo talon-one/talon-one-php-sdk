@@ -1,4 +1,4 @@
-# # NewBlueprint
+# NewBlueprint
 
 ## Properties
 

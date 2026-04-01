@@ -1,4 +1,4 @@
-# # ShowNotificationEffectProps
+# ShowNotificationEffectProps
 
 ## Properties
 

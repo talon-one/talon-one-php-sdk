@@ -1,4 +1,4 @@
-# # CampaignGroupEntity
+# CampaignGroupEntity
 
 ## Properties
 

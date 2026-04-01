@@ -205,7 +205,6 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**getLoyaltyProgramProfileTransactions**](docs/Api/IntegrationApi.md#getloyaltyprogramprofiletransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions
 *IntegrationApi* | [**getReservedCustomers**](docs/Api/IntegrationApi.md#getreservedcustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
 *IntegrationApi* | [**linkLoyaltyCardToProfile**](docs/Api/IntegrationApi.md#linkloyaltycardtoprofile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
-*IntegrationApi* | [**priceHistory**](docs/Api/IntegrationApi.md#pricehistory) | **POST** /v1/best_prior_price_history | Get summary of price history
 *IntegrationApi* | [**reopenCustomerSession**](docs/Api/IntegrationApi.md#reopencustomersession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 *IntegrationApi* | [**returnCartItems**](docs/Api/IntegrationApi.md#returncartitems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 *IntegrationApi* | [**syncCatalog**](docs/Api/IntegrationApi.md#synccatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
@@ -363,6 +362,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**listExperiments**](docs/Api/ManagementApi.md#listexperiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments
 *ManagementApi* | [**listStores**](docs/Api/ManagementApi.md#liststores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *ManagementApi* | [**oktaEventHandlerChallenge**](docs/Api/ManagementApi.md#oktaeventhandlerchallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
+*ManagementApi* | [**priceHistory**](docs/Api/ManagementApi.md#pricehistory) | **POST** /v1/applications/{applicationId}/price_history | Get summary of price history
 *ManagementApi* | [**removeLoyaltyPoints**](docs/Api/ManagementApi.md#removeloyaltypoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 *ManagementApi* | [**resetPassword**](docs/Api/ManagementApi.md#resetpassword) | **POST** /v1/reset_password | Reset password
 *ManagementApi* | [**scimCreateGroup**](docs/Api/ManagementApi.md#scimcreategroup) | **POST** /v1/provisioning/scim/Groups | Create SCIM group
@@ -612,6 +612,9 @@ Class | Method | HTTP request | Description
 - [Effect](docs/Model/Effect.md)
 - [EffectEntity](docs/Model/EffectEntity.md)
 - [EmailEntity](docs/Model/EmailEntity.md)
+- [EmbeddedAnalyticsConfiguration](docs/Model/EmbeddedAnalyticsConfiguration.md)
+- [EmbeddedAnalyticsConfigurationDashboards](docs/Model/EmbeddedAnalyticsConfigurationDashboards.md)
+- [EmbeddedDashboardConfiguration](docs/Model/EmbeddedDashboardConfiguration.md)
 - [Endpoint](docs/Model/Endpoint.md)
 - [Entity](docs/Model/Entity.md)
 - [EntityWithTalangVisibleID](docs/Model/EntityWithTalangVisibleID.md)
@@ -630,6 +633,9 @@ Class | Method | HTTP request | Description
 - [ExperimentCampaignCopy](docs/Model/ExperimentCampaignCopy.md)
 - [ExperimentCopy](docs/Model/ExperimentCopy.md)
 - [ExperimentCopyExperiment](docs/Model/ExperimentCopyExperiment.md)
+- [ExperimentListResults](docs/Model/ExperimentListResults.md)
+- [ExperimentListResultsRequest](docs/Model/ExperimentListResultsRequest.md)
+- [ExperimentResult](docs/Model/ExperimentResult.md)
 - [ExperimentResults](docs/Model/ExperimentResults.md)
 - [ExperimentVariant](docs/Model/ExperimentVariant.md)
 - [ExperimentVariantAllocation](docs/Model/ExperimentVariantAllocation.md)
@@ -708,6 +714,8 @@ Class | Method | HTTP request | Description
 - [GetUsers200Response](docs/Model/GetUsers200Response.md)
 - [GetWebhooks200Response](docs/Model/GetWebhooks200Response.md)
 - [Giveaway](docs/Model/Giveaway.md)
+- [GiveawayPoolNotification](docs/Model/GiveawayPoolNotification.md)
+- [GiveawayPoolNotificationData](docs/Model/GiveawayPoolNotificationData.md)
 - [GiveawaysPool](docs/Model/GiveawaysPool.md)
 - [HiddenConditionsEffects](docs/Model/HiddenConditionsEffects.md)
 - [History](docs/Model/History.md)
@@ -949,6 +957,7 @@ Class | Method | HTTP request | Description
 - [RoleV2Permissions](docs/Model/RoleV2Permissions.md)
 - [RoleV2Readonly](docs/Model/RoleV2Readonly.md)
 - [RoleV2RolesGroup](docs/Model/RoleV2RolesGroup.md)
+- [RolesV2Thresholds](docs/Model/RolesV2Thresholds.md)
 - [RollbackAddedLoyaltyPointsEffectProps](docs/Model/RollbackAddedLoyaltyPointsEffectProps.md)
 - [RollbackCouponEffectProps](docs/Model/RollbackCouponEffectProps.md)
 - [RollbackDeductedLoyaltyPointsEffectProps](docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md)
@@ -957,6 +966,7 @@ Class | Method | HTTP request | Description
 - [RollbackReferralEffectProps](docs/Model/RollbackReferralEffectProps.md)
 - [Rule](docs/Model/Rule.md)
 - [RuleFailureReason](docs/Model/RuleFailureReason.md)
+- [RuleMetadata](docs/Model/RuleMetadata.md)
 - [Ruleset](docs/Model/Ruleset.md)
 - [SSOConfig](docs/Model/SSOConfig.md)
 - [SamlConnection](docs/Model/SamlConnection.md)
@@ -1078,18 +1088,6 @@ Class | Method | HTTP request | Description
 ## Authorization
 
 ## api_key_v1
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-## manager_auth
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-## management_key
 
 - **Type**: API key
 - **API key parameter name**: Authorization

@@ -1,4 +1,4 @@
-# # CreateTemplateCampaign
+# CreateTemplateCampaign
 
 ## Properties
 

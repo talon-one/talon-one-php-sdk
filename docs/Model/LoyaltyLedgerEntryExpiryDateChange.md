@@ -1,4 +1,4 @@
-# # LoyaltyLedgerEntryExpiryDateChange
+# LoyaltyLedgerEntryExpiryDateChange
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # EventV2
+# EventV2
 
 ## Properties
 

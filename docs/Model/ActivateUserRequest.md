@@ -1,4 +1,4 @@
-# # ActivateUserRequest
+# ActivateUserRequest
 
 ## Properties
 

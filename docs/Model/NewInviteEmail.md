@@ -1,4 +1,4 @@
-# # NewInviteEmail
+# NewInviteEmail
 
 ## Properties
 

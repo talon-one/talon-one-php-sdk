@@ -1,4 +1,4 @@
-# # OutgoingIntegrationBrazePolicy
+# OutgoingIntegrationBrazePolicy
 
 ## Properties
 

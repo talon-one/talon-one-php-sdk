@@ -1,4 +1,4 @@
-# # CouponRejectionReason
+# CouponRejectionReason
 
 ## Properties
 

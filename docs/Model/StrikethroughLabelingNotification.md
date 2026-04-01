@@ -1,4 +1,4 @@
-# # StrikethroughLabelingNotification
+# StrikethroughLabelingNotification
 
 ## Properties
 

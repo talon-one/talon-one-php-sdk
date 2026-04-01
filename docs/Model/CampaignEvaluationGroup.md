@@ -1,4 +1,4 @@
-# # CampaignEvaluationGroup
+# CampaignEvaluationGroup
 
 ## Properties
 

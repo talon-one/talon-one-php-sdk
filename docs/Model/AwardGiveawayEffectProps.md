@@ -1,4 +1,4 @@
-# # AwardGiveawayEffectProps
+# AwardGiveawayEffectProps
 
 ## Properties
 

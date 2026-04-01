@@ -1,4 +1,4 @@
-# # LoyaltyProgramEntity
+# LoyaltyProgramEntity
 
 ## Properties
 

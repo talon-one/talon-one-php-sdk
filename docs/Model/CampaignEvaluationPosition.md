@@ -1,4 +1,4 @@
-# # CampaignEvaluationPosition
+# CampaignEvaluationPosition
 
 ## Properties
 

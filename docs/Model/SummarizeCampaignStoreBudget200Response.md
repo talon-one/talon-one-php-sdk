@@ -1,4 +1,4 @@
-# # SummarizeCampaignStoreBudget200Response
+# SummarizeCampaignStoreBudget200Response
 
 ## Properties
 

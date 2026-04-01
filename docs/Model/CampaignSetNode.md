@@ -1,4 +1,4 @@
-# # CampaignSetNode
+# CampaignSetNode
 
 ## Properties
 

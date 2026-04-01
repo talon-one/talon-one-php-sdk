@@ -1,4 +1,4 @@
-# # InventoryCoupon
+# InventoryCoupon
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # Achievement
+# Achievement
 
 ## Properties
 

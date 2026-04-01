@@ -1,4 +1,4 @@
-# # RoleAssign
+# RoleAssign
 
 ## Properties
 

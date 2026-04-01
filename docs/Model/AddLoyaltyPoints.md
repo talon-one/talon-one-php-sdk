@@ -1,4 +1,4 @@
-# # AddLoyaltyPoints
+# AddLoyaltyPoints
 
 ## Properties
 

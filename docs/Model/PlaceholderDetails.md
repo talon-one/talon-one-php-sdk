@@ -1,4 +1,4 @@
-# # PlaceholderDetails
+# PlaceholderDetails
 
 ## Properties
 

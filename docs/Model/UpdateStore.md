@@ -1,4 +1,4 @@
-# # UpdateStore
+# UpdateStore
 
 ## Properties
 

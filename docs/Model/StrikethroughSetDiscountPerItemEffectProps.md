@@ -1,4 +1,4 @@
-# # StrikethroughSetDiscountPerItemEffectProps
+# StrikethroughSetDiscountPerItemEffectProps
 
 ## Properties
 

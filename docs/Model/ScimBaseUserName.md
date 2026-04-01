@@ -1,4 +1,4 @@
-# # ScimBaseUserName
+# ScimBaseUserName
 
 ## Properties
 

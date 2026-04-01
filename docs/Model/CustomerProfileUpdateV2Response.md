@@ -1,4 +1,4 @@
-# # CustomerProfileUpdateV2Response
+# CustomerProfileUpdateV2Response
 
 ## Properties
 

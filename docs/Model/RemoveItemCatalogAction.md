@@ -1,4 +1,4 @@
-# # RemoveItemCatalogAction
+# RemoveItemCatalogAction
 
 ## Properties
 

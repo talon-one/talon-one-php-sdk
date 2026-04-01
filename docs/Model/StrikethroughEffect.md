@@ -1,4 +1,4 @@
-# # StrikethroughEffect
+# StrikethroughEffect
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CampaignTemplateCouponReservationSettings
+# CampaignTemplateCouponReservationSettings
 
 ## Properties
 

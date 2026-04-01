@@ -1,4 +1,4 @@
-# # CouponReservations
+# CouponReservations
 
 ## Properties
 

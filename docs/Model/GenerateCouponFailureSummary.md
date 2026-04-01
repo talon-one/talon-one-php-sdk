@@ -1,4 +1,4 @@
-# # GenerateCouponFailureSummary
+# GenerateCouponFailureSummary
 
 ## Properties
 

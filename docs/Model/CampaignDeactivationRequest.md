@@ -1,4 +1,4 @@
-# # CampaignDeactivationRequest
+# CampaignDeactivationRequest
 
 ## Properties
 

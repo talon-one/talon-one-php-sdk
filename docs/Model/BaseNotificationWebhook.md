@@ -1,4 +1,4 @@
-# # BaseNotificationWebhook
+# BaseNotificationWebhook
 
 ## Properties
 

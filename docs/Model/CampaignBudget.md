@@ -1,4 +1,4 @@
-# # CampaignBudget
+# CampaignBudget
 
 ## Properties
 

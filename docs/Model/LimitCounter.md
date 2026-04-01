@@ -1,4 +1,4 @@
-# # LimitCounter
+# LimitCounter
 
 ## Properties
 

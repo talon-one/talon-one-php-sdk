@@ -1,4 +1,4 @@
-# # ExtendedCoupon
+# ExtendedCoupon
 
 ## Properties
 

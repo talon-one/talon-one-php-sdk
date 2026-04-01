@@ -1,4 +1,4 @@
-# # RoleV2Permissions
+# RoleV2Permissions
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CardAddedDeductedPointsNotificationPolicy
+# CardAddedDeductedPointsNotificationPolicy
 
 ## Properties
 

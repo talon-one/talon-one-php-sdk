@@ -1,4 +1,4 @@
-# # NotificationListItem
+# NotificationListItem
 
 ## Properties
 

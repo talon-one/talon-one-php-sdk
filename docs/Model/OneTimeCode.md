@@ -1,4 +1,4 @@
-# # OneTimeCode
+# OneTimeCode
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # UpdateLoyaltyProgram
+# UpdateLoyaltyProgram
 
 ## Properties
 

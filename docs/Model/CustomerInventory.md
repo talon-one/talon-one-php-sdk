@@ -1,4 +1,4 @@
-# # CustomerInventory
+# CustomerInventory
 
 ## Properties
 

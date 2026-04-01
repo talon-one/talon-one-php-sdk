@@ -1,4 +1,4 @@
-# # WebhookWithOutgoingIntegrationDetails
+# WebhookWithOutgoingIntegrationDetails
 
 ## Properties
 

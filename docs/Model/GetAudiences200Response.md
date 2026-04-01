@@ -1,4 +1,4 @@
-# # GetAudiences200Response
+# GetAudiences200Response
 
 ## Properties
 

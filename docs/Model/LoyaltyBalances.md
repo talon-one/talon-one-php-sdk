@@ -1,4 +1,4 @@
-# # LoyaltyBalances
+# LoyaltyBalances
 
 ## Properties
 

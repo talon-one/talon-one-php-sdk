@@ -1,4 +1,4 @@
-# # CampaignVersions
+# CampaignVersions
 
 ## Properties
 

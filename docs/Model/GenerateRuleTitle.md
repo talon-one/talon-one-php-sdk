@@ -1,4 +1,4 @@
-# # GenerateRuleTitle
+# GenerateRuleTitle
 
 ## Properties
 

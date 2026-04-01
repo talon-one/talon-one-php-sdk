@@ -1,4 +1,4 @@
-# # TierUpgradeNotificationPolicy
+# TierUpgradeNotificationPolicy
 
 ## Properties
 

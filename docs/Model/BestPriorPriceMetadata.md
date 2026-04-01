@@ -1,4 +1,4 @@
-# # BestPriorPriceMetadata
+# BestPriorPriceMetadata
 
 ## Properties
 

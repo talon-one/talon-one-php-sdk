@@ -1,4 +1,4 @@
-# # ManagerConfig
+# ManagerConfig
 
 ## Properties
 

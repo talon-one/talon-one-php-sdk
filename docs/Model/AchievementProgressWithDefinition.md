@@ -1,4 +1,4 @@
-# # AchievementProgressWithDefinition
+# AchievementProgressWithDefinition
 
 ## Properties
 

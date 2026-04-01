@@ -1,4 +1,4 @@
-# # ExpiringCouponsData
+# ExpiringCouponsData
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # TwoFAConfig
+# TwoFAConfig
 
 ## Properties
 

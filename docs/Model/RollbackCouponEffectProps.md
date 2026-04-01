@@ -1,4 +1,4 @@
-# # RollbackCouponEffectProps
+# RollbackCouponEffectProps
 
 ## Properties
 

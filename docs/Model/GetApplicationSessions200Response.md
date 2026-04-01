@@ -1,4 +1,4 @@
-# # GetApplicationSessions200Response
+# GetApplicationSessions200Response
 
 ## Properties
 

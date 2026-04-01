@@ -1,4 +1,4 @@
-# # SecondaryDeployment
+# SecondaryDeployment
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ApplicationSession
+# ApplicationSession
 
 ## Properties
 

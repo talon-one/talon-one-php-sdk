@@ -1,4 +1,4 @@
-# # CatalogActionFilter
+# CatalogActionFilter
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetExports200Response
+# GetExports200Response
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ListAchievements200Response
+# ListAchievements200Response
 
 ## Properties
 

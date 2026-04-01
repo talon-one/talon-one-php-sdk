@@ -1,4 +1,4 @@
-# # UpdateBlueprint
+# UpdateBlueprint
 
 ## Properties
 

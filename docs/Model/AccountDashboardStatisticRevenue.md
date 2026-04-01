@@ -1,4 +1,4 @@
-# # AccountDashboardStatisticRevenue
+# AccountDashboardStatisticRevenue
 
 ## Properties
 

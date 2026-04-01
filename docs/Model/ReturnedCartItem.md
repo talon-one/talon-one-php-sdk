@@ -1,4 +1,4 @@
-# # ReturnedCartItem
+# ReturnedCartItem
 
 ## Properties
 

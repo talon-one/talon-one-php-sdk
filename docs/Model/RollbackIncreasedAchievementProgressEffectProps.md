@@ -1,4 +1,4 @@
-# # RollbackIncreasedAchievementProgressEffectProps
+# RollbackIncreasedAchievementProgressEffectProps
 
 ## Properties
 

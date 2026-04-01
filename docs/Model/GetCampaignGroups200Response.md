@@ -1,4 +1,4 @@
-# # GetCampaignGroups200Response
+# GetCampaignGroups200Response
 
 ## Properties
 

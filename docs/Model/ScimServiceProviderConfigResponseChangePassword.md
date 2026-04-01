@@ -1,4 +1,4 @@
-# # ScimServiceProviderConfigResponseChangePassword
+# ScimServiceProviderConfigResponseChangePassword
 
 ## Properties
 

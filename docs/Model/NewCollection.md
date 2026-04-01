@@ -1,4 +1,4 @@
-# # NewCollection
+# NewCollection
 
 ## Properties
 

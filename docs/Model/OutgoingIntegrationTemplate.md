@@ -1,4 +1,4 @@
-# # OutgoingIntegrationTemplate
+# OutgoingIntegrationTemplate
 
 ## Properties
 

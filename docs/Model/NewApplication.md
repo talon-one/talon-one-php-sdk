@@ -1,4 +1,4 @@
-# # NewApplication
+# NewApplication
 
 ## Properties
 

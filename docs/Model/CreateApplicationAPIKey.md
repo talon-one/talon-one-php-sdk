@@ -1,4 +1,4 @@
-# # CreateApplicationAPIKey
+# CreateApplicationAPIKey
 
 ## Properties
 

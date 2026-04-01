@@ -1,4 +1,4 @@
-# # UpdateApplicationAPIKey
+# UpdateApplicationAPIKey
 
 ## Properties
 

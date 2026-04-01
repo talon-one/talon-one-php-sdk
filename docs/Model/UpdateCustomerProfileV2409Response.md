@@ -1,4 +1,4 @@
-# # UpdateCustomerProfileV2409Response
+# UpdateCustomerProfileV2409Response
 
 ## Properties
 

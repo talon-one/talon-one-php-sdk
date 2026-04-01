@@ -1,4 +1,4 @@
-# # CardLedgerTransactionLogEntry
+# CardLedgerTransactionLogEntry
 
 ## Properties
 

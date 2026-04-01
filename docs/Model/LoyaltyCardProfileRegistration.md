@@ -1,4 +1,4 @@
-# # LoyaltyCardProfileRegistration
+# LoyaltyCardProfileRegistration
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ScimUsersListResponse
+# ScimUsersListResponse
 
 ## Properties
 

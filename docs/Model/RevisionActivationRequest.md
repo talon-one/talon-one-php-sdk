@@ -1,4 +1,4 @@
-# # RevisionActivationRequest
+# RevisionActivationRequest
 
 ## Properties
 
