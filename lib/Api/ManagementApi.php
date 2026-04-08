@@ -4519,7 +4519,7 @@ class ManagementApi
     }
 
     /**
-     * Operation createCouponsAsynchronously
+     * Operation createCouponsAsync
      *
      * Create coupons asynchronously
      *
@@ -4534,12 +4534,12 @@ class ManagementApi
      */
     public function createCouponsAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
     {
-        list($response) = $this->createCouponsAsynchronouslyWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+        list($response) = $this->createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType);
         return $response;
     }
 
     /**
-     * Operation createCouponsAsynchronouslyWithHttpInfo
+     * Operation createCouponsAsyncWithHttpInfo
      *
      * Create coupons asynchronously
      *
@@ -4552,9 +4552,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\AsyncCouponCreationResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCouponsAsynchronouslyWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+    public function createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
     {
-        $request = $this->createCouponsAsynchronouslyRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+        $request = $this->createCouponsAsyncRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4626,7 +4626,7 @@ class ManagementApi
     }
 
     /**
-     * Operation createCouponsAsynchronouslyAsync
+     * Operation createCouponsAsyncAsync
      *
      * Create coupons asynchronously
      *
@@ -4638,9 +4638,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCouponsAsynchronouslyAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+    public function createCouponsAsyncAsync($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
     {
-        return $this->createCouponsAsynchronouslyAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType)
+        return $this->createCouponsAsyncAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4649,7 +4649,7 @@ class ManagementApi
     }
 
     /**
-     * Operation createCouponsAsynchronouslyAsyncWithHttpInfo
+     * Operation createCouponsAsyncAsyncWithHttpInfo
      *
      * Create coupons asynchronously
      *
@@ -4661,10 +4661,10 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCouponsAsynchronouslyAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
+    public function createCouponsAsyncAsyncWithHttpInfo($applicationId, $campaignId, $newCouponCreationJob, string $contentType = self::contentTypes['createCouponsAsync'][0])
     {
         $returnType = '\TalonOne\Client\Model\AsyncCouponCreationResponse';
-        $request = $this->createCouponsAsynchronouslyRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
+        $request = $this->createCouponsAsyncRequest($applicationId, $campaignId, $newCouponCreationJob, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -21274,7 +21274,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomerFriends'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -21297,7 +21297,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomerFriends'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -21387,7 +21387,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomerFriends'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21413,7 +21413,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomerFriends'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21468,7 +21468,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomerFriends'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21632,7 +21632,7 @@ class ManagementApi
      * @param  string|null $integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -21654,7 +21654,7 @@ class ManagementApi
      * @param  string|null $integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -21743,7 +21743,7 @@ class ManagementApi
      * @param  string|null $integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21768,7 +21768,7 @@ class ManagementApi
      * @param  string|null $integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21822,7 +21822,7 @@ class ManagementApi
      * @param  string|null $integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -21971,7 +21971,7 @@ class ManagementApi
      * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomersByAttributes'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -21993,7 +21993,7 @@ class ManagementApi
      * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomersByAttributes'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -22082,7 +22082,7 @@ class ManagementApi
      * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomersByAttributes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -22107,7 +22107,7 @@ class ManagementApi
      * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomersByAttributes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -22161,7 +22161,7 @@ class ManagementApi
      * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCustomersByAttributes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -25208,7 +25208,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiences'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -25229,7 +25229,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiences'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -25317,7 +25317,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -25341,7 +25341,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -25394,7 +25394,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -28281,7 +28281,7 @@ class ManagementApi
      * @param  int|null $userId Filter results by user ID. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  int|null $managementKeyId Filter results that match the given management key ID. (optional)
      * @param  bool|null $includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChanges'] to see the possible values for this operation
@@ -28309,7 +28309,7 @@ class ManagementApi
      * @param  int|null $userId Filter results by user ID. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  int|null $managementKeyId Filter results that match the given management key ID. (optional)
      * @param  bool|null $includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChanges'] to see the possible values for this operation
@@ -28404,7 +28404,7 @@ class ManagementApi
      * @param  int|null $userId Filter results by user ID. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  int|null $managementKeyId Filter results that match the given management key ID. (optional)
      * @param  bool|null $includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChanges'] to see the possible values for this operation
@@ -28435,7 +28435,7 @@ class ManagementApi
      * @param  int|null $userId Filter results by user ID. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  int|null $managementKeyId Filter results that match the given management key ID. (optional)
      * @param  bool|null $includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChanges'] to see the possible values for this operation
@@ -28495,7 +28495,7 @@ class ManagementApi
      * @param  int|null $userId Filter results by user ID. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  int|null $managementKeyId Filter results that match the given management key ID. (optional)
      * @param  bool|null $includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChanges'] to see the possible values for this operation
@@ -44740,7 +44740,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCollections'] to see the possible values for this operation
      *
@@ -44762,7 +44762,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCollections'] to see the possible values for this operation
      *
@@ -44893,7 +44893,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCollections'] to see the possible values for this operation
      *
@@ -44918,7 +44918,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCollections'] to see the possible values for this operation
      *
@@ -44972,7 +44972,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCollections'] to see the possible values for this operation
      *
@@ -46078,7 +46078,7 @@ class ManagementApi
      * @param  int $catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string[]|null $sku Filter results by one or more SKUs. Must be exact match. (optional)
      * @param  string[]|null $productNames Filter results by one or more product names. Must be exact match. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCatalogItems'] to see the possible values for this operation
@@ -46101,7 +46101,7 @@ class ManagementApi
      * @param  int $catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string[]|null $sku Filter results by one or more SKUs. Must be exact match. (optional)
      * @param  string[]|null $productNames Filter results by one or more product names. Must be exact match. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCatalogItems'] to see the possible values for this operation
@@ -46191,7 +46191,7 @@ class ManagementApi
      * @param  int $catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string[]|null $sku Filter results by one or more SKUs. Must be exact match. (optional)
      * @param  string[]|null $productNames Filter results by one or more product names. Must be exact match. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCatalogItems'] to see the possible values for this operation
@@ -46217,7 +46217,7 @@ class ManagementApi
      * @param  int $catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string[]|null $sku Filter results by one or more SKUs. Must be exact match. (optional)
      * @param  string[]|null $productNames Filter results by one or more product names. Must be exact match. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCatalogItems'] to see the possible values for this operation
@@ -46272,7 +46272,7 @@ class ManagementApi
      * @param  int $catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string[]|null $sku Filter results by one or more SKUs. Must be exact match. (optional)
      * @param  string[]|null $productNames Filter results by one or more product names. Must be exact match. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCatalogItems'] to see the possible values for this operation
@@ -46434,7 +46434,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollections'] to see the possible values for this operation
      *
@@ -46458,7 +46458,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollections'] to see the possible values for this operation
      *
@@ -46563,7 +46563,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollections'] to see the possible values for this operation
      *
@@ -46590,7 +46590,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollections'] to see the possible values for this operation
      *
@@ -46646,7 +46646,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollections'] to see the possible values for this operation
      *
@@ -46821,7 +46821,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollectionsInApplication'] to see the possible values for this operation
      *
@@ -46844,7 +46844,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollectionsInApplication'] to see the possible values for this operation
      *
@@ -46948,7 +46948,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollectionsInApplication'] to see the possible values for this operation
      *
@@ -46974,7 +46974,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollectionsInApplication'] to see the possible values for this operation
      *
@@ -47029,7 +47029,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  string|null $name Filter by collection name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCollectionsInApplication'] to see the possible values for this operation
      *
@@ -47513,7 +47513,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  float|null $campaignId Filter results by campaign ID. (optional)
      * @param  string|null $name The name of the store. (optional)
      * @param  string|null $integrationId The integration ID of the store. (optional)
@@ -47539,7 +47539,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  float|null $campaignId Filter results by campaign ID. (optional)
      * @param  string|null $name The name of the store. (optional)
      * @param  string|null $integrationId The integration ID of the store. (optional)
@@ -47632,7 +47632,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  float|null $campaignId Filter results by campaign ID. (optional)
      * @param  string|null $name The name of the store. (optional)
      * @param  string|null $integrationId The integration ID of the store. (optional)
@@ -47661,7 +47661,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  float|null $campaignId Filter results by campaign ID. (optional)
      * @param  string|null $name The name of the store. (optional)
      * @param  string|null $integrationId The integration ID of the store. (optional)
@@ -47719,7 +47719,7 @@ class ManagementApi
      * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
-     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
      * @param  float|null $campaignId Filter results by campaign ID. (optional)
      * @param  string|null $name The name of the store. (optional)
      * @param  string|null $integrationId The integration ID of the store. (optional)

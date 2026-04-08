@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * ExperimentVerdictResponseTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * ExperimentVerdictResponseTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description ExperimentVerdictResponse
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class ExperimentVerdictResponseTest extends TestCase
 {
 
     /**
@@ -71,36 +71,27 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "ExperimentVerdictResponse"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testExperimentVerdictResponse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "verdict"
      */
-    public function testPropertyName()
+    public function testPropertyVerdict()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "generated"
      */
-    public function testPropertyValue()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "excludedFromPriceHistory"
-     */
-    public function testPropertyExcludedFromPriceHistory()
+    public function testPropertyGenerated()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

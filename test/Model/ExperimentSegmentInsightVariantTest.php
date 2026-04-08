@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * ExperimentSegmentInsightVariantTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * ExperimentSegmentInsightVariantTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description ExperimentSegmentInsightVariant
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class ExperimentSegmentInsightVariantTest extends TestCase
 {
 
     /**
@@ -71,18 +71,36 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "ExperimentSegmentInsightVariant"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testExperimentSegmentInsightVariant()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "variantId"
      */
-    public function testPropertyName()
+    public function testPropertyVariantId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "variantName"
+     */
+    public function testPropertyVariantName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sessionsCount"
+     */
+    public function testPropertySessionsCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -92,15 +110,6 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
      * Test attribute "value"
      */
     public function testPropertyValue()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "excludedFromPriceHistory"
-     */
-    public function testPropertyExcludedFromPriceHistory()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

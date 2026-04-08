@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * ExperimentSegmentInsightsTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * ExperimentSegmentInsightsTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description ExperimentSegmentInsights
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class ExperimentSegmentInsightsTest extends TestCase
 {
 
     /**
@@ -71,36 +71,45 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "ExperimentSegmentInsights"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testExperimentSegmentInsights()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "metrics"
      */
-    public function testPropertyName()
+    public function testPropertyMetrics()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "totalSegmentsTested"
      */
-    public function testPropertyValue()
+    public function testPropertyTotalSegmentsTested()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "excludedFromPriceHistory"
+     * Test attribute "dimensionsTested"
      */
-    public function testPropertyExcludedFromPriceHistory()
+    public function testPropertyDimensionsTested()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "reason"
+     */
+    public function testPropertyReason()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

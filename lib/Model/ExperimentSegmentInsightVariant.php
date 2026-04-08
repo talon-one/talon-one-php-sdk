@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * ExperimentSegmentInsightVariant
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * ExperimentSegmentInsightVariant Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentSegmentInsightVariant implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'ExperimentSegmentInsightVariant';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'variantId' => 'int',
+        'variantName' => 'string',
+        'sessionsCount' => 'int',
+        'value' => 'float'
     ];
 
     /**
@@ -71,9 +71,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'variantId' => 'int64',
+        'variantName' => null,
+        'sessionsCount' => 'int64',
+        'value' => 'double'
     ];
 
     /**
@@ -82,9 +83,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'variantId' => false,
+        'variantName' => false,
+        'sessionsCount' => false,
+        'value' => false
     ];
 
     /**
@@ -173,9 +175,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'variantId' => 'variantId',
+        'variantName' => 'variantName',
+        'sessionsCount' => 'sessionsCount',
+        'value' => 'value'
     ];
 
     /**
@@ -184,9 +187,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'variantId' => 'setVariantId',
+        'variantName' => 'setVariantName',
+        'sessionsCount' => 'setSessionsCount',
+        'value' => 'setValue'
     ];
 
     /**
@@ -195,9 +199,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'variantId' => 'getVariantId',
+        'variantName' => 'getVariantName',
+        'sessionsCount' => 'getSessionsCount',
+        'value' => 'getValue'
     ];
 
     /**
@@ -257,9 +262,10 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('variantId', $data ?? [], null);
+        $this->setIfExists('variantName', $data ?? [], null);
+        $this->setIfExists('sessionsCount', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
     }
 
     /**
@@ -289,10 +295,16 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['variantId'] === null) {
+            $invalidProperties[] = "'variantId' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
+        if ($this->container['variantName'] === null) {
+            $invalidProperties[] = "'variantName' can't be null";
+        }
+        if ($this->container['sessionsCount'] === null) {
+            $invalidProperties[] = "'sessionsCount' can't be null";
+        }
+        if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
@@ -311,28 +323,82 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets variantId
      *
-     * @return string
+     * @return int
      */
-    public function getName()
+    public function getVariantId()
     {
-        return $this->container['name'];
+        return $this->container['variantId'];
     }
 
     /**
-     * Sets name
+     * Sets variantId
      *
-     * @param string $name effect name.
+     * @param int $variantId The ID of the experiment variant.
      *
      * @return self
      */
-    public function setName($name)
+    public function setVariantId($variantId)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($variantId)) {
+            throw new \InvalidArgumentException('non-nullable variantId cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['variantId'] = $variantId;
+
+        return $this;
+    }
+
+    /**
+     * Gets variantName
+     *
+     * @return string
+     */
+    public function getVariantName()
+    {
+        return $this->container['variantName'];
+    }
+
+    /**
+     * Sets variantName
+     *
+     * @param string $variantName The name of the experiment variant.
+     *
+     * @return self
+     */
+    public function setVariantName($variantName)
+    {
+        if (is_null($variantName)) {
+            throw new \InvalidArgumentException('non-nullable variantName cannot be null');
+        }
+        $this->container['variantName'] = $variantName;
+
+        return $this;
+    }
+
+    /**
+     * Gets sessionsCount
+     *
+     * @return int
+     */
+    public function getSessionsCount()
+    {
+        return $this->container['sessionsCount'];
+    }
+
+    /**
+     * Sets sessionsCount
+     *
+     * @param int $sessionsCount The number of sessions in this segment for this variant.
+     *
+     * @return self
+     */
+    public function setSessionsCount($sessionsCount)
+    {
+        if (is_null($sessionsCount)) {
+            throw new \InvalidArgumentException('non-nullable sessionsCount cannot be null');
+        }
+        $this->container['sessionsCount'] = $sessionsCount;
 
         return $this;
     }
@@ -340,7 +406,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Gets value
      *
-     * @return mixed|null
+     * @return float
      */
     public function getValue()
     {
@@ -350,50 +416,16 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Sets value
      *
-     * @param mixed|null $value value
+     * @param float $value The metric value for this variant in the segment.
      *
      * @return self
      */
     public function setValue($value)
     {
         if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets excludedFromPriceHistory
-     *
-     * @return bool|null
-     */
-    public function getExcludedFromPriceHistory()
-    {
-        return $this->container['excludedFromPriceHistory'];
-    }
-
-    /**
-     * Sets excludedFromPriceHistory
-     *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
-     *
-     * @return self
-     */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
-    {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
-        }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }
