@@ -69,7 +69,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => 'int',
         'bundleName' => 'string',
         'targetedItemPosition' => 'float',
-        'targetedItemSubPosition' => 'float'
+        'targetedItemSubPosition' => 'float',
+        'excludedFromPriceHistory' => 'bool'
     ];
 
     /**
@@ -91,7 +92,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => 'int64',
         'bundleName' => null,
         'targetedItemPosition' => null,
-        'targetedItemSubPosition' => null
+        'targetedItemSubPosition' => null,
+        'excludedFromPriceHistory' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => false,
         'bundleName' => false,
         'targetedItemPosition' => false,
-        'targetedItemSubPosition' => false
+        'targetedItemSubPosition' => false,
+        'excludedFromPriceHistory' => false
     ];
 
     /**
@@ -211,7 +214,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => 'bundleIndex',
         'bundleName' => 'bundleName',
         'targetedItemPosition' => 'targetedItemPosition',
-        'targetedItemSubPosition' => 'targetedItemSubPosition'
+        'targetedItemSubPosition' => 'targetedItemSubPosition',
+        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
     ];
 
     /**
@@ -231,7 +235,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => 'setBundleIndex',
         'bundleName' => 'setBundleName',
         'targetedItemPosition' => 'setTargetedItemPosition',
-        'targetedItemSubPosition' => 'setTargetedItemSubPosition'
+        'targetedItemSubPosition' => 'setTargetedItemSubPosition',
+        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
     ];
 
     /**
@@ -251,7 +256,8 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         'bundleIndex' => 'getBundleIndex',
         'bundleName' => 'getBundleName',
         'targetedItemPosition' => 'getTargetedItemPosition',
-        'targetedItemSubPosition' => 'getTargetedItemSubPosition'
+        'targetedItemSubPosition' => 'getTargetedItemSubPosition',
+        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
     ];
 
     /**
@@ -323,6 +329,7 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('bundleName', $data ?? [], null);
         $this->setIfExists('targetedItemPosition', $data ?? [], null);
         $this->setIfExists('targetedItemSubPosition', $data ?? [], null);
+        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
     }
 
     /**
@@ -696,6 +703,33 @@ class SetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable targetedItemSubPosition cannot be null');
         }
         $this->container['targetedItemSubPosition'] = $targetedItemSubPosition;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludedFromPriceHistory
+     *
+     * @return bool|null
+     */
+    public function getExcludedFromPriceHistory()
+    {
+        return $this->container['excludedFromPriceHistory'];
+    }
+
+    /**
+     * Sets excludedFromPriceHistory
+     *
+     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's price history.
+     *
+     * @return self
+     */
+    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    {
+        if (is_null($excludedFromPriceHistory)) {
+            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        }
+        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }

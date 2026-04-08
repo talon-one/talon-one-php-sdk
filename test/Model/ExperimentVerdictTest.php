@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * ExperimentVerdictTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * ExperimentVerdictTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description ExperimentVerdict
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class ExperimentVerdictTest extends TestCase
 {
 
     /**
@@ -71,36 +71,54 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "ExperimentVerdict"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testExperimentVerdict()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "winnerVariantName"
      */
-    public function testPropertyName()
+    public function testPropertyWinnerVariantName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "verdictSummary"
      */
-    public function testPropertyValue()
+    public function testPropertyVerdictSummary()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "excludedFromPriceHistory"
+     * Test attribute "keyFindings"
      */
-    public function testPropertyExcludedFromPriceHistory()
+    public function testPropertyKeyFindings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "aiConfidenceLevel"
+     */
+    public function testPropertyAiConfidenceLevel()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "recommendation"
+     */
+    public function testPropertyRecommendation()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

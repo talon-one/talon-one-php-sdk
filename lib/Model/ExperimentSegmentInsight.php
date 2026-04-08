@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * ExperimentSegmentInsight
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * ExperimentSegmentInsight Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentSegmentInsight implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'ExperimentSegmentInsight';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'dimension' => 'string',
+        'bucket' => 'string',
+        'confidence' => 'float',
+        'winnerVariantId' => 'int',
+        'variants' => '\TalonOne\Client\Model\ExperimentSegmentInsightVariant[]'
     ];
 
     /**
@@ -71,9 +72,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'dimension' => null,
+        'bucket' => null,
+        'confidence' => 'double',
+        'winnerVariantId' => 'int64',
+        'variants' => null
     ];
 
     /**
@@ -82,9 +85,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'dimension' => false,
+        'bucket' => false,
+        'confidence' => false,
+        'winnerVariantId' => false,
+        'variants' => false
     ];
 
     /**
@@ -173,9 +178,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'dimension' => 'dimension',
+        'bucket' => 'bucket',
+        'confidence' => 'confidence',
+        'winnerVariantId' => 'winnerVariantId',
+        'variants' => 'variants'
     ];
 
     /**
@@ -184,9 +191,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'dimension' => 'setDimension',
+        'bucket' => 'setBucket',
+        'confidence' => 'setConfidence',
+        'winnerVariantId' => 'setWinnerVariantId',
+        'variants' => 'setVariants'
     ];
 
     /**
@@ -195,9 +204,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'dimension' => 'getDimension',
+        'bucket' => 'getBucket',
+        'confidence' => 'getConfidence',
+        'winnerVariantId' => 'getWinnerVariantId',
+        'variants' => 'getVariants'
     ];
 
     /**
@@ -241,6 +252,46 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
+    public const DIMENSION_CART_VALUE = 'cart_value';
+    public const DIMENSION_ITEM_COUNT = 'item_count';
+    public const DIMENSION_CUSTOMER_TYPE = 'customer_type';
+    public const BUCKET_LOW = 'low';
+    public const BUCKET_MEDIUM = 'medium';
+    public const BUCKET_HIGH = 'high';
+    public const BUCKET__NEW = 'new';
+    public const BUCKET_RETURNING = 'returning';
+    public const BUCKET_LOYAL = 'loyal';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDimensionAllowableValues()
+    {
+        return [
+            self::DIMENSION_CART_VALUE,
+            self::DIMENSION_ITEM_COUNT,
+            self::DIMENSION_CUSTOMER_TYPE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBucketAllowableValues()
+    {
+        return [
+            self::BUCKET_LOW,
+            self::BUCKET_MEDIUM,
+            self::BUCKET_HIGH,
+            self::BUCKET__NEW,
+            self::BUCKET_RETURNING,
+            self::BUCKET_LOYAL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +308,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('dimension', $data ?? [], null);
+        $this->setIfExists('bucket', $data ?? [], null);
+        $this->setIfExists('confidence', $data ?? [], null);
+        $this->setIfExists('winnerVariantId', $data ?? [], null);
+        $this->setIfExists('variants', $data ?? [], null);
     }
 
     /**
@@ -289,11 +342,46 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['dimension'] === null) {
+            $invalidProperties[] = "'dimension' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' can't be null";
+        $allowedValues = $this->getDimensionAllowableValues();
+        if (!is_null($this->container['dimension']) && !in_array($this->container['dimension'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'dimension', must be one of '%s'",
+                $this->container['dimension'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['bucket'] === null) {
+            $invalidProperties[] = "'bucket' can't be null";
+        }
+        $allowedValues = $this->getBucketAllowableValues();
+        if (!is_null($this->container['bucket']) && !in_array($this->container['bucket'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bucket', must be one of '%s'",
+                $this->container['bucket'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['confidence'] === null) {
+            $invalidProperties[] = "'confidence' can't be null";
+        }
+        if (($this->container['confidence'] > 100)) {
+            $invalidProperties[] = "invalid value for 'confidence', must be smaller than or equal to 100.";
+        }
+
+        if (($this->container['confidence'] < 95)) {
+            $invalidProperties[] = "invalid value for 'confidence', must be bigger than or equal to 95.";
+        }
+
+        if ($this->container['winnerVariantId'] === null) {
+            $invalidProperties[] = "'winnerVariantId' can't be null";
+        }
+        if ($this->container['variants'] === null) {
+            $invalidProperties[] = "'variants' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +399,164 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets dimension
      *
      * @return string
      */
-    public function getName()
+    public function getDimension()
     {
-        return $this->container['name'];
+        return $this->container['dimension'];
     }
 
     /**
-     * Sets name
+     * Sets dimension
      *
-     * @param string $name effect name.
+     * @param string $dimension The segmentation dimension used to group customers or purchases for analysis.
      *
      * @return self
      */
-    public function setName($name)
+    public function setDimension($dimension)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($dimension)) {
+            throw new \InvalidArgumentException('non-nullable dimension cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getDimensionAllowableValues();
+        if (!in_array($dimension, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'dimension', must be one of '%s'",
+                    $dimension,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dimension'] = $dimension;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets bucket
      *
-     * @return mixed|null
+     * @return string
      */
-    public function getValue()
+    public function getBucket()
     {
-        return $this->container['value'];
+        return $this->container['bucket'];
     }
 
     /**
-     * Sets value
+     * Sets bucket
      *
-     * @param mixed|null $value value
+     * @param string $bucket The specific group within the segmentation dimension.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setBucket($bucket)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($bucket)) {
+            throw new \InvalidArgumentException('non-nullable bucket cannot be null');
         }
-        $this->container['value'] = $value;
+        $allowedValues = $this->getBucketAllowableValues();
+        if (!in_array($bucket, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'bucket', must be one of '%s'",
+                    $bucket,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['bucket'] = $bucket;
 
         return $this;
     }
 
     /**
-     * Gets excludedFromPriceHistory
+     * Gets confidence
      *
-     * @return bool|null
+     * @return float
      */
-    public function getExcludedFromPriceHistory()
+    public function getConfidence()
     {
-        return $this->container['excludedFromPriceHistory'];
+        return $this->container['confidence'];
     }
 
     /**
-     * Sets excludedFromPriceHistory
+     * Sets confidence
      *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
+     * @param float $confidence The raw (unadjusted) confidence score expressed as a percentage. Only segments with a confidence score greater than or equal to 95% are returned.
      *
      * @return self
      */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    public function setConfidence($confidence)
     {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        if (is_null($confidence)) {
+            throw new \InvalidArgumentException('non-nullable confidence cannot be null');
         }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+
+        if (($confidence > 100)) {
+            throw new \InvalidArgumentException('invalid value for $confidence when calling ExperimentSegmentInsight., must be smaller than or equal to 100.');
+        }
+        if (($confidence < 95)) {
+            throw new \InvalidArgumentException('invalid value for $confidence when calling ExperimentSegmentInsight., must be bigger than or equal to 95.');
+        }
+
+        $this->container['confidence'] = $confidence;
+
+        return $this;
+    }
+
+    /**
+     * Gets winnerVariantId
+     *
+     * @return int
+     */
+    public function getWinnerVariantId()
+    {
+        return $this->container['winnerVariantId'];
+    }
+
+    /**
+     * Sets winnerVariantId
+     *
+     * @param int $winnerVariantId The ID of the variant that performed better in this segment.
+     *
+     * @return self
+     */
+    public function setWinnerVariantId($winnerVariantId)
+    {
+        if (is_null($winnerVariantId)) {
+            throw new \InvalidArgumentException('non-nullable winnerVariantId cannot be null');
+        }
+        $this->container['winnerVariantId'] = $winnerVariantId;
+
+        return $this;
+    }
+
+    /**
+     * Gets variants
+     *
+     * @return \TalonOne\Client\Model\ExperimentSegmentInsightVariant[]
+     */
+    public function getVariants()
+    {
+        return $this->container['variants'];
+    }
+
+    /**
+     * Sets variants
+     *
+     * @param \TalonOne\Client\Model\ExperimentSegmentInsightVariant[] $variants Per-variant metric values for this segment.
+     *
+     * @return self
+     */
+    public function setVariants($variants)
+    {
+        if (is_null($variants)) {
+            throw new \InvalidArgumentException('non-nullable variants cannot be null');
+        }
+        $this->container['variants'] = $variants;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * ExperimentVerdictResponse
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * ExperimentVerdictResponse Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentVerdictResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'ExperimentVerdictResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'verdict' => '\TalonOne\Client\Model\ExperimentVerdict',
+        'generated' => '\DateTime'
     ];
 
     /**
@@ -71,9 +69,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'verdict' => null,
+        'generated' => 'date-time'
     ];
 
     /**
@@ -82,9 +79,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'verdict' => false,
+        'generated' => false
     ];
 
     /**
@@ -173,9 +169,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'verdict' => 'verdict',
+        'generated' => 'generated'
     ];
 
     /**
@@ -184,9 +179,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'verdict' => 'setVerdict',
+        'generated' => 'setGenerated'
     ];
 
     /**
@@ -195,9 +189,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'verdict' => 'getVerdict',
+        'generated' => 'getGenerated'
     ];
 
     /**
@@ -257,9 +250,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('verdict', $data ?? [], null);
+        $this->setIfExists('generated', $data ?? [], null);
     }
 
     /**
@@ -289,11 +281,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['verdict'] === null) {
+            $invalidProperties[] = "'verdict' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' can't be null";
+        if ($this->container['generated'] === null) {
+            $invalidProperties[] = "'generated' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +303,55 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets verdict
      *
-     * @return string
+     * @return \TalonOne\Client\Model\ExperimentVerdict
      */
-    public function getName()
+    public function getVerdict()
     {
-        return $this->container['name'];
+        return $this->container['verdict'];
     }
 
     /**
-     * Sets name
+     * Sets verdict
      *
-     * @param string $name effect name.
+     * @param \TalonOne\Client\Model\ExperimentVerdict $verdict verdict
      *
      * @return self
      */
-    public function setName($name)
+    public function setVerdict($verdict)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($verdict)) {
+            throw new \InvalidArgumentException('non-nullable verdict cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['verdict'] = $verdict;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets generated
      *
-     * @return mixed|null
+     * @return \DateTime
      */
-    public function getValue()
+    public function getGenerated()
     {
-        return $this->container['value'];
+        return $this->container['generated'];
     }
 
     /**
-     * Sets value
+     * Sets generated
      *
-     * @param mixed|null $value value
+     * @param \DateTime $generated Timestamp of the moment when the verdict was generated.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setGenerated($generated)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($generated)) {
+            throw new \InvalidArgumentException('non-nullable generated cannot be null');
         }
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets excludedFromPriceHistory
-     *
-     * @return bool|null
-     */
-    public function getExcludedFromPriceHistory()
-    {
-        return $this->container['excludedFromPriceHistory'];
-    }
-
-    /**
-     * Sets excludedFromPriceHistory
-     *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
-     *
-     * @return self
-     */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
-    {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
-        }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $this->container['generated'] = $generated;
 
         return $this;
     }

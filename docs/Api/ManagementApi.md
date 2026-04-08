@@ -4680,7 +4680,7 @@ $integrationId = 'integrationId_example'; // string | The Integration ID of the 
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 
 try {
     $result = $apiInstance->getApplicationCustomerFriends($applicationId, $integrationId, $pageSize, $skip, $sort, $withTotalResultSize);
@@ -4699,7 +4699,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 
 ### Return type
 
@@ -4751,7 +4751,7 @@ $applicationId = 56; // int | The ID of the Application. It is displayed in your
 $integrationId = 'integrationId_example'; // string | Filter results performing an exact matching against the profile integration identifier.
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 
 try {
     $result = $apiInstance->getApplicationCustomers($applicationId, $integrationId, $pageSize, $skip, $withTotalResultSize);
@@ -4769,7 +4769,7 @@ try {
 | **integrationId** | **string**| Filter results performing an exact matching against the profile integration identifier. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 
 ### Return type
 
@@ -4821,7 +4821,7 @@ $applicationId = 56; // int | The ID of the Application. It is displayed in your
 $customerProfileSearchQuery = new \TalonOne\Client\Model\CustomerProfileSearchQuery(); // \TalonOne\Client\Model\CustomerProfileSearchQuery | body
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 
 try {
     $result = $apiInstance->getApplicationCustomersByAttributes($applicationId, $customerProfileSearchQuery, $pageSize, $skip, $withTotalResultSize);
@@ -4839,7 +4839,7 @@ try {
 | **customerProfileSearchQuery** | [**\TalonOne\Client\Model\CustomerProfileSearchQuery**](../Model/CustomerProfileSearchQuery.md)| body | |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 
 ### Return type
 
@@ -5474,7 +5474,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 
 try {
     $result = $apiInstance->getAudiences($pageSize, $skip, $sort, $withTotalResultSize);
@@ -5491,7 +5491,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 
 ### Return type
 
@@ -6111,7 +6111,7 @@ $entityPath = 'entityPath_example'; // string | Filter results on a case insensi
 $userId = 56; // int | Filter results by user ID.
 $createdBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
 $createdAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $managementKeyId = 56; // int | Filter results that match the given management key ID.
 $includeOld = True; // bool | When this flag is set to false, the state without the change will not be returned. The default value is true.
 
@@ -6135,7 +6135,7 @@ try {
 | **userId** | **int**| Filter results by user ID. | [optional] |
 | **createdBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
 | **createdAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **managementKeyId** | **int**| Filter results that match the given management key ID. | [optional] |
 | **includeOld** | **bool**| When this flag is set to false, the state without the change will not be returned. The default value is true. | [optional] |
 
@@ -9426,7 +9426,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $name = 'name_example'; // string | Filter by collection name.
 
 try {
@@ -9444,7 +9444,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **name** | **string**| Filter by collection name. | [optional] |
 
 ### Return type
@@ -9693,7 +9693,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $catalogId = 56; // int | The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $sku = array('sku_example'); // string[] | Filter results by one or more SKUs. Must be exact match.
 $productNames = array('productNames_example'); // string[] | Filter results by one or more product names. Must be exact match.
 
@@ -9712,7 +9712,7 @@ try {
 | **catalogId** | **int**| The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. | |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **sku** | [**string[]**](../Model/string.md)| Filter results by one or more SKUs. Must be exact match. | [optional] |
 | **productNames** | [**string[]**](../Model/string.md)| Filter results by one or more product names. Must be exact match. | [optional] |
 
@@ -9767,7 +9767,7 @@ $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $name = 'name_example'; // string | Filter by collection name.
 
 try {
@@ -9787,7 +9787,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **name** | **string**| Filter by collection name. | [optional] |
 
 ### Return type
@@ -9840,7 +9840,7 @@ $applicationId = 56; // int | The ID of the Application. It is displayed in your
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $name = 'name_example'; // string | Filter by collection name.
 
 try {
@@ -9859,7 +9859,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **name** | **string**| Filter by collection name. | [optional] |
 
 ### Return type
@@ -9980,7 +9980,7 @@ $applicationId = 56; // int | The ID of the Application. It is displayed in your
 $pageSize = 1000; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
-$withTotalResultSize = True; // bool | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query.
+$withTotalResultSize = True; // bool | When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When `true`: `totalResultSize` contains the total number of results for this query. - When `false`: Only `hasMore` is returned, and it is set to `true` when there are more results than shown on the page.
 $campaignId = 3.4; // float | Filter results by campaign ID.
 $name = 'name_example'; // string | The name of the store.
 $integrationId = 'integrationId_example'; // string | The integration ID of the store.
@@ -10002,7 +10002,7 @@ try {
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
-| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query. | [optional] |
+| **withTotalResultSize** | **bool**| When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. | [optional] |
 | **campaignId** | **float**| Filter results by campaign ID. | [optional] |
 | **name** | **string**| The name of the store. | [optional] |
 | **integrationId** | **string**| The integration ID of the store. | [optional] |

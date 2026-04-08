@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * ExperimentVerdict
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * ExperimentVerdict Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentVerdict implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'ExperimentVerdict';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'winnerVariantName' => 'string',
+        'verdictSummary' => 'string',
+        'keyFindings' => 'string[]',
+        'aiConfidenceLevel' => 'string',
+        'recommendation' => 'string'
     ];
 
     /**
@@ -71,9 +72,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'winnerVariantName' => null,
+        'verdictSummary' => null,
+        'keyFindings' => null,
+        'aiConfidenceLevel' => null,
+        'recommendation' => null
     ];
 
     /**
@@ -82,9 +85,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'winnerVariantName' => false,
+        'verdictSummary' => false,
+        'keyFindings' => false,
+        'aiConfidenceLevel' => false,
+        'recommendation' => false
     ];
 
     /**
@@ -173,9 +178,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'winnerVariantName' => 'winnerVariantName',
+        'verdictSummary' => 'verdictSummary',
+        'keyFindings' => 'keyFindings',
+        'aiConfidenceLevel' => 'aiConfidenceLevel',
+        'recommendation' => 'recommendation'
     ];
 
     /**
@@ -184,9 +191,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'winnerVariantName' => 'setWinnerVariantName',
+        'verdictSummary' => 'setVerdictSummary',
+        'keyFindings' => 'setKeyFindings',
+        'aiConfidenceLevel' => 'setAiConfidenceLevel',
+        'recommendation' => 'setRecommendation'
     ];
 
     /**
@@ -195,9 +204,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'winnerVariantName' => 'getWinnerVariantName',
+        'verdictSummary' => 'getVerdictSummary',
+        'keyFindings' => 'getKeyFindings',
+        'aiConfidenceLevel' => 'getAiConfidenceLevel',
+        'recommendation' => 'getRecommendation'
     ];
 
     /**
@@ -257,9 +268,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('winnerVariantName', $data ?? [], null);
+        $this->setIfExists('verdictSummary', $data ?? [], null);
+        $this->setIfExists('keyFindings', $data ?? [], null);
+        $this->setIfExists('aiConfidenceLevel', $data ?? [], null);
+        $this->setIfExists('recommendation', $data ?? [], null);
     }
 
     /**
@@ -289,11 +302,20 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['winnerVariantName'] === null) {
+            $invalidProperties[] = "'winnerVariantName' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' can't be null";
+        if ($this->container['verdictSummary'] === null) {
+            $invalidProperties[] = "'verdictSummary' can't be null";
+        }
+        if ($this->container['keyFindings'] === null) {
+            $invalidProperties[] = "'keyFindings' can't be null";
+        }
+        if ($this->container['aiConfidenceLevel'] === null) {
+            $invalidProperties[] = "'aiConfidenceLevel' can't be null";
+        }
+        if ($this->container['recommendation'] === null) {
+            $invalidProperties[] = "'recommendation' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +333,136 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets winnerVariantName
      *
      * @return string
      */
-    public function getName()
+    public function getWinnerVariantName()
     {
-        return $this->container['name'];
+        return $this->container['winnerVariantName'];
     }
 
     /**
-     * Sets name
+     * Sets winnerVariantName
      *
-     * @param string $name effect name.
+     * @param string $winnerVariantName The name of the winning variant. If no variant shows a statistically significant advantage on key business metrics, return 'Inconclusive'.
      *
      * @return self
      */
-    public function setName($name)
+    public function setWinnerVariantName($winnerVariantName)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($winnerVariantName)) {
+            throw new \InvalidArgumentException('non-nullable winnerVariantName cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['winnerVariantName'] = $winnerVariantName;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets verdictSummary
      *
-     * @return mixed|null
+     * @return string
      */
-    public function getValue()
+    public function getVerdictSummary()
     {
-        return $this->container['value'];
+        return $this->container['verdictSummary'];
     }
 
     /**
-     * Sets value
+     * Sets verdictSummary
      *
-     * @param mixed|null $value value
+     * @param string $verdictSummary A one-sentence summary of the outcome, including the key metric and confidence level that led to the decision.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setVerdictSummary($verdictSummary)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($verdictSummary)) {
+            throw new \InvalidArgumentException('non-nullable verdictSummary cannot be null');
         }
-        $this->container['value'] = $value;
+        $this->container['verdictSummary'] = $verdictSummary;
 
         return $this;
     }
 
     /**
-     * Gets excludedFromPriceHistory
+     * Gets keyFindings
      *
-     * @return bool|null
+     * @return string[]
      */
-    public function getExcludedFromPriceHistory()
+    public function getKeyFindings()
     {
-        return $this->container['excludedFromPriceHistory'];
+        return $this->container['keyFindings'];
     }
 
     /**
-     * Sets excludedFromPriceHistory
+     * Sets keyFindings
      *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
+     * @param string[] $keyFindings A bullet point stating the most important finding, including the metric, the percentage change, and the confidence.
      *
      * @return self
      */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    public function setKeyFindings($keyFindings)
     {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        if (is_null($keyFindings)) {
+            throw new \InvalidArgumentException('non-nullable keyFindings cannot be null');
         }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $this->container['keyFindings'] = $keyFindings;
+
+        return $this;
+    }
+
+    /**
+     * Gets aiConfidenceLevel
+     *
+     * @return string
+     */
+    public function getAiConfidenceLevel()
+    {
+        return $this->container['aiConfidenceLevel'];
+    }
+
+    /**
+     * Sets aiConfidenceLevel
+     *
+     * @param string $aiConfidenceLevel Your confidence in this overall verdict, from 0 to 100.
+     *
+     * @return self
+     */
+    public function setAiConfidenceLevel($aiConfidenceLevel)
+    {
+        if (is_null($aiConfidenceLevel)) {
+            throw new \InvalidArgumentException('non-nullable aiConfidenceLevel cannot be null');
+        }
+        $this->container['aiConfidenceLevel'] = $aiConfidenceLevel;
+
+        return $this;
+    }
+
+    /**
+     * Gets recommendation
+     *
+     * @return string
+     */
+    public function getRecommendation()
+    {
+        return $this->container['recommendation'];
+    }
+
+    /**
+     * Sets recommendation
+     *
+     * @param string $recommendation A short, actionable recommendation based on the findings. If inconclusive, suggest running the test longer. If there is a clear winner, recommend promoting it.
+     *
+     * @return self
+     */
+    public function setRecommendation($recommendation)
+    {
+        if (is_null($recommendation)) {
+            throw new \InvalidArgumentException('non-nullable recommendation cannot be null');
+        }
+        $this->container['recommendation'] = $recommendation;
 
         return $this;
     }
