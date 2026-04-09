@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * ExperimentSegmentInsightMetric
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * ExperimentSegmentInsightMetric Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentSegmentInsightMetric implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'ExperimentSegmentInsightMetric';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'metric' => 'string',
+        'segments' => '\TalonOne\Client\Model\ExperimentSegmentInsight[]'
     ];
 
     /**
@@ -71,9 +69,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'metric' => null,
+        'segments' => null
     ];
 
     /**
@@ -82,9 +79,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'metric' => false,
+        'segments' => false
     ];
 
     /**
@@ -173,9 +169,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'metric' => 'metric',
+        'segments' => 'segments'
     ];
 
     /**
@@ -184,9 +179,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'metric' => 'setMetric',
+        'segments' => 'setSegments'
     ];
 
     /**
@@ -195,9 +189,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'metric' => 'getMetric',
+        'segments' => 'getSegments'
     ];
 
     /**
@@ -241,6 +234,23 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
+    public const METRIC_AVG_SESSION_VALUE = 'avg_session_value';
+    public const METRIC_AVG_DISCOUNTED_SESSION_VALUE = 'avg_discounted_session_value';
+    public const METRIC_AVG_ITEMS_PER_SESSION = 'avg_items_per_session';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMetricAllowableValues()
+    {
+        return [
+            self::METRIC_AVG_SESSION_VALUE,
+            self::METRIC_AVG_DISCOUNTED_SESSION_VALUE,
+            self::METRIC_AVG_ITEMS_PER_SESSION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +267,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('metric', $data ?? [], null);
+        $this->setIfExists('segments', $data ?? [], null);
     }
 
     /**
@@ -289,11 +298,20 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['metric'] === null) {
+            $invalidProperties[] = "'metric' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' can't be null";
+        $allowedValues = $this->getMetricAllowableValues();
+        if (!is_null($this->container['metric']) && !in_array($this->container['metric'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'metric', must be one of '%s'",
+                $this->container['metric'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['segments'] === null) {
+            $invalidProperties[] = "'segments' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +329,65 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets metric
      *
      * @return string
      */
-    public function getName()
+    public function getMetric()
     {
-        return $this->container['name'];
+        return $this->container['metric'];
     }
 
     /**
-     * Sets name
+     * Sets metric
      *
-     * @param string $name effect name.
+     * @param string $metric The metric being measured.
      *
      * @return self
      */
-    public function setName($name)
+    public function setMetric($metric)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($metric)) {
+            throw new \InvalidArgumentException('non-nullable metric cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getMetricAllowableValues();
+        if (!in_array($metric, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'metric', must be one of '%s'",
+                    $metric,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metric'] = $metric;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets segments
      *
-     * @return mixed|null
+     * @return \TalonOne\Client\Model\ExperimentSegmentInsight[]
      */
-    public function getValue()
+    public function getSegments()
     {
-        return $this->container['value'];
+        return $this->container['segments'];
     }
 
     /**
-     * Sets value
+     * Sets segments
      *
-     * @param mixed|null $value value
+     * @param \TalonOne\Client\Model\ExperimentSegmentInsight[] $segments Segments with statistically significant results for this metric. An empty array means no significant segments were found. Segments are sorted by confidence score from highest to lowest.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setSegments($segments)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($segments)) {
+            throw new \InvalidArgumentException('non-nullable segments cannot be null');
         }
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets excludedFromPriceHistory
-     *
-     * @return bool|null
-     */
-    public function getExcludedFromPriceHistory()
-    {
-        return $this->container['excludedFromPriceHistory'];
-    }
-
-    /**
-     * Sets excludedFromPriceHistory
-     *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
-     *
-     * @return self
-     */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
-    {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
-        }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $this->container['segments'] = $segments;
 
         return $this;
     }

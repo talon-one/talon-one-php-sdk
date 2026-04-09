@@ -229,7 +229,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**createCampaignStoreBudget**](docs/Api/ManagementApi.md#createcampaignstorebudget) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Create campaign store budget
 *ManagementApi* | [**createCollection**](docs/Api/ManagementApi.md#createcollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | Create campaign-level collection
 *ManagementApi* | [**createCoupons**](docs/Api/ManagementApi.md#createcoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create coupons
-*ManagementApi* | [**createCouponsAsync**](docs/Api/ManagementApi.md#createcouponsasync) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
+*ManagementApi* | [**createCouponsAsynchronously**](docs/Api/ManagementApi.md#createcouponsasynchronously) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
 *ManagementApi* | [**createCouponsDeletionJob**](docs/Api/ManagementApi.md#createcouponsdeletionjob) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_deletion_jobs | Creates a coupon deletion job
 *ManagementApi* | [**createCouponsForMultipleRecipients**](docs/Api/ManagementApi.md#createcouponsformultiplerecipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create coupons for multiple recipients
 *ManagementApi* | [**createInviteEmail**](docs/Api/ManagementApi.md#createinviteemail) | **POST** /v1/invite_emails | Resend invitation email
@@ -637,10 +637,16 @@ Class | Method | HTTP request | Description
 - [ExperimentListResultsRequest](docs/Model/ExperimentListResultsRequest.md)
 - [ExperimentResult](docs/Model/ExperimentResult.md)
 - [ExperimentResults](docs/Model/ExperimentResults.md)
+- [ExperimentSegmentInsight](docs/Model/ExperimentSegmentInsight.md)
+- [ExperimentSegmentInsightMetric](docs/Model/ExperimentSegmentInsightMetric.md)
+- [ExperimentSegmentInsightVariant](docs/Model/ExperimentSegmentInsightVariant.md)
+- [ExperimentSegmentInsights](docs/Model/ExperimentSegmentInsights.md)
 - [ExperimentVariant](docs/Model/ExperimentVariant.md)
 - [ExperimentVariantAllocation](docs/Model/ExperimentVariantAllocation.md)
 - [ExperimentVariantResult](docs/Model/ExperimentVariantResult.md)
 - [ExperimentVariantResultConfidence](docs/Model/ExperimentVariantResultConfidence.md)
+- [ExperimentVerdict](docs/Model/ExperimentVerdict.md)
+- [ExperimentVerdictResponse](docs/Model/ExperimentVerdictResponse.md)
 - [ExpiringCardPointsData](docs/Model/ExpiringCardPointsData.md)
 - [ExpiringCardPointsNotification](docs/Model/ExpiringCardPointsNotification.md)
 - [ExpiringCouponsData](docs/Model/ExpiringCouponsData.md)
@@ -880,6 +886,7 @@ Class | Method | HTTP request | Description
 - [NewReferralsForMultipleAdvocates](docs/Model/NewReferralsForMultipleAdvocates.md)
 - [NewReturn](docs/Model/NewReturn.md)
 - [NewRevisionVersion](docs/Model/NewRevisionVersion.md)
+- [NewReward](docs/Model/NewReward.md)
 - [NewRole](docs/Model/NewRole.md)
 - [NewRoleV2](docs/Model/NewRoleV2.md)
 - [NewRuleset](docs/Model/NewRuleset.md)
@@ -947,6 +954,7 @@ Class | Method | HTTP request | Description
 - [RevisionActivation](docs/Model/RevisionActivation.md)
 - [RevisionActivationRequest](docs/Model/RevisionActivationRequest.md)
 - [RevisionVersion](docs/Model/RevisionVersion.md)
+- [Reward](docs/Model/Reward.md)
 - [Role](docs/Model/Role.md)
 - [RoleAssign](docs/Model/RoleAssign.md)
 - [RoleMembership](docs/Model/RoleMembership.md)

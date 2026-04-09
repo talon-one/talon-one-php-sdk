@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * ExperimentSegmentInsightTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * ExperimentSegmentInsightTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description ExperimentSegmentInsight
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class ExperimentSegmentInsightTest extends TestCase
 {
 
     /**
@@ -71,36 +71,54 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "ExperimentSegmentInsight"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testExperimentSegmentInsight()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "dimension"
      */
-    public function testPropertyName()
+    public function testPropertyDimension()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "bucket"
      */
-    public function testPropertyValue()
+    public function testPropertyBucket()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "excludedFromPriceHistory"
+     * Test attribute "confidence"
      */
-    public function testPropertyExcludedFromPriceHistory()
+    public function testPropertyConfidence()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "winnerVariantId"
+     */
+    public function testPropertyWinnerVariantId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "variants"
+     */
+    public function testPropertyVariants()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

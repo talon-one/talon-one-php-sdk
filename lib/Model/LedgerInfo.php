@@ -66,7 +66,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => 'float',
         'tentativeNegativeBalance' => 'float',
         'currentTier' => '\TalonOne\Client\Model\Tier',
-        'pointsToNextTier' => 'float'
+        'pointsToNextTier' => 'float',
+        'nextTierName' => 'string'
     ];
 
     /**
@@ -86,7 +87,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => null,
         'tentativeNegativeBalance' => null,
         'currentTier' => null,
-        'pointsToNextTier' => null
+        'pointsToNextTier' => null,
+        'nextTierName' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => false,
         'tentativeNegativeBalance' => false,
         'currentTier' => false,
-        'pointsToNextTier' => false
+        'pointsToNextTier' => false,
+        'nextTierName' => false
     ];
 
     /**
@@ -202,7 +205,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => 'tentativePendingBalance',
         'tentativeNegativeBalance' => 'tentativeNegativeBalance',
         'currentTier' => 'currentTier',
-        'pointsToNextTier' => 'pointsToNextTier'
+        'pointsToNextTier' => 'pointsToNextTier',
+        'nextTierName' => 'nextTierName'
     ];
 
     /**
@@ -220,7 +224,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => 'setTentativePendingBalance',
         'tentativeNegativeBalance' => 'setTentativeNegativeBalance',
         'currentTier' => 'setCurrentTier',
-        'pointsToNextTier' => 'setPointsToNextTier'
+        'pointsToNextTier' => 'setPointsToNextTier',
+        'nextTierName' => 'setNextTierName'
     ];
 
     /**
@@ -238,7 +243,8 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'tentativePendingBalance' => 'getTentativePendingBalance',
         'tentativeNegativeBalance' => 'getTentativeNegativeBalance',
         'currentTier' => 'getCurrentTier',
-        'pointsToNextTier' => 'getPointsToNextTier'
+        'pointsToNextTier' => 'getPointsToNextTier',
+        'nextTierName' => 'getNextTierName'
     ];
 
     /**
@@ -308,6 +314,7 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('tentativeNegativeBalance', $data ?? [], null);
         $this->setIfExists('currentTier', $data ?? [], null);
         $this->setIfExists('pointsToNextTier', $data ?? [], null);
+        $this->setIfExists('nextTierName', $data ?? [], null);
     }
 
     /**
@@ -633,6 +640,33 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable pointsToNextTier cannot be null');
         }
         $this->container['pointsToNextTier'] = $pointsToNextTier;
+
+        return $this;
+    }
+
+    /**
+     * Gets nextTierName
+     *
+     * @return string|null
+     */
+    public function getNextTierName()
+    {
+        return $this->container['nextTierName'];
+    }
+
+    /**
+     * Sets nextTierName
+     *
+     * @param string|null $nextTierName The name of the next higher tier level in the loyalty program.  **Note**: - Returns `null` if the customer has reached the highest available tier. - Returns the lowest level tier name if the customer is not currently assigned to any tier.
+     *
+     * @return self
+     */
+    public function setNextTierName($nextTierName)
+    {
+        if (is_null($nextTierName)) {
+            throw new \InvalidArgumentException('non-nullable nextTierName cannot be null');
+        }
+        $this->container['nextTierName'] = $nextTierName;
 
         return $this;
     }

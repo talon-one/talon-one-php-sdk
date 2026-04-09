@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest
+ * RewardTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StrikethroughSetDiscountPerItemEffectPropsTest Class Doc Comment
+ * RewardTest Class Doc Comment
  *
  * @category    Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description Reward
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
+class RewardTest extends TestCase
 {
 
     /**
@@ -71,9 +71,36 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test "StrikethroughSetDiscountPerItemEffectProps"
+     * Test "Reward"
      */
-    public function testStrikethroughSetDiscountPerItemEffectProps()
+    public function testReward()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "created"
+     */
+    public function testPropertyCreated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "accountId"
+     */
+    public function testPropertyAccountId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -89,18 +116,36 @@ class StrikethroughSetDiscountPerItemEffectPropsTest extends TestCase
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "apiName"
      */
-    public function testPropertyValue()
+    public function testPropertyApiName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "excludedFromPriceHistory"
+     * Test attribute "description"
      */
-    public function testPropertyExcludedFromPriceHistory()
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applicationIds"
+     */
+    public function testPropertyApplicationIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

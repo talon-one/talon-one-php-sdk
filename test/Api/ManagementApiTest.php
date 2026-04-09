@@ -228,12 +228,12 @@ class ManagementApiTest extends TestCase
     }
 
     /**
-     * Test case for createCouponsAsync
+     * Test case for createCouponsAsynchronously
      *
      * Create coupons asynchronously.
      *
      */
-    public function testCreateCouponsAsync()
+    public function testCreateCouponsAsynchronously()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
