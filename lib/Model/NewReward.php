@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * NewReward
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * NewReward Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'NewReward';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $openAPITypes = [
         'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'apiName' => 'string',
+        'description' => 'string',
+        'applicationIds' => 'int[]'
     ];
 
     /**
@@ -72,8 +72,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $openAPIFormats = [
         'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'apiName' => null,
+        'description' => null,
+        'applicationIds' => 'int64'
     ];
 
     /**
@@ -83,8 +84,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static array $openAPINullables = [
         'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'apiName' => false,
+        'description' => false,
+        'applicationIds' => false
     ];
 
     /**
@@ -174,8 +176,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'apiName' => 'apiName',
+        'description' => 'description',
+        'applicationIds' => 'applicationIds'
     ];
 
     /**
@@ -185,8 +188,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $setters = [
         'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'apiName' => 'setApiName',
+        'description' => 'setDescription',
+        'applicationIds' => 'setApplicationIds'
     ];
 
     /**
@@ -196,8 +200,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $getters = [
         'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'apiName' => 'getApiName',
+        'description' => 'getDescription',
+        'applicationIds' => 'getApplicationIds'
     ];
 
     /**
@@ -258,8 +263,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('apiName', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('applicationIds', $data ?? [], null);
     }
 
     /**
@@ -292,8 +298,19 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' can't be null";
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['apiName'] === null) {
+            $invalidProperties[] = "'apiName' can't be null";
+        }
+        if ((mb_strlen($this->container['apiName']) < 1)) {
+            $invalidProperties[] = "invalid value for 'apiName', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['applicationIds'] === null) {
+            $invalidProperties[] = "'applicationIds' can't be null";
         }
         return $invalidProperties;
     }
@@ -323,7 +340,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Sets name
      *
-     * @param string $name effect name.
+     * @param string $name The name of the reward.
      *
      * @return self
      */
@@ -332,68 +349,98 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling NewReward., must be bigger than or equal to 1.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets apiName
      *
-     * @return mixed|null
+     * @return string
      */
-    public function getValue()
+    public function getApiName()
     {
-        return $this->container['value'];
+        return $this->container['apiName'];
     }
 
     /**
-     * Sets value
+     * Sets apiName
      *
-     * @param mixed|null $value value
+     * @param string $apiName A unique identifier used to reference the reward in API integrations.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setApiName($apiName)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($apiName)) {
+            throw new \InvalidArgumentException('non-nullable apiName cannot be null');
         }
-        $this->container['value'] = $value;
+
+        if ((mb_strlen($apiName) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $apiName when calling NewReward., must be bigger than or equal to 1.');
+        }
+
+        $this->container['apiName'] = $apiName;
 
         return $this;
     }
 
     /**
-     * Gets excludedFromPriceHistory
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getExcludedFromPriceHistory()
+    public function getDescription()
     {
-        return $this->container['excludedFromPriceHistory'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets excludedFromPriceHistory
+     * Sets description
      *
-     * @param bool|null $excludedFromPriceHistory excludedFromPriceHistory
+     * @param string|null $description A description of the reward.
      *
      * @return self
      */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    public function setDescription($description)
     {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets applicationIds
+     *
+     * @return int[]
+     */
+    public function getApplicationIds()
+    {
+        return $this->container['applicationIds'];
+    }
+
+    /**
+     * Sets applicationIds
+     *
+     * @param int[] $applicationIds The IDs of the Applications this reward is connected to.   **Note**: Currently, a reward can only be connected to one Application.
+     *
+     * @return self
+     */
+    public function setApplicationIds($applicationIds)
+    {
+        if (is_null($applicationIds)) {
+            throw new \InvalidArgumentException('non-nullable applicationIds cannot be null');
+        }
+        $this->container['applicationIds'] = $applicationIds;
 
         return $this;
     }

@@ -574,7 +574,7 @@ class LoyaltyBalanceWithTier implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets nextTierName
      *
-     * @param string|null $nextTierName The name of the tier consecutive to the current tier.
+     * @param string|null $nextTierName The name of the next higher tier level in the loyalty program.  **Note**: - Returns `null` if the customer has reached the highest available tier. - Returns the lowest level tier name if the customer is not currently assigned to any tier.
      *
      * @return self
      */

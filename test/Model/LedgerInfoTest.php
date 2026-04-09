@@ -168,4 +168,13 @@ class LedgerInfoTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "nextTierName"
+     */
+    public function testPropertyNextTierName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

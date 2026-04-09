@@ -249,10 +249,16 @@ docs/Model/ExperimentListResults.md
 docs/Model/ExperimentListResultsRequest.md
 docs/Model/ExperimentResult.md
 docs/Model/ExperimentResults.md
+docs/Model/ExperimentSegmentInsight.md
+docs/Model/ExperimentSegmentInsightMetric.md
+docs/Model/ExperimentSegmentInsightVariant.md
+docs/Model/ExperimentSegmentInsights.md
 docs/Model/ExperimentVariant.md
 docs/Model/ExperimentVariantAllocation.md
 docs/Model/ExperimentVariantResult.md
 docs/Model/ExperimentVariantResultConfidence.md
+docs/Model/ExperimentVerdict.md
+docs/Model/ExperimentVerdictResponse.md
 docs/Model/ExpiringCardPointsData.md
 docs/Model/ExpiringCardPointsNotification.md
 docs/Model/ExpiringCouponsData.md
@@ -492,6 +498,7 @@ docs/Model/NewReferral.md
 docs/Model/NewReferralsForMultipleAdvocates.md
 docs/Model/NewReturn.md
 docs/Model/NewRevisionVersion.md
+docs/Model/NewReward.md
 docs/Model/NewRole.md
 docs/Model/NewRoleV2.md
 docs/Model/NewRuleset.md
@@ -559,6 +566,7 @@ docs/Model/Revision.md
 docs/Model/RevisionActivation.md
 docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
+docs/Model/Reward.md
 docs/Model/Role.md
 docs/Model/RoleAssign.md
 docs/Model/RoleMembership.md
@@ -941,10 +949,16 @@ lib/Model/ExperimentListResults.php
 lib/Model/ExperimentListResultsRequest.php
 lib/Model/ExperimentResult.php
 lib/Model/ExperimentResults.php
+lib/Model/ExperimentSegmentInsight.php
+lib/Model/ExperimentSegmentInsightMetric.php
+lib/Model/ExperimentSegmentInsightVariant.php
+lib/Model/ExperimentSegmentInsights.php
 lib/Model/ExperimentVariant.php
 lib/Model/ExperimentVariantAllocation.php
 lib/Model/ExperimentVariantResult.php
 lib/Model/ExperimentVariantResultConfidence.php
+lib/Model/ExperimentVerdict.php
+lib/Model/ExperimentVerdictResponse.php
 lib/Model/ExpiringCardPointsData.php
 lib/Model/ExpiringCardPointsNotification.php
 lib/Model/ExpiringCouponsData.php
@@ -1185,6 +1199,7 @@ lib/Model/NewReferral.php
 lib/Model/NewReferralsForMultipleAdvocates.php
 lib/Model/NewReturn.php
 lib/Model/NewRevisionVersion.php
+lib/Model/NewReward.php
 lib/Model/NewRole.php
 lib/Model/NewRoleV2.php
 lib/Model/NewRuleset.php
@@ -1252,6 +1267,7 @@ lib/Model/Revision.php
 lib/Model/RevisionActivation.php
 lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
+lib/Model/Reward.php
 lib/Model/Role.php
 lib/Model/RoleAssign.php
 lib/Model/RoleMembership.php
@@ -1390,7 +1406,6 @@ lib/Model/WebhookAuthenticationWebhookRef.php
 lib/Model/WebhookWithOutgoingIntegrationDetails.php
 lib/Model/WillAwardGiveawayEffectProps.php
 lib/ObjectSerializer.php
-managementApi.patch
 phpunit.xml.dist
 test/Api/IntegrationApiTest.php
 test/Api/ManagementApiTest.php
@@ -1630,11 +1645,17 @@ test/Model/ExperimentListResultsRequestTest.php
 test/Model/ExperimentListResultsTest.php
 test/Model/ExperimentResultTest.php
 test/Model/ExperimentResultsTest.php
+test/Model/ExperimentSegmentInsightMetricTest.php
+test/Model/ExperimentSegmentInsightTest.php
+test/Model/ExperimentSegmentInsightVariantTest.php
+test/Model/ExperimentSegmentInsightsTest.php
 test/Model/ExperimentTest.php
 test/Model/ExperimentVariantAllocationTest.php
 test/Model/ExperimentVariantResultConfidenceTest.php
 test/Model/ExperimentVariantResultTest.php
 test/Model/ExperimentVariantTest.php
+test/Model/ExperimentVerdictResponseTest.php
+test/Model/ExperimentVerdictTest.php
 test/Model/ExpiringCardPointsDataTest.php
 test/Model/ExpiringCardPointsNotificationTest.php
 test/Model/ExpiringCouponsDataTest.php
@@ -1874,6 +1895,7 @@ test/Model/NewReferralTest.php
 test/Model/NewReferralsForMultipleAdvocatesTest.php
 test/Model/NewReturnTest.php
 test/Model/NewRevisionVersionTest.php
+test/Model/NewRewardTest.php
 test/Model/NewRoleTest.php
 test/Model/NewRoleV2Test.php
 test/Model/NewRulesetTest.php
@@ -1941,6 +1963,7 @@ test/Model/RevisionActivationRequestTest.php
 test/Model/RevisionActivationTest.php
 test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
+test/Model/RewardTest.php
 test/Model/RoleAssignTest.php
 test/Model/RoleMembershipTest.php
 test/Model/RoleTest.php
