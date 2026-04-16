@@ -1,6 +1,6 @@
 <?php
 /**
- * NewReward
+ * CreateMCPKey
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * NewReward Class Doc Comment
+ * CreateMCPKey Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateMCPKey implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'NewReward';
+    protected static $openAPIModelName = 'CreateMCPKey';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'name' => 'string',
-        'apiName' => 'string',
-        'description' => 'string',
-        'applicationIds' => 'int[]',
-        'sandbox' => 'bool'
+        'expiryDate' => '\DateTime'
     ];
 
     /**
@@ -73,10 +70,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'name' => null,
-        'apiName' => null,
-        'description' => null,
-        'applicationIds' => 'int64',
-        'sandbox' => null
+        'expiryDate' => 'date-time'
     ];
 
     /**
@@ -86,10 +80,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'name' => false,
-        'apiName' => false,
-        'description' => false,
-        'applicationIds' => false,
-        'sandbox' => false
+        'expiryDate' => false
     ];
 
     /**
@@ -179,10 +170,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'apiName' => 'apiName',
-        'description' => 'description',
-        'applicationIds' => 'applicationIds',
-        'sandbox' => 'sandbox'
+        'expiryDate' => 'expiryDate'
     ];
 
     /**
@@ -192,10 +180,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'name' => 'setName',
-        'apiName' => 'setApiName',
-        'description' => 'setDescription',
-        'applicationIds' => 'setApplicationIds',
-        'sandbox' => 'setSandbox'
+        'expiryDate' => 'setExpiryDate'
     ];
 
     /**
@@ -205,10 +190,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'name' => 'getName',
-        'apiName' => 'getApiName',
-        'description' => 'getDescription',
-        'applicationIds' => 'getApplicationIds',
-        'sandbox' => 'getSandbox'
+        'expiryDate' => 'getExpiryDate'
     ];
 
     /**
@@ -269,10 +251,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('apiName', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('applicationIds', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
     }
 
     /**
@@ -305,22 +284,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['apiName'] === null) {
-            $invalidProperties[] = "'apiName' can't be null";
-        }
-        if ((mb_strlen($this->container['apiName']) < 1)) {
-            $invalidProperties[] = "invalid value for 'apiName', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['applicationIds'] === null) {
-            $invalidProperties[] = "'applicationIds' can't be null";
-        }
-        if ($this->container['sandbox'] === null) {
-            $invalidProperties[] = "'sandbox' can't be null";
+        if ($this->container['expiryDate'] === null) {
+            $invalidProperties[] = "'expiryDate' can't be null";
         }
         return $invalidProperties;
     }
@@ -350,7 +315,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The name of the reward.
+     * @param string $name Name for the MCP key.
      *
      * @return self
      */
@@ -359,125 +324,34 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling NewReward., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets apiName
+     * Gets expiryDate
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getApiName()
+    public function getExpiryDate()
     {
-        return $this->container['apiName'];
+        return $this->container['expiryDate'];
     }
 
     /**
-     * Sets apiName
+     * Sets expiryDate
      *
-     * @param string $apiName A unique identifier used to reference the reward in API integrations.
+     * @param \DateTime $expiryDate The date the MCP key expires.
      *
      * @return self
      */
-    public function setApiName($apiName)
+    public function setExpiryDate($expiryDate)
     {
-        if (is_null($apiName)) {
-            throw new \InvalidArgumentException('non-nullable apiName cannot be null');
+        if (is_null($expiryDate)) {
+            throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
         }
-
-        if ((mb_strlen($apiName) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $apiName when calling NewReward., must be bigger than or equal to 1.');
-        }
-
-        $this->container['apiName'] = $apiName;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the reward.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets applicationIds
-     *
-     * @return int[]
-     */
-    public function getApplicationIds()
-    {
-        return $this->container['applicationIds'];
-    }
-
-    /**
-     * Sets applicationIds
-     *
-     * @param int[] $applicationIds The IDs of the Applications this reward is connected to.   **Note**: Currently, a reward can only be connected to one Application.
-     *
-     * @return self
-     */
-    public function setApplicationIds($applicationIds)
-    {
-        if (is_null($applicationIds)) {
-            throw new \InvalidArgumentException('non-nullable applicationIds cannot be null');
-        }
-        $this->container['applicationIds'] = $applicationIds;
-
-        return $this;
-    }
-
-    /**
-     * Gets sandbox
-     *
-     * @return bool
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param bool $sandbox Indicates if this is a live or sandbox reward. Rewards of a given type can only be connected to Applications of the same type.
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
-        }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }

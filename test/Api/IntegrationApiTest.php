@@ -348,6 +348,18 @@ class IntegrationApiTest extends TestCase
     }
 
     /**
+     * Test case for integrationGetAllCampaigns
+     *
+     * List all running campaigns.
+     *
+     */
+    public function testIntegrationGetAllCampaigns()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for linkLoyaltyCardToProfile
      *
      * Link customer profile to card.

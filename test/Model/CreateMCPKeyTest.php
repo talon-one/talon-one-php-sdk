@@ -1,6 +1,6 @@
 <?php
 /**
- * BestPriorPriceRequestTest
+ * CreateMCPKeyTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * BestPriorPriceRequestTest Class Doc Comment
+ * CreateMCPKeyTest Class Doc Comment
  *
  * @category    Class
- * @description BestPriorPriceRequest
+ * @description CreateMCPKey
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class BestPriorPriceRequestTest extends TestCase
+class CreateMCPKeyTest extends TestCase
 {
 
     /**
@@ -71,54 +71,27 @@ class BestPriorPriceRequestTest extends TestCase
     }
 
     /**
-     * Test "BestPriorPriceRequest"
+     * Test "CreateMCPKey"
      */
-    public function testBestPriorPriceRequest()
+    public function testCreateMCPKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "skus"
+     * Test attribute "name"
      */
-    public function testPropertySkus()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timeframeEndDate"
+     * Test attribute "expiryDate"
      */
-    public function testPropertyTimeframeEndDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timeframe"
-     */
-    public function testPropertyTimeframe()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timeframeEndDateType"
-     */
-    public function testPropertyTimeframeEndDateType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "target"
-     */
-    public function testPropertyTarget()
+    public function testPropertyExpiryDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

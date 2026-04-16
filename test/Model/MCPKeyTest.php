@@ -1,6 +1,6 @@
 <?php
 /**
- * BestPriorPriceRequestTest
+ * MCPKeyTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * BestPriorPriceRequestTest Class Doc Comment
+ * MCPKeyTest Class Doc Comment
  *
  * @category    Class
- * @description BestPriorPriceRequest
+ * @description MCPKey
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class BestPriorPriceRequestTest extends TestCase
+class MCPKeyTest extends TestCase
 {
 
     /**
@@ -71,54 +71,81 @@ class BestPriorPriceRequestTest extends TestCase
     }
 
     /**
-     * Test "BestPriorPriceRequest"
+     * Test "MCPKey"
      */
-    public function testBestPriorPriceRequest()
+    public function testMCPKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "skus"
+     * Test attribute "name"
      */
-    public function testPropertySkus()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timeframeEndDate"
+     * Test attribute "expiryDate"
      */
-    public function testPropertyTimeframeEndDate()
+    public function testPropertyExpiryDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timeframe"
+     * Test attribute "id"
      */
-    public function testPropertyTimeframe()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timeframeEndDateType"
+     * Test attribute "createdBy"
      */
-    public function testPropertyTimeframeEndDateType()
+    public function testPropertyCreatedBy()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "target"
+     * Test attribute "accountID"
      */
-    public function testPropertyTarget()
+    public function testPropertyAccountID()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "created"
+     */
+    public function testPropertyCreated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "disabled"
+     */
+    public function testPropertyDisabled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "lastUsed"
+     */
+    public function testPropertyLastUsed()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

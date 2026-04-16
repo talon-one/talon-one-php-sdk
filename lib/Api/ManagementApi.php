@@ -203,6 +203,9 @@ class ManagementApi
         'exportCampaignStores' => [
             'application/json',
         ],
+        'exportCampaignValueMap' => [
+            'application/json',
+        ],
         'exportCollectionItems' => [
             'application/json',
         ],
@@ -273,6 +276,9 @@ class ManagementApi
             'application/json',
         ],
         'getApplicationApiHealth' => [
+            'application/json',
+        ],
+        'getApplicationCartItemFilterExpression' => [
             'application/json',
         ],
         'getApplicationCustomer' => [
@@ -489,6 +495,9 @@ class ManagementApi
             'application/json',
         ],
         'listAllRolesV2' => [
+            'application/json',
+        ],
+        'listApplicationCartItemFilters' => [
             'application/json',
         ],
         'listCampaignStoreBudgetLimits' => [
@@ -13093,6 +13102,361 @@ class ManagementApi
     }
 
     /**
+     * Operation exportCampaignValueMap
+     *
+     * Export campaign value map
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $valueMapId The ID of the value map. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCampaignValueMap'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function exportCampaignValueMap($applicationId, $campaignId, $valueMapId, string $contentType = self::contentTypes['exportCampaignValueMap'][0])
+    {
+        list($response) = $this->exportCampaignValueMapWithHttpInfo($applicationId, $campaignId, $valueMapId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation exportCampaignValueMapWithHttpInfo
+     *
+     * Export campaign value map
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $valueMapId The ID of the value map. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCampaignValueMap'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function exportCampaignValueMapWithHttpInfo($applicationId, $campaignId, $valueMapId, string $contentType = self::contentTypes['exportCampaignValueMap'][0])
+    {
+        $request = $this->exportCampaignValueMapRequest($applicationId, $campaignId, $valueMapId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'string',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'string',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation exportCampaignValueMapAsync
+     *
+     * Export campaign value map
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $valueMapId The ID of the value map. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCampaignValueMap'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportCampaignValueMapAsync($applicationId, $campaignId, $valueMapId, string $contentType = self::contentTypes['exportCampaignValueMap'][0])
+    {
+        return $this->exportCampaignValueMapAsyncWithHttpInfo($applicationId, $campaignId, $valueMapId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation exportCampaignValueMapAsyncWithHttpInfo
+     *
+     * Export campaign value map
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $valueMapId The ID of the value map. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCampaignValueMap'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportCampaignValueMapAsyncWithHttpInfo($applicationId, $campaignId, $valueMapId, string $contentType = self::contentTypes['exportCampaignValueMap'][0])
+    {
+        $returnType = 'string';
+        $request = $this->exportCampaignValueMapRequest($applicationId, $campaignId, $valueMapId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'exportCampaignValueMap'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $valueMapId The ID of the value map. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCampaignValueMap'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function exportCampaignValueMapRequest($applicationId, $campaignId, $valueMapId, string $contentType = self::contentTypes['exportCampaignValueMap'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling exportCampaignValueMap'
+            );
+        }
+
+        // verify the required parameter 'campaignId' is set
+        if ($campaignId === null || (is_array($campaignId) && count($campaignId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignId when calling exportCampaignValueMap'
+            );
+        }
+
+        // verify the required parameter 'valueMapId' is set
+        if ($valueMapId === null || (is_array($valueMapId) && count($valueMapId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $valueMapId when calling exportCampaignValueMap'
+            );
+        }
+
+
+        $resourcePath = '/v1/applications/{applicationId}/campaigns/{campaignId}/value_maps/{valueMapId}/export';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($campaignId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaignId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($valueMapId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'valueMapId' . '}',
+                ObjectSerializer::toPathValue($valueMapId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/csv', 'application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation exportCollectionItems
      *
      * Export campaign-level collection&#39;s items
@@ -20908,6 +21272,319 @@ class ManagementApi
             $resourcePath = str_replace(
                 '{' . 'applicationId' . '}',
                 ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApplicationCartItemFilterExpression
+     *
+     * Get Application cart item filter expression
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $cartItemFilterId The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. (required)
+     * @param  int $expressionId The ID of the Application cart item filter expression. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCartItemFilterExpression'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\ApplicationCIFExpression
+     */
+    public function getApplicationCartItemFilterExpression($applicationId, $cartItemFilterId, $expressionId, string $contentType = self::contentTypes['getApplicationCartItemFilterExpression'][0])
+    {
+        list($response) = $this->getApplicationCartItemFilterExpressionWithHttpInfo($applicationId, $cartItemFilterId, $expressionId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getApplicationCartItemFilterExpressionWithHttpInfo
+     *
+     * Get Application cart item filter expression
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $cartItemFilterId The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. (required)
+     * @param  int $expressionId The ID of the Application cart item filter expression. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCartItemFilterExpression'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\ApplicationCIFExpression, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApplicationCartItemFilterExpressionWithHttpInfo($applicationId, $cartItemFilterId, $expressionId, string $contentType = self::contentTypes['getApplicationCartItemFilterExpression'][0])
+    {
+        $request = $this->getApplicationCartItemFilterExpressionRequest($applicationId, $cartItemFilterId, $expressionId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ApplicationCIFExpression',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\ApplicationCIFExpression',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ApplicationCIFExpression',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApplicationCartItemFilterExpressionAsync
+     *
+     * Get Application cart item filter expression
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $cartItemFilterId The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. (required)
+     * @param  int $expressionId The ID of the Application cart item filter expression. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCartItemFilterExpression'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationCartItemFilterExpressionAsync($applicationId, $cartItemFilterId, $expressionId, string $contentType = self::contentTypes['getApplicationCartItemFilterExpression'][0])
+    {
+        return $this->getApplicationCartItemFilterExpressionAsyncWithHttpInfo($applicationId, $cartItemFilterId, $expressionId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApplicationCartItemFilterExpressionAsyncWithHttpInfo
+     *
+     * Get Application cart item filter expression
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $cartItemFilterId The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. (required)
+     * @param  int $expressionId The ID of the Application cart item filter expression. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCartItemFilterExpression'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationCartItemFilterExpressionAsyncWithHttpInfo($applicationId, $cartItemFilterId, $expressionId, string $contentType = self::contentTypes['getApplicationCartItemFilterExpression'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\ApplicationCIFExpression';
+        $request = $this->getApplicationCartItemFilterExpressionRequest($applicationId, $cartItemFilterId, $expressionId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApplicationCartItemFilterExpression'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $cartItemFilterId The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. (required)
+     * @param  int $expressionId The ID of the Application cart item filter expression. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationCartItemFilterExpression'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApplicationCartItemFilterExpressionRequest($applicationId, $cartItemFilterId, $expressionId, string $contentType = self::contentTypes['getApplicationCartItemFilterExpression'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling getApplicationCartItemFilterExpression'
+            );
+        }
+
+        // verify the required parameter 'cartItemFilterId' is set
+        if ($cartItemFilterId === null || (is_array($cartItemFilterId) && count($cartItemFilterId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cartItemFilterId when calling getApplicationCartItemFilterExpression'
+            );
+        }
+
+        // verify the required parameter 'expressionId' is set
+        if ($expressionId === null || (is_array($expressionId) && count($expressionId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $expressionId when calling getApplicationCartItemFilterExpression'
+            );
+        }
+
+
+        $resourcePath = '/v1/applications/{applicationId}/cart_item_filters/{cartItemFilterId}/expressions/{expressionId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($cartItemFilterId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'cartItemFilterId' . '}',
+                ObjectSerializer::toPathValue($cartItemFilterId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($expressionId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'expressionId' . '}',
+                ObjectSerializer::toPathValue($expressionId),
                 $resourcePath
             );
         }
@@ -45645,6 +46322,330 @@ class ManagementApi
 
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listApplicationCartItemFilters
+     *
+     * List Application cart item filters
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApplicationCartItemFilters'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\ListApplicationCartItemFilters200Response
+     */
+    public function listApplicationCartItemFilters($applicationId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listApplicationCartItemFilters'][0])
+    {
+        list($response) = $this->listApplicationCartItemFiltersWithHttpInfo($applicationId, $pageSize, $skip, $title, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listApplicationCartItemFiltersWithHttpInfo
+     *
+     * List Application cart item filters
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApplicationCartItemFilters'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\ListApplicationCartItemFilters200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listApplicationCartItemFiltersWithHttpInfo($applicationId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listApplicationCartItemFilters'][0])
+    {
+        $request = $this->listApplicationCartItemFiltersRequest($applicationId, $pageSize, $skip, $title, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ListApplicationCartItemFilters200Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\ListApplicationCartItemFilters200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ListApplicationCartItemFilters200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listApplicationCartItemFiltersAsync
+     *
+     * List Application cart item filters
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApplicationCartItemFilters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listApplicationCartItemFiltersAsync($applicationId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listApplicationCartItemFilters'][0])
+    {
+        return $this->listApplicationCartItemFiltersAsyncWithHttpInfo($applicationId, $pageSize, $skip, $title, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listApplicationCartItemFiltersAsyncWithHttpInfo
+     *
+     * List Application cart item filters
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApplicationCartItemFilters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listApplicationCartItemFiltersAsyncWithHttpInfo($applicationId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listApplicationCartItemFilters'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\ListApplicationCartItemFilters200Response';
+        $request = $this->listApplicationCartItemFiltersRequest($applicationId, $pageSize, $skip, $title, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listApplicationCartItemFilters'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $title Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApplicationCartItemFilters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listApplicationCartItemFiltersRequest($applicationId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listApplicationCartItemFilters'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling listApplicationCartItemFilters'
+            );
+        }
+
+        if ($pageSize !== null && $pageSize > 50) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listApplicationCartItemFilters, must be smaller than or equal to 50.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listApplicationCartItemFilters, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/applications/{applicationId}/cart_item_filters';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $title,
+            'title', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'applicationId' . '}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(

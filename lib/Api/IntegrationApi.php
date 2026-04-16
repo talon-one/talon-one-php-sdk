@@ -143,6 +143,9 @@ class IntegrationApi
         'getReservedCustomers' => [
             'application/json',
         ],
+        'integrationGetAllCampaigns' => [
+            'application/json',
+        ],
         'linkLoyaltyCardToProfile' => [
             'application/json',
         ],
@@ -8150,6 +8153,412 @@ class IntegrationApi
     }
 
     /**
+     * Operation integrationGetAllCampaigns
+     *
+     * List all running campaigns
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string[]|null $campaignIds Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  \DateTime|null $startAfter Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $startBefore Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endAfter Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endBefore Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationGetAllCampaigns'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\IntegrationGetAllCampaigns200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function integrationGetAllCampaigns($pageSize = 50, $skip = null, $campaignIds = null, $startAfter = null, $startBefore = null, $endAfter = null, $endBefore = null, string $contentType = self::contentTypes['integrationGetAllCampaigns'][0])
+    {
+        list($response) = $this->integrationGetAllCampaignsWithHttpInfo($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation integrationGetAllCampaignsWithHttpInfo
+     *
+     * List all running campaigns
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string[]|null $campaignIds Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  \DateTime|null $startAfter Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $startBefore Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endAfter Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endBefore Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationGetAllCampaigns'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\IntegrationGetAllCampaigns200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function integrationGetAllCampaignsWithHttpInfo($pageSize = 50, $skip = null, $campaignIds = null, $startAfter = null, $startBefore = null, $endAfter = null, $endBefore = null, string $contentType = self::contentTypes['integrationGetAllCampaigns'][0])
+    {
+        $request = $this->integrationGetAllCampaignsRequest($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\IntegrationGetAllCampaigns200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\IntegrationGetAllCampaigns200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\IntegrationGetAllCampaigns200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation integrationGetAllCampaignsAsync
+     *
+     * List all running campaigns
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string[]|null $campaignIds Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  \DateTime|null $startAfter Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $startBefore Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endAfter Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endBefore Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationGetAllCampaigns'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function integrationGetAllCampaignsAsync($pageSize = 50, $skip = null, $campaignIds = null, $startAfter = null, $startBefore = null, $endAfter = null, $endBefore = null, string $contentType = self::contentTypes['integrationGetAllCampaigns'][0])
+    {
+        return $this->integrationGetAllCampaignsAsyncWithHttpInfo($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation integrationGetAllCampaignsAsyncWithHttpInfo
+     *
+     * List all running campaigns
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string[]|null $campaignIds Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  \DateTime|null $startAfter Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $startBefore Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endAfter Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endBefore Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationGetAllCampaigns'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function integrationGetAllCampaignsAsyncWithHttpInfo($pageSize = 50, $skip = null, $campaignIds = null, $startAfter = null, $startBefore = null, $endAfter = null, $endBefore = null, string $contentType = self::contentTypes['integrationGetAllCampaigns'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\IntegrationGetAllCampaigns200Response';
+        $request = $this->integrationGetAllCampaignsRequest($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'integrationGetAllCampaigns'
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string[]|null $campaignIds Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. (optional)
+     * @param  \DateTime|null $startAfter Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $startBefore Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endAfter Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  \DateTime|null $endBefore Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationGetAllCampaigns'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function integrationGetAllCampaignsRequest($pageSize = 50, $skip = null, $campaignIds = null, $startAfter = null, $startBefore = null, $endAfter = null, $endBefore = null, string $contentType = self::contentTypes['integrationGetAllCampaigns'][0])
+    {
+
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling IntegrationApi.integrationGetAllCampaigns, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling IntegrationApi.integrationGetAllCampaigns, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+
+
+
+
+        $resourcePath = '/v1/integration/campaigns';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignIds,
+            'campaignIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startAfter,
+            'startAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $startBefore,
+            'startBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endAfter,
+            'endAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endBefore,
+            'endBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation linkLoyaltyCardToProfile
      *
      * Link customer profile to card
@@ -8818,15 +9227,16 @@ class IntegrationApi
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function returnCartItems($customerSessionId, $returnIntegrationRequest, $dry = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItems($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        list($response) = $this->returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $contentType);
+        list($response) = $this->returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
         return $response;
     }
 
@@ -8838,15 +9248,16 @@ class IntegrationApi
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $contentType);
+        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8953,14 +9364,15 @@ class IntegrationApi
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function returnCartItemsAsync($customerSessionId, $returnIntegrationRequest, $dry = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsAsync($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        return $this->returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $contentType)
+        return $this->returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8976,15 +9388,16 @@ class IntegrationApi
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
         $returnType = '\TalonOne\Client\Model\IntegrationStateV2';
-        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $contentType);
+        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9028,12 +9441,13 @@ class IntegrationApi
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
 
         // verify the required parameter 'customerSessionId' is set
@@ -9052,6 +9466,7 @@ class IntegrationApi
 
 
 
+
         $resourcePath = '/v2/customer_sessions/{customerSessionId}/returns';
         $formParams = [];
         $queryParams = [];
@@ -9063,6 +9478,15 @@ class IntegrationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dry,
             'dry', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $runRuleEngine,
+            'runRuleEngine', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

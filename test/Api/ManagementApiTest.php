@@ -588,6 +588,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for exportCampaignValueMap
+     *
+     * Export campaign value map.
+     *
+     */
+    public function testExportCampaignValueMap()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for exportCollectionItems
      *
      * Export campaign-level collection's items.
@@ -870,6 +882,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testGetApplicationApiHealth()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getApplicationCartItemFilterExpression
+     *
+     * Get Application cart item filter expression.
+     *
+     */
+    public function testGetApplicationCartItemFilterExpression()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -1734,6 +1758,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testListAllRolesV2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for listApplicationCartItemFilters
+     *
+     * List Application cart item filters.
+     *
+     */
+    public function testListApplicationCartItemFilters()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

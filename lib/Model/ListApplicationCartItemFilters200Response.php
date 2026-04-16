@@ -1,6 +1,6 @@
 <?php
 /**
- * NewReward
+ * ListApplicationCartItemFilters200Response
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * NewReward Class Doc Comment
+ * ListApplicationCartItemFilters200Response Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListApplicationCartItemFilters200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'NewReward';
+    protected static $openAPIModelName = 'listApplicationCartItemFilters_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'apiName' => 'string',
-        'description' => 'string',
-        'applicationIds' => 'int[]',
-        'sandbox' => 'bool'
+        'hasMore' => 'bool',
+        'data' => '\TalonOne\Client\Model\ApplicationCIF[]'
     ];
 
     /**
@@ -72,11 +69,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'apiName' => null,
-        'description' => null,
-        'applicationIds' => 'int64',
-        'sandbox' => null
+        'hasMore' => null,
+        'data' => null
     ];
 
     /**
@@ -85,11 +79,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'apiName' => false,
-        'description' => false,
-        'applicationIds' => false,
-        'sandbox' => false
+        'hasMore' => false,
+        'data' => false
     ];
 
     /**
@@ -178,11 +169,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'apiName' => 'apiName',
-        'description' => 'description',
-        'applicationIds' => 'applicationIds',
-        'sandbox' => 'sandbox'
+        'hasMore' => 'hasMore',
+        'data' => 'data'
     ];
 
     /**
@@ -191,11 +179,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'apiName' => 'setApiName',
-        'description' => 'setDescription',
-        'applicationIds' => 'setApplicationIds',
-        'sandbox' => 'setSandbox'
+        'hasMore' => 'setHasMore',
+        'data' => 'setData'
     ];
 
     /**
@@ -204,11 +189,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'apiName' => 'getApiName',
-        'description' => 'getDescription',
-        'applicationIds' => 'getApplicationIds',
-        'sandbox' => 'getSandbox'
+        'hasMore' => 'getHasMore',
+        'data' => 'getData'
     ];
 
     /**
@@ -268,11 +250,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('apiName', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('applicationIds', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('hasMore', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -302,25 +281,8 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['apiName'] === null) {
-            $invalidProperties[] = "'apiName' can't be null";
-        }
-        if ((mb_strlen($this->container['apiName']) < 1)) {
-            $invalidProperties[] = "invalid value for 'apiName', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['applicationIds'] === null) {
-            $invalidProperties[] = "'applicationIds' can't be null";
-        }
-        if ($this->container['sandbox'] === null) {
-            $invalidProperties[] = "'sandbox' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
         return $invalidProperties;
     }
@@ -338,146 +300,55 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets hasMore
      *
-     * @return string
+     * @return bool|null
      */
-    public function getName()
+    public function getHasMore()
     {
-        return $this->container['name'];
+        return $this->container['hasMore'];
     }
 
     /**
-     * Sets name
+     * Sets hasMore
      *
-     * @param string $name The name of the reward.
+     * @param bool|null $hasMore hasMore
      *
      * @return self
      */
-    public function setName($name)
+    public function setHasMore($hasMore)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($hasMore)) {
+            throw new \InvalidArgumentException('non-nullable hasMore cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling NewReward., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['hasMore'] = $hasMore;
 
         return $this;
     }
 
     /**
-     * Gets apiName
+     * Gets data
      *
-     * @return string
+     * @return \TalonOne\Client\Model\ApplicationCIF[]
      */
-    public function getApiName()
+    public function getData()
     {
-        return $this->container['apiName'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets apiName
+     * Sets data
      *
-     * @param string $apiName A unique identifier used to reference the reward in API integrations.
+     * @param \TalonOne\Client\Model\ApplicationCIF[] $data data
      *
      * @return self
      */
-    public function setApiName($apiName)
+    public function setData($data)
     {
-        if (is_null($apiName)) {
-            throw new \InvalidArgumentException('non-nullable apiName cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-
-        if ((mb_strlen($apiName) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $apiName when calling NewReward., must be bigger than or equal to 1.');
-        }
-
-        $this->container['apiName'] = $apiName;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the reward.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets applicationIds
-     *
-     * @return int[]
-     */
-    public function getApplicationIds()
-    {
-        return $this->container['applicationIds'];
-    }
-
-    /**
-     * Sets applicationIds
-     *
-     * @param int[] $applicationIds The IDs of the Applications this reward is connected to.   **Note**: Currently, a reward can only be connected to one Application.
-     *
-     * @return self
-     */
-    public function setApplicationIds($applicationIds)
-    {
-        if (is_null($applicationIds)) {
-            throw new \InvalidArgumentException('non-nullable applicationIds cannot be null');
-        }
-        $this->container['applicationIds'] = $applicationIds;
-
-        return $this;
-    }
-
-    /**
-     * Gets sandbox
-     *
-     * @return bool
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param bool $sandbox Indicates if this is a live or sandbox reward. Rewards of a given type can only be connected to Applications of the same type.
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
-        }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['data'] = $data;
 
         return $this;
     }

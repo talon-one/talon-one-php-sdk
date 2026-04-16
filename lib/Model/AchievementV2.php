@@ -457,18 +457,33 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 1000)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+        if ((mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['name']) && !preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
+        if (!preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
             $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[a-zA-Z]\\w+$/.";
         }
 
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
+        }
+        if ($this->container['recurrencePolicy'] === null) {
+            $invalidProperties[] = "'recurrencePolicy' can't be null";
+        }
         $allowedValues = $this->getRecurrencePolicyAllowableValues();
         if (!is_null($this->container['recurrencePolicy']) && !in_array($this->container['recurrencePolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -478,6 +493,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['activationPolicy'] === null) {
+            $invalidProperties[] = "'activationPolicy' can't be null";
+        }
         $allowedValues = $this->getActivationPolicyAllowableValues();
         if (!is_null($this->container['activationPolicy']) && !in_array($this->container['activationPolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -487,11 +505,20 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if (!is_null($this->container['subscribedApplications']) && (count($this->container['subscribedApplications']) < 0)) {
+        if ($this->container['sandbox'] === null) {
+            $invalidProperties[] = "'sandbox' can't be null";
+        }
+        if ($this->container['subscribedApplications'] === null) {
+            $invalidProperties[] = "'subscribedApplications' can't be null";
+        }
+        if ((count($this->container['subscribedApplications']) < 0)) {
             $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
         }
 
-        if (!is_null($this->container['timezone']) && (mb_strlen($this->container['timezone']) < 1)) {
+        if ($this->container['timezone'] === null) {
+            $invalidProperties[] = "'timezone' can't be null";
+        }
+        if ((mb_strlen($this->container['timezone']) < 1)) {
             $invalidProperties[] = "invalid value for 'timezone', the character length must be bigger than or equal to 1.";
         }
 
@@ -579,7 +606,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -589,7 +616,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
+     * @param string $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
      *
      * @return self
      */
@@ -616,7 +643,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets title
      *
-     * @return string|null
+     * @return string
      */
     public function getTitle()
     {
@@ -626,7 +653,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The display name for the achievement in the Campaign Manager.
+     * @param string $title The display name for the achievement in the Campaign Manager.
      *
      * @return self
      */
@@ -643,7 +670,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -653,7 +680,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description A description of the achievement.
+     * @param string $description A description of the achievement.
      *
      * @return self
      */
@@ -670,7 +697,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets target
      *
-     * @return float|null
+     * @return float
      */
     public function getTarget()
     {
@@ -680,7 +707,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target
      *
-     * @param float|null $target The required number of actions or the transactional milestone to complete the achievement.
+     * @param float $target The required number of actions or the transactional milestone to complete the achievement.
      *
      * @return self
      */
@@ -724,7 +751,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrencePolicy
      *
-     * @return string|null
+     * @return string
      */
     public function getRecurrencePolicy()
     {
@@ -734,7 +761,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrencePolicy
      *
-     * @param string|null $recurrencePolicy The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again.
+     * @param string $recurrencePolicy The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again.
      *
      * @return self
      */
@@ -761,7 +788,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activationPolicy
      *
-     * @return string|null
+     * @return string
      */
     public function getActivationPolicy()
     {
@@ -771,7 +798,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activationPolicy
      *
-     * @param string|null $activationPolicy The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
+     * @param string $activationPolicy The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
      *
      * @return self
      */
@@ -879,7 +906,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sandbox
      *
-     * @return bool|null
+     * @return bool
      */
     public function getSandbox()
     {
@@ -889,7 +916,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sandbox
      *
-     * @param bool|null $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+     * @param bool $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
      *
      * @return self
      */
@@ -906,7 +933,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subscribedApplications
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getSubscribedApplications()
     {
@@ -916,7 +943,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscribedApplications
      *
-     * @param int[]|null $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
+     * @param int[] $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
      *
      * @return self
      */
@@ -938,7 +965,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets timezone
      *
-     * @return string|null
+     * @return string
      */
     public function getTimezone()
     {
@@ -948,7 +975,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timezone
      *
-     * @param string|null $timezone A string containing an IANA timezone descriptor.
+     * @param string $timezone A string containing an IANA timezone descriptor.
      *
      * @return self
      */

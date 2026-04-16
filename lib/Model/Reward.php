@@ -64,6 +64,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'string',
         'description' => 'string',
         'applicationIds' => 'int[]',
+        'sandbox' => 'bool',
         'status' => 'string'
     ];
 
@@ -82,6 +83,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => null,
         'description' => null,
         'applicationIds' => 'int64',
+        'sandbox' => null,
         'status' => null
     ];
 
@@ -98,6 +100,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => false,
         'description' => false,
         'applicationIds' => false,
+        'sandbox' => false,
         'status' => false
     ];
 
@@ -194,6 +197,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'apiName',
         'description' => 'description',
         'applicationIds' => 'applicationIds',
+        'sandbox' => 'sandbox',
         'status' => 'status'
     ];
 
@@ -210,6 +214,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'setApiName',
         'description' => 'setDescription',
         'applicationIds' => 'setApplicationIds',
+        'sandbox' => 'setSandbox',
         'status' => 'setStatus'
     ];
 
@@ -226,6 +231,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'getApiName',
         'description' => 'getDescription',
         'applicationIds' => 'getApplicationIds',
+        'sandbox' => 'getSandbox',
         'status' => 'getStatus'
     ];
 
@@ -308,6 +314,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('apiName', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('applicationIds', $data ?? [], null);
+        $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -363,6 +370,9 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['applicationIds'] === null) {
             $invalidProperties[] = "'applicationIds' can't be null";
+        }
+        if ($this->container['sandbox'] === null) {
+            $invalidProperties[] = "'sandbox' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -586,6 +596,33 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable applicationIds cannot be null');
         }
         $this->container['applicationIds'] = $applicationIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets sandbox
+     *
+     * @return bool
+     */
+    public function getSandbox()
+    {
+        return $this->container['sandbox'];
+    }
+
+    /**
+     * Sets sandbox
+     *
+     * @param bool $sandbox Indicates if this is a live or sandbox reward. Rewards of a given type can only be connected to Applications of the same type.
+     *
+     * @return self
+     */
+    public function setSandbox($sandbox)
+    {
+        if (is_null($sandbox)) {
+            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        }
+        $this->container['sandbox'] = $sandbox;
 
         return $this;
     }

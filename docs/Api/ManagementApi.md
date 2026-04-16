@@ -49,6 +49,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**exportAudiencesMemberships()**](ManagementApi.md#exportAudiencesMemberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members |
 | [**exportCampaignStoreBudgets()**](ManagementApi.md#exportCampaignStoreBudgets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export | Export campaign store budgets |
 | [**exportCampaignStores()**](ManagementApi.md#exportCampaignStores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores |
+| [**exportCampaignValueMap()**](ManagementApi.md#exportCampaignValueMap) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/value_maps/{valueMapId}/export | Export campaign value map |
 | [**exportCollectionItems()**](ManagementApi.md#exportCollectionItems) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export campaign-level collection&#39;s items |
 | [**exportCoupons()**](ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons |
 | [**exportCustomerSessions()**](ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export customer sessions |
@@ -73,6 +74,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getAdditionalCosts()**](ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs |
 | [**getApplication()**](ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application |
 | [**getApplicationApiHealth()**](ManagementApi.md#getApplicationApiHealth) | **GET** /v1/applications/{applicationId}/health_report | Get Application health |
+| [**getApplicationCartItemFilterExpression()**](ManagementApi.md#getApplicationCartItemFilterExpression) | **GET** /v1/applications/{applicationId}/cart_item_filters/{cartItemFilterId}/expressions/{expressionId} | Get Application cart item filter expression |
 | [**getApplicationCustomer()**](ManagementApi.md#getApplicationCustomer) | **GET** /v1/applications/{applicationId}/customers/{customerId} | Get application&#39;s customer |
 | [**getApplicationCustomerFriends()**](ManagementApi.md#getApplicationCustomerFriends) | **GET** /v1/applications/{applicationId}/profile/{integrationId}/friends | List friends referred by customer profile |
 | [**getApplicationCustomers()**](ManagementApi.md#getApplicationCustomers) | **GET** /v1/applications/{applicationId}/customers | List application&#39;s customers |
@@ -145,6 +147,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**listAccountCollections()**](ManagementApi.md#listAccountCollections) | **GET** /v1/collections | List collections in account |
 | [**listAchievements()**](ManagementApi.md#listAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements |
 | [**listAllRolesV2()**](ManagementApi.md#listAllRolesV2) | **GET** /v2/roles | List roles |
+| [**listApplicationCartItemFilters()**](ManagementApi.md#listApplicationCartItemFilters) | **GET** /v1/applications/{applicationId}/cart_item_filters | List Application cart item filters |
 | [**listCampaignStoreBudgetLimits()**](ManagementApi.md#listCampaignStoreBudgetLimits) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | List campaign store budget limits |
 | [**listCatalogItems()**](ManagementApi.md#listCatalogItems) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog |
 | [**listCollections()**](ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign |
@@ -2962,6 +2965,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `exportCampaignValueMap()`
+
+```php
+exportCampaignValueMap($applicationId, $campaignId, $valueMapId): string
+```
+
+Export campaign value map
+
+Download a CSV file containing all the value map items in a campaign. If there are multiple versions of the value map, only the items of the current version are exported.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The generated file can contain the following columns:  - `identifier`: The value of the attribute in the targeted item, for example, an item's SKU. - `value`: The value that is associated with the identifier, for example, the item's price.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+$valueMapId = 56; // int | The ID of the value map.
+
+try {
+    $result = $apiInstance->exportCampaignValueMap($applicationId, $campaignId, $valueMapId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->exportCampaignValueMap: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
+| **valueMapId** | **int**| The ID of the value map. | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/csv`, `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `exportCollectionItems()`
 
 ```php
@@ -4466,7 +4535,7 @@ getApplication($applicationId): \TalonOne\Client\Model\Application
 
 Get Application
 
-Get the application specified by the ID.
+Get the Application specified by the ID.
 
 ### Example
 
@@ -4568,6 +4637,72 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\ApplicationApiHealth**](../Model/ApplicationApiHealth.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApplicationCartItemFilterExpression()`
+
+```php
+getApplicationCartItemFilterExpression($applicationId, $cartItemFilterId, $expressionId): \TalonOne\Client\Model\ApplicationCIFExpression
+```
+
+Get Application cart item filter expression
+
+Get an Application cart item filter expression for a specific Application.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$cartItemFilterId = 56; // int | The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint.
+$expressionId = 56; // int | The ID of the Application cart item filter expression.
+
+try {
+    $result = $apiInstance->getApplicationCartItemFilterExpression($applicationId, $cartItemFilterId, $expressionId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->getApplicationCartItemFilterExpression: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **cartItemFilterId** | **int**| The ID of the Application cart item filter. You can get this ID with the [List Application cart item filters](https://docs.talon.one/management-api#tag/Applications/operation/listApplicationCartItemFilters) endpoint. | |
+| **expressionId** | **int**| The ID of the Application cart item filter expression. | |
+
+### Return type
+
+[**\TalonOne\Client\Model\ApplicationCIFExpression**](../Model/ApplicationCIFExpression.md)
 
 ### Authorization
 
@@ -5176,7 +5311,7 @@ getApplications($pageSize, $skip, $sort): \TalonOne\Client\Model\GetApplications
 
 List Applications
 
-List all applications in the current account.
+List all the Applications in the current account.
 
 ### Example
 
@@ -9579,6 +9714,74 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\TalonOne\Client\Model\ListAllRolesV2200Response**](../Model/ListAllRolesV2200Response.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listApplicationCartItemFilters()`
+
+```php
+listApplicationCartItemFilters($applicationId, $pageSize, $skip, $title): \TalonOne\Client\Model\ListApplicationCartItemFilters200Response
+```
+
+List Application cart item filters
+
+Return all the Application cart item filters for a specific Application.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$pageSize = 50; // int | The number of items in the response.
+$skip = 56; // int | The number of items to skip when paging through large result sets.
+$title = 'title_example'; // string | Filter by the display name of the Application cart item filter in the Application.  **Note**: If no `title` is provided, all the Application cart item filters in the Application are returned.
+
+try {
+    $result = $apiInstance->listApplicationCartItemFilters($applicationId, $pageSize, $skip, $title);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->listApplicationCartItemFilters: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
+| **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **title** | **string**| Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\ListApplicationCartItemFilters200Response**](../Model/ListApplicationCartItemFilters200Response.md)
 
 ### Authorization
 

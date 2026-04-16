@@ -435,10 +435,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['sandbox'] === null) {
             $invalidProperties[] = "'sandbox' can't be null";
         }
-        if ($this->container['subscribedApplications'] === null) {
-            $invalidProperties[] = "'subscribedApplications' can't be null";
-        }
-        if ((count($this->container['subscribedApplications']) < 0)) {
+        if (!is_null($this->container['subscribedApplications']) && (count($this->container['subscribedApplications']) < 0)) {
             $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
         }
 
@@ -794,7 +791,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets subscribedApplications
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getSubscribedApplications()
     {
@@ -804,7 +801,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets subscribedApplications
      *
-     * @param int[] $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
+     * @param int[]|null $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
      *
      * @return self
      */

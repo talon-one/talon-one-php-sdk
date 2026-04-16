@@ -196,6 +196,7 @@ docs/Model/CreateAchievementV2.md
 docs/Model/CreateApplicationAPIKey.md
 docs/Model/CreateCouponData.md
 docs/Model/CreateCoupons200Response.md
+docs/Model/CreateMCPKey.md
 docs/Model/CreateManagementKey.md
 docs/Model/CreateReferralsForMultipleAdvocates201Response.md
 docs/Model/CreateTemplateCampaign.md
@@ -353,6 +354,7 @@ docs/Model/IntegrationEventV2Request.md
 docs/Model/IntegrationEventV2Response.md
 docs/Model/IntegrationEventV3Request.md
 docs/Model/IntegrationEventV3Response.md
+docs/Model/IntegrationGetAllCampaigns200Response.md
 docs/Model/IntegrationHubConfig.md
 docs/Model/IntegrationHubEventPayloadCouponBasedNotifications.md
 docs/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md
@@ -390,6 +392,7 @@ docs/Model/LimitCounter.md
 docs/Model/ListAccountCollections200Response.md
 docs/Model/ListAchievements200Response.md
 docs/Model/ListAllRolesV2200Response.md
+docs/Model/ListApplicationCartItemFilters200Response.md
 docs/Model/ListCampaignStoreBudgetLimits200Response.md
 docs/Model/ListCampaignStoreBudgets.md
 docs/Model/ListCampaignStoreBudgetsStore.md
@@ -423,6 +426,7 @@ docs/Model/LoyaltyProgramLedgers.md
 docs/Model/LoyaltyProgramTransaction.md
 docs/Model/LoyaltySubLedger.md
 docs/Model/LoyaltyTier.md
+docs/Model/MCPKey.md
 docs/Model/ManagementKey.md
 docs/Model/ManagerConfig.md
 docs/Model/MessageLogEntries.md
@@ -484,6 +488,7 @@ docs/Model/NewInvitation.md
 docs/Model/NewInviteEmail.md
 docs/Model/NewLoyaltyProgram.md
 docs/Model/NewLoyaltyTier.md
+docs/Model/NewMCPKey.md
 docs/Model/NewManagementKey.md
 docs/Model/NewMessageTest.md
 docs/Model/NewMultipleAudiencesItem.md
@@ -896,6 +901,7 @@ lib/Model/CreateAchievementV2.php
 lib/Model/CreateApplicationAPIKey.php
 lib/Model/CreateCouponData.php
 lib/Model/CreateCoupons200Response.php
+lib/Model/CreateMCPKey.php
 lib/Model/CreateManagementKey.php
 lib/Model/CreateReferralsForMultipleAdvocates201Response.php
 lib/Model/CreateTemplateCampaign.php
@@ -1053,6 +1059,7 @@ lib/Model/IntegrationEventV2Request.php
 lib/Model/IntegrationEventV2Response.php
 lib/Model/IntegrationEventV3Request.php
 lib/Model/IntegrationEventV3Response.php
+lib/Model/IntegrationGetAllCampaigns200Response.php
 lib/Model/IntegrationHubConfig.php
 lib/Model/IntegrationHubEventPayloadCouponBasedNotifications.php
 lib/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimits.php
@@ -1090,6 +1097,7 @@ lib/Model/LimitCounter.php
 lib/Model/ListAccountCollections200Response.php
 lib/Model/ListAchievements200Response.php
 lib/Model/ListAllRolesV2200Response.php
+lib/Model/ListApplicationCartItemFilters200Response.php
 lib/Model/ListCampaignStoreBudgetLimits200Response.php
 lib/Model/ListCampaignStoreBudgets.php
 lib/Model/ListCampaignStoreBudgetsStore.php
@@ -1123,6 +1131,7 @@ lib/Model/LoyaltyProgramLedgers.php
 lib/Model/LoyaltyProgramTransaction.php
 lib/Model/LoyaltySubLedger.php
 lib/Model/LoyaltyTier.php
+lib/Model/MCPKey.php
 lib/Model/ManagementKey.php
 lib/Model/ManagerConfig.php
 lib/Model/MessageLogEntries.php
@@ -1185,6 +1194,7 @@ lib/Model/NewInvitation.php
 lib/Model/NewInviteEmail.php
 lib/Model/NewLoyaltyProgram.php
 lib/Model/NewLoyaltyTier.php
+lib/Model/NewMCPKey.php
 lib/Model/NewManagementKey.php
 lib/Model/NewMessageTest.php
 lib/Model/NewMultipleAudiencesItem.php
@@ -1593,6 +1603,7 @@ test/Model/CreateAchievementV2Test.php
 test/Model/CreateApplicationAPIKeyTest.php
 test/Model/CreateCouponDataTest.php
 test/Model/CreateCoupons200ResponseTest.php
+test/Model/CreateMCPKeyTest.php
 test/Model/CreateManagementKeyTest.php
 test/Model/CreateReferralsForMultipleAdvocates201ResponseTest.php
 test/Model/CreateTemplateCampaignResponseTest.php
@@ -1750,6 +1761,7 @@ test/Model/IntegrationEventV2RequestTest.php
 test/Model/IntegrationEventV2ResponseTest.php
 test/Model/IntegrationEventV3RequestTest.php
 test/Model/IntegrationEventV3ResponseTest.php
+test/Model/IntegrationGetAllCampaigns200ResponseTest.php
 test/Model/IntegrationHubConfigTest.php
 test/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimitsTest.php
 test/Model/IntegrationHubEventPayloadCouponBasedNotificationsTest.php
@@ -1787,6 +1799,7 @@ test/Model/LimitCounterTest.php
 test/Model/ListAccountCollections200ResponseTest.php
 test/Model/ListAchievements200ResponseTest.php
 test/Model/ListAllRolesV2200ResponseTest.php
+test/Model/ListApplicationCartItemFilters200ResponseTest.php
 test/Model/ListCampaignStoreBudgetLimits200ResponseTest.php
 test/Model/ListCampaignStoreBudgetsStoreTest.php
 test/Model/ListCampaignStoreBudgetsTest.php
@@ -1820,6 +1833,7 @@ test/Model/LoyaltyProgramTransactionTest.php
 test/Model/LoyaltySubLedgerTest.php
 test/Model/LoyaltyTest.php
 test/Model/LoyaltyTierTest.php
+test/Model/MCPKeyTest.php
 test/Model/ManagementKeyTest.php
 test/Model/ManagerConfigTest.php
 test/Model/MessageLogEntriesTest.php
@@ -1881,6 +1895,7 @@ test/Model/NewInvitationTest.php
 test/Model/NewInviteEmailTest.php
 test/Model/NewLoyaltyProgramTest.php
 test/Model/NewLoyaltyTierTest.php
+test/Model/NewMCPKeyTest.php
 test/Model/NewManagementKeyTest.php
 test/Model/NewMessageTestTest.php
 test/Model/NewMultipleAudiencesItemTest.php
