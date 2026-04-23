@@ -143,6 +143,15 @@ class RewardTest extends TestCase
     }
 
     /**
+     * Test attribute "sandbox"
+     */
+    public function testPropertySandbox()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "status"
      */
     public function testPropertyStatus()

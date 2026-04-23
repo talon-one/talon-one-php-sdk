@@ -60,7 +60,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => 'string[]',
         'timeframeEndDate' => '\DateTime',
         'timeframe' => 'string',
-        'strictEndDate' => 'bool',
         'timeframeEndDateType' => 'string',
         'target' => '\TalonOne\Client\Model\BestPriorTarget'
     ];
@@ -76,7 +75,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => null,
         'timeframeEndDate' => 'date-time',
         'timeframe' => null,
-        'strictEndDate' => null,
         'timeframeEndDateType' => null,
         'target' => null
     ];
@@ -90,7 +88,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => false,
         'timeframeEndDate' => false,
         'timeframe' => false,
-        'strictEndDate' => false,
         'timeframeEndDateType' => false,
         'target' => false
     ];
@@ -184,7 +181,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => 'skus',
         'timeframeEndDate' => 'timeframeEndDate',
         'timeframe' => 'timeframe',
-        'strictEndDate' => 'strictEndDate',
         'timeframeEndDateType' => 'timeframeEndDateType',
         'target' => 'target'
     ];
@@ -198,7 +194,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => 'setSkus',
         'timeframeEndDate' => 'setTimeframeEndDate',
         'timeframe' => 'setTimeframe',
-        'strictEndDate' => 'setStrictEndDate',
         'timeframeEndDateType' => 'setTimeframeEndDateType',
         'target' => 'setTarget'
     ];
@@ -212,7 +207,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'skus' => 'getSkus',
         'timeframeEndDate' => 'getTimeframeEndDate',
         'timeframe' => 'getTimeframe',
-        'strictEndDate' => 'getStrictEndDate',
         'timeframeEndDateType' => 'getTimeframeEndDateType',
         'target' => 'getTarget'
     ];
@@ -294,7 +288,6 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('skus', $data ?? [], null);
         $this->setIfExists('timeframeEndDate', $data ?? [], null);
         $this->setIfExists('timeframe', $data ?? [], null);
-        $this->setIfExists('strictEndDate', $data ?? [], null);
         $this->setIfExists('timeframeEndDateType', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
     }
@@ -339,8 +332,8 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['timeframe'] === null) {
             $invalidProperties[] = "'timeframe' can't be null";
         }
-        if ($this->container['strictEndDate'] === null) {
-            $invalidProperties[] = "'strictEndDate' can't be null";
+        if ($this->container['timeframeEndDateType'] === null) {
+            $invalidProperties[] = "'timeframeEndDateType' can't be null";
         }
         $allowedValues = $this->getTimeframeEndDateTypeAllowableValues();
         if (!is_null($this->container['timeframeEndDateType']) && !in_array($this->container['timeframeEndDateType'], $allowedValues, true)) {
@@ -453,38 +446,9 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets strictEndDate
-     *
-     * @return bool
-     * @deprecated
-     */
-    public function getStrictEndDate()
-    {
-        return $this->container['strictEndDate'];
-    }
-
-    /**
-     * Sets strictEndDate
-     *
-     * @param bool $strictEndDate This property is **deprecated**. Use `timeframeEndDateType` instead.  Indicates whether the timeframe includes the start of the current sale. - When `false`, the timeframe includes the start date of the current sale. - When `true`, the timeframe strictly uses the number of days specified in `timeframe`.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setStrictEndDate($strictEndDate)
-    {
-        if (is_null($strictEndDate)) {
-            throw new \InvalidArgumentException('non-nullable strictEndDate cannot be null');
-        }
-        $this->container['strictEndDate'] = $strictEndDate;
-
-        return $this;
-    }
-
-    /**
      * Gets timeframeEndDateType
      *
-     * @return string|null
+     * @return string
      */
     public function getTimeframeEndDateType()
     {
@@ -494,7 +458,7 @@ class BestPriorPriceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets timeframeEndDateType
      *
-     * @param string|null $timeframeEndDateType Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of the current `contextId` with the current price value. Identical price records are merged. If there is no `contextId` for the most recent price, the most recent timestamp for the price is used.  - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account.
+     * @param string $timeframeEndDateType Sets the timeframe for retrieving historical pricing data. Can be one of the following values: - `strict`: The timeframe ends at the `timeframeEndDate` value. - `price`: The timeframe ends at the start of current price value and takes the prices prior to the start of the current price value into account. - `sale`:  The timeframe ends at the start of current `contextId` and takes the prices prior to the start of the `contextId` into account.
      *
      * @return self
      */

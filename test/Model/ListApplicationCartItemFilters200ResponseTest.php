@@ -1,6 +1,6 @@
 <?php
 /**
- * BestPriorPriceRequestTest
+ * ListApplicationCartItemFilters200ResponseTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * BestPriorPriceRequestTest Class Doc Comment
+ * ListApplicationCartItemFilters200ResponseTest Class Doc Comment
  *
  * @category    Class
- * @description BestPriorPriceRequest
+ * @description ListApplicationCartItemFilters200Response
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class BestPriorPriceRequestTest extends TestCase
+class ListApplicationCartItemFilters200ResponseTest extends TestCase
 {
 
     /**
@@ -71,54 +71,27 @@ class BestPriorPriceRequestTest extends TestCase
     }
 
     /**
-     * Test "BestPriorPriceRequest"
+     * Test "ListApplicationCartItemFilters200Response"
      */
-    public function testBestPriorPriceRequest()
+    public function testListApplicationCartItemFilters200Response()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "skus"
+     * Test attribute "hasMore"
      */
-    public function testPropertySkus()
+    public function testPropertyHasMore()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timeframeEndDate"
+     * Test attribute "data"
      */
-    public function testPropertyTimeframeEndDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timeframe"
-     */
-    public function testPropertyTimeframe()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timeframeEndDateType"
-     */
-    public function testPropertyTimeframeEndDateType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "target"
-     */
-    public function testPropertyTarget()
+    public function testPropertyData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

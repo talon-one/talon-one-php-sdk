@@ -29,6 +29,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getLoyaltyProgramProfilePoints()**](IntegrationApi.md#getLoyaltyProgramProfilePoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/points | List customer&#39;s unused loyalty points |
 | [**getLoyaltyProgramProfileTransactions()**](IntegrationApi.md#getLoyaltyProgramProfileTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions |
 | [**getReservedCustomers()**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved |
+| [**integrationGetAllCampaigns()**](IntegrationApi.md#integrationGetAllCampaigns) | **GET** /v1/integration/campaigns | List all running campaigns |
 | [**linkLoyaltyCardToProfile()**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card |
 | [**reopenCustomerSession()**](IntegrationApi.md#reopenCustomerSession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session |
 | [**returnCartItems()**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items |
@@ -1602,6 +1603,80 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `integrationGetAllCampaigns()`
+
+```php
+integrationGetAllCampaigns($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore): \TalonOne\Client\Model\IntegrationGetAllCampaigns200Response
+```
+
+List all running campaigns
+
+Retrieve all running campaigns for the specified Application. You can filter the results by providing specific campaign IDs or a range of  start and end dates.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pageSize = 50; // int | The number of items in the response.
+$skip = 56; // int | The number of items to skip when paging through large result sets.
+$campaignIds = array('campaignIds_example'); // string[] | Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.
+$startAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+$startBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+$endAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+$endBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
+
+try {
+    $result = $apiInstance->integrationGetAllCampaigns($pageSize, $skip, $campaignIds, $startAfter, $startBefore, $endAfter, $endBefore);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->integrationGetAllCampaigns: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
+| **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **campaignIds** | [**string[]**](../Model/string.md)| Filter by one or more campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. | [optional] |
+| **startAfter** | **\DateTime**| Filter results to only include campaigns that start on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
+| **startBefore** | **\DateTime**| Filter results to only include campaigns that start on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
+| **endAfter** | **\DateTime**| Filter results to only include campaigns that end on or after  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
+| **endBefore** | **\DateTime**| Filter results to only include campaigns that end on or before  the specified timestamp.  **Note:**  - It must be an RFC3339 timestamp string.  - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\IntegrationGetAllCampaigns200Response**](../Model/IntegrationGetAllCampaigns200Response.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `linkLoyaltyCardToProfile()`
 
 ```php
@@ -1733,7 +1808,7 @@ try {
 ## `returnCartItems()`
 
 ```php
-returnCartItems($customerSessionId, $returnIntegrationRequest, $dry): \TalonOne\Client\Model\IntegrationStateV2
+returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine): \TalonOne\Client\Model\IntegrationStateV2
 ```
 
 Return cart items
@@ -1762,9 +1837,10 @@ $apiInstance = new TalonOne\Client\Api\IntegrationApi(
 $customerSessionId = 'customerSessionId_example'; // string | The `integration ID` of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager's **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint.
 $returnIntegrationRequest = new \TalonOne\Client\Model\ReturnIntegrationRequest(); // \TalonOne\Client\Model\ReturnIntegrationRequest | body
 $dry = True; // bool | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
+$runRuleEngine = True; // bool | When set to `true`, reevaluates the updated session after items are returned. Only reevaluates campaigns where `reevaluateOnReturn` is set to `true` and which produced an effect when the session was closed.
 
 try {
-    $result = $apiInstance->returnCartItems($customerSessionId, $returnIntegrationRequest, $dry);
+    $result = $apiInstance->returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->returnCartItems: ', $e->getMessage(), PHP_EOL;
@@ -1778,6 +1854,7 @@ try {
 | **customerSessionId** | **string**| The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. | |
 | **returnIntegrationRequest** | [**\TalonOne\Client\Model\ReturnIntegrationRequest**](../Model/ReturnIntegrationRequest.md)| body | |
 | **dry** | **bool**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional] |
+| **runRuleEngine** | **bool**| When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. | [optional] |
 
 ### Return type
 
