@@ -1,3 +1,5 @@
+.github/ISSUE_TEMPLATE/bug_report.yml
+.github/ISSUE_TEMPLATE/config.yml
 .github/dependabot.yml
 .github/workflows/autorelease.yml
 .github/workflows/test.yml
@@ -123,6 +125,9 @@ docs/Model/CampaignDeletedNotificationItem.md
 docs/Model/CampaignDetail.md
 docs/Model/CampaignEditedNotification.md
 docs/Model/CampaignEditedNotificationItem.md
+docs/Model/CampaignEligibility.md
+docs/Model/CampaignEligibilityDetails.md
+docs/Model/CampaignEligibilityFailureDetails.md
 docs/Model/CampaignEntity.md
 docs/Model/CampaignEvaluationGroup.md
 docs/Model/CampaignEvaluationPosition.md
@@ -590,6 +595,8 @@ docs/Model/RollbackDiscountEffectProps.md
 docs/Model/RollbackIncreasedAchievementProgressEffectProps.md
 docs/Model/RollbackReferralEffectProps.md
 docs/Model/Rule.md
+docs/Model/RuleEligibility.md
+docs/Model/RuleEligibilityFailureDetails.md
 docs/Model/RuleFailureReason.md
 docs/Model/RuleMetadata.md
 docs/Model/Ruleset.md
@@ -696,6 +703,7 @@ docs/Model/UpdatePicklist.md
 docs/Model/UpdatePriceType.md
 docs/Model/UpdateReferral.md
 docs/Model/UpdateReferralBatch.md
+docs/Model/UpdateReward.md
 docs/Model/UpdateRole.md
 docs/Model/UpdateStore.md
 docs/Model/UpdateUser.md
@@ -828,6 +836,9 @@ lib/Model/CampaignDeletedNotificationItem.php
 lib/Model/CampaignDetail.php
 lib/Model/CampaignEditedNotification.php
 lib/Model/CampaignEditedNotificationItem.php
+lib/Model/CampaignEligibility.php
+lib/Model/CampaignEligibilityDetails.php
+lib/Model/CampaignEligibilityFailureDetails.php
 lib/Model/CampaignEntity.php
 lib/Model/CampaignEvaluationGroup.php
 lib/Model/CampaignEvaluationPosition.php
@@ -1296,6 +1307,8 @@ lib/Model/RollbackDiscountEffectProps.php
 lib/Model/RollbackIncreasedAchievementProgressEffectProps.php
 lib/Model/RollbackReferralEffectProps.php
 lib/Model/Rule.php
+lib/Model/RuleEligibility.php
+lib/Model/RuleEligibilityFailureDetails.php
 lib/Model/RuleFailureReason.php
 lib/Model/RuleMetadata.php
 lib/Model/Ruleset.php
@@ -1402,6 +1415,7 @@ lib/Model/UpdatePicklist.php
 lib/Model/UpdatePriceType.php
 lib/Model/UpdateReferral.php
 lib/Model/UpdateReferralBatch.php
+lib/Model/UpdateReward.php
 lib/Model/UpdateRole.php
 lib/Model/UpdateStore.php
 lib/Model/UpdateUser.php
@@ -1529,6 +1543,9 @@ test/Model/CampaignDeletedNotificationTest.php
 test/Model/CampaignDetailTest.php
 test/Model/CampaignEditedNotificationItemTest.php
 test/Model/CampaignEditedNotificationTest.php
+test/Model/CampaignEligibilityDetailsTest.php
+test/Model/CampaignEligibilityFailureDetailsTest.php
+test/Model/CampaignEligibilityTest.php
 test/Model/CampaignEntityTest.php
 test/Model/CampaignEvaluationGroupTest.php
 test/Model/CampaignEvaluationPositionTest.php
@@ -1996,6 +2013,8 @@ test/Model/RollbackDeductedLoyaltyPointsEffectPropsTest.php
 test/Model/RollbackDiscountEffectPropsTest.php
 test/Model/RollbackIncreasedAchievementProgressEffectPropsTest.php
 test/Model/RollbackReferralEffectPropsTest.php
+test/Model/RuleEligibilityFailureDetailsTest.php
+test/Model/RuleEligibilityTest.php
 test/Model/RuleFailureReasonTest.php
 test/Model/RuleMetadataTest.php
 test/Model/RuleTest.php
@@ -2103,6 +2122,7 @@ test/Model/UpdatePicklistTest.php
 test/Model/UpdatePriceTypeTest.php
 test/Model/UpdateReferralBatchTest.php
 test/Model/UpdateReferralTest.php
+test/Model/UpdateRewardTest.php
 test/Model/UpdateRoleTest.php
 test/Model/UpdateStoreTest.php
 test/Model/UpdateUserTest.php
