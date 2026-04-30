@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **displayName** | **string** | A customer-facing name for the rule. | [optional]
 **displayDescription** | **string** | A customer-facing description that explains the details of the rule.   For example, this property can contain details about eligibility requirements, reward timelines, or terms and conditions. | [optional]
 **relatedData** | **string** | Any additional data associated with the rule, such as an image URL, vendor name, or a content management system (CMS) ID. | [optional]
+**eligibility** | [**\TalonOne\Client\Model\RuleEligibility[]**](RuleEligibility.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
