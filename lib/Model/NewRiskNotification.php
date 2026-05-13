@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * NewRiskNotification
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * NewRiskNotification Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
+ * @description Data for creating a new risk notification.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class NewRiskNotification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'NewRiskNotification';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'entity' => 'string',
+        'activity' => 'string',
+        'timeFrame' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'entity' => null,
+        'activity' => null,
+        'timeFrame' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'entity' => false,
+        'activity' => false,
+        'timeFrame' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'entity' => 'entity',
+        'activity' => 'activity',
+        'timeFrame' => 'timeFrame'
     ];
 
     /**
@@ -184,9 +184,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'entity' => 'setEntity',
+        'activity' => 'setActivity',
+        'timeFrame' => 'setTimeFrame'
     ];
 
     /**
@@ -195,9 +195,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'entity' => 'getEntity',
+        'activity' => 'getActivity',
+        'timeFrame' => 'getTimeFrame'
     ];
 
     /**
@@ -241,6 +241,57 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
+    public const ENTITY_CUSTOMER_PROFILE = 'customer_profile';
+    public const ENTITY_CUSTOMER_SESSION = 'customer_session';
+    public const ACTIVITY_LOYALTY_POINTS_EARNED = 'loyalty_points_earned';
+    public const ACTIVITY_DISCOUNTED_AMOUNT = 'discounted_amount';
+    public const ACTIVITY_COMPLETED_ORDERS = 'completed_orders';
+    public const ACTIVITY_COUPON_ATTEMPTS = 'coupon_attempts';
+    public const TIME_FRAME__1_DAY = '1_day';
+    public const TIME_FRAME__1_WEEK = '1_week';
+    public const TIME_FRAME__1_MONTH = '1_month';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEntityAllowableValues()
+    {
+        return [
+            self::ENTITY_CUSTOMER_PROFILE,
+            self::ENTITY_CUSTOMER_SESSION,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActivityAllowableValues()
+    {
+        return [
+            self::ACTIVITY_LOYALTY_POINTS_EARNED,
+            self::ACTIVITY_DISCOUNTED_AMOUNT,
+            self::ACTIVITY_COMPLETED_ORDERS,
+            self::ACTIVITY_COUPON_ATTEMPTS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTimeFrameAllowableValues()
+    {
+        return [
+            self::TIME_FRAME__1_DAY,
+            self::TIME_FRAME__1_WEEK,
+            self::TIME_FRAME__1_MONTH,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +308,9 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('entity', $data ?? [], null);
+        $this->setIfExists('activity', $data ?? [], null);
+        $this->setIfExists('timeFrame', $data ?? [], null);
     }
 
     /**
@@ -289,12 +340,42 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['entity'] === null) {
+            $invalidProperties[] = "'entity' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' is required";
+        $allowedValues = $this->getEntityAllowableValues();
+        if (!is_null($this->container['entity']) && !in_array($this->container['entity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'entity', must be one of '%s'",
+                $this->container['entity'],
+                implode("', '", $allowedValues)
+            );
         }
+
+        if ($this->container['activity'] === null) {
+            $invalidProperties[] = "'activity' can't be null";
+        }
+        $allowedValues = $this->getActivityAllowableValues();
+        if (!is_null($this->container['activity']) && !in_array($this->container['activity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'activity', must be one of '%s'",
+                $this->container['activity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['timeFrame'] === null) {
+            $invalidProperties[] = "'timeFrame' can't be null";
+        }
+        $allowedValues = $this->getTimeFrameAllowableValues();
+        if (!is_null($this->container['timeFrame']) && !in_array($this->container['timeFrame'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'timeFrame', must be one of '%s'",
+                $this->container['timeFrame'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -311,89 +392,112 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets entity
      *
      * @return string
      */
-    public function getName()
+    public function getEntity()
     {
-        return $this->container['name'];
+        return $this->container['entity'];
     }
 
     /**
-     * Sets name
+     * Sets entity
      *
-     * @param string $name The effect name.
+     * @param string $entity The entity type to analyze within the given time frame.
      *
      * @return self
      */
-    public function setName($name)
+    public function setEntity($entity)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($entity)) {
+            throw new \InvalidArgumentException('non-nullable entity cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getEntityAllowableValues();
+        if (!in_array($entity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'entity', must be one of '%s'",
+                    $entity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['entity'] = $entity;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets activity
      *
-     * @return mixed|null
+     * @return string
      */
-    public function getValue()
+    public function getActivity()
     {
-        return $this->container['value'];
+        return $this->container['activity'];
     }
 
     /**
-     * Sets value
+     * Sets activity
      *
-     * @param mixed|null $value value
+     * @param string $activity The activity metric to analyze within the given entity.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setActivity($activity)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($activity)) {
+            throw new \InvalidArgumentException('non-nullable activity cannot be null');
         }
-        $this->container['value'] = $value;
+        $allowedValues = $this->getActivityAllowableValues();
+        if (!in_array($activity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'activity', must be one of '%s'",
+                    $activity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['activity'] = $activity;
 
         return $this;
     }
 
     /**
-     * Gets excludedFromPriceHistory
+     * Gets timeFrame
      *
-     * @return bool|null
+     * @return string
      */
-    public function getExcludedFromPriceHistory()
+    public function getTimeFrame()
     {
-        return $this->container['excludedFromPriceHistory'];
+        return $this->container['timeFrame'];
     }
 
     /**
-     * Sets excludedFromPriceHistory
+     * Sets timeFrame
      *
-     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's price history.
+     * @param string $timeFrame The rolling time window for risk evaluation.
      *
      * @return self
      */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    public function setTimeFrame($timeFrame)
     {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        if (is_null($timeFrame)) {
+            throw new \InvalidArgumentException('non-nullable timeFrame cannot be null');
         }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $allowedValues = $this->getTimeFrameAllowableValues();
+        if (!in_array($timeFrame, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'timeFrame', must be one of '%s'",
+                    $timeFrame,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['timeFrame'] = $timeFrame;
 
         return $this;
     }

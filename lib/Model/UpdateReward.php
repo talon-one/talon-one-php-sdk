@@ -60,7 +60,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'description' => 'string',
         'status' => 'string',
-        'rule' => '\TalonOne\Client\Model\Rule[]',
+        'visibilityConditions' => '\TalonOne\Client\Model\Rule',
+        'rule' => '\TalonOne\Client\Model\Rule',
         'bindings' => '\TalonOne\Client\Model\Binding[]'
     ];
 
@@ -75,6 +76,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'description' => null,
         'status' => null,
+        'visibilityConditions' => null,
         'rule' => null,
         'bindings' => null
     ];
@@ -88,6 +90,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'description' => false,
         'status' => false,
+        'visibilityConditions' => false,
         'rule' => false,
         'bindings' => false
     ];
@@ -181,6 +184,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'description' => 'description',
         'status' => 'status',
+        'visibilityConditions' => 'visibilityConditions',
         'rule' => 'rule',
         'bindings' => 'bindings'
     ];
@@ -194,6 +198,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'description' => 'setDescription',
         'status' => 'setStatus',
+        'visibilityConditions' => 'setVisibilityConditions',
         'rule' => 'setRule',
         'bindings' => 'setBindings'
     ];
@@ -207,6 +212,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'description' => 'getDescription',
         'status' => 'getStatus',
+        'visibilityConditions' => 'getVisibilityConditions',
         'rule' => 'getRule',
         'bindings' => 'getBindings'
     ];
@@ -286,6 +292,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('visibilityConditions', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('bindings', $data ?? [], null);
     }
@@ -448,9 +455,36 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets visibilityConditions
+     *
+     * @return \TalonOne\Client\Model\Rule|null
+     */
+    public function getVisibilityConditions()
+    {
+        return $this->container['visibilityConditions'];
+    }
+
+    /**
+     * Sets visibilityConditions
+     *
+     * @param \TalonOne\Client\Model\Rule|null $visibilityConditions An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported.
+     *
+     * @return self
+     */
+    public function setVisibilityConditions($visibilityConditions)
+    {
+        if (is_null($visibilityConditions)) {
+            throw new \InvalidArgumentException('non-nullable visibilityConditions cannot be null');
+        }
+        $this->container['visibilityConditions'] = $visibilityConditions;
+
+        return $this;
+    }
+
+    /**
      * Gets rule
      *
-     * @return \TalonOne\Client\Model\Rule[]|null
+     * @return \TalonOne\Client\Model\Rule|null
      */
     public function getRule()
     {
@@ -460,7 +494,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rule
      *
-     * @param \TalonOne\Client\Model\Rule[]|null $rule Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field.
+     * @param \TalonOne\Client\Model\Rule|null $rule Rule to apply.  **Note**: The `bindings` field inside the rule must not be used in this endpoint. All bindings should be defined at the reward level via the top-level `bindings` field.
      *
      * @return self
      */

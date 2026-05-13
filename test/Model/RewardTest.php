@@ -152,6 +152,15 @@ class RewardTest extends TestCase
     }
 
     /**
+     * Test attribute "visibilityConditions"
+     */
+    public function testPropertyVisibilityConditions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "rule"
      */
     public function testPropertyRule()
@@ -164,6 +173,15 @@ class RewardTest extends TestCase
      * Test attribute "bindings"
      */
     public function testPropertyBindings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "modified"
+     */
+    public function testPropertyModified()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

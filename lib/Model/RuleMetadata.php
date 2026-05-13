@@ -60,8 +60,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'string',
         'displayName' => 'string',
         'displayDescription' => 'string',
-        'relatedData' => 'string',
-        'eligibility' => '\TalonOne\Client\Model\RuleEligibility[]'
+        'relatedData' => 'string'
     ];
 
     /**
@@ -75,8 +74,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => null,
         'displayName' => null,
         'displayDescription' => null,
-        'relatedData' => null,
-        'eligibility' => null
+        'relatedData' => null
     ];
 
     /**
@@ -88,8 +86,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => false,
         'displayName' => false,
         'displayDescription' => false,
-        'relatedData' => false,
-        'eligibility' => false
+        'relatedData' => false
     ];
 
     /**
@@ -181,8 +178,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'title',
         'displayName' => 'displayName',
         'displayDescription' => 'displayDescription',
-        'relatedData' => 'relatedData',
-        'eligibility' => 'eligibility'
+        'relatedData' => 'relatedData'
     ];
 
     /**
@@ -194,8 +190,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'setTitle',
         'displayName' => 'setDisplayName',
         'displayDescription' => 'setDisplayDescription',
-        'relatedData' => 'setRelatedData',
-        'eligibility' => 'setEligibility'
+        'relatedData' => 'setRelatedData'
     ];
 
     /**
@@ -207,8 +202,7 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'getTitle',
         'displayName' => 'getDisplayName',
         'displayDescription' => 'getDisplayDescription',
-        'relatedData' => 'getRelatedData',
-        'eligibility' => 'getEligibility'
+        'relatedData' => 'getRelatedData'
     ];
 
     /**
@@ -272,7 +266,6 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('displayName', $data ?? [], null);
         $this->setIfExists('displayDescription', $data ?? [], null);
         $this->setIfExists('relatedData', $data ?? [], null);
-        $this->setIfExists('eligibility', $data ?? [], null);
     }
 
     /**
@@ -424,33 +417,6 @@ class RuleMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable relatedData cannot be null');
         }
         $this->container['relatedData'] = $relatedData;
-
-        return $this;
-    }
-
-    /**
-     * Gets eligibility
-     *
-     * @return \TalonOne\Client\Model\RuleEligibility[]|null
-     */
-    public function getEligibility()
-    {
-        return $this->container['eligibility'];
-    }
-
-    /**
-     * Sets eligibility
-     *
-     * @param \TalonOne\Client\Model\RuleEligibility[]|null $eligibility eligibility
-     *
-     * @return self
-     */
-    public function setEligibility($eligibility)
-    {
-        if (is_null($eligibility)) {
-            throw new \InvalidArgumentException('non-nullable eligibility cannot be null');
-        }
-        $this->container['eligibility'] = $eligibility;
 
         return $this;
     }

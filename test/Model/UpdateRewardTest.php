@@ -107,6 +107,15 @@ class UpdateRewardTest extends TestCase
     }
 
     /**
+     * Test attribute "visibilityConditions"
+     */
+    public function testPropertyVisibilityConditions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "rule"
      */
     public function testPropertyRule()

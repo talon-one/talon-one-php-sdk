@@ -58,7 +58,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'isVariantAssignmentExternal' => 'bool',
-        'campaign' => '\TalonOne\Client\Model\NewCampaign'
+        'campaign' => '\TalonOne\Client\Model\NewCampaign',
+        'goalType' => 'string',
+        'goalDescription' => 'string'
     ];
 
     /**
@@ -70,7 +72,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'isVariantAssignmentExternal' => null,
-        'campaign' => null
+        'campaign' => null,
+        'goalType' => null,
+        'goalDescription' => null
     ];
 
     /**
@@ -80,7 +84,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'isVariantAssignmentExternal' => false,
-        'campaign' => false
+        'campaign' => false,
+        'goalType' => false,
+        'goalDescription' => false
     ];
 
     /**
@@ -170,7 +176,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'isVariantAssignmentExternal' => 'isVariantAssignmentExternal',
-        'campaign' => 'campaign'
+        'campaign' => 'campaign',
+        'goalType' => 'goalType',
+        'goalDescription' => 'goalDescription'
     ];
 
     /**
@@ -180,7 +188,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'isVariantAssignmentExternal' => 'setIsVariantAssignmentExternal',
-        'campaign' => 'setCampaign'
+        'campaign' => 'setCampaign',
+        'goalType' => 'setGoalType',
+        'goalDescription' => 'setGoalDescription'
     ];
 
     /**
@@ -190,7 +200,9 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'isVariantAssignmentExternal' => 'getIsVariantAssignmentExternal',
-        'campaign' => 'getCampaign'
+        'campaign' => 'getCampaign',
+        'goalType' => 'getGoalType',
+        'goalDescription' => 'getGoalDescription'
     ];
 
     /**
@@ -234,6 +246,25 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const GOAL_TYPE_OTHER = 'other';
+    public const GOAL_TYPE_MAXIMIZE_REVENUE = 'maximize_revenue';
+    public const GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY = 'optimize_discount_efficiency';
+    public const GOAL_TYPE_MAXIMIZE_ITEMS_SOLD = 'maximize_items_sold';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGoalTypeAllowableValues()
+    {
+        return [
+            self::GOAL_TYPE_OTHER,
+            self::GOAL_TYPE_MAXIMIZE_REVENUE,
+            self::GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY,
+            self::GOAL_TYPE_MAXIMIZE_ITEMS_SOLD,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,6 +283,8 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('isVariantAssignmentExternal', $data ?? [], null);
         $this->setIfExists('campaign', $data ?? [], null);
+        $this->setIfExists('goalType', $data ?? [], null);
+        $this->setIfExists('goalDescription', $data ?? [], null);
     }
 
     /**
@@ -287,6 +320,18 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['campaign'] === null) {
             $invalidProperties[] = "'campaign' can't be null";
         }
+        if ($this->container['goalType'] === null) {
+            $invalidProperties[] = "'goalType' can't be null";
+        }
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!is_null($this->container['goalType']) && !in_array($this->container['goalType'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'goalType', must be one of '%s'",
+                $this->container['goalType'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -352,6 +397,70 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable campaign cannot be null');
         }
         $this->container['campaign'] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Gets goalType
+     *
+     * @return string
+     */
+    public function getGoalType()
+    {
+        return $this->container['goalType'];
+    }
+
+    /**
+     * Sets goalType
+     *
+     * @param string $goalType The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used.
+     *
+     * @return self
+     */
+    public function setGoalType($goalType)
+    {
+        if (is_null($goalType)) {
+            throw new \InvalidArgumentException('non-nullable goalType cannot be null');
+        }
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!in_array($goalType, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'goalType', must be one of '%s'",
+                    $goalType,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['goalType'] = $goalType;
+
+        return $this;
+    }
+
+    /**
+     * Gets goalDescription
+     *
+     * @return string|null
+     */
+    public function getGoalDescription()
+    {
+        return $this->container['goalDescription'];
+    }
+
+    /**
+     * Sets goalDescription
+     *
+     * @param string|null $goalDescription A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal.
+     *
+     * @return self
+     */
+    public function setGoalDescription($goalDescription)
+    {
+        if (is_null($goalDescription)) {
+            throw new \InvalidArgumentException('non-nullable goalDescription cannot be null');
+        }
+        $this->container['goalDescription'] = $goalDescription;
 
         return $this;
     }

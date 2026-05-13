@@ -1,6 +1,6 @@
 <?php
 /**
- * IntegrationCampaign
+ * RiskNotification
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * IntegrationCampaign Class Doc Comment
+ * RiskNotification Class Doc Comment
  *
  * @category Class
+ * @description A risk notification configuration rule.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
+class RiskNotification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @var string
      */
-    protected static $openAPIModelName = 'IntegrationCampaign';
+    protected static $openAPIModelName = 'RiskNotification';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,17 +58,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $openAPITypes = [
-        'applicationId' => 'int',
         'id' => 'int',
-        'name' => 'string',
-        'description' => 'string',
-        'startTime' => '\DateTime',
-        'endTime' => '\DateTime',
-        'attributes' => 'object',
-        'state' => 'string',
-        'tags' => 'string[]',
-        'features' => 'string[]',
-        'rules' => '\TalonOne\Client\Model\RuleMetadata[]'
+        'created' => '\DateTime',
+        'entity' => 'string',
+        'activity' => 'string',
+        'timeFrame' => 'string',
+        'active' => 'bool',
+        'modified' => '\DateTime'
     ];
 
     /**
@@ -78,17 +75,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'applicationId' => 'int64',
         'id' => 'int64',
-        'name' => null,
-        'description' => null,
-        'startTime' => 'date-time',
-        'endTime' => 'date-time',
-        'attributes' => null,
-        'state' => null,
-        'tags' => null,
-        'features' => null,
-        'rules' => null
+        'created' => 'date-time',
+        'entity' => null,
+        'activity' => null,
+        'timeFrame' => null,
+        'active' => null,
+        'modified' => 'date-time'
     ];
 
     /**
@@ -97,17 +90,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'applicationId' => false,
         'id' => false,
-        'name' => false,
-        'description' => false,
-        'startTime' => false,
-        'endTime' => false,
-        'attributes' => false,
-        'state' => false,
-        'tags' => false,
-        'features' => false,
-        'rules' => false
+        'created' => false,
+        'entity' => false,
+        'activity' => false,
+        'timeFrame' => false,
+        'active' => false,
+        'modified' => false
     ];
 
     /**
@@ -196,17 +185,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'applicationId' => 'applicationId',
         'id' => 'id',
-        'name' => 'name',
-        'description' => 'description',
-        'startTime' => 'startTime',
-        'endTime' => 'endTime',
-        'attributes' => 'attributes',
-        'state' => 'state',
-        'tags' => 'tags',
-        'features' => 'features',
-        'rules' => 'rules'
+        'created' => 'created',
+        'entity' => 'entity',
+        'activity' => 'activity',
+        'timeFrame' => 'timeFrame',
+        'active' => 'active',
+        'modified' => 'modified'
     ];
 
     /**
@@ -215,17 +200,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'applicationId' => 'setApplicationId',
         'id' => 'setId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'startTime' => 'setStartTime',
-        'endTime' => 'setEndTime',
-        'attributes' => 'setAttributes',
-        'state' => 'setState',
-        'tags' => 'setTags',
-        'features' => 'setFeatures',
-        'rules' => 'setRules'
+        'created' => 'setCreated',
+        'entity' => 'setEntity',
+        'activity' => 'setActivity',
+        'timeFrame' => 'setTimeFrame',
+        'active' => 'setActive',
+        'modified' => 'setModified'
     ];
 
     /**
@@ -234,17 +215,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'applicationId' => 'getApplicationId',
         'id' => 'getId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'startTime' => 'getStartTime',
-        'endTime' => 'getEndTime',
-        'attributes' => 'getAttributes',
-        'state' => 'getState',
-        'tags' => 'getTags',
-        'features' => 'getFeatures',
-        'rules' => 'getRules'
+        'created' => 'getCreated',
+        'entity' => 'getEntity',
+        'activity' => 'getActivity',
+        'timeFrame' => 'getTimeFrame',
+        'active' => 'getActive',
+        'modified' => 'getModified'
     ];
 
     /**
@@ -288,23 +265,26 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const STATE_ENABLED = 'enabled';
-    public const FEATURES_COUPONS = 'coupons';
-    public const FEATURES_REFERRALS = 'referrals';
-    public const FEATURES_LOYALTY = 'loyalty';
-    public const FEATURES_GIVEAWAYS = 'giveaways';
-    public const FEATURES_STRIKETHROUGH = 'strikethrough';
-    public const FEATURES_ACHIEVEMENTS = 'achievements';
+    public const ENTITY_CUSTOMER_PROFILE = 'customer_profile';
+    public const ENTITY_CUSTOMER_SESSION = 'customer_session';
+    public const ACTIVITY_LOYALTY_POINTS_EARNED = 'loyalty_points_earned';
+    public const ACTIVITY_DISCOUNTED_AMOUNT = 'discounted_amount';
+    public const ACTIVITY_COMPLETED_ORDERS = 'completed_orders';
+    public const ACTIVITY_COUPON_ATTEMPTS = 'coupon_attempts';
+    public const TIME_FRAME__1_DAY = '1_day';
+    public const TIME_FRAME__1_WEEK = '1_week';
+    public const TIME_FRAME__1_MONTH = '1_month';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getStateAllowableValues()
+    public function getEntityAllowableValues()
     {
         return [
-            self::STATE_ENABLED,
+            self::ENTITY_CUSTOMER_PROFILE,
+            self::ENTITY_CUSTOMER_SESSION,
         ];
     }
 
@@ -313,15 +293,27 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getFeaturesAllowableValues()
+    public function getActivityAllowableValues()
     {
         return [
-            self::FEATURES_COUPONS,
-            self::FEATURES_REFERRALS,
-            self::FEATURES_LOYALTY,
-            self::FEATURES_GIVEAWAYS,
-            self::FEATURES_STRIKETHROUGH,
-            self::FEATURES_ACHIEVEMENTS,
+            self::ACTIVITY_LOYALTY_POINTS_EARNED,
+            self::ACTIVITY_DISCOUNTED_AMOUNT,
+            self::ACTIVITY_COMPLETED_ORDERS,
+            self::ACTIVITY_COUPON_ATTEMPTS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTimeFrameAllowableValues()
+    {
+        return [
+            self::TIME_FRAME__1_DAY,
+            self::TIME_FRAME__1_WEEK,
+            self::TIME_FRAME__1_MONTH,
         ];
     }
 
@@ -340,17 +332,13 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('applicationId', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('startTime', $data ?? [], null);
-        $this->setIfExists('endTime', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], 'enabled');
-        $this->setIfExists('tags', $data ?? [], null);
-        $this->setIfExists('features', $data ?? [], null);
-        $this->setIfExists('rules', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('entity', $data ?? [], null);
+        $this->setIfExists('activity', $data ?? [], null);
+        $this->setIfExists('timeFrame', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('modified', $data ?? [], null);
     }
 
     /**
@@ -380,43 +368,53 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['applicationId'] === null) {
-            $invalidProperties[] = "'applicationId' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        if ($this->container['entity'] === null) {
+            $invalidProperties[] = "'entity' can't be null";
         }
-
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
-        }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
+        $allowedValues = $this->getEntityAllowableValues();
+        if (!is_null($this->container['entity']) && !in_array($this->container['entity'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
+                "invalid value '%s' for 'entity', must be one of '%s'",
+                $this->container['entity'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['tags'] === null) {
-            $invalidProperties[] = "'tags' can't be null";
+        if ($this->container['activity'] === null) {
+            $invalidProperties[] = "'activity' can't be null";
         }
-        if ((count($this->container['tags']) > 50)) {
-            $invalidProperties[] = "invalid value for 'tags', number of items must be less than or equal to 50.";
+        $allowedValues = $this->getActivityAllowableValues();
+        if (!is_null($this->container['activity']) && !in_array($this->container['activity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'activity', must be one of '%s'",
+                $this->container['activity'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if ($this->container['features'] === null) {
-            $invalidProperties[] = "'features' can't be null";
+        if ($this->container['timeFrame'] === null) {
+            $invalidProperties[] = "'timeFrame' can't be null";
         }
-        if ($this->container['rules'] === null) {
-            $invalidProperties[] = "'rules' can't be null";
+        $allowedValues = $this->getTimeFrameAllowableValues();
+        if (!is_null($this->container['timeFrame']) && !in_array($this->container['timeFrame'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'timeFrame', must be one of '%s'",
+                $this->container['timeFrame'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['modified'] === null) {
+            $invalidProperties[] = "'modified' can't be null";
         }
         return $invalidProperties;
     }
@@ -434,33 +432,6 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets applicationId
-     *
-     * @return int
-     */
-    public function getApplicationId()
-    {
-        return $this->container['applicationId'];
-    }
-
-    /**
-     * Sets applicationId
-     *
-     * @param int $applicationId The ID of the Application that owns this entity.
-     *
-     * @return self
-     */
-    public function setApplicationId($applicationId)
-    {
-        if (is_null($applicationId)) {
-            throw new \InvalidArgumentException('non-nullable applicationId cannot be null');
-        }
-        $this->container['applicationId'] = $applicationId;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -473,7 +444,7 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param int $id Unique ID of Campaign.
+     * @param int $id The internal ID of this entity.
      *
      * @return self
      */
@@ -488,272 +459,193 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets name
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created The time this entity was created.
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets entity
      *
      * @return string
      */
-    public function getName()
+    public function getEntity()
     {
-        return $this->container['name'];
+        return $this->container['entity'];
     }
 
     /**
-     * Sets name
+     * Sets entity
      *
-     * @param string $name The name of the campaign.
+     * @param string $entity The entity type to analyze within the given time frame.
      *
      * @return self
      */
-    public function setName($name)
+    public function setEntity($entity)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($entity)) {
+            throw new \InvalidArgumentException('non-nullable entity cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling IntegrationCampaign., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A detailed description of the campaign.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets startTime
-     *
-     * @return \DateTime|null
-     */
-    public function getStartTime()
-    {
-        return $this->container['startTime'];
-    }
-
-    /**
-     * Sets startTime
-     *
-     * @param \DateTime|null $startTime Timestamp when the campaign will become active.
-     *
-     * @return self
-     */
-    public function setStartTime($startTime)
-    {
-        if (is_null($startTime)) {
-            throw new \InvalidArgumentException('non-nullable startTime cannot be null');
-        }
-        $this->container['startTime'] = $startTime;
-
-        return $this;
-    }
-
-    /**
-     * Gets endTime
-     *
-     * @return \DateTime|null
-     */
-    public function getEndTime()
-    {
-        return $this->container['endTime'];
-    }
-
-    /**
-     * Sets endTime
-     *
-     * @param \DateTime|null $endTime Timestamp when the campaign will become inactive.
-     *
-     * @return self
-     */
-    public function setEndTime($endTime)
-    {
-        if (is_null($endTime)) {
-            throw new \InvalidArgumentException('non-nullable endTime cannot be null');
-        }
-        $this->container['endTime'] = $endTime;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return object|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param object|null $attributes Arbitrary properties associated with this campaign.
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string $state The state of the campaign.
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
-        }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!in_array($state, $allowedValues, true)) {
+        $allowedValues = $this->getEntityAllowableValues();
+        if (!in_array($entity, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
+                    "Invalid value '%s' for 'entity', must be one of '%s'",
+                    $entity,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['state'] = $state;
+        $this->container['entity'] = $entity;
 
         return $this;
     }
 
     /**
-     * Gets tags
+     * Gets activity
      *
-     * @return string[]
+     * @return string
      */
-    public function getTags()
+    public function getActivity()
     {
-        return $this->container['tags'];
+        return $this->container['activity'];
     }
 
     /**
-     * Sets tags
+     * Sets activity
      *
-     * @param string[] $tags A list of tags for the campaign.
+     * @param string $activity The activity metric to analyze within the given entity.
      *
      * @return self
      */
-    public function setTags($tags)
+    public function setActivity($activity)
     {
-        if (is_null($tags)) {
-            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        if (is_null($activity)) {
+            throw new \InvalidArgumentException('non-nullable activity cannot be null');
         }
-
-        if ((count($tags) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $tags when calling IntegrationCampaign., number of items must be less than or equal to 50.');
-        }
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets features
-     *
-     * @return string[]
-     */
-    public function getFeatures()
-    {
-        return $this->container['features'];
-    }
-
-    /**
-     * Sets features
-     *
-     * @param string[] $features The features enabled in this campaign.
-     *
-     * @return self
-     */
-    public function setFeatures($features)
-    {
-        if (is_null($features)) {
-            throw new \InvalidArgumentException('non-nullable features cannot be null');
-        }
-        $allowedValues = $this->getFeaturesAllowableValues();
-        if (array_diff($features, $allowedValues)) {
+        $allowedValues = $this->getActivityAllowableValues();
+        if (!in_array($activity, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'features', must be one of '%s'",
+                    "Invalid value '%s' for 'activity', must be one of '%s'",
+                    $activity,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['features'] = $features;
+        $this->container['activity'] = $activity;
 
         return $this;
     }
 
     /**
-     * Gets rules
+     * Gets timeFrame
      *
-     * @return \TalonOne\Client\Model\RuleMetadata[]
+     * @return string
      */
-    public function getRules()
+    public function getTimeFrame()
     {
-        return $this->container['rules'];
+        return $this->container['timeFrame'];
     }
 
     /**
-     * Sets rules
+     * Sets timeFrame
      *
-     * @param \TalonOne\Client\Model\RuleMetadata[] $rules A list of rules containing customer-facing details of the rewards defined in the campaign.
+     * @param string $timeFrame The rolling time window for risk evaluation.
      *
      * @return self
      */
-    public function setRules($rules)
+    public function setTimeFrame($timeFrame)
     {
-        if (is_null($rules)) {
-            throw new \InvalidArgumentException('non-nullable rules cannot be null');
+        if (is_null($timeFrame)) {
+            throw new \InvalidArgumentException('non-nullable timeFrame cannot be null');
         }
-        $this->container['rules'] = $rules;
+        $allowedValues = $this->getTimeFrameAllowableValues();
+        if (!in_array($timeFrame, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'timeFrame', must be one of '%s'",
+                    $timeFrame,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['timeFrame'] = $timeFrame;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool $active Indicates whether this risk notification is active.
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
+        }
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->container['modified'];
+    }
+
+    /**
+     * Sets modified
+     *
+     * @param \DateTime $modified Timestamp of the most recent update.
+     *
+     * @return self
+     */
+    public function setModified($modified)
+    {
+        if (is_null($modified)) {
+            throw new \InvalidArgumentException('non-nullable modified cannot be null');
+        }
+        $this->container['modified'] = $modified;
 
         return $this;
     }

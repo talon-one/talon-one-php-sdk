@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignEligibility
+ * IntegrationCampaignBase
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * CampaignEligibility Class Doc Comment
+ * IntegrationCampaignBase Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializable
+class IntegrationCampaignBase implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @var string
      */
-    protected static $openAPIModelName = 'CampaignEligibility';
+    protected static $openAPIModelName = 'IntegrationCampaignBase';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -66,9 +66,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => 'object',
         'state' => 'string',
         'tags' => 'string[]',
-        'features' => 'string[]',
-        'eligibility' => '\TalonOne\Client\Model\CampaignEligibilityDetails[]',
-        'rules' => '\TalonOne\Client\Model\RuleMetadataEligibility[]'
+        'features' => 'string[]'
     ];
 
     /**
@@ -88,9 +86,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => null,
         'state' => null,
         'tags' => null,
-        'features' => null,
-        'eligibility' => null,
-        'rules' => null
+        'features' => null
     ];
 
     /**
@@ -108,9 +104,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => false,
         'state' => false,
         'tags' => false,
-        'features' => false,
-        'eligibility' => false,
-        'rules' => false
+        'features' => false
     ];
 
     /**
@@ -208,9 +202,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => 'attributes',
         'state' => 'state',
         'tags' => 'tags',
-        'features' => 'features',
-        'eligibility' => 'eligibility',
-        'rules' => 'rules'
+        'features' => 'features'
     ];
 
     /**
@@ -228,9 +220,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => 'setAttributes',
         'state' => 'setState',
         'tags' => 'setTags',
-        'features' => 'setFeatures',
-        'eligibility' => 'setEligibility',
-        'rules' => 'setRules'
+        'features' => 'setFeatures'
     ];
 
     /**
@@ -248,9 +238,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         'attributes' => 'getAttributes',
         'state' => 'getState',
         'tags' => 'getTags',
-        'features' => 'getFeatures',
-        'eligibility' => 'getEligibility',
-        'rules' => 'getRules'
+        'features' => 'getFeatures'
     ];
 
     /**
@@ -356,8 +344,6 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('state', $data ?? [], 'enabled');
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
-        $this->setIfExists('eligibility', $data ?? [], null);
-        $this->setIfExists('rules', $data ?? [], null);
     }
 
     /**
@@ -421,12 +407,6 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
 
         if ($this->container['features'] === null) {
             $invalidProperties[] = "'features' can't be null";
-        }
-        if ($this->container['eligibility'] === null) {
-            $invalidProperties[] = "'eligibility' can't be null";
-        }
-        if ($this->container['rules'] === null) {
-            $invalidProperties[] = "'rules' can't be null";
         }
         return $invalidProperties;
     }
@@ -521,7 +501,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CampaignEligibility., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $name when calling IntegrationCampaignBase., must be bigger than or equal to 1.');
         }
 
         $this->container['name'] = $name;
@@ -698,7 +678,7 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         if ((count($tags) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $tags when calling CampaignEligibility., number of items must be less than or equal to 50.');
+            throw new \InvalidArgumentException('invalid value for $tags when calling IntegrationCampaignBase., number of items must be less than or equal to 50.');
         }
         $this->container['tags'] = $tags;
 
@@ -737,60 +717,6 @@ class CampaignEligibility implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['features'] = $features;
-
-        return $this;
-    }
-
-    /**
-     * Gets eligibility
-     *
-     * @return \TalonOne\Client\Model\CampaignEligibilityDetails[]
-     */
-    public function getEligibility()
-    {
-        return $this->container['eligibility'];
-    }
-
-    /**
-     * Sets eligibility
-     *
-     * @param \TalonOne\Client\Model\CampaignEligibilityDetails[] $eligibility The customer's eligibility for each campaign in the current customer session.
-     *
-     * @return self
-     */
-    public function setEligibility($eligibility)
-    {
-        if (is_null($eligibility)) {
-            throw new \InvalidArgumentException('non-nullable eligibility cannot be null');
-        }
-        $this->container['eligibility'] = $eligibility;
-
-        return $this;
-    }
-
-    /**
-     * Gets rules
-     *
-     * @return \TalonOne\Client\Model\RuleMetadataEligibility[]
-     */
-    public function getRules()
-    {
-        return $this->container['rules'];
-    }
-
-    /**
-     * Sets rules
-     *
-     * @param \TalonOne\Client\Model\RuleMetadataEligibility[] $rules A list of rules containing customer-facing details of the rewards defined in the campaign.
-     *
-     * @return self
-     */
-    public function setRules($rules)
-    {
-        if (is_null($rules)) {
-            throw new \InvalidArgumentException('non-nullable rules cannot be null');
-        }
-        $this->container['rules'] = $rules;
 
         return $this;
     }

@@ -1346,7 +1346,7 @@ class ManagementApiTest extends TestCase
     /**
      * Test case for getLoyaltyCardTransactionLogs
      *
-     * List card's transactions.
+     * List card's transactions (Management API).
      *
      */
     public function testGetLoyaltyCardTransactionLogs()
@@ -1370,7 +1370,7 @@ class ManagementApiTest extends TestCase
     /**
      * Test case for getLoyaltyLedgerBalances
      *
-     * Get customer's loyalty balances.
+     * Get customer's loyalty balances (Management API).
      *
      */
     public function testGetLoyaltyLedgerBalances()
@@ -1406,7 +1406,7 @@ class ManagementApiTest extends TestCase
     /**
      * Test case for getLoyaltyProgramProfileLedgerTransactions
      *
-     * List customer's loyalty transactions.
+     * List customer's loyalty transactions (Management API).
      *
      */
     public function testGetLoyaltyProgramProfileLedgerTransactions()

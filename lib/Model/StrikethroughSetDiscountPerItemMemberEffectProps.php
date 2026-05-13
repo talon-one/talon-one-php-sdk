@@ -316,7 +316,7 @@ class StrikethroughSetDiscountPerItemMemberEffectProps implements ModelInterface
     /**
      * Sets name
      *
-     * @param string $name effect name.
+     * @param string $name The effect name.
      *
      * @return self
      */

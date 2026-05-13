@@ -80,18 +80,18 @@ class CampaignEligibilityTest extends TestCase
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "applicationId"
      */
-    public function testPropertyId()
+    public function testPropertyApplicationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "applicationId"
+     * Test attribute "id"
      */
-    public function testPropertyApplicationId()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -170,18 +170,18 @@ class CampaignEligibilityTest extends TestCase
     }
 
     /**
-     * Test attribute "rules"
+     * Test attribute "eligibility"
      */
-    public function testPropertyRules()
+    public function testPropertyEligibility()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "eligibility"
+     * Test attribute "rules"
      */
-    public function testPropertyEligibility()
+    public function testPropertyRules()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

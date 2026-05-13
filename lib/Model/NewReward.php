@@ -61,9 +61,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'string',
         'description' => 'string',
         'applicationIds' => 'int[]',
-        'sandbox' => 'bool',
-        'rule' => '\TalonOne\Client\Model\Rule[]',
-        'bindings' => '\TalonOne\Client\Model\Binding[]'
+        'sandbox' => 'bool'
     ];
 
     /**
@@ -78,9 +76,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => null,
         'description' => null,
         'applicationIds' => 'int64',
-        'sandbox' => null,
-        'rule' => null,
-        'bindings' => null
+        'sandbox' => null
     ];
 
     /**
@@ -93,9 +89,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => false,
         'description' => false,
         'applicationIds' => false,
-        'sandbox' => false,
-        'rule' => false,
-        'bindings' => false
+        'sandbox' => false
     ];
 
     /**
@@ -188,9 +182,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'apiName',
         'description' => 'description',
         'applicationIds' => 'applicationIds',
-        'sandbox' => 'sandbox',
-        'rule' => 'rule',
-        'bindings' => 'bindings'
+        'sandbox' => 'sandbox'
     ];
 
     /**
@@ -203,9 +195,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'setApiName',
         'description' => 'setDescription',
         'applicationIds' => 'setApplicationIds',
-        'sandbox' => 'setSandbox',
-        'rule' => 'setRule',
-        'bindings' => 'setBindings'
+        'sandbox' => 'setSandbox'
     ];
 
     /**
@@ -218,9 +208,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'apiName' => 'getApiName',
         'description' => 'getDescription',
         'applicationIds' => 'getApplicationIds',
-        'sandbox' => 'getSandbox',
-        'rule' => 'getRule',
-        'bindings' => 'getBindings'
+        'sandbox' => 'getSandbox'
     ];
 
     /**
@@ -285,8 +273,6 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('applicationIds', $data ?? [], null);
         $this->setIfExists('sandbox', $data ?? [], null);
-        $this->setIfExists('rule', $data ?? [], null);
-        $this->setIfExists('bindings', $data ?? [], null);
     }
 
     /**
@@ -492,60 +478,6 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
         }
         $this->container['sandbox'] = $sandbox;
-
-        return $this;
-    }
-
-    /**
-     * Gets rule
-     *
-     * @return \TalonOne\Client\Model\Rule[]|null
-     */
-    public function getRule()
-    {
-        return $this->container['rule'];
-    }
-
-    /**
-     * Sets rule
-     *
-     * @param \TalonOne\Client\Model\Rule[]|null $rule Rule to apply.
-     *
-     * @return self
-     */
-    public function setRule($rule)
-    {
-        if (is_null($rule)) {
-            throw new \InvalidArgumentException('non-nullable rule cannot be null');
-        }
-        $this->container['rule'] = $rule;
-
-        return $this;
-    }
-
-    /**
-     * Gets bindings
-     *
-     * @return \TalonOne\Client\Model\Binding[]|null
-     */
-    public function getBindings()
-    {
-        return $this->container['bindings'];
-    }
-
-    /**
-     * Sets bindings
-     *
-     * @param \TalonOne\Client\Model\Binding[]|null $bindings A list of named variables created before the reward's rules are evaluated.  Each binding pairs a name with a talang expression. The expression is evaluated once  and its result is available by name in any rule condition or effect. Bindings must be defined outside of individual rules.
-     *
-     * @return self
-     */
-    public function setBindings($bindings)
-    {
-        if (is_null($bindings)) {
-            throw new \InvalidArgumentException('non-nullable bindings cannot be null');
-        }
-        $this->container['bindings'] = $bindings;
 
         return $this;
     }

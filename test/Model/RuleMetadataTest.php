@@ -114,13 +114,4 @@ class RuleMetadataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "eligibility"
-     */
-    public function testPropertyEligibility()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
 }
