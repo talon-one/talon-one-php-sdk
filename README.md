@@ -323,12 +323,12 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getExperiment**](docs/Api/ManagementApi.md#getexperiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application
 *ManagementApi* | [**getExports**](docs/Api/ManagementApi.md#getexports) | **GET** /v1/exports | Get exports
 *ManagementApi* | [**getLoyaltyCard**](docs/Api/ManagementApi.md#getloyaltycard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
-*ManagementApi* | [**getLoyaltyCardTransactionLogs**](docs/Api/ManagementApi.md#getloyaltycardtransactionlogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions
+*ManagementApi* | [**getLoyaltyCardTransactionLogs**](docs/Api/ManagementApi.md#getloyaltycardtransactionlogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions (Management API)
 *ManagementApi* | [**getLoyaltyCards**](docs/Api/ManagementApi.md#getloyaltycards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards
-*ManagementApi* | [**getLoyaltyLedgerBalances**](docs/Api/ManagementApi.md#getloyaltyledgerbalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer&#39;s loyalty balances
+*ManagementApi* | [**getLoyaltyLedgerBalances**](docs/Api/ManagementApi.md#getloyaltyledgerbalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer&#39;s loyalty balances (Management API)
 *ManagementApi* | [**getLoyaltyPoints**](docs/Api/ManagementApi.md#getloyaltypoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId} | Get customer&#39;s full loyalty ledger
 *ManagementApi* | [**getLoyaltyProgram**](docs/Api/ManagementApi.md#getloyaltyprogram) | **GET** /v1/loyalty_programs/{loyaltyProgramId} | Get loyalty program
-*ManagementApi* | [**getLoyaltyProgramProfileLedgerTransactions**](docs/Api/ManagementApi.md#getloyaltyprogramprofileledgertransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer&#39;s loyalty transactions
+*ManagementApi* | [**getLoyaltyProgramProfileLedgerTransactions**](docs/Api/ManagementApi.md#getloyaltyprogramprofileledgertransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer&#39;s loyalty transactions (Management API)
 *ManagementApi* | [**getLoyaltyProgramTransactions**](docs/Api/ManagementApi.md#getloyaltyprogramtransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions
 *ManagementApi* | [**getLoyaltyPrograms**](docs/Api/ManagementApi.md#getloyaltyprograms) | **GET** /v1/loyalty_programs | List loyalty programs
 *ManagementApi* | [**getLoyaltyStatistics**](docs/Api/ManagementApi.md#getloyaltystatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
@@ -669,6 +669,7 @@ Class | Method | HTTP request | Description
 - [ExtendLoyaltyPointsExpiryDateEffectProps](docs/Model/ExtendLoyaltyPointsExpiryDateEffectProps.md)
 - [ExtendedCoupon](docs/Model/ExtendedCoupon.md)
 - [FeatureFlag](docs/Model/FeatureFlag.md)
+- [FeatureFlagUpdate](docs/Model/FeatureFlagUpdate.md)
 - [FeaturesFeed](docs/Model/FeaturesFeed.md)
 - [FuncArgDef](docs/Model/FuncArgDef.md)
 - [FunctionDef](docs/Model/FunctionDef.md)
@@ -739,6 +740,7 @@ Class | Method | HTTP request | Description
 - [IncreaseAchievementProgressEffectProps](docs/Model/IncreaseAchievementProgressEffectProps.md)
 - [InfluencingCampaignDetails](docs/Model/InfluencingCampaignDetails.md)
 - [IntegrationCampaign](docs/Model/IntegrationCampaign.md)
+- [IntegrationCampaignBase](docs/Model/IntegrationCampaignBase.md)
 - [IntegrationCoupon](docs/Model/IntegrationCoupon.md)
 - [IntegrationCustomerProfileAudienceRequest](docs/Model/IntegrationCustomerProfileAudienceRequest.md)
 - [IntegrationCustomerProfileAudienceRequestItem](docs/Model/IntegrationCustomerProfileAudienceRequestItem.md)
@@ -899,6 +901,7 @@ Class | Method | HTTP request | Description
 - [NewReturn](docs/Model/NewReturn.md)
 - [NewRevisionVersion](docs/Model/NewRevisionVersion.md)
 - [NewReward](docs/Model/NewReward.md)
+- [NewRiskNotification](docs/Model/NewRiskNotification.md)
 - [NewRole](docs/Model/NewRole.md)
 - [NewRoleV2](docs/Model/NewRoleV2.md)
 - [NewRuleset](docs/Model/NewRuleset.md)
@@ -967,6 +970,7 @@ Class | Method | HTTP request | Description
 - [RevisionActivationRequest](docs/Model/RevisionActivationRequest.md)
 - [RevisionVersion](docs/Model/RevisionVersion.md)
 - [Reward](docs/Model/Reward.md)
+- [RiskNotification](docs/Model/RiskNotification.md)
 - [Role](docs/Model/Role.md)
 - [RoleAssign](docs/Model/RoleAssign.md)
 - [RoleMembership](docs/Model/RoleMembership.md)
@@ -989,6 +993,7 @@ Class | Method | HTTP request | Description
 - [RuleEligibilityFailureDetails](docs/Model/RuleEligibilityFailureDetails.md)
 - [RuleFailureReason](docs/Model/RuleFailureReason.md)
 - [RuleMetadata](docs/Model/RuleMetadata.md)
+- [RuleMetadataEligibility](docs/Model/RuleMetadataEligibility.md)
 - [Ruleset](docs/Model/Ruleset.md)
 - [SSOConfig](docs/Model/SSOConfig.md)
 - [SamlConnection](docs/Model/SamlConnection.md)

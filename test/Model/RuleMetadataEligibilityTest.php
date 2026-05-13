@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentTest
+ * RuleMetadataEligibilityTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ExperimentTest Class Doc Comment
+ * RuleMetadataEligibilityTest Class Doc Comment
  *
  * @category    Class
- * @description Experiment
+ * @description RuleMetadataEligibility
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ExperimentTest extends TestCase
+class RuleMetadataEligibilityTest extends TestCase
 {
 
     /**
@@ -71,108 +71,54 @@ class ExperimentTest extends TestCase
     }
 
     /**
-     * Test "Experiment"
+     * Test "RuleMetadataEligibility"
      */
-    public function testExperiment()
+    public function testRuleMetadataEligibility()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "title"
      */
-    public function testPropertyId()
+    public function testPropertyTitle()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "created"
+     * Test attribute "displayName"
      */
-    public function testPropertyCreated()
+    public function testPropertyDisplayName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "applicationId"
+     * Test attribute "displayDescription"
      */
-    public function testPropertyApplicationId()
+    public function testPropertyDisplayDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "isVariantAssignmentExternal"
+     * Test attribute "relatedData"
      */
-    public function testPropertyIsVariantAssignmentExternal()
+    public function testPropertyRelatedData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "campaign"
+     * Test attribute "eligibility"
      */
-    public function testPropertyCampaign()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "activated"
-     */
-    public function testPropertyActivated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "state"
-     */
-    public function testPropertyState()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "variants"
-     */
-    public function testPropertyVariants()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "goalType"
-     */
-    public function testPropertyGoalType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "goalDescription"
-     */
-    public function testPropertyGoalDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "deletedat"
-     */
-    public function testPropertyDeletedat()
+    public function testPropertyEligibility()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

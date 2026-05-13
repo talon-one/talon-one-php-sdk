@@ -34696,7 +34696,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyCardTransactionLogs
      *
-     * List card&#39;s transactions
+     * List card&#39;s transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
@@ -34722,7 +34722,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyCardTransactionLogsWithHttpInfo
      *
-     * List card&#39;s transactions
+     * List card&#39;s transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
@@ -34843,7 +34843,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyCardTransactionLogsAsync
      *
-     * List card&#39;s transactions
+     * List card&#39;s transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
@@ -34872,7 +34872,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyCardTransactionLogsAsyncWithHttpInfo
      *
-     * List card&#39;s transactions
+     * List card&#39;s transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
@@ -35537,7 +35537,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyLedgerBalances
      *
-     * Get customer&#39;s loyalty balances
+     * Get customer&#39;s loyalty balances (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -35560,7 +35560,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyLedgerBalancesWithHttpInfo
      *
-     * Get customer&#39;s loyalty balances
+     * Get customer&#39;s loyalty balances (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -35692,7 +35692,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyLedgerBalancesAsync
      *
-     * Get customer&#39;s loyalty balances
+     * Get customer&#39;s loyalty balances (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -35718,7 +35718,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyLedgerBalancesAsyncWithHttpInfo
      *
-     * Get customer&#39;s loyalty balances
+     * Get customer&#39;s loyalty balances (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -36503,7 +36503,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyProgramProfileLedgerTransactions
      *
-     * List customer&#39;s loyalty transactions
+     * List customer&#39;s loyalty transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -36531,7 +36531,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo
      *
-     * List customer&#39;s loyalty transactions
+     * List customer&#39;s loyalty transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -36668,7 +36668,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyProgramProfileLedgerTransactionsAsync
      *
-     * List customer&#39;s loyalty transactions
+     * List customer&#39;s loyalty transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -36699,7 +36699,7 @@ class ManagementApi
     /**
      * Operation getLoyaltyProgramProfileLedgerTransactionsAsyncWithHttpInfo
      *
-     * List customer&#39;s loyalty transactions
+     * List customer&#39;s loyalty transactions (Management API)
      *
      * @param  int $loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
@@ -41338,7 +41338,7 @@ class ManagementApi
      * Import data into existing account-level collection
      *
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAccountCollection'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -41357,7 +41357,7 @@ class ManagementApi
      * Import data into existing account-level collection
      *
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAccountCollection'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -41471,7 +41471,7 @@ class ManagementApi
      * Import data into existing account-level collection
      *
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAccountCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41493,7 +41493,7 @@ class ManagementApi
      * Import data into existing account-level collection
      *
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAccountCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41544,7 +41544,7 @@ class ManagementApi
      * Create request for operation 'importAccountCollection'
      *
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAccountCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41655,7 +41655,7 @@ class ManagementApi
      * Import allowed values for attribute
      *
      * @param  int $attributeId The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAllowedList'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -41674,7 +41674,7 @@ class ManagementApi
      * Import allowed values for attribute
      *
      * @param  int $attributeId The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAllowedList'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -41802,7 +41802,7 @@ class ManagementApi
      * Import allowed values for attribute
      *
      * @param  int $attributeId The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAllowedList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41824,7 +41824,7 @@ class ManagementApi
      * Import allowed values for attribute
      *
      * @param  int $attributeId The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAllowedList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41875,7 +41875,7 @@ class ManagementApi
      * Create request for operation 'importAllowedList'
      *
      * @param  int $attributeId The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAllowedList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -41986,7 +41986,7 @@ class ManagementApi
      * Import audience members
      *
      * @param  int $audienceId The ID of the audience. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAudiencesMemberships'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42005,7 +42005,7 @@ class ManagementApi
      * Import audience members
      *
      * @param  int $audienceId The ID of the audience. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAudiencesMemberships'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42133,7 +42133,7 @@ class ManagementApi
      * Import audience members
      *
      * @param  int $audienceId The ID of the audience. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAudiencesMemberships'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42155,7 +42155,7 @@ class ManagementApi
      * Import audience members
      *
      * @param  int $audienceId The ID of the audience. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAudiencesMemberships'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42206,7 +42206,7 @@ class ManagementApi
      * Create request for operation 'importAudiencesMemberships'
      *
      * @param  int $audienceId The ID of the audience. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importAudiencesMemberships'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42320,7 +42320,7 @@ class ManagementApi
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  string|null $action The action that this budget is limiting. (optional)
      * @param  string|null $period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStoreBudget'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42342,7 +42342,7 @@ class ManagementApi
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  string|null $action The action that this budget is limiting. (optional)
      * @param  string|null $period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStoreBudget'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42445,7 +42445,7 @@ class ManagementApi
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  string|null $action The action that this budget is limiting. (optional)
      * @param  string|null $period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStoreBudget'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42470,7 +42470,7 @@ class ManagementApi
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  string|null $action The action that this budget is limiting. (optional)
      * @param  string|null $period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStoreBudget'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42524,7 +42524,7 @@ class ManagementApi
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  string|null $action The action that this budget is limiting. (optional)
      * @param  string|null $period The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStoreBudget'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42671,7 +42671,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStores'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42691,7 +42691,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStores'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -42820,7 +42820,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStores'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42843,7 +42843,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStores'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -42895,7 +42895,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCampaignStores'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43023,7 +43023,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCollection'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43044,7 +43044,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCollection'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43146,7 +43146,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43170,7 +43170,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43223,7 +43223,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $collectionId The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCollection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43366,7 +43366,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  bool|null $skipDuplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43387,7 +43387,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  bool|null $skipDuplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43475,7 +43475,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  bool|null $skipDuplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43499,7 +43499,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  bool|null $skipDuplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43552,7 +43552,7 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  bool|null $skipDuplicates An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43688,7 +43688,7 @@ class ManagementApi
      * Import loyalty cards
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCards'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43707,7 +43707,7 @@ class ManagementApi
      * Import loyalty cards
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCards'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -43821,7 +43821,7 @@ class ManagementApi
      * Import loyalty cards
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43843,7 +43843,7 @@ class ManagementApi
      * Import loyalty cards
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -43894,7 +43894,7 @@ class ManagementApi
      * Create request for operation 'importLoyaltyCards'
      *
      * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44005,7 +44005,7 @@ class ManagementApi
      * Import customers into loyalty tiers
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCustomersTiers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44024,7 +44024,7 @@ class ManagementApi
      * Import customers into loyalty tiers
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCustomersTiers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44152,7 +44152,7 @@ class ManagementApi
      * Import customers into loyalty tiers
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCustomersTiers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44174,7 +44174,7 @@ class ManagementApi
      * Import customers into loyalty tiers
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCustomersTiers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44225,7 +44225,7 @@ class ManagementApi
      * Create request for operation 'importLoyaltyCustomersTiers'
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyCustomersTiers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44337,7 +44337,7 @@ class ManagementApi
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  bool|null $notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyPoints'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44357,7 +44357,7 @@ class ManagementApi
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  bool|null $notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyPoints'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44444,7 +44444,7 @@ class ManagementApi
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  bool|null $notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyPoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44467,7 +44467,7 @@ class ManagementApi
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  bool|null $notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyPoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44519,7 +44519,7 @@ class ManagementApi
      *
      * @param  int $loyaltyProgramId Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
      * @param  bool|null $notificationsEnabled Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. (optional)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importLoyaltyPoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44640,7 +44640,7 @@ class ManagementApi
      * Import giveaway codes into a giveaway pool
      *
      * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importPoolGiveaways'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44659,7 +44659,7 @@ class ManagementApi
      * Import giveaway codes into a giveaway pool
      *
      * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importPoolGiveaways'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44745,7 +44745,7 @@ class ManagementApi
      * Import giveaway codes into a giveaway pool
      *
      * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importPoolGiveaways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44767,7 +44767,7 @@ class ManagementApi
      * Import giveaway codes into a giveaway pool
      *
      * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importPoolGiveaways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44818,7 +44818,7 @@ class ManagementApi
      * Create request for operation 'importPoolGiveaways'
      *
      * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importPoolGiveaways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -44930,7 +44930,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importReferrals'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -44950,7 +44950,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importReferrals'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -45037,7 +45037,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importReferrals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -45060,7 +45060,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importReferrals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -45112,7 +45112,7 @@ class ManagementApi
      *
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
-     * @param  string|null $upFile The file containing the data that is being imported. (optional)
+     * @param  \SplFileObject|null $upFile The CSV file containing the data that is being imported. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['importReferrals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

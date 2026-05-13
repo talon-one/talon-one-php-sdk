@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentTest
+ * IntegrationCampaignBaseTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ExperimentTest Class Doc Comment
+ * IntegrationCampaignBaseTest Class Doc Comment
  *
  * @category    Class
- * @description Experiment
+ * @description IntegrationCampaignBase
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ExperimentTest extends TestCase
+class IntegrationCampaignBaseTest extends TestCase
 {
 
     /**
@@ -71,27 +71,9 @@ class ExperimentTest extends TestCase
     }
 
     /**
-     * Test "Experiment"
+     * Test "IntegrationCampaignBase"
      */
-    public function testExperiment()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "created"
-     */
-    public function testPropertyCreated()
+    public function testIntegrationCampaignBase()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -107,27 +89,54 @@ class ExperimentTest extends TestCase
     }
 
     /**
-     * Test attribute "isVariantAssignmentExternal"
+     * Test attribute "id"
      */
-    public function testPropertyIsVariantAssignmentExternal()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "campaign"
+     * Test attribute "name"
      */
-    public function testPropertyCampaign()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "activated"
+     * Test attribute "description"
      */
-    public function testPropertyActivated()
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "startTime"
+     */
+    public function testPropertyStartTime()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "endTime"
+     */
+    public function testPropertyEndTime()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -143,36 +152,18 @@ class ExperimentTest extends TestCase
     }
 
     /**
-     * Test attribute "variants"
+     * Test attribute "tags"
      */
-    public function testPropertyVariants()
+    public function testPropertyTags()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "goalType"
+     * Test attribute "features"
      */
-    public function testPropertyGoalType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "goalDescription"
-     */
-    public function testPropertyGoalDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "deletedat"
-     */
-    public function testPropertyDeletedat()
+    public function testPropertyFeatures()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

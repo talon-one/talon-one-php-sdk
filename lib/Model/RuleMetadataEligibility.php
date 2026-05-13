@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * RuleMetadataEligibility
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * RuleMetadataEligibility Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class RuleMetadataEligibility implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'RuleMetadataEligibility';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'title' => 'string',
+        'displayName' => 'string',
+        'displayDescription' => 'string',
+        'relatedData' => 'string',
+        'eligibility' => '\TalonOne\Client\Model\RuleEligibility[]'
     ];
 
     /**
@@ -71,9 +72,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'title' => null,
+        'displayName' => null,
+        'displayDescription' => null,
+        'relatedData' => null,
+        'eligibility' => null
     ];
 
     /**
@@ -82,9 +85,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'title' => false,
+        'displayName' => false,
+        'displayDescription' => false,
+        'relatedData' => false,
+        'eligibility' => false
     ];
 
     /**
@@ -173,9 +178,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'title' => 'title',
+        'displayName' => 'displayName',
+        'displayDescription' => 'displayDescription',
+        'relatedData' => 'relatedData',
+        'eligibility' => 'eligibility'
     ];
 
     /**
@@ -184,9 +191,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'title' => 'setTitle',
+        'displayName' => 'setDisplayName',
+        'displayDescription' => 'setDisplayDescription',
+        'relatedData' => 'setRelatedData',
+        'eligibility' => 'setEligibility'
     ];
 
     /**
@@ -195,9 +204,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'title' => 'getTitle',
+        'displayName' => 'getDisplayName',
+        'displayDescription' => 'getDisplayDescription',
+        'relatedData' => 'getRelatedData',
+        'eligibility' => 'getEligibility'
     ];
 
     /**
@@ -257,9 +268,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('displayName', $data ?? [], null);
+        $this->setIfExists('displayDescription', $data ?? [], null);
+        $this->setIfExists('relatedData', $data ?? [], null);
+        $this->setIfExists('eligibility', $data ?? [], null);
     }
 
     /**
@@ -289,11 +302,11 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' is required";
+        if ($this->container['eligibility'] === null) {
+            $invalidProperties[] = "'eligibility' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +324,136 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
 
 
     /**
-     * Gets name
+     * Gets title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->container['name'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets name
+     * Sets title
      *
-     * @param string $name The effect name.
+     * @param string $title A short description of the rule.
      *
      * @return self
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets displayName
      *
-     * @return mixed|null
+     * @return string|null
      */
-    public function getValue()
+    public function getDisplayName()
     {
-        return $this->container['value'];
+        return $this->container['displayName'];
     }
 
     /**
-     * Sets value
+     * Sets displayName
      *
-     * @param mixed|null $value value
+     * @param string|null $displayName A customer-facing name for the rule.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setDisplayName($displayName)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($displayName)) {
+            throw new \InvalidArgumentException('non-nullable displayName cannot be null');
         }
-        $this->container['value'] = $value;
+        $this->container['displayName'] = $displayName;
 
         return $this;
     }
 
     /**
-     * Gets excludedFromPriceHistory
+     * Gets displayDescription
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getExcludedFromPriceHistory()
+    public function getDisplayDescription()
     {
-        return $this->container['excludedFromPriceHistory'];
+        return $this->container['displayDescription'];
     }
 
     /**
-     * Sets excludedFromPriceHistory
+     * Sets displayDescription
      *
-     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's price history.
+     * @param string|null $displayDescription A customer-facing description that explains the details of the rule.   For example, this property can contain details about eligibility requirements, reward timelines, or terms and conditions.
      *
      * @return self
      */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    public function setDisplayDescription($displayDescription)
     {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        if (is_null($displayDescription)) {
+            throw new \InvalidArgumentException('non-nullable displayDescription cannot be null');
         }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
+        $this->container['displayDescription'] = $displayDescription;
+
+        return $this;
+    }
+
+    /**
+     * Gets relatedData
+     *
+     * @return string|null
+     */
+    public function getRelatedData()
+    {
+        return $this->container['relatedData'];
+    }
+
+    /**
+     * Sets relatedData
+     *
+     * @param string|null $relatedData Any additional data associated with the rule, such as an image URL, vendor name, or a content management system (CMS) ID.
+     *
+     * @return self
+     */
+    public function setRelatedData($relatedData)
+    {
+        if (is_null($relatedData)) {
+            throw new \InvalidArgumentException('non-nullable relatedData cannot be null');
+        }
+        $this->container['relatedData'] = $relatedData;
+
+        return $this;
+    }
+
+    /**
+     * Gets eligibility
+     *
+     * @return \TalonOne\Client\Model\RuleEligibility[]
+     */
+    public function getEligibility()
+    {
+        return $this->container['eligibility'];
+    }
+
+    /**
+     * Sets eligibility
+     *
+     * @param \TalonOne\Client\Model\RuleEligibility[] $eligibility eligibility
+     *
+     * @return self
+     */
+    public function setEligibility($eligibility)
+    {
+        if (is_null($eligibility)) {
+            throw new \InvalidArgumentException('non-nullable eligibility cannot be null');
+        }
+        $this->container['eligibility'] = $eligibility;
 
         return $this;
     }

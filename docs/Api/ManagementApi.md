@@ -112,12 +112,12 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getExperiment()**](ManagementApi.md#getExperiment) | **GET** /v1/applications/{applicationId}/experiments/{experimentId} | Get experiment in Application |
 | [**getExports()**](ManagementApi.md#getExports) | **GET** /v1/exports | Get exports |
 | [**getLoyaltyCard()**](ManagementApi.md#getLoyaltyCard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card |
-| [**getLoyaltyCardTransactionLogs()**](ManagementApi.md#getLoyaltyCardTransactionLogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions |
+| [**getLoyaltyCardTransactionLogs()**](ManagementApi.md#getLoyaltyCardTransactionLogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions (Management API) |
 | [**getLoyaltyCards()**](ManagementApi.md#getLoyaltyCards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards |
-| [**getLoyaltyLedgerBalances()**](ManagementApi.md#getLoyaltyLedgerBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer&#39;s loyalty balances |
+| [**getLoyaltyLedgerBalances()**](ManagementApi.md#getLoyaltyLedgerBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_balances | Get customer&#39;s loyalty balances (Management API) |
 | [**getLoyaltyPoints()**](ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId} | Get customer&#39;s full loyalty ledger |
 | [**getLoyaltyProgram()**](ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{loyaltyProgramId} | Get loyalty program |
-| [**getLoyaltyProgramProfileLedgerTransactions()**](ManagementApi.md#getLoyaltyProgramProfileLedgerTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer&#39;s loyalty transactions |
+| [**getLoyaltyProgramProfileLedgerTransactions()**](ManagementApi.md#getLoyaltyProgramProfileLedgerTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/ledger_transactions | List customer&#39;s loyalty transactions (Management API) |
 | [**getLoyaltyProgramTransactions()**](ManagementApi.md#getLoyaltyProgramTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions |
 | [**getLoyaltyPrograms()**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs |
 | [**getLoyaltyStatistics()**](ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics |
@@ -7361,9 +7361,9 @@ try {
 getLoyaltyCardTransactionLogs($loyaltyProgramId, $loyaltyCardId, $startDate, $endDate, $pageSize, $skip, $subledgerId, $customerSessionIDs, $transactionUUIDs): \TalonOne\Client\Model\GetLoyaltyCardTransactionLogs200Response
 ```
 
-List card's transactions
+List card's transactions (Management API)
 
-Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned.
+Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied.  > [!note] For most use cases, especially real-time integrations, use the Integration API endpoint: > [List card's transactions](https://docs.talon.one/integration-api#tag/Loyalty-cards/operation/getLoyaltyCardTransactions).  If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned.
 
 ### Example
 
@@ -7513,9 +7513,9 @@ try {
 getLoyaltyLedgerBalances($loyaltyProgramId, $integrationId, $endDate, $subledgerId, $includeTiers, $includeProjectedTier): \TalonOne\Client\Model\LoyaltyBalancesWithTiers
 ```
 
-Get customer's loyalty balances
+Get customer's loyalty balances (Management API)
 
-Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  > [!note] If no filtering options are applied, you retrieve all loyalty > balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
+Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.  You can filter balances by date and subledger ID, and include tier-related information in the response.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint:     [Get customer's loyalty balances](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyBalances). > - If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see:  - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)  - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
 
 ### Example
 
@@ -7711,9 +7711,9 @@ try {
 getLoyaltyProgramProfileLedgerTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation): \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response
 ```
 
-List customer's loyalty transactions
+List customer's loyalty transactions (Management API)
 
-Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] To retrieve all loyalty program transaction logs in a given > loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) > endpoint.
+Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date or by ledger (subledger or main ledger). If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  > [!note] **Note** > - For most use cases, especially real-time integrations, use the Integration API endpoint: >   [List customer's loyalty transactions](https://docs.talon.one/integration-api#tag/Loyalty/operation/getLoyaltyProgramProfileTransactions). > - To retrieve all loyalty program transaction logs in a given loyalty program, use the >   [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint.
 
 ### Example
 
@@ -8716,7 +8716,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $collectionId = 56; // int | The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importAccountCollection($collectionId, $upFile);
@@ -8731,7 +8731,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **collectionId** | **int**| The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -8780,7 +8780,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $attributeId = 56; // int | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importAllowedList($attributeId, $upFile);
@@ -8795,7 +8795,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **attributeId** | **int**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -8844,7 +8844,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $audienceId = 56; // int | The ID of the audience.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importAudiencesMemberships($audienceId, $upFile);
@@ -8859,7 +8859,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **audienceId** | **int**| The ID of the audience. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -8911,7 +8911,7 @@ $applicationId = 56; // int | The ID of the Application. It is displayed in your
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
 $action = 'action_example'; // string | The action that this budget is limiting.
 $period = 'period_example'; // string | The period to which the limit applies.  **Note**: For budgets with no period, set this to `overall`.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importCampaignStoreBudget($applicationId, $campaignId, $action, $period, $upFile);
@@ -8929,7 +8929,7 @@ try {
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
 | **action** | **string**| The action that this budget is limiting. | [optional] |
 | **period** | **string**| The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;. | [optional] |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -8979,7 +8979,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 );
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importCampaignStores($applicationId, $campaignId, $upFile);
@@ -8995,7 +8995,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9046,7 +9046,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
 $collectionId = 56; // int | The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importCollection($applicationId, $campaignId, $collectionId, $upFile);
@@ -9063,7 +9063,7 @@ try {
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
 | **collectionId** | **int**| The ID of the collection. You can get it with the [List collections in Application](#tag/Collections/operation/listCollectionsInApplication) endpoint. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9114,7 +9114,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
 $skipDuplicates = True; // bool | An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when `skipDuplicates=true`.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importCoupons($applicationId, $campaignId, $skipDuplicates, $upFile);
@@ -9131,7 +9131,7 @@ try {
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
 | **skipDuplicates** | **bool**| An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;. | [optional] |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9180,7 +9180,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $loyaltyProgramId = 56; // int | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importLoyaltyCards($loyaltyProgramId, $upFile);
@@ -9195,7 +9195,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **loyaltyProgramId** | **int**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9244,7 +9244,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $loyaltyProgramId = 56; // int | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importLoyaltyCustomersTiers($loyaltyProgramId, $upFile);
@@ -9259,7 +9259,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **loyaltyProgramId** | **int**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9309,7 +9309,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 );
 $loyaltyProgramId = 56; // int | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
 $notificationsEnabled = True; // bool | Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer's tier or offsets their negative points balance.  This parameter is optional and defaults to `true`.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importLoyaltyPoints($loyaltyProgramId, $notificationsEnabled, $upFile);
@@ -9325,7 +9325,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **loyaltyProgramId** | **int**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
 | **notificationsEnabled** | **bool**| Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;. | [optional] |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9374,7 +9374,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     $config
 );
 $poolId = 56; // int | The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importPoolGiveaways($poolId, $upFile);
@@ -9389,7 +9389,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **poolId** | **int**| The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 
@@ -9439,7 +9439,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 );
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-$upFile = 'upFile_example'; // string | The file containing the data that is being imported.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
 
 try {
     $result = $apiInstance->importReferrals($applicationId, $campaignId, $upFile);
@@ -9455,7 +9455,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
-| **upFile** | **string**| The file containing the data that is being imported. | [optional] |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
 

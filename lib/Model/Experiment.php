@@ -65,6 +65,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => '\DateTime',
         'state' => 'string',
         'variants' => '\TalonOne\Client\Model\ExperimentVariant[]',
+        'goalType' => 'string',
+        'goalDescription' => 'string',
         'deletedat' => '\DateTime'
     ];
 
@@ -84,6 +86,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => 'date-time',
         'state' => null,
         'variants' => null,
+        'goalType' => null,
+        'goalDescription' => null,
         'deletedat' => 'date-time'
     ];
 
@@ -101,6 +105,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => false,
         'state' => false,
         'variants' => false,
+        'goalType' => false,
+        'goalDescription' => false,
         'deletedat' => false
     ];
 
@@ -198,6 +204,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => 'activated',
         'state' => 'state',
         'variants' => 'variants',
+        'goalType' => 'goalType',
+        'goalDescription' => 'goalDescription',
         'deletedat' => 'deletedat'
     ];
 
@@ -215,6 +223,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => 'setActivated',
         'state' => 'setState',
         'variants' => 'setVariants',
+        'goalType' => 'setGoalType',
+        'goalDescription' => 'setGoalDescription',
         'deletedat' => 'setDeletedat'
     ];
 
@@ -232,6 +242,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'activated' => 'getActivated',
         'state' => 'getState',
         'variants' => 'getVariants',
+        'goalType' => 'getGoalType',
+        'goalDescription' => 'getGoalDescription',
         'deletedat' => 'getDeletedat'
     ];
 
@@ -279,6 +291,10 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATE_ENABLED = 'enabled';
     public const STATE_DISABLED = 'disabled';
     public const STATE_ARCHIVED = 'archived';
+    public const GOAL_TYPE_OTHER = 'other';
+    public const GOAL_TYPE_MAXIMIZE_REVENUE = 'maximize_revenue';
+    public const GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY = 'optimize_discount_efficiency';
+    public const GOAL_TYPE_MAXIMIZE_ITEMS_SOLD = 'maximize_items_sold';
 
     /**
      * Gets allowable values of the enum
@@ -291,6 +307,21 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATE_ENABLED,
             self::STATE_DISABLED,
             self::STATE_ARCHIVED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGoalTypeAllowableValues()
+    {
+        return [
+            self::GOAL_TYPE_OTHER,
+            self::GOAL_TYPE_MAXIMIZE_REVENUE,
+            self::GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY,
+            self::GOAL_TYPE_MAXIMIZE_ITEMS_SOLD,
         ];
     }
 
@@ -317,6 +348,8 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('activated', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], 'disabled');
         $this->setIfExists('variants', $data ?? [], null);
+        $this->setIfExists('goalType', $data ?? [], null);
+        $this->setIfExists('goalDescription', $data ?? [], null);
         $this->setIfExists('deletedat', $data ?? [], null);
     }
 
@@ -364,6 +397,18 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'state', must be one of '%s'",
                 $this->container['state'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['goalType'] === null) {
+            $invalidProperties[] = "'goalType' can't be null";
+        }
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!is_null($this->container['goalType']) && !in_array($this->container['goalType'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'goalType', must be one of '%s'",
+                $this->container['goalType'],
                 implode("', '", $allowedValues)
             );
         }
@@ -605,6 +650,70 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable variants cannot be null');
         }
         $this->container['variants'] = $variants;
+
+        return $this;
+    }
+
+    /**
+     * Gets goalType
+     *
+     * @return string
+     */
+    public function getGoalType()
+    {
+        return $this->container['goalType'];
+    }
+
+    /**
+     * Sets goalType
+     *
+     * @param string $goalType The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to `other`, multiple metrics are used.
+     *
+     * @return self
+     */
+    public function setGoalType($goalType)
+    {
+        if (is_null($goalType)) {
+            throw new \InvalidArgumentException('non-nullable goalType cannot be null');
+        }
+        $allowedValues = $this->getGoalTypeAllowableValues();
+        if (!in_array($goalType, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'goalType', must be one of '%s'",
+                    $goalType,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['goalType'] = $goalType;
+
+        return $this;
+    }
+
+    /**
+     * Gets goalDescription
+     *
+     * @return string|null
+     */
+    public function getGoalDescription()
+    {
+        return $this->container['goalDescription'];
+    }
+
+    /**
+     * Sets goalDescription
+     *
+     * @param string|null $goalDescription A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal.
+     *
+     * @return self
+     */
+    public function setGoalDescription($goalDescription)
+    {
+        if (is_null($goalDescription)) {
+            throw new \InvalidArgumentException('non-nullable goalDescription cannot be null');
+        }
+        $this->container['goalDescription'] = $goalDescription;
 
         return $this;
     }

@@ -279,6 +279,7 @@ docs/Model/Export.md
 docs/Model/ExtendLoyaltyPointsExpiryDateEffectProps.md
 docs/Model/ExtendedCoupon.md
 docs/Model/FeatureFlag.md
+docs/Model/FeatureFlagUpdate.md
 docs/Model/FeaturesFeed.md
 docs/Model/FuncArgDef.md
 docs/Model/FunctionDef.md
@@ -349,6 +350,7 @@ docs/Model/ImportEntity.md
 docs/Model/IncreaseAchievementProgressEffectProps.md
 docs/Model/InfluencingCampaignDetails.md
 docs/Model/IntegrationCampaign.md
+docs/Model/IntegrationCampaignBase.md
 docs/Model/IntegrationCoupon.md
 docs/Model/IntegrationCustomerProfileAudienceRequest.md
 docs/Model/IntegrationCustomerProfileAudienceRequestItem.md
@@ -509,6 +511,7 @@ docs/Model/NewReferralsForMultipleAdvocates.md
 docs/Model/NewReturn.md
 docs/Model/NewRevisionVersion.md
 docs/Model/NewReward.md
+docs/Model/NewRiskNotification.md
 docs/Model/NewRole.md
 docs/Model/NewRoleV2.md
 docs/Model/NewRuleset.md
@@ -577,6 +580,7 @@ docs/Model/RevisionActivation.md
 docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
 docs/Model/Reward.md
+docs/Model/RiskNotification.md
 docs/Model/Role.md
 docs/Model/RoleAssign.md
 docs/Model/RoleMembership.md
@@ -599,6 +603,7 @@ docs/Model/RuleEligibility.md
 docs/Model/RuleEligibilityFailureDetails.md
 docs/Model/RuleFailureReason.md
 docs/Model/RuleMetadata.md
+docs/Model/RuleMetadataEligibility.md
 docs/Model/Ruleset.md
 docs/Model/SSOConfig.md
 docs/Model/SamlConnection.md
@@ -990,6 +995,7 @@ lib/Model/Export.php
 lib/Model/ExtendLoyaltyPointsExpiryDateEffectProps.php
 lib/Model/ExtendedCoupon.php
 lib/Model/FeatureFlag.php
+lib/Model/FeatureFlagUpdate.php
 lib/Model/FeaturesFeed.php
 lib/Model/FuncArgDef.php
 lib/Model/FunctionDef.php
@@ -1060,6 +1066,7 @@ lib/Model/ImportEntity.php
 lib/Model/IncreaseAchievementProgressEffectProps.php
 lib/Model/InfluencingCampaignDetails.php
 lib/Model/IntegrationCampaign.php
+lib/Model/IntegrationCampaignBase.php
 lib/Model/IntegrationCoupon.php
 lib/Model/IntegrationCustomerProfileAudienceRequest.php
 lib/Model/IntegrationCustomerProfileAudienceRequestItem.php
@@ -1221,6 +1228,7 @@ lib/Model/NewReferralsForMultipleAdvocates.php
 lib/Model/NewReturn.php
 lib/Model/NewRevisionVersion.php
 lib/Model/NewReward.php
+lib/Model/NewRiskNotification.php
 lib/Model/NewRole.php
 lib/Model/NewRoleV2.php
 lib/Model/NewRuleset.php
@@ -1289,6 +1297,7 @@ lib/Model/RevisionActivation.php
 lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
 lib/Model/Reward.php
+lib/Model/RiskNotification.php
 lib/Model/Role.php
 lib/Model/RoleAssign.php
 lib/Model/RoleMembership.php
@@ -1311,6 +1320,7 @@ lib/Model/RuleEligibility.php
 lib/Model/RuleEligibilityFailureDetails.php
 lib/Model/RuleFailureReason.php
 lib/Model/RuleMetadata.php
+lib/Model/RuleMetadataEligibility.php
 lib/Model/Ruleset.php
 lib/Model/SSOConfig.php
 lib/Model/SamlConnection.php
@@ -1698,6 +1708,7 @@ test/Model/ExportTest.php
 test/Model/ExtendLoyaltyPointsExpiryDateEffectPropsTest.php
 test/Model/ExtendedCouponTest.php
 test/Model/FeatureFlagTest.php
+test/Model/FeatureFlagUpdateTest.php
 test/Model/FeaturesFeedTest.php
 test/Model/FuncArgDefTest.php
 test/Model/FunctionDefTest.php
@@ -1767,6 +1778,7 @@ test/Model/ImportEntityTest.php
 test/Model/ImportTest.php
 test/Model/IncreaseAchievementProgressEffectPropsTest.php
 test/Model/InfluencingCampaignDetailsTest.php
+test/Model/IntegrationCampaignBaseTest.php
 test/Model/IntegrationCampaignTest.php
 test/Model/IntegrationCouponTest.php
 test/Model/IntegrationCustomerProfileAudienceRequestItemTest.php
@@ -1928,6 +1940,7 @@ test/Model/NewReferralsForMultipleAdvocatesTest.php
 test/Model/NewReturnTest.php
 test/Model/NewRevisionVersionTest.php
 test/Model/NewRewardTest.php
+test/Model/NewRiskNotificationTest.php
 test/Model/NewRoleTest.php
 test/Model/NewRoleV2Test.php
 test/Model/NewRulesetTest.php
@@ -1996,6 +2009,7 @@ test/Model/RevisionActivationTest.php
 test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
 test/Model/RewardTest.php
+test/Model/RiskNotificationTest.php
 test/Model/RoleAssignTest.php
 test/Model/RoleMembershipTest.php
 test/Model/RoleTest.php
@@ -2016,6 +2030,7 @@ test/Model/RollbackReferralEffectPropsTest.php
 test/Model/RuleEligibilityFailureDetailsTest.php
 test/Model/RuleEligibilityTest.php
 test/Model/RuleFailureReasonTest.php
+test/Model/RuleMetadataEligibilityTest.php
 test/Model/RuleMetadataTest.php
 test/Model/RuleTest.php
 test/Model/RulesetTest.php

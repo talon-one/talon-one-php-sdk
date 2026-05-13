@@ -96,4 +96,22 @@ class UpdateExperimentTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "goalType"
+     */
+    public function testPropertyGoalType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "goalDescription"
+     */
+    public function testPropertyGoalDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

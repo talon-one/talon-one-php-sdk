@@ -1,6 +1,6 @@
 <?php
 /**
- * StrikethroughSetDiscountPerItemEffectProps
+ * FeatureFlagUpdate
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * StrikethroughSetDiscountPerItemEffectProps Class Doc Comment
+ * FeatureFlagUpdate Class Doc Comment
  *
  * @category Class
- * @description setDiscountPerItem effect in strikethrough pricing payload.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
+class FeatureFlagUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'StrikethroughSetDiscountPerItemEffectProps';
+    protected static $openAPIModelName = 'FeatureFlagUpdate';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $openAPITypes = [
         'name' => 'string',
-        'value' => 'mixed',
-        'excludedFromPriceHistory' => 'bool'
+        'value' => 'string'
     ];
 
     /**
@@ -72,8 +70,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $openAPIFormats = [
         'name' => null,
-        'value' => null,
-        'excludedFromPriceHistory' => null
+        'value' => null
     ];
 
     /**
@@ -83,8 +80,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static array $openAPINullables = [
         'name' => false,
-        'value' => true,
-        'excludedFromPriceHistory' => false
+        'value' => false
     ];
 
     /**
@@ -174,8 +170,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'value' => 'value',
-        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
+        'value' => 'value'
     ];
 
     /**
@@ -185,8 +180,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $setters = [
         'name' => 'setName',
-        'value' => 'setValue',
-        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
+        'value' => 'setValue'
     ];
 
     /**
@@ -196,8 +190,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
      */
     protected static $getters = [
         'name' => 'getName',
-        'value' => 'getValue',
-        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
+        'value' => 'getValue'
     ];
 
     /**
@@ -259,7 +252,6 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
     }
 
     /**
@@ -292,8 +284,8 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' is required";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -323,7 +315,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Sets name
      *
-     * @param string $name The effect name.
+     * @param string $name The name of the feature flag.
      *
      * @return self
      */
@@ -340,7 +332,7 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Gets value
      *
-     * @return mixed|null
+     * @return string
      */
     public function getValue()
     {
@@ -350,50 +342,16 @@ class StrikethroughSetDiscountPerItemEffectProps implements ModelInterface, Arra
     /**
      * Sets value
      *
-     * @param mixed|null $value value
+     * @param string $value The value of the feature flag.
      *
      * @return self
      */
     public function setValue($value)
     {
         if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets excludedFromPriceHistory
-     *
-     * @return bool|null
-     */
-    public function getExcludedFromPriceHistory()
-    {
-        return $this->container['excludedFromPriceHistory'];
-    }
-
-    /**
-     * Sets excludedFromPriceHistory
-     *
-     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's price history.
-     *
-     * @return self
-     */
-    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
-    {
-        if (is_null($excludedFromPriceHistory)) {
-            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
-        }
-        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }
