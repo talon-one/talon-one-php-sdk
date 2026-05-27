@@ -67,9 +67,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => '\DateTime',
         'endDate' => '\DateTime',
         'allowRollbackAfterCompletion' => 'bool',
-        'sandbox' => 'bool',
-        'subscribedApplications' => 'int[]',
-        'timezone' => 'string'
+        'subscribedApplications' => 'int[]'
     ];
 
     /**
@@ -90,9 +88,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'date-time',
         'endDate' => 'date-time',
         'allowRollbackAfterCompletion' => null,
-        'sandbox' => null,
-        'subscribedApplications' => 'int64',
-        'timezone' => null
+        'subscribedApplications' => 'int64'
     ];
 
     /**
@@ -111,9 +107,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => false,
         'endDate' => false,
         'allowRollbackAfterCompletion' => false,
-        'sandbox' => false,
-        'subscribedApplications' => false,
-        'timezone' => false
+        'subscribedApplications' => false
     ];
 
     /**
@@ -212,9 +206,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'fixedStartDate',
         'endDate' => 'endDate',
         'allowRollbackAfterCompletion' => 'allowRollbackAfterCompletion',
-        'sandbox' => 'sandbox',
-        'subscribedApplications' => 'subscribedApplications',
-        'timezone' => 'timezone'
+        'subscribedApplications' => 'subscribedApplications'
     ];
 
     /**
@@ -233,9 +225,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'setFixedStartDate',
         'endDate' => 'setEndDate',
         'allowRollbackAfterCompletion' => 'setAllowRollbackAfterCompletion',
-        'sandbox' => 'setSandbox',
-        'subscribedApplications' => 'setSubscribedApplications',
-        'timezone' => 'setTimezone'
+        'subscribedApplications' => 'setSubscribedApplications'
     ];
 
     /**
@@ -254,9 +244,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'getFixedStartDate',
         'endDate' => 'getEndDate',
         'allowRollbackAfterCompletion' => 'getAllowRollbackAfterCompletion',
-        'sandbox' => 'getSandbox',
-        'subscribedApplications' => 'getSubscribedApplications',
-        'timezone' => 'getTimezone'
+        'subscribedApplications' => 'getSubscribedApplications'
     ];
 
     /**
@@ -358,9 +346,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('fixedStartDate', $data ?? [], null);
         $this->setIfExists('endDate', $data ?? [], null);
         $this->setIfExists('allowRollbackAfterCompletion', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('subscribedApplications', $data ?? [], null);
-        $this->setIfExists('timezone', $data ?? [], null);
     }
 
     /**
@@ -390,18 +376,30 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 1000)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+        if ((mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['name']) && !preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
+        if (!preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
             $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[a-zA-Z]\\w+$/.";
         }
 
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
+        }
         $allowedValues = $this->getRecurrencePolicyAllowableValues();
         if (!is_null($this->container['recurrencePolicy']) && !in_array($this->container['recurrencePolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -420,12 +418,11 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
-        if (!is_null($this->container['subscribedApplications']) && (count($this->container['subscribedApplications']) < 0)) {
-            $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
+        if ($this->container['subscribedApplications'] === null) {
+            $invalidProperties[] = "'subscribedApplications' can't be null";
         }
-
-        if (!is_null($this->container['timezone']) && (mb_strlen($this->container['timezone']) < 1)) {
-            $invalidProperties[] = "invalid value for 'timezone', the character length must be bigger than or equal to 1.";
+        if ((count($this->container['subscribedApplications']) < 0)) {
+            $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -446,7 +443,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -456,7 +453,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
+     * @param string $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
      *
      * @return self
      */
@@ -483,7 +480,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets title
      *
-     * @return string|null
+     * @return string
      */
     public function getTitle()
     {
@@ -493,7 +490,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets title
      *
-     * @param string|null $title The display name for the achievement in the Campaign Manager.
+     * @param string $title The display name for the achievement in the Campaign Manager.
      *
      * @return self
      */
@@ -510,7 +507,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -520,7 +517,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string|null $description A description of the achievement.
+     * @param string $description A description of the achievement.
      *
      * @return self
      */
@@ -537,7 +534,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets target
      *
-     * @return float|null
+     * @return float
      */
     public function getTarget()
     {
@@ -547,7 +544,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets target
      *
-     * @param float|null $target The required number of actions or the transactional milestone to complete the achievement.
+     * @param float $target The required number of actions or the transactional milestone to complete the achievement.
      *
      * @return self
      */
@@ -744,36 +741,9 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets sandbox
-     *
-     * @return bool|null
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param bool|null $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
-        }
-        $this->container['sandbox'] = $sandbox;
-
-        return $this;
-    }
-
-    /**
      * Gets subscribedApplications
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getSubscribedApplications()
     {
@@ -783,7 +753,7 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets subscribedApplications
      *
-     * @param int[]|null $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
+     * @param int[] $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
      *
      * @return self
      */
@@ -798,38 +768,6 @@ class UpdateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('invalid length for $subscribedApplications when calling UpdateAchievementV2., number of items must be greater than or equal to 0.');
         }
         $this->container['subscribedApplications'] = $subscribedApplications;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone
-     *
-     * @return string|null
-     */
-    public function getTimezone()
-    {
-        return $this->container['timezone'];
-    }
-
-    /**
-     * Sets timezone
-     *
-     * @param string|null $timezone A string containing an IANA timezone descriptor.
-     *
-     * @return self
-     */
-    public function setTimezone($timezone)
-    {
-        if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
-        }
-
-        if ((mb_strlen($timezone) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $timezone when calling UpdateAchievementV2., must be bigger than or equal to 1.');
-        }
-
-        $this->container['timezone'] = $timezone;
 
         return $this;
     }

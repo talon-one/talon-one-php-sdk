@@ -132,4 +132,13 @@ class UpdateRewardTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "pointsRequired"
+     */
+    public function testPropertyPointsRequired()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

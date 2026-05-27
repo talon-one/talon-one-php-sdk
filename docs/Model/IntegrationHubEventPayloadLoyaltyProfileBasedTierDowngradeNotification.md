@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profileIntegrationID** | **string** |  |
 **loyaltyProgramID** | **int** |  |
+**loyaltyProgramName** | **string** | The name of the loyalty program. |
 **subledgerID** | **string** |  |
 **sourceOfEvent** | **string** |  |
-**currentTier** | **string** |  | [optional]
+**currentTier** | **string** | The name of the customer&#39;s current tier, or null if the customer was downgraded below all tiers. | [optional]
 **currentPoints** | **float** |  |
 **oldTier** | **string** |  | [optional]
 **tierExpirationDate** | **\DateTime** |  | [optional]

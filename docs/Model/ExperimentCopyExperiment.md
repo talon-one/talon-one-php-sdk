@@ -6,5 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **isVariantAssignmentExternal** | **bool** | The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally. |
 **campaign** | [**\TalonOne\Client\Model\ExperimentCampaignCopy**](ExperimentCampaignCopy.md) |  |
+**goalType** | **string** | The goal of the experiment. Determines which single metric is used to decide the winning variant. When set to &#x60;other&#x60;, multiple metrics are used. If omitted, the value from the source experiment is used. | [optional]
+**goalDescription** | **string** | A description of the experiment goal. Provides context for the AI summary and helps it interpret the outcome of the experiment against the stated goal. If omitted, the value from the source experiment is used. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

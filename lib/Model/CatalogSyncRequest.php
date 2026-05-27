@@ -57,7 +57,7 @@ class CatalogSyncRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'actions' => 'object[]',
+        'actions' => '\TalonOne\Client\Model\CatalogAction[]',
         'version' => 'int'
     ];
 
@@ -314,7 +314,7 @@ class CatalogSyncRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets actions
      *
-     * @return object[]
+     * @return \TalonOne\Client\Model\CatalogAction[]
      */
     public function getActions()
     {
@@ -324,7 +324,7 @@ class CatalogSyncRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets actions
      *
-     * @param object[] $actions actions
+     * @param \TalonOne\Client\Model\CatalogAction[] $actions actions
      *
      * @return self
      */

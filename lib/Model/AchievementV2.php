@@ -69,13 +69,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => '\DateTime',
         'endDate' => '\DateTime',
         'allowRollbackAfterCompletion' => 'bool',
-        'sandbox' => 'bool',
         'subscribedApplications' => 'int[]',
-        'timezone' => 'string',
         'userId' => 'int',
         'createdBy' => 'string',
         'hasProgress' => 'bool',
-        'status' => 'string'
+        'status' => 'string',
+        'sandbox' => 'bool',
+        'timezone' => 'string'
     ];
 
     /**
@@ -98,13 +98,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => 'date-time',
         'endDate' => 'date-time',
         'allowRollbackAfterCompletion' => null,
-        'sandbox' => null,
         'subscribedApplications' => 'int64',
-        'timezone' => null,
         'userId' => 'int64',
         'createdBy' => null,
         'hasProgress' => null,
-        'status' => null
+        'status' => null,
+        'sandbox' => null,
+        'timezone' => null
     ];
 
     /**
@@ -125,13 +125,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => false,
         'endDate' => false,
         'allowRollbackAfterCompletion' => false,
-        'sandbox' => false,
         'subscribedApplications' => false,
-        'timezone' => false,
         'userId' => false,
         'createdBy' => false,
         'hasProgress' => false,
-        'status' => false
+        'status' => false,
+        'sandbox' => false,
+        'timezone' => false
     ];
 
     /**
@@ -232,13 +232,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => 'fixedStartDate',
         'endDate' => 'endDate',
         'allowRollbackAfterCompletion' => 'allowRollbackAfterCompletion',
-        'sandbox' => 'sandbox',
         'subscribedApplications' => 'subscribedApplications',
-        'timezone' => 'timezone',
         'userId' => 'userId',
         'createdBy' => 'createdBy',
         'hasProgress' => 'hasProgress',
-        'status' => 'status'
+        'status' => 'status',
+        'sandbox' => 'sandbox',
+        'timezone' => 'timezone'
     ];
 
     /**
@@ -259,13 +259,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => 'setFixedStartDate',
         'endDate' => 'setEndDate',
         'allowRollbackAfterCompletion' => 'setAllowRollbackAfterCompletion',
-        'sandbox' => 'setSandbox',
         'subscribedApplications' => 'setSubscribedApplications',
-        'timezone' => 'setTimezone',
         'userId' => 'setUserId',
         'createdBy' => 'setCreatedBy',
         'hasProgress' => 'setHasProgress',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'sandbox' => 'setSandbox',
+        'timezone' => 'setTimezone'
     ];
 
     /**
@@ -286,13 +286,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'fixedStartDate' => 'getFixedStartDate',
         'endDate' => 'getEndDate',
         'allowRollbackAfterCompletion' => 'getAllowRollbackAfterCompletion',
-        'sandbox' => 'getSandbox',
         'subscribedApplications' => 'getSubscribedApplications',
-        'timezone' => 'getTimezone',
         'userId' => 'getUserId',
         'createdBy' => 'getCreatedBy',
         'hasProgress' => 'getHasProgress',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'sandbox' => 'getSandbox',
+        'timezone' => 'getTimezone'
     ];
 
     /**
@@ -415,13 +415,13 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('fixedStartDate', $data ?? [], null);
         $this->setIfExists('endDate', $data ?? [], null);
         $this->setIfExists('allowRollbackAfterCompletion', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('subscribedApplications', $data ?? [], null);
-        $this->setIfExists('timezone', $data ?? [], null);
         $this->setIfExists('userId', $data ?? [], null);
         $this->setIfExists('createdBy', $data ?? [], null);
         $this->setIfExists('hasProgress', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('timezone', $data ?? [], null);
     }
 
     /**
@@ -505,21 +505,11 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['sandbox'] === null) {
-            $invalidProperties[] = "'sandbox' can't be null";
-        }
         if ($this->container['subscribedApplications'] === null) {
             $invalidProperties[] = "'subscribedApplications' can't be null";
         }
         if ((count($this->container['subscribedApplications']) < 0)) {
             $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
-        }
-
-        if ($this->container['timezone'] === null) {
-            $invalidProperties[] = "'timezone' can't be null";
-        }
-        if ((mb_strlen($this->container['timezone']) < 1)) {
-            $invalidProperties[] = "invalid value for 'timezone', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['userId'] === null) {
@@ -532,6 +522,16 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['status'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if ($this->container['sandbox'] === null) {
+            $invalidProperties[] = "'sandbox' can't be null";
+        }
+        if ($this->container['timezone'] === null) {
+            $invalidProperties[] = "'timezone' can't be null";
+        }
+        if ((mb_strlen($this->container['timezone']) < 1)) {
+            $invalidProperties[] = "invalid value for 'timezone', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -904,33 +904,6 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets sandbox
-     *
-     * @return bool
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param bool $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
-        }
-        $this->container['sandbox'] = $sandbox;
-
-        return $this;
-    }
-
-    /**
      * Gets subscribedApplications
      *
      * @return int[]
@@ -958,38 +931,6 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid length for $subscribedApplications when calling AchievementV2., number of items must be greater than or equal to 0.');
         }
         $this->container['subscribedApplications'] = $subscribedApplications;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone
-     *
-     * @return string
-     */
-    public function getTimezone()
-    {
-        return $this->container['timezone'];
-    }
-
-    /**
-     * Sets timezone
-     *
-     * @param string $timezone A string containing an IANA timezone descriptor.
-     *
-     * @return self
-     */
-    public function setTimezone($timezone)
-    {
-        if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
-        }
-
-        if ((mb_strlen($timezone) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $timezone when calling AchievementV2., must be bigger than or equal to 1.');
-        }
-
-        $this->container['timezone'] = $timezone;
 
         return $this;
     }
@@ -1108,6 +1049,65 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets sandbox
+     *
+     * @return bool
+     */
+    public function getSandbox()
+    {
+        return $this->container['sandbox'];
+    }
+
+    /**
+     * Sets sandbox
+     *
+     * @param bool $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+     *
+     * @return self
+     */
+    public function setSandbox($sandbox)
+    {
+        if (is_null($sandbox)) {
+            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        }
+        $this->container['sandbox'] = $sandbox;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     *
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string $timezone A string containing an IANA timezone descriptor.
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        if (is_null($timezone)) {
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+        }
+
+        if ((mb_strlen($timezone) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $timezone when calling AchievementV2., must be bigger than or equal to 1.');
+        }
+
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }

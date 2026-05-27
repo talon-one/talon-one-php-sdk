@@ -402,7 +402,7 @@ class IntegrationEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type A string representing the event. Must not be a reserved event name.
+     * @param string $type The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
      *
      * @return self
      */

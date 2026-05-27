@@ -399,6 +399,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FEATURES_GIVEAWAYS = 'giveaways';
     public const FEATURES_STRIKETHROUGH = 'strikethrough';
     public const FEATURES_ACHIEVEMENTS = 'achievements';
+    public const FEATURES_ADVANCED_EVENTS = 'advancedEvents';
     public const CAMPAIGN_TYPE_CART_ITEM = 'cartItem';
     public const CAMPAIGN_TYPE_ADVANCED = 'advanced';
 
@@ -430,6 +431,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FEATURES_GIVEAWAYS,
             self::FEATURES_STRIKETHROUGH,
             self::FEATURES_ACHIEVEMENTS,
+            self::FEATURES_ADVANCED_EVENTS,
         ];
     }
 

@@ -59,6 +59,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static $openAPITypes = [
         'profileIntegrationID' => 'string',
         'loyaltyProgramID' => 'int',
+        'loyaltyProgramName' => 'string',
         'subledgerID' => 'string',
         'sourceOfEvent' => 'string',
         'currentTier' => 'string',
@@ -81,6 +82,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static $openAPIFormats = [
         'profileIntegrationID' => null,
         'loyaltyProgramID' => 'int64',
+        'loyaltyProgramName' => null,
         'subledgerID' => null,
         'sourceOfEvent' => null,
         'currentTier' => null,
@@ -101,6 +103,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static array $openAPINullables = [
         'profileIntegrationID' => false,
         'loyaltyProgramID' => false,
+        'loyaltyProgramName' => false,
         'subledgerID' => false,
         'sourceOfEvent' => false,
         'currentTier' => false,
@@ -201,6 +204,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static $attributeMap = [
         'profileIntegrationID' => 'ProfileIntegrationID',
         'loyaltyProgramID' => 'LoyaltyProgramID',
+        'loyaltyProgramName' => 'LoyaltyProgramName',
         'subledgerID' => 'SubledgerID',
         'sourceOfEvent' => 'SourceOfEvent',
         'currentTier' => 'CurrentTier',
@@ -221,6 +225,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static $setters = [
         'profileIntegrationID' => 'setProfileIntegrationID',
         'loyaltyProgramID' => 'setLoyaltyProgramID',
+        'loyaltyProgramName' => 'setLoyaltyProgramName',
         'subledgerID' => 'setSubledgerID',
         'sourceOfEvent' => 'setSourceOfEvent',
         'currentTier' => 'setCurrentTier',
@@ -241,6 +246,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     protected static $getters = [
         'profileIntegrationID' => 'getProfileIntegrationID',
         'loyaltyProgramID' => 'getLoyaltyProgramID',
+        'loyaltyProgramName' => 'getLoyaltyProgramName',
         'subledgerID' => 'getSubledgerID',
         'sourceOfEvent' => 'getSourceOfEvent',
         'currentTier' => 'getCurrentTier',
@@ -312,6 +318,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     {
         $this->setIfExists('profileIntegrationID', $data ?? [], null);
         $this->setIfExists('loyaltyProgramID', $data ?? [], null);
+        $this->setIfExists('loyaltyProgramName', $data ?? [], null);
         $this->setIfExists('subledgerID', $data ?? [], null);
         $this->setIfExists('sourceOfEvent', $data ?? [], null);
         $this->setIfExists('currentTier', $data ?? [], null);
@@ -357,11 +364,17 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
         if ($this->container['loyaltyProgramID'] === null) {
             $invalidProperties[] = "'loyaltyProgramID' can't be null";
         }
+        if ($this->container['loyaltyProgramName'] === null) {
+            $invalidProperties[] = "'loyaltyProgramName' can't be null";
+        }
         if ($this->container['subledgerID'] === null) {
             $invalidProperties[] = "'subledgerID' can't be null";
         }
         if ($this->container['sourceOfEvent'] === null) {
             $invalidProperties[] = "'sourceOfEvent' can't be null";
+        }
+        if ($this->container['currentTier'] === null) {
+            $invalidProperties[] = "'currentTier' can't be null";
         }
         if ($this->container['currentPoints'] === null) {
             $invalidProperties[] = "'currentPoints' can't be null";
@@ -439,6 +452,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     }
 
     /**
+     * Gets loyaltyProgramName
+     *
+     * @return string
+     */
+    public function getLoyaltyProgramName()
+    {
+        return $this->container['loyaltyProgramName'];
+    }
+
+    /**
+     * Sets loyaltyProgramName
+     *
+     * @param string $loyaltyProgramName The name of the loyalty program.
+     *
+     * @return self
+     */
+    public function setLoyaltyProgramName($loyaltyProgramName)
+    {
+        if (is_null($loyaltyProgramName)) {
+            throw new \InvalidArgumentException('non-nullable loyaltyProgramName cannot be null');
+        }
+        $this->container['loyaltyProgramName'] = $loyaltyProgramName;
+
+        return $this;
+    }
+
+    /**
      * Gets subledgerID
      *
      * @return string
@@ -495,7 +535,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     /**
      * Gets currentTier
      *
-     * @return string|null
+     * @return string
      */
     public function getCurrentTier()
     {
@@ -505,7 +545,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification imple
     /**
      * Sets currentTier
      *
-     * @param string|null $currentTier currentTier
+     * @param string $currentTier The name of the customer's current tier.
      *
      * @return self
      */

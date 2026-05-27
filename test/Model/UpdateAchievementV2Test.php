@@ -170,27 +170,9 @@ class UpdateAchievementV2Test extends TestCase
     }
 
     /**
-     * Test attribute "sandbox"
-     */
-    public function testPropertySandbox()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "subscribedApplications"
      */
     public function testPropertySubscribedApplications()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timezone"
-     */
-    public function testPropertyTimezone()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

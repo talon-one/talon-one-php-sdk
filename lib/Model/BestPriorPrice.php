@@ -60,6 +60,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'sku' => 'string',
         'observedAt' => '\DateTime',
+        'contextIds' => 'string[]',
         'contextId' => 'string',
         'price' => 'float',
         'metadata' => '\TalonOne\Client\Model\BestPriorPriceMetadata',
@@ -77,6 +78,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int64',
         'sku' => null,
         'observedAt' => 'date-time',
+        'contextIds' => null,
         'contextId' => null,
         'price' => null,
         'metadata' => null,
@@ -92,6 +94,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'sku' => false,
         'observedAt' => false,
+        'contextIds' => false,
         'contextId' => false,
         'price' => false,
         'metadata' => false,
@@ -187,6 +190,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'sku' => 'sku',
         'observedAt' => 'observedAt',
+        'contextIds' => 'contextIds',
         'contextId' => 'contextId',
         'price' => 'price',
         'metadata' => 'metadata',
@@ -202,6 +206,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'sku' => 'setSku',
         'observedAt' => 'setObservedAt',
+        'contextIds' => 'setContextIds',
         'contextId' => 'setContextId',
         'price' => 'setPrice',
         'metadata' => 'setMetadata',
@@ -217,6 +222,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'sku' => 'getSku',
         'observedAt' => 'getObservedAt',
+        'contextIds' => 'getContextIds',
         'contextId' => 'getContextId',
         'price' => 'getPrice',
         'metadata' => 'getMetadata',
@@ -283,7 +289,8 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('observedAt', $data ?? [], null);
-        $this->setIfExists('contextId', $data ?? [], null);
+        $this->setIfExists('contextIds', $data ?? [], null);
+        $this->setIfExists('contextId', $data ?? [], '');
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
@@ -325,8 +332,8 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['observedAt'] === null) {
             $invalidProperties[] = "'observedAt' can't be null";
         }
-        if ($this->container['contextId'] === null) {
-            $invalidProperties[] = "'contextId' can't be null";
+        if ($this->container['contextIds'] === null) {
+            $invalidProperties[] = "'contextIds' can't be null";
         }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
@@ -434,9 +441,36 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets contextIds
+     *
+     * @return string[]
+     */
+    public function getContextIds()
+    {
+        return $this->container['contextIds'];
+    }
+
+    /**
+     * Sets contextIds
+     *
+     * @param string[] $contextIds The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price.
+     *
+     * @return self
+     */
+    public function setContextIds($contextIds)
+    {
+        if (is_null($contextIds)) {
+            throw new \InvalidArgumentException('non-nullable contextIds cannot be null');
+        }
+        $this->container['contextIds'] = $contextIds;
+
+        return $this;
+    }
+
+    /**
      * Gets contextId
      *
-     * @return string
+     * @return string|null
      */
     public function getContextId()
     {
@@ -446,7 +480,7 @@ class BestPriorPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contextId
      *
-     * @param string $contextId The context ID of the context active at the time of observation.
+     * @param string|null $contextId This property is **deprecated**. Use `contextIds` instead. Defaults to an empty string.
      *
      * @return self
      */

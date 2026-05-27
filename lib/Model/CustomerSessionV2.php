@@ -78,6 +78,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => 'float',
         'cartItemTotal' => 'float',
         'additionalCostTotal' => 'float',
+        'cartItemAdditionalCostTotal' => 'float',
         'updated' => '\DateTime'
     ];
 
@@ -110,6 +111,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => null,
         'cartItemTotal' => null,
         'additionalCostTotal' => null,
+        'cartItemAdditionalCostTotal' => null,
         'updated' => 'date-time'
     ];
 
@@ -140,6 +142,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => false,
         'cartItemTotal' => false,
         'additionalCostTotal' => false,
+        'cartItemAdditionalCostTotal' => false,
         'updated' => false
     ];
 
@@ -250,6 +253,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => 'total',
         'cartItemTotal' => 'cartItemTotal',
         'additionalCostTotal' => 'additionalCostTotal',
+        'cartItemAdditionalCostTotal' => 'cartItemAdditionalCostTotal',
         'updated' => 'updated'
     ];
 
@@ -280,6 +284,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => 'setTotal',
         'cartItemTotal' => 'setCartItemTotal',
         'additionalCostTotal' => 'setAdditionalCostTotal',
+        'cartItemAdditionalCostTotal' => 'setCartItemAdditionalCostTotal',
         'updated' => 'setUpdated'
     ];
 
@@ -310,6 +315,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total' => 'getTotal',
         'cartItemTotal' => 'getCartItemTotal',
         'additionalCostTotal' => 'getAdditionalCostTotal',
+        'cartItemAdditionalCostTotal' => 'getCartItemAdditionalCostTotal',
         'updated' => 'getUpdated'
     ];
 
@@ -410,6 +416,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('cartItemTotal', $data ?? [], null);
         $this->setIfExists('additionalCostTotal', $data ?? [], null);
+        $this->setIfExists('cartItemAdditionalCostTotal', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
     }
 
@@ -499,6 +506,9 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         }
         if ($this->container['additionalCostTotal'] === null) {
             $invalidProperties[] = "'additionalCostTotal' can't be null";
+        }
+        if ($this->container['cartItemAdditionalCostTotal'] === null) {
+            $invalidProperties[] = "'cartItemAdditionalCostTotal' can't be null";
         }
         if ($this->container['updated'] === null) {
             $invalidProperties[] = "'updated' can't be null";
@@ -1114,6 +1124,33 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable additionalCostTotal cannot be null');
         }
         $this->container['additionalCostTotal'] = $additionalCostTotal;
+
+        return $this;
+    }
+
+    /**
+     * Gets cartItemAdditionalCostTotal
+     *
+     * @return float
+     */
+    public function getCartItemAdditionalCostTotal()
+    {
+        return $this->container['cartItemAdditionalCostTotal'];
+    }
+
+    /**
+     * Sets cartItemAdditionalCostTotal
+     *
+     * @param float $cartItemAdditionalCostTotal The total value of additional costs applied to individual items, before any discounts are applied.
+     *
+     * @return self
+     */
+    public function setCartItemAdditionalCostTotal($cartItemAdditionalCostTotal)
+    {
+        if (is_null($cartItemAdditionalCostTotal)) {
+            throw new \InvalidArgumentException('non-nullable cartItemAdditionalCostTotal cannot be null');
+        }
+        $this->container['cartItemAdditionalCostTotal'] = $cartItemAdditionalCostTotal;
 
         return $this;
     }

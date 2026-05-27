@@ -69,7 +69,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => '\TalonOne\Client\Model\Rule',
         'bindings' => '\TalonOne\Client\Model\Binding[]',
         'modified' => '\DateTime',
-        'status' => 'string'
+        'status' => 'string',
+        'pointsRequired' => '\TalonOne\Client\Model\RewardPointsRequired[]'
     ];
 
     /**
@@ -92,7 +93,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => null,
         'bindings' => null,
         'modified' => 'date-time',
-        'status' => null
+        'status' => null,
+        'pointsRequired' => null
     ];
 
     /**
@@ -113,7 +115,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => false,
         'bindings' => false,
         'modified' => false,
-        'status' => false
+        'status' => false,
+        'pointsRequired' => false
     ];
 
     /**
@@ -214,7 +217,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => 'rule',
         'bindings' => 'bindings',
         'modified' => 'modified',
-        'status' => 'status'
+        'status' => 'status',
+        'pointsRequired' => 'pointsRequired'
     ];
 
     /**
@@ -235,7 +239,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => 'setRule',
         'bindings' => 'setBindings',
         'modified' => 'setModified',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'pointsRequired' => 'setPointsRequired'
     ];
 
     /**
@@ -256,7 +261,8 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         'rule' => 'getRule',
         'bindings' => 'getBindings',
         'modified' => 'getModified',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'pointsRequired' => 'getPointsRequired'
     ];
 
     /**
@@ -344,6 +350,7 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('bindings', $data ?? [], null);
         $this->setIfExists('modified', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('pointsRequired', $data ?? [], null);
     }
 
     /**
@@ -796,6 +803,33 @@ class Reward implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets pointsRequired
+     *
+     * @return \TalonOne\Client\Model\RewardPointsRequired[]|null
+     */
+    public function getPointsRequired()
+    {
+        return $this->container['pointsRequired'];
+    }
+
+    /**
+     * Sets pointsRequired
+     *
+     * @param \TalonOne\Client\Model\RewardPointsRequired[]|null $pointsRequired The loyalty points required to activate a reward.
+     *
+     * @return self
+     */
+    public function setPointsRequired($pointsRequired)
+    {
+        if (is_null($pointsRequired)) {
+            throw new \InvalidArgumentException('non-nullable pointsRequired cannot be null');
+        }
+        $this->container['pointsRequired'] = $pointsRequired;
 
         return $this;
     }

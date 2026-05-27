@@ -168,6 +168,7 @@ docs/Model/CardLedgerTransactionLogEntryIntegrationAPI.md
 docs/Model/CartItem.md
 docs/Model/CartItemFilterTemplate.md
 docs/Model/Catalog.md
+docs/Model/CatalogAction.md
 docs/Model/CatalogActionFilter.md
 docs/Model/CatalogItem.md
 docs/Model/CatalogRule.md
@@ -247,6 +248,9 @@ docs/Model/EventAttributesEntity.md
 docs/Model/EventType.md
 docs/Model/EventV2.md
 docs/Model/EventV3.md
+docs/Model/EventV3Connections.md
+docs/Model/EventV3Entity.md
+docs/Model/EventV3RequestEntity.md
 docs/Model/Experiment.md
 docs/Model/ExperimentCampaignCopy.md
 docs/Model/ExperimentCopy.md
@@ -371,6 +375,7 @@ docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificatio
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
 docs/Model/IntegrationHubEventRecord.md
+docs/Model/IntegrationHubEventStatusUpdate.md
 docs/Model/IntegrationHubFlow.md
 docs/Model/IntegrationHubFlowConfig.md
 docs/Model/IntegrationHubFlowConfigResponse.md
@@ -485,6 +490,7 @@ docs/Model/NewCustomerSession.md
 docs/Model/NewCustomerSessionV2.md
 docs/Model/NewEvent.md
 docs/Model/NewEventType.md
+docs/Model/NewEventV3Entity.md
 docs/Model/NewExperiment.md
 docs/Model/NewExperimentVariant.md
 docs/Model/NewExperimentVariantArray.md
@@ -580,6 +586,7 @@ docs/Model/RevisionActivation.md
 docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
 docs/Model/Reward.md
+docs/Model/RewardPointsRequired.md
 docs/Model/RiskNotification.md
 docs/Model/Role.md
 docs/Model/RoleAssign.md
@@ -654,6 +661,8 @@ docs/Model/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/Model/StrikethroughTrigger.md
 docs/Model/SummarizeCampaignStoreBudget200Response.md
 docs/Model/SummaryCampaignStoreBudget.md
+docs/Model/SupportRequest.md
+docs/Model/SupportRequestInput.md
 docs/Model/TalangAttribute.md
 docs/Model/TalangAttributeVisibility.md
 docs/Model/TemplateArgDef.md
@@ -711,6 +720,7 @@ docs/Model/UpdateReferralBatch.md
 docs/Model/UpdateReward.md
 docs/Model/UpdateRole.md
 docs/Model/UpdateStore.md
+docs/Model/UpdateSupportRequest.md
 docs/Model/UpdateUser.md
 docs/Model/User.md
 docs/Model/UserEntity.md
@@ -884,6 +894,7 @@ lib/Model/CardLedgerTransactionLogEntryIntegrationAPI.php
 lib/Model/CartItem.php
 lib/Model/CartItemFilterTemplate.php
 lib/Model/Catalog.php
+lib/Model/CatalogAction.php
 lib/Model/CatalogActionFilter.php
 lib/Model/CatalogItem.php
 lib/Model/CatalogRule.php
@@ -963,6 +974,9 @@ lib/Model/EventAttributesEntity.php
 lib/Model/EventType.php
 lib/Model/EventV2.php
 lib/Model/EventV3.php
+lib/Model/EventV3Connections.php
+lib/Model/EventV3Entity.php
+lib/Model/EventV3RequestEntity.php
 lib/Model/Experiment.php
 lib/Model/ExperimentCampaignCopy.php
 lib/Model/ExperimentCopy.php
@@ -1087,6 +1101,7 @@ lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.php
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.php
 lib/Model/IntegrationHubEventRecord.php
+lib/Model/IntegrationHubEventStatusUpdate.php
 lib/Model/IntegrationHubFlow.php
 lib/Model/IntegrationHubFlowConfig.php
 lib/Model/IntegrationHubFlowConfigResponse.php
@@ -1202,6 +1217,7 @@ lib/Model/NewCustomerSession.php
 lib/Model/NewCustomerSessionV2.php
 lib/Model/NewEvent.php
 lib/Model/NewEventType.php
+lib/Model/NewEventV3Entity.php
 lib/Model/NewExperiment.php
 lib/Model/NewExperimentVariant.php
 lib/Model/NewExperimentVariantArray.php
@@ -1297,6 +1313,7 @@ lib/Model/RevisionActivation.php
 lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
 lib/Model/Reward.php
+lib/Model/RewardPointsRequired.php
 lib/Model/RiskNotification.php
 lib/Model/Role.php
 lib/Model/RoleAssign.php
@@ -1371,6 +1388,8 @@ lib/Model/StrikethroughSetDiscountPerItemMemberEffectProps.php
 lib/Model/StrikethroughTrigger.php
 lib/Model/SummarizeCampaignStoreBudget200Response.php
 lib/Model/SummaryCampaignStoreBudget.php
+lib/Model/SupportRequest.php
+lib/Model/SupportRequestInput.php
 lib/Model/TalangAttribute.php
 lib/Model/TalangAttributeVisibility.php
 lib/Model/TemplateArgDef.php
@@ -1428,6 +1447,7 @@ lib/Model/UpdateReferralBatch.php
 lib/Model/UpdateReward.php
 lib/Model/UpdateRole.php
 lib/Model/UpdateStore.php
+lib/Model/UpdateSupportRequest.php
 lib/Model/UpdateUser.php
 lib/Model/User.php
 lib/Model/UserEntity.php
@@ -1597,6 +1617,7 @@ test/Model/CardLedgerTransactionLogEntryTest.php
 test/Model/CartItemFilterTemplateTest.php
 test/Model/CartItemTest.php
 test/Model/CatalogActionFilterTest.php
+test/Model/CatalogActionTest.php
 test/Model/CatalogItemTest.php
 test/Model/CatalogRuleTest.php
 test/Model/CatalogSyncRequestTest.php
@@ -1675,6 +1696,9 @@ test/Model/EventAttributesEntityTest.php
 test/Model/EventTest.php
 test/Model/EventTypeTest.php
 test/Model/EventV2Test.php
+test/Model/EventV3ConnectionsTest.php
+test/Model/EventV3EntityTest.php
+test/Model/EventV3RequestEntityTest.php
 test/Model/EventV3Test.php
 test/Model/ExperimentCampaignCopyTest.php
 test/Model/ExperimentCopyExperimentTest.php
@@ -1800,6 +1824,7 @@ test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificatio
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificationTest.php
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotificationTest.php
 test/Model/IntegrationHubEventRecordTest.php
+test/Model/IntegrationHubEventStatusUpdateTest.php
 test/Model/IntegrationHubFlowConfigResponseTest.php
 test/Model/IntegrationHubFlowConfigTest.php
 test/Model/IntegrationHubFlowResponseTest.php
@@ -1914,6 +1939,7 @@ test/Model/NewCustomerSessionTest.php
 test/Model/NewCustomerSessionV2Test.php
 test/Model/NewEventTest.php
 test/Model/NewEventTypeTest.php
+test/Model/NewEventV3EntityTest.php
 test/Model/NewExperimentTest.php
 test/Model/NewExperimentVariantArrayTest.php
 test/Model/NewExperimentVariantTest.php
@@ -2008,6 +2034,7 @@ test/Model/RevisionActivationRequestTest.php
 test/Model/RevisionActivationTest.php
 test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
+test/Model/RewardPointsRequiredTest.php
 test/Model/RewardTest.php
 test/Model/RiskNotificationTest.php
 test/Model/RoleAssignTest.php
@@ -2083,6 +2110,8 @@ test/Model/StrikethroughSetDiscountPerItemMemberEffectPropsTest.php
 test/Model/StrikethroughTriggerTest.php
 test/Model/SummarizeCampaignStoreBudget200ResponseTest.php
 test/Model/SummaryCampaignStoreBudgetTest.php
+test/Model/SupportRequestInputTest.php
+test/Model/SupportRequestTest.php
 test/Model/TalangAttributeTest.php
 test/Model/TalangAttributeVisibilityTest.php
 test/Model/TemplateArgDefTest.php
@@ -2140,6 +2169,7 @@ test/Model/UpdateReferralTest.php
 test/Model/UpdateRewardTest.php
 test/Model/UpdateRoleTest.php
 test/Model/UpdateStoreTest.php
+test/Model/UpdateSupportRequestTest.php
 test/Model/UpdateUserTest.php
 test/Model/UserEntityTest.php
 test/Model/UserTest.php

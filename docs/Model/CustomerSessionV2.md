@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **total** | **float** | The total value of cart items and additional costs in the session, before any discounts are applied. |
 **cartItemTotal** | **float** | The total value of cart items, before any discounts are applied. |
 **additionalCostTotal** | **float** | The total value of additional costs, before any discounts are applied. |
+**cartItemAdditionalCostTotal** | **float** | The total value of additional costs applied to individual items, before any discounts are applied. | [readonly]
 **updated** | **\DateTime** | Timestamp of the most recent event received on this session. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

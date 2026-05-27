@@ -134,6 +134,15 @@ class IntegrationHubEventRecordTest extends TestCase
     }
 
     /**
+     * Test attribute "deliveredAt"
+     */
+    public function testPropertyDeliveredAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "processAfter"
      */
     public function testPropertyProcessAfter()

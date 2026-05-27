@@ -64,6 +64,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => 'string',
         'type' => 'string',
         'attributes' => 'object',
+        'integrationId' => 'string',
         'sessionId' => 'string',
         'effects' => 'object[]',
         'ledgerEntries' => '\TalonOne\Client\Model\LedgerEntry[]',
@@ -85,6 +86,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => null,
         'type' => null,
         'attributes' => null,
+        'integrationId' => null,
         'sessionId' => null,
         'effects' => null,
         'ledgerEntries' => null,
@@ -104,6 +106,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => false,
         'type' => false,
         'attributes' => false,
+        'integrationId' => false,
         'sessionId' => false,
         'effects' => false,
         'ledgerEntries' => false,
@@ -203,6 +206,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => 'storeIntegrationId',
         'type' => 'type',
         'attributes' => 'attributes',
+        'integrationId' => 'integrationId',
         'sessionId' => 'sessionId',
         'effects' => 'effects',
         'ledgerEntries' => 'ledgerEntries',
@@ -222,6 +226,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => 'setStoreIntegrationId',
         'type' => 'setType',
         'attributes' => 'setAttributes',
+        'integrationId' => 'setIntegrationId',
         'sessionId' => 'setSessionId',
         'effects' => 'setEffects',
         'ledgerEntries' => 'setLedgerEntries',
@@ -241,6 +246,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'storeIntegrationId' => 'getStoreIntegrationId',
         'type' => 'getType',
         'attributes' => 'getAttributes',
+        'integrationId' => 'getIntegrationId',
         'sessionId' => 'getSessionId',
         'effects' => 'getEffects',
         'ledgerEntries' => 'getLedgerEntries',
@@ -311,6 +317,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('storeIntegrationId', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('sessionId', $data ?? [], null);
         $this->setIfExists('effects', $data ?? [], null);
         $this->setIfExists('ledgerEntries', $data ?? [], null);
@@ -371,6 +378,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['attributes'] === null) {
             $invalidProperties[] = "'attributes' can't be null";
         }
+        if (!is_null($this->container['integrationId']) && (mb_strlen($this->container['integrationId']) < 1)) {
+            $invalidProperties[] = "invalid value for 'integrationId', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['effects'] === null) {
             $invalidProperties[] = "'effects' can't be null";
         }
@@ -544,7 +555,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type A string representing the event. Must not be a reserved event name.
+     * @param string $type The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
      *
      * @return self
      */
@@ -586,6 +597,38 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets integrationId
+     *
+     * @return string|null
+     */
+    public function getIntegrationId()
+    {
+        return $this->container['integrationId'];
+    }
+
+    /**
+     * Sets integrationId
+     *
+     * @param string|null $integrationId The unique ID of the event. Only one event with this ID can be registered.
+     *
+     * @return self
+     */
+    public function setIntegrationId($integrationId)
+    {
+        if (is_null($integrationId)) {
+            throw new \InvalidArgumentException('non-nullable integrationId cannot be null');
+        }
+
+        if ((mb_strlen($integrationId) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $integrationId when calling Event., must be bigger than or equal to 1.');
+        }
+
+        $this->container['integrationId'] = $integrationId;
 
         return $this;
     }
