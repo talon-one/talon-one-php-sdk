@@ -63,6 +63,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => 'mixed',
         'publishedAt' => '\DateTime',
         'processedAt' => '\DateTime',
+        'deliveredAt' => '\DateTime',
         'processAfter' => '\DateTime',
         'retry' => 'int'
     ];
@@ -81,6 +82,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => null,
         'publishedAt' => 'date-time',
         'processedAt' => 'date-time',
+        'deliveredAt' => 'date-time',
         'processAfter' => 'date-time',
         'retry' => 'int64'
     ];
@@ -97,6 +99,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => true,
         'publishedAt' => false,
         'processedAt' => false,
+        'deliveredAt' => false,
         'processAfter' => false,
         'retry' => false
     ];
@@ -193,6 +196,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => 'EventData',
         'publishedAt' => 'PublishedAt',
         'processedAt' => 'ProcessedAt',
+        'deliveredAt' => 'DeliveredAt',
         'processAfter' => 'ProcessAfter',
         'retry' => 'Retry'
     ];
@@ -209,6 +213,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => 'setEventData',
         'publishedAt' => 'setPublishedAt',
         'processedAt' => 'setProcessedAt',
+        'deliveredAt' => 'setDeliveredAt',
         'processAfter' => 'setProcessAfter',
         'retry' => 'setRetry'
     ];
@@ -225,6 +230,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         'eventData' => 'getEventData',
         'publishedAt' => 'getPublishedAt',
         'processedAt' => 'getProcessedAt',
+        'deliveredAt' => 'getDeliveredAt',
         'processAfter' => 'getProcessAfter',
         'retry' => 'getRetry'
     ];
@@ -292,6 +298,7 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('eventData', $data ?? [], null);
         $this->setIfExists('publishedAt', $data ?? [], null);
         $this->setIfExists('processedAt', $data ?? [], null);
+        $this->setIfExists('deliveredAt', $data ?? [], null);
         $this->setIfExists('processAfter', $data ?? [], null);
         $this->setIfExists('retry', $data ?? [], null);
     }
@@ -524,6 +531,33 @@ class IntegrationHubEventRecord implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable processedAt cannot be null');
         }
         $this->container['processedAt'] = $processedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveredAt
+     *
+     * @return \DateTime|null
+     */
+    public function getDeliveredAt()
+    {
+        return $this->container['deliveredAt'];
+    }
+
+    /**
+     * Sets deliveredAt
+     *
+     * @param \DateTime|null $deliveredAt deliveredAt
+     *
+     * @return self
+     */
+    public function setDeliveredAt($deliveredAt)
+    {
+        if (is_null($deliveredAt)) {
+            throw new \InvalidArgumentException('non-nullable deliveredAt cannot be null');
+        }
+        $this->container['deliveredAt'] = $deliveredAt;
 
         return $this;
     }

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **eventData** | **mixed** |  |
 **publishedAt** | **\DateTime** |  |
 **processedAt** | **\DateTime** |  | [optional]
+**deliveredAt** | **\DateTime** |  | [optional]
 **processAfter** | **\DateTime** |  |
 **retry** | **int** |  |
 

@@ -59,14 +59,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static $openAPITypes = [
         'profileIntegrationID' => 'string',
         'loyaltyProgramID' => 'int',
+        'loyaltyProgramName' => 'string',
         'subledgerID' => 'string',
         'sourceOfEvent' => 'string',
+        'currentTier' => 'string',
         'employeeName' => 'string',
         'userID' => 'int',
         'currentPoints' => 'float',
         'actions' => '\TalonOne\Client\Model\IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction[]',
         'publishedAt' => '\DateTime',
-        'currentTier' => 'string',
         'oldTier' => 'string',
         'tierExpirationDate' => '\DateTime',
         'timestampOfTierChange' => '\DateTime',
@@ -84,14 +85,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static $openAPIFormats = [
         'profileIntegrationID' => null,
         'loyaltyProgramID' => 'int64',
+        'loyaltyProgramName' => null,
         'subledgerID' => null,
         'sourceOfEvent' => null,
+        'currentTier' => null,
         'employeeName' => null,
         'userID' => 'int64',
         'currentPoints' => 'float',
         'actions' => null,
         'publishedAt' => 'date-time',
-        'currentTier' => null,
         'oldTier' => null,
         'tierExpirationDate' => 'date-time',
         'timestampOfTierChange' => 'date-time',
@@ -107,14 +109,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static array $openAPINullables = [
         'profileIntegrationID' => false,
         'loyaltyProgramID' => false,
+        'loyaltyProgramName' => false,
         'subledgerID' => false,
         'sourceOfEvent' => false,
+        'currentTier' => false,
         'employeeName' => false,
         'userID' => false,
         'currentPoints' => false,
         'actions' => false,
         'publishedAt' => false,
-        'currentTier' => false,
         'oldTier' => false,
         'tierExpirationDate' => false,
         'timestampOfTierChange' => false,
@@ -210,14 +213,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static $attributeMap = [
         'profileIntegrationID' => 'ProfileIntegrationID',
         'loyaltyProgramID' => 'LoyaltyProgramID',
+        'loyaltyProgramName' => 'LoyaltyProgramName',
         'subledgerID' => 'SubledgerID',
         'sourceOfEvent' => 'SourceOfEvent',
+        'currentTier' => 'CurrentTier',
         'employeeName' => 'EmployeeName',
         'userID' => 'UserID',
         'currentPoints' => 'CurrentPoints',
         'actions' => 'Actions',
         'publishedAt' => 'PublishedAt',
-        'currentTier' => 'CurrentTier',
         'oldTier' => 'OldTier',
         'tierExpirationDate' => 'TierExpirationDate',
         'timestampOfTierChange' => 'TimestampOfTierChange',
@@ -233,14 +237,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static $setters = [
         'profileIntegrationID' => 'setProfileIntegrationID',
         'loyaltyProgramID' => 'setLoyaltyProgramID',
+        'loyaltyProgramName' => 'setLoyaltyProgramName',
         'subledgerID' => 'setSubledgerID',
         'sourceOfEvent' => 'setSourceOfEvent',
+        'currentTier' => 'setCurrentTier',
         'employeeName' => 'setEmployeeName',
         'userID' => 'setUserID',
         'currentPoints' => 'setCurrentPoints',
         'actions' => 'setActions',
         'publishedAt' => 'setPublishedAt',
-        'currentTier' => 'setCurrentTier',
         'oldTier' => 'setOldTier',
         'tierExpirationDate' => 'setTierExpirationDate',
         'timestampOfTierChange' => 'setTimestampOfTierChange',
@@ -256,14 +261,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     protected static $getters = [
         'profileIntegrationID' => 'getProfileIntegrationID',
         'loyaltyProgramID' => 'getLoyaltyProgramID',
+        'loyaltyProgramName' => 'getLoyaltyProgramName',
         'subledgerID' => 'getSubledgerID',
         'sourceOfEvent' => 'getSourceOfEvent',
+        'currentTier' => 'getCurrentTier',
         'employeeName' => 'getEmployeeName',
         'userID' => 'getUserID',
         'currentPoints' => 'getCurrentPoints',
         'actions' => 'getActions',
         'publishedAt' => 'getPublishedAt',
-        'currentTier' => 'getCurrentTier',
         'oldTier' => 'getOldTier',
         'tierExpirationDate' => 'getTierExpirationDate',
         'timestampOfTierChange' => 'getTimestampOfTierChange',
@@ -330,14 +336,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     {
         $this->setIfExists('profileIntegrationID', $data ?? [], null);
         $this->setIfExists('loyaltyProgramID', $data ?? [], null);
+        $this->setIfExists('loyaltyProgramName', $data ?? [], null);
         $this->setIfExists('subledgerID', $data ?? [], null);
         $this->setIfExists('sourceOfEvent', $data ?? [], null);
+        $this->setIfExists('currentTier', $data ?? [], null);
         $this->setIfExists('employeeName', $data ?? [], null);
         $this->setIfExists('userID', $data ?? [], null);
         $this->setIfExists('currentPoints', $data ?? [], null);
         $this->setIfExists('actions', $data ?? [], null);
         $this->setIfExists('publishedAt', $data ?? [], null);
-        $this->setIfExists('currentTier', $data ?? [], null);
         $this->setIfExists('oldTier', $data ?? [], null);
         $this->setIfExists('tierExpirationDate', $data ?? [], null);
         $this->setIfExists('timestampOfTierChange', $data ?? [], null);
@@ -378,11 +385,17 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
         if ($this->container['loyaltyProgramID'] === null) {
             $invalidProperties[] = "'loyaltyProgramID' can't be null";
         }
+        if ($this->container['loyaltyProgramName'] === null) {
+            $invalidProperties[] = "'loyaltyProgramName' can't be null";
+        }
         if ($this->container['subledgerID'] === null) {
             $invalidProperties[] = "'subledgerID' can't be null";
         }
         if ($this->container['sourceOfEvent'] === null) {
             $invalidProperties[] = "'sourceOfEvent' can't be null";
+        }
+        if ($this->container['currentTier'] === null) {
+            $invalidProperties[] = "'currentTier' can't be null";
         }
         if ($this->container['currentPoints'] === null) {
             $invalidProperties[] = "'currentPoints' can't be null";
@@ -460,6 +473,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
     }
 
     /**
+     * Gets loyaltyProgramName
+     *
+     * @return string
+     */
+    public function getLoyaltyProgramName()
+    {
+        return $this->container['loyaltyProgramName'];
+    }
+
+    /**
+     * Sets loyaltyProgramName
+     *
+     * @param string $loyaltyProgramName The name of the loyalty program.
+     *
+     * @return self
+     */
+    public function setLoyaltyProgramName($loyaltyProgramName)
+    {
+        if (is_null($loyaltyProgramName)) {
+            throw new \InvalidArgumentException('non-nullable loyaltyProgramName cannot be null');
+        }
+        $this->container['loyaltyProgramName'] = $loyaltyProgramName;
+
+        return $this;
+    }
+
+    /**
      * Gets subledgerID
      *
      * @return string
@@ -509,6 +549,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
             throw new \InvalidArgumentException('non-nullable sourceOfEvent cannot be null');
         }
         $this->container['sourceOfEvent'] = $sourceOfEvent;
+
+        return $this;
+    }
+
+    /**
+     * Gets currentTier
+     *
+     * @return string
+     */
+    public function getCurrentTier()
+    {
+        return $this->container['currentTier'];
+    }
+
+    /**
+     * Sets currentTier
+     *
+     * @param string $currentTier The name of the customer's current tier.
+     *
+     * @return self
+     */
+    public function setCurrentTier($currentTier)
+    {
+        if (is_null($currentTier)) {
+            throw new \InvalidArgumentException('non-nullable currentTier cannot be null');
+        }
+        $this->container['currentTier'] = $currentTier;
 
         return $this;
     }
@@ -644,33 +711,6 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotification implements Model
             throw new \InvalidArgumentException('non-nullable publishedAt cannot be null');
         }
         $this->container['publishedAt'] = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets currentTier
-     *
-     * @return string|null
-     */
-    public function getCurrentTier()
-    {
-        return $this->container['currentTier'];
-    }
-
-    /**
-     * Sets currentTier
-     *
-     * @param string|null $currentTier currentTier
-     *
-     * @return self
-     */
-    public function setCurrentTier($currentTier)
-    {
-        if (is_null($currentTier)) {
-            throw new \InvalidArgumentException('non-nullable currentTier cannot be null');
-        }
-        $this->container['currentTier'] = $currentTier;
 
         return $this;
     }

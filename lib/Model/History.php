@@ -59,6 +59,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'int',
         'observedAt' => '\DateTime',
+        'contextIds' => 'string[]',
         'contextId' => 'string',
         'price' => 'float',
         'metadata' => '\TalonOne\Client\Model\BestPriorPriceMetadata',
@@ -75,6 +76,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => 'int64',
         'observedAt' => 'date-time',
+        'contextIds' => null,
         'contextId' => null,
         'price' => null,
         'metadata' => null,
@@ -89,6 +91,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
         'observedAt' => false,
+        'contextIds' => false,
         'contextId' => false,
         'price' => false,
         'metadata' => false,
@@ -183,6 +186,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'observedAt' => 'observedAt',
+        'contextIds' => 'contextIds',
         'contextId' => 'contextId',
         'price' => 'price',
         'metadata' => 'metadata',
@@ -197,6 +201,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'observedAt' => 'setObservedAt',
+        'contextIds' => 'setContextIds',
         'contextId' => 'setContextId',
         'price' => 'setPrice',
         'metadata' => 'setMetadata',
@@ -211,6 +216,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'observedAt' => 'getObservedAt',
+        'contextIds' => 'getContextIds',
         'contextId' => 'getContextId',
         'price' => 'getPrice',
         'metadata' => 'getMetadata',
@@ -276,7 +282,8 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('observedAt', $data ?? [], null);
-        $this->setIfExists('contextId', $data ?? [], null);
+        $this->setIfExists('contextIds', $data ?? [], null);
+        $this->setIfExists('contextId', $data ?? [], '');
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
@@ -315,8 +322,8 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['observedAt'] === null) {
             $invalidProperties[] = "'observedAt' can't be null";
         }
-        if ($this->container['contextId'] === null) {
-            $invalidProperties[] = "'contextId' can't be null";
+        if ($this->container['contextIds'] === null) {
+            $invalidProperties[] = "'contextIds' can't be null";
         }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
@@ -397,9 +404,36 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets contextIds
+     *
+     * @return string[]
+     */
+    public function getContextIds()
+    {
+        return $this->container['contextIds'];
+    }
+
+    /**
+     * Sets contextIds
+     *
+     * @param string[] $contextIds The identifiers of the relevant context at the time the price was observed. Includes the context IDs of any price adjustments and of the campaigns that influenced the final price.
+     *
+     * @return self
+     */
+    public function setContextIds($contextIds)
+    {
+        if (is_null($contextIds)) {
+            throw new \InvalidArgumentException('non-nullable contextIds cannot be null');
+        }
+        $this->container['contextIds'] = $contextIds;
+
+        return $this;
+    }
+
+    /**
      * Gets contextId
      *
-     * @return string
+     * @return string|null
      */
     public function getContextId()
     {
@@ -409,7 +443,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contextId
      *
-     * @param string $contextId Identifier of the relevant context at the time the price was observed (e.g. summer sale).
+     * @param string|null $contextId This property is **deprecated**. Use `contextIds` instead. Defaults to an empty string.
      *
      * @return self
      */

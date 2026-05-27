@@ -248,8 +248,8 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
 
     public const GOAL_TYPE_OTHER = 'other';
     public const GOAL_TYPE_MAXIMIZE_REVENUE = 'maximize_revenue';
-    public const GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY = 'optimize_discount_efficiency';
     public const GOAL_TYPE_MAXIMIZE_ITEMS_SOLD = 'maximize_items_sold';
+    public const GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY = 'optimize_discount_efficiency';
 
     /**
      * Gets allowable values of the enum
@@ -261,8 +261,8 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::GOAL_TYPE_OTHER,
             self::GOAL_TYPE_MAXIMIZE_REVENUE,
-            self::GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY,
             self::GOAL_TYPE_MAXIMIZE_ITEMS_SOLD,
+            self::GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY,
         ];
     }
 
@@ -283,7 +283,7 @@ class NewExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('isVariantAssignmentExternal', $data ?? [], null);
         $this->setIfExists('campaign', $data ?? [], null);
-        $this->setIfExists('goalType', $data ?? [], null);
+        $this->setIfExists('goalType', $data ?? [], 'other');
         $this->setIfExists('goalDescription', $data ?? [], null);
     }
 

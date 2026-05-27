@@ -107,6 +107,15 @@ class BestPriorPriceTest extends TestCase
     }
 
     /**
+     * Test attribute "contextIds"
+     */
+    public function testPropertyContextIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "contextId"
      */
     public function testPropertyContextId()

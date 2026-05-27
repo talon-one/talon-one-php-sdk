@@ -306,6 +306,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     public const FEATURES_GIVEAWAYS = 'giveaways';
     public const FEATURES_STRIKETHROUGH = 'strikethrough';
     public const FEATURES_ACHIEVEMENTS = 'achievements';
+    public const FEATURES_ADVANCED_EVENTS = 'advancedEvents';
 
     /**
      * Gets allowable values of the enum
@@ -321,6 +322,7 @@ class NewRevisionVersion implements ModelInterface, ArrayAccess, \JsonSerializab
             self::FEATURES_GIVEAWAYS,
             self::FEATURES_STRIKETHROUGH,
             self::FEATURES_ACHIEVEMENTS,
+            self::FEATURES_ADVANCED_EVENTS,
         ];
     }
 

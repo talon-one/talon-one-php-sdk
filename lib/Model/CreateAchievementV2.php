@@ -67,8 +67,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => '\DateTime',
         'endDate' => '\DateTime',
         'allowRollbackAfterCompletion' => 'bool',
-        'sandbox' => 'bool',
         'subscribedApplications' => 'int[]',
+        'sandbox' => 'bool',
         'timezone' => 'string'
     ];
 
@@ -90,8 +90,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'date-time',
         'endDate' => 'date-time',
         'allowRollbackAfterCompletion' => null,
-        'sandbox' => null,
         'subscribedApplications' => 'int64',
+        'sandbox' => null,
         'timezone' => null
     ];
 
@@ -111,8 +111,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => false,
         'endDate' => false,
         'allowRollbackAfterCompletion' => false,
-        'sandbox' => false,
         'subscribedApplications' => false,
+        'sandbox' => false,
         'timezone' => false
     ];
 
@@ -212,8 +212,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'fixedStartDate',
         'endDate' => 'endDate',
         'allowRollbackAfterCompletion' => 'allowRollbackAfterCompletion',
-        'sandbox' => 'sandbox',
         'subscribedApplications' => 'subscribedApplications',
+        'sandbox' => 'sandbox',
         'timezone' => 'timezone'
     ];
 
@@ -233,8 +233,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'setFixedStartDate',
         'endDate' => 'setEndDate',
         'allowRollbackAfterCompletion' => 'setAllowRollbackAfterCompletion',
-        'sandbox' => 'setSandbox',
         'subscribedApplications' => 'setSubscribedApplications',
+        'sandbox' => 'setSandbox',
         'timezone' => 'setTimezone'
     ];
 
@@ -254,8 +254,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'getFixedStartDate',
         'endDate' => 'getEndDate',
         'allowRollbackAfterCompletion' => 'getAllowRollbackAfterCompletion',
-        'sandbox' => 'getSandbox',
         'subscribedApplications' => 'getSubscribedApplications',
+        'sandbox' => 'getSandbox',
         'timezone' => 'getTimezone'
     ];
 
@@ -358,8 +358,8 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('fixedStartDate', $data ?? [], null);
         $this->setIfExists('endDate', $data ?? [], null);
         $this->setIfExists('allowRollbackAfterCompletion', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('subscribedApplications', $data ?? [], null);
+        $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], null);
     }
 
@@ -432,13 +432,13 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
-        if ($this->container['sandbox'] === null) {
-            $invalidProperties[] = "'sandbox' can't be null";
-        }
         if (!is_null($this->container['subscribedApplications']) && (count($this->container['subscribedApplications']) < 0)) {
             $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
         }
 
+        if ($this->container['sandbox'] === null) {
+            $invalidProperties[] = "'sandbox' can't be null";
+        }
         if ($this->container['timezone'] === null) {
             $invalidProperties[] = "'timezone' can't be null";
         }
@@ -762,33 +762,6 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets sandbox
-     *
-     * @return bool
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param bool $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
-        }
-        $this->container['sandbox'] = $sandbox;
-
-        return $this;
-    }
-
-    /**
      * Gets subscribedApplications
      *
      * @return int[]|null
@@ -816,6 +789,33 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('invalid length for $subscribedApplications when calling CreateAchievementV2., number of items must be greater than or equal to 0.');
         }
         $this->container['subscribedApplications'] = $subscribedApplications;
+
+        return $this;
+    }
+
+    /**
+     * Gets sandbox
+     *
+     * @return bool
+     */
+    public function getSandbox()
+    {
+        return $this->container['sandbox'];
+    }
+
+    /**
+     * Sets sandbox
+     *
+     * @param bool $sandbox Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type.
+     *
+     * @return self
+     */
+    public function setSandbox($sandbox)
+    {
+        if (is_null($sandbox)) {
+            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        }
+        $this->container['sandbox'] = $sandbox;
 
         return $this;
     }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actions** | **object[]** |  |
+**actions** | [**\TalonOne\Client\Model\CatalogAction[]**](CatalogAction.md) |  |
 **version** | **int** | The version number of the catalog to apply the actions on. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

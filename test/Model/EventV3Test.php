@@ -80,6 +80,42 @@ class EventV3Test extends TestCase
     }
 
     /**
+     * Test attribute "connectedSessionId"
+     */
+    public function testPropertyConnectedSessionId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "created"
+     */
+    public function testPropertyCreated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applicationId"
+     */
+    public function testPropertyApplicationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "profileId"
      */
     public function testPropertyProfileId()
@@ -92,24 +128,6 @@ class EventV3Test extends TestCase
      * Test attribute "storeIntegrationId"
      */
     public function testPropertyStoreIntegrationId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "evaluableCampaignIds"
-     */
-    public function testPropertyEvaluableCampaignIds()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "integrationId"
-     */
-    public function testPropertyIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -134,18 +152,18 @@ class EventV3Test extends TestCase
     }
 
     /**
-     * Test attribute "connectedSessionID"
+     * Test attribute "integrationId"
      */
-    public function testPropertyConnectedSessionID()
+    public function testPropertyIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "previousEventID"
+     * Test attribute "effects"
      */
-    public function testPropertyPreviousEventID()
+    public function testPropertyEffects()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

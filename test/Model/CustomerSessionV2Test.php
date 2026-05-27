@@ -269,6 +269,15 @@ class CustomerSessionV2Test extends TestCase
     }
 
     /**
+     * Test attribute "cartItemAdditionalCostTotal"
+     */
+    public function testPropertyCartItemAdditionalCostTotal()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "updated"
      */
     public function testPropertyUpdated()

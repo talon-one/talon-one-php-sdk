@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profileIntegrationID** | **string** |  |
 **loyaltyProgramID** | **int** |  |
+**loyaltyProgramName** | **string** | The name of the loyalty program. |
 **subledgerID** | **string** |  |
 **sourceOfEvent** | **string** |  |
+**currentTier** | **string** | The name of the customer&#39;s current tier. |
 **employeeName** | **string** |  | [optional]
 **userID** | **int** |  | [optional]
 **currentPoints** | **float** |  |

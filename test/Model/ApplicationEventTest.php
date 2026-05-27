@@ -134,6 +134,15 @@ class ApplicationEventTest extends TestCase
     }
 
     /**
+     * Test attribute "integrationId"
+     */
+    public function testPropertyIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "sessionId"
      */
     public function testPropertySessionId()

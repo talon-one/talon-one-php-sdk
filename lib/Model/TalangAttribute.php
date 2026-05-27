@@ -296,6 +296,8 @@ class TalangAttribute implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ENTITY_SESSION = 'Session';
     public const ENTITY_STORE = 'Store';
     public const ENTITY_ACHIEVEMENTS = 'Achievements';
+    public const ENTITY_ADVANCED_EVENT = 'AdvancedEvent';
+    public const ENTITY_ADVANCED_EVENT_CONNECTED_SESSION = 'AdvancedEventConnectedSession';
     public const KIND_BUILT_IN = 'built-in';
     public const KIND_CUSTOM = 'custom';
 
@@ -327,6 +329,8 @@ class TalangAttribute implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ENTITY_SESSION,
             self::ENTITY_STORE,
             self::ENTITY_ACHIEVEMENTS,
+            self::ENTITY_ADVANCED_EVENT,
+            self::ENTITY_ADVANCED_EVENT_CONNECTED_SESSION,
         ];
     }
 

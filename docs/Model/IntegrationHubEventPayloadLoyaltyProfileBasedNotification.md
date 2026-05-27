@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profileIntegrationID** | **string** |  |
 **loyaltyProgramID** | **int** |  |
+**loyaltyProgramName** | **string** | The name of the loyalty program. |
 **subledgerID** | **string** |  |
 **sourceOfEvent** | **string** |  |
+**currentTier** | **string** | The name of the customer&#39;s current tier. |
 **employeeName** | **string** |  | [optional]
 **userID** | **int** |  | [optional]
 **currentPoints** | **float** |  |
 **actions** | [**\TalonOne\Client\Model\IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction[]**](IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md) |  | [optional]
 **publishedAt** | **\DateTime** | Timestamp when the event was published. |
-**currentTier** | **string** |  | [optional]
 **oldTier** | **string** |  | [optional]
 **tierExpirationDate** | **\DateTime** |  | [optional]
 **timestampOfTierChange** | **\DateTime** |  | [optional]

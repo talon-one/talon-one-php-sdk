@@ -107,15 +107,6 @@ class IntegrationEventV3RequestTest extends TestCase
     }
 
     /**
-     * Test attribute "integrationId"
-     */
-    public function testPropertyIntegrationId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "type"
      */
     public function testPropertyType()
@@ -134,18 +125,18 @@ class IntegrationEventV3RequestTest extends TestCase
     }
 
     /**
-     * Test attribute "connectedSessionID"
+     * Test attribute "integrationId"
      */
-    public function testPropertyConnectedSessionID()
+    public function testPropertyIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "previousEventID"
+     * Test attribute "connectedSessionId"
      */
-    public function testPropertyPreviousEventID()
+    public function testPropertyConnectedSessionId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

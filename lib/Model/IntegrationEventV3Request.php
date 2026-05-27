@@ -60,11 +60,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => 'string',
         'storeIntegrationId' => 'string',
         'evaluableCampaignIds' => 'int[]',
-        'integrationId' => 'string',
         'type' => 'string',
         'attributes' => 'object',
-        'connectedSessionID' => 'string',
-        'previousEventID' => 'string',
+        'integrationId' => 'string',
+        'connectedSessionId' => 'string',
         'loyaltyCards' => 'string[]',
         'responseContent' => 'string[]'
     ];
@@ -80,11 +79,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => null,
         'storeIntegrationId' => null,
         'evaluableCampaignIds' => 'int64',
-        'integrationId' => null,
         'type' => null,
         'attributes' => null,
-        'connectedSessionID' => null,
-        'previousEventID' => null,
+        'integrationId' => null,
+        'connectedSessionId' => null,
         'loyaltyCards' => null,
         'responseContent' => null
     ];
@@ -98,11 +96,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => false,
         'storeIntegrationId' => false,
         'evaluableCampaignIds' => false,
-        'integrationId' => false,
         'type' => false,
         'attributes' => false,
-        'connectedSessionID' => false,
-        'previousEventID' => false,
+        'integrationId' => false,
+        'connectedSessionId' => false,
         'loyaltyCards' => false,
         'responseContent' => false
     ];
@@ -196,11 +193,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => 'profileId',
         'storeIntegrationId' => 'storeIntegrationId',
         'evaluableCampaignIds' => 'evaluableCampaignIds',
-        'integrationId' => 'integrationId',
         'type' => 'type',
         'attributes' => 'attributes',
-        'connectedSessionID' => 'connectedSessionID',
-        'previousEventID' => 'previousEventID',
+        'integrationId' => 'integrationId',
+        'connectedSessionId' => 'connectedSessionId',
         'loyaltyCards' => 'loyaltyCards',
         'responseContent' => 'responseContent'
     ];
@@ -214,11 +210,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => 'setProfileId',
         'storeIntegrationId' => 'setStoreIntegrationId',
         'evaluableCampaignIds' => 'setEvaluableCampaignIds',
-        'integrationId' => 'setIntegrationId',
         'type' => 'setType',
         'attributes' => 'setAttributes',
-        'connectedSessionID' => 'setConnectedSessionID',
-        'previousEventID' => 'setPreviousEventID',
+        'integrationId' => 'setIntegrationId',
+        'connectedSessionId' => 'setConnectedSessionId',
         'loyaltyCards' => 'setLoyaltyCards',
         'responseContent' => 'setResponseContent'
     ];
@@ -232,11 +227,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'profileId' => 'getProfileId',
         'storeIntegrationId' => 'getStoreIntegrationId',
         'evaluableCampaignIds' => 'getEvaluableCampaignIds',
-        'integrationId' => 'getIntegrationId',
         'type' => 'getType',
         'attributes' => 'getAttributes',
-        'connectedSessionID' => 'getConnectedSessionID',
-        'previousEventID' => 'getPreviousEventID',
+        'integrationId' => 'getIntegrationId',
+        'connectedSessionId' => 'getConnectedSessionId',
         'loyaltyCards' => 'getLoyaltyCards',
         'responseContent' => 'getResponseContent'
     ];
@@ -324,11 +318,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('profileId', $data ?? [], null);
         $this->setIfExists('storeIntegrationId', $data ?? [], null);
         $this->setIfExists('evaluableCampaignIds', $data ?? [], null);
-        $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('connectedSessionID', $data ?? [], null);
-        $this->setIfExists('previousEventID', $data ?? [], null);
+        $this->setIfExists('integrationId', $data ?? [], null);
+        $this->setIfExists('connectedSessionId', $data ?? [], null);
         $this->setIfExists('loyaltyCards', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
     }
@@ -371,13 +364,6 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'storeIntegrationId', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['integrationId'] === null) {
-            $invalidProperties[] = "'integrationId' can't be null";
-        }
-        if ((mb_strlen($this->container['integrationId']) < 1)) {
-            $invalidProperties[] = "invalid value for 'integrationId', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -385,12 +371,15 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'type', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['connectedSessionID']) && (mb_strlen($this->container['connectedSessionID']) < 1)) {
-            $invalidProperties[] = "invalid value for 'connectedSessionID', the character length must be bigger than or equal to 1.";
+        if ($this->container['integrationId'] === null) {
+            $invalidProperties[] = "'integrationId' can't be null";
+        }
+        if ((mb_strlen($this->container['integrationId']) < 1)) {
+            $invalidProperties[] = "invalid value for 'integrationId', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['previousEventID']) && (mb_strlen($this->container['previousEventID']) < 1)) {
-            $invalidProperties[] = "invalid value for 'previousEventID', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['connectedSessionId']) && (mb_strlen($this->container['connectedSessionId']) < 1)) {
+            $invalidProperties[] = "invalid value for 'connectedSessionId', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['loyaltyCards']) && (count($this->container['loyaltyCards']) > 1)) {
@@ -501,38 +490,6 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets integrationId
-     *
-     * @return string
-     */
-    public function getIntegrationId()
-    {
-        return $this->container['integrationId'];
-    }
-
-    /**
-     * Sets integrationId
-     *
-     * @param string $integrationId The unique ID of the current event. Only one event with this ID could be activated, duplicated events are forbidden.
-     *
-     * @return self
-     */
-    public function setIntegrationId($integrationId)
-    {
-        if (is_null($integrationId)) {
-            throw new \InvalidArgumentException('non-nullable integrationId cannot be null');
-        }
-
-        if ((mb_strlen($integrationId) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $integrationId when calling IntegrationEventV3Request., must be bigger than or equal to 1.');
-        }
-
-        $this->container['integrationId'] = $integrationId;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string
@@ -545,7 +502,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string $type A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager.
+     * @param string $type The name of the event. Must be a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#custom-events), not a built-in event.
      *
      * @return self
      */
@@ -592,65 +549,65 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets connectedSessionID
+     * Gets integrationId
      *
-     * @return string|null
+     * @return string
      */
-    public function getConnectedSessionID()
+    public function getIntegrationId()
     {
-        return $this->container['connectedSessionID'];
+        return $this->container['integrationId'];
     }
 
     /**
-     * Sets connectedSessionID
+     * Sets integrationId
      *
-     * @param string|null $connectedSessionID The ID of the session that happened in the past.
+     * @param string $integrationId The unique ID of the event. Only one event with this ID can be registered.
      *
      * @return self
      */
-    public function setConnectedSessionID($connectedSessionID)
+    public function setIntegrationId($integrationId)
     {
-        if (is_null($connectedSessionID)) {
-            throw new \InvalidArgumentException('non-nullable connectedSessionID cannot be null');
+        if (is_null($integrationId)) {
+            throw new \InvalidArgumentException('non-nullable integrationId cannot be null');
         }
 
-        if ((mb_strlen($connectedSessionID) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $connectedSessionID when calling IntegrationEventV3Request., must be bigger than or equal to 1.');
+        if ((mb_strlen($integrationId) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $integrationId when calling IntegrationEventV3Request., must be bigger than or equal to 1.');
         }
 
-        $this->container['connectedSessionID'] = $connectedSessionID;
+        $this->container['integrationId'] = $integrationId;
 
         return $this;
     }
 
     /**
-     * Gets previousEventID
+     * Gets connectedSessionId
      *
      * @return string|null
      */
-    public function getPreviousEventID()
+    public function getConnectedSessionId()
     {
-        return $this->container['previousEventID'];
+        return $this->container['connectedSessionId'];
     }
 
     /**
-     * Sets previousEventID
+     * Sets connectedSessionId
      *
-     * @param string|null $previousEventID The unique identifier of the event that happened in the past.
+     * @param string|null $connectedSessionId The ID of the session to reference. The session must be in `closed` state. Otherwise, the API call will fail.
      *
      * @return self
      */
-    public function setPreviousEventID($previousEventID)
+    public function setConnectedSessionId($connectedSessionId)
     {
-        if (is_null($previousEventID)) {
-            throw new \InvalidArgumentException('non-nullable previousEventID cannot be null');
+        if (is_null($connectedSessionId)) {
+            throw new \InvalidArgumentException('non-nullable connectedSessionId cannot be null');
         }
 
-        if ((mb_strlen($previousEventID) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $previousEventID when calling IntegrationEventV3Request., must be bigger than or equal to 1.');
+        if ((mb_strlen($connectedSessionId) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $connectedSessionId when calling IntegrationEventV3Request., must be bigger than or equal to 1.');
         }
 
-        $this->container['previousEventID'] = $previousEventID;
+        $this->container['connectedSessionId'] = $connectedSessionId;
 
         return $this;
     }

@@ -62,7 +62,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'string',
         'visibilityConditions' => '\TalonOne\Client\Model\Rule',
         'rule' => '\TalonOne\Client\Model\Rule',
-        'bindings' => '\TalonOne\Client\Model\Binding[]'
+        'bindings' => '\TalonOne\Client\Model\Binding[]',
+        'pointsRequired' => '\TalonOne\Client\Model\RewardPointsRequired[]'
     ];
 
     /**
@@ -78,7 +79,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => null,
         'visibilityConditions' => null,
         'rule' => null,
-        'bindings' => null
+        'bindings' => null,
+        'pointsRequired' => null
     ];
 
     /**
@@ -92,7 +94,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => false,
         'visibilityConditions' => false,
         'rule' => false,
-        'bindings' => false
+        'bindings' => false,
+        'pointsRequired' => false
     ];
 
     /**
@@ -186,7 +189,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'status',
         'visibilityConditions' => 'visibilityConditions',
         'rule' => 'rule',
-        'bindings' => 'bindings'
+        'bindings' => 'bindings',
+        'pointsRequired' => 'pointsRequired'
     ];
 
     /**
@@ -200,7 +204,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'setStatus',
         'visibilityConditions' => 'setVisibilityConditions',
         'rule' => 'setRule',
-        'bindings' => 'setBindings'
+        'bindings' => 'setBindings',
+        'pointsRequired' => 'setPointsRequired'
     ];
 
     /**
@@ -214,7 +219,8 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'getStatus',
         'visibilityConditions' => 'getVisibilityConditions',
         'rule' => 'getRule',
-        'bindings' => 'getBindings'
+        'bindings' => 'getBindings',
+        'pointsRequired' => 'getPointsRequired'
     ];
 
     /**
@@ -295,6 +301,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('visibilityConditions', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('bindings', $data ?? [], null);
+        $this->setIfExists('pointsRequired', $data ?? [], null);
     }
 
     /**
@@ -531,6 +538,33 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bindings cannot be null');
         }
         $this->container['bindings'] = $bindings;
+
+        return $this;
+    }
+
+    /**
+     * Gets pointsRequired
+     *
+     * @return \TalonOne\Client\Model\RewardPointsRequired[]|null
+     */
+    public function getPointsRequired()
+    {
+        return $this->container['pointsRequired'];
+    }
+
+    /**
+     * Sets pointsRequired
+     *
+     * @param \TalonOne\Client\Model\RewardPointsRequired[]|null $pointsRequired The loyalty points required to activate the reward. Each object defines the specific loyalty program and subledger from which points are deducted when activating the reward.  **Note:** - Objects with an `id` are updated. - Objects without an `id` are created. - Existing objects omitted from the payload are deleted.
+     *
+     * @return self
+     */
+    public function setPointsRequired($pointsRequired)
+    {
+        if (is_null($pointsRequired)) {
+            throw new \InvalidArgumentException('non-nullable pointsRequired cannot be null');
+        }
+        $this->container['pointsRequired'] = $pointsRequired;
 
         return $this;
     }

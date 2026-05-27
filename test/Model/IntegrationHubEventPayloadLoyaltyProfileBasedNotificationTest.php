@@ -98,6 +98,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotificationTest extends Test
     }
 
     /**
+     * Test attribute "loyaltyProgramName"
+     */
+    public function testPropertyLoyaltyProgramName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "subledgerID"
      */
     public function testPropertySubledgerID()
@@ -110,6 +119,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotificationTest extends Test
      * Test attribute "sourceOfEvent"
      */
     public function testPropertySourceOfEvent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "currentTier"
+     */
+    public function testPropertyCurrentTier()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -155,15 +173,6 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedNotificationTest extends Test
      * Test attribute "publishedAt"
      */
     public function testPropertyPublishedAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currentTier"
-     */
-    public function testPropertyCurrentTier()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
