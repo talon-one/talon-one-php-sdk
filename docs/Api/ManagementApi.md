@@ -140,6 +140,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**importCoupons()**](ManagementApi.md#importCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons |
 | [**importLoyaltyCards()**](ManagementApi.md#importLoyaltyCards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_cards | Import loyalty cards |
 | [**importLoyaltyCustomersTiers()**](ManagementApi.md#importLoyaltyCustomersTiers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_customers_tiers | Import customers into loyalty tiers |
+| [**importLoyaltyJoinDates()**](ManagementApi.md#importLoyaltyJoinDates) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_join_dates | Import join dates for a loyalty program |
 | [**importLoyaltyPoints()**](ManagementApi.md#importLoyaltyPoints) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_points | Import loyalty points |
 | [**importPoolGiveaways()**](ManagementApi.md#importPoolGiveaways) | **POST** /v1/giveaways/pools/{poolId}/import | Import giveaway codes into a giveaway pool |
 | [**importReferrals()**](ManagementApi.md#importReferrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals |
@@ -3190,7 +3191,7 @@ try {
 ## `exportCustomerSessions()`
 
 ```php
-exportCustomerSessions($applicationId, $createdBefore, $createdAfter, $profileIntegrationId, $dateFormat, $customerSessionState): string
+exportCustomerSessions($applicationId, $createdBefore, $createdAfter, $updatedBefore, $updatedAfter, $profileIntegrationId, $dateFormat, $customerSessionState): string
 ```
 
 Export customer sessions
@@ -3219,12 +3220,14 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $createdBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
 $createdAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
+$updatedBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
+$updatedAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
 $profileIntegrationId = 'profileIntegrationId_example'; // string | Only return sessions for the customer that matches this customer integration ID.
 $dateFormat = 'dateFormat_example'; // string | Determines the format of dates in the export document.
 $customerSessionState = 'customerSessionState_example'; // string | Filter results by state.
 
 try {
-    $result = $apiInstance->exportCustomerSessions($applicationId, $createdBefore, $createdAfter, $profileIntegrationId, $dateFormat, $customerSessionState);
+    $result = $apiInstance->exportCustomerSessions($applicationId, $createdBefore, $createdAfter, $updatedBefore, $updatedAfter, $profileIntegrationId, $dateFormat, $customerSessionState);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->exportCustomerSessions: ', $e->getMessage(), PHP_EOL;
@@ -3238,6 +3241,8 @@ try {
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **createdBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional] |
 | **createdAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional] |
+| **updatedBefore** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional] |
+| **updatedAfter** | **\DateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional] |
 | **profileIntegrationId** | **string**| Only return sessions for the customer that matches this customer integration ID. | [optional] |
 | **dateFormat** | **string**| Determines the format of dates in the export document. | [optional] |
 | **customerSessionState** | **string**| Filter results by state. | [optional] |
@@ -3671,7 +3676,7 @@ exportLoyaltyCards($loyaltyProgramId, $batchId, $createdBefore, $createdAfter, $
 
 Export loyalty cards
 
-Download a CSV file containing the loyalty cards from a specified loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The CSV file contains the following columns:  - `identifier`: The unique identifier of the loyalty card. - `created`: The date and time the loyalty card was created. - `status`: The status of the loyalty card. - `userpercardlimit`: The maximum number of customer profiles that can be linked to the card. - `customerprofileids`: Integration IDs of the customer profiles linked to the card. - `blockreason`: The reason for transferring and blocking the loyalty card. - `generated`: An indicator of whether the loyalty card was generated. - `batchid`: The ID of the batch the loyalty card is in. - `attributes`: The custom attributes of this loyalty card. Currently, this feature is only available upon request.
+Download a CSV file containing the loyalty cards from a specified loyalty program.  > [!tip] If the exported CSV file is too large to view, you can > [split it into multiple files](https://www.google.com/search?q=split+CSV+into+multiple+files).  The CSV file contains the following columns:  - `identifier`: The unique identifier of the loyalty card. - `created`: The date and time the loyalty card was created. - `status`: The status of the loyalty card. - `userpercardlimit`: The maximum number of customer profiles that can be linked to the card. - `customerprofileids`: Integration IDs of the customer profiles linked to the card. - `blockreason`: The reason for transferring and blocking the loyalty card. - `generated`: An indicator of whether the loyalty card was generated. - `batchid`: The ID of the batch the loyalty card is in. - `attributes`: The custom attributes of this loyalty card.
 
 ### Example
 
@@ -5680,7 +5685,7 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audienceIds = 'audienceIds_example'; // string | The IDs of one or more audiences, separated by commas, by which to filter results.
+$audienceIds = 'audienceIds_example'; // string | The IDs of one or more audiences, separated by commas, by which to filter results. Do not provide more than 1000 audience IDs.
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
 
 try {
@@ -5695,7 +5700,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceIds** | **string**| The IDs of one or more audiences, separated by commas, by which to filter results. | |
+| **audienceIds** | **string**| The IDs of one or more audiences, separated by commas, by which to filter results. Do not provide more than 1000 audience IDs. | |
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
 
 ### Return type
@@ -9158,7 +9163,7 @@ importLoyaltyCards($loyaltyProgramId, $upFile): \TalonOne\Client\Model\Import
 
 Import loyalty cards
 
-Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - `identifier` (required): The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. - `state` (required): The state of the loyalty card. It can be `active` or `inactive`. - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).  > [!note] Your CSV file must contain less than 500,000 rows. Requests time out after 30 seconds.  ## Example  ```csv identifier,state,customerprofileids 123-456-789AT,active,Alexa001;UserA ```
+Upload a CSV file containing the loyalty cards that you want to use in your card-based loyalty program.  Send the file as multipart data.  It contains the following columns for each card:  - `identifier` (required): The identifier of the loyalty card, which must match the regular expression `^[A-Za-z0-9._%+@-]+$`. - `state` (required): The state of the loyalty card. It can be `active` or `inactive`. - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;). - `attributes` (optional): A JSON object that contains the loyalty card's custom attributes and their values. These attributes must be created and connected to this loyalty program before they can be assigned to the cards through this endpoint.  > [!note] Your CSV file must contain less than 500,000 rows. Requests time out after 30 seconds.  ## Example  ```csv identifier,state,customerprofileids,attributes 123-456-789AT,active,Alexa001;UserA,'{\"\"my_attributes\"\": \"\"10_off\"\"}\" ```
 
 ### Example
 
@@ -9259,6 +9264,70 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **loyaltyProgramId** | **int**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
+| **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\Import**](../Model/Import.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `importLoyaltyJoinDates()`
+
+```php
+importLoyaltyJoinDates($loyaltyProgramId, $upFile): \TalonOne\Client\Model\Import
+```
+
+Import join dates for a loyalty program
+
+Upload a CSV file containing customer profile IDs and their join dates for the specified loyalty program. Send the file as multipart data.  > [!important] This endpoint only works with profile-based loyalty programs.  The CSV file **must** contain the following columns:  - `customerprofileid`: The integration ID of the customer profile whose join   date you want to update. - `newjoindate`: The new join date for the customer in RFC3339 format. You   can use the time zone of your choice. It is converted to UTC internally   by Talon.One.  **Note**: - Customer profiles must already exist. If a referenced profile does not exist, the import fails with a `400` error. - If a join date already exists for a profile, the uploaded date replaces it.  > [!note] We recommend limiting your file size to 500 MB.  ## Example  ```csv customerprofileid,newjoindate customer1,2024-03-21T07:32:14Z customer2,2025-04-16T21:12:37Z customer3,2026-05-03T11:47:01Z ```
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$loyaltyProgramId = 56; // int | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.
+$upFile = '/path/to/file.txt'; // \SplFileObject | The CSV file containing the data that is being imported.
+
+try {
+    $result = $apiInstance->importLoyaltyJoinDates($loyaltyProgramId, $upFile);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->importLoyaltyJoinDates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **loyaltyProgramId** | **int**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. | |
 | **upFile** | **\SplFileObject****\SplFileObject**| The CSV file containing the data that is being imported. | [optional] |
 
 ### Return type
@@ -9737,7 +9806,7 @@ This endpoint does not need any parameter.
 ## `listApplicationCartItemFilters()`
 
 ```php
-listApplicationCartItemFilters($applicationId, $pageSize, $skip, $title): \TalonOne\Client\Model\ListApplicationCartItemFilters200Response
+listApplicationCartItemFilters($applicationId, $pageSize, $skip, $name): \TalonOne\Client\Model\ListApplicationCartItemFilters200Response
 ```
 
 List Application cart item filters
@@ -9766,10 +9835,10 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$title = 'title_example'; // string | Filter by the display name of the Application cart item filter in the Application.  **Note**: If no `title` is provided, all the Application cart item filters in the Application are returned.
+$name = 'name_example'; // string | Filter by the display name of the Application cart item filter in the Application.  **Note**: If no `name` is provided, all the Application cart item filters in the Application are returned.
 
 try {
-    $result = $apiInstance->listApplicationCartItemFilters($applicationId, $pageSize, $skip, $title);
+    $result = $apiInstance->listApplicationCartItemFilters($applicationId, $pageSize, $skip, $name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->listApplicationCartItemFilters: ', $e->getMessage(), PHP_EOL;
@@ -9783,7 +9852,7 @@ try {
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **title** | **string**| Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;title&#x60; is provided, all the Application cart item filters in the Application are returned. | [optional] |
+| **name** | **string**| Filter by the display name of the Application cart item filter in the Application.  **Note**: If no &#x60;name&#x60; is provided, all the Application cart item filters in the Application are returned. | [optional] |
 
 ### Return type
 

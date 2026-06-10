@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **applicationId** | **int** | The ID of the Application associated with the campaign that references this achievement. |
 **applicationName** | **string** | The name of the Application associated with the campaign that references this achievement. |
 **campaignId** | **int** | The ID of the campaign that references this achievement. |
+**campaignName** | **string** | The name of the campaign that references this achievement. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **campaignId** | **int** | ID of the campaign from which the referral received the referral code. |
 **advocateProfileIntegrationId** | **string** | The Integration ID of the Advocate&#39;s Profile. |
 **friendProfileIntegrationId** | **string** | An optional Integration ID of the Friend&#39;s Profile. | [optional]
-**attributes** | **object** | Arbitrary properties associated with this item. | [optional]
+**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
 **importId** | **int** | The ID of the Import which created this referral. | [optional]
 **code** | **string** | The referral code. |
 **usageCounter** | **int** | The number of times this referral code has been successfully used. |

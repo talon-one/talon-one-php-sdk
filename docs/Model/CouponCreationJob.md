@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **expiryDate** | **\DateTime** | Expiration date of the coupon. Coupon never expires if this is omitted. | [optional]
 **numberOfCoupons** | **int** | The number of new coupon codes to generate for the campaign. |
 **couponSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]
-**attributes** | **object** | Arbitrary properties associated with coupons. |
+**attributes** | **object** | Arbitrary properties associated with this campaign. |
 **isReservationMandatory** | **bool** | An indication of whether the code can be redeemed only if it has been reserved first. | [optional] [default to false]
 **batchId** | **string** | The batch ID coupons created by this job will bear. |
 **status** | **string** | The current status of this request. Possible values: - &#x60;pending verification&#x60; - &#x60;pending&#x60; - &#x60;completed&#x60; - &#x60;failed&#x60; - &#x60;coupon pattern full&#x60; |
