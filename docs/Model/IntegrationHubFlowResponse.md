@@ -5,7 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | ID of the integration hub flow. |
-**applicationID** | **int** | ID of application the flow is registered for. | [optional]
+**integrationName** | **string** | Name of the integration. | [optional]
+**instanceName** | **string** | Name of the integration instance. | [optional]
+**createdAt** | **\DateTime** | Timestamp when the flow was created. |
+**disabledUntil** | **\DateTime** | Timestamp until which the flow is disabled. Null when the flow is active. | [optional]
+**applicationId** | **int** | ID of the application the flow is registered for. | [optional]
+**loyaltyProgramId** | **int** | ID of the loyalty program the flow is registered for. | [optional]
 **eventType** | **string** | The event type we want to register a flow for. |
 **integrationHubFlowUrl** | **string** | The URL of the integration hub flow that we want to trigger for the event. |
 **config** | [**\TalonOne\Client\Model\IntegrationHubFlowConfigResponse**](IntegrationHubFlowConfigResponse.md) |  |

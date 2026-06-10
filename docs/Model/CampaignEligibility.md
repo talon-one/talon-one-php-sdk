@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **features** | **string[]** | The features enabled in this campaign. |
 **eligibility** | [**\TalonOne\Client\Model\CampaignEligibilityDetails[]**](CampaignEligibilityDetails.md) | The customer&#39;s eligibility for each campaign in the current customer session. |
 **rules** | [**\TalonOne\Client\Model\RuleMetadataEligibility[]**](RuleMetadataEligibility.md) | A list of rules containing customer-facing details of the rewards defined in the campaign. |
+**experiment** | [**\TalonOne\Client\Model\CampaignEligibilityExperiment**](CampaignEligibilityExperiment.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

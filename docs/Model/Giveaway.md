@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **poolId** | **int** | The ID of the pool to return giveaway codes from. |
 **startDate** | **\DateTime** | Timestamp at which point the giveaway becomes valid. | [optional]
 **endDate** | **\DateTime** | Timestamp at which point the giveaway becomes invalid. | [optional]
-**attributes** | **object** | Arbitrary properties associated with this giveaway. | [optional]
+**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
 **used** | **bool** | Indicates whether this giveaway code was given before. | [optional]
 **importId** | **int** | The ID of the Import which created this giveaway. | [optional]
 **profileIntegrationId** | **string** | The third-party integration ID of the customer profile that was awarded the giveaway, if the giveaway was awarded. | [optional]

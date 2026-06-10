@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ruleTitle** | **string** | The title of the rule that contained triggered this points deduction. |
-**programId** | **int** | The ID of the loyalty program where these points were added. |
-**subLedgerId** | **string** | The ID of the subledger within the loyalty program where these points were added. |
+**programId** | **int** | The ID of the loyalty program from which these points were deducted. |
+**subLedgerId** | **string** | The ID of the subledger within the loyalty program from which these points were deducted. |
 **value** | **float** | The amount of points that were deducted. |
-**transactionUUID** | **string** | The identifier of this deduction in the loyalty ledger. |
-**name** | **string** | The name property gets one of the following two values. It can be the loyalty program name or it can represent a reason for the respective deduction of loyalty points. The latter is an optional value defined in a deduction rule. |
-**cardIdentifier** | **string** | The card on which these points were added. | [optional]
+**transactionUUID** | **string** | The identifier of this loyalty point transaction. |
+**name** | **string** | The reason of this loyalty points deduction. |
+**cardIdentifier** | **string** | The identifier of the card from which these points were deducted. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

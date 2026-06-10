@@ -127,6 +127,7 @@ docs/Model/CampaignEditedNotification.md
 docs/Model/CampaignEditedNotificationItem.md
 docs/Model/CampaignEligibility.md
 docs/Model/CampaignEligibilityDetails.md
+docs/Model/CampaignEligibilityExperiment.md
 docs/Model/CampaignEligibilityFailureDetails.md
 docs/Model/CampaignEntity.md
 docs/Model/CampaignEvaluationGroup.md
@@ -253,6 +254,8 @@ docs/Model/EventV3Entity.md
 docs/Model/EventV3RequestEntity.md
 docs/Model/Experiment.md
 docs/Model/ExperimentCampaignCopy.md
+docs/Model/ExperimentConfidenceTimeline.md
+docs/Model/ExperimentConfidenceTimelineDataPoint.md
 docs/Model/ExperimentCopy.md
 docs/Model/ExperimentCopyExperiment.md
 docs/Model/ExperimentListResults.md
@@ -369,13 +372,13 @@ docs/Model/IntegrationGetAllCampaigns200Response.md
 docs/Model/IntegrationHubConfig.md
 docs/Model/IntegrationHubEventPayloadCouponBasedNotifications.md
 docs/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimits.md
-docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedNotification.md
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.md
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.md
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.md
 docs/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.md
 docs/Model/IntegrationHubEventRecord.md
 docs/Model/IntegrationHubEventStatusUpdate.md
+docs/Model/IntegrationHubEventType.md
 docs/Model/IntegrationHubFlow.md
 docs/Model/IntegrationHubFlowConfig.md
 docs/Model/IntegrationHubFlowConfigResponse.md
@@ -634,8 +637,6 @@ docs/Model/ScimServiceProviderConfigResponse.md
 docs/Model/ScimServiceProviderConfigResponseBulk.md
 docs/Model/ScimServiceProviderConfigResponseChangePassword.md
 docs/Model/ScimServiceProviderConfigResponseFilter.md
-docs/Model/ScimServiceProviderConfigResponsePatch.md
-docs/Model/ScimServiceProviderConfigResponseSort.md
 docs/Model/ScimUser.md
 docs/Model/ScimUsersListResponse.md
 docs/Model/SecondaryDeployment.md
@@ -703,7 +704,6 @@ docs/Model/UpdateCoupon.md
 docs/Model/UpdateCouponBatch.md
 docs/Model/UpdateCouponsData.md
 docs/Model/UpdateCustomEffect.md
-docs/Model/UpdateCustomerProfileV2409Response.md
 docs/Model/UpdateCustomerSessionV2409Response.md
 docs/Model/UpdateExperiment.md
 docs/Model/UpdateExperimentVariant.md
@@ -718,6 +718,7 @@ docs/Model/UpdatePriceType.md
 docs/Model/UpdateReferral.md
 docs/Model/UpdateReferralBatch.md
 docs/Model/UpdateReward.md
+docs/Model/UpdateRiskNotification.md
 docs/Model/UpdateRole.md
 docs/Model/UpdateStore.md
 docs/Model/UpdateSupportRequest.md
@@ -853,6 +854,7 @@ lib/Model/CampaignEditedNotification.php
 lib/Model/CampaignEditedNotificationItem.php
 lib/Model/CampaignEligibility.php
 lib/Model/CampaignEligibilityDetails.php
+lib/Model/CampaignEligibilityExperiment.php
 lib/Model/CampaignEligibilityFailureDetails.php
 lib/Model/CampaignEntity.php
 lib/Model/CampaignEvaluationGroup.php
@@ -979,6 +981,8 @@ lib/Model/EventV3Entity.php
 lib/Model/EventV3RequestEntity.php
 lib/Model/Experiment.php
 lib/Model/ExperimentCampaignCopy.php
+lib/Model/ExperimentConfidenceTimeline.php
+lib/Model/ExperimentConfidenceTimelineDataPoint.php
 lib/Model/ExperimentCopy.php
 lib/Model/ExperimentCopyExperiment.php
 lib/Model/ExperimentListResults.php
@@ -1095,13 +1099,13 @@ lib/Model/IntegrationGetAllCampaigns200Response.php
 lib/Model/IntegrationHubConfig.php
 lib/Model/IntegrationHubEventPayloadCouponBasedNotifications.php
 lib/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimits.php
-lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedNotification.php
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification.php
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationAction.php
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotification.php
 lib/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotification.php
 lib/Model/IntegrationHubEventRecord.php
 lib/Model/IntegrationHubEventStatusUpdate.php
+lib/Model/IntegrationHubEventType.php
 lib/Model/IntegrationHubFlow.php
 lib/Model/IntegrationHubFlowConfig.php
 lib/Model/IntegrationHubFlowConfigResponse.php
@@ -1361,8 +1365,6 @@ lib/Model/ScimServiceProviderConfigResponse.php
 lib/Model/ScimServiceProviderConfigResponseBulk.php
 lib/Model/ScimServiceProviderConfigResponseChangePassword.php
 lib/Model/ScimServiceProviderConfigResponseFilter.php
-lib/Model/ScimServiceProviderConfigResponsePatch.php
-lib/Model/ScimServiceProviderConfigResponseSort.php
 lib/Model/ScimUser.php
 lib/Model/ScimUsersListResponse.php
 lib/Model/SecondaryDeployment.php
@@ -1430,7 +1432,6 @@ lib/Model/UpdateCoupon.php
 lib/Model/UpdateCouponBatch.php
 lib/Model/UpdateCouponsData.php
 lib/Model/UpdateCustomEffect.php
-lib/Model/UpdateCustomerProfileV2409Response.php
 lib/Model/UpdateCustomerSessionV2409Response.php
 lib/Model/UpdateExperiment.php
 lib/Model/UpdateExperimentVariant.php
@@ -1445,6 +1446,7 @@ lib/Model/UpdatePriceType.php
 lib/Model/UpdateReferral.php
 lib/Model/UpdateReferralBatch.php
 lib/Model/UpdateReward.php
+lib/Model/UpdateRiskNotification.php
 lib/Model/UpdateRole.php
 lib/Model/UpdateStore.php
 lib/Model/UpdateSupportRequest.php
@@ -1574,6 +1576,7 @@ test/Model/CampaignDetailTest.php
 test/Model/CampaignEditedNotificationItemTest.php
 test/Model/CampaignEditedNotificationTest.php
 test/Model/CampaignEligibilityDetailsTest.php
+test/Model/CampaignEligibilityExperimentTest.php
 test/Model/CampaignEligibilityFailureDetailsTest.php
 test/Model/CampaignEligibilityTest.php
 test/Model/CampaignEntityTest.php
@@ -1701,6 +1704,8 @@ test/Model/EventV3EntityTest.php
 test/Model/EventV3RequestEntityTest.php
 test/Model/EventV3Test.php
 test/Model/ExperimentCampaignCopyTest.php
+test/Model/ExperimentConfidenceTimelineDataPointTest.php
+test/Model/ExperimentConfidenceTimelineTest.php
 test/Model/ExperimentCopyExperimentTest.php
 test/Model/ExperimentCopyTest.php
 test/Model/ExperimentListResultsRequestTest.php
@@ -1818,13 +1823,13 @@ test/Model/IntegrationGetAllCampaigns200ResponseTest.php
 test/Model/IntegrationHubConfigTest.php
 test/Model/IntegrationHubEventPayloadCouponBasedNotificationsLimitsTest.php
 test/Model/IntegrationHubEventPayloadCouponBasedNotificationsTest.php
-test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedNotificationTest.php
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationActionTest.php
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationTest.php
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierDowngradeNotificationTest.php
 test/Model/IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotificationTest.php
 test/Model/IntegrationHubEventRecordTest.php
 test/Model/IntegrationHubEventStatusUpdateTest.php
+test/Model/IntegrationHubEventTypeTest.php
 test/Model/IntegrationHubFlowConfigResponseTest.php
 test/Model/IntegrationHubFlowConfigTest.php
 test/Model/IntegrationHubFlowResponseTest.php
@@ -2082,8 +2087,6 @@ test/Model/ScimSchemasListResponseTest.php
 test/Model/ScimServiceProviderConfigResponseBulkTest.php
 test/Model/ScimServiceProviderConfigResponseChangePasswordTest.php
 test/Model/ScimServiceProviderConfigResponseFilterTest.php
-test/Model/ScimServiceProviderConfigResponsePatchTest.php
-test/Model/ScimServiceProviderConfigResponseSortTest.php
 test/Model/ScimServiceProviderConfigResponseTest.php
 test/Model/ScimUserTest.php
 test/Model/ScimUsersListResponseTest.php
@@ -2152,7 +2155,6 @@ test/Model/UpdateCouponBatchTest.php
 test/Model/UpdateCouponTest.php
 test/Model/UpdateCouponsDataTest.php
 test/Model/UpdateCustomEffectTest.php
-test/Model/UpdateCustomerProfileV2409ResponseTest.php
 test/Model/UpdateCustomerSessionV2409ResponseTest.php
 test/Model/UpdateExperimentTest.php
 test/Model/UpdateExperimentVariantArrayTest.php
@@ -2167,6 +2169,7 @@ test/Model/UpdatePriceTypeTest.php
 test/Model/UpdateReferralBatchTest.php
 test/Model/UpdateReferralTest.php
 test/Model/UpdateRewardTest.php
+test/Model/UpdateRiskNotificationTest.php
 test/Model/UpdateRoleTest.php
 test/Model/UpdateStoreTest.php
 test/Model/UpdateSupportRequestTest.php

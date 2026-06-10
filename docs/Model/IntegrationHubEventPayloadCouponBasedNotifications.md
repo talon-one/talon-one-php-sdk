@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **recipientIntegrationId** | **string** |  | [optional]
 **importId** | **int** |  | [optional]
 **batchId** | **string** |  | [optional]
-**attributes** | **object** |  | [optional]
+**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
 **limits** | [**\TalonOne\Client\Model\IntegrationHubEventPayloadCouponBasedNotificationsLimits[]**](IntegrationHubEventPayloadCouponBasedNotificationsLimits.md) |  | [optional]
 **publishedAt** | **\DateTime** | Timestamp when the event was published. |
 **sourceOfEvent** | **string** |  |

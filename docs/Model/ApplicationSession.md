@@ -18,6 +18,6 @@ Name | Type | Description | Notes
 **discounts** | **array<string,float>** | **API V1 only.** A map of labeled discount values, in the same currency as the session.  If you are using the V2 endpoints, refer to the &#x60;totalDiscounts&#x60; property instead. |
 **totalDiscounts** | **float** | The total sum of the discounts applied to this session.  **Note:** If more than one session is returned, this value is displayed as &#x60;0&#x60;. |
 **total** | **float** | The total sum of the session before any discounts applied. |
-**attributes** | **object** | Arbitrary properties associated with this item. | [optional]
+**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
