@@ -1464,6 +1464,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets couponRedemptionCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getCouponRedemptionCount()
     {
@@ -1476,6 +1477,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $couponRedemptionCount This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCouponRedemptionCount($couponRedemptionCount)
     {
@@ -1491,6 +1493,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets referralRedemptionCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getReferralRedemptionCount()
     {
@@ -1503,6 +1506,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $referralRedemptionCount This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setReferralRedemptionCount($referralRedemptionCount)
     {
@@ -1518,6 +1522,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets discountCount
      *
      * @return float|null
+     * @deprecated
      */
     public function getDiscountCount()
     {
@@ -1530,6 +1535,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float|null $discountCount This property is **deprecated**. The count should be available under *budgets* property. Total amount of discounts redeemed in the campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setDiscountCount($discountCount)
     {
@@ -1545,6 +1551,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets discountEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getDiscountEffectCount()
     {
@@ -1557,6 +1564,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $discountEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of times discounts were redeemed in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setDiscountEffectCount($discountEffectCount)
     {
@@ -1572,6 +1580,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets couponCreationCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getCouponCreationCount()
     {
@@ -1584,6 +1593,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $couponCreationCount This property is **deprecated**. The count should be available under *budgets* property. Total number of coupons created by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCouponCreationCount($couponCreationCount)
     {
@@ -1599,6 +1609,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets customEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getCustomEffectCount()
     {
@@ -1611,6 +1622,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $customEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of custom effects triggered by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCustomEffectCount($customEffectCount)
     {
@@ -1626,6 +1638,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets referralCreationCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getReferralCreationCount()
     {
@@ -1638,6 +1651,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $referralCreationCount This property is **deprecated**. The count should be available under *budgets* property. Total number of referrals created by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setReferralCreationCount($referralCreationCount)
     {
@@ -1653,6 +1667,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets addFreeItemEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getAddFreeItemEffectCount()
     {
@@ -1665,6 +1680,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $addFreeItemEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setAddFreeItemEffectCount($addFreeItemEffectCount)
     {
@@ -1680,6 +1696,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets awardedGiveawaysCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getAwardedGiveawaysCount()
     {
@@ -1692,6 +1709,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $awardedGiveawaysCount This property is **deprecated**. The count should be available under *budgets* property. Total number of giveaways awarded by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setAwardedGiveawaysCount($awardedGiveawaysCount)
     {
@@ -1707,6 +1725,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets createdLoyaltyPointsCount
      *
      * @return float|null
+     * @deprecated
      */
     public function getCreatedLoyaltyPointsCount()
     {
@@ -1719,6 +1738,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float|null $createdLoyaltyPointsCount This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points created by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCreatedLoyaltyPointsCount($createdLoyaltyPointsCount)
     {
@@ -1734,6 +1754,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets createdLoyaltyPointsEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getCreatedLoyaltyPointsEffectCount()
     {
@@ -1746,6 +1767,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $createdLoyaltyPointsEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point creation effects triggered by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCreatedLoyaltyPointsEffectCount($createdLoyaltyPointsEffectCount)
     {
@@ -1761,6 +1783,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets redeemedLoyaltyPointsCount
      *
      * @return float|null
+     * @deprecated
      */
     public function getRedeemedLoyaltyPointsCount()
     {
@@ -1773,6 +1796,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float|null $redeemedLoyaltyPointsCount This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points redeemed by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setRedeemedLoyaltyPointsCount($redeemedLoyaltyPointsCount)
     {
@@ -1788,6 +1812,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets redeemedLoyaltyPointsEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getRedeemedLoyaltyPointsEffectCount()
     {
@@ -1800,6 +1825,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $redeemedLoyaltyPointsEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point redemption effects triggered by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setRedeemedLoyaltyPointsEffectCount($redeemedLoyaltyPointsEffectCount)
     {
@@ -1815,6 +1841,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets callApiEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getCallApiEffectCount()
     {
@@ -1827,6 +1854,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $callApiEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of webhooks triggered by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setCallApiEffectCount($callApiEffectCount)
     {
@@ -1842,6 +1870,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets reservecouponEffectCount
      *
      * @return int|null
+     * @deprecated
      */
     public function getReservecouponEffectCount()
     {
@@ -1854,6 +1883,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param int|null $reservecouponEffectCount This property is **deprecated**. The count should be available under *budgets* property. Total number of reserve coupon effects triggered by rules in this campaign.
      *
      * @return self
+     * @deprecated
      */
     public function setReservecouponEffectCount($reservecouponEffectCount)
     {

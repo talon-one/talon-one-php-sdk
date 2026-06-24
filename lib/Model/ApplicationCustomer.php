@@ -592,6 +592,7 @@ class ApplicationCustomer implements ModelInterface, ArrayAccess, \JsonSerializa
      * Gets loyaltyMemberships
      *
      * @return \TalonOne\Client\Model\LoyaltyMembership[]|null
+     * @deprecated
      */
     public function getLoyaltyMemberships()
     {
@@ -604,6 +605,7 @@ class ApplicationCustomer implements ModelInterface, ArrayAccess, \JsonSerializa
      * @param \TalonOne\Client\Model\LoyaltyMembership[]|null $loyaltyMemberships **DEPRECATED. Always returns `null`.** A list of loyalty programs joined by the customer.
      *
      * @return self
+     * @deprecated
      */
     public function setLoyaltyMemberships($loyaltyMemberships)
     {

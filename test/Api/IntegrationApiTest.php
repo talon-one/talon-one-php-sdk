@@ -372,6 +372,18 @@ class IntegrationApiTest extends TestCase
     }
 
     /**
+     * Test case for joinLoyaltyProgram
+     *
+     * Join customer profile to loyalty program.
+     *
+     */
+    public function testJoinLoyaltyProgram()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for linkLoyaltyCardToProfile
      *
      * Link customer profile to card.

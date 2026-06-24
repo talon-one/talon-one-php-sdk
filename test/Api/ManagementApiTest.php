@@ -1500,6 +1500,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for getRulesetV2
+     *
+     * Get ruleset (V2).
+     *
+     */
+    public function testGetRulesetV2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getRulesets
      *
      * List campaign rulesets.

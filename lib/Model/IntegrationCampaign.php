@@ -67,7 +67,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => 'string',
         'tags' => 'string[]',
         'features' => 'string[]',
-        'rules' => '\TalonOne\Client\Model\RuleMetadata[]'
+        'rules' => '\TalonOne\Client\Model\RuleMetadata[]',
+        'linkedStoreIds' => 'int[]',
+        'linkedAudienceIds' => 'int[]'
     ];
 
     /**
@@ -88,7 +90,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => null,
         'tags' => null,
         'features' => null,
-        'rules' => null
+        'rules' => null,
+        'linkedStoreIds' => 'int64',
+        'linkedAudienceIds' => 'int64'
     ];
 
     /**
@@ -107,7 +111,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => false,
         'tags' => false,
         'features' => false,
-        'rules' => false
+        'rules' => false,
+        'linkedStoreIds' => false,
+        'linkedAudienceIds' => false
     ];
 
     /**
@@ -206,7 +212,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => 'state',
         'tags' => 'tags',
         'features' => 'features',
-        'rules' => 'rules'
+        'rules' => 'rules',
+        'linkedStoreIds' => 'linkedStoreIds',
+        'linkedAudienceIds' => 'linkedAudienceIds'
     ];
 
     /**
@@ -225,7 +233,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => 'setState',
         'tags' => 'setTags',
         'features' => 'setFeatures',
-        'rules' => 'setRules'
+        'rules' => 'setRules',
+        'linkedStoreIds' => 'setLinkedStoreIds',
+        'linkedAudienceIds' => 'setLinkedAudienceIds'
     ];
 
     /**
@@ -244,7 +254,9 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         'state' => 'getState',
         'tags' => 'getTags',
         'features' => 'getFeatures',
-        'rules' => 'getRules'
+        'rules' => 'getRules',
+        'linkedStoreIds' => 'getLinkedStoreIds',
+        'linkedAudienceIds' => 'getLinkedAudienceIds'
     ];
 
     /**
@@ -351,6 +363,8 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
         $this->setIfExists('rules', $data ?? [], null);
+        $this->setIfExists('linkedStoreIds', $data ?? [], null);
+        $this->setIfExists('linkedAudienceIds', $data ?? [], null);
     }
 
     /**
@@ -754,6 +768,60 @@ class IntegrationCampaign implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable rules cannot be null');
         }
         $this->container['rules'] = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets linkedStoreIds
+     *
+     * @return int[]|null
+     */
+    public function getLinkedStoreIds()
+    {
+        return $this->container['linkedStoreIds'];
+    }
+
+    /**
+     * Sets linkedStoreIds
+     *
+     * @param int[]|null $linkedStoreIds A list of store IDs linked to this campaign.
+     *
+     * @return self
+     */
+    public function setLinkedStoreIds($linkedStoreIds)
+    {
+        if (is_null($linkedStoreIds)) {
+            throw new \InvalidArgumentException('non-nullable linkedStoreIds cannot be null');
+        }
+        $this->container['linkedStoreIds'] = $linkedStoreIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets linkedAudienceIds
+     *
+     * @return int[]|null
+     */
+    public function getLinkedAudienceIds()
+    {
+        return $this->container['linkedAudienceIds'];
+    }
+
+    /**
+     * Sets linkedAudienceIds
+     *
+     * @param int[]|null $linkedAudienceIds A list of audience IDs linked to this campaign.
+     *
+     * @return self
+     */
+    public function setLinkedAudienceIds($linkedAudienceIds)
+    {
+        if (is_null($linkedAudienceIds)) {
+            throw new \InvalidArgumentException('non-nullable linkedAudienceIds cannot be null');
+        }
+        $this->container['linkedAudienceIds'] = $linkedAudienceIds;
 
         return $this;
     }

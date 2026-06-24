@@ -431,6 +431,9 @@ class ManagementApi
         'getRuleset' => [
             'application/json',
         ],
+        'getRulesetV2' => [
+            'application/json',
+        ],
         'getRulesets' => [
             'application/json',
         ],
@@ -13820,15 +13823,17 @@ class ManagementApi
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  bool|null $valuesOnly Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (optional, default to false)
+     * @param  \DateTime|null $deletedBefore Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
+     * @param  \DateTime|null $deletedAfter Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function exportCoupons($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, string $contentType = self::contentTypes['exportCoupons'][0])
+    public function exportCoupons($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, $deletedBefore = null, $deletedAfter = null, string $contentType = self::contentTypes['exportCoupons'][0])
     {
-        list($response) = $this->exportCouponsWithHttpInfo($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $contentType);
+        list($response) = $this->exportCouponsWithHttpInfo($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter, $contentType);
         return $response;
     }
 
@@ -13852,15 +13857,17 @@ class ManagementApi
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  bool|null $valuesOnly Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (optional, default to false)
+     * @param  \DateTime|null $deletedBefore Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
+     * @param  \DateTime|null $deletedAfter Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function exportCouponsWithHttpInfo($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, string $contentType = self::contentTypes['exportCoupons'][0])
+    public function exportCouponsWithHttpInfo($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, $deletedBefore = null, $deletedAfter = null, string $contentType = self::contentTypes['exportCoupons'][0])
     {
-        $request = $this->exportCouponsRequest($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $contentType);
+        $request = $this->exportCouponsRequest($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13951,14 +13958,16 @@ class ManagementApi
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  bool|null $valuesOnly Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (optional, default to false)
+     * @param  \DateTime|null $deletedBefore Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
+     * @param  \DateTime|null $deletedAfter Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportCouponsAsync($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, string $contentType = self::contentTypes['exportCoupons'][0])
+    public function exportCouponsAsync($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, $deletedBefore = null, $deletedAfter = null, string $contentType = self::contentTypes['exportCoupons'][0])
     {
-        return $this->exportCouponsAsyncWithHttpInfo($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $contentType)
+        return $this->exportCouponsAsyncWithHttpInfo($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13986,15 +13995,17 @@ class ManagementApi
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  bool|null $valuesOnly Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (optional, default to false)
+     * @param  \DateTime|null $deletedBefore Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
+     * @param  \DateTime|null $deletedAfter Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportCouponsAsyncWithHttpInfo($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, string $contentType = self::contentTypes['exportCoupons'][0])
+    public function exportCouponsAsyncWithHttpInfo($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, $deletedBefore = null, $deletedAfter = null, string $contentType = self::contentTypes['exportCoupons'][0])
     {
         $returnType = 'string';
-        $request = $this->exportCouponsRequest($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $contentType);
+        $request = $this->exportCouponsRequest($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14050,12 +14061,14 @@ class ManagementApi
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  bool|null $valuesOnly Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. (optional, default to false)
+     * @param  \DateTime|null $deletedBefore Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
+     * @param  \DateTime|null $deletedAfter Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function exportCouponsRequest($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, string $contentType = self::contentTypes['exportCoupons'][0])
+    public function exportCouponsRequest($applicationId, $campaignId = null, $sort = null, $value = null, $createdBefore = null, $createdAfter = null, $valid = null, $usable = null, $referralId = null, $recipientIntegrationId = null, $batchId = null, $exactMatch = false, $dateFormat = null, $campaignState = null, $valuesOnly = false, $deletedBefore = null, $deletedAfter = null, string $contentType = self::contentTypes['exportCoupons'][0])
     {
 
         // verify the required parameter 'applicationId' is set
@@ -14064,6 +14077,8 @@ class ManagementApi
                 'Missing the required parameter $applicationId when calling exportCoupons'
             );
         }
+
+
 
 
 
@@ -14209,6 +14224,24 @@ class ManagementApi
             $valuesOnly,
             'valuesOnly', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $deletedBefore,
+            'deletedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $deletedAfter,
+            'deletedAfter', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -25233,6 +25266,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $entity Returned attributes will be filtered by supplied entity. (optional)
      * @param  string|null $applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param  string|null $loyaltyProgramIds Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. (optional)
      * @param  string|null $type Returned attributes will be filtered by supplied type (optional)
      * @param  string|null $kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
      * @param  string|null $search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
@@ -25242,9 +25276,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\GetAttributes200Response
      */
-    public function getAttributes($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
+    public function getAttributes($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $loyaltyProgramIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
     {
-        list($response) = $this->getAttributesWithHttpInfo($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search, $contentType);
+        list($response) = $this->getAttributesWithHttpInfo($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search, $contentType);
         return $response;
     }
 
@@ -25258,6 +25292,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $entity Returned attributes will be filtered by supplied entity. (optional)
      * @param  string|null $applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param  string|null $loyaltyProgramIds Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. (optional)
      * @param  string|null $type Returned attributes will be filtered by supplied type (optional)
      * @param  string|null $kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
      * @param  string|null $search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
@@ -25267,9 +25302,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\GetAttributes200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAttributesWithHttpInfo($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
+    public function getAttributesWithHttpInfo($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $loyaltyProgramIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
     {
-        $request = $this->getAttributesRequest($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search, $contentType);
+        $request = $this->getAttributesRequest($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -25350,6 +25385,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $entity Returned attributes will be filtered by supplied entity. (optional)
      * @param  string|null $applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param  string|null $loyaltyProgramIds Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. (optional)
      * @param  string|null $type Returned attributes will be filtered by supplied type (optional)
      * @param  string|null $kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
      * @param  string|null $search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
@@ -25358,9 +25394,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAttributesAsync($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
+    public function getAttributesAsync($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $loyaltyProgramIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
     {
-        return $this->getAttributesAsyncWithHttpInfo($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search, $contentType)
+        return $this->getAttributesAsyncWithHttpInfo($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -25378,6 +25414,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $entity Returned attributes will be filtered by supplied entity. (optional)
      * @param  string|null $applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param  string|null $loyaltyProgramIds Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. (optional)
      * @param  string|null $type Returned attributes will be filtered by supplied type (optional)
      * @param  string|null $kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
      * @param  string|null $search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
@@ -25386,10 +25423,10 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAttributesAsyncWithHttpInfo($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
+    public function getAttributesAsyncWithHttpInfo($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $loyaltyProgramIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
     {
         $returnType = '\TalonOne\Client\Model\GetAttributes200Response';
-        $request = $this->getAttributesRequest($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search, $contentType);
+        $request = $this->getAttributesRequest($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -25435,6 +25472,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $entity Returned attributes will be filtered by supplied entity. (optional)
      * @param  string|null $applicationIds Returned attributes will be filtered by supplied application ids (optional)
+     * @param  string|null $loyaltyProgramIds Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. (optional)
      * @param  string|null $type Returned attributes will be filtered by supplied type (optional)
      * @param  string|null $kind Returned attributes will be filtered by supplied kind (builtin or custom) (optional)
      * @param  string|null $search Returned attributes will be filtered by searching case insensitive through Attribute name, description and type (optional)
@@ -25443,7 +25481,7 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAttributesRequest($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
+    public function getAttributesRequest($pageSize = 1000, $skip = null, $sort = null, $entity = null, $applicationIds = null, $loyaltyProgramIds = null, $type = null, $kind = null, $search = null, string $contentType = self::contentTypes['getAttributes'][0])
     {
 
         if ($pageSize !== null && $pageSize > 1000) {
@@ -25453,6 +25491,7 @@ class ManagementApi
             throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getAttributes, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -25508,6 +25547,15 @@ class ManagementApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $applicationIds,
             'applicationIds', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $loyaltyProgramIds,
+            'loyaltyProgramIds', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -39393,6 +39441,319 @@ class ManagementApi
 
 
         $resourcePath = '/v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{applicationId}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($campaignId !== null) {
+            $resourcePath = str_replace(
+                '{campaignId}',
+                ObjectSerializer::toPathValue($campaignId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($rulesetId !== null) {
+            $resourcePath = str_replace(
+                '{rulesetId}',
+                ObjectSerializer::toPathValue($rulesetId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getRulesetV2
+     *
+     * Get ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $rulesetId The ID of the ruleset. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\RulesetV2
+     */
+    public function getRulesetV2($applicationId, $campaignId, $rulesetId, string $contentType = self::contentTypes['getRulesetV2'][0])
+    {
+        list($response) = $this->getRulesetV2WithHttpInfo($applicationId, $campaignId, $rulesetId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getRulesetV2WithHttpInfo
+     *
+     * Get ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $rulesetId The ID of the ruleset. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\RulesetV2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getRulesetV2WithHttpInfo($applicationId, $campaignId, $rulesetId, string $contentType = self::contentTypes['getRulesetV2'][0])
+    {
+        $request = $this->getRulesetV2Request($applicationId, $campaignId, $rulesetId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\RulesetV2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\RulesetV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\RulesetV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getRulesetV2Async
+     *
+     * Get ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $rulesetId The ID of the ruleset. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRulesetV2Async($applicationId, $campaignId, $rulesetId, string $contentType = self::contentTypes['getRulesetV2'][0])
+    {
+        return $this->getRulesetV2AsyncWithHttpInfo($applicationId, $campaignId, $rulesetId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getRulesetV2AsyncWithHttpInfo
+     *
+     * Get ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $rulesetId The ID of the ruleset. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRulesetV2AsyncWithHttpInfo($applicationId, $campaignId, $rulesetId, string $contentType = self::contentTypes['getRulesetV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\RulesetV2';
+        $request = $this->getRulesetV2Request($applicationId, $campaignId, $rulesetId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getRulesetV2'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $rulesetId The ID of the ruleset. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getRulesetV2Request($applicationId, $campaignId, $rulesetId, string $contentType = self::contentTypes['getRulesetV2'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling getRulesetV2'
+            );
+        }
+
+        // verify the required parameter 'campaignId' is set
+        if ($campaignId === null || (is_array($campaignId) && count($campaignId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignId when calling getRulesetV2'
+            );
+        }
+
+        // verify the required parameter 'rulesetId' is set
+        if ($rulesetId === null || (is_array($rulesetId) && count($rulesetId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rulesetId when calling getRulesetV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -152,9 +152,9 @@ class RewardTest extends TestCase
     }
 
     /**
-     * Test attribute "visibilityConditions"
+     * Test attribute "eligibilityConditions"
      */
-    public function testPropertyVisibilityConditions()
+    public function testPropertyEligibilityConditions()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

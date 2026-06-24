@@ -60,7 +60,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'description' => 'string',
         'status' => 'string',
-        'visibilityConditions' => '\TalonOne\Client\Model\Rule',
+        'eligibilityConditions' => '\TalonOne\Client\Model\Rule',
         'rule' => '\TalonOne\Client\Model\Rule',
         'bindings' => '\TalonOne\Client\Model\Binding[]',
         'pointsRequired' => '\TalonOne\Client\Model\RewardPointsRequired[]'
@@ -77,7 +77,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'description' => null,
         'status' => null,
-        'visibilityConditions' => null,
+        'eligibilityConditions' => null,
         'rule' => null,
         'bindings' => null,
         'pointsRequired' => null
@@ -92,7 +92,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'description' => false,
         'status' => false,
-        'visibilityConditions' => false,
+        'eligibilityConditions' => false,
         'rule' => false,
         'bindings' => false,
         'pointsRequired' => false
@@ -187,7 +187,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'description' => 'description',
         'status' => 'status',
-        'visibilityConditions' => 'visibilityConditions',
+        'eligibilityConditions' => 'eligibilityConditions',
         'rule' => 'rule',
         'bindings' => 'bindings',
         'pointsRequired' => 'pointsRequired'
@@ -202,7 +202,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'description' => 'setDescription',
         'status' => 'setStatus',
-        'visibilityConditions' => 'setVisibilityConditions',
+        'eligibilityConditions' => 'setEligibilityConditions',
         'rule' => 'setRule',
         'bindings' => 'setBindings',
         'pointsRequired' => 'setPointsRequired'
@@ -217,7 +217,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'description' => 'getDescription',
         'status' => 'getStatus',
-        'visibilityConditions' => 'getVisibilityConditions',
+        'eligibilityConditions' => 'getEligibilityConditions',
         'rule' => 'getRule',
         'bindings' => 'getBindings',
         'pointsRequired' => 'getPointsRequired'
@@ -298,7 +298,7 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('visibilityConditions', $data ?? [], null);
+        $this->setIfExists('eligibilityConditions', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('bindings', $data ?? [], null);
         $this->setIfExists('pointsRequired', $data ?? [], null);
@@ -462,28 +462,28 @@ class UpdateReward implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets visibilityConditions
+     * Gets eligibilityConditions
      *
      * @return \TalonOne\Client\Model\Rule|null
      */
-    public function getVisibilityConditions()
+    public function getEligibilityConditions()
     {
-        return $this->container['visibilityConditions'];
+        return $this->container['eligibilityConditions'];
     }
 
     /**
-     * Sets visibilityConditions
+     * Sets eligibilityConditions
      *
-     * @param \TalonOne\Client\Model\Rule|null $visibilityConditions An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported.
+     * @param \TalonOne\Client\Model\Rule|null $eligibilityConditions An optional rule that manages who can see this reward. If not specified, the reward is visible to all customers.  **Note:** Only the `condition` field is evaluated within this rule. The `effects` field must be an empty array, and `bindings` are not supported.
      *
      * @return self
      */
-    public function setVisibilityConditions($visibilityConditions)
+    public function setEligibilityConditions($eligibilityConditions)
     {
-        if (is_null($visibilityConditions)) {
-            throw new \InvalidArgumentException('non-nullable visibilityConditions cannot be null');
+        if (is_null($eligibilityConditions)) {
+            throw new \InvalidArgumentException('non-nullable eligibilityConditions cannot be null');
         }
-        $this->container['visibilityConditions'] = $visibilityConditions;
+        $this->container['eligibilityConditions'] = $eligibilityConditions;
 
         return $this;
     }

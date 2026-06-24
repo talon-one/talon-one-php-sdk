@@ -63,6 +63,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => 'string',
         'sourceOfEvent' => 'string',
         'currentTier' => 'string',
+        'sessionIntegrationID' => 'string',
         'employeeName' => 'string',
         'userID' => 'int',
         'currentPoints' => 'float',
@@ -84,6 +85,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => null,
         'sourceOfEvent' => null,
         'currentTier' => null,
+        'sessionIntegrationID' => null,
         'employeeName' => null,
         'userID' => 'int64',
         'currentPoints' => 'float',
@@ -103,6 +105,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => false,
         'sourceOfEvent' => false,
         'currentTier' => false,
+        'sessionIntegrationID' => false,
         'employeeName' => false,
         'userID' => false,
         'currentPoints' => false,
@@ -202,6 +205,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => 'SubledgerID',
         'sourceOfEvent' => 'SourceOfEvent',
         'currentTier' => 'CurrentTier',
+        'sessionIntegrationID' => 'SessionIntegrationID',
         'employeeName' => 'EmployeeName',
         'userID' => 'UserID',
         'currentPoints' => 'CurrentPoints',
@@ -221,6 +225,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => 'setSubledgerID',
         'sourceOfEvent' => 'setSourceOfEvent',
         'currentTier' => 'setCurrentTier',
+        'sessionIntegrationID' => 'setSessionIntegrationID',
         'employeeName' => 'setEmployeeName',
         'userID' => 'setUserID',
         'currentPoints' => 'setCurrentPoints',
@@ -240,6 +245,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         'subledgerID' => 'getSubledgerID',
         'sourceOfEvent' => 'getSourceOfEvent',
         'currentTier' => 'getCurrentTier',
+        'sessionIntegrationID' => 'getSessionIntegrationID',
         'employeeName' => 'getEmployeeName',
         'userID' => 'getUserID',
         'currentPoints' => 'getCurrentPoints',
@@ -310,6 +316,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         $this->setIfExists('subledgerID', $data ?? [], null);
         $this->setIfExists('sourceOfEvent', $data ?? [], null);
         $this->setIfExists('currentTier', $data ?? [], null);
+        $this->setIfExists('sessionIntegrationID', $data ?? [], null);
         $this->setIfExists('employeeName', $data ?? [], null);
         $this->setIfExists('userID', $data ?? [], null);
         $this->setIfExists('currentPoints', $data ?? [], null);
@@ -541,6 +548,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
             throw new \InvalidArgumentException('non-nullable currentTier cannot be null');
         }
         $this->container['currentTier'] = $currentTier;
+
+        return $this;
+    }
+
+    /**
+     * Gets sessionIntegrationID
+     *
+     * @return string|null
+     */
+    public function getSessionIntegrationID()
+    {
+        return $this->container['sessionIntegrationID'];
+    }
+
+    /**
+     * Sets sessionIntegrationID
+     *
+     * @param string|null $sessionIntegrationID The integration ID of the session through which the points were earned or lost. Only set when the change results from a rule engine execution; empty otherwise.
+     *
+     * @return self
+     */
+    public function setSessionIntegrationID($sessionIntegrationID)
+    {
+        if (is_null($sessionIntegrationID)) {
+            throw new \InvalidArgumentException('non-nullable sessionIntegrationID cannot be null');
+        }
+        $this->container['sessionIntegrationID'] = $sessionIntegrationID;
 
         return $this;
     }

@@ -125,6 +125,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getReferralsWithoutTotalCount()**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals |
 | [**getRoleV2()**](ManagementApi.md#getRoleV2) | **GET** /v2/roles/{roleId} | Get role |
 | [**getRuleset()**](ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset |
+| [**getRulesetV2()**](ManagementApi.md#getRulesetV2) | **GET** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset (V2) |
 | [**getRulesets()**](ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List campaign rulesets |
 | [**getStore()**](ManagementApi.md#getStore) | **GET** /v1/applications/{applicationId}/stores/{storeId} | Get store |
 | [**getUser()**](ManagementApi.md#getUser) | **GET** /v1/users/{userId} | Get user |
@@ -3101,7 +3102,7 @@ try {
 ## `exportCoupons()`
 
 ```php
-exportCoupons($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly): string
+exportCoupons($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter): string
 ```
 
 Export coupons
@@ -3142,9 +3143,11 @@ $exactMatch = false; // bool | Filter results to an exact case-insensitive match
 $dateFormat = 'dateFormat_example'; // string | Determines the format of dates in the export document.
 $campaignState = 'campaignState_example'; // string | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived.
 $valuesOnly = false; // bool | Filter results to only return the coupon codes (`value` column) without the associated coupon data.
+$deletedBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
+$deletedAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results.
 
 try {
-    $result = $apiInstance->exportCoupons($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly);
+    $result = $apiInstance->exportCoupons($applicationId, $campaignId, $sort, $value, $createdBefore, $createdAfter, $valid, $usable, $referralId, $recipientIntegrationId, $batchId, $exactMatch, $dateFormat, $campaignState, $valuesOnly, $deletedBefore, $deletedAfter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->exportCoupons: ', $e->getMessage(), PHP_EOL;
@@ -3170,6 +3173,8 @@ try {
 | **dateFormat** | **string**| Determines the format of dates in the export document. | [optional] |
 | **campaignState** | **string**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. | [optional] |
 | **valuesOnly** | **bool**| Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. | [optional] [default to false] |
+| **deletedBefore** | **\DateTime**| Timestamp that filters the results to only contain coupons deleted before this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. | [optional] |
+| **deletedAfter** | **\DateTime**| Timestamp that filters the results to only contain coupons deleted after this date. Must be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.  **Note:** Only coupons deleted in the last 7 days will appear in the results. | [optional] |
 
 ### Return type
 
@@ -5445,7 +5450,7 @@ try {
 ## `getAttributes()`
 
 ```php
-getAttributes($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search): \TalonOne\Client\Model\GetAttributes200Response
+getAttributes($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search): \TalonOne\Client\Model\GetAttributes200Response
 ```
 
 List custom attributes
@@ -5476,12 +5481,13 @@ $skip = 56; // int | The number of items to skip when paging through large resul
 $sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
 $entity = 'entity_example'; // string | Returned attributes will be filtered by supplied entity.
 $applicationIds = 'applicationIds_example'; // string | Returned attributes will be filtered by supplied application ids
+$loyaltyProgramIds = 'loyaltyProgramIds_example'; // string | Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when `entity` is `LoyaltyCard`.
 $type = 'type_example'; // string | Returned attributes will be filtered by supplied type
 $kind = 'kind_example'; // string | Returned attributes will be filtered by supplied kind (builtin or custom)
 $search = 'search_example'; // string | Returned attributes will be filtered by searching case insensitive through Attribute name, description and type
 
 try {
-    $result = $apiInstance->getAttributes($pageSize, $skip, $sort, $entity, $applicationIds, $type, $kind, $search);
+    $result = $apiInstance->getAttributes($pageSize, $skip, $sort, $entity, $applicationIds, $loyaltyProgramIds, $type, $kind, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->getAttributes: ', $e->getMessage(), PHP_EOL;
@@ -5497,6 +5503,7 @@ try {
 | **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
 | **entity** | **string**| Returned attributes will be filtered by supplied entity. | [optional] |
 | **applicationIds** | **string**| Returned attributes will be filtered by supplied application ids | [optional] |
+| **loyaltyProgramIds** | **string**| Returned attributes will be filtered by the specified loyalty program ids, separated by commas. You can only use this parameter when &#x60;entity&#x60; is &#x60;LoyaltyCard&#x60;. | [optional] |
 | **type** | **string**| Returned attributes will be filtered by supplied type | [optional] |
 | **kind** | **string**| Returned attributes will be filtered by supplied kind (builtin or custom) | [optional] |
 | **search** | **string**| Returned attributes will be filtered by searching case insensitive through Attribute name, description and type | [optional] |
@@ -8277,6 +8284,72 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\Ruleset**](../Model/Ruleset.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRulesetV2()`
+
+```php
+getRulesetV2($applicationId, $campaignId, $rulesetId): \TalonOne\Client\Model\RulesetV2
+```
+
+Get ruleset (V2)
+
+Retrieve the specified ruleset as a JSON object.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+$rulesetId = 56; // int | The ID of the ruleset.
+
+try {
+    $result = $apiInstance->getRulesetV2($applicationId, $campaignId, $rulesetId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->getRulesetV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
+| **rulesetId** | **int**| The ID of the ruleset. | |
+
+### Return type
+
+[**\TalonOne\Client\Model\RulesetV2**](../Model/RulesetV2.md)
 
 ### Authorization
 
