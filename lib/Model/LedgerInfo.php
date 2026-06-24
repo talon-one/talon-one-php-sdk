@@ -459,6 +459,7 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets expiredBalance
      *
      * @return float
+     * @deprecated
      */
     public function getExpiredBalance()
     {
@@ -471,6 +472,7 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float $expiredBalance **DEPRECATED** Value is shown as 0.
      *
      * @return self
+     * @deprecated
      */
     public function setExpiredBalance($expiredBalance)
     {
@@ -486,6 +488,7 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets spentBalance
      *
      * @return float
+     * @deprecated
      */
     public function getSpentBalance()
     {
@@ -498,6 +501,7 @@ class LedgerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float $spentBalance **DEPRECATED** Value is shown as 0.
      *
      * @return self
+     * @deprecated
      */
     public function setSpentBalance($spentBalance)
     {

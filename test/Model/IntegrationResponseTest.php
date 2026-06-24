@@ -159,4 +159,13 @@ class IntegrationResponseTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "achievements"
+     */
+    public function testPropertyAchievements()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

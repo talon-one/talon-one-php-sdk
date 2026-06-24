@@ -439,6 +439,7 @@ class LoyaltyProgramBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * Gets expiredBalance
      *
      * @return float
+     * @deprecated
      */
     public function getExpiredBalance()
     {
@@ -451,6 +452,7 @@ class LoyaltyProgramBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param float $expiredBalance **DEPRECATED** Value is shown as 0.
      *
      * @return self
+     * @deprecated
      */
     public function setExpiredBalance($expiredBalance)
     {
@@ -466,6 +468,7 @@ class LoyaltyProgramBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * Gets spentBalance
      *
      * @return float
+     * @deprecated
      */
     public function getSpentBalance()
     {
@@ -478,6 +481,7 @@ class LoyaltyProgramBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param float $spentBalance **DEPRECATED** Value is shown as 0.
      *
      * @return self
+     * @deprecated
      */
     public function setSpentBalance($spentBalance)
     {

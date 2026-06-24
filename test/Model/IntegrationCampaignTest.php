@@ -177,4 +177,22 @@ class IntegrationCampaignTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "linkedStoreIds"
+     */
+    public function testPropertyLinkedStoreIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "linkedAudienceIds"
+     */
+    public function testPropertyLinkedAudienceIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

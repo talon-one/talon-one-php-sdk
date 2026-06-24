@@ -434,6 +434,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets contextId
      *
      * @return string|null
+     * @deprecated
      */
     public function getContextId()
     {
@@ -446,6 +447,7 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param string|null $contextId This property is **deprecated**. Use `contextIds` instead. Defaults to an empty string.
      *
      * @return self
+     * @deprecated
      */
     public function setContextId($contextId)
     {

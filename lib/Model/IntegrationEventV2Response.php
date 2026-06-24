@@ -66,6 +66,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => '\TalonOne\Client\Model\Coupon[]',
         'createdReferrals' => '\TalonOne\Client\Model\Referral[]',
         'awardedGiveaways' => '\TalonOne\Client\Model\Giveaway[]',
+        'achievements' => '\TalonOne\Client\Model\CustomerAchievement[]',
         'event' => '\TalonOne\Client\Model\Event'
     ];
 
@@ -86,6 +87,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => null,
         'createdReferrals' => null,
         'awardedGiveaways' => null,
+        'achievements' => null,
         'event' => null
     ];
 
@@ -104,6 +106,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => false,
         'createdReferrals' => false,
         'awardedGiveaways' => false,
+        'achievements' => false,
         'event' => false
     ];
 
@@ -202,6 +205,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => 'createdCoupons',
         'createdReferrals' => 'createdReferrals',
         'awardedGiveaways' => 'awardedGiveaways',
+        'achievements' => 'achievements',
         'event' => 'event'
     ];
 
@@ -220,6 +224,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => 'setCreatedCoupons',
         'createdReferrals' => 'setCreatedReferrals',
         'awardedGiveaways' => 'setAwardedGiveaways',
+        'achievements' => 'setAchievements',
         'event' => 'setEvent'
     ];
 
@@ -238,6 +243,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdCoupons' => 'getCreatedCoupons',
         'createdReferrals' => 'getCreatedReferrals',
         'awardedGiveaways' => 'getAwardedGiveaways',
+        'achievements' => 'getAchievements',
         'event' => 'getEvent'
     ];
 
@@ -307,6 +313,7 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('createdCoupons', $data ?? [], null);
         $this->setIfExists('createdReferrals', $data ?? [], null);
         $this->setIfExists('awardedGiveaways', $data ?? [], null);
+        $this->setIfExists('achievements', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
     }
 
@@ -600,6 +607,33 @@ class IntegrationEventV2Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable awardedGiveaways cannot be null');
         }
         $this->container['awardedGiveaways'] = $awardedGiveaways;
+
+        return $this;
+    }
+
+    /**
+     * Gets achievements
+     *
+     * @return \TalonOne\Client\Model\CustomerAchievement[]|null
+     */
+    public function getAchievements()
+    {
+        return $this->container['achievements'];
+    }
+
+    /**
+     * Sets achievements
+     *
+     * @param \TalonOne\Client\Model\CustomerAchievement[]|null $achievements The achievements progress of the customer.
+     *
+     * @return self
+     */
+    public function setAchievements($achievements)
+    {
+        if (is_null($achievements)) {
+            throw new \InvalidArgumentException('non-nullable achievements cannot be null');
+        }
+        $this->container['achievements'] = $achievements;
 
         return $this;
     }

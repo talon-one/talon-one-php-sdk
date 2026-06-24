@@ -636,6 +636,7 @@ class NewCoupons implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets uniquePrefix
      *
      * @return string|null
+     * @deprecated
      */
     public function getUniquePrefix()
     {
@@ -648,6 +649,7 @@ class NewCoupons implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param string|null $uniquePrefix **DEPRECATED** To create more than 20,000 coupons in one request, use [Create coupons asynchronously](https://docs.talon.one/management-api#tag/Coupons/operation/createCouponsAsync) endpoint.
      *
      * @return self
+     * @deprecated
      */
     public function setUniquePrefix($uniquePrefix)
     {

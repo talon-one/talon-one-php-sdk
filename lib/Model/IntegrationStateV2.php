@@ -66,6 +66,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => '\TalonOne\Client\Model\Coupon[]',
         'createdReferrals' => '\TalonOne\Client\Model\Referral[]',
         'awardedGiveaways' => '\TalonOne\Client\Model\Giveaway[]',
+        'achievements' => '\TalonOne\Client\Model\CustomerAchievement[]',
         'referral' => '\TalonOne\Client\Model\InventoryReferral',
         'coupons' => '\TalonOne\Client\Model\IntegrationCoupon[]',
         'event' => '\TalonOne\Client\Model\Event',
@@ -92,6 +93,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => null,
         'createdReferrals' => null,
         'awardedGiveaways' => null,
+        'achievements' => null,
         'referral' => null,
         'coupons' => null,
         'event' => null,
@@ -116,6 +118,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => false,
         'createdReferrals' => false,
         'awardedGiveaways' => false,
+        'achievements' => false,
         'referral' => false,
         'coupons' => false,
         'event' => false,
@@ -220,6 +223,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => 'createdCoupons',
         'createdReferrals' => 'createdReferrals',
         'awardedGiveaways' => 'awardedGiveaways',
+        'achievements' => 'achievements',
         'referral' => 'referral',
         'coupons' => 'coupons',
         'event' => 'event',
@@ -244,6 +248,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => 'setCreatedCoupons',
         'createdReferrals' => 'setCreatedReferrals',
         'awardedGiveaways' => 'setAwardedGiveaways',
+        'achievements' => 'setAchievements',
         'referral' => 'setReferral',
         'coupons' => 'setCoupons',
         'event' => 'setEvent',
@@ -268,6 +273,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         'createdCoupons' => 'getCreatedCoupons',
         'createdReferrals' => 'getCreatedReferrals',
         'awardedGiveaways' => 'getAwardedGiveaways',
+        'achievements' => 'getAchievements',
         'referral' => 'getReferral',
         'coupons' => 'getCoupons',
         'event' => 'getEvent',
@@ -343,6 +349,7 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('createdCoupons', $data ?? [], null);
         $this->setIfExists('createdReferrals', $data ?? [], null);
         $this->setIfExists('awardedGiveaways', $data ?? [], null);
+        $this->setIfExists('achievements', $data ?? [], null);
         $this->setIfExists('referral', $data ?? [], null);
         $this->setIfExists('coupons', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
@@ -642,6 +649,33 @@ class IntegrationStateV2 implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable awardedGiveaways cannot be null');
         }
         $this->container['awardedGiveaways'] = $awardedGiveaways;
+
+        return $this;
+    }
+
+    /**
+     * Gets achievements
+     *
+     * @return \TalonOne\Client\Model\CustomerAchievement[]|null
+     */
+    public function getAchievements()
+    {
+        return $this->container['achievements'];
+    }
+
+    /**
+     * Sets achievements
+     *
+     * @param \TalonOne\Client\Model\CustomerAchievement[]|null $achievements The achievements progress of the customer.
+     *
+     * @return self
+     */
+    public function setAchievements($achievements)
+    {
+        if (is_null($achievements)) {
+            throw new \InvalidArgumentException('non-nullable achievements cannot be null');
+        }
+        $this->container['achievements'] = $achievements;
 
         return $this;
     }

@@ -161,6 +161,15 @@ class IntegrationEventV3ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "achievements"
+     */
+    public function testPropertyAchievements()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "advancedEvent"
      */
     public function testPropertyAdvancedEvent()

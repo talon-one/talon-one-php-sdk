@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **createdCoupons** | [**\TalonOne\Client\Model\Coupon[]**](Coupon.md) | The coupons that were created during the event processing. |
 **createdReferrals** | [**\TalonOne\Client\Model\Referral[]**](Referral.md) | The referrals that were created during the event processing. |
 **awardedGiveaways** | [**\TalonOne\Client\Model\Giveaway[]**](Giveaway.md) | The giveaways that were awarded during the event processing. | [optional]
+**achievements** | [**\TalonOne\Client\Model\CustomerAchievement[]**](CustomerAchievement.md) | The achievements progress of the customer. | [optional]
 **event** | [**\TalonOne\Client\Model\Event**](Event.md) | The event that was processed. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

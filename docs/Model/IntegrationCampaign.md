@@ -15,5 +15,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | A list of tags for the campaign. |
 **features** | **string[]** | The features enabled in this campaign. |
 **rules** | [**\TalonOne\Client\Model\RuleMetadata[]**](RuleMetadata.md) | A list of rules containing customer-facing details of the rewards defined in the campaign. |
+**linkedStoreIds** | **int[]** | A list of store IDs linked to this campaign. | [optional]
+**linkedAudienceIds** | **int[]** | A list of audience IDs linked to this campaign. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

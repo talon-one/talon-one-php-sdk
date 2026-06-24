@@ -134,6 +134,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotificationTest
     }
 
     /**
+     * Test attribute "sessionIntegrationID"
+     */
+    public function testPropertySessionIntegrationID()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "employeeName"
      */
     public function testPropertyEmployeeName()

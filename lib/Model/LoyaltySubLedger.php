@@ -389,6 +389,7 @@ class LoyaltySubLedger implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets total
      *
      * @return float
+     * @deprecated
      */
     public function getTotal()
     {
@@ -401,6 +402,7 @@ class LoyaltySubLedger implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param float $total **DEPRECATED** Use `totalActivePoints` property instead. Total amount of currently active and available points in the customer's balance.
      *
      * @return self
+     * @deprecated
      */
     public function setTotal($total)
     {

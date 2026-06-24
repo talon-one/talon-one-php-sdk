@@ -93,6 +93,7 @@ docs/Model/AudienceIntegrationID.md
 docs/Model/AudienceMembership.md
 docs/Model/AudienceReference.md
 docs/Model/AwardGiveawayEffectProps.md
+docs/Model/BaseBlock.md
 docs/Model/BaseCampaign.md
 docs/Model/BaseLoyaltyProgram.md
 docs/Model/BaseNotification.md
@@ -210,6 +211,7 @@ docs/Model/CreateTemplateCampaign.md
 docs/Model/CreateTemplateCampaignResponse.md
 docs/Model/CustomEffect.md
 docs/Model/CustomEffectProps.md
+docs/Model/CustomerAchievement.md
 docs/Model/CustomerActivityReport.md
 docs/Model/CustomerAnalytics.md
 docs/Model/CustomerInventory.md
@@ -548,6 +550,7 @@ docs/Model/OutgoingIntegrationTemplateWithConfigurationDetails.md
 docs/Model/OutgoingIntegrationTemplates.md
 docs/Model/OutgoingIntegrationType.md
 docs/Model/OutgoingIntegrationTypes.md
+docs/Model/PassthroughBlock.md
 docs/Model/PatchItemCatalogAction.md
 docs/Model/PatchManyItemsCatalogAction.md
 docs/Model/PendingActivePointsData.md
@@ -569,6 +572,8 @@ docs/Model/ProductUnitAnalyticsTotals.md
 docs/Model/ProfileAudiencesChanges.md
 docs/Model/ProjectedTier.md
 docs/Model/PromoteExperiment.md
+docs/Model/PromotionGroupBlock.md
+docs/Model/PromotionRuleV2.md
 docs/Model/RedeemReferralEffectProps.md
 docs/Model/Referral.md
 docs/Model/ReferralConstraints.md
@@ -590,6 +595,9 @@ docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
 docs/Model/Reward.md
 docs/Model/RewardPointsRequired.md
+docs/Model/Risk.md
+docs/Model/RiskAffectedEntityItem.md
+docs/Model/RiskDetail.md
 docs/Model/RiskNotification.md
 docs/Model/Role.md
 docs/Model/RoleAssign.md
@@ -614,7 +622,9 @@ docs/Model/RuleEligibilityFailureDetails.md
 docs/Model/RuleFailureReason.md
 docs/Model/RuleMetadata.md
 docs/Model/RuleMetadataEligibility.md
+docs/Model/RuleV2.md
 docs/Model/Ruleset.md
+docs/Model/RulesetV2.md
 docs/Model/SSOConfig.md
 docs/Model/SamlConnection.md
 docs/Model/SamlConnectionInternal.md
@@ -656,7 +666,9 @@ docs/Model/StrikethroughChangedItem.md
 docs/Model/StrikethroughCustomEffectPerItemProps.md
 docs/Model/StrikethroughDebugResponse.md
 docs/Model/StrikethroughEffect.md
+docs/Model/StrikethroughGroupBlock.md
 docs/Model/StrikethroughLabelingNotification.md
+docs/Model/StrikethroughRuleV2.md
 docs/Model/StrikethroughSetDiscountPerItemEffectProps.md
 docs/Model/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/Model/StrikethroughTrigger.md
@@ -820,6 +832,7 @@ lib/Model/AudienceIntegrationID.php
 lib/Model/AudienceMembership.php
 lib/Model/AudienceReference.php
 lib/Model/AwardGiveawayEffectProps.php
+lib/Model/BaseBlock.php
 lib/Model/BaseCampaign.php
 lib/Model/BaseLoyaltyProgram.php
 lib/Model/BaseNotification.php
@@ -937,6 +950,7 @@ lib/Model/CreateTemplateCampaign.php
 lib/Model/CreateTemplateCampaignResponse.php
 lib/Model/CustomEffect.php
 lib/Model/CustomEffectProps.php
+lib/Model/CustomerAchievement.php
 lib/Model/CustomerActivityReport.php
 lib/Model/CustomerAnalytics.php
 lib/Model/CustomerInventory.php
@@ -1276,6 +1290,7 @@ lib/Model/OutgoingIntegrationTemplateWithConfigurationDetails.php
 lib/Model/OutgoingIntegrationTemplates.php
 lib/Model/OutgoingIntegrationType.php
 lib/Model/OutgoingIntegrationTypes.php
+lib/Model/PassthroughBlock.php
 lib/Model/PatchItemCatalogAction.php
 lib/Model/PatchManyItemsCatalogAction.php
 lib/Model/PendingActivePointsData.php
@@ -1297,6 +1312,8 @@ lib/Model/ProductUnitAnalyticsTotals.php
 lib/Model/ProfileAudiencesChanges.php
 lib/Model/ProjectedTier.php
 lib/Model/PromoteExperiment.php
+lib/Model/PromotionGroupBlock.php
+lib/Model/PromotionRuleV2.php
 lib/Model/RedeemReferralEffectProps.php
 lib/Model/Referral.php
 lib/Model/ReferralConstraints.php
@@ -1318,6 +1335,9 @@ lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
 lib/Model/Reward.php
 lib/Model/RewardPointsRequired.php
+lib/Model/Risk.php
+lib/Model/RiskAffectedEntityItem.php
+lib/Model/RiskDetail.php
 lib/Model/RiskNotification.php
 lib/Model/Role.php
 lib/Model/RoleAssign.php
@@ -1342,7 +1362,9 @@ lib/Model/RuleEligibilityFailureDetails.php
 lib/Model/RuleFailureReason.php
 lib/Model/RuleMetadata.php
 lib/Model/RuleMetadataEligibility.php
+lib/Model/RuleV2.php
 lib/Model/Ruleset.php
+lib/Model/RulesetV2.php
 lib/Model/SSOConfig.php
 lib/Model/SamlConnection.php
 lib/Model/SamlConnectionInternal.php
@@ -1384,7 +1406,9 @@ lib/Model/StrikethroughChangedItem.php
 lib/Model/StrikethroughCustomEffectPerItemProps.php
 lib/Model/StrikethroughDebugResponse.php
 lib/Model/StrikethroughEffect.php
+lib/Model/StrikethroughGroupBlock.php
 lib/Model/StrikethroughLabelingNotification.php
+lib/Model/StrikethroughRuleV2.php
 lib/Model/StrikethroughSetDiscountPerItemEffectProps.php
 lib/Model/StrikethroughSetDiscountPerItemMemberEffectProps.php
 lib/Model/StrikethroughTrigger.php
@@ -1544,6 +1568,7 @@ test/Model/AudienceMembershipTest.php
 test/Model/AudienceReferenceTest.php
 test/Model/AudienceTest.php
 test/Model/AwardGiveawayEffectPropsTest.php
+test/Model/BaseBlockTest.php
 test/Model/BaseCampaignTest.php
 test/Model/BaseLoyaltyProgramTest.php
 test/Model/BaseNotificationEntityTest.php
@@ -1661,6 +1686,7 @@ test/Model/CreateTemplateCampaignResponseTest.php
 test/Model/CreateTemplateCampaignTest.php
 test/Model/CustomEffectPropsTest.php
 test/Model/CustomEffectTest.php
+test/Model/CustomerAchievementTest.php
 test/Model/CustomerActivityReportTest.php
 test/Model/CustomerAnalyticsTest.php
 test/Model/CustomerInventoryTest.php
@@ -1999,6 +2025,7 @@ test/Model/OutgoingIntegrationTemplateWithConfigurationDetailsTest.php
 test/Model/OutgoingIntegrationTemplatesTest.php
 test/Model/OutgoingIntegrationTypeTest.php
 test/Model/OutgoingIntegrationTypesTest.php
+test/Model/PassthroughBlockTest.php
 test/Model/PatchItemCatalogActionTest.php
 test/Model/PatchManyItemsCatalogActionTest.php
 test/Model/PendingActivePointsDataTest.php
@@ -2020,6 +2047,8 @@ test/Model/ProductUnitAnalyticsTotalsTest.php
 test/Model/ProfileAudiencesChangesTest.php
 test/Model/ProjectedTierTest.php
 test/Model/PromoteExperimentTest.php
+test/Model/PromotionGroupBlockTest.php
+test/Model/PromotionRuleV2Test.php
 test/Model/RedeemReferralEffectPropsTest.php
 test/Model/ReferralConstraintsTest.php
 test/Model/ReferralCreatedEffectPropsTest.php
@@ -2041,7 +2070,10 @@ test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
 test/Model/RewardPointsRequiredTest.php
 test/Model/RewardTest.php
+test/Model/RiskAffectedEntityItemTest.php
+test/Model/RiskDetailTest.php
 test/Model/RiskNotificationTest.php
+test/Model/RiskTest.php
 test/Model/RoleAssignTest.php
 test/Model/RoleMembershipTest.php
 test/Model/RoleTest.php
@@ -2065,7 +2097,9 @@ test/Model/RuleFailureReasonTest.php
 test/Model/RuleMetadataEligibilityTest.php
 test/Model/RuleMetadataTest.php
 test/Model/RuleTest.php
+test/Model/RuleV2Test.php
 test/Model/RulesetTest.php
+test/Model/RulesetV2Test.php
 test/Model/SSOConfigTest.php
 test/Model/SamlConnectionInternalTest.php
 test/Model/SamlConnectionMetadataTest.php
@@ -2107,7 +2141,9 @@ test/Model/StrikethroughChangedItemTest.php
 test/Model/StrikethroughCustomEffectPerItemPropsTest.php
 test/Model/StrikethroughDebugResponseTest.php
 test/Model/StrikethroughEffectTest.php
+test/Model/StrikethroughGroupBlockTest.php
 test/Model/StrikethroughLabelingNotificationTest.php
+test/Model/StrikethroughRuleV2Test.php
 test/Model/StrikethroughSetDiscountPerItemEffectPropsTest.php
 test/Model/StrikethroughSetDiscountPerItemMemberEffectPropsTest.php
 test/Model/StrikethroughTriggerTest.php

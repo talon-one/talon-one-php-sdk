@@ -66,7 +66,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => '\TalonOne\Client\Model\RuleFailureReason[]',
         'createdCoupons' => '\TalonOne\Client\Model\Coupon[]',
         'createdReferrals' => '\TalonOne\Client\Model\Referral[]',
-        'awardedGiveaways' => '\TalonOne\Client\Model\Giveaway[]'
+        'awardedGiveaways' => '\TalonOne\Client\Model\Giveaway[]',
+        'achievements' => '\TalonOne\Client\Model\CustomerAchievement[]'
     ];
 
     /**
@@ -85,7 +86,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => null,
         'createdCoupons' => null,
         'createdReferrals' => null,
-        'awardedGiveaways' => null
+        'awardedGiveaways' => null,
+        'achievements' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => false,
         'createdCoupons' => false,
         'createdReferrals' => false,
-        'awardedGiveaways' => false
+        'awardedGiveaways' => false,
+        'achievements' => false
     ];
 
     /**
@@ -199,7 +202,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => 'ruleFailureReasons',
         'createdCoupons' => 'createdCoupons',
         'createdReferrals' => 'createdReferrals',
-        'awardedGiveaways' => 'awardedGiveaways'
+        'awardedGiveaways' => 'awardedGiveaways',
+        'achievements' => 'achievements'
     ];
 
     /**
@@ -216,7 +220,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => 'setRuleFailureReasons',
         'createdCoupons' => 'setCreatedCoupons',
         'createdReferrals' => 'setCreatedReferrals',
-        'awardedGiveaways' => 'setAwardedGiveaways'
+        'awardedGiveaways' => 'setAwardedGiveaways',
+        'achievements' => 'setAchievements'
     ];
 
     /**
@@ -233,7 +238,8 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleFailureReasons' => 'getRuleFailureReasons',
         'createdCoupons' => 'getCreatedCoupons',
         'createdReferrals' => 'getCreatedReferrals',
-        'awardedGiveaways' => 'getAwardedGiveaways'
+        'awardedGiveaways' => 'getAwardedGiveaways',
+        'achievements' => 'getAchievements'
     ];
 
     /**
@@ -302,6 +308,7 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('createdCoupons', $data ?? [], null);
         $this->setIfExists('createdReferrals', $data ?? [], null);
         $this->setIfExists('awardedGiveaways', $data ?? [], null);
+        $this->setIfExists('achievements', $data ?? [], null);
     }
 
     /**
@@ -594,6 +601,33 @@ class IntegrationResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable awardedGiveaways cannot be null');
         }
         $this->container['awardedGiveaways'] = $awardedGiveaways;
+
+        return $this;
+    }
+
+    /**
+     * Gets achievements
+     *
+     * @return \TalonOne\Client\Model\CustomerAchievement[]|null
+     */
+    public function getAchievements()
+    {
+        return $this->container['achievements'];
+    }
+
+    /**
+     * Sets achievements
+     *
+     * @param \TalonOne\Client\Model\CustomerAchievement[]|null $achievements The achievements progress of the customer.
+     *
+     * @return self
+     */
+    public function setAchievements($achievements)
+    {
+        if (is_null($achievements)) {
+            throw new \InvalidArgumentException('non-nullable achievements cannot be null');
+        }
+        $this->container['achievements'] = $achievements;
 
         return $this;
     }
