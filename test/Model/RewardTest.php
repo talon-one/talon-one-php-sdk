@@ -179,6 +179,15 @@ class RewardTest extends TestCase
     }
 
     /**
+     * Test attribute "pointsRequired"
+     */
+    public function testPropertyPointsRequired()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "modified"
      */
     public function testPropertyModified()
@@ -191,15 +200,6 @@ class RewardTest extends TestCase
      * Test attribute "status"
      */
     public function testPropertyStatus()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "pointsRequired"
-     */
-    public function testPropertyPointsRequired()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

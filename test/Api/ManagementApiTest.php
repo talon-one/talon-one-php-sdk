@@ -996,6 +996,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for getApplicationSessionsByCustomerAttributes
+     *
+     * List Application sessions matching the given customer attributes.
+     *
+     */
+    public function testGetApplicationSessionsByCustomerAttributes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getApplications
      *
      * List Applications.

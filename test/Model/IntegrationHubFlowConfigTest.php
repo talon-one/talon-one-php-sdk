@@ -114,4 +114,22 @@ class IntegrationHubFlowConfigTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "instanceName"
+     */
+    public function testPropertyInstanceName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "integrationName"
+     */
+    public function testPropertyIntegrationName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

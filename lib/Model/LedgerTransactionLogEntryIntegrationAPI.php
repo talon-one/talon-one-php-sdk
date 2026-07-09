@@ -62,6 +62,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => '\DateTime',
         'programId' => 'int',
         'customerSessionId' => 'string',
+        'storeIntegrationId' => 'string',
         'type' => 'string',
         'name' => 'string',
         'startDate' => 'string',
@@ -87,6 +88,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => 'date-time',
         'programId' => 'int64',
         'customerSessionId' => null,
+        'storeIntegrationId' => null,
         'type' => null,
         'name' => null,
         'startDate' => null,
@@ -110,6 +112,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => false,
         'programId' => false,
         'customerSessionId' => false,
+        'storeIntegrationId' => false,
         'type' => false,
         'name' => false,
         'startDate' => false,
@@ -213,6 +216,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => 'created',
         'programId' => 'programId',
         'customerSessionId' => 'customerSessionId',
+        'storeIntegrationId' => 'storeIntegrationId',
         'type' => 'type',
         'name' => 'name',
         'startDate' => 'startDate',
@@ -236,6 +240,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => 'setCreated',
         'programId' => 'setProgramId',
         'customerSessionId' => 'setCustomerSessionId',
+        'storeIntegrationId' => 'setStoreIntegrationId',
         'type' => 'setType',
         'name' => 'setName',
         'startDate' => 'setStartDate',
@@ -259,6 +264,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         'created' => 'getCreated',
         'programId' => 'getProgramId',
         'customerSessionId' => 'getCustomerSessionId',
+        'storeIntegrationId' => 'getStoreIntegrationId',
         'type' => 'getType',
         'name' => 'getName',
         'startDate' => 'getStartDate',
@@ -348,6 +354,7 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('programId', $data ?? [], null);
         $this->setIfExists('customerSessionId', $data ?? [], null);
+        $this->setIfExists('storeIntegrationId', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('startDate', $data ?? [], null);
@@ -399,6 +406,14 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         }
         if (!is_null($this->container['customerSessionId']) && (mb_strlen($this->container['customerSessionId']) > 255)) {
             $invalidProperties[] = "invalid value for 'customerSessionId', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['storeIntegrationId']) && (mb_strlen($this->container['storeIntegrationId']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'storeIntegrationId', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['storeIntegrationId']) && (mb_strlen($this->container['storeIntegrationId']) < 1)) {
+            $invalidProperties[] = "invalid value for 'storeIntegrationId', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['type'] === null) {
@@ -570,6 +585,40 @@ class LedgerTransactionLogEntryIntegrationAPI implements ModelInterface, ArrayAc
         }
 
         $this->container['customerSessionId'] = $customerSessionId;
+
+        return $this;
+    }
+
+    /**
+     * Gets storeIntegrationId
+     *
+     * @return string|null
+     */
+    public function getStoreIntegrationId()
+    {
+        return $this->container['storeIntegrationId'];
+    }
+
+    /**
+     * Sets storeIntegrationId
+     *
+     * @param string|null $storeIntegrationId The integration ID of the store where the transaction occurred. Only set for transactions created by a customer session or event that referenced a store.
+     *
+     * @return self
+     */
+    public function setStoreIntegrationId($storeIntegrationId)
+    {
+        if (is_null($storeIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable storeIntegrationId cannot be null');
+        }
+        if ((mb_strlen($storeIntegrationId) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $storeIntegrationId when calling LedgerTransactionLogEntryIntegrationAPI., must be smaller than or equal to 1000.');
+        }
+        if ((mb_strlen($storeIntegrationId) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $storeIntegrationId when calling LedgerTransactionLogEntryIntegrationAPI., must be bigger than or equal to 1.');
+        }
+
+        $this->container['storeIntegrationId'] = $storeIntegrationId;
 
         return $this;
     }

@@ -123,4 +123,40 @@ class NewRewardTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "eligibilityConditions"
+     */
+    public function testPropertyEligibilityConditions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rule"
+     */
+    public function testPropertyRule()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "bindings"
+     */
+    public function testPropertyBindings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pointsRequired"
+     */
+    public function testPropertyPointsRequired()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

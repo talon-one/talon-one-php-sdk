@@ -253,9 +253,9 @@ class UpdateRiskNotification implements ModelInterface, ArrayAccess, \JsonSerial
     public const ACTIVITY_DISCOUNTED_AMOUNT = 'discounted_amount';
     public const ACTIVITY_COMPLETED_ORDERS = 'completed_orders';
     public const ACTIVITY_COUPON_ATTEMPTS = 'coupon_attempts';
-    public const TIME_FRAME__1_DAY = '1_day';
-    public const TIME_FRAME__1_WEEK = '1_week';
-    public const TIME_FRAME__1_MONTH = '1_month';
+    public const TIME_FRAME__1_D = '1D';
+    public const TIME_FRAME__7_D = '7D';
+    public const TIME_FRAME__30_D = '30D';
 
     /**
      * Gets allowable values of the enum
@@ -293,9 +293,9 @@ class UpdateRiskNotification implements ModelInterface, ArrayAccess, \JsonSerial
     public function getTimeFrameAllowableValues()
     {
         return [
-            self::TIME_FRAME__1_DAY,
-            self::TIME_FRAME__1_WEEK,
-            self::TIME_FRAME__1_MONTH,
+            self::TIME_FRAME__1_D,
+            self::TIME_FRAME__7_D,
+            self::TIME_FRAME__30_D,
         ];
     }
 

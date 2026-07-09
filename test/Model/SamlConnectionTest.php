@@ -177,4 +177,13 @@ class SamlConnectionTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "certificateExpiry"
+     */
+    public function testPropertyCertificateExpiry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

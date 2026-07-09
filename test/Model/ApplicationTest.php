@@ -269,6 +269,15 @@ class ApplicationTest extends TestCase
     }
 
     /**
+     * Test attribute "bestPriorPriceSettings"
+     */
+    public function testPropertyBestPriorPriceSettings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "loyaltyPrograms"
      */
     public function testPropertyLoyaltyPrograms()

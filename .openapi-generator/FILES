@@ -92,7 +92,10 @@ docs/Model/AudienceCustomer.md
 docs/Model/AudienceIntegrationID.md
 docs/Model/AudienceMembership.md
 docs/Model/AudienceReference.md
+docs/Model/AwardGiveawayBlock.md
+docs/Model/AwardGiveawayBlock1GiveawayPool.md
 docs/Model/AwardGiveawayEffectProps.md
+docs/Model/AwardItemBlock.md
 docs/Model/BaseBlock.md
 docs/Model/BaseCampaign.md
 docs/Model/BaseLoyaltyProgram.md
@@ -104,7 +107,9 @@ docs/Model/BaseSamlConnection.md
 docs/Model/BestPriorPrice.md
 docs/Model/BestPriorPriceMetadata.md
 docs/Model/BestPriorPriceRequest.md
+docs/Model/BestPriorPriceSettings.md
 docs/Model/BestPriorTarget.md
+docs/Model/BetweenCheckAttributeBlock.md
 docs/Model/Binding.md
 docs/Model/Blueprint.md
 docs/Model/BulkApplicationNotification.md
@@ -179,6 +184,11 @@ docs/Model/CatalogsStrikethroughNotificationPolicy.md
 docs/Model/Change.md
 docs/Model/ChangeLoyaltyTierLevelEffectProps.md
 docs/Model/ChangeProfilePassword.md
+docs/Model/CheckAttributeBlock.md
+docs/Model/CheckAudienceBlock.md
+docs/Model/CheckAudienceBlock1Audience.md
+docs/Model/CheckCouponBlock.md
+docs/Model/CheckReferralBlock.md
 docs/Model/CodeGeneratorSettings.md
 docs/Model/Collection.md
 docs/Model/CollectionItem.md
@@ -312,6 +322,7 @@ docs/Model/GetApplicationCustomersByAttributes200Response.md
 docs/Model/GetApplicationEventTypes200Response.md
 docs/Model/GetApplicationEventsWithoutTotalCount200Response.md
 docs/Model/GetApplicationSessions200Response.md
+docs/Model/GetApplicationSessionsByCustomerAttributes200Response.md
 docs/Model/GetApplications200Response.md
 docs/Model/GetAttributes200Response.md
 docs/Model/GetAudienceMemberships200Response.md
@@ -414,8 +425,10 @@ docs/Model/ListCampaignStoreBudgetLimits200Response.md
 docs/Model/ListCampaignStoreBudgets.md
 docs/Model/ListCampaignStoreBudgetsStore.md
 docs/Model/ListCatalogItems200Response.md
+docs/Model/ListCheckAttributeBlock.md
 docs/Model/ListExperiments200Response.md
 docs/Model/ListStores200Response.md
+docs/Model/ListWithCountCheckAttributeBlock.md
 docs/Model/LoginParams.md
 docs/Model/Loyalty.md
 docs/Model/LoyaltyBalance.md
@@ -572,6 +585,7 @@ docs/Model/ProductUnitAnalyticsTotals.md
 docs/Model/ProfileAudiencesChanges.md
 docs/Model/ProjectedTier.md
 docs/Model/PromoteExperiment.md
+docs/Model/PromotionCheckAttributeBlock.md
 docs/Model/PromotionGroupBlock.md
 docs/Model/PromotionRuleV2.md
 docs/Model/RedeemReferralEffectProps.md
@@ -630,6 +644,7 @@ docs/Model/SamlConnection.md
 docs/Model/SamlConnectionInternal.md
 docs/Model/SamlConnectionMetadata.md
 docs/Model/SamlLoginEndpoint.md
+docs/Model/ScalarCheckAttributeBlock.md
 docs/Model/ScimBaseGroup.md
 docs/Model/ScimBaseUser.md
 docs/Model/ScimBaseUserName.md
@@ -657,12 +672,14 @@ docs/Model/SetDiscountPerAdditionalCostPerItemEffectProps.md
 docs/Model/SetDiscountPerItemEffectProps.md
 docs/Model/SetLoyaltyPointsExpiryDateEffectProps.md
 docs/Model/ShowBundleMetadataEffectProps.md
+docs/Model/ShowNotificationBlock.md
 docs/Model/ShowNotificationEffectProps.md
 docs/Model/SkuUnitAnalytics.md
 docs/Model/SkuUnitAnalyticsDataPoint.md
 docs/Model/SlotDef.md
 docs/Model/Store.md
 docs/Model/StrikethroughChangedItem.md
+docs/Model/StrikethroughCheckAttributeBlock.md
 docs/Model/StrikethroughCustomEffectPerItemProps.md
 docs/Model/StrikethroughDebugResponse.md
 docs/Model/StrikethroughEffect.md
@@ -696,6 +713,7 @@ docs/Model/TimePoint.md
 docs/Model/TransferLoyaltyCard.md
 docs/Model/TriggerWebhookEffectProps.md
 docs/Model/TwoFAConfig.md
+docs/Model/UnaryCheckAttributeBlock.md
 docs/Model/UpdateAccount.md
 docs/Model/UpdateAchievement.md
 docs/Model/UpdateAchievementV2.md
@@ -831,7 +849,10 @@ lib/Model/AudienceCustomer.php
 lib/Model/AudienceIntegrationID.php
 lib/Model/AudienceMembership.php
 lib/Model/AudienceReference.php
+lib/Model/AwardGiveawayBlock.php
+lib/Model/AwardGiveawayBlock1GiveawayPool.php
 lib/Model/AwardGiveawayEffectProps.php
+lib/Model/AwardItemBlock.php
 lib/Model/BaseBlock.php
 lib/Model/BaseCampaign.php
 lib/Model/BaseLoyaltyProgram.php
@@ -843,7 +864,9 @@ lib/Model/BaseSamlConnection.php
 lib/Model/BestPriorPrice.php
 lib/Model/BestPriorPriceMetadata.php
 lib/Model/BestPriorPriceRequest.php
+lib/Model/BestPriorPriceSettings.php
 lib/Model/BestPriorTarget.php
+lib/Model/BetweenCheckAttributeBlock.php
 lib/Model/Binding.php
 lib/Model/Blueprint.php
 lib/Model/BulkApplicationNotification.php
@@ -918,6 +941,11 @@ lib/Model/CatalogsStrikethroughNotificationPolicy.php
 lib/Model/Change.php
 lib/Model/ChangeLoyaltyTierLevelEffectProps.php
 lib/Model/ChangeProfilePassword.php
+lib/Model/CheckAttributeBlock.php
+lib/Model/CheckAudienceBlock.php
+lib/Model/CheckAudienceBlock1Audience.php
+lib/Model/CheckCouponBlock.php
+lib/Model/CheckReferralBlock.php
 lib/Model/CodeGeneratorSettings.php
 lib/Model/Collection.php
 lib/Model/CollectionItem.php
@@ -1051,6 +1079,7 @@ lib/Model/GetApplicationCustomersByAttributes200Response.php
 lib/Model/GetApplicationEventTypes200Response.php
 lib/Model/GetApplicationEventsWithoutTotalCount200Response.php
 lib/Model/GetApplicationSessions200Response.php
+lib/Model/GetApplicationSessionsByCustomerAttributes200Response.php
 lib/Model/GetApplications200Response.php
 lib/Model/GetAttributes200Response.php
 lib/Model/GetAudienceMemberships200Response.php
@@ -1153,8 +1182,10 @@ lib/Model/ListCampaignStoreBudgetLimits200Response.php
 lib/Model/ListCampaignStoreBudgets.php
 lib/Model/ListCampaignStoreBudgetsStore.php
 lib/Model/ListCatalogItems200Response.php
+lib/Model/ListCheckAttributeBlock.php
 lib/Model/ListExperiments200Response.php
 lib/Model/ListStores200Response.php
+lib/Model/ListWithCountCheckAttributeBlock.php
 lib/Model/LoginParams.php
 lib/Model/Loyalty.php
 lib/Model/LoyaltyBalance.php
@@ -1312,6 +1343,7 @@ lib/Model/ProductUnitAnalyticsTotals.php
 lib/Model/ProfileAudiencesChanges.php
 lib/Model/ProjectedTier.php
 lib/Model/PromoteExperiment.php
+lib/Model/PromotionCheckAttributeBlock.php
 lib/Model/PromotionGroupBlock.php
 lib/Model/PromotionRuleV2.php
 lib/Model/RedeemReferralEffectProps.php
@@ -1370,6 +1402,7 @@ lib/Model/SamlConnection.php
 lib/Model/SamlConnectionInternal.php
 lib/Model/SamlConnectionMetadata.php
 lib/Model/SamlLoginEndpoint.php
+lib/Model/ScalarCheckAttributeBlock.php
 lib/Model/ScimBaseGroup.php
 lib/Model/ScimBaseUser.php
 lib/Model/ScimBaseUserName.php
@@ -1397,12 +1430,14 @@ lib/Model/SetDiscountPerAdditionalCostPerItemEffectProps.php
 lib/Model/SetDiscountPerItemEffectProps.php
 lib/Model/SetLoyaltyPointsExpiryDateEffectProps.php
 lib/Model/ShowBundleMetadataEffectProps.php
+lib/Model/ShowNotificationBlock.php
 lib/Model/ShowNotificationEffectProps.php
 lib/Model/SkuUnitAnalytics.php
 lib/Model/SkuUnitAnalyticsDataPoint.php
 lib/Model/SlotDef.php
 lib/Model/Store.php
 lib/Model/StrikethroughChangedItem.php
+lib/Model/StrikethroughCheckAttributeBlock.php
 lib/Model/StrikethroughCustomEffectPerItemProps.php
 lib/Model/StrikethroughDebugResponse.php
 lib/Model/StrikethroughEffect.php
@@ -1436,6 +1471,7 @@ lib/Model/TimePoint.php
 lib/Model/TransferLoyaltyCard.php
 lib/Model/TriggerWebhookEffectProps.php
 lib/Model/TwoFAConfig.php
+lib/Model/UnaryCheckAttributeBlock.php
 lib/Model/UpdateAccount.php
 lib/Model/UpdateAchievement.php
 lib/Model/UpdateAchievementV2.php
@@ -1567,7 +1603,10 @@ test/Model/AudienceIntegrationIDTest.php
 test/Model/AudienceMembershipTest.php
 test/Model/AudienceReferenceTest.php
 test/Model/AudienceTest.php
+test/Model/AwardGiveawayBlock1GiveawayPoolTest.php
+test/Model/AwardGiveawayBlockTest.php
 test/Model/AwardGiveawayEffectPropsTest.php
+test/Model/AwardItemBlockTest.php
 test/Model/BaseBlockTest.php
 test/Model/BaseCampaignTest.php
 test/Model/BaseLoyaltyProgramTest.php
@@ -1578,8 +1617,10 @@ test/Model/BaseNotificationsTest.php
 test/Model/BaseSamlConnectionTest.php
 test/Model/BestPriorPriceMetadataTest.php
 test/Model/BestPriorPriceRequestTest.php
+test/Model/BestPriorPriceSettingsTest.php
 test/Model/BestPriorPriceTest.php
 test/Model/BestPriorTargetTest.php
+test/Model/BetweenCheckAttributeBlockTest.php
 test/Model/BindingTest.php
 test/Model/BlueprintTest.php
 test/Model/BulkApplicationNotificationTest.php
@@ -1654,6 +1695,11 @@ test/Model/CatalogsStrikethroughNotificationPolicyTest.php
 test/Model/ChangeLoyaltyTierLevelEffectPropsTest.php
 test/Model/ChangeProfilePasswordTest.php
 test/Model/ChangeTest.php
+test/Model/CheckAttributeBlockTest.php
+test/Model/CheckAudienceBlock1AudienceTest.php
+test/Model/CheckAudienceBlockTest.php
+test/Model/CheckCouponBlockTest.php
+test/Model/CheckReferralBlockTest.php
 test/Model/CodeGeneratorSettingsTest.php
 test/Model/CollectionItemTest.php
 test/Model/CollectionTest.php
@@ -1787,6 +1833,7 @@ test/Model/GetApplicationCustomersByAttributes200ResponseTest.php
 test/Model/GetApplicationEventTypes200ResponseTest.php
 test/Model/GetApplicationEventsWithoutTotalCount200ResponseTest.php
 test/Model/GetApplicationSessions200ResponseTest.php
+test/Model/GetApplicationSessionsByCustomerAttributes200ResponseTest.php
 test/Model/GetApplications200ResponseTest.php
 test/Model/GetAttributes200ResponseTest.php
 test/Model/GetAudienceMemberships200ResponseTest.php
@@ -1889,8 +1936,10 @@ test/Model/ListCampaignStoreBudgetLimits200ResponseTest.php
 test/Model/ListCampaignStoreBudgetsStoreTest.php
 test/Model/ListCampaignStoreBudgetsTest.php
 test/Model/ListCatalogItems200ResponseTest.php
+test/Model/ListCheckAttributeBlockTest.php
 test/Model/ListExperiments200ResponseTest.php
 test/Model/ListStores200ResponseTest.php
+test/Model/ListWithCountCheckAttributeBlockTest.php
 test/Model/LoginParamsTest.php
 test/Model/LoyaltyBalanceTest.php
 test/Model/LoyaltyBalanceWithTierTest.php
@@ -2047,6 +2096,7 @@ test/Model/ProductUnitAnalyticsTotalsTest.php
 test/Model/ProfileAudiencesChangesTest.php
 test/Model/ProjectedTierTest.php
 test/Model/PromoteExperimentTest.php
+test/Model/PromotionCheckAttributeBlockTest.php
 test/Model/PromotionGroupBlockTest.php
 test/Model/PromotionRuleV2Test.php
 test/Model/RedeemReferralEffectPropsTest.php
@@ -2105,6 +2155,7 @@ test/Model/SamlConnectionInternalTest.php
 test/Model/SamlConnectionMetadataTest.php
 test/Model/SamlConnectionTest.php
 test/Model/SamlLoginEndpointTest.php
+test/Model/ScalarCheckAttributeBlockTest.php
 test/Model/ScimBaseGroupTest.php
 test/Model/ScimBaseUserNameTest.php
 test/Model/ScimBaseUserTest.php
@@ -2132,12 +2183,14 @@ test/Model/SetDiscountPerAdditionalCostPerItemEffectPropsTest.php
 test/Model/SetDiscountPerItemEffectPropsTest.php
 test/Model/SetLoyaltyPointsExpiryDateEffectPropsTest.php
 test/Model/ShowBundleMetadataEffectPropsTest.php
+test/Model/ShowNotificationBlockTest.php
 test/Model/ShowNotificationEffectPropsTest.php
 test/Model/SkuUnitAnalyticsDataPointTest.php
 test/Model/SkuUnitAnalyticsTest.php
 test/Model/SlotDefTest.php
 test/Model/StoreTest.php
 test/Model/StrikethroughChangedItemTest.php
+test/Model/StrikethroughCheckAttributeBlockTest.php
 test/Model/StrikethroughCustomEffectPerItemPropsTest.php
 test/Model/StrikethroughDebugResponseTest.php
 test/Model/StrikethroughEffectTest.php
@@ -2171,6 +2224,7 @@ test/Model/TimePointTest.php
 test/Model/TransferLoyaltyCardTest.php
 test/Model/TriggerWebhookEffectPropsTest.php
 test/Model/TwoFAConfigTest.php
+test/Model/UnaryCheckAttributeBlockTest.php
 test/Model/UpdateAccountTest.php
 test/Model/UpdateAchievementTest.php
 test/Model/UpdateAchievementV2Test.php

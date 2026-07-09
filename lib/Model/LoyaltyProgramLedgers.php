@@ -485,7 +485,7 @@ class LoyaltyProgramLedgers implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets subLedgers
      *
-     * @param array<string,\TalonOne\Client\Model\LedgerInfo>|null $subLedgers A map containing information about each loyalty subledger.
+     * @param array<string,\TalonOne\Client\Model\LedgerInfo>|null $subLedgers A map containing information about each loyalty subledger. Subledgers for which all balances are zero are excluded from the response.
      *
      * @return self
      */
