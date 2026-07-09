@@ -67,7 +67,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => 'string',
         'id' => 'int',
         'created' => '\DateTime',
-        'assertionConsumerServiceURL' => 'string'
+        'assertionConsumerServiceURL' => 'string',
+        'certificateExpiry' => '\DateTime'
     ];
 
     /**
@@ -88,7 +89,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => null,
         'id' => 'int64',
         'created' => 'date-time',
-        'assertionConsumerServiceURL' => null
+        'assertionConsumerServiceURL' => null,
+        'certificateExpiry' => 'date-time'
     ];
 
     /**
@@ -107,7 +109,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => false,
         'id' => false,
         'created' => false,
-        'assertionConsumerServiceURL' => false
+        'assertionConsumerServiceURL' => false,
+        'certificateExpiry' => false
     ];
 
     /**
@@ -206,7 +209,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => 'audienceURI',
         'id' => 'id',
         'created' => 'created',
-        'assertionConsumerServiceURL' => 'assertionConsumerServiceURL'
+        'assertionConsumerServiceURL' => 'assertionConsumerServiceURL',
+        'certificateExpiry' => 'certificateExpiry'
     ];
 
     /**
@@ -225,7 +229,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => 'setAudienceURI',
         'id' => 'setId',
         'created' => 'setCreated',
-        'assertionConsumerServiceURL' => 'setAssertionConsumerServiceURL'
+        'assertionConsumerServiceURL' => 'setAssertionConsumerServiceURL',
+        'certificateExpiry' => 'setCertificateExpiry'
     ];
 
     /**
@@ -244,7 +249,8 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         'audienceURI' => 'getAudienceURI',
         'id' => 'getId',
         'created' => 'getCreated',
-        'assertionConsumerServiceURL' => 'getAssertionConsumerServiceURL'
+        'assertionConsumerServiceURL' => 'getAssertionConsumerServiceURL',
+        'certificateExpiry' => 'getCertificateExpiry'
     ];
 
     /**
@@ -315,6 +321,7 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('assertionConsumerServiceURL', $data ?? [], null);
+        $this->setIfExists('certificateExpiry', $data ?? [], null);
     }
 
     /**
@@ -706,6 +713,33 @@ class SamlConnection implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable assertionConsumerServiceURL cannot be null');
         }
         $this->container['assertionConsumerServiceURL'] = $assertionConsumerServiceURL;
+
+        return $this;
+    }
+
+    /**
+     * Gets certificateExpiry
+     *
+     * @return \DateTime|null
+     */
+    public function getCertificateExpiry()
+    {
+        return $this->container['certificateExpiry'];
+    }
+
+    /**
+     * Sets certificateExpiry
+     *
+     * @param \DateTime|null $certificateExpiry The expiry date of the X.509 certificate.
+     *
+     * @return self
+     */
+    public function setCertificateExpiry($certificateExpiry)
+    {
+        if (is_null($certificateExpiry)) {
+            throw new \InvalidArgumentException('non-nullable certificateExpiry cannot be null');
+        }
+        $this->container['certificateExpiry'] = $certificateExpiry;
 
         return $this;
     }

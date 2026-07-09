@@ -73,7 +73,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => 'string',
         'defaultEvaluationGroupId' => 'int',
         'defaultCartItemFilterId' => 'int',
-        'enableCampaignStateManagement' => 'bool'
+        'enableCampaignStateManagement' => 'bool',
+        'bestPriorPriceSettings' => '\TalonOne\Client\Model\BestPriorPriceSettings'
     ];
 
     /**
@@ -100,7 +101,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => null,
         'defaultEvaluationGroupId' => 'int64',
         'defaultCartItemFilterId' => 'int64',
-        'enableCampaignStateManagement' => null
+        'enableCampaignStateManagement' => null,
+        'bestPriorPriceSettings' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => false,
         'defaultEvaluationGroupId' => false,
         'defaultCartItemFilterId' => false,
-        'enableCampaignStateManagement' => false
+        'enableCampaignStateManagement' => false,
+        'bestPriorPriceSettings' => false
     ];
 
     /**
@@ -230,7 +233,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => 'defaultDiscountAdditionalCostPerItemScope',
         'defaultEvaluationGroupId' => 'defaultEvaluationGroupId',
         'defaultCartItemFilterId' => 'defaultCartItemFilterId',
-        'enableCampaignStateManagement' => 'enableCampaignStateManagement'
+        'enableCampaignStateManagement' => 'enableCampaignStateManagement',
+        'bestPriorPriceSettings' => 'bestPriorPriceSettings'
     ];
 
     /**
@@ -255,7 +259,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => 'setDefaultDiscountAdditionalCostPerItemScope',
         'defaultEvaluationGroupId' => 'setDefaultEvaluationGroupId',
         'defaultCartItemFilterId' => 'setDefaultCartItemFilterId',
-        'enableCampaignStateManagement' => 'setEnableCampaignStateManagement'
+        'enableCampaignStateManagement' => 'setEnableCampaignStateManagement',
+        'bestPriorPriceSettings' => 'setBestPriorPriceSettings'
     ];
 
     /**
@@ -280,7 +285,8 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         'defaultDiscountAdditionalCostPerItemScope' => 'getDefaultDiscountAdditionalCostPerItemScope',
         'defaultEvaluationGroupId' => 'getDefaultEvaluationGroupId',
         'defaultCartItemFilterId' => 'getDefaultCartItemFilterId',
-        'enableCampaignStateManagement' => 'getEnableCampaignStateManagement'
+        'enableCampaignStateManagement' => 'getEnableCampaignStateManagement',
+        'bestPriorPriceSettings' => 'getBestPriorPriceSettings'
     ];
 
     /**
@@ -408,6 +414,7 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('defaultEvaluationGroupId', $data ?? [], null);
         $this->setIfExists('defaultCartItemFilterId', $data ?? [], null);
         $this->setIfExists('enableCampaignStateManagement', $data ?? [], null);
+        $this->setIfExists('bestPriorPriceSettings', $data ?? [], null);
     }
 
     /**
@@ -1000,6 +1007,33 @@ class UpdateApplication implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable enableCampaignStateManagement cannot be null');
         }
         $this->container['enableCampaignStateManagement'] = $enableCampaignStateManagement;
+
+        return $this;
+    }
+
+    /**
+     * Gets bestPriorPriceSettings
+     *
+     * @return \TalonOne\Client\Model\BestPriorPriceSettings|null
+     */
+    public function getBestPriorPriceSettings()
+    {
+        return $this->container['bestPriorPriceSettings'];
+    }
+
+    /**
+     * Sets bestPriorPriceSettings
+     *
+     * @param \TalonOne\Client\Model\BestPriorPriceSettings|null $bestPriorPriceSettings bestPriorPriceSettings
+     *
+     * @return self
+     */
+    public function setBestPriorPriceSettings($bestPriorPriceSettings)
+    {
+        if (is_null($bestPriorPriceSettings)) {
+            throw new \InvalidArgumentException('non-nullable bestPriorPriceSettings cannot be null');
+        }
+        $this->container['bestPriorPriceSettings'] = $bestPriorPriceSettings;
 
         return $this;
     }

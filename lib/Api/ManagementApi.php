@@ -305,6 +305,9 @@ class ManagementApi
         'getApplicationSessions' => [
             'application/json',
         ],
+        'getApplicationSessionsByCustomerAttributes' => [
+            'application/json',
+        ],
         'getApplications' => [
             'application/json',
         ],
@@ -24680,6 +24683,349 @@ class ManagementApi
     }
 
     /**
+     * Operation getApplicationSessionsByCustomerAttributes
+     *
+     * List Application sessions matching the given customer attributes
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationSessionsByCustomerAttributes'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response
+     */
+    public function getApplicationSessionsByCustomerAttributes($applicationId, $customerProfileSearchQuery, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getApplicationSessionsByCustomerAttributes'][0])
+    {
+        list($response) = $this->getApplicationSessionsByCustomerAttributesWithHttpInfo($applicationId, $customerProfileSearchQuery, $pageSize, $skip, $withTotalResultSize, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getApplicationSessionsByCustomerAttributesWithHttpInfo
+     *
+     * List Application sessions matching the given customer attributes
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationSessionsByCustomerAttributes'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApplicationSessionsByCustomerAttributesWithHttpInfo($applicationId, $customerProfileSearchQuery, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getApplicationSessionsByCustomerAttributes'][0])
+    {
+        $request = $this->getApplicationSessionsByCustomerAttributesRequest($applicationId, $customerProfileSearchQuery, $pageSize, $skip, $withTotalResultSize, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApplicationSessionsByCustomerAttributesAsync
+     *
+     * List Application sessions matching the given customer attributes
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationSessionsByCustomerAttributes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationSessionsByCustomerAttributesAsync($applicationId, $customerProfileSearchQuery, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getApplicationSessionsByCustomerAttributes'][0])
+    {
+        return $this->getApplicationSessionsByCustomerAttributesAsyncWithHttpInfo($applicationId, $customerProfileSearchQuery, $pageSize, $skip, $withTotalResultSize, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApplicationSessionsByCustomerAttributesAsyncWithHttpInfo
+     *
+     * List Application sessions matching the given customer attributes
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationSessionsByCustomerAttributes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApplicationSessionsByCustomerAttributesAsyncWithHttpInfo($applicationId, $customerProfileSearchQuery, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getApplicationSessionsByCustomerAttributes'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\GetApplicationSessionsByCustomerAttributes200Response';
+        $request = $this->getApplicationSessionsByCustomerAttributesRequest($applicationId, $customerProfileSearchQuery, $pageSize, $skip, $withTotalResultSize, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApplicationSessionsByCustomerAttributes'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\CustomerProfileSearchQuery $customerProfileSearchQuery body (required)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets. - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query. - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApplicationSessionsByCustomerAttributes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApplicationSessionsByCustomerAttributesRequest($applicationId, $customerProfileSearchQuery, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getApplicationSessionsByCustomerAttributes'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling getApplicationSessionsByCustomerAttributes'
+            );
+        }
+
+        // verify the required parameter 'customerProfileSearchQuery' is set
+        if ($customerProfileSearchQuery === null || (is_array($customerProfileSearchQuery) && count($customerProfileSearchQuery) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $customerProfileSearchQuery when calling getApplicationSessionsByCustomerAttributes'
+            );
+        }
+
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getApplicationSessionsByCustomerAttributes, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getApplicationSessionsByCustomerAttributes, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/applications/{applicationId}/sessions_search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $withTotalResultSize,
+            'withTotalResultSize', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{applicationId}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($customerProfileSearchQuery)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customerProfileSearchQuery));
+            } else {
+                $httpBody = $customerProfileSearchQuery;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getApplications
      *
      * List Applications
@@ -28564,7 +28910,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  string|null $name Filter results performing case-insensitive matching against the name of the campaign. (optional)
-     * @param  string|null $tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values (optional)
+     * @param  string[]|null $tags Filter results performing case-insensitive matching against the tags of the campaign. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -28597,7 +28943,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  string|null $name Filter results performing case-insensitive matching against the name of the campaign. (optional)
-     * @param  string|null $tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values (optional)
+     * @param  string[]|null $tags Filter results performing case-insensitive matching against the tags of the campaign. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -28711,7 +29057,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  string|null $name Filter results performing case-insensitive matching against the name of the campaign. (optional)
-     * @param  string|null $tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values (optional)
+     * @param  string[]|null $tags Filter results performing case-insensitive matching against the tags of the campaign. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -28747,7 +29093,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  string|null $name Filter results performing case-insensitive matching against the name of the campaign. (optional)
-     * @param  string|null $tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values (optional)
+     * @param  string[]|null $tags Filter results performing case-insensitive matching against the tags of the campaign. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -28812,7 +29158,7 @@ class ManagementApi
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. (optional)
      * @param  string|null $name Filter results performing case-insensitive matching against the name of the campaign. (optional)
-     * @param  string|null $tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values (optional)
+     * @param  string[]|null $tags Filter results performing case-insensitive matching against the tags of the campaign. (optional)
      * @param  \DateTime|null $createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param  \DateTime|null $startBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign start time timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -28915,7 +29261,7 @@ class ManagementApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $tags,
             'tags', // param base name
-            'string', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -61,7 +61,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'created' => '\DateTime',
         'notificationId' => 'int',
-        'runDate' => '\DateTime',
+        'featureDate' => '\DateTime',
         'groupKey' => 'string',
         'applicationId' => 'int',
         'status' => 'string',
@@ -86,7 +86,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int64',
         'created' => 'date-time',
         'notificationId' => 'int64',
-        'runDate' => 'date',
+        'featureDate' => 'date',
         'groupKey' => null,
         'applicationId' => 'int64',
         'status' => null,
@@ -109,7 +109,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'created' => false,
         'notificationId' => false,
-        'runDate' => false,
+        'featureDate' => false,
         'groupKey' => false,
         'applicationId' => false,
         'status' => false,
@@ -212,7 +212,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'created' => 'created',
         'notificationId' => 'notificationId',
-        'runDate' => 'runDate',
+        'featureDate' => 'featureDate',
         'groupKey' => 'groupKey',
         'applicationId' => 'applicationId',
         'status' => 'status',
@@ -235,7 +235,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'created' => 'setCreated',
         'notificationId' => 'setNotificationId',
-        'runDate' => 'setRunDate',
+        'featureDate' => 'setFeatureDate',
         'groupKey' => 'setGroupKey',
         'applicationId' => 'setApplicationId',
         'status' => 'setStatus',
@@ -258,7 +258,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'created' => 'getCreated',
         'notificationId' => 'getNotificationId',
-        'runDate' => 'getRunDate',
+        'featureDate' => 'getFeatureDate',
         'groupKey' => 'getGroupKey',
         'applicationId' => 'getApplicationId',
         'status' => 'getStatus',
@@ -325,9 +325,9 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ACTIVITY_DISCOUNTED_AMOUNT = 'discounted_amount';
     public const ACTIVITY_COMPLETED_ORDERS = 'completed_orders';
     public const ACTIVITY_COUPON_ATTEMPTS = 'coupon_attempts';
-    public const TIME_FRAME__1_DAY = '1_day';
-    public const TIME_FRAME__1_WEEK = '1_week';
-    public const TIME_FRAME__1_MONTH = '1_month';
+    public const TIME_FRAME__1_D = '1D';
+    public const TIME_FRAME__7_D = '7D';
+    public const TIME_FRAME__30_D = '30D';
 
     /**
      * Gets allowable values of the enum
@@ -393,9 +393,9 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getTimeFrameAllowableValues()
     {
         return [
-            self::TIME_FRAME__1_DAY,
-            self::TIME_FRAME__1_WEEK,
-            self::TIME_FRAME__1_MONTH,
+            self::TIME_FRAME__1_D,
+            self::TIME_FRAME__7_D,
+            self::TIME_FRAME__30_D,
         ];
     }
 
@@ -417,7 +417,7 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('notificationId', $data ?? [], null);
-        $this->setIfExists('runDate', $data ?? [], null);
+        $this->setIfExists('featureDate', $data ?? [], null);
         $this->setIfExists('groupKey', $data ?? [], null);
         $this->setIfExists('applicationId', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -467,8 +467,8 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['notificationId'] === null) {
             $invalidProperties[] = "'notificationId' can't be null";
         }
-        if ($this->container['runDate'] === null) {
-            $invalidProperties[] = "'runDate' can't be null";
+        if ($this->container['featureDate'] === null) {
+            $invalidProperties[] = "'featureDate' can't be null";
         }
         if ($this->container['groupKey'] === null) {
             $invalidProperties[] = "'groupKey' can't be null";
@@ -639,28 +639,28 @@ class Risk implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets runDate
+     * Gets featureDate
      *
      * @return \DateTime
      */
-    public function getRunDate()
+    public function getFeatureDate()
     {
-        return $this->container['runDate'];
+        return $this->container['featureDate'];
     }
 
     /**
-     * Sets runDate
+     * Sets featureDate
      *
-     * @param \DateTime $runDate The date of the ML pipeline run that detected this risk.
+     * @param \DateTime $featureDate The date of the activity data in which this risk was detected. The anomaly detection pipeline scores complete 24-hour cycles, so this is always the day before the risk was reported, not the reporting date itself.
      *
      * @return self
      */
-    public function setRunDate($runDate)
+    public function setFeatureDate($featureDate)
     {
-        if (is_null($runDate)) {
-            throw new \InvalidArgumentException('non-nullable runDate cannot be null');
+        if (is_null($featureDate)) {
+            throw new \InvalidArgumentException('non-nullable featureDate cannot be null');
         }
-        $this->container['runDate'] = $runDate;
+        $this->container['featureDate'] = $featureDate;
 
         return $this;
     }

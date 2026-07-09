@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **int** | The internal ID of this entity. |
 **created** | **\DateTime** | The time this entity was created. |
 **notificationId** | **int** | The ID of the risk notification rule that flagged this risk. |
-**runDate** | **\DateTime** | The date of the ML pipeline run that detected this risk. |
+**featureDate** | **\DateTime** | The date of the activity data in which this risk was detected. The anomaly detection pipeline scores complete 24-hour cycles, so this is always the day before the risk was reported, not the reporting date itself. |
 **groupKey** | **string** | The Application group this risk was detected in. Contains the Application ID, or &#x60;__GLOBAL__&#x60; for metrics that are not grouped by Application. |
 **applicationId** | **int** | The ID of the Application this risk belongs to. Absent for global metrics. | [optional]
 **status** | **string** | The triage lifecycle status of this risk. |

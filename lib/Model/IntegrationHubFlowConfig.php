@@ -60,7 +60,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => 'string',
         'workerCount' => 'int',
         'maxEventsPerMessage' => 'int',
-        'maxRetries' => 'int'
+        'maxRetries' => 'int',
+        'instanceName' => 'string',
+        'integrationName' => 'string'
     ];
 
     /**
@@ -74,7 +76,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => null,
         'workerCount' => 'int64',
         'maxEventsPerMessage' => 'int64',
-        'maxRetries' => 'int64'
+        'maxRetries' => 'int64',
+        'instanceName' => null,
+        'integrationName' => null
     ];
 
     /**
@@ -86,7 +90,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => false,
         'workerCount' => false,
         'maxEventsPerMessage' => false,
-        'maxRetries' => false
+        'maxRetries' => false,
+        'instanceName' => false,
+        'integrationName' => false
     ];
 
     /**
@@ -178,7 +184,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => 'ApiKey',
         'workerCount' => 'WorkerCount',
         'maxEventsPerMessage' => 'MaxEventsPerMessage',
-        'maxRetries' => 'MaxRetries'
+        'maxRetries' => 'MaxRetries',
+        'instanceName' => 'InstanceName',
+        'integrationName' => 'IntegrationName'
     ];
 
     /**
@@ -190,7 +198,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => 'setApiKey',
         'workerCount' => 'setWorkerCount',
         'maxEventsPerMessage' => 'setMaxEventsPerMessage',
-        'maxRetries' => 'setMaxRetries'
+        'maxRetries' => 'setMaxRetries',
+        'instanceName' => 'setInstanceName',
+        'integrationName' => 'setIntegrationName'
     ];
 
     /**
@@ -202,7 +212,9 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         'apiKey' => 'getApiKey',
         'workerCount' => 'getWorkerCount',
         'maxEventsPerMessage' => 'getMaxEventsPerMessage',
-        'maxRetries' => 'getMaxRetries'
+        'maxRetries' => 'getMaxRetries',
+        'instanceName' => 'getInstanceName',
+        'integrationName' => 'getIntegrationName'
     ];
 
     /**
@@ -266,6 +278,8 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('workerCount', $data ?? [], 10);
         $this->setIfExists('maxEventsPerMessage', $data ?? [], 1000);
         $this->setIfExists('maxRetries', $data ?? [], 10);
+        $this->setIfExists('instanceName', $data ?? [], null);
+        $this->setIfExists('integrationName', $data ?? [], null);
     }
 
     /**
@@ -451,6 +465,60 @@ class IntegrationHubFlowConfig implements ModelInterface, ArrayAccess, \JsonSeri
         }
 
         $this->container['maxRetries'] = $maxRetries;
+
+        return $this;
+    }
+
+    /**
+     * Gets instanceName
+     *
+     * @return string|null
+     */
+    public function getInstanceName()
+    {
+        return $this->container['instanceName'];
+    }
+
+    /**
+     * Sets instanceName
+     *
+     * @param string|null $instanceName Name of the Prismatic instance that registered this flow.
+     *
+     * @return self
+     */
+    public function setInstanceName($instanceName)
+    {
+        if (is_null($instanceName)) {
+            throw new \InvalidArgumentException('non-nullable instanceName cannot be null');
+        }
+        $this->container['instanceName'] = $instanceName;
+
+        return $this;
+    }
+
+    /**
+     * Gets integrationName
+     *
+     * @return string|null
+     */
+    public function getIntegrationName()
+    {
+        return $this->container['integrationName'];
+    }
+
+    /**
+     * Sets integrationName
+     *
+     * @param string|null $integrationName Name of the Prismatic integration that registered this flow.
+     *
+     * @return self
+     */
+    public function setIntegrationName($integrationName)
+    {
+        if (is_null($integrationName)) {
+            throw new \InvalidArgumentException('non-nullable integrationName cannot be null');
+        }
+        $this->container['integrationName'] = $integrationName;
 
         return $this;
     }

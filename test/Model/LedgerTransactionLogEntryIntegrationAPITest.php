@@ -116,6 +116,15 @@ class LedgerTransactionLogEntryIntegrationAPITest extends TestCase
     }
 
     /**
+     * Test attribute "storeIntegrationId"
+     */
+    public function testPropertyStoreIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "type"
      */
     public function testPropertyType()

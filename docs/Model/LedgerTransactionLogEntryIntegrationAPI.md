@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created** | **\DateTime** | Date and time the loyalty transaction occurred. |
 **programId** | **int** | ID of the loyalty program. |
 **customerSessionId** | **string** | ID of the customer session where the transaction occurred. | [optional]
+**storeIntegrationId** | **string** | The integration ID of the store where the transaction occurred. Only set for transactions created by a customer session or event that referenced a store. | [optional]
 **type** | **string** | Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. |
 **name** | **string** | Name or reason of the loyalty ledger transaction. |
 **startDate** | **string** | When points become active. Possible values:   - &#x60;immediate&#x60;: Points are immediately active.   - &#x60;on_action&#x60;: Points become active based on the customer&#39;s action.   - a timestamp value: Points become active at a given date and time. |

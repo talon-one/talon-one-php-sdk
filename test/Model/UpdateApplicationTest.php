@@ -231,4 +231,13 @@ class UpdateApplicationTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "bestPriorPriceSettings"
+     */
+    public function testPropertyBestPriorPriceSettings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

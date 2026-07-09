@@ -107,9 +107,9 @@ class RiskTest extends TestCase
     }
 
     /**
-     * Test attribute "runDate"
+     * Test attribute "featureDate"
      */
-    public function testPropertyRunDate()
+    public function testPropertyFeatureDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
