@@ -18,6 +18,10 @@ Name | Type | Description | Notes
 **reportedDate** | **\DateTime** | The time the ML service reported this risk. |
 **affectedEntityCount** | **int** | The total number of entities affected by this risk. |
 **description** | **string** | Human-readable description of the detected anomaly. | [optional]
+**discardReason** | **string** | The reason this risk was discarded. Only present on discarded risks. | [optional]
+**statusComment** | **string** | The free-text details of the latest reclassification action: the description for resolving confirmed risks, or the details for discarding risks. | [optional]
+**statusChangedBy** | **int** | The ID of the user who performed the latest reclassification action. | [optional]
+**statusChangedAt** | **\DateTime** | The time of the latest reclassification action. | [optional]
 **modified** | **\DateTime** | Timestamp of the most recent update. |
 **affectedEntities** | [**\TalonOne\Client\Model\RiskAffectedEntityItem[]**](RiskAffectedEntityItem.md) | The affected entities with the highest severity ratios, in descending order. |
 

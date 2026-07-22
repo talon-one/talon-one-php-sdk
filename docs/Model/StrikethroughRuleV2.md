@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **parentId** | **string** | ID of the parent rule, if any. | [optional]
 **title** | **string** | A short description of the rule. |
 **description** | **string** | A longer description of the rule. | [optional]
-**blocks** | **mixed[]** | The condition and effect blocks that make up this strikethrough rule. |
+**blocks** | [**\TalonOne\Client\Model\StrikethroughBlock[]**](StrikethroughBlock.md) | The condition and effect blocks that make up this strikethrough rule. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **webhooks** | [**\TalonOne\Client\Model\WebhookAuthenticationWebhookRef[]**](WebhookAuthenticationWebhookRef.md) |  |
 **name** | **string** | The name of the webhook authentication. |
 **type** | **string** |  |
-**data** | **mixed** |  |
+**data** | [**\TalonOne\Client\Model\WebhookAuthenticationAllOfData**](WebhookAuthenticationAllOfData.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

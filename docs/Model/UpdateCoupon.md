@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **expiryDate** | **\DateTime** | Expiration date of the coupon. Coupon never expires if this is omitted. | [optional]
 **limits** | [**\TalonOne\Client\Model\LimitConfig[]**](LimitConfig.md) | Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. | [optional]
 **recipientIntegrationId** | **string** | The integration ID for this coupon&#39;s beneficiary&#39;s profile. | [optional]
-**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
+**attributes** | **object** | Arbitrary properties associated with this item. | [optional]
 **isReservationMandatory** | **bool** | An indication of whether the code can be redeemed only if it has been reserved first. | [optional] [default to false]
 **implicitlyReserved** | **bool** | An indication of whether the coupon is implicitly reserved for all customers. | [optional]
 

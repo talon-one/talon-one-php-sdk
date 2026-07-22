@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **method** | **string** | API method for this webhook. |
 **relativeUrl** | **string** | The relative URL corresponding to each integration template. |
 **headers** | **string[]** | The list of HTTP headers for this integration template. |
-**policy** | **object** | The outgoing integration policy specific to each integration type. |
+**policy** | [**\TalonOne\Client\Model\OutgoingIntegrationConfigurationPolicy**](OutgoingIntegrationConfigurationPolicy.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

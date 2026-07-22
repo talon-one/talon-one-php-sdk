@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **campaignId** | **int** | ID of the campaign from which the referral received the referral code. |
 **advocateProfileIntegrationId** | **string** | The Integration ID of the Advocate&#39;s Profile. |
 **friendProfileIntegrationId** | **string** | An optional Integration ID of the Friend&#39;s Profile. | [optional]
-**attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
+**attributes** | **object** | Arbitrary properties associated with this item. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
