@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **processedAt** | **\DateTime** | Timestamp when the request was approved or rejected. | [optional]
 **processingNote** | **string** | Notes attached by the admin when rejecting or approving a request. | [optional]
 **processedByUser** | **string** | Email address of the admin who approved or rejected the support request. | [optional]
+**couponCode** | **string** | Coupon code associated with the approved support request. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

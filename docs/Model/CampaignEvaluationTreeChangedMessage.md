@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notificationType** | **string** | The type of the notification |
 **totalResultSize** | **int** | The total size of the result set. |
-**data** | [**\TalonOne\Client\Model\ApplicationNotification[]**](ApplicationNotification.md) | The array of changes. | [optional]
+**data** | [**\TalonOne\Client\Model\CampaignEvaluationTreeChangedNotification[]**](CampaignEvaluationTreeChangedNotification.md) | The array of changes. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

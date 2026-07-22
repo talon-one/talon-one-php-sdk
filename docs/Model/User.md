@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 **policy** | **object** | Access level of the user. |
 **roles** | **int[]** | A list of the IDs of the roles assigned to the user. | [optional]
 **authMethod** | **string** | Authentication method for this user. | [optional]
-**applicationNotificationSubscriptions** | **object** | Arbitrary properties associated with this campaign. | [optional]
+**applicationNotificationSubscriptions** | **object** | Application notifications that the user is subscribed to. | [optional]
 **lastSignedIn** | **\DateTime** | Timestamp when the user last signed in to Talon.One. | [optional]
 **lastAccessed** | **\DateTime** | Timestamp of the user&#39;s last activity after signing in to Talon.One. | [optional]
 **latestFeedTimestamp** | **\DateTime** | Timestamp when the user was notified for feed. | [optional]
-**additionalAttributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
+**additionalAttributes** | **object** | Additional user attributes, created and used by external identity providers. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

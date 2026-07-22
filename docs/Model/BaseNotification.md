@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**policy** | **object** | Indicates which notification properties to apply. |
+**policy** | [**\TalonOne\Client\Model\BaseNotificationPolicy**](BaseNotificationPolicy.md) |  |
 **enabled** | **bool** | Indicates whether the notification is activated. | [optional] [default to true]
 **webhook** | [**\TalonOne\Client\Model\BaseNotificationWebhook**](BaseNotificationWebhook.md) |  |
 **id** | **int** | Unique ID for this entity. |

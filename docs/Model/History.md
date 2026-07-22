@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **contextId** | **string** | This property is **deprecated**. Use &#x60;contextIds&#x60; instead. Defaults to an empty string. | [optional] [default to '']
 **price** | **float** | Price of the item. |
 **metadata** | [**\TalonOne\Client\Model\BestPriorPriceMetadata**](BestPriorPriceMetadata.md) |  |
-**target** | **object** |  |
+**target** | [**\TalonOne\Client\Model\LabelTarget**](LabelTarget.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
