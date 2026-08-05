@@ -65,26 +65,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => '\TalonOne\Client\Model\PromotionBlock[]',
         'onFailure' => '\TalonOne\Client\Model\PromotionBlock[]',
         'onError' => 'array<string,\TalonOne\Client\Model\PromotionBlock[]>',
+        'name' => 'string',
+        'value' => 'float',
+        'partial' => 'bool',
+        'target' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1Target',
         'expression' => 'mixed[]',
         'notificationType' => 'string',
         'title' => 'string',
         'body' => 'string',
         'sku' => 'string',
-        'name' => 'string',
         'quantity' => 'string',
-        'partial' => 'bool',
         'giveawayPool' => '\TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool',
         'profile' => 'string',
         'attribute' => '\TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute',
-        'value' => 'mixed',
         'min' => 'mixed',
         'max' => 'mixed',
+        'start' => 'mixed',
+        'end' => 'mixed',
+        'startInclusive' => 'bool',
+        'endInclusive' => 'bool',
+        'timezoneInsensitive' => 'bool',
         'values' => 'mixed',
         'count' => 'mixed',
         'audience' => '\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience',
+        'program' => '\TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program',
+        'subledger' => 'string',
+        'balance' => 'string',
         'redeem' => 'bool',
-        'achievement' => '\TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement',
-        'target' => '\TalonOne\Client\Model\UpdateAttributeValueBlock1Target'
+        'achievement' => '\TalonOne\Client\Model\CheckAchievementBlock1Achievement',
+        'webhook' => '\TalonOne\Client\Model\TriggerWebhookBlock1Webhook',
+        'params' => 'array<string,mixed>',
+        'customEffect' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect',
+        'eventType' => 'string',
+        'matchers' => '\TalonOne\Client\Model\PromotionBlock[]',
+        'action' => 'string',
+        'campaignId' => '\TalonOne\Client\Model\CreateReferralBlock1CampaignId',
+        'recipientId' => 'string',
+        'storeInSession' => 'bool',
+        'usageLimit' => '\TalonOne\Client\Model\CreateReferralBlock1UsageLimit',
+        'discountLimit' => '\TalonOne\Client\Model\CreateCouponBlock1DiscountLimit',
+        'startDate' => 'mixed',
+        'expiryDate' => 'mixed',
+        'attributes' => 'mixed',
+        'validCharacters' => 'string',
+        'pattern' => 'string',
+        'friendId' => 'string'
     ];
 
     /**
@@ -102,26 +127,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => null,
         'onFailure' => null,
         'onError' => null,
+        'name' => null,
+        'value' => null,
+        'partial' => null,
+        'target' => null,
         'expression' => null,
         'notificationType' => null,
         'title' => null,
         'body' => null,
         'sku' => null,
-        'name' => null,
         'quantity' => null,
-        'partial' => null,
         'giveawayPool' => null,
         'profile' => null,
         'attribute' => null,
-        'value' => null,
         'min' => null,
         'max' => null,
+        'start' => null,
+        'end' => null,
+        'startInclusive' => null,
+        'endInclusive' => null,
+        'timezoneInsensitive' => null,
         'values' => null,
         'count' => null,
         'audience' => null,
+        'program' => null,
+        'subledger' => null,
+        'balance' => null,
         'redeem' => null,
         'achievement' => null,
-        'target' => null
+        'webhook' => null,
+        'params' => null,
+        'customEffect' => null,
+        'eventType' => null,
+        'matchers' => null,
+        'action' => null,
+        'campaignId' => null,
+        'recipientId' => null,
+        'storeInSession' => null,
+        'usageLimit' => null,
+        'discountLimit' => null,
+        'startDate' => null,
+        'expiryDate' => null,
+        'attributes' => null,
+        'validCharacters' => null,
+        'pattern' => null,
+        'friendId' => null
     ];
 
     /**
@@ -137,26 +187,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => false,
         'onFailure' => false,
         'onError' => false,
+        'name' => false,
+        'value' => false,
+        'partial' => false,
+        'target' => false,
         'expression' => false,
         'notificationType' => false,
         'title' => false,
         'body' => false,
         'sku' => false,
-        'name' => false,
         'quantity' => false,
-        'partial' => false,
         'giveawayPool' => false,
         'profile' => false,
         'attribute' => false,
-        'value' => true,
         'min' => true,
         'max' => true,
+        'start' => true,
+        'end' => true,
+        'startInclusive' => false,
+        'endInclusive' => false,
+        'timezoneInsensitive' => false,
         'values' => true,
         'count' => true,
         'audience' => false,
+        'program' => false,
+        'subledger' => false,
+        'balance' => false,
         'redeem' => false,
         'achievement' => false,
-        'target' => false
+        'webhook' => false,
+        'params' => false,
+        'customEffect' => false,
+        'eventType' => false,
+        'matchers' => false,
+        'action' => false,
+        'campaignId' => false,
+        'recipientId' => false,
+        'storeInSession' => false,
+        'usageLimit' => false,
+        'discountLimit' => false,
+        'startDate' => true,
+        'expiryDate' => true,
+        'attributes' => true,
+        'validCharacters' => false,
+        'pattern' => false,
+        'friendId' => false
     ];
 
     /**
@@ -252,26 +327,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => 'blocks',
         'onFailure' => 'onFailure',
         'onError' => 'onError',
+        'name' => 'name',
+        'value' => 'value',
+        'partial' => 'partial',
+        'target' => 'target',
         'expression' => 'expression',
         'notificationType' => 'notificationType',
         'title' => 'title',
         'body' => 'body',
         'sku' => 'sku',
-        'name' => 'name',
         'quantity' => 'quantity',
-        'partial' => 'partial',
         'giveawayPool' => 'giveawayPool',
         'profile' => 'profile',
         'attribute' => 'attribute',
-        'value' => 'value',
         'min' => 'min',
         'max' => 'max',
+        'start' => 'start',
+        'end' => 'end',
+        'startInclusive' => 'startInclusive',
+        'endInclusive' => 'endInclusive',
+        'timezoneInsensitive' => 'timezoneInsensitive',
         'values' => 'values',
         'count' => 'count',
         'audience' => 'audience',
+        'program' => 'program',
+        'subledger' => 'subledger',
+        'balance' => 'balance',
         'redeem' => 'redeem',
         'achievement' => 'achievement',
-        'target' => 'target'
+        'webhook' => 'webhook',
+        'params' => 'params',
+        'customEffect' => 'customEffect',
+        'eventType' => 'eventType',
+        'matchers' => 'matchers',
+        'action' => 'action',
+        'campaignId' => 'campaignId',
+        'recipientId' => 'recipientId',
+        'storeInSession' => 'storeInSession',
+        'usageLimit' => 'usageLimit',
+        'discountLimit' => 'discountLimit',
+        'startDate' => 'startDate',
+        'expiryDate' => 'expiryDate',
+        'attributes' => 'attributes',
+        'validCharacters' => 'validCharacters',
+        'pattern' => 'pattern',
+        'friendId' => 'friendId'
     ];
 
     /**
@@ -287,26 +387,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => 'setBlocks',
         'onFailure' => 'setOnFailure',
         'onError' => 'setOnError',
+        'name' => 'setName',
+        'value' => 'setValue',
+        'partial' => 'setPartial',
+        'target' => 'setTarget',
         'expression' => 'setExpression',
         'notificationType' => 'setNotificationType',
         'title' => 'setTitle',
         'body' => 'setBody',
         'sku' => 'setSku',
-        'name' => 'setName',
         'quantity' => 'setQuantity',
-        'partial' => 'setPartial',
         'giveawayPool' => 'setGiveawayPool',
         'profile' => 'setProfile',
         'attribute' => 'setAttribute',
-        'value' => 'setValue',
         'min' => 'setMin',
         'max' => 'setMax',
+        'start' => 'setStart',
+        'end' => 'setEnd',
+        'startInclusive' => 'setStartInclusive',
+        'endInclusive' => 'setEndInclusive',
+        'timezoneInsensitive' => 'setTimezoneInsensitive',
         'values' => 'setValues',
         'count' => 'setCount',
         'audience' => 'setAudience',
+        'program' => 'setProgram',
+        'subledger' => 'setSubledger',
+        'balance' => 'setBalance',
         'redeem' => 'setRedeem',
         'achievement' => 'setAchievement',
-        'target' => 'setTarget'
+        'webhook' => 'setWebhook',
+        'params' => 'setParams',
+        'customEffect' => 'setCustomEffect',
+        'eventType' => 'setEventType',
+        'matchers' => 'setMatchers',
+        'action' => 'setAction',
+        'campaignId' => 'setCampaignId',
+        'recipientId' => 'setRecipientId',
+        'storeInSession' => 'setStoreInSession',
+        'usageLimit' => 'setUsageLimit',
+        'discountLimit' => 'setDiscountLimit',
+        'startDate' => 'setStartDate',
+        'expiryDate' => 'setExpiryDate',
+        'attributes' => 'setAttributes',
+        'validCharacters' => 'setValidCharacters',
+        'pattern' => 'setPattern',
+        'friendId' => 'setFriendId'
     ];
 
     /**
@@ -322,26 +447,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'blocks' => 'getBlocks',
         'onFailure' => 'getOnFailure',
         'onError' => 'getOnError',
+        'name' => 'getName',
+        'value' => 'getValue',
+        'partial' => 'getPartial',
+        'target' => 'getTarget',
         'expression' => 'getExpression',
         'notificationType' => 'getNotificationType',
         'title' => 'getTitle',
         'body' => 'getBody',
         'sku' => 'getSku',
-        'name' => 'getName',
         'quantity' => 'getQuantity',
-        'partial' => 'getPartial',
         'giveawayPool' => 'getGiveawayPool',
         'profile' => 'getProfile',
         'attribute' => 'getAttribute',
-        'value' => 'getValue',
         'min' => 'getMin',
         'max' => 'getMax',
+        'start' => 'getStart',
+        'end' => 'getEnd',
+        'startInclusive' => 'getStartInclusive',
+        'endInclusive' => 'getEndInclusive',
+        'timezoneInsensitive' => 'getTimezoneInsensitive',
         'values' => 'getValues',
         'count' => 'getCount',
         'audience' => 'getAudience',
+        'program' => 'getProgram',
+        'subledger' => 'getSubledger',
+        'balance' => 'getBalance',
         'redeem' => 'getRedeem',
         'achievement' => 'getAchievement',
-        'target' => 'getTarget'
+        'webhook' => 'getWebhook',
+        'params' => 'getParams',
+        'customEffect' => 'getCustomEffect',
+        'eventType' => 'getEventType',
+        'matchers' => 'getMatchers',
+        'action' => 'getAction',
+        'campaignId' => 'getCampaignId',
+        'recipientId' => 'getRecipientId',
+        'storeInSession' => 'getStoreInSession',
+        'usageLimit' => 'getUsageLimit',
+        'discountLimit' => 'getDiscountLimit',
+        'startDate' => 'getStartDate',
+        'expiryDate' => 'getExpiryDate',
+        'attributes' => 'getAttributes',
+        'validCharacters' => 'getValidCharacters',
+        'pattern' => 'getPattern',
+        'friendId' => 'getFriendId'
     ];
 
     /**
@@ -385,16 +535,28 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const OPERATOR_SET_TO = 'setTo';
-    public const OPERATOR_INCREASE_BY = 'increaseBy';
-    public const OPERATOR_DECREASE_BY = 'decreaseBy';
-    public const OPERATOR_MULTIPLY_BY = 'multiplyBy';
-    public const OPERATOR_DIVIDE_BY = 'divideBy';
-    public const OPERATOR_TOGGLE = 'toggle';
-    public const OPERATOR_LATER_BY = 'laterBy';
-    public const OPERATOR_EARLIER_BY = 'earlierBy';
+    public const OPERATOR_AVAILABLE = 'available';
+    public const OPERATOR_ENOUGH_FOR = 'enoughFor';
     public const PROFILE_CURRENT = 'Current';
     public const PROFILE_ADVOCATE = 'Advocate';
+    public const BALANCE_CURRENT = 'current';
+    public const BALANCE_PENDING = 'pending';
+    public const BALANCE_NEGATIVE = 'negative';
+    public const BALANCE_TENTATIVE_CURRENT = 'tentativeCurrent';
+    public const ACTION_REDEEM_COUPON = 'redeemCoupon';
+    public const ACTION_REDEEM_REFERRAL = 'redeemReferral';
+    public const ACTION_SET_DISCOUNT = 'setDiscount';
+    public const ACTION_CREATE_COUPON = 'createCoupon';
+    public const ACTION_CREATE_REFERRAL = 'createReferral';
+    public const ACTION_SET_DISCOUNT_EFFECT = 'setDiscountEffect';
+    public const ACTION_CREATE_LOYALTY_POINTS = 'createLoyaltyPoints';
+    public const ACTION_CREATE_LOYALTY_POINTS_EFFECT = 'createLoyaltyPointsEffect';
+    public const ACTION_REDEEM_LOYALTY_POINTS = 'redeemLoyaltyPoints';
+    public const ACTION_REDEEM_LOYALTY_POINTS_EFFECT = 'redeemLoyaltyPointsEffect';
+    public const ACTION_AWARD_GIVEAWAY = 'awardGiveaway';
+    public const ACTION_ADD_FREE_ITEM_EFFECT = 'addFreeItemEffect';
+    public const ACTION_CUSTOM_EFFECT = 'customEffect';
+    public const ACTION_CALL_API = 'callApi';
 
     /**
      * Gets allowable values of the enum
@@ -404,14 +566,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getOperatorAllowableValues()
     {
         return [
-            self::OPERATOR_SET_TO,
-            self::OPERATOR_INCREASE_BY,
-            self::OPERATOR_DECREASE_BY,
-            self::OPERATOR_MULTIPLY_BY,
-            self::OPERATOR_DIVIDE_BY,
-            self::OPERATOR_TOGGLE,
-            self::OPERATOR_LATER_BY,
-            self::OPERATOR_EARLIER_BY,
+            self::OPERATOR_AVAILABLE,
+            self::OPERATOR_ENOUGH_FOR,
         ];
     }
 
@@ -425,6 +581,46 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::PROFILE_CURRENT,
             self::PROFILE_ADVOCATE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBalanceAllowableValues()
+    {
+        return [
+            self::BALANCE_CURRENT,
+            self::BALANCE_PENDING,
+            self::BALANCE_NEGATIVE,
+            self::BALANCE_TENTATIVE_CURRENT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_REDEEM_COUPON,
+            self::ACTION_REDEEM_REFERRAL,
+            self::ACTION_SET_DISCOUNT,
+            self::ACTION_CREATE_COUPON,
+            self::ACTION_CREATE_REFERRAL,
+            self::ACTION_SET_DISCOUNT_EFFECT,
+            self::ACTION_CREATE_LOYALTY_POINTS,
+            self::ACTION_CREATE_LOYALTY_POINTS_EFFECT,
+            self::ACTION_REDEEM_LOYALTY_POINTS,
+            self::ACTION_REDEEM_LOYALTY_POINTS_EFFECT,
+            self::ACTION_AWARD_GIVEAWAY,
+            self::ACTION_ADD_FREE_ITEM_EFFECT,
+            self::ACTION_CUSTOM_EFFECT,
+            self::ACTION_CALL_API,
         ];
     }
 
@@ -450,26 +646,51 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('blocks', $data ?? [], null);
         $this->setIfExists('onFailure', $data ?? [], null);
         $this->setIfExists('onError', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('partial', $data ?? [], null);
+        $this->setIfExists('target', $data ?? [], null);
         $this->setIfExists('expression', $data ?? [], null);
         $this->setIfExists('notificationType', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('partial', $data ?? [], null);
         $this->setIfExists('giveawayPool', $data ?? [], null);
         $this->setIfExists('profile', $data ?? [], null);
         $this->setIfExists('attribute', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('min', $data ?? [], null);
         $this->setIfExists('max', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('startInclusive', $data ?? [], null);
+        $this->setIfExists('endInclusive', $data ?? [], null);
+        $this->setIfExists('timezoneInsensitive', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
         $this->setIfExists('audience', $data ?? [], null);
+        $this->setIfExists('program', $data ?? [], null);
+        $this->setIfExists('subledger', $data ?? [], null);
+        $this->setIfExists('balance', $data ?? [], null);
         $this->setIfExists('redeem', $data ?? [], null);
         $this->setIfExists('achievement', $data ?? [], null);
-        $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('webhook', $data ?? [], null);
+        $this->setIfExists('params', $data ?? [], null);
+        $this->setIfExists('customEffect', $data ?? [], null);
+        $this->setIfExists('eventType', $data ?? [], null);
+        $this->setIfExists('matchers', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('campaignId', $data ?? [], null);
+        $this->setIfExists('recipientId', $data ?? [], null);
+        $this->setIfExists('storeInSession', $data ?? [], null);
+        $this->setIfExists('usageLimit', $data ?? [], null);
+        $this->setIfExists('discountLimit', $data ?? [], null);
+        $this->setIfExists('startDate', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('validCharacters', $data ?? [], null);
+        $this->setIfExists('pattern', $data ?? [], null);
+        $this->setIfExists('friendId', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -523,6 +744,18 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['blocks'] === null) {
             $invalidProperties[] = "'blocks' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ($this->container['partial'] === null) {
+            $invalidProperties[] = "'partial' can't be null";
+        }
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
+        }
         if ($this->container['expression'] === null) {
             $invalidProperties[] = "'expression' can't be null";
         }
@@ -534,9 +767,6 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['sku'] === null) {
             $invalidProperties[] = "'sku' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
@@ -559,20 +789,65 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['attribute'] === null) {
             $invalidProperties[] = "'attribute' can't be null";
         }
-        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
-            $invalidProperties[] = "'value' is required";
-        }
         if ($this->container['audience'] === null) {
             $invalidProperties[] = "'audience' can't be null";
         }
+        if ($this->container['program'] === null) {
+            $invalidProperties[] = "'program' can't be null";
+        }
+        if ($this->container['subledger'] === null) {
+            $invalidProperties[] = "'subledger' can't be null";
+        }
+        if ($this->container['balance'] === null) {
+            $invalidProperties[] = "'balance' can't be null";
+        }
+        $allowedValues = $this->getBalanceAllowableValues();
+        if (!is_null($this->container['balance']) && !in_array($this->container['balance'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'balance', must be one of '%s'",
+                $this->container['balance'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['redeem'] === null) {
             $invalidProperties[] = "'redeem' can't be null";
         }
         if ($this->container['achievement'] === null) {
             $invalidProperties[] = "'achievement' can't be null";
         }
-        if ($this->container['target'] === null) {
-            $invalidProperties[] = "'target' can't be null";
+        if ($this->container['webhook'] === null) {
+            $invalidProperties[] = "'webhook' can't be null";
+        }
+        if ($this->container['customEffect'] === null) {
+            $invalidProperties[] = "'customEffect' can't be null";
+        }
+        if ($this->container['eventType'] === null) {
+            $invalidProperties[] = "'eventType' can't be null";
+        }
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
+        }
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'action', must be one of '%s'",
+                $this->container['action'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['campaignId'] === null) {
+            $invalidProperties[] = "'campaignId' can't be null";
+        }
+        if ($this->container['recipientId'] === null) {
+            $invalidProperties[] = "'recipientId' can't be null";
+        }
+        if ($this->container['storeInSession'] === null) {
+            $invalidProperties[] = "'storeInSession' can't be null";
+        }
+        if ($this->container['friendId'] === null) {
+            $invalidProperties[] = "'friendId' can't be null";
         }
         return $invalidProperties;
     }
@@ -683,7 +958,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operator
      *
-     * @param string $operator The update operation applied to the attribute.
+     * @param string $operator The comparison operator applied to the limit. `available` checks if there is budget available for a given limitable action; `enoughFor` checks if the available budget meets or exceeds a specific value limit.
      *
      * @return self
      */
@@ -784,6 +1059,114 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable onError cannot be null');
         }
         $this->container['onError'] = $onError;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The display name of the item to award.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param float $value The value to check against when using the `enoughFor` operator.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        }
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets partial
+     *
+     * @return bool
+     */
+    public function getPartial()
+    {
+        return $this->container['partial'];
+    }
+
+    /**
+     * Sets partial
+     *
+     * @param bool $partial When set to `true`, applies a partial item reward if the remaining budget is insufficient to award the full reward.
+     *
+     * @return self
+     */
+    public function setPartial($partial)
+    {
+        if (is_null($partial)) {
+            throw new \InvalidArgumentException('non-nullable partial cannot be null');
+        }
+        $this->container['partial'] = $partial;
+
+        return $this;
+    }
+
+    /**
+     * Gets target
+     *
+     * @return \TalonOne\Client\Model\TriggerCustomEffectBlock1Target
+     */
+    public function getTarget()
+    {
+        return $this->container['target'];
+    }
+
+    /**
+     * Sets target
+     *
+     * @param \TalonOne\Client\Model\TriggerCustomEffectBlock1Target $target target
+     *
+     * @return self
+     */
+    public function setTarget($target)
+    {
+        if (is_null($target)) {
+            throw new \InvalidArgumentException('non-nullable target cannot be null');
+        }
+        $this->container['target'] = $target;
 
         return $this;
     }
@@ -924,33 +1307,6 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The display name of the item to award.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets quantity
      *
      * @return string
@@ -973,33 +1329,6 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
         $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets partial
-     *
-     * @return bool|null
-     */
-    public function getPartial()
-    {
-        return $this->container['partial'];
-    }
-
-    /**
-     * Sets partial
-     *
-     * @param bool|null $partial When set to `true`, applies a partial item reward if the remaining budget is insufficient to award the full reward.
-     *
-     * @return self
-     */
-    public function setPartial($partial)
-    {
-        if (is_null($partial)) {
-            throw new \InvalidArgumentException('non-nullable partial cannot be null');
-        }
-        $this->container['partial'] = $partial;
 
         return $this;
     }
@@ -1096,40 +1425,6 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets value
-     *
-     * @return mixed|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param mixed|null $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
      * Gets min
      *
      * @return mixed|null
@@ -1193,6 +1488,155 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['max'] = $max;
+
+        return $this;
+    }
+
+    /**
+     * Gets start
+     *
+     * @return mixed|null
+     */
+    public function getStart()
+    {
+        return $this->container['start'];
+    }
+
+    /**
+     * Sets start
+     *
+     * @param mixed|null $start start
+     *
+     * @return self
+     */
+    public function setStart($start)
+    {
+        if (is_null($start)) {
+            array_push($this->openAPINullablesSetToNull, 'start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start'] = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets end
+     *
+     * @return mixed|null
+     */
+    public function getEnd()
+    {
+        return $this->container['end'];
+    }
+
+    /**
+     * Sets end
+     *
+     * @param mixed|null $end end
+     *
+     * @return self
+     */
+    public function setEnd($end)
+    {
+        if (is_null($end)) {
+            array_push($this->openAPINullablesSetToNull, 'end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets startInclusive
+     *
+     * @return bool|null
+     */
+    public function getStartInclusive()
+    {
+        return $this->container['startInclusive'];
+    }
+
+    /**
+     * Sets startInclusive
+     *
+     * @param bool|null $startInclusive When `true`, the `start` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setStartInclusive($startInclusive)
+    {
+        if (is_null($startInclusive)) {
+            throw new \InvalidArgumentException('non-nullable startInclusive cannot be null');
+        }
+        $this->container['startInclusive'] = $startInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets endInclusive
+     *
+     * @return bool|null
+     */
+    public function getEndInclusive()
+    {
+        return $this->container['endInclusive'];
+    }
+
+    /**
+     * Sets endInclusive
+     *
+     * @param bool|null $endInclusive When `true`, the `end` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setEndInclusive($endInclusive)
+    {
+        if (is_null($endInclusive)) {
+            throw new \InvalidArgumentException('non-nullable endInclusive cannot be null');
+        }
+        $this->container['endInclusive'] = $endInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezoneInsensitive
+     *
+     * @return bool|null
+     */
+    public function getTimezoneInsensitive()
+    {
+        return $this->container['timezoneInsensitive'];
+    }
+
+    /**
+     * Sets timezoneInsensitive
+     *
+     * @param bool|null $timezoneInsensitive Indicates whether the `within` operator ignores time zones and compares the wall-clock time only. When `false`, time zones are taken into account.
+     *
+     * @return self
+     */
+    public function setTimezoneInsensitive($timezoneInsensitive)
+    {
+        if (is_null($timezoneInsensitive)) {
+            throw new \InvalidArgumentException('non-nullable timezoneInsensitive cannot be null');
+        }
+        $this->container['timezoneInsensitive'] = $timezoneInsensitive;
 
         return $this;
     }
@@ -1293,6 +1737,97 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets program
+     *
+     * @return \TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program
+     */
+    public function getProgram()
+    {
+        return $this->container['program'];
+    }
+
+    /**
+     * Sets program
+     *
+     * @param \TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program $program program
+     *
+     * @return self
+     */
+    public function setProgram($program)
+    {
+        if (is_null($program)) {
+            throw new \InvalidArgumentException('non-nullable program cannot be null');
+        }
+        $this->container['program'] = $program;
+
+        return $this;
+    }
+
+    /**
+     * Gets subledger
+     *
+     * @return string
+     */
+    public function getSubledger()
+    {
+        return $this->container['subledger'];
+    }
+
+    /**
+     * Sets subledger
+     *
+     * @param string $subledger The name of the subledger to check the balance of. Can be empty if this block checks the loyalty program's main ledger balance instead of a subledger.
+     *
+     * @return self
+     */
+    public function setSubledger($subledger)
+    {
+        if (is_null($subledger)) {
+            throw new \InvalidArgumentException('non-nullable subledger cannot be null');
+        }
+        $this->container['subledger'] = $subledger;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance
+     *
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->container['balance'];
+    }
+
+    /**
+     * Sets balance
+     *
+     * @param string $balance The type of balance to check:  - `current` is the sum of currently active points  - `pending` is the sum of pending points.  - `negative` is the sum of negative points.  - `tentativeCurrent` is the tentative points balance within the current open customer session.
+     *
+     * @return self
+     */
+    public function setBalance($balance)
+    {
+        if (is_null($balance)) {
+            throw new \InvalidArgumentException('non-nullable balance cannot be null');
+        }
+        $allowedValues = $this->getBalanceAllowableValues();
+        if (!in_array($balance, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'balance', must be one of '%s'",
+                    $balance,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['balance'] = $balance;
+
+        return $this;
+    }
+
+    /**
      * Gets redeem
      *
      * @return bool
@@ -1322,7 +1857,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets achievement
      *
-     * @return \TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement
+     * @return \TalonOne\Client\Model\CheckAchievementBlock1Achievement
      */
     public function getAchievement()
     {
@@ -1332,7 +1867,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets achievement
      *
-     * @param \TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement $achievement achievement
+     * @param \TalonOne\Client\Model\CheckAchievementBlock1Achievement $achievement achievement
      *
      * @return self
      */
@@ -1347,28 +1882,491 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets target
+     * Gets webhook
      *
-     * @return \TalonOne\Client\Model\UpdateAttributeValueBlock1Target
+     * @return \TalonOne\Client\Model\TriggerWebhookBlock1Webhook
      */
-    public function getTarget()
+    public function getWebhook()
     {
-        return $this->container['target'];
+        return $this->container['webhook'];
     }
 
     /**
-     * Sets target
+     * Sets webhook
      *
-     * @param \TalonOne\Client\Model\UpdateAttributeValueBlock1Target $target target
+     * @param \TalonOne\Client\Model\TriggerWebhookBlock1Webhook $webhook webhook
      *
      * @return self
      */
-    public function setTarget($target)
+    public function setWebhook($webhook)
     {
-        if (is_null($target)) {
-            throw new \InvalidArgumentException('non-nullable target cannot be null');
+        if (is_null($webhook)) {
+            throw new \InvalidArgumentException('non-nullable webhook cannot be null');
         }
-        $this->container['target'] = $target;
+        $this->container['webhook'] = $webhook;
+
+        return $this;
+    }
+
+    /**
+     * Gets params
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getParams()
+    {
+        return $this->container['params'];
+    }
+
+    /**
+     * Sets params
+     *
+     * @param array<string,mixed>|null $params The custom effect's parameters, in configured order. Each property name is the parameter's title, lowercased with spaces replaced by underscores (for example, `Order ID` becomes `order_id`); falls back to `param_0`, `param_1`, and so on if a title is blank or collides with another.
+     *
+     * @return self
+     */
+    public function setParams($params)
+    {
+        if (is_null($params)) {
+            throw new \InvalidArgumentException('non-nullable params cannot be null');
+        }
+        $this->container['params'] = $params;
+
+        return $this;
+    }
+
+    /**
+     * Gets customEffect
+     *
+     * @return \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect
+     */
+    public function getCustomEffect()
+    {
+        return $this->container['customEffect'];
+    }
+
+    /**
+     * Sets customEffect
+     *
+     * @param \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect $customEffect customEffect
+     *
+     * @return self
+     */
+    public function setCustomEffect($customEffect)
+    {
+        if (is_null($customEffect)) {
+            throw new \InvalidArgumentException('non-nullable customEffect cannot be null');
+        }
+        $this->container['customEffect'] = $customEffect;
+
+        return $this;
+    }
+
+    /**
+     * Gets eventType
+     *
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->container['eventType'];
+    }
+
+    /**
+     * Sets eventType
+     *
+     * @param string $eventType The event type to check against.
+     *
+     * @return self
+     */
+    public function setEventType($eventType)
+    {
+        if (is_null($eventType)) {
+            throw new \InvalidArgumentException('non-nullable eventType cannot be null');
+        }
+        $this->container['eventType'] = $eventType;
+
+        return $this;
+    }
+
+    /**
+     * Gets matchers
+     *
+     * @return \TalonOne\Client\Model\PromotionBlock[]|null
+     */
+    public function getMatchers()
+    {
+        return $this->container['matchers'];
+    }
+
+    /**
+     * Sets matchers
+     *
+     * @param \TalonOne\Client\Model\PromotionBlock[]|null $matchers matchers
+     *
+     * @return self
+     */
+    public function setMatchers($matchers)
+    {
+        if (is_null($matchers)) {
+            throw new \InvalidArgumentException('non-nullable matchers cannot be null');
+        }
+        $this->container['matchers'] = $matchers;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string $action The limitable action to check.
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        if (is_null($action)) {
+            throw new \InvalidArgumentException('non-nullable action cannot be null');
+        }
+        $allowedValues = $this->getActionAllowableValues();
+        if (!in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'action', must be one of '%s'",
+                    $action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignId
+     *
+     * @return \TalonOne\Client\Model\CreateReferralBlock1CampaignId
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaignId'];
+    }
+
+    /**
+     * Sets campaignId
+     *
+     * @param \TalonOne\Client\Model\CreateReferralBlock1CampaignId $campaignId campaignId
+     *
+     * @return self
+     */
+    public function setCampaignId($campaignId)
+    {
+        if (is_null($campaignId)) {
+            throw new \InvalidArgumentException('non-nullable campaignId cannot be null');
+        }
+        $this->container['campaignId'] = $campaignId;
+
+        return $this;
+    }
+
+    /**
+     * Gets recipientId
+     *
+     * @return string
+     */
+    public function getRecipientId()
+    {
+        return $this->container['recipientId'];
+    }
+
+    /**
+     * Sets recipientId
+     *
+     * @param string $recipientId The integration ID of the customer that is allowed to redeem this coupon.
+     *
+     * @return self
+     */
+    public function setRecipientId($recipientId)
+    {
+        if (is_null($recipientId)) {
+            throw new \InvalidArgumentException('non-nullable recipientId cannot be null');
+        }
+        $this->container['recipientId'] = $recipientId;
+
+        return $this;
+    }
+
+    /**
+     * Gets storeInSession
+     *
+     * @return bool
+     */
+    public function getStoreInSession()
+    {
+        return $this->container['storeInSession'];
+    }
+
+    /**
+     * Sets storeInSession
+     *
+     * @param bool $storeInSession When `true`, the referral code is stored in the session.
+     *
+     * @return self
+     */
+    public function setStoreInSession($storeInSession)
+    {
+        if (is_null($storeInSession)) {
+            throw new \InvalidArgumentException('non-nullable storeInSession cannot be null');
+        }
+        $this->container['storeInSession'] = $storeInSession;
+
+        return $this;
+    }
+
+    /**
+     * Gets usageLimit
+     *
+     * @return \TalonOne\Client\Model\CreateReferralBlock1UsageLimit|null
+     */
+    public function getUsageLimit()
+    {
+        return $this->container['usageLimit'];
+    }
+
+    /**
+     * Sets usageLimit
+     *
+     * @param \TalonOne\Client\Model\CreateReferralBlock1UsageLimit|null $usageLimit usageLimit
+     *
+     * @return self
+     */
+    public function setUsageLimit($usageLimit)
+    {
+        if (is_null($usageLimit)) {
+            throw new \InvalidArgumentException('non-nullable usageLimit cannot be null');
+        }
+        $this->container['usageLimit'] = $usageLimit;
+
+        return $this;
+    }
+
+    /**
+     * Gets discountLimit
+     *
+     * @return \TalonOne\Client\Model\CreateCouponBlock1DiscountLimit|null
+     */
+    public function getDiscountLimit()
+    {
+        return $this->container['discountLimit'];
+    }
+
+    /**
+     * Sets discountLimit
+     *
+     * @param \TalonOne\Client\Model\CreateCouponBlock1DiscountLimit|null $discountLimit discountLimit
+     *
+     * @return self
+     */
+    public function setDiscountLimit($discountLimit)
+    {
+        if (is_null($discountLimit)) {
+            throw new \InvalidArgumentException('non-nullable discountLimit cannot be null');
+        }
+        $this->container['discountLimit'] = $discountLimit;
+
+        return $this;
+    }
+
+    /**
+     * Gets startDate
+     *
+     * @return mixed|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['startDate'];
+    }
+
+    /**
+     * Sets startDate
+     *
+     * @param mixed|null $startDate startDate
+     *
+     * @return self
+     */
+    public function setStartDate($startDate)
+    {
+        if (is_null($startDate)) {
+            array_push($this->openAPINullablesSetToNull, 'startDate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('startDate', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['startDate'] = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiryDate
+     *
+     * @return mixed|null
+     */
+    public function getExpiryDate()
+    {
+        return $this->container['expiryDate'];
+    }
+
+    /**
+     * Sets expiryDate
+     *
+     * @param mixed|null $expiryDate expiryDate
+     *
+     * @return self
+     */
+    public function setExpiryDate($expiryDate)
+    {
+        if (is_null($expiryDate)) {
+            array_push($this->openAPINullablesSetToNull, 'expiryDate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiryDate', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expiryDate'] = $expiryDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return mixed|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param mixed|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets validCharacters
+     *
+     * @return string|null
+     */
+    public function getValidCharacters()
+    {
+        return $this->container['validCharacters'];
+    }
+
+    /**
+     * Sets validCharacters
+     *
+     * @param string|null $validCharacters Characters used to generate the random parts of a code.
+     *
+     * @return self
+     */
+    public function setValidCharacters($validCharacters)
+    {
+        if (is_null($validCharacters)) {
+            throw new \InvalidArgumentException('non-nullable validCharacters cannot be null');
+        }
+        $this->container['validCharacters'] = $validCharacters;
+
+        return $this;
+    }
+
+    /**
+     * Gets pattern
+     *
+     * @return string|null
+     */
+    public function getPattern()
+    {
+        return $this->container['pattern'];
+    }
+
+    /**
+     * Sets pattern
+     *
+     * @param string|null $pattern The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set.
+     *
+     * @return self
+     */
+    public function setPattern($pattern)
+    {
+        if (is_null($pattern)) {
+            throw new \InvalidArgumentException('non-nullable pattern cannot be null');
+        }
+        $this->container['pattern'] = $pattern;
+
+        return $this;
+    }
+
+    /**
+     * Gets friendId
+     *
+     * @return string
+     */
+    public function getFriendId()
+    {
+        return $this->container['friendId'];
+    }
+
+    /**
+     * Sets friendId
+     *
+     * @param string $friendId An optional integration ID of the friend's profile.
+     *
+     * @return self
+     */
+    public function setFriendId($friendId)
+    {
+        if (is_null($friendId)) {
+            throw new \InvalidArgumentException('non-nullable friendId cannot be null');
+        }
+        $this->container['friendId'] = $friendId;
 
         return $this;
     }

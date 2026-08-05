@@ -61,7 +61,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => 'int',
         'applicationName' => 'string',
         'campaignId' => 'int',
-        'campaignName' => 'string'
+        'campaignName' => 'string',
+        'campaignState' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => 'int64',
         'applicationName' => null,
         'campaignId' => 'int64',
-        'campaignName' => null
+        'campaignName' => null,
+        'campaignState' => null
     ];
 
     /**
@@ -89,7 +91,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => false,
         'applicationName' => false,
         'campaignId' => false,
-        'campaignName' => false
+        'campaignName' => false,
+        'campaignState' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => 'applicationId',
         'applicationName' => 'applicationName',
         'campaignId' => 'campaignId',
-        'campaignName' => 'campaignName'
+        'campaignName' => 'campaignName',
+        'campaignState' => 'campaignState'
     ];
 
     /**
@@ -195,7 +199,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => 'setApplicationId',
         'applicationName' => 'setApplicationName',
         'campaignId' => 'setCampaignId',
-        'campaignName' => 'setCampaignName'
+        'campaignName' => 'setCampaignName',
+        'campaignState' => 'setCampaignState'
     ];
 
     /**
@@ -208,7 +213,8 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         'applicationId' => 'getApplicationId',
         'applicationName' => 'getApplicationName',
         'campaignId' => 'getCampaignId',
-        'campaignName' => 'getCampaignName'
+        'campaignName' => 'getCampaignName',
+        'campaignState' => 'getCampaignState'
     ];
 
     /**
@@ -252,6 +258,23 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const CAMPAIGN_STATE_ENABLED = 'enabled';
+    public const CAMPAIGN_STATE_DISABLED = 'disabled';
+    public const CAMPAIGN_STATE_ARCHIVED = 'archived';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignStateAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_STATE_ENABLED,
+            self::CAMPAIGN_STATE_DISABLED,
+            self::CAMPAIGN_STATE_ARCHIVED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -273,6 +296,7 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('applicationName', $data ?? [], null);
         $this->setIfExists('campaignId', $data ?? [], null);
         $this->setIfExists('campaignName', $data ?? [], null);
+        $this->setIfExists('campaignState', $data ?? [], null);
     }
 
     /**
@@ -317,6 +341,18 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['campaignName'] === null) {
             $invalidProperties[] = "'campaignName' can't be null";
         }
+        if ($this->container['campaignState'] === null) {
+            $invalidProperties[] = "'campaignState' can't be null";
+        }
+        $allowedValues = $this->getCampaignStateAllowableValues();
+        if (!is_null($this->container['campaignState']) && !in_array($this->container['campaignState'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaignState', must be one of '%s'",
+                $this->container['campaignState'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -463,6 +499,43 @@ class AchievementReference implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable campaignName cannot be null');
         }
         $this->container['campaignName'] = $campaignName;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignState
+     *
+     * @return string
+     */
+    public function getCampaignState()
+    {
+        return $this->container['campaignState'];
+    }
+
+    /**
+     * Sets campaignState
+     *
+     * @param string $campaignState The state of the campaign that references this achievement.
+     *
+     * @return self
+     */
+    public function setCampaignState($campaignState)
+    {
+        if (is_null($campaignState)) {
+            throw new \InvalidArgumentException('non-nullable campaignState cannot be null');
+        }
+        $allowedValues = $this->getCampaignStateAllowableValues();
+        if (!in_array($campaignState, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaignState', must be one of '%s'",
+                    $campaignState,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaignState'] = $campaignState;
 
         return $this;
     }

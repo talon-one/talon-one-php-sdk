@@ -63,7 +63,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => 'string',
         'price' => 'float',
         'metadata' => '\TalonOne\Client\Model\BestPriorPriceMetadata',
-        'target' => '\TalonOne\Client\Model\LabelTarget'
+        'target' => '\TalonOne\Client\Model\LabelTarget',
+        'excludedAt' => '\DateTime',
+        'exclusionReason' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => null,
         'price' => null,
         'metadata' => null,
-        'target' => null
+        'target' => null,
+        'excludedAt' => 'date-time',
+        'exclusionReason' => null
     ];
 
     /**
@@ -95,7 +99,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => false,
         'price' => false,
         'metadata' => false,
-        'target' => false
+        'target' => false,
+        'excludedAt' => false,
+        'exclusionReason' => false
     ];
 
     /**
@@ -190,7 +196,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => 'contextId',
         'price' => 'price',
         'metadata' => 'metadata',
-        'target' => 'target'
+        'target' => 'target',
+        'excludedAt' => 'excludedAt',
+        'exclusionReason' => 'exclusionReason'
     ];
 
     /**
@@ -205,7 +213,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => 'setContextId',
         'price' => 'setPrice',
         'metadata' => 'setMetadata',
-        'target' => 'setTarget'
+        'target' => 'setTarget',
+        'excludedAt' => 'setExcludedAt',
+        'exclusionReason' => 'setExclusionReason'
     ];
 
     /**
@@ -220,7 +230,9 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         'contextId' => 'getContextId',
         'price' => 'getPrice',
         'metadata' => 'getMetadata',
-        'target' => 'getTarget'
+        'target' => 'getTarget',
+        'excludedAt' => 'getExcludedAt',
+        'exclusionReason' => 'getExclusionReason'
     ];
 
     /**
@@ -287,6 +299,8 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('excludedAt', $data ?? [], null);
+        $this->setIfExists('exclusionReason', $data ?? [], null);
     }
 
     /**
@@ -536,6 +550,60 @@ class History implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludedAt
+     *
+     * @return \DateTime|null
+     */
+    public function getExcludedAt()
+    {
+        return $this->container['excludedAt'];
+    }
+
+    /**
+     * Sets excludedAt
+     *
+     * @param \DateTime|null $excludedAt The date and time when the historical price ID was excluded.
+     *
+     * @return self
+     */
+    public function setExcludedAt($excludedAt)
+    {
+        if (is_null($excludedAt)) {
+            throw new \InvalidArgumentException('non-nullable excludedAt cannot be null');
+        }
+        $this->container['excludedAt'] = $excludedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets exclusionReason
+     *
+     * @return string|null
+     */
+    public function getExclusionReason()
+    {
+        return $this->container['exclusionReason'];
+    }
+
+    /**
+     * Sets exclusionReason
+     *
+     * @param string|null $exclusionReason The reason for excluding this historical price ID.
+     *
+     * @return self
+     */
+    public function setExclusionReason($exclusionReason)
+    {
+        if (is_null($exclusionReason)) {
+            throw new \InvalidArgumentException('non-nullable exclusionReason cannot be null');
+        }
+        $this->container['exclusionReason'] = $exclusionReason;
 
         return $this;
     }

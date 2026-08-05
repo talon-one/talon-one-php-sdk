@@ -143,6 +143,42 @@ class StrikethroughBlockTest extends TestCase
     }
 
     /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
+    public function testPropertyValue()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "partial"
+     */
+    public function testPropertyPartial()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "target"
+     */
+    public function testPropertyTarget()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "expression"
      */
     public function testPropertyExpression()
@@ -161,15 +197,6 @@ class StrikethroughBlockTest extends TestCase
     }
 
     /**
-     * Test attribute "value"
-     */
-    public function testPropertyValue()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "min"
      */
     public function testPropertyMin()
@@ -182,6 +209,51 @@ class StrikethroughBlockTest extends TestCase
      * Test attribute "max"
      */
     public function testPropertyMax()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "start"
+     */
+    public function testPropertyStart()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "end"
+     */
+    public function testPropertyEnd()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "startInclusive"
+     */
+    public function testPropertyStartInclusive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "endInclusive"
+     */
+    public function testPropertyEndInclusive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "timezoneInsensitive"
+     */
+    public function testPropertyTimezoneInsensitive()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -35,7 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * IncreaseAchievementProgressEffectProps Class Doc Comment
  *
  * @category Class
- * @description This effect indicates that the customer&#39;s progress in an achievement was updated during the current session. It is triggered when a rule using the [Update customer progress](https://docs.talon.one/docs/product/rules/effects/use-effects#update-customer-progress) effect is successfully validated.  For [on-completion achievements](https://docs.talon.one/docs/product/campaigns/achievements/achievements-overview#recurring-on-completion-achievements), any customer progress exceeding the target automatically starts a new iteration. This generates a new &#x60;progressTrackerId&#x60; for each iteration, and there can be multiple progress updates for the same achievement from a single validation of this effect.
+ * @description This effect indicates that the customer&#39;s progress in an achievement was updated during the current session. It is triggered when a rule using the [Update customer progress](https://docs.talon.one/docs/product/rules/effects/use-effects#update-customer-progress) effect is successfully validated.  For [on-completion achievements](https://docs.talon.one/docs/product/achievements/achievements-overview#recurring-on-completion-achievements), any customer progress exceeding the target automatically starts a new iteration. This generates a new &#x60;progressTrackerId&#x60; for each iteration, and there can be multiple progress updates for the same achievement from a single validation of this effect.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -417,7 +417,7 @@ class IncreaseAchievementProgressEffectProps implements ModelInterface, ArrayAcc
     /**
      * Sets progressTrackerId
      *
-     * @param int|null $progressTrackerId The internal ID of the customer progress tracker. For [on-completion achievements](https://docs.talon.one/docs/product/campaigns/achievements/achievements-overview#recurring-on-completion-achievements), this effect generates a unique ID for each iteration.
+     * @param int|null $progressTrackerId The internal ID of the customer progress tracker. For [on-completion achievements](https://docs.talon.one/docs/product/achievements/achievements-overview#recurring-on-completion-achievements), this effect generates a unique ID for each iteration.
      *
      * @return self
      */

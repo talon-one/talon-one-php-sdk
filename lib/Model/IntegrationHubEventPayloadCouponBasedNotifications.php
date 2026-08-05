@@ -57,6 +57,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @var string[]
      */
     protected static $openAPITypes = [
+        'eventId' => 'int',
         'id' => 'int',
         'created' => '\DateTime',
         'campaignId' => 'int',
@@ -88,6 +89,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'eventId' => 'int64',
         'id' => 'int64',
         'created' => 'date-time',
         'campaignId' => 'int64',
@@ -117,6 +119,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @var boolean[]
      */
     protected static array $openAPINullables = [
+        'eventId' => false,
         'id' => false,
         'created' => false,
         'campaignId' => false,
@@ -226,6 +229,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @var string[]
      */
     protected static $attributeMap = [
+        'eventId' => 'EventId',
         'id' => 'Id',
         'created' => 'Created',
         'campaignId' => 'CampaignId',
@@ -255,6 +259,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @var string[]
      */
     protected static $setters = [
+        'eventId' => 'setEventId',
         'id' => 'setId',
         'created' => 'setCreated',
         'campaignId' => 'setCampaignId',
@@ -284,6 +289,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      * @var string[]
      */
     protected static $getters = [
+        'eventId' => 'getEventId',
         'id' => 'getId',
         'created' => 'getCreated',
         'campaignId' => 'getCampaignId',
@@ -364,6 +370,7 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('eventId', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('campaignId', $data ?? [], null);
@@ -414,6 +421,9 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
     {
         $invalidProperties = [];
 
+        if ($this->container['eventId'] === null) {
+            $invalidProperties[] = "'eventId' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -455,6 +465,33 @@ class IntegrationHubEventPayloadCouponBasedNotifications implements ModelInterfa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets eventId
+     *
+     * @return int
+     */
+    public function getEventId()
+    {
+        return $this->container['eventId'];
+    }
+
+    /**
+     * Sets eventId
+     *
+     * @param int $eventId The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+     *
+     * @return self
+     */
+    public function setEventId($eventId)
+    {
+        if (is_null($eventId)) {
+            throw new \InvalidArgumentException('non-nullable eventId cannot be null');
+        }
+        $this->container['eventId'] = $eventId;
+
+        return $this;
+    }
 
     /**
      * Gets id

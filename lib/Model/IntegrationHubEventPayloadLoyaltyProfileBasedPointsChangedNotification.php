@@ -57,6 +57,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @var string[]
      */
     protected static $openAPITypes = [
+        'eventId' => 'int',
         'profileIntegrationID' => 'string',
         'loyaltyProgramID' => 'int',
         'loyaltyProgramName' => 'string',
@@ -79,6 +80,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'eventId' => 'int64',
         'profileIntegrationID' => null,
         'loyaltyProgramID' => 'int64',
         'loyaltyProgramName' => null,
@@ -99,6 +101,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @var boolean[]
      */
     protected static array $openAPINullables = [
+        'eventId' => false,
         'profileIntegrationID' => false,
         'loyaltyProgramID' => false,
         'loyaltyProgramName' => false,
@@ -199,6 +202,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @var string[]
      */
     protected static $attributeMap = [
+        'eventId' => 'EventId',
         'profileIntegrationID' => 'ProfileIntegrationID',
         'loyaltyProgramID' => 'LoyaltyProgramID',
         'loyaltyProgramName' => 'LoyaltyProgramName',
@@ -219,6 +223,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @var string[]
      */
     protected static $setters = [
+        'eventId' => 'setEventId',
         'profileIntegrationID' => 'setProfileIntegrationID',
         'loyaltyProgramID' => 'setLoyaltyProgramID',
         'loyaltyProgramName' => 'setLoyaltyProgramName',
@@ -239,6 +244,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      * @var string[]
      */
     protected static $getters = [
+        'eventId' => 'getEventId',
         'profileIntegrationID' => 'getProfileIntegrationID',
         'loyaltyProgramID' => 'getLoyaltyProgramID',
         'loyaltyProgramName' => 'getLoyaltyProgramName',
@@ -310,6 +316,7 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('eventId', $data ?? [], null);
         $this->setIfExists('profileIntegrationID', $data ?? [], null);
         $this->setIfExists('loyaltyProgramID', $data ?? [], null);
         $this->setIfExists('loyaltyProgramName', $data ?? [], null);
@@ -351,6 +358,9 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
     {
         $invalidProperties = [];
 
+        if ($this->container['eventId'] === null) {
+            $invalidProperties[] = "'eventId' can't be null";
+        }
         if ($this->container['profileIntegrationID'] === null) {
             $invalidProperties[] = "'profileIntegrationID' can't be null";
         }
@@ -389,6 +399,33 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedPointsChangedNotification imp
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets eventId
+     *
+     * @return int
+     */
+    public function getEventId()
+    {
+        return $this->container['eventId'];
+    }
+
+    /**
+     * Sets eventId
+     *
+     * @param int $eventId The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed.
+     *
+     * @return self
+     */
+    public function setEventId($eventId)
+    {
+        if (is_null($eventId)) {
+            throw new \InvalidArgumentException('non-nullable eventId cannot be null');
+        }
+        $this->container['eventId'] = $eventId;
+
+        return $this;
+    }
 
     /**
      * Gets profileIntegrationID

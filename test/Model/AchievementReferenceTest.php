@@ -123,4 +123,13 @@ class AchievementReferenceTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "campaignState"
+     */
+    public function testPropertyCampaignState()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

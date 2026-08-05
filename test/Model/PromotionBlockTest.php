@@ -143,6 +143,42 @@ class PromotionBlockTest extends TestCase
     }
 
     /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
+    public function testPropertyValue()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "partial"
+     */
+    public function testPropertyPartial()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "target"
+     */
+    public function testPropertyTarget()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "expression"
      */
     public function testPropertyExpression()
@@ -188,27 +224,9 @@ class PromotionBlockTest extends TestCase
     }
 
     /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "quantity"
      */
     public function testPropertyQuantity()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "partial"
-     */
-    public function testPropertyPartial()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -242,15 +260,6 @@ class PromotionBlockTest extends TestCase
     }
 
     /**
-     * Test attribute "value"
-     */
-    public function testPropertyValue()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "min"
      */
     public function testPropertyMin()
@@ -263,6 +272,51 @@ class PromotionBlockTest extends TestCase
      * Test attribute "max"
      */
     public function testPropertyMax()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "start"
+     */
+    public function testPropertyStart()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "end"
+     */
+    public function testPropertyEnd()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "startInclusive"
+     */
+    public function testPropertyStartInclusive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "endInclusive"
+     */
+    public function testPropertyEndInclusive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "timezoneInsensitive"
+     */
+    public function testPropertyTimezoneInsensitive()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -296,6 +350,33 @@ class PromotionBlockTest extends TestCase
     }
 
     /**
+     * Test attribute "program"
+     */
+    public function testPropertyProgram()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "subledger"
+     */
+    public function testPropertySubledger()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "balance"
+     */
+    public function testPropertyBalance()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "redeem"
      */
     public function testPropertyRedeem()
@@ -314,9 +395,153 @@ class PromotionBlockTest extends TestCase
     }
 
     /**
-     * Test attribute "target"
+     * Test attribute "webhook"
      */
-    public function testPropertyTarget()
+    public function testPropertyWebhook()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "params"
+     */
+    public function testPropertyParams()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "customEffect"
+     */
+    public function testPropertyCustomEffect()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "eventType"
+     */
+    public function testPropertyEventType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "matchers"
+     */
+    public function testPropertyMatchers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "action"
+     */
+    public function testPropertyAction()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "campaignId"
+     */
+    public function testPropertyCampaignId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "recipientId"
+     */
+    public function testPropertyRecipientId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "storeInSession"
+     */
+    public function testPropertyStoreInSession()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "usageLimit"
+     */
+    public function testPropertyUsageLimit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "discountLimit"
+     */
+    public function testPropertyDiscountLimit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "startDate"
+     */
+    public function testPropertyStartDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "expiryDate"
+     */
+    public function testPropertyExpiryDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "validCharacters"
+     */
+    public function testPropertyValidCharacters()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pattern"
+     */
+    public function testPropertyPattern()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "friendId"
+     */
+    public function testPropertyFriendId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

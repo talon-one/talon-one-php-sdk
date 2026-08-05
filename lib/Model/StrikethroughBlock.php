@@ -65,11 +65,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => '\TalonOne\Client\Model\StrikethroughBlock[]',
         'onFailure' => '\TalonOne\Client\Model\StrikethroughBlock[]',
         'onError' => 'array<string,\TalonOne\Client\Model\StrikethroughBlock[]>',
-        'expression' => 'mixed[]',
-        'attribute' => 'string',
+        'name' => 'string',
         'value' => 'mixed',
+        'partial' => 'bool',
+        'target' => '\TalonOne\Client\Model\AwardDiscountTarget',
+        'expression' => 'mixed[]',
+        'attribute' => 'mixed',
         'min' => 'mixed',
         'max' => 'mixed',
+        'start' => 'mixed',
+        'end' => 'mixed',
+        'startInclusive' => 'bool',
+        'endInclusive' => 'bool',
+        'timezoneInsensitive' => 'bool',
         'values' => 'mixed',
         'count' => 'mixed'
     ];
@@ -89,11 +97,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => null,
         'onFailure' => null,
         'onError' => null,
+        'name' => null,
+        'value' => null,
+        'partial' => null,
+        'target' => null,
         'expression' => null,
         'attribute' => null,
-        'value' => null,
         'min' => null,
         'max' => null,
+        'start' => null,
+        'end' => null,
+        'startInclusive' => null,
+        'endInclusive' => null,
+        'timezoneInsensitive' => null,
         'values' => null,
         'count' => null
     ];
@@ -111,11 +127,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => false,
         'onFailure' => false,
         'onError' => false,
-        'expression' => false,
-        'attribute' => false,
+        'name' => false,
         'value' => true,
+        'partial' => false,
+        'target' => false,
+        'expression' => false,
+        'attribute' => true,
         'min' => true,
         'max' => true,
+        'start' => true,
+        'end' => true,
+        'startInclusive' => false,
+        'endInclusive' => false,
+        'timezoneInsensitive' => false,
         'values' => true,
         'count' => true
     ];
@@ -213,11 +237,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => 'blocks',
         'onFailure' => 'onFailure',
         'onError' => 'onError',
+        'name' => 'name',
+        'value' => 'value',
+        'partial' => 'partial',
+        'target' => 'target',
         'expression' => 'expression',
         'attribute' => 'attribute',
-        'value' => 'value',
         'min' => 'min',
         'max' => 'max',
+        'start' => 'start',
+        'end' => 'end',
+        'startInclusive' => 'startInclusive',
+        'endInclusive' => 'endInclusive',
+        'timezoneInsensitive' => 'timezoneInsensitive',
         'values' => 'values',
         'count' => 'count'
     ];
@@ -235,11 +267,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => 'setBlocks',
         'onFailure' => 'setOnFailure',
         'onError' => 'setOnError',
+        'name' => 'setName',
+        'value' => 'setValue',
+        'partial' => 'setPartial',
+        'target' => 'setTarget',
         'expression' => 'setExpression',
         'attribute' => 'setAttribute',
-        'value' => 'setValue',
         'min' => 'setMin',
         'max' => 'setMax',
+        'start' => 'setStart',
+        'end' => 'setEnd',
+        'startInclusive' => 'setStartInclusive',
+        'endInclusive' => 'setEndInclusive',
+        'timezoneInsensitive' => 'setTimezoneInsensitive',
         'values' => 'setValues',
         'count' => 'setCount'
     ];
@@ -257,11 +297,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'blocks' => 'getBlocks',
         'onFailure' => 'getOnFailure',
         'onError' => 'getOnError',
+        'name' => 'getName',
+        'value' => 'getValue',
+        'partial' => 'getPartial',
+        'target' => 'getTarget',
         'expression' => 'getExpression',
         'attribute' => 'getAttribute',
-        'value' => 'getValue',
         'min' => 'getMin',
         'max' => 'getMax',
+        'start' => 'getStart',
+        'end' => 'getEnd',
+        'startInclusive' => 'getStartInclusive',
+        'endInclusive' => 'getEndInclusive',
+        'timezoneInsensitive' => 'getTimezoneInsensitive',
         'values' => 'getValues',
         'count' => 'getCount'
     ];
@@ -334,6 +382,10 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     public const OPERATOR_CONTAINS_ONE_OF = 'containsOneOf';
     public const OPERATOR_CONTAINS_NONE_OF = 'containsNoneOf';
     public const OPERATOR_CONTAINS_ALL_OF = 'containsAllOf';
+    public const OPERATOR_AFTER = 'after';
+    public const OPERATOR_BEFORE = 'before';
+    public const OPERATOR_WITHIN = 'within';
+    public const OPERATOR_NOT_WITHIN = 'not(within)';
 
     /**
      * Gets allowable values of the enum
@@ -370,6 +422,10 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
             self::OPERATOR_CONTAINS_ONE_OF,
             self::OPERATOR_CONTAINS_NONE_OF,
             self::OPERATOR_CONTAINS_ALL_OF,
+            self::OPERATOR_AFTER,
+            self::OPERATOR_BEFORE,
+            self::OPERATOR_WITHIN,
+            self::OPERATOR_NOT_WITHIN,
         ];
     }
 
@@ -395,11 +451,19 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('blocks', $data ?? [], null);
         $this->setIfExists('onFailure', $data ?? [], null);
         $this->setIfExists('onError', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('partial', $data ?? [], null);
+        $this->setIfExists('target', $data ?? [], null);
         $this->setIfExists('expression', $data ?? [], null);
         $this->setIfExists('attribute', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('min', $data ?? [], null);
         $this->setIfExists('max', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('startInclusive', $data ?? [], null);
+        $this->setIfExists('endInclusive', $data ?? [], null);
+        $this->setIfExists('timezoneInsensitive', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
 
@@ -455,11 +519,23 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['blocks'] === null) {
             $invalidProperties[] = "'blocks' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['value'] === null && !$this->isNullableSetToNull('value')) {
+            $invalidProperties[] = "'value' is required";
+        }
+        if ($this->container['partial'] === null) {
+            $invalidProperties[] = "'partial' can't be null";
+        }
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
+        }
         if ($this->container['expression'] === null) {
             $invalidProperties[] = "'expression' can't be null";
         }
-        if ($this->container['attribute'] === null) {
-            $invalidProperties[] = "'attribute' can't be null";
+        if ($this->container['attribute'] === null && !$this->isNullableSetToNull('attribute')) {
+            $invalidProperties[] = "'attribute' is required";
         }
         return $invalidProperties;
     }
@@ -676,55 +752,28 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets expression
-     *
-     * @return mixed[]
-     */
-    public function getExpression()
-    {
-        return $this->container['expression'];
-    }
-
-    /**
-     * Sets expression
-     *
-     * @param mixed[] $expression The raw Talang expression as an array. For a function call, the first element is the function name and subsequent elements are its arguments. For any other expression (for example a bare attribute path or a literal value), this is a single-element array containing that value.
-     *
-     * @return self
-     */
-    public function setExpression($expression)
-    {
-        if (is_null($expression)) {
-            throw new \InvalidArgumentException('non-nullable expression cannot be null');
-        }
-        $this->container['expression'] = $expression;
-
-        return $this;
-    }
-
-    /**
-     * Gets attribute
+     * Gets name
      *
      * @return string
      */
-    public function getAttribute()
+    public function getName()
     {
-        return $this->container['attribute'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets attribute
+     * Sets name
      *
-     * @param string $attribute The attribute path identifier (e.g. \"$Session.Total\").
+     * @param string $name The human-readable label attached to the discount.
      *
      * @return self
      */
-    public function setAttribute($attribute)
+    public function setName($name)
     {
-        if (is_null($attribute)) {
-            throw new \InvalidArgumentException('non-nullable attribute cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['attribute'] = $attribute;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -759,6 +808,121 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets partial
+     *
+     * @return bool
+     */
+    public function getPartial()
+    {
+        return $this->container['partial'];
+    }
+
+    /**
+     * Sets partial
+     *
+     * @param bool $partial Whether to apply a partial discount when the requested value exceeds the configured budget.
+     *
+     * @return self
+     */
+    public function setPartial($partial)
+    {
+        if (is_null($partial)) {
+            throw new \InvalidArgumentException('non-nullable partial cannot be null');
+        }
+        $this->container['partial'] = $partial;
+
+        return $this;
+    }
+
+    /**
+     * Gets target
+     *
+     * @return \TalonOne\Client\Model\AwardDiscountTarget
+     */
+    public function getTarget()
+    {
+        return $this->container['target'];
+    }
+
+    /**
+     * Sets target
+     *
+     * @param \TalonOne\Client\Model\AwardDiscountTarget $target target
+     *
+     * @return self
+     */
+    public function setTarget($target)
+    {
+        if (is_null($target)) {
+            throw new \InvalidArgumentException('non-nullable target cannot be null');
+        }
+        $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets expression
+     *
+     * @return mixed[]
+     */
+    public function getExpression()
+    {
+        return $this->container['expression'];
+    }
+
+    /**
+     * Sets expression
+     *
+     * @param mixed[] $expression The raw Talang expression as an array. For a function call, the first element is the function name and subsequent elements are its arguments. For any other expression (for example a bare attribute path or a literal value), this is a single-element array containing that value.
+     *
+     * @return self
+     */
+    public function setExpression($expression)
+    {
+        if (is_null($expression)) {
+            throw new \InvalidArgumentException('non-nullable expression cannot be null');
+        }
+        $this->container['expression'] = $expression;
+
+        return $this;
+    }
+
+    /**
+     * Gets attribute
+     *
+     * @return mixed|null
+     */
+    public function getAttribute()
+    {
+        return $this->container['attribute'];
+    }
+
+    /**
+     * Sets attribute
+     *
+     * @param mixed|null $attribute attribute
+     *
+     * @return self
+     */
+    public function setAttribute($attribute)
+    {
+        if (is_null($attribute)) {
+            array_push($this->openAPINullablesSetToNull, 'attribute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribute', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attribute'] = $attribute;
 
         return $this;
     }
@@ -827,6 +991,155 @@ class StrikethroughBlock implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['max'] = $max;
+
+        return $this;
+    }
+
+    /**
+     * Gets start
+     *
+     * @return mixed|null
+     */
+    public function getStart()
+    {
+        return $this->container['start'];
+    }
+
+    /**
+     * Sets start
+     *
+     * @param mixed|null $start start
+     *
+     * @return self
+     */
+    public function setStart($start)
+    {
+        if (is_null($start)) {
+            array_push($this->openAPINullablesSetToNull, 'start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start'] = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets end
+     *
+     * @return mixed|null
+     */
+    public function getEnd()
+    {
+        return $this->container['end'];
+    }
+
+    /**
+     * Sets end
+     *
+     * @param mixed|null $end end
+     *
+     * @return self
+     */
+    public function setEnd($end)
+    {
+        if (is_null($end)) {
+            array_push($this->openAPINullablesSetToNull, 'end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets startInclusive
+     *
+     * @return bool|null
+     */
+    public function getStartInclusive()
+    {
+        return $this->container['startInclusive'];
+    }
+
+    /**
+     * Sets startInclusive
+     *
+     * @param bool|null $startInclusive When `true`, the `start` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setStartInclusive($startInclusive)
+    {
+        if (is_null($startInclusive)) {
+            throw new \InvalidArgumentException('non-nullable startInclusive cannot be null');
+        }
+        $this->container['startInclusive'] = $startInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets endInclusive
+     *
+     * @return bool|null
+     */
+    public function getEndInclusive()
+    {
+        return $this->container['endInclusive'];
+    }
+
+    /**
+     * Sets endInclusive
+     *
+     * @param bool|null $endInclusive When `true`, the `end` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setEndInclusive($endInclusive)
+    {
+        if (is_null($endInclusive)) {
+            throw new \InvalidArgumentException('non-nullable endInclusive cannot be null');
+        }
+        $this->container['endInclusive'] = $endInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezoneInsensitive
+     *
+     * @return bool|null
+     */
+    public function getTimezoneInsensitive()
+    {
+        return $this->container['timezoneInsensitive'];
+    }
+
+    /**
+     * Sets timezoneInsensitive
+     *
+     * @param bool|null $timezoneInsensitive Indicates whether the `within` operator ignores time zones and compares the wall-clock time only. When `false`, time zones are taken into account.
+     *
+     * @return self
+     */
+    public function setTimezoneInsensitive($timezoneInsensitive)
+    {
+        if (is_null($timezoneInsensitive)) {
+            throw new \InvalidArgumentException('non-nullable timezoneInsensitive cannot be null');
+        }
+        $this->container['timezoneInsensitive'] = $timezoneInsensitive;
 
         return $this;
     }
