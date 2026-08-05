@@ -66,7 +66,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'activatedAt' => '\DateTime',
         'promotionRules' => '\TalonOne\Client\Model\PromotionRuleV2[]',
         'strikethroughRules' => '\TalonOne\Client\Model\StrikethroughRuleV2[]',
-        'selectors' => 'array<string,mixed>[]',
+        'selectors' => '\TalonOne\Client\Model\Selector[]',
         'bundles' => 'array<string,mixed>[]',
         'parameters' => 'array<string,mixed>[]'
     ];
@@ -594,7 +594,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selectors
      *
-     * @return array<string,mixed>[]|null
+     * @return \TalonOne\Client\Model\Selector[]|null
      */
     public function getSelectors()
     {
@@ -604,7 +604,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selectors
      *
-     * @param array<string,mixed>[]|null $selectors Variable bindings of type selector.
+     * @param \TalonOne\Client\Model\Selector[]|null $selectors Variable bindings of type selector.
      *
      * @return self
      */

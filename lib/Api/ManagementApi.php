@@ -185,6 +185,9 @@ class ManagementApi
         'disconnectCampaignStores' => [
             'application/json',
         ],
+        'excludePriceHistory' => [
+            'application/json',
+        ],
         'exportAccountCollectionItems' => [
             'application/json',
         ],
@@ -11103,6 +11106,248 @@ class ManagementApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation excludePriceHistory
+     *
+     * Exclude price records from price history
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\ExcludePriceObservationsRequest $excludePriceObservationsRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excludePriceHistory'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function excludePriceHistory($applicationId, $excludePriceObservationsRequest, string $contentType = self::contentTypes['excludePriceHistory'][0])
+    {
+        $this->excludePriceHistoryWithHttpInfo($applicationId, $excludePriceObservationsRequest, $contentType);
+    }
+
+    /**
+     * Operation excludePriceHistoryWithHttpInfo
+     *
+     * Exclude price records from price history
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\ExcludePriceObservationsRequest $excludePriceObservationsRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excludePriceHistory'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function excludePriceHistoryWithHttpInfo($applicationId, $excludePriceObservationsRequest, string $contentType = self::contentTypes['excludePriceHistory'][0])
+    {
+        $request = $this->excludePriceHistoryRequest($applicationId, $excludePriceObservationsRequest, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation excludePriceHistoryAsync
+     *
+     * Exclude price records from price history
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\ExcludePriceObservationsRequest $excludePriceObservationsRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excludePriceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function excludePriceHistoryAsync($applicationId, $excludePriceObservationsRequest, string $contentType = self::contentTypes['excludePriceHistory'][0])
+    {
+        return $this->excludePriceHistoryAsyncWithHttpInfo($applicationId, $excludePriceObservationsRequest, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation excludePriceHistoryAsyncWithHttpInfo
+     *
+     * Exclude price records from price history
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\ExcludePriceObservationsRequest $excludePriceObservationsRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excludePriceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function excludePriceHistoryAsyncWithHttpInfo($applicationId, $excludePriceObservationsRequest, string $contentType = self::contentTypes['excludePriceHistory'][0])
+    {
+        $returnType = '';
+        $request = $this->excludePriceHistoryRequest($applicationId, $excludePriceObservationsRequest, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'excludePriceHistory'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\ExcludePriceObservationsRequest $excludePriceObservationsRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['excludePriceHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function excludePriceHistoryRequest($applicationId, $excludePriceObservationsRequest, string $contentType = self::contentTypes['excludePriceHistory'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling excludePriceHistory'
+            );
+        }
+
+        // verify the required parameter 'excludePriceObservationsRequest' is set
+        if ($excludePriceObservationsRequest === null || (is_array($excludePriceObservationsRequest) && count($excludePriceObservationsRequest) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $excludePriceObservationsRequest when calling excludePriceHistory'
+            );
+        }
+
+
+        $resourcePath = '/v1/applications/{applicationId}/price_history/exclusions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{applicationId}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($excludePriceObservationsRequest)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($excludePriceObservationsRequest));
+            } else {
+                $httpBody = $excludePriceObservationsRequest;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

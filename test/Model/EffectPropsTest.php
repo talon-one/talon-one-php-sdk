@@ -708,4 +708,13 @@ class EffectPropsTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "endDate"
+     */
+    public function testPropertyEndDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

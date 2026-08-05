@@ -58,7 +58,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $openAPITypes = [
-        'type' => 'string'
+        'type' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'type' => null
+        'type' => null,
+        'name' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'type' => false
+        'type' => false,
+        'name' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type'
+        'type' => 'type',
+        'name' => 'name'
     ];
 
     /**
@@ -176,7 +180,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType'
+        'type' => 'setType',
+        'name' => 'setName'
     ];
 
     /**
@@ -185,7 +190,8 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType'
+        'type' => 'getType',
+        'name' => 'getName'
     ];
 
     /**
@@ -273,6 +279,7 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -362,6 +369,33 @@ class UpdateAttributeValueBlock1Target implements ModelInterface, ArrayAccess, \
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Identifies the name of the target when its type is set to `selector` or `globalFilter`.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

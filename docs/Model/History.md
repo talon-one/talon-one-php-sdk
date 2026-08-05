@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **price** | **float** | Price of the item. |
 **metadata** | [**\TalonOne\Client\Model\BestPriorPriceMetadata**](BestPriorPriceMetadata.md) |  |
 **target** | [**\TalonOne\Client\Model\LabelTarget**](LabelTarget.md) |  |
+**excludedAt** | **\DateTime** | The date and time when the historical price ID was excluded. | [optional]
+**exclusionReason** | **string** | The reason for excluding this historical price ID. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

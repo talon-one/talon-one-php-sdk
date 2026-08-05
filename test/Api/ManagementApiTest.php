@@ -516,6 +516,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for excludePriceHistory
+     *
+     * Exclude price records from price history.
+     *
+     */
+    public function testExcludePriceHistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for exportAccountCollectionItems
      *
      * Export account-level collection's items.

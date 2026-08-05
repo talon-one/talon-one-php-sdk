@@ -80,6 +80,15 @@ class IntegrationHubEventPayloadLoyaltyProfileBasedTierUpgradeNotificationTest e
     }
 
     /**
+     * Test attribute "eventId"
+     */
+    public function testPropertyEventId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "profileIntegrationID"
      */
     public function testPropertyProfileIntegrationID()

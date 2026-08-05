@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**eventId** | **int** | The ID of the integration hub event. Return this value in the delivery-status callback to mark the event delivered or failed. |
 **profileIntegrationID** | **string** |  |
 **loyaltyProgramID** | **int** |  |
 **loyaltyProgramName** | **string** | The name of the loyalty program. |

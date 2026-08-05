@@ -127,7 +127,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => 'float',
         'extensionDuration' => 'string',
         'affectedTransactions' => '\TalonOne\Client\Model\LoyaltyLedgerEntryExpiryDateChange[]',
-        'newExpiryDate' => '\DateTime'
+        'newExpiryDate' => '\DateTime',
+        'endDate' => '\DateTime'
     ];
 
     /**
@@ -207,7 +208,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => null,
         'extensionDuration' => null,
         'affectedTransactions' => null,
-        'newExpiryDate' => 'date-time'
+        'newExpiryDate' => 'date-time',
+        'endDate' => 'date-time'
     ];
 
     /**
@@ -285,7 +287,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => false,
         'extensionDuration' => false,
         'affectedTransactions' => false,
-        'newExpiryDate' => false
+        'newExpiryDate' => false,
+        'endDate' => false
     ];
 
     /**
@@ -443,7 +446,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => 'currentProgress',
         'extensionDuration' => 'extensionDuration',
         'affectedTransactions' => 'affectedTransactions',
-        'newExpiryDate' => 'newExpiryDate'
+        'newExpiryDate' => 'newExpiryDate',
+        'endDate' => 'endDate'
     ];
 
     /**
@@ -521,7 +525,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => 'setCurrentProgress',
         'extensionDuration' => 'setExtensionDuration',
         'affectedTransactions' => 'setAffectedTransactions',
-        'newExpiryDate' => 'setNewExpiryDate'
+        'newExpiryDate' => 'setNewExpiryDate',
+        'endDate' => 'setEndDate'
     ];
 
     /**
@@ -599,7 +604,8 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         'currentProgress' => 'getCurrentProgress',
         'extensionDuration' => 'getExtensionDuration',
         'affectedTransactions' => 'getAffectedTransactions',
-        'newExpiryDate' => 'getNewExpiryDate'
+        'newExpiryDate' => 'getNewExpiryDate',
+        'endDate' => 'getEndDate'
     ];
 
     /**
@@ -729,6 +735,7 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('extensionDuration', $data ?? [], null);
         $this->setIfExists('affectedTransactions', $data ?? [], null);
         $this->setIfExists('newExpiryDate', $data ?? [], null);
+        $this->setIfExists('endDate', $data ?? [], null);
     }
 
     /**
@@ -801,6 +808,9 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'recipientIntegrationId', the character length must be smaller than or equal to 1000.";
         }
 
+        if ($this->container['startDate'] === null) {
+            $invalidProperties[] = "'startDate' can't be null";
+        }
         if ($this->container['transactionUUID'] === null) {
             $invalidProperties[] = "'transactionUUID' can't be null";
         }
@@ -1657,7 +1667,7 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets startDate
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -1667,7 +1677,7 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets startDate
      *
-     * @param \DateTime|null $startDate The date after which the reimbursed points will be valid.
+     * @param \DateTime $startDate Timestamp at which the customer's progress started.
      *
      * @return self
      */
@@ -2541,7 +2551,7 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets achievementId
      *
-     * @param int $achievementId The internal ID of the achievement.
+     * @param int $achievementId The ID of the achievement.
      *
      * @return self
      */
@@ -2595,7 +2605,7 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets progressTrackerId
      *
-     * @param int $progressTrackerId The internal ID of the achievement progress tracker.
+     * @param int $progressTrackerId The ID of the customer's progress tracker for this achievement.  For [on-completion achievements](https://docs.talon.one/docs/product/campaigns/achievements/achievements-overview#recurring-on-completion-achievements), this effect generates a unique ID for each iteration.
      *
      * @return self
      */
@@ -2821,6 +2831,33 @@ class EffectProps implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable newExpiryDate cannot be null');
         }
         $this->container['newExpiryDate'] = $newExpiryDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets endDate
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['endDate'];
+    }
+
+    /**
+     * Sets endDate
+     *
+     * @param \DateTime|null $endDate Timestamp at which this progress period ends.  Only returned for achievements that have a fixed end date. [On-completion achievements](https://docs.talon.one/docs/product/campaigns/achievements/achievements-overview#recurring-on-completion-achievements) have no end date.
+     *
+     * @return self
+     */
+    public function setEndDate($endDate)
+    {
+        if (is_null($endDate)) {
+            throw new \InvalidArgumentException('non-nullable endDate cannot be null');
+        }
+        $this->container['endDate'] = $endDate;
 
         return $this;
     }

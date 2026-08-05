@@ -80,6 +80,15 @@ class IntegrationHubEventPayloadCouponBasedNotificationsTest extends TestCase
     }
 
     /**
+     * Test attribute "eventId"
+     */
+    public function testPropertyEventId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "id"
      */
     public function testPropertyId()

@@ -43,6 +43,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**deleteUserByEmail()**](ManagementApi.md#deleteUserByEmail) | **POST** /v1/users/delete | Delete user by email address |
 | [**destroySession()**](ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy session |
 | [**disconnectCampaignStores()**](ManagementApi.md#disconnectCampaignStores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores |
+| [**excludePriceHistory()**](ManagementApi.md#excludePriceHistory) | **POST** /v1/applications/{applicationId}/price_history/exclusions | Exclude price records from price history |
 | [**exportAccountCollectionItems()**](ManagementApi.md#exportAccountCollectionItems) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items |
 | [**exportAchievements()**](ManagementApi.md#exportAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data |
 | [**exportApplicationCampaignAnalytics()**](ManagementApi.md#exportApplicationCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign |
@@ -2573,6 +2574,69 @@ void (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `excludePriceHistory()`
+
+```php
+excludePriceHistory($applicationId, $excludePriceObservationsRequest)
+```
+
+Exclude price records from price history
+
+Select a batch of historical price IDs to exclude from [best prior price calculation](https://docs.talon.one/integration-api#tag/Catalogs/operation/bestPriorPrice). All IDs in the batch must be valid `id` values obtained from the [Get summary of price history](https://docs.talon.one/management-api#tag/Catalogs/operation/priceHistory.responses.200.history) endpoint, must belong to the specified Application, must not already be excluded from best prior price calculation, and must not be associated with a scheduled strikethrough pricing notification.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$excludePriceObservationsRequest = new \TalonOne\Client\Model\ExcludePriceObservationsRequest(); // \TalonOne\Client\Model\ExcludePriceObservationsRequest | body
+
+try {
+    $apiInstance->excludePriceHistory($applicationId, $excludePriceObservationsRequest);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->excludePriceHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **excludePriceObservationsRequest** | [**\TalonOne\Client\Model\ExcludePriceObservationsRequest**](../Model/ExcludePriceObservationsRequest.md)| body | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

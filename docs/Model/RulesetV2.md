@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **activatedAt** | **\DateTime** | Timestamp indicating when this ruleset was activated. | [optional]
 **promotionRules** | [**\TalonOne\Client\Model\PromotionRuleV2[]**](PromotionRuleV2.md) | Set of promotion rules. |
 **strikethroughRules** | [**\TalonOne\Client\Model\StrikethroughRuleV2[]**](StrikethroughRuleV2.md) | Set of strikethrough rules. |
-**selectors** | **array<string,mixed>[]** | Variable bindings of type selector. | [optional]
+**selectors** | [**\TalonOne\Client\Model\Selector[]**](Selector.md) | Variable bindings of type selector. | [optional]
 **bundles** | **array<string,mixed>[]** | Variable bindings of type bundle. | [optional]
 **parameters** | **array<string,mixed>[]** | Variable bindings of type template parameter. | [optional]
 

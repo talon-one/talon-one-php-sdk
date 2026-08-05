@@ -61,10 +61,15 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'type' => 'string',
         'tags' => 'string[]',
         'operator' => 'string',
-        'attribute' => 'string',
+        'attribute' => 'mixed',
         'value' => 'mixed',
         'min' => 'mixed',
         'max' => 'mixed',
+        'start' => 'mixed',
+        'end' => 'mixed',
+        'startInclusive' => 'bool',
+        'endInclusive' => 'bool',
+        'timezoneInsensitive' => 'bool',
         'values' => 'mixed',
         'count' => 'mixed'
     ];
@@ -85,6 +90,11 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'value' => null,
         'min' => null,
         'max' => null,
+        'start' => null,
+        'end' => null,
+        'startInclusive' => null,
+        'endInclusive' => null,
+        'timezoneInsensitive' => null,
         'values' => null,
         'count' => null
     ];
@@ -99,10 +109,15 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'type' => false,
         'tags' => false,
         'operator' => false,
-        'attribute' => false,
+        'attribute' => true,
         'value' => true,
         'min' => true,
         'max' => true,
+        'start' => true,
+        'end' => true,
+        'startInclusive' => false,
+        'endInclusive' => false,
+        'timezoneInsensitive' => false,
         'values' => true,
         'count' => true
     ];
@@ -201,6 +216,11 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'value' => 'value',
         'min' => 'min',
         'max' => 'max',
+        'start' => 'start',
+        'end' => 'end',
+        'startInclusive' => 'startInclusive',
+        'endInclusive' => 'endInclusive',
+        'timezoneInsensitive' => 'timezoneInsensitive',
         'values' => 'values',
         'count' => 'count'
     ];
@@ -219,6 +239,11 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'value' => 'setValue',
         'min' => 'setMin',
         'max' => 'setMax',
+        'start' => 'setStart',
+        'end' => 'setEnd',
+        'startInclusive' => 'setStartInclusive',
+        'endInclusive' => 'setEndInclusive',
+        'timezoneInsensitive' => 'setTimezoneInsensitive',
         'values' => 'setValues',
         'count' => 'setCount'
     ];
@@ -237,6 +262,11 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         'value' => 'getValue',
         'min' => 'getMin',
         'max' => 'getMax',
+        'start' => 'getStart',
+        'end' => 'getEnd',
+        'startInclusive' => 'getStartInclusive',
+        'endInclusive' => 'getEndInclusive',
+        'timezoneInsensitive' => 'getTimezoneInsensitive',
         'values' => 'getValues',
         'count' => 'getCount'
     ];
@@ -309,6 +339,10 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     public const OPERATOR_CONTAINS_ONE_OF = 'containsOneOf';
     public const OPERATOR_CONTAINS_NONE_OF = 'containsNoneOf';
     public const OPERATOR_CONTAINS_ALL_OF = 'containsAllOf';
+    public const OPERATOR_AFTER = 'after';
+    public const OPERATOR_BEFORE = 'before';
+    public const OPERATOR_WITHIN = 'within';
+    public const OPERATOR_NOT_WITHIN = 'not(within)';
 
     /**
      * Gets allowable values of the enum
@@ -345,6 +379,10 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
             self::OPERATOR_CONTAINS_ONE_OF,
             self::OPERATOR_CONTAINS_NONE_OF,
             self::OPERATOR_CONTAINS_ALL_OF,
+            self::OPERATOR_AFTER,
+            self::OPERATOR_BEFORE,
+            self::OPERATOR_WITHIN,
+            self::OPERATOR_NOT_WITHIN,
         ];
     }
 
@@ -371,6 +409,11 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('min', $data ?? [], null);
         $this->setIfExists('max', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('startInclusive', $data ?? [], null);
+        $this->setIfExists('endInclusive', $data ?? [], null);
+        $this->setIfExists('timezoneInsensitive', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
     }
@@ -420,8 +463,8 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['attribute'] === null) {
-            $invalidProperties[] = "'attribute' can't be null";
+        if ($this->container['attribute'] === null && !$this->isNullableSetToNull('attribute')) {
+            $invalidProperties[] = "'attribute' is required";
         }
         return $invalidProperties;
     }
@@ -559,7 +602,7 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets attribute
      *
-     * @return string
+     * @return mixed|null
      */
     public function getAttribute()
     {
@@ -569,14 +612,21 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets attribute
      *
-     * @param string $attribute The attribute path identifier (e.g. \"$Session.Total\").
+     * @param mixed|null $attribute attribute
      *
      * @return self
      */
     public function setAttribute($attribute)
     {
         if (is_null($attribute)) {
-            throw new \InvalidArgumentException('non-nullable attribute cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attribute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribute', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attribute'] = $attribute;
 
@@ -681,6 +731,155 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['max'] = $max;
+
+        return $this;
+    }
+
+    /**
+     * Gets start
+     *
+     * @return mixed|null
+     */
+    public function getStart()
+    {
+        return $this->container['start'];
+    }
+
+    /**
+     * Sets start
+     *
+     * @param mixed|null $start start
+     *
+     * @return self
+     */
+    public function setStart($start)
+    {
+        if (is_null($start)) {
+            array_push($this->openAPINullablesSetToNull, 'start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start'] = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets end
+     *
+     * @return mixed|null
+     */
+    public function getEnd()
+    {
+        return $this->container['end'];
+    }
+
+    /**
+     * Sets end
+     *
+     * @param mixed|null $end end
+     *
+     * @return self
+     */
+    public function setEnd($end)
+    {
+        if (is_null($end)) {
+            array_push($this->openAPINullablesSetToNull, 'end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets startInclusive
+     *
+     * @return bool|null
+     */
+    public function getStartInclusive()
+    {
+        return $this->container['startInclusive'];
+    }
+
+    /**
+     * Sets startInclusive
+     *
+     * @param bool|null $startInclusive When `true`, the `start` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setStartInclusive($startInclusive)
+    {
+        if (is_null($startInclusive)) {
+            throw new \InvalidArgumentException('non-nullable startInclusive cannot be null');
+        }
+        $this->container['startInclusive'] = $startInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets endInclusive
+     *
+     * @return bool|null
+     */
+    public function getEndInclusive()
+    {
+        return $this->container['endInclusive'];
+    }
+
+    /**
+     * Sets endInclusive
+     *
+     * @param bool|null $endInclusive When `true`, the `end` value is included in the range for the `within` operator.
+     *
+     * @return self
+     */
+    public function setEndInclusive($endInclusive)
+    {
+        if (is_null($endInclusive)) {
+            throw new \InvalidArgumentException('non-nullable endInclusive cannot be null');
+        }
+        $this->container['endInclusive'] = $endInclusive;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezoneInsensitive
+     *
+     * @return bool|null
+     */
+    public function getTimezoneInsensitive()
+    {
+        return $this->container['timezoneInsensitive'];
+    }
+
+    /**
+     * Sets timezoneInsensitive
+     *
+     * @param bool|null $timezoneInsensitive Indicates whether the `within` operator ignores time zones and compares the wall-clock time only. When `false`, time zones are taken into account.
+     *
+     * @return self
+     */
+    public function setTimezoneInsensitive($timezoneInsensitive)
+    {
+        if (is_null($timezoneInsensitive)) {
+            throw new \InvalidArgumentException('non-nullable timezoneInsensitive cannot be null');
+        }
+        $this->container['timezoneInsensitive'] = $timezoneInsensitive;
 
         return $this;
     }

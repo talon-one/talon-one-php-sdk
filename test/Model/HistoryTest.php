@@ -141,4 +141,22 @@ class HistoryTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "excludedAt"
+     */
+    public function testPropertyExcludedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "exclusionReason"
+     */
+    public function testPropertyExclusionReason()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
