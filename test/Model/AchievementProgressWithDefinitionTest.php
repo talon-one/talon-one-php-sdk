@@ -170,6 +170,24 @@ class AchievementProgressWithDefinitionTest extends TestCase
     }
 
     /**
+     * Test attribute "campaignIds"
+     */
+    public function testPropertyCampaignIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "referencedByCampaigns"
+     */
+    public function testPropertyReferencedByCampaigns()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "target"
      */
     public function testPropertyTarget()

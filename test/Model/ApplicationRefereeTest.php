@@ -98,6 +98,15 @@ class ApplicationRefereeTest extends TestCase
     }
 
     /**
+     * Test attribute "advancedEventIntegrationId"
+     */
+    public function testPropertyAdvancedEventIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "advocateIntegrationId"
      */
     public function testPropertyAdvocateIntegrationId()

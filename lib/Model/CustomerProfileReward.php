@@ -59,13 +59,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $openAPITypes = [
         'id' => 'int',
+        'integrationId' => 'string',
         'rewardId' => 'int',
         'rewardName' => 'string',
         'status' => 'string',
         'unlockedAt' => '\DateTime',
-        'unlockedByIntegrationId' => 'string',
+        'unlockedByProfileIntegrationId' => 'string',
         'usedAt' => '\DateTime',
-        'usedByIntegrationId' => 'string',
+        'usedByProfileIntegrationId' => 'string',
         'loyaltyProgramId' => 'int',
         'loyaltyCardIdentifier' => 'string'
     ];
@@ -79,13 +80,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $openAPIFormats = [
         'id' => 'int64',
+        'integrationId' => null,
         'rewardId' => 'int64',
         'rewardName' => null,
         'status' => null,
         'unlockedAt' => 'date-time',
-        'unlockedByIntegrationId' => null,
+        'unlockedByProfileIntegrationId' => null,
         'usedAt' => 'date-time',
-        'usedByIntegrationId' => null,
+        'usedByProfileIntegrationId' => null,
         'loyaltyProgramId' => 'int64',
         'loyaltyCardIdentifier' => null
     ];
@@ -97,13 +99,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'integrationId' => false,
         'rewardId' => false,
         'rewardName' => false,
         'status' => false,
         'unlockedAt' => false,
-        'unlockedByIntegrationId' => false,
+        'unlockedByProfileIntegrationId' => false,
         'usedAt' => false,
-        'usedByIntegrationId' => false,
+        'usedByProfileIntegrationId' => false,
         'loyaltyProgramId' => false,
         'loyaltyCardIdentifier' => false
     ];
@@ -195,13 +198,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'integrationId' => 'integrationId',
         'rewardId' => 'rewardId',
         'rewardName' => 'rewardName',
         'status' => 'status',
         'unlockedAt' => 'unlockedAt',
-        'unlockedByIntegrationId' => 'unlockedByIntegrationId',
+        'unlockedByProfileIntegrationId' => 'unlockedByProfileIntegrationId',
         'usedAt' => 'usedAt',
-        'usedByIntegrationId' => 'usedByIntegrationId',
+        'usedByProfileIntegrationId' => 'usedByProfileIntegrationId',
         'loyaltyProgramId' => 'loyaltyProgramId',
         'loyaltyCardIdentifier' => 'loyaltyCardIdentifier'
     ];
@@ -213,13 +217,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'id' => 'setId',
+        'integrationId' => 'setIntegrationId',
         'rewardId' => 'setRewardId',
         'rewardName' => 'setRewardName',
         'status' => 'setStatus',
         'unlockedAt' => 'setUnlockedAt',
-        'unlockedByIntegrationId' => 'setUnlockedByIntegrationId',
+        'unlockedByProfileIntegrationId' => 'setUnlockedByProfileIntegrationId',
         'usedAt' => 'setUsedAt',
-        'usedByIntegrationId' => 'setUsedByIntegrationId',
+        'usedByProfileIntegrationId' => 'setUsedByProfileIntegrationId',
         'loyaltyProgramId' => 'setLoyaltyProgramId',
         'loyaltyCardIdentifier' => 'setLoyaltyCardIdentifier'
     ];
@@ -231,13 +236,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'id' => 'getId',
+        'integrationId' => 'getIntegrationId',
         'rewardId' => 'getRewardId',
         'rewardName' => 'getRewardName',
         'status' => 'getStatus',
         'unlockedAt' => 'getUnlockedAt',
-        'unlockedByIntegrationId' => 'getUnlockedByIntegrationId',
+        'unlockedByProfileIntegrationId' => 'getUnlockedByProfileIntegrationId',
         'usedAt' => 'getUsedAt',
-        'usedByIntegrationId' => 'getUsedByIntegrationId',
+        'usedByProfileIntegrationId' => 'getUsedByProfileIntegrationId',
         'loyaltyProgramId' => 'getLoyaltyProgramId',
         'loyaltyCardIdentifier' => 'getLoyaltyCardIdentifier'
     ];
@@ -315,13 +321,14 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('rewardId', $data ?? [], null);
         $this->setIfExists('rewardName', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('unlockedAt', $data ?? [], null);
-        $this->setIfExists('unlockedByIntegrationId', $data ?? [], null);
+        $this->setIfExists('unlockedByProfileIntegrationId', $data ?? [], null);
         $this->setIfExists('usedAt', $data ?? [], null);
-        $this->setIfExists('usedByIntegrationId', $data ?? [], null);
+        $this->setIfExists('usedByProfileIntegrationId', $data ?? [], null);
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
         $this->setIfExists('loyaltyCardIdentifier', $data ?? [], null);
     }
@@ -355,6 +362,9 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['integrationId'] === null) {
+            $invalidProperties[] = "'integrationId' can't be null";
         }
         if ($this->container['rewardId'] === null) {
             $invalidProperties[] = "'rewardId' can't be null";
@@ -427,6 +437,33 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets integrationId
+     *
+     * @return string
+     */
+    public function getIntegrationId()
+    {
+        return $this->container['integrationId'];
+    }
+
+    /**
+     * Sets integrationId
+     *
+     * @param string $integrationId The integration ID of the reward.
+     *
+     * @return self
+     */
+    public function setIntegrationId($integrationId)
+    {
+        if (is_null($integrationId)) {
+            throw new \InvalidArgumentException('non-nullable integrationId cannot be null');
+        }
+        $this->container['integrationId'] = $integrationId;
 
         return $this;
     }
@@ -550,28 +587,28 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets unlockedByIntegrationId
+     * Gets unlockedByProfileIntegrationId
      *
      * @return string|null
      */
-    public function getUnlockedByIntegrationId()
+    public function getUnlockedByProfileIntegrationId()
     {
-        return $this->container['unlockedByIntegrationId'];
+        return $this->container['unlockedByProfileIntegrationId'];
     }
 
     /**
-     * Sets unlockedByIntegrationId
+     * Sets unlockedByProfileIntegrationId
      *
-     * @param string|null $unlockedByIntegrationId The integration ID of the customer profile that unlocked the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.
+     * @param string|null $unlockedByProfileIntegrationId The integration ID of the customer profile that unlocked the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.
      *
      * @return self
      */
-    public function setUnlockedByIntegrationId($unlockedByIntegrationId)
+    public function setUnlockedByProfileIntegrationId($unlockedByProfileIntegrationId)
     {
-        if (is_null($unlockedByIntegrationId)) {
-            throw new \InvalidArgumentException('non-nullable unlockedByIntegrationId cannot be null');
+        if (is_null($unlockedByProfileIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable unlockedByProfileIntegrationId cannot be null');
         }
-        $this->container['unlockedByIntegrationId'] = $unlockedByIntegrationId;
+        $this->container['unlockedByProfileIntegrationId'] = $unlockedByProfileIntegrationId;
 
         return $this;
     }
@@ -604,28 +641,28 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets usedByIntegrationId
+     * Gets usedByProfileIntegrationId
      *
      * @return string|null
      */
-    public function getUsedByIntegrationId()
+    public function getUsedByProfileIntegrationId()
     {
-        return $this->container['usedByIntegrationId'];
+        return $this->container['usedByProfileIntegrationId'];
     }
 
     /**
-     * Sets usedByIntegrationId
+     * Sets usedByProfileIntegrationId
      *
-     * @param string|null $usedByIntegrationId The integration ID of the customer profile that used the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.   Only returned when the reward has been used.
+     * @param string|null $usedByProfileIntegrationId The integration ID of the customer profile that used the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.   Only returned when the reward has been used.
      *
      * @return self
      */
-    public function setUsedByIntegrationId($usedByIntegrationId)
+    public function setUsedByProfileIntegrationId($usedByProfileIntegrationId)
     {
-        if (is_null($usedByIntegrationId)) {
-            throw new \InvalidArgumentException('non-nullable usedByIntegrationId cannot be null');
+        if (is_null($usedByProfileIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable usedByProfileIntegrationId cannot be null');
         }
-        $this->container['usedByIntegrationId'] = $usedByIntegrationId;
+        $this->container['usedByProfileIntegrationId'] = $usedByProfileIntegrationId;
 
         return $this;
     }

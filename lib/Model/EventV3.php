@@ -66,6 +66,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'attributes' => 'object',
         'integrationId' => 'string',
+        'referralCode' => 'string',
         'effects' => 'object[]'
     ];
 
@@ -86,6 +87,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'attributes' => null,
         'integrationId' => null,
+        'referralCode' => null,
         'effects' => null
     ];
 
@@ -104,6 +106,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => false,
         'attributes' => false,
         'integrationId' => false,
+        'referralCode' => false,
         'effects' => false
     ];
 
@@ -202,6 +205,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'attributes' => 'attributes',
         'integrationId' => 'integrationId',
+        'referralCode' => 'referralCode',
         'effects' => 'effects'
     ];
 
@@ -220,6 +224,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'attributes' => 'setAttributes',
         'integrationId' => 'setIntegrationId',
+        'referralCode' => 'setReferralCode',
         'effects' => 'setEffects'
     ];
 
@@ -238,6 +243,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'attributes' => 'getAttributes',
         'integrationId' => 'getIntegrationId',
+        'referralCode' => 'getReferralCode',
         'effects' => 'getEffects'
     ];
 
@@ -307,6 +313,7 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('integrationId', $data ?? [], null);
+        $this->setIfExists('referralCode', $data ?? [], null);
         $this->setIfExists('effects', $data ?? [], null);
     }
 
@@ -370,6 +377,10 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (!is_null($this->container['integrationId']) && (mb_strlen($this->container['integrationId']) < 1)) {
             $invalidProperties[] = "invalid value for 'integrationId', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['referralCode']) && (mb_strlen($this->container['referralCode']) > 100)) {
+            $invalidProperties[] = "invalid value for 'referralCode', the character length must be smaller than or equal to 100.";
         }
 
         if ($this->container['effects'] === null) {
@@ -651,6 +662,37 @@ class EventV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['integrationId'] = $integrationId;
+
+        return $this;
+    }
+
+    /**
+     * Gets referralCode
+     *
+     * @return string|null
+     */
+    public function getReferralCode()
+    {
+        return $this->container['referralCode'];
+    }
+
+    /**
+     * Sets referralCode
+     *
+     * @param string|null $referralCode The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming.
+     *
+     * @return self
+     */
+    public function setReferralCode($referralCode)
+    {
+        if (is_null($referralCode)) {
+            throw new \InvalidArgumentException('non-nullable referralCode cannot be null');
+        }
+        if ((mb_strlen($referralCode) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $referralCode when calling EventV3., must be smaller than or equal to 100.');
+        }
+
+        $this->container['referralCode'] = $referralCode;
 
         return $this;
     }

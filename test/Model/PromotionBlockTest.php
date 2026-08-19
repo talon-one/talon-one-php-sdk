@@ -546,4 +546,13 @@ class PromotionBlockTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "tier"
+     */
+    public function testPropertyTier()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

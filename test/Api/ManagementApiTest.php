@@ -144,6 +144,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for createAchievementV2
+     *
+     * Create achievement.
+     *
+     */
+    public function testCreateAchievementV2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for createAdditionalCost
      *
      * Create additional cost.
@@ -372,6 +384,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteAchievementV2
+     *
+     * Delete achievement.
+     *
+     */
+    public function testDeleteAchievementV2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteCampaign
      *
      * Delete campaign.
@@ -534,6 +558,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testExportAccountCollectionItems()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for exportAchievementV2
+     *
+     * Export achievement customer data.
+     *
+     */
+    public function testExportAchievementV2()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -846,6 +882,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testGetAchievement()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getAchievementV2
+     *
+     * Get achievement.
+     *
+     */
+    public function testGetAchievementV2()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -1800,6 +1848,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for listAchievementsV2
+     *
+     * List achievements.
+     *
+     */
+    public function testListAchievementsV2()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for listAllRolesV2
      *
      * List roles.
@@ -2190,6 +2250,18 @@ class ManagementApiTest extends TestCase
      *
      */
     public function testUpdateAchievement()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateAchievementV2
+     *
+     * Update achievement.
+     *
+     */
+    public function testUpdateAchievementV2()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

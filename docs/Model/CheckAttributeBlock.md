@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique identifier for this block. |
-**type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
+**type** | **string** | A block discriminator of type &#x60;checkAttribute&#x60;. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional]
 **operator** | **string** | The comparison operator applied to the attribute. |
 **attribute** | **mixed** |  |

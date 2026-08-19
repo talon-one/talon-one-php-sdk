@@ -65,7 +65,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => 'int',
         'loyaltyProgramId' => 'int',
         'eventType' => 'string',
-        'integrationHubFlowUrl' => 'string',
         'config' => '\TalonOne\Client\Model\IntegrationHubFlowConfigResponse'
     ];
 
@@ -85,7 +84,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => 'int64',
         'loyaltyProgramId' => 'int64',
         'eventType' => null,
-        'integrationHubFlowUrl' => null,
         'config' => null
     ];
 
@@ -103,7 +101,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => false,
         'loyaltyProgramId' => false,
         'eventType' => false,
-        'integrationHubFlowUrl' => false,
         'config' => false
     ];
 
@@ -201,7 +198,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => 'applicationId',
         'loyaltyProgramId' => 'loyaltyProgramId',
         'eventType' => 'eventType',
-        'integrationHubFlowUrl' => 'integrationHubFlowUrl',
         'config' => 'config'
     ];
 
@@ -219,7 +215,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => 'setApplicationId',
         'loyaltyProgramId' => 'setLoyaltyProgramId',
         'eventType' => 'setEventType',
-        'integrationHubFlowUrl' => 'setIntegrationHubFlowUrl',
         'config' => 'setConfig'
     ];
 
@@ -237,7 +232,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         'applicationId' => 'getApplicationId',
         'loyaltyProgramId' => 'getLoyaltyProgramId',
         'eventType' => 'getEventType',
-        'integrationHubFlowUrl' => 'getIntegrationHubFlowUrl',
         'config' => 'getConfig'
     ];
 
@@ -306,7 +300,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('applicationId', $data ?? [], null);
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
         $this->setIfExists('eventType', $data ?? [], null);
-        $this->setIfExists('integrationHubFlowUrl', $data ?? [], null);
         $this->setIfExists('config', $data ?? [], null);
     }
 
@@ -345,9 +338,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
         }
         if ($this->container['eventType'] === null) {
             $invalidProperties[] = "'eventType' can't be null";
-        }
-        if ($this->container['integrationHubFlowUrl'] === null) {
-            $invalidProperties[] = "'integrationHubFlowUrl' can't be null";
         }
         if ($this->container['config'] === null) {
             $invalidProperties[] = "'config' can't be null";
@@ -586,33 +576,6 @@ class IntegrationHubFlowResponse implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable eventType cannot be null');
         }
         $this->container['eventType'] = $eventType;
-
-        return $this;
-    }
-
-    /**
-     * Gets integrationHubFlowUrl
-     *
-     * @return string
-     */
-    public function getIntegrationHubFlowUrl()
-    {
-        return $this->container['integrationHubFlowUrl'];
-    }
-
-    /**
-     * Sets integrationHubFlowUrl
-     *
-     * @param string $integrationHubFlowUrl The URL of the integration hub flow that we want to trigger for the event.
-     *
-     * @return self
-     */
-    public function setIntegrationHubFlowUrl($integrationHubFlowUrl)
-    {
-        if (is_null($integrationHubFlowUrl)) {
-            throw new \InvalidArgumentException('non-nullable integrationHubFlowUrl cannot be null');
-        }
-        $this->container['integrationHubFlowUrl'] = $integrationHubFlowUrl;
 
         return $this;
     }

@@ -73,7 +73,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         'selectedPriceType' => 'string',
         'selectedPrice' => 'float',
         'adjustmentReferenceId' => 'string',
-        'props' => '\TalonOne\Client\Model\EffectAllOfProps'
+        'props' => 'mixed'
     ];
 
     /**
@@ -125,7 +125,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         'selectedPriceType' => false,
         'selectedPrice' => false,
         'adjustmentReferenceId' => false,
-        'props' => false
+        'props' => true
     ];
 
     /**
@@ -401,8 +401,8 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['effectType'] === null) {
             $invalidProperties[] = "'effectType' can't be null";
         }
-        if ($this->container['props'] === null) {
-            $invalidProperties[] = "'props' can't be null";
+        if ($this->container['props'] === null && !$this->isNullableSetToNull('props')) {
+            $invalidProperties[] = "'props' is required";
         }
         return $invalidProperties;
     }
@@ -854,7 +854,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets props
      *
-     * @return \TalonOne\Client\Model\EffectAllOfProps
+     * @return mixed|null
      */
     public function getProps()
     {
@@ -864,14 +864,21 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets props
      *
-     * @param \TalonOne\Client\Model\EffectAllOfProps $props props
+     * @param mixed|null $props props
      *
      * @return self
      */
     public function setProps($props)
     {
         if (is_null($props)) {
-            throw new \InvalidArgumentException('non-nullable props cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'props');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('props', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['props'] = $props;
 

@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **applicationId** | **int** | ID of the application the flow is registered for. | [optional]
 **loyaltyProgramId** | **int** | ID of the loyalty program the flow is registered for. | [optional]
 **eventType** | **string** | The event type we want to register a flow for. |
-**integrationHubFlowUrl** | **string** | The URL of the integration hub flow that we want to trigger for the event. |
 **config** | [**\TalonOne\Client\Model\IntegrationHubFlowConfigResponse**](IntegrationHubFlowConfigResponse.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

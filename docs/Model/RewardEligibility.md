@@ -1,0 +1,10 @@
+# RewardEligibility
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**passed** | **bool** | Indicates whether the customer is eligible for the reward. |
+**details** | [**\TalonOne\Client\Model\RewardEligibilityFailureDetails[]**](RewardEligibilityFailureDetails.md) | The reasons the customer is not eligible for the reward. Empty when &#x60;passed&#x60; is &#x60;true&#x60;. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

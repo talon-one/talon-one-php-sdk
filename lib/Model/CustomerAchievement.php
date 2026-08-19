@@ -68,6 +68,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => '\DateTime',
         'endDate' => '\DateTime',
         'allowRollbackAfterCompletion' => 'bool',
+        'campaignId' => 'int',
+        'campaignIds' => 'int[]',
+        'referencedByCampaigns' => '\TalonOne\Client\Model\CampaignReference[]',
         'currentProgress' => '\TalonOne\Client\Model\AchievementProgress'
     ];
 
@@ -89,6 +92,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'date-time',
         'endDate' => 'date-time',
         'allowRollbackAfterCompletion' => null,
+        'campaignId' => 'int64',
+        'campaignIds' => 'int64',
+        'referencedByCampaigns' => null,
         'currentProgress' => null
     ];
 
@@ -108,6 +114,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => false,
         'endDate' => false,
         'allowRollbackAfterCompletion' => false,
+        'campaignId' => false,
+        'campaignIds' => false,
+        'referencedByCampaigns' => false,
         'currentProgress' => false
     ];
 
@@ -207,6 +216,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'fixedStartDate',
         'endDate' => 'endDate',
         'allowRollbackAfterCompletion' => 'allowRollbackAfterCompletion',
+        'campaignId' => 'campaignId',
+        'campaignIds' => 'campaignIds',
+        'referencedByCampaigns' => 'referencedByCampaigns',
         'currentProgress' => 'currentProgress'
     ];
 
@@ -226,6 +238,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'setFixedStartDate',
         'endDate' => 'setEndDate',
         'allowRollbackAfterCompletion' => 'setAllowRollbackAfterCompletion',
+        'campaignId' => 'setCampaignId',
+        'campaignIds' => 'setCampaignIds',
+        'referencedByCampaigns' => 'setReferencedByCampaigns',
         'currentProgress' => 'setCurrentProgress'
     ];
 
@@ -245,6 +260,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         'fixedStartDate' => 'getFixedStartDate',
         'endDate' => 'getEndDate',
         'allowRollbackAfterCompletion' => 'getAllowRollbackAfterCompletion',
+        'campaignId' => 'getCampaignId',
+        'campaignIds' => 'getCampaignIds',
+        'referencedByCampaigns' => 'getReferencedByCampaigns',
         'currentProgress' => 'getCurrentProgress'
     ];
 
@@ -347,6 +365,9 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('fixedStartDate', $data ?? [], null);
         $this->setIfExists('endDate', $data ?? [], null);
         $this->setIfExists('allowRollbackAfterCompletion', $data ?? [], null);
+        $this->setIfExists('campaignId', $data ?? [], null);
+        $this->setIfExists('campaignIds', $data ?? [], null);
+        $this->setIfExists('referencedByCampaigns', $data ?? [], null);
         $this->setIfExists('currentProgress', $data ?? [], null);
     }
 
@@ -430,6 +451,12 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
 
         if ($this->container['allowRollbackAfterCompletion'] === null) {
             $invalidProperties[] = "'allowRollbackAfterCompletion' can't be null";
+        }
+        if ($this->container['campaignIds'] === null) {
+            $invalidProperties[] = "'campaignIds' can't be null";
+        }
+        if ($this->container['referencedByCampaigns'] === null) {
+            $invalidProperties[] = "'referencedByCampaigns' can't be null";
         }
         return $invalidProperties;
     }
@@ -742,6 +769,89 @@ class CustomerAchievement implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable allowRollbackAfterCompletion cannot be null');
         }
         $this->container['allowRollbackAfterCompletion'] = $allowRollbackAfterCompletion;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignId
+     *
+     * @return int|null
+     * @deprecated
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaignId'];
+    }
+
+    /**
+     * Sets campaignId
+     *
+     * @param int|null $campaignId This property is **deprecated**. Use `campaignIds` (Integration API) or `referencedByCampaigns` (Management API) instead. The first campaign ID in `campaignIds`. Only returned when `campaignIds` is not empty.
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setCampaignId($campaignId)
+    {
+        if (is_null($campaignId)) {
+            throw new \InvalidArgumentException('non-nullable campaignId cannot be null');
+        }
+        $this->container['campaignId'] = $campaignId;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignIds
+     *
+     * @return int[]
+     */
+    public function getCampaignIds()
+    {
+        return $this->container['campaignIds'];
+    }
+
+    /**
+     * Sets campaignIds
+     *
+     * @param int[] $campaignIds The IDs of the campaigns that reference this achievement, in ascending order.
+     *
+     * @return self
+     */
+    public function setCampaignIds($campaignIds)
+    {
+        if (is_null($campaignIds)) {
+            throw new \InvalidArgumentException('non-nullable campaignIds cannot be null');
+        }
+        $this->container['campaignIds'] = $campaignIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets referencedByCampaigns
+     *
+     * @return \TalonOne\Client\Model\CampaignReference[]
+     */
+    public function getReferencedByCampaigns()
+    {
+        return $this->container['referencedByCampaigns'];
+    }
+
+    /**
+     * Sets referencedByCampaigns
+     *
+     * @param \TalonOne\Client\Model\CampaignReference[] $referencedByCampaigns The campaigns that reference this achievement. They are sorted in ascending order by their `id`.
+     *
+     * @return self
+     */
+    public function setReferencedByCampaigns($referencedByCampaigns)
+    {
+        if (is_null($referencedByCampaigns)) {
+            throw new \InvalidArgumentException('non-nullable referencedByCampaigns cannot be null');
+        }
+        $this->container['referencedByCampaigns'] = $referencedByCampaigns;
 
         return $this;
     }

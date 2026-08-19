@@ -35,7 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * CatalogAction Class Doc Comment
  *
  * @category Class
- * @description Definition of all the properties that are needed for a single catalog sync action.
+ * @description Definition of all the properties that are needed for a single catalog sync action. The &#x60;type&#x60; field selects the concrete action variant.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /**
      * The original name of the model.
@@ -58,7 +58,7 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'type' => 'mixed',
+        'type' => 'string',
         'payload' => '\TalonOne\Client\Model\AddPriceAdjustmentCatalogAction'
     ];
 
@@ -80,7 +80,7 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'type' => true,
+        'type' => false,
         'payload' => false
     ];
 
@@ -235,6 +235,29 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_ADD = 'ADD';
+    public const TYPE_PATCH = 'PATCH';
+    public const TYPE_PATCH_MANY = 'PATCH_MANY';
+    public const TYPE_REMOVE = 'REMOVE';
+    public const TYPE_REMOVE_MANY = 'REMOVE_MANY';
+    public const TYPE_ADD_PRICE_ADJUSTMENT = 'ADD_PRICE_ADJUSTMENT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_ADD,
+            self::TYPE_PATCH,
+            self::TYPE_PATCH_MANY,
+            self::TYPE_REMOVE,
+            self::TYPE_REMOVE_MANY,
+            self::TYPE_ADD_PRICE_ADJUSTMENT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -253,6 +276,9 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('payload', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -282,9 +308,18 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null && !$this->isNullableSetToNull('type')) {
-            $invalidProperties[] = "'type' is required";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['payload'] === null) {
             $invalidProperties[] = "'payload' can't be null";
         }
@@ -306,7 +341,7 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return mixed|null
+     * @return string
      */
     public function getType()
     {
@@ -316,21 +351,24 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param mixed|null $type type
+     * @param string $type A catalog sync action discriminator of type `ADD`.
      *
      * @return self
      */
     public function setType($type)
     {
         if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['type'] = $type;
 
@@ -350,7 +388,7 @@ class CatalogAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payload
      *
-     * @param \TalonOne\Client\Model\AddPriceAdjustmentCatalogAction $payload payload
+     * @param \TalonOne\Client\Model\AddPriceAdjustmentCatalogAction $payload The payload of sync action.
      *
      * @return self
      */

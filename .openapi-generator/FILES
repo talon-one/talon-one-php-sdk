@@ -46,6 +46,7 @@ docs/Model/AddFreeItemEffectProps.md
 docs/Model/AddItemCatalogAction.md
 docs/Model/AddLoyaltyPoints.md
 docs/Model/AddLoyaltyPointsEffectProps.md
+docs/Model/AddLoyaltyPointsSupport.md
 docs/Model/AddPriceAdjustmentCatalogAction.md
 docs/Model/AddToAudienceEffectProps.md
 docs/Model/AddedDeductedPointsBalancesAction.md
@@ -76,6 +77,7 @@ docs/Model/ApplicationCustomer.md
 docs/Model/ApplicationCustomerEntity.md
 docs/Model/ApplicationEntity.md
 docs/Model/ApplicationEvent.md
+docs/Model/ApplicationMembership.md
 docs/Model/ApplicationReferee.md
 docs/Model/ApplicationSession.md
 docs/Model/ApplicationSessionEntity.md
@@ -128,6 +130,7 @@ docs/Model/Binding.md
 docs/Model/Blueprint.md
 docs/Model/BulkApplicationNotification.md
 docs/Model/BulkOperationOnCampaigns.md
+docs/Model/Bundle.md
 docs/Model/Campaign.md
 docs/Model/CampaignActivationRequest.md
 docs/Model/CampaignAnalytics.md
@@ -161,6 +164,7 @@ docs/Model/CampaignNotificationBase.md
 docs/Model/CampaignNotificationGeneric.md
 docs/Model/CampaignNotificationItemBase.md
 docs/Model/CampaignNotificationPolicy.md
+docs/Model/CampaignReference.md
 docs/Model/CampaignRulesetChangedNotification.md
 docs/Model/CampaignRulesetChangedNotificationItem.md
 docs/Model/CampaignSearch.md
@@ -190,13 +194,13 @@ docs/Model/CartItem.md
 docs/Model/CartItemFilterTemplate.md
 docs/Model/Catalog.md
 docs/Model/CatalogAction.md
+docs/Model/CatalogActionAdd.md
+docs/Model/CatalogActionAddPriceAdjustment.md
 docs/Model/CatalogActionFilter.md
-docs/Model/CatalogActionOneOf.md
-docs/Model/CatalogActionOneOf1.md
-docs/Model/CatalogActionOneOf2.md
-docs/Model/CatalogActionOneOf3.md
-docs/Model/CatalogActionOneOf4.md
-docs/Model/CatalogActionOneOf5.md
+docs/Model/CatalogActionPatch.md
+docs/Model/CatalogActionPatchMany.md
+docs/Model/CatalogActionRemove.md
+docs/Model/CatalogActionRemoveMany.md
 docs/Model/CatalogItem.md
 docs/Model/CatalogRule.md
 docs/Model/CatalogSyncRequest.md
@@ -215,7 +219,10 @@ docs/Model/CheckCouponBlock.md
 docs/Model/CheckEventBlock.md
 docs/Model/CheckLoyaltyBalanceBlock.md
 docs/Model/CheckLoyaltyBalanceBlock1Program.md
+docs/Model/CheckLoyaltyCardBlock.md
 docs/Model/CheckReferralBlock.md
+docs/Model/CheckTierBlock.md
+docs/Model/CheckTierBlock1Tier.md
 docs/Model/CodeGeneratorSettings.md
 docs/Model/Collection.md
 docs/Model/CollectionItem.md
@@ -269,6 +276,7 @@ docs/Model/CustomerProfileIntegrationResponseV2.md
 docs/Model/CustomerProfileReward.md
 docs/Model/CustomerProfileSearchQuery.md
 docs/Model/CustomerProfileUpdateV2Response.md
+docs/Model/CustomerReward.md
 docs/Model/CustomerSession.md
 docs/Model/CustomerSessionV2.md
 docs/Model/DeactivateUserRequest.md
@@ -280,9 +288,7 @@ docs/Model/DeleteUserRequest.md
 docs/Model/DigitalPass.md
 docs/Model/DiscardRisksRequest.md
 docs/Model/Effect.md
-docs/Model/EffectAllOfProps.md
 docs/Model/EffectEntity.md
-docs/Model/EffectProps.md
 docs/Model/EmailEntity.md
 docs/Model/EmbeddedAnalyticsConfiguration.md
 docs/Model/EmbeddedAnalyticsConfigurationDashboards.md
@@ -303,6 +309,7 @@ docs/Model/EventV2.md
 docs/Model/EventV3.md
 docs/Model/EventV3Connections.md
 docs/Model/EventV3Entity.md
+docs/Model/EventV3ReferralEntity.md
 docs/Model/EventV3RequestEntity.md
 docs/Model/ExcludePriceObservationsRequest.md
 docs/Model/Experiment.md
@@ -449,6 +456,7 @@ docs/Model/IntegrationResponse.md
 docs/Model/IntegrationState.md
 docs/Model/IntegrationStateV2.md
 docs/Model/IntegrationStoreEntity.md
+docs/Model/IntegrationUnlockRewardRequest.md
 docs/Model/InventoryCoupon.md
 docs/Model/InventoryReferral.md
 docs/Model/ItemAttribute.md
@@ -464,6 +472,7 @@ docs/Model/LimitConfig.md
 docs/Model/LimitCounter.md
 docs/Model/ListAccountCollections200Response.md
 docs/Model/ListAchievements200Response.md
+docs/Model/ListAchievementsV2200Response.md
 docs/Model/ListAllRolesV2200Response.md
 docs/Model/ListApplicationCartItemFilters200Response.md
 docs/Model/ListCampaignStoreBudgetLimits200Response.md
@@ -507,6 +516,7 @@ docs/Model/MCPOAuthClient.md
 docs/Model/MCPOAuthCompleteResult.md
 docs/Model/MCPOAuthProtectedResource.md
 docs/Model/MCPOAuthServerMetadata.md
+docs/Model/MCPOAuthSessionInfo.md
 docs/Model/MCPOAuthToken.md
 docs/Model/MCPOAuthTokenError.md
 docs/Model/MCPOAuthTokenRequest.md
@@ -646,6 +656,9 @@ docs/Model/PromotionBlock.md
 docs/Model/PromotionCheckAttributeBlock.md
 docs/Model/PromotionGroupBlock.md
 docs/Model/PromotionRuleV2.md
+docs/Model/RedeemLoyaltyPointsBlock.md
+docs/Model/RedeemLoyaltyPointsBlock1Program.md
+docs/Model/RedeemLoyaltyPointsBlock1Value.md
 docs/Model/RedeemReferralEffectProps.md
 docs/Model/ReduceSelectorStep.md
 docs/Model/Referral.md
@@ -670,6 +683,9 @@ docs/Model/RevisionActivation.md
 docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
 docs/Model/Reward.md
+docs/Model/RewardCatalogItem.md
+docs/Model/RewardEligibility.md
+docs/Model/RewardEligibilityFailureDetails.md
 docs/Model/RewardPointsRequired.md
 docs/Model/Risk.md
 docs/Model/RiskAffectedEntityItem.md
@@ -693,6 +709,7 @@ docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md
 docs/Model/RollbackDiscountEffectProps.md
 docs/Model/RollbackIncreasedAchievementProgressEffectProps.md
 docs/Model/RollbackReferralEffectProps.md
+docs/Model/RollbackUseRewardEffectProps.md
 docs/Model/Rule.md
 docs/Model/RuleEligibility.md
 docs/Model/RuleEligibilityFailureDetails.md
@@ -759,7 +776,6 @@ docs/Model/StrikethroughCheckAttributeBlock.md
 docs/Model/StrikethroughCustomEffectPerItemProps.md
 docs/Model/StrikethroughDebugResponse.md
 docs/Model/StrikethroughEffect.md
-docs/Model/StrikethroughEffectProps.md
 docs/Model/StrikethroughGroupBlock.md
 docs/Model/StrikethroughLabelingNotification.md
 docs/Model/StrikethroughRuleV2.md
@@ -768,6 +784,7 @@ docs/Model/StrikethroughSetDiscountPerItemMemberEffectProps.md
 docs/Model/StrikethroughTrigger.md
 docs/Model/SummarizeCampaignStoreBudget200Response.md
 docs/Model/SummaryCampaignStoreBudget.md
+docs/Model/SupportCustomerProfile.md
 docs/Model/SupportRequest.md
 docs/Model/SupportRequestInput.md
 docs/Model/TalangAttribute.md
@@ -775,6 +792,7 @@ docs/Model/TalangAttributeVisibility.md
 docs/Model/TemplateArgDef.md
 docs/Model/TemplateDef.md
 docs/Model/TemplateLimitConfig.md
+docs/Model/TemplateParameter.md
 docs/Model/Tier.md
 docs/Model/TierDowngradeData.md
 docs/Model/TierDowngradeNotification.md
@@ -796,6 +814,7 @@ docs/Model/TriggerWebhookBlock1Webhook.md
 docs/Model/TriggerWebhookEffectProps.md
 docs/Model/TwoFAConfig.md
 docs/Model/UnaryCheckAttributeBlock.md
+docs/Model/UnlockRewardEffectProps.md
 docs/Model/UpdateAccount.md
 docs/Model/UpdateAchievement.md
 docs/Model/UpdateAchievementProgressBlock.md
@@ -843,6 +862,7 @@ docs/Model/UpdateRole.md
 docs/Model/UpdateStore.md
 docs/Model/UpdateSupportRequest.md
 docs/Model/UpdateUser.md
+docs/Model/UseRewardEffectProps.md
 docs/Model/User.md
 docs/Model/UserEntity.md
 docs/Model/ValueMap.md
@@ -898,6 +918,7 @@ lib/Model/AddFreeItemEffectProps.php
 lib/Model/AddItemCatalogAction.php
 lib/Model/AddLoyaltyPoints.php
 lib/Model/AddLoyaltyPointsEffectProps.php
+lib/Model/AddLoyaltyPointsSupport.php
 lib/Model/AddPriceAdjustmentCatalogAction.php
 lib/Model/AddToAudienceEffectProps.php
 lib/Model/AddedDeductedPointsBalancesAction.php
@@ -928,6 +949,7 @@ lib/Model/ApplicationCustomer.php
 lib/Model/ApplicationCustomerEntity.php
 lib/Model/ApplicationEntity.php
 lib/Model/ApplicationEvent.php
+lib/Model/ApplicationMembership.php
 lib/Model/ApplicationReferee.php
 lib/Model/ApplicationSession.php
 lib/Model/ApplicationSessionEntity.php
@@ -980,6 +1002,7 @@ lib/Model/Binding.php
 lib/Model/Blueprint.php
 lib/Model/BulkApplicationNotification.php
 lib/Model/BulkOperationOnCampaigns.php
+lib/Model/Bundle.php
 lib/Model/Campaign.php
 lib/Model/CampaignActivationRequest.php
 lib/Model/CampaignAnalytics.php
@@ -1013,6 +1036,7 @@ lib/Model/CampaignNotificationBase.php
 lib/Model/CampaignNotificationGeneric.php
 lib/Model/CampaignNotificationItemBase.php
 lib/Model/CampaignNotificationPolicy.php
+lib/Model/CampaignReference.php
 lib/Model/CampaignRulesetChangedNotification.php
 lib/Model/CampaignRulesetChangedNotificationItem.php
 lib/Model/CampaignSearch.php
@@ -1042,13 +1066,13 @@ lib/Model/CartItem.php
 lib/Model/CartItemFilterTemplate.php
 lib/Model/Catalog.php
 lib/Model/CatalogAction.php
+lib/Model/CatalogActionAdd.php
+lib/Model/CatalogActionAddPriceAdjustment.php
 lib/Model/CatalogActionFilter.php
-lib/Model/CatalogActionOneOf.php
-lib/Model/CatalogActionOneOf1.php
-lib/Model/CatalogActionOneOf2.php
-lib/Model/CatalogActionOneOf3.php
-lib/Model/CatalogActionOneOf4.php
-lib/Model/CatalogActionOneOf5.php
+lib/Model/CatalogActionPatch.php
+lib/Model/CatalogActionPatchMany.php
+lib/Model/CatalogActionRemove.php
+lib/Model/CatalogActionRemoveMany.php
 lib/Model/CatalogItem.php
 lib/Model/CatalogRule.php
 lib/Model/CatalogSyncRequest.php
@@ -1067,7 +1091,10 @@ lib/Model/CheckCouponBlock.php
 lib/Model/CheckEventBlock.php
 lib/Model/CheckLoyaltyBalanceBlock.php
 lib/Model/CheckLoyaltyBalanceBlock1Program.php
+lib/Model/CheckLoyaltyCardBlock.php
 lib/Model/CheckReferralBlock.php
+lib/Model/CheckTierBlock.php
+lib/Model/CheckTierBlock1Tier.php
 lib/Model/CodeGeneratorSettings.php
 lib/Model/Collection.php
 lib/Model/CollectionItem.php
@@ -1121,6 +1148,7 @@ lib/Model/CustomerProfileIntegrationResponseV2.php
 lib/Model/CustomerProfileReward.php
 lib/Model/CustomerProfileSearchQuery.php
 lib/Model/CustomerProfileUpdateV2Response.php
+lib/Model/CustomerReward.php
 lib/Model/CustomerSession.php
 lib/Model/CustomerSessionV2.php
 lib/Model/DeactivateUserRequest.php
@@ -1132,9 +1160,7 @@ lib/Model/DeleteUserRequest.php
 lib/Model/DigitalPass.php
 lib/Model/DiscardRisksRequest.php
 lib/Model/Effect.php
-lib/Model/EffectAllOfProps.php
 lib/Model/EffectEntity.php
-lib/Model/EffectProps.php
 lib/Model/EmailEntity.php
 lib/Model/EmbeddedAnalyticsConfiguration.php
 lib/Model/EmbeddedAnalyticsConfigurationDashboards.php
@@ -1155,6 +1181,7 @@ lib/Model/EventV2.php
 lib/Model/EventV3.php
 lib/Model/EventV3Connections.php
 lib/Model/EventV3Entity.php
+lib/Model/EventV3ReferralEntity.php
 lib/Model/EventV3RequestEntity.php
 lib/Model/ExcludePriceObservationsRequest.php
 lib/Model/Experiment.php
@@ -1301,6 +1328,7 @@ lib/Model/IntegrationResponse.php
 lib/Model/IntegrationState.php
 lib/Model/IntegrationStateV2.php
 lib/Model/IntegrationStoreEntity.php
+lib/Model/IntegrationUnlockRewardRequest.php
 lib/Model/InventoryCoupon.php
 lib/Model/InventoryReferral.php
 lib/Model/ItemAttribute.php
@@ -1316,6 +1344,7 @@ lib/Model/LimitConfig.php
 lib/Model/LimitCounter.php
 lib/Model/ListAccountCollections200Response.php
 lib/Model/ListAchievements200Response.php
+lib/Model/ListAchievementsV2200Response.php
 lib/Model/ListAllRolesV2200Response.php
 lib/Model/ListApplicationCartItemFilters200Response.php
 lib/Model/ListCampaignStoreBudgetLimits200Response.php
@@ -1359,6 +1388,7 @@ lib/Model/MCPOAuthClient.php
 lib/Model/MCPOAuthCompleteResult.php
 lib/Model/MCPOAuthProtectedResource.php
 lib/Model/MCPOAuthServerMetadata.php
+lib/Model/MCPOAuthSessionInfo.php
 lib/Model/MCPOAuthToken.php
 lib/Model/MCPOAuthTokenError.php
 lib/Model/MCPOAuthTokenRequest.php
@@ -1499,6 +1529,9 @@ lib/Model/PromotionBlock.php
 lib/Model/PromotionCheckAttributeBlock.php
 lib/Model/PromotionGroupBlock.php
 lib/Model/PromotionRuleV2.php
+lib/Model/RedeemLoyaltyPointsBlock.php
+lib/Model/RedeemLoyaltyPointsBlock1Program.php
+lib/Model/RedeemLoyaltyPointsBlock1Value.php
 lib/Model/RedeemReferralEffectProps.php
 lib/Model/ReduceSelectorStep.php
 lib/Model/Referral.php
@@ -1523,6 +1556,9 @@ lib/Model/RevisionActivation.php
 lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
 lib/Model/Reward.php
+lib/Model/RewardCatalogItem.php
+lib/Model/RewardEligibility.php
+lib/Model/RewardEligibilityFailureDetails.php
 lib/Model/RewardPointsRequired.php
 lib/Model/Risk.php
 lib/Model/RiskAffectedEntityItem.php
@@ -1546,6 +1582,7 @@ lib/Model/RollbackDeductedLoyaltyPointsEffectProps.php
 lib/Model/RollbackDiscountEffectProps.php
 lib/Model/RollbackIncreasedAchievementProgressEffectProps.php
 lib/Model/RollbackReferralEffectProps.php
+lib/Model/RollbackUseRewardEffectProps.php
 lib/Model/Rule.php
 lib/Model/RuleEligibility.php
 lib/Model/RuleEligibilityFailureDetails.php
@@ -1612,7 +1649,6 @@ lib/Model/StrikethroughCheckAttributeBlock.php
 lib/Model/StrikethroughCustomEffectPerItemProps.php
 lib/Model/StrikethroughDebugResponse.php
 lib/Model/StrikethroughEffect.php
-lib/Model/StrikethroughEffectProps.php
 lib/Model/StrikethroughGroupBlock.php
 lib/Model/StrikethroughLabelingNotification.php
 lib/Model/StrikethroughRuleV2.php
@@ -1621,6 +1657,7 @@ lib/Model/StrikethroughSetDiscountPerItemMemberEffectProps.php
 lib/Model/StrikethroughTrigger.php
 lib/Model/SummarizeCampaignStoreBudget200Response.php
 lib/Model/SummaryCampaignStoreBudget.php
+lib/Model/SupportCustomerProfile.php
 lib/Model/SupportRequest.php
 lib/Model/SupportRequestInput.php
 lib/Model/TalangAttribute.php
@@ -1628,6 +1665,7 @@ lib/Model/TalangAttributeVisibility.php
 lib/Model/TemplateArgDef.php
 lib/Model/TemplateDef.php
 lib/Model/TemplateLimitConfig.php
+lib/Model/TemplateParameter.php
 lib/Model/Tier.php
 lib/Model/TierDowngradeData.php
 lib/Model/TierDowngradeNotification.php
@@ -1649,6 +1687,7 @@ lib/Model/TriggerWebhookBlock1Webhook.php
 lib/Model/TriggerWebhookEffectProps.php
 lib/Model/TwoFAConfig.php
 lib/Model/UnaryCheckAttributeBlock.php
+lib/Model/UnlockRewardEffectProps.php
 lib/Model/UpdateAccount.php
 lib/Model/UpdateAchievement.php
 lib/Model/UpdateAchievementProgressBlock.php
@@ -1696,6 +1735,7 @@ lib/Model/UpdateRole.php
 lib/Model/UpdateStore.php
 lib/Model/UpdateSupportRequest.php
 lib/Model/UpdateUser.php
+lib/Model/UseRewardEffectProps.php
 lib/Model/User.php
 lib/Model/UserEntity.php
 lib/Model/ValueMap.php
@@ -1746,6 +1786,7 @@ test/Model/ActivateUserRequestTest.php
 test/Model/AddFreeItemEffectPropsTest.php
 test/Model/AddItemCatalogActionTest.php
 test/Model/AddLoyaltyPointsEffectPropsTest.php
+test/Model/AddLoyaltyPointsSupportTest.php
 test/Model/AddLoyaltyPointsTest.php
 test/Model/AddPriceAdjustmentCatalogActionTest.php
 test/Model/AddToAudienceEffectPropsTest.php
@@ -1776,6 +1817,7 @@ test/Model/ApplicationCustomerEntityTest.php
 test/Model/ApplicationCustomerTest.php
 test/Model/ApplicationEntityTest.php
 test/Model/ApplicationEventTest.php
+test/Model/ApplicationMembershipTest.php
 test/Model/ApplicationRefereeTest.php
 test/Model/ApplicationSessionEntityTest.php
 test/Model/ApplicationSessionTest.php
@@ -1829,6 +1871,7 @@ test/Model/BindingTest.php
 test/Model/BlueprintTest.php
 test/Model/BulkApplicationNotificationTest.php
 test/Model/BulkOperationOnCampaignsTest.php
+test/Model/BundleTest.php
 test/Model/CampaignActivationRequestTest.php
 test/Model/CampaignAnalyticsTest.php
 test/Model/CampaignBudgetTest.php
@@ -1861,6 +1904,7 @@ test/Model/CampaignNotificationBaseTest.php
 test/Model/CampaignNotificationGenericTest.php
 test/Model/CampaignNotificationItemBaseTest.php
 test/Model/CampaignNotificationPolicyTest.php
+test/Model/CampaignReferenceTest.php
 test/Model/CampaignRulesetChangedNotificationItemTest.php
 test/Model/CampaignRulesetChangedNotificationTest.php
 test/Model/CampaignSearchTest.php
@@ -1889,13 +1933,13 @@ test/Model/CardLedgerTransactionLogEntryIntegrationAPITest.php
 test/Model/CardLedgerTransactionLogEntryTest.php
 test/Model/CartItemFilterTemplateTest.php
 test/Model/CartItemTest.php
+test/Model/CatalogActionAddPriceAdjustmentTest.php
+test/Model/CatalogActionAddTest.php
 test/Model/CatalogActionFilterTest.php
-test/Model/CatalogActionOneOf1Test.php
-test/Model/CatalogActionOneOf2Test.php
-test/Model/CatalogActionOneOf3Test.php
-test/Model/CatalogActionOneOf4Test.php
-test/Model/CatalogActionOneOf5Test.php
-test/Model/CatalogActionOneOfTest.php
+test/Model/CatalogActionPatchManyTest.php
+test/Model/CatalogActionPatchTest.php
+test/Model/CatalogActionRemoveManyTest.php
+test/Model/CatalogActionRemoveTest.php
 test/Model/CatalogActionTest.php
 test/Model/CatalogItemTest.php
 test/Model/CatalogRuleTest.php
@@ -1916,7 +1960,10 @@ test/Model/CheckCouponBlockTest.php
 test/Model/CheckEventBlockTest.php
 test/Model/CheckLoyaltyBalanceBlock1ProgramTest.php
 test/Model/CheckLoyaltyBalanceBlockTest.php
+test/Model/CheckLoyaltyCardBlockTest.php
 test/Model/CheckReferralBlockTest.php
+test/Model/CheckTierBlock1TierTest.php
+test/Model/CheckTierBlockTest.php
 test/Model/CodeGeneratorSettingsTest.php
 test/Model/CollectionItemTest.php
 test/Model/CollectionTest.php
@@ -1970,6 +2017,7 @@ test/Model/CustomerProfileRewardTest.php
 test/Model/CustomerProfileSearchQueryTest.php
 test/Model/CustomerProfileTest.php
 test/Model/CustomerProfileUpdateV2ResponseTest.php
+test/Model/CustomerRewardTest.php
 test/Model/CustomerSessionTest.php
 test/Model/CustomerSessionV2Test.php
 test/Model/DeactivateUserRequestTest.php
@@ -1980,9 +2028,7 @@ test/Model/DeleteLoyaltyTransactionsRequestTest.php
 test/Model/DeleteUserRequestTest.php
 test/Model/DigitalPassTest.php
 test/Model/DiscardRisksRequestTest.php
-test/Model/EffectAllOfPropsTest.php
 test/Model/EffectEntityTest.php
-test/Model/EffectPropsTest.php
 test/Model/EffectTest.php
 test/Model/EmailEntityTest.php
 test/Model/EmbeddedAnalyticsConfigurationDashboardsTest.php
@@ -2003,6 +2049,7 @@ test/Model/EventTypeTest.php
 test/Model/EventV2Test.php
 test/Model/EventV3ConnectionsTest.php
 test/Model/EventV3EntityTest.php
+test/Model/EventV3ReferralEntityTest.php
 test/Model/EventV3RequestEntityTest.php
 test/Model/EventV3Test.php
 test/Model/ExcludePriceObservationsRequestTest.php
@@ -2150,6 +2197,7 @@ test/Model/IntegrationResponseTest.php
 test/Model/IntegrationStateTest.php
 test/Model/IntegrationStateV2Test.php
 test/Model/IntegrationStoreEntityTest.php
+test/Model/IntegrationUnlockRewardRequestTest.php
 test/Model/InventoryCouponTest.php
 test/Model/InventoryReferralTest.php
 test/Model/ItemAttributeTest.php
@@ -2165,6 +2213,7 @@ test/Model/LimitConfigTest.php
 test/Model/LimitCounterTest.php
 test/Model/ListAccountCollections200ResponseTest.php
 test/Model/ListAchievements200ResponseTest.php
+test/Model/ListAchievementsV2200ResponseTest.php
 test/Model/ListAllRolesV2200ResponseTest.php
 test/Model/ListApplicationCartItemFilters200ResponseTest.php
 test/Model/ListCampaignStoreBudgetLimits200ResponseTest.php
@@ -2208,6 +2257,7 @@ test/Model/MCPOAuthClientTest.php
 test/Model/MCPOAuthCompleteResultTest.php
 test/Model/MCPOAuthProtectedResourceTest.php
 test/Model/MCPOAuthServerMetadataTest.php
+test/Model/MCPOAuthSessionInfoTest.php
 test/Model/MCPOAuthTokenErrorTest.php
 test/Model/MCPOAuthTokenRequestTest.php
 test/Model/MCPOAuthTokenTest.php
@@ -2347,6 +2397,9 @@ test/Model/PromotionBlockTest.php
 test/Model/PromotionCheckAttributeBlockTest.php
 test/Model/PromotionGroupBlockTest.php
 test/Model/PromotionRuleV2Test.php
+test/Model/RedeemLoyaltyPointsBlock1ProgramTest.php
+test/Model/RedeemLoyaltyPointsBlock1ValueTest.php
+test/Model/RedeemLoyaltyPointsBlockTest.php
 test/Model/RedeemReferralEffectPropsTest.php
 test/Model/ReduceSelectorStepTest.php
 test/Model/ReferralConstraintsTest.php
@@ -2370,6 +2423,9 @@ test/Model/RevisionActivationRequestTest.php
 test/Model/RevisionActivationTest.php
 test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
+test/Model/RewardCatalogItemTest.php
+test/Model/RewardEligibilityFailureDetailsTest.php
+test/Model/RewardEligibilityTest.php
 test/Model/RewardPointsRequiredTest.php
 test/Model/RewardTest.php
 test/Model/RiskAffectedEntityItemTest.php
@@ -2394,6 +2450,7 @@ test/Model/RollbackDeductedLoyaltyPointsEffectPropsTest.php
 test/Model/RollbackDiscountEffectPropsTest.php
 test/Model/RollbackIncreasedAchievementProgressEffectPropsTest.php
 test/Model/RollbackReferralEffectPropsTest.php
+test/Model/RollbackUseRewardEffectPropsTest.php
 test/Model/RuleEligibilityFailureDetailsTest.php
 test/Model/RuleEligibilityTest.php
 test/Model/RuleFailureReasonTest.php
@@ -2459,7 +2516,6 @@ test/Model/StrikethroughChangedItemTest.php
 test/Model/StrikethroughCheckAttributeBlockTest.php
 test/Model/StrikethroughCustomEffectPerItemPropsTest.php
 test/Model/StrikethroughDebugResponseTest.php
-test/Model/StrikethroughEffectPropsTest.php
 test/Model/StrikethroughEffectTest.php
 test/Model/StrikethroughGroupBlockTest.php
 test/Model/StrikethroughLabelingNotificationTest.php
@@ -2469,6 +2525,7 @@ test/Model/StrikethroughSetDiscountPerItemMemberEffectPropsTest.php
 test/Model/StrikethroughTriggerTest.php
 test/Model/SummarizeCampaignStoreBudget200ResponseTest.php
 test/Model/SummaryCampaignStoreBudgetTest.php
+test/Model/SupportCustomerProfileTest.php
 test/Model/SupportRequestInputTest.php
 test/Model/SupportRequestTest.php
 test/Model/TalangAttributeTest.php
@@ -2476,6 +2533,7 @@ test/Model/TalangAttributeVisibilityTest.php
 test/Model/TemplateArgDefTest.php
 test/Model/TemplateDefTest.php
 test/Model/TemplateLimitConfigTest.php
+test/Model/TemplateParameterTest.php
 test/Model/TierDowngradeDataTest.php
 test/Model/TierDowngradeNotificationPolicyTest.php
 test/Model/TierDowngradeNotificationTest.php
@@ -2497,6 +2555,7 @@ test/Model/TriggerWebhookBlockTest.php
 test/Model/TriggerWebhookEffectPropsTest.php
 test/Model/TwoFAConfigTest.php
 test/Model/UnaryCheckAttributeBlockTest.php
+test/Model/UnlockRewardEffectPropsTest.php
 test/Model/UpdateAccountTest.php
 test/Model/UpdateAchievementProgressBlock1AchievementTest.php
 test/Model/UpdateAchievementProgressBlockTest.php
@@ -2544,6 +2603,7 @@ test/Model/UpdateRoleTest.php
 test/Model/UpdateStoreTest.php
 test/Model/UpdateSupportRequestTest.php
 test/Model/UpdateUserTest.php
+test/Model/UseRewardEffectPropsTest.php
 test/Model/UserEntityTest.php
 test/Model/UserTest.php
 test/Model/ValueMapTest.php

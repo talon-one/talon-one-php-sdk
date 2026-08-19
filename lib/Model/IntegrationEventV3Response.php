@@ -67,7 +67,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => '\TalonOne\Client\Model\Referral[]',
         'awardedGiveaways' => '\TalonOne\Client\Model\Giveaway[]',
         'achievements' => '\TalonOne\Client\Model\CustomerAchievement[]',
-        'advancedEvent' => '\TalonOne\Client\Model\EventV3'
+        'advancedEvent' => '\TalonOne\Client\Model\EventV3',
+        'referral' => '\TalonOne\Client\Model\InventoryReferral'
     ];
 
     /**
@@ -88,7 +89,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => null,
         'awardedGiveaways' => null,
         'achievements' => null,
-        'advancedEvent' => null
+        'advancedEvent' => null,
+        'referral' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => false,
         'awardedGiveaways' => false,
         'achievements' => false,
-        'advancedEvent' => false
+        'advancedEvent' => false,
+        'referral' => false
     ];
 
     /**
@@ -206,7 +209,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => 'createdReferrals',
         'awardedGiveaways' => 'awardedGiveaways',
         'achievements' => 'achievements',
-        'advancedEvent' => 'advancedEvent'
+        'advancedEvent' => 'advancedEvent',
+        'referral' => 'referral'
     ];
 
     /**
@@ -225,7 +229,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => 'setCreatedReferrals',
         'awardedGiveaways' => 'setAwardedGiveaways',
         'achievements' => 'setAchievements',
-        'advancedEvent' => 'setAdvancedEvent'
+        'advancedEvent' => 'setAdvancedEvent',
+        'referral' => 'setReferral'
     ];
 
     /**
@@ -244,7 +249,8 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         'createdReferrals' => 'getCreatedReferrals',
         'awardedGiveaways' => 'getAwardedGiveaways',
         'achievements' => 'getAchievements',
-        'advancedEvent' => 'getAdvancedEvent'
+        'advancedEvent' => 'getAdvancedEvent',
+        'referral' => 'getReferral'
     ];
 
     /**
@@ -315,6 +321,7 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('awardedGiveaways', $data ?? [], null);
         $this->setIfExists('achievements', $data ?? [], null);
         $this->setIfExists('advancedEvent', $data ?? [], null);
+        $this->setIfExists('referral', $data ?? [], null);
     }
 
     /**
@@ -661,6 +668,33 @@ class IntegrationEventV3Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable advancedEvent cannot be null');
         }
         $this->container['advancedEvent'] = $advancedEvent;
+
+        return $this;
+    }
+
+    /**
+     * Gets referral
+     *
+     * @return \TalonOne\Client\Model\InventoryReferral|null
+     */
+    public function getReferral()
+    {
+        return $this->container['referral'];
+    }
+
+    /**
+     * Sets referral
+     *
+     * @param \TalonOne\Client\Model\InventoryReferral|null $referral The referral that was processed.
+     *
+     * @return self
+     */
+    public function setReferral($referral)
+    {
+        if (is_null($referral)) {
+            throw new \InvalidArgumentException('non-nullable referral cannot be null');
+        }
+        $this->container['referral'] = $referral;
 
         return $this;
     }

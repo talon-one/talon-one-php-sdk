@@ -66,7 +66,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'onFailure' => '\TalonOne\Client\Model\PromotionBlock[]',
         'onError' => 'array<string,\TalonOne\Client\Model\PromotionBlock[]>',
         'name' => 'string',
-        'value' => 'float',
+        'value' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value',
         'partial' => 'bool',
         'target' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1Target',
         'expression' => 'mixed[]',
@@ -88,7 +88,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'values' => 'mixed',
         'count' => 'mixed',
         'audience' => '\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience',
-        'program' => '\TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program',
+        'program' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program',
         'subledger' => 'string',
         'balance' => 'string',
         'redeem' => 'bool',
@@ -109,7 +109,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => 'mixed',
         'validCharacters' => 'string',
         'pattern' => 'string',
-        'friendId' => 'string'
+        'friendId' => 'string',
+        'tier' => '\TalonOne\Client\Model\CheckTierBlock1Tier'
     ];
 
     /**
@@ -171,7 +172,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => null,
         'validCharacters' => null,
         'pattern' => null,
-        'friendId' => null
+        'friendId' => null,
+        'tier' => null
     ];
 
     /**
@@ -231,7 +233,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => true,
         'validCharacters' => false,
         'pattern' => false,
-        'friendId' => false
+        'friendId' => false,
+        'tier' => false
     ];
 
     /**
@@ -371,7 +374,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => 'attributes',
         'validCharacters' => 'validCharacters',
         'pattern' => 'pattern',
-        'friendId' => 'friendId'
+        'friendId' => 'friendId',
+        'tier' => 'tier'
     ];
 
     /**
@@ -431,7 +435,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => 'setAttributes',
         'validCharacters' => 'setValidCharacters',
         'pattern' => 'setPattern',
-        'friendId' => 'setFriendId'
+        'friendId' => 'setFriendId',
+        'tier' => 'setTier'
     ];
 
     /**
@@ -491,7 +496,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => 'getAttributes',
         'validCharacters' => 'getValidCharacters',
         'pattern' => 'getPattern',
-        'friendId' => 'getFriendId'
+        'friendId' => 'getFriendId',
+        'tier' => 'getTier'
     ];
 
     /**
@@ -535,8 +541,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const OPERATOR_AVAILABLE = 'available';
-    public const OPERATOR_ENOUGH_FOR = 'enoughFor';
+    public const OPERATOR_MEMBER = 'member';
+    public const OPERATOR_NOT_MEMBER = 'not(member)';
     public const PROFILE_CURRENT = 'Current';
     public const PROFILE_ADVOCATE = 'Advocate';
     public const BALANCE_CURRENT = 'current';
@@ -566,8 +572,8 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getOperatorAllowableValues()
     {
         return [
-            self::OPERATOR_AVAILABLE,
-            self::OPERATOR_ENOUGH_FOR,
+            self::OPERATOR_MEMBER,
+            self::OPERATOR_NOT_MEMBER,
         ];
     }
 
@@ -691,6 +697,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('validCharacters', $data ?? [], null);
         $this->setIfExists('pattern', $data ?? [], null);
         $this->setIfExists('friendId', $data ?? [], null);
+        $this->setIfExists('tier', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -849,6 +856,9 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['friendId'] === null) {
             $invalidProperties[] = "'friendId' can't be null";
         }
+        if ($this->container['tier'] === null) {
+            $invalidProperties[] = "'tier' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -958,7 +968,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operator
      *
-     * @param string $operator The comparison operator applied to the limit. `available` checks if there is budget available for a given limitable action; `enoughFor` checks if the available budget meets or exceeds a specific value limit.
+     * @param string $operator An indicator of how the block compares its elements.
      *
      * @return self
      */
@@ -1076,7 +1086,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The display name of the item to award.
+     * @param string $name A custom description recorded as the reason for the point deduction.
      *
      * @return self
      */
@@ -1093,7 +1103,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return float
+     * @return \TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value
      */
     public function getValue()
     {
@@ -1103,7 +1113,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param float $value The value to check against when using the `enoughFor` operator.
+     * @param \TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value $value value
      *
      * @return self
      */
@@ -1739,7 +1749,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets program
      *
-     * @return \TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program
+     * @return \TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program
      */
     public function getProgram()
     {
@@ -1749,7 +1759,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets program
      *
-     * @param \TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program $program program
+     * @param \TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program $program program
      *
      * @return self
      */
@@ -1776,7 +1786,7 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subledger
      *
-     * @param string $subledger The name of the subledger to check the balance of. Can be empty if this block checks the loyalty program's main ledger balance instead of a subledger.
+     * @param string $subledger The name of the subledger to deduct points from. Can be empty if this block deducts from the loyalty program's main ledger instead of a subledger.
      *
      * @return self
      */
@@ -2367,6 +2377,33 @@ class PromotionBlock implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable friendId cannot be null');
         }
         $this->container['friendId'] = $friendId;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier
+     *
+     * @return \TalonOne\Client\Model\CheckTierBlock1Tier
+     */
+    public function getTier()
+    {
+        return $this->container['tier'];
+    }
+
+    /**
+     * Sets tier
+     *
+     * @param \TalonOne\Client\Model\CheckTierBlock1Tier $tier tier
+     *
+     * @return self
+     */
+    public function setTier($tier)
+    {
+        if (is_null($tier)) {
+            throw new \InvalidArgumentException('non-nullable tier cannot be null');
+        }
+        $this->container['tier'] = $tier;
 
         return $this;
     }

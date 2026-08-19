@@ -170,6 +170,33 @@ class CustomerAchievementTest extends TestCase
     }
 
     /**
+     * Test attribute "campaignId"
+     */
+    public function testPropertyCampaignId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "campaignIds"
+     */
+    public function testPropertyCampaignIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "referencedByCampaigns"
+     */
+    public function testPropertyReferencedByCampaigns()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "currentProgress"
      */
     public function testPropertyCurrentProgress()

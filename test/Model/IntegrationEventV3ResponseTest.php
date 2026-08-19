@@ -177,4 +177,13 @@ class IntegrationEventV3ResponseTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "referral"
+     */
+    public function testPropertyReferral()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
