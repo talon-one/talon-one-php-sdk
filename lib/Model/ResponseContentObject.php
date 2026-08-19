@@ -236,6 +236,7 @@ class ResponseContentObject implements ModelInterface, ArrayAccess, \JsonSeriali
     public const RESPONSE_CONTENT_RULE_FAILURE_REASONS = 'ruleFailureReasons';
     public const RESPONSE_CONTENT_CAMPAIGN_ELIGIBILITY = 'campaignEligibility';
     public const RESPONSE_CONTENT_ACHIEVEMENTS = 'achievements';
+    public const RESPONSE_CONTENT_UNLOCKED_REWARDS = 'unlockedRewards';
 
     /**
      * Gets allowable values of the enum
@@ -253,6 +254,7 @@ class ResponseContentObject implements ModelInterface, ArrayAccess, \JsonSeriali
             self::RESPONSE_CONTENT_RULE_FAILURE_REASONS,
             self::RESPONSE_CONTENT_CAMPAIGN_ELIGIBILITY,
             self::RESPONSE_CONTENT_ACHIEVEMENTS,
+            self::RESPONSE_CONTENT_UNLOCKED_REWARDS,
         ];
     }
 

@@ -17,7 +17,8 @@ Name | Type | Description | Notes
 **fixedStartDate** | **\DateTime** | The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to &#x60;fixed_schedule&#x60;.  **Note:** It must be an RFC3339 timestamp string. | [optional]
 **endDate** | **\DateTime** | The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string. | [optional]
 **allowRollbackAfterCompletion** | **bool** | When &#x60;true&#x60;, customer progress can be rolled back in completed achievements. | [optional]
-**campaignId** | **int** | The ID of the campaign the achievement belongs to. | [optional]
+**campaignId** | **int** | This property is **deprecated**. Use &#x60;campaignIds&#x60; instead. The first campaign ID in &#x60;campaignIds&#x60;. Only returned when &#x60;campaignIds&#x60; is not empty. | [optional]
+**campaignIds** | **int[]** | The IDs of the campaigns that reference this achievement, in ascending order. |
 **status** | **string** | The status of the achievement. | [optional]
 **currentProgress** | [**\TalonOne\Client\Model\AchievementProgress**](AchievementProgress.md) |  | [optional]
 

@@ -71,6 +71,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => '\DateTime',
         'allowRollbackAfterCompletion' => 'bool',
         'campaignId' => 'int',
+        'campaignIds' => 'int[]',
         'status' => 'string',
         'currentProgress' => '\TalonOne\Client\Model\AchievementProgress'
     ];
@@ -97,6 +98,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => 'date-time',
         'allowRollbackAfterCompletion' => null,
         'campaignId' => 'int64',
+        'campaignIds' => 'int64',
         'status' => null,
         'currentProgress' => null
     ];
@@ -121,6 +123,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => false,
         'allowRollbackAfterCompletion' => false,
         'campaignId' => false,
+        'campaignIds' => false,
         'status' => false,
         'currentProgress' => false
     ];
@@ -225,6 +228,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => 'endDate',
         'allowRollbackAfterCompletion' => 'allowRollbackAfterCompletion',
         'campaignId' => 'campaignId',
+        'campaignIds' => 'campaignIds',
         'status' => 'status',
         'currentProgress' => 'currentProgress'
     ];
@@ -249,6 +253,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => 'setEndDate',
         'allowRollbackAfterCompletion' => 'setAllowRollbackAfterCompletion',
         'campaignId' => 'setCampaignId',
+        'campaignIds' => 'setCampaignIds',
         'status' => 'setStatus',
         'currentProgress' => 'setCurrentProgress'
     ];
@@ -273,6 +278,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         'endDate' => 'getEndDate',
         'allowRollbackAfterCompletion' => 'getAllowRollbackAfterCompletion',
         'campaignId' => 'getCampaignId',
+        'campaignIds' => 'getCampaignIds',
         'status' => 'getStatus',
         'currentProgress' => 'getCurrentProgress'
     ];
@@ -395,6 +401,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('endDate', $data ?? [], null);
         $this->setIfExists('allowRollbackAfterCompletion', $data ?? [], null);
         $this->setIfExists('campaignId', $data ?? [], null);
+        $this->setIfExists('campaignIds', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('currentProgress', $data ?? [], null);
     }
@@ -474,6 +481,9 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
+        if ($this->container['campaignIds'] === null) {
+            $invalidProperties[] = "'campaignIds' can't be null";
+        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -885,6 +895,7 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
      * Gets campaignId
      *
      * @return int|null
+     * @deprecated
      */
     public function getCampaignId()
     {
@@ -894,9 +905,10 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets campaignId
      *
-     * @param int|null $campaignId The ID of the campaign the achievement belongs to.
+     * @param int|null $campaignId This property is **deprecated**. Use `campaignIds` instead. The first campaign ID in `campaignIds`. Only returned when `campaignIds` is not empty.
      *
      * @return self
+     * @deprecated
      */
     public function setCampaignId($campaignId)
     {
@@ -904,6 +916,33 @@ class AchievementStatusEntry implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable campaignId cannot be null');
         }
         $this->container['campaignId'] = $campaignId;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignIds
+     *
+     * @return int[]
+     */
+    public function getCampaignIds()
+    {
+        return $this->container['campaignIds'];
+    }
+
+    /**
+     * Sets campaignIds
+     *
+     * @param int[] $campaignIds The IDs of the campaigns that reference this achievement, in ascending order.
+     *
+     * @return self
+     */
+    public function setCampaignIds($campaignIds)
+    {
+        if (is_null($campaignIds)) {
+            throw new \InvalidArgumentException('non-nullable campaignIds cannot be null');
+        }
+        $this->container['campaignIds'] = $campaignIds;
 
         return $this;
     }

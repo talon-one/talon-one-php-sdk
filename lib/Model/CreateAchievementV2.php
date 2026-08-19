@@ -390,30 +390,18 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 1000)) {
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
 
-        if ((mb_strlen($this->container['name']) < 1)) {
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
+        if (!is_null($this->container['name']) && !preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
             $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[a-zA-Z]\\w+$/.";
         }
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['target'] === null) {
-            $invalidProperties[] = "'target' can't be null";
-        }
         $allowedValues = $this->getRecurrencePolicyAllowableValues();
         if (!is_null($this->container['recurrencePolicy']) && !in_array($this->container['recurrencePolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -464,7 +452,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -474,7 +462,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
+     * @param string|null $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
      *
      * @return self
      */
@@ -501,7 +489,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets title
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
@@ -511,7 +499,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets title
      *
-     * @param string $title The display name for the achievement in the Campaign Manager.
+     * @param string|null $title The display name for the achievement in the Campaign Manager.
      *
      * @return self
      */
@@ -528,7 +516,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -538,7 +526,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string $description A description of the achievement.
+     * @param string|null $description A description of the achievement.
      *
      * @return self
      */
@@ -555,7 +543,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets target
      *
-     * @return float
+     * @return float|null
      */
     public function getTarget()
     {
@@ -565,7 +553,7 @@ class CreateAchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets target
      *
-     * @param float $target The required number of actions or the transactional milestone to complete the achievement.
+     * @param float|null $target The required number of actions or the transactional milestone to complete the achievement.
      *
      * @return self
      */

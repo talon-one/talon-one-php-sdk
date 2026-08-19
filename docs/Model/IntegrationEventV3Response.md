@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **awardedGiveaways** | [**\TalonOne\Client\Model\Giveaway[]**](Giveaway.md) | The giveaways that were awarded during the event processing. | [optional]
 **achievements** | [**\TalonOne\Client\Model\CustomerAchievement[]**](CustomerAchievement.md) | The achievements progress of the customer. | [optional]
 **advancedEvent** | [**\TalonOne\Client\Model\EventV3**](EventV3.md) | The advanced event that was processed. | [optional]
+**referral** | [**\TalonOne\Client\Model\InventoryReferral**](InventoryReferral.md) | The referral that was processed. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

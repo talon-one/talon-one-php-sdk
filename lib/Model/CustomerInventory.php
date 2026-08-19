@@ -62,7 +62,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => '\TalonOne\Client\Model\InventoryReferral[]',
         'coupons' => '\TalonOne\Client\Model\InventoryCoupon[]',
         'giveaways' => '\TalonOne\Client\Model\Giveaway[]',
-        'achievements' => '\TalonOne\Client\Model\AchievementProgressWithDefinition[]'
+        'achievements' => '\TalonOne\Client\Model\AchievementProgressWithDefinition[]',
+        'rewards' => 'mixed[]'
     ];
 
     /**
@@ -78,7 +79,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => null,
         'coupons' => null,
         'giveaways' => null,
-        'achievements' => null
+        'achievements' => null,
+        'rewards' => null
     ];
 
     /**
@@ -92,7 +94,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => false,
         'coupons' => false,
         'giveaways' => false,
-        'achievements' => false
+        'achievements' => false,
+        'rewards' => false
     ];
 
     /**
@@ -186,7 +189,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => 'referrals',
         'coupons' => 'coupons',
         'giveaways' => 'giveaways',
-        'achievements' => 'achievements'
+        'achievements' => 'achievements',
+        'rewards' => 'rewards'
     ];
 
     /**
@@ -200,7 +204,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => 'setReferrals',
         'coupons' => 'setCoupons',
         'giveaways' => 'setGiveaways',
-        'achievements' => 'setAchievements'
+        'achievements' => 'setAchievements',
+        'rewards' => 'setRewards'
     ];
 
     /**
@@ -214,7 +219,8 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         'referrals' => 'getReferrals',
         'coupons' => 'getCoupons',
         'giveaways' => 'getGiveaways',
-        'achievements' => 'getAchievements'
+        'achievements' => 'getAchievements',
+        'rewards' => 'getRewards'
     ];
 
     /**
@@ -280,6 +286,7 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('coupons', $data ?? [], null);
         $this->setIfExists('giveaways', $data ?? [], null);
         $this->setIfExists('achievements', $data ?? [], null);
+        $this->setIfExists('rewards', $data ?? [], null);
     }
 
     /**
@@ -482,6 +489,33 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable achievements cannot be null');
         }
         $this->container['achievements'] = $achievements;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewards
+     *
+     * @return mixed[]|null
+     */
+    public function getRewards()
+    {
+        return $this->container['rewards'];
+    }
+
+    /**
+     * Sets rewards
+     *
+     * @param mixed[]|null $rewards The customer rewards that are `unlocked` and not yet `used`.
+     *
+     * @return self
+     */
+    public function setRewards($rewards)
+    {
+        if (is_null($rewards)) {
+            throw new \InvalidArgumentException('non-nullable rewards cannot be null');
+        }
+        $this->container['rewards'] = $rewards;
 
         return $this;
     }

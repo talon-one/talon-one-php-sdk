@@ -258,4 +258,22 @@ class AchievementV2Test extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "campaignId"
+     */
+    public function testPropertyCampaignId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "referencedByCampaigns"
+     */
+    public function testPropertyReferencedByCampaigns()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -161,6 +161,15 @@ class EventV3Test extends TestCase
     }
 
     /**
+     * Test attribute "referralCode"
+     */
+    public function testPropertyReferralCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "effects"
      */
     public function testPropertyEffects()

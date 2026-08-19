@@ -67,8 +67,8 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promotionRules' => '\TalonOne\Client\Model\PromotionRuleV2[]',
         'strikethroughRules' => '\TalonOne\Client\Model\StrikethroughRuleV2[]',
         'selectors' => '\TalonOne\Client\Model\Selector[]',
-        'bundles' => 'array<string,mixed>[]',
-        'parameters' => 'array<string,mixed>[]'
+        'bundles' => '\TalonOne\Client\Model\Bundle[]',
+        'parameters' => '\TalonOne\Client\Model\TemplateParameter[]'
     ];
 
     /**
@@ -621,7 +621,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bundles
      *
-     * @return array<string,mixed>[]|null
+     * @return \TalonOne\Client\Model\Bundle[]|null
      */
     public function getBundles()
     {
@@ -631,7 +631,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bundles
      *
-     * @param array<string,mixed>[]|null $bundles Variable bindings of type bundle.
+     * @param \TalonOne\Client\Model\Bundle[]|null $bundles Variable bindings of type bundle.
      *
      * @return self
      */
@@ -648,7 +648,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets parameters
      *
-     * @return array<string,mixed>[]|null
+     * @return \TalonOne\Client\Model\TemplateParameter[]|null
      */
     public function getParameters()
     {
@@ -658,7 +658,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parameters
      *
-     * @param array<string,mixed>[]|null $parameters Variable bindings of type template parameter.
+     * @param \TalonOne\Client\Model\TemplateParameter[]|null $parameters Variable bindings of type template parameter.
      *
      * @return self
      */

@@ -89,6 +89,15 @@ class CustomerProfileRewardTest extends TestCase
     }
 
     /**
+     * Test attribute "integrationId"
+     */
+    public function testPropertyIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "rewardId"
      */
     public function testPropertyRewardId()
@@ -125,9 +134,9 @@ class CustomerProfileRewardTest extends TestCase
     }
 
     /**
-     * Test attribute "unlockedByIntegrationId"
+     * Test attribute "unlockedByProfileIntegrationId"
      */
-    public function testPropertyUnlockedByIntegrationId()
+    public function testPropertyUnlockedByProfileIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -143,9 +152,9 @@ class CustomerProfileRewardTest extends TestCase
     }
 
     /**
-     * Test attribute "usedByIntegrationId"
+     * Test attribute "usedByProfileIntegrationId"
      */
-    public function testPropertyUsedByIntegrationId()
+    public function testPropertyUsedByProfileIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -64,6 +64,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => 'object',
         'integrationId' => 'string',
         'connectedSessionId' => 'string',
+        'referralCode' => 'string',
         'loyaltyCards' => 'string[]',
         'responseContent' => 'string[]'
     ];
@@ -83,6 +84,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => null,
         'integrationId' => null,
         'connectedSessionId' => null,
+        'referralCode' => null,
         'loyaltyCards' => null,
         'responseContent' => null
     ];
@@ -100,6 +102,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => false,
         'integrationId' => false,
         'connectedSessionId' => false,
+        'referralCode' => false,
         'loyaltyCards' => false,
         'responseContent' => false
     ];
@@ -197,6 +200,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => 'attributes',
         'integrationId' => 'integrationId',
         'connectedSessionId' => 'connectedSessionId',
+        'referralCode' => 'referralCode',
         'loyaltyCards' => 'loyaltyCards',
         'responseContent' => 'responseContent'
     ];
@@ -214,6 +218,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => 'setAttributes',
         'integrationId' => 'setIntegrationId',
         'connectedSessionId' => 'setConnectedSessionId',
+        'referralCode' => 'setReferralCode',
         'loyaltyCards' => 'setLoyaltyCards',
         'responseContent' => 'setResponseContent'
     ];
@@ -231,6 +236,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'attributes' => 'getAttributes',
         'integrationId' => 'getIntegrationId',
         'connectedSessionId' => 'getConnectedSessionId',
+        'referralCode' => 'getReferralCode',
         'loyaltyCards' => 'getLoyaltyCards',
         'responseContent' => 'getResponseContent'
     ];
@@ -276,12 +282,13 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const RESPONSE_CONTENT_CUSTOMER_PROFILE = 'customerProfile';
-    public const RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS = 'triggeredCampaigns';
-    public const RESPONSE_CONTENT_LOYALTY = 'loyalty';
     public const RESPONSE_CONTENT_ADVANCED_EVENT = 'advancedEvent';
     public const RESPONSE_CONTENT_AWARDED_GIVEAWAYS = 'awardedGiveaways';
+    public const RESPONSE_CONTENT_CUSTOMER_PROFILE = 'customerProfile';
+    public const RESPONSE_CONTENT_LOYALTY = 'loyalty';
+    public const RESPONSE_CONTENT_REFERRAL = 'referral';
     public const RESPONSE_CONTENT_RULE_FAILURE_REASONS = 'ruleFailureReasons';
+    public const RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS = 'triggeredCampaigns';
 
     /**
      * Gets allowable values of the enum
@@ -291,12 +298,13 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
     public function getResponseContentAllowableValues()
     {
         return [
-            self::RESPONSE_CONTENT_CUSTOMER_PROFILE,
-            self::RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS,
-            self::RESPONSE_CONTENT_LOYALTY,
             self::RESPONSE_CONTENT_ADVANCED_EVENT,
             self::RESPONSE_CONTENT_AWARDED_GIVEAWAYS,
+            self::RESPONSE_CONTENT_CUSTOMER_PROFILE,
+            self::RESPONSE_CONTENT_LOYALTY,
+            self::RESPONSE_CONTENT_REFERRAL,
             self::RESPONSE_CONTENT_RULE_FAILURE_REASONS,
+            self::RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS,
         ];
     }
 
@@ -322,6 +330,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('connectedSessionId', $data ?? [], null);
+        $this->setIfExists('referralCode', $data ?? [], null);
         $this->setIfExists('loyaltyCards', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
     }
@@ -380,6 +389,10 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['connectedSessionId']) && (mb_strlen($this->container['connectedSessionId']) < 1)) {
             $invalidProperties[] = "invalid value for 'connectedSessionId', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['referralCode']) && (mb_strlen($this->container['referralCode']) > 100)) {
+            $invalidProperties[] = "invalid value for 'referralCode', the character length must be smaller than or equal to 100.";
         }
 
         if (!is_null($this->container['loyaltyCards']) && (count($this->container['loyaltyCards']) > 1)) {
@@ -608,6 +621,37 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['connectedSessionId'] = $connectedSessionId;
+
+        return $this;
+    }
+
+    /**
+     * Gets referralCode
+     *
+     * @return string|null
+     */
+    public function getReferralCode()
+    {
+        return $this->container['referralCode'];
+    }
+
+    /**
+     * Sets referralCode
+     *
+     * @param string|null $referralCode The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming.
+     *
+     * @return self
+     */
+    public function setReferralCode($referralCode)
+    {
+        if (is_null($referralCode)) {
+            throw new \InvalidArgumentException('non-nullable referralCode cannot be null');
+        }
+        if ((mb_strlen($referralCode) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $referralCode when calling IntegrationEventV3Request., must be smaller than or equal to 100.');
+        }
+
+        $this->container['referralCode'] = $referralCode;
 
         return $this;
     }

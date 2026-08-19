@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **fixedStartDate** | **\DateTime** | The achievement&#39;s start date when &#x60;activationPolicy&#x60; is equal to &#x60;fixed_schedule&#x60;.  **Note:** It is an RFC3339 timestamp string. | [optional]
 **endDate** | **\DateTime** | The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It is an RFC3339 timestamp string. | [optional]
 **allowRollbackAfterCompletion** | **bool** | When &#x60;true&#x60;, customer progress can be rolled back in completed achievements. |
+**campaignId** | **int** | This property is **deprecated**. Use &#x60;campaignIds&#x60; (Integration API) or &#x60;referencedByCampaigns&#x60; (Management API) instead. The first campaign ID in &#x60;campaignIds&#x60;. Only returned when &#x60;campaignIds&#x60; is not empty. | [optional]
+**campaignIds** | **int[]** | The IDs of the campaigns that reference this achievement, in ascending order. |
+**referencedByCampaigns** | [**\TalonOne\Client\Model\CampaignReference[]**](CampaignReference.md) | The campaigns that reference this achievement. They are sorted in ascending order by their &#x60;id&#x60;. |
 **currentProgress** | [**\TalonOne\Client\Model\AchievementProgress**](AchievementProgress.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

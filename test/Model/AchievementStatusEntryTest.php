@@ -206,6 +206,15 @@ class AchievementStatusEntryTest extends TestCase
     }
 
     /**
+     * Test attribute "campaignIds"
+     */
+    public function testPropertyCampaignIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "status"
      */
     public function testPropertyStatus()

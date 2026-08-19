@@ -63,7 +63,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => 'string',
         'attributes' => 'object',
         'integrationId' => 'string',
-        'connectedSessionId' => 'string'
+        'connectedSessionId' => 'string',
+        'referralCode' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => null,
         'attributes' => null,
         'integrationId' => null,
-        'connectedSessionId' => null
+        'connectedSessionId' => null,
+        'referralCode' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => false,
         'attributes' => false,
         'integrationId' => false,
-        'connectedSessionId' => false
+        'connectedSessionId' => false,
+        'referralCode' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => 'type',
         'attributes' => 'attributes',
         'integrationId' => 'integrationId',
-        'connectedSessionId' => 'connectedSessionId'
+        'connectedSessionId' => 'connectedSessionId',
+        'referralCode' => 'referralCode'
     ];
 
     /**
@@ -205,7 +209,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => 'setType',
         'attributes' => 'setAttributes',
         'integrationId' => 'setIntegrationId',
-        'connectedSessionId' => 'setConnectedSessionId'
+        'connectedSessionId' => 'setConnectedSessionId',
+        'referralCode' => 'setReferralCode'
     ];
 
     /**
@@ -220,7 +225,8 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         'type' => 'getType',
         'attributes' => 'getAttributes',
         'integrationId' => 'getIntegrationId',
-        'connectedSessionId' => 'getConnectedSessionId'
+        'connectedSessionId' => 'getConnectedSessionId',
+        'referralCode' => 'getReferralCode'
     ];
 
     /**
@@ -287,6 +293,7 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('connectedSessionId', $data ?? [], null);
+        $this->setIfExists('referralCode', $data ?? [], null);
     }
 
     /**
@@ -343,6 +350,10 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['connectedSessionId']) && (mb_strlen($this->container['connectedSessionId']) < 1)) {
             $invalidProperties[] = "invalid value for 'connectedSessionId', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['referralCode']) && (mb_strlen($this->container['referralCode']) > 100)) {
+            $invalidProperties[] = "invalid value for 'referralCode', the character length must be smaller than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -567,6 +578,37 @@ class EventV3RequestEntity implements ModelInterface, ArrayAccess, \JsonSerializ
         }
 
         $this->container['connectedSessionId'] = $connectedSessionId;
+
+        return $this;
+    }
+
+    /**
+     * Gets referralCode
+     *
+     * @return string|null
+     */
+    public function getReferralCode()
+    {
+        return $this->container['referralCode'];
+    }
+
+    /**
+     * Sets referralCode
+     *
+     * @param string|null $referralCode The referral code submitted with the event. The endpoint does not validate the code, and submitting a code does not redeem it. Use the \"Referral code is valid\" condition in the Rule Builder to validate and redeem the code, or \"Referral code is valid (without redemption)\" to validate without redeeming.
+     *
+     * @return self
+     */
+    public function setReferralCode($referralCode)
+    {
+        if (is_null($referralCode)) {
+            throw new \InvalidArgumentException('non-nullable referralCode cannot be null');
+        }
+        if ((mb_strlen($referralCode) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $referralCode when calling EventV3RequestEntity., must be smaller than or equal to 100.');
+        }
+
+        $this->container['referralCode'] = $referralCode;
 
         return $this;
     }

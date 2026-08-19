@@ -247,6 +247,7 @@ class IntegrationRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const RESPONSE_CONTENT_PREVIOUS_RETURNS = 'previousReturns';
     public const RESPONSE_CONTENT_CAMPAIGN_ELIGIBILITY = 'campaignEligibility';
     public const RESPONSE_CONTENT_ACHIEVEMENTS = 'achievements';
+    public const RESPONSE_CONTENT_UNLOCKED_REWARDS = 'unlockedRewards';
 
     /**
      * Gets allowable values of the enum
@@ -268,6 +269,7 @@ class IntegrationRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::RESPONSE_CONTENT_PREVIOUS_RETURNS,
             self::RESPONSE_CONTENT_CAMPAIGN_ELIGIBILITY,
             self::RESPONSE_CONTENT_ACHIEVEMENTS,
+            self::RESPONSE_CONTENT_UNLOCKED_REWARDS,
         ];
     }
 

@@ -107,15 +107,6 @@ class HistoryTest extends TestCase
     }
 
     /**
-     * Test attribute "contextId"
-     */
-    public function testPropertyContextId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "price"
      */
     public function testPropertyPrice()

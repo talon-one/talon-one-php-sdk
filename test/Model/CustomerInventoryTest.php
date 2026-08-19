@@ -132,4 +132,13 @@ class CustomerInventoryTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "rewards"
+     */
+    public function testPropertyRewards()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

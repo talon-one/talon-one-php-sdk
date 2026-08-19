@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique identifier for this block. |
-**type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
+**type** | **string** | A block discriminator of type &#x60;group&#x60;. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional]
 **operator** | **string** | Logical operator applied across child blocks. &#x60;all&#x60; requires every child to pass, &#x60;atLeastOne&#x60; requires at least one, &#x60;none&#x60; requires all to fail. |
 **blocks** | [**\TalonOne\Client\Model\SelectorBlock[]**](SelectorBlock.md) | Child predicate blocks evaluated according to the operator. |

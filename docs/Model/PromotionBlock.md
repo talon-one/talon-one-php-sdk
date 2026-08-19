@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **id** | **string** | Unique identifier for this block. |
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional]
-**operator** | **string** | The comparison operator applied to the limit. &#x60;available&#x60; checks if there is budget available for a given limitable action; &#x60;enoughFor&#x60; checks if the available budget meets or exceeds a specific value limit. |
+**operator** | **string** | An indicator of how the block compares its elements. |
 **blocks** | [**\TalonOne\Client\Model\PromotionBlock[]**](PromotionBlock.md) | Child blocks evaluated according to the operator. |
 **onFailure** | [**\TalonOne\Client\Model\PromotionBlock[]**](PromotionBlock.md) | Promotion blocks evaluated when this block fails or returns false. | [optional]
 **onError** | **array<string,\TalonOne\Client\Model\PromotionBlock[]>** | Named error handlers evaluated when a specific error occurs. | [optional]
-**name** | **string** | The display name of the item to award. |
-**value** | **float** | The value to check against when using the &#x60;enoughFor&#x60; operator. |
+**name** | **string** | A custom description recorded as the reason for the point deduction. |
+**value** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value**](RedeemLoyaltyPointsBlock1Value.md) |  |
 **partial** | **bool** | When set to &#x60;true&#x60;, applies a partial item reward if the remaining budget is insufficient to award the full reward. |
 **target** | [**\TalonOne\Client\Model\TriggerCustomEffectBlock1Target**](TriggerCustomEffectBlock1Target.md) |  |
 **expression** | **mixed[]** | The raw Talang expression as an array. For a function call, the first element is the function name and subsequent elements are its arguments. For any other expression (for example a bare attribute path or a literal value), this is a single-element array containing that value. |
@@ -34,8 +34,8 @@ Name | Type | Description | Notes
 **values** | **mixed** |  | [optional]
 **count** | **mixed** |  | [optional]
 **audience** | [**\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience**](UpdateAudienceMembershipBlock1Audience.md) |  |
-**program** | [**\TalonOne\Client\Model\CheckLoyaltyBalanceBlock1Program**](CheckLoyaltyBalanceBlock1Program.md) |  |
-**subledger** | **string** | The name of the subledger to check the balance of. Can be empty if this block checks the loyalty program&#39;s main ledger balance instead of a subledger. |
+**program** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program**](RedeemLoyaltyPointsBlock1Program.md) |  |
+**subledger** | **string** | The name of the subledger to deduct points from. Can be empty if this block deducts from the loyalty program&#39;s main ledger instead of a subledger. |
 **balance** | **string** | The type of balance to check:  - &#x60;current&#x60; is the sum of currently active points  - &#x60;pending&#x60; is the sum of pending points.  - &#x60;negative&#x60; is the sum of negative points.  - &#x60;tentativeCurrent&#x60; is the tentative points balance within the current open customer session. |
 **redeem** | **bool** | When &#x60;true&#x60;, the referral code is redeemed. |
 **achievement** | [**\TalonOne\Client\Model\CheckAchievementBlock1Achievement**](CheckAchievementBlock1Achievement.md) |  |
@@ -56,5 +56,6 @@ Name | Type | Description | Notes
 **validCharacters** | **string** | Characters used to generate the random parts of a code. | [optional]
 **pattern** | **string** | The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. | [optional]
 **friendId** | **string** | An optional integration ID of the friend&#39;s profile. |
+**tier** | [**\TalonOne\Client\Model\CheckTierBlock1Tier**](CheckTierBlock1Tier.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

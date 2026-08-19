@@ -76,7 +76,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => 'bool',
         'status' => 'string',
         'sandbox' => 'bool',
-        'timezone' => 'string'
+        'timezone' => 'string',
+        'campaignId' => 'int',
+        'referencedByCampaigns' => '\TalonOne\Client\Model\CampaignReference[]'
     ];
 
     /**
@@ -106,7 +108,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => null,
         'status' => null,
         'sandbox' => null,
-        'timezone' => null
+        'timezone' => null,
+        'campaignId' => 'int64',
+        'referencedByCampaigns' => null
     ];
 
     /**
@@ -134,7 +138,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => false,
         'status' => false,
         'sandbox' => false,
-        'timezone' => false
+        'timezone' => false,
+        'campaignId' => false,
+        'referencedByCampaigns' => false
     ];
 
     /**
@@ -242,7 +248,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => 'hasProgress',
         'status' => 'status',
         'sandbox' => 'sandbox',
-        'timezone' => 'timezone'
+        'timezone' => 'timezone',
+        'campaignId' => 'campaignId',
+        'referencedByCampaigns' => 'referencedByCampaigns'
     ];
 
     /**
@@ -270,7 +278,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => 'setHasProgress',
         'status' => 'setStatus',
         'sandbox' => 'setSandbox',
-        'timezone' => 'setTimezone'
+        'timezone' => 'setTimezone',
+        'campaignId' => 'setCampaignId',
+        'referencedByCampaigns' => 'setReferencedByCampaigns'
     ];
 
     /**
@@ -298,7 +308,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'hasProgress' => 'getHasProgress',
         'status' => 'getStatus',
         'sandbox' => 'getSandbox',
-        'timezone' => 'getTimezone'
+        'timezone' => 'getTimezone',
+        'campaignId' => 'getCampaignId',
+        'referencedByCampaigns' => 'getReferencedByCampaigns'
     ];
 
     /**
@@ -427,6 +439,8 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('sandbox', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], null);
+        $this->setIfExists('campaignId', $data ?? [], null);
+        $this->setIfExists('referencedByCampaigns', $data ?? [], null);
     }
 
     /**
@@ -462,33 +476,18 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 1000)) {
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
 
-        if ((mb_strlen($this->container['name']) < 1)) {
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
+        if (!is_null($this->container['name']) && !preg_match("/^[a-zA-Z]\\w+$/", $this->container['name'])) {
             $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[a-zA-Z]\\w+$/.";
         }
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['target'] === null) {
-            $invalidProperties[] = "'target' can't be null";
-        }
-        if ($this->container['recurrencePolicy'] === null) {
-            $invalidProperties[] = "'recurrencePolicy' can't be null";
-        }
         $allowedValues = $this->getRecurrencePolicyAllowableValues();
         if (!is_null($this->container['recurrencePolicy']) && !in_array($this->container['recurrencePolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -498,9 +497,6 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['activationPolicy'] === null) {
-            $invalidProperties[] = "'activationPolicy' can't be null";
-        }
         $allowedValues = $this->getActivationPolicyAllowableValues();
         if (!is_null($this->container['activationPolicy']) && !in_array($this->container['activationPolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -510,10 +506,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['subscribedApplications'] === null) {
-            $invalidProperties[] = "'subscribedApplications' can't be null";
-        }
-        if ((count($this->container['subscribedApplications']) < 0)) {
+        if (!is_null($this->container['subscribedApplications']) && (count($this->container['subscribedApplications']) < 0)) {
             $invalidProperties[] = "invalid value for 'subscribedApplications', number of items must be greater than or equal to 0.";
         }
 
@@ -539,6 +532,9 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'timezone', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['referencedByCampaigns'] === null) {
+            $invalidProperties[] = "'referencedByCampaigns' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -611,7 +607,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -621,7 +617,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
+     * @param string|null $name The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created.
      *
      * @return self
      */
@@ -648,7 +644,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets title
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
@@ -658,7 +654,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string $title The display name for the achievement in the Campaign Manager.
+     * @param string|null $title The display name for the achievement in the Campaign Manager.
      *
      * @return self
      */
@@ -675,7 +671,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -685,7 +681,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string $description A description of the achievement.
+     * @param string|null $description A description of the achievement.
      *
      * @return self
      */
@@ -702,7 +698,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets target
      *
-     * @return float
+     * @return float|null
      */
     public function getTarget()
     {
@@ -712,7 +708,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target
      *
-     * @param float $target The required number of actions or the transactional milestone to complete the achievement.
+     * @param float|null $target The required number of actions or the transactional milestone to complete the achievement.
      *
      * @return self
      */
@@ -756,7 +752,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrencePolicy
      *
-     * @return string
+     * @return string|null
      */
     public function getRecurrencePolicy()
     {
@@ -766,7 +762,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrencePolicy
      *
-     * @param string $recurrencePolicy The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again.
+     * @param string|null $recurrencePolicy The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again.
      *
      * @return self
      */
@@ -793,7 +789,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activationPolicy
      *
-     * @return string
+     * @return string|null
      */
     public function getActivationPolicy()
     {
@@ -803,7 +799,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activationPolicy
      *
-     * @param string $activationPolicy The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
+     * @param string|null $activationPolicy The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
      *
      * @return self
      */
@@ -911,7 +907,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subscribedApplications
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getSubscribedApplications()
     {
@@ -921,7 +917,7 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscribedApplications
      *
-     * @param int[] $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
+     * @param int[]|null $subscribedApplications A list containing the IDs of all applications that are subscribed to A list containing the IDs of all Applications that are connected to this achievement.
      *
      * @return self
      */
@@ -1141,6 +1137,62 @@ class AchievementV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaignId
+     *
+     * @return int|null
+     * @deprecated
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaignId'];
+    }
+
+    /**
+     * Sets campaignId
+     *
+     * @param int|null $campaignId This property is **deprecated**. Use `referencedByCampaigns` instead. The ID of the first campaign in `referencedByCampaigns`. Only returned when `referencedByCampaigns` is not empty.
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setCampaignId($campaignId)
+    {
+        if (is_null($campaignId)) {
+            throw new \InvalidArgumentException('non-nullable campaignId cannot be null');
+        }
+        $this->container['campaignId'] = $campaignId;
+
+        return $this;
+    }
+
+    /**
+     * Gets referencedByCampaigns
+     *
+     * @return \TalonOne\Client\Model\CampaignReference[]
+     */
+    public function getReferencedByCampaigns()
+    {
+        return $this->container['referencedByCampaigns'];
+    }
+
+    /**
+     * Sets referencedByCampaigns
+     *
+     * @param \TalonOne\Client\Model\CampaignReference[] $referencedByCampaigns The campaigns that reference this achievement. They are sorted in ascending order by their id.
+     *
+     * @return self
+     */
+    public function setReferencedByCampaigns($referencedByCampaigns)
+    {
+        if (is_null($referencedByCampaigns)) {
+            throw new \InvalidArgumentException('non-nullable referencedByCampaigns cannot be null');
+        }
+        $this->container['referencedByCampaigns'] = $referencedByCampaigns;
 
         return $this;
     }

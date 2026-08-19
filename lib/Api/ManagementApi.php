@@ -92,6 +92,9 @@ class ManagementApi
         'createAchievement' => [
             'application/json',
         ],
+        'createAchievementV2' => [
+            'application/json',
+        ],
         'createAdditionalCost' => [
             'application/json',
         ],
@@ -149,6 +152,9 @@ class ManagementApi
         'deleteAchievement' => [
             'application/json',
         ],
+        'deleteAchievementV2' => [
+            'application/json',
+        ],
         'deleteCampaign' => [
             'application/json',
         ],
@@ -189,6 +195,9 @@ class ManagementApi
             'application/json',
         ],
         'exportAccountCollectionItems' => [
+            'application/json',
+        ],
+        'exportAchievementV2' => [
             'application/json',
         ],
         'exportAchievements' => [
@@ -267,6 +276,9 @@ class ManagementApi
             'application/json',
         ],
         'getAchievement' => [
+            'application/json',
+        ],
+        'getAchievementV2' => [
             'application/json',
         ],
         'getAdditionalCost' => [
@@ -506,6 +518,9 @@ class ManagementApi
         'listAchievements' => [
             'application/json',
         ],
+        'listAchievementsV2' => [
+            'application/json',
+        ],
         'listAllRolesV2' => [
             'application/json',
         ],
@@ -603,6 +618,9 @@ class ManagementApi
             'application/json',
         ],
         'updateAchievement' => [
+            'application/json',
+        ],
+        'updateAchievementV2' => [
             'application/json',
         ],
         'updateAdditionalCost' => [
@@ -2125,6 +2143,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @deprecated
      */
     public function createAchievement($applicationId, $campaignId, $createAchievement, string $contentType = self::contentTypes['createAchievement'][0])
     {
@@ -2145,6 +2164,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAchievementWithHttpInfo($applicationId, $campaignId, $createAchievement, string $contentType = self::contentTypes['createAchievement'][0])
     {
@@ -2259,6 +2279,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAchievementAsync($applicationId, $campaignId, $createAchievement, string $contentType = self::contentTypes['createAchievement'][0])
     {
@@ -2282,6 +2303,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAchievementAsyncWithHttpInfo($applicationId, $campaignId, $createAchievement, string $contentType = self::contentTypes['createAchievement'][0])
     {
@@ -2334,6 +2356,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAchievementRequest($applicationId, $campaignId, $createAchievement, string $contentType = self::contentTypes['createAchievement'][0])
     {
@@ -2400,6 +2423,306 @@ class ManagementApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createAchievement));
             } else {
                 $httpBody = $createAchievement;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAchievementV2
+     *
+     * Create achievement
+     *
+     * @param  \TalonOne\Client\Model\CreateAchievementV2 $createAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function createAchievementV2($createAchievementV2, string $contentType = self::contentTypes['createAchievementV2'][0])
+    {
+        list($response) = $this->createAchievementV2WithHttpInfo($createAchievementV2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createAchievementV2WithHttpInfo
+     *
+     * Create achievement
+     *
+     * @param  \TalonOne\Client\Model\CreateAchievementV2 $createAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAchievementV2WithHttpInfo($createAchievementV2, string $contentType = self::contentTypes['createAchievementV2'][0])
+    {
+        $request = $this->createAchievementV2Request($createAchievementV2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\AchievementV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAchievementV2Async
+     *
+     * Create achievement
+     *
+     * @param  \TalonOne\Client\Model\CreateAchievementV2 $createAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAchievementV2Async($createAchievementV2, string $contentType = self::contentTypes['createAchievementV2'][0])
+    {
+        return $this->createAchievementV2AsyncWithHttpInfo($createAchievementV2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAchievementV2AsyncWithHttpInfo
+     *
+     * Create achievement
+     *
+     * @param  \TalonOne\Client\Model\CreateAchievementV2 $createAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAchievementV2AsyncWithHttpInfo($createAchievementV2, string $contentType = self::contentTypes['createAchievementV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\AchievementV2';
+        $request = $this->createAchievementV2Request($createAchievementV2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAchievementV2'
+     *
+     * @param  \TalonOne\Client\Model\CreateAchievementV2 $createAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAchievementV2Request($createAchievementV2, string $contentType = self::contentTypes['createAchievementV2'][0])
+    {
+
+        // verify the required parameter 'createAchievementV2' is set
+        if ($createAchievementV2 === null || (is_array($createAchievementV2) && count($createAchievementV2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $createAchievementV2 when calling createAchievementV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/achievements';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($createAchievementV2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createAchievementV2));
+            } else {
+                $httpBody = $createAchievementV2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -7656,6 +7979,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
+     * @deprecated
      */
     public function deleteAchievement($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['deleteAchievement'][0])
     {
@@ -7675,6 +7999,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteAchievementWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['deleteAchievement'][0])
     {
@@ -7741,6 +8066,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteAchievementAsync($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['deleteAchievement'][0])
     {
@@ -7764,6 +8090,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteAchievementAsyncWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['deleteAchievement'][0])
     {
@@ -7803,6 +8130,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteAchievementRequest($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['deleteAchievement'][0])
     {
@@ -7854,6 +8182,245 @@ class ManagementApi
                 $resourcePath
             );
         }
+        // path params
+        if ($achievementId !== null) {
+            $resourcePath = str_replace(
+                '{achievementId}',
+                ObjectSerializer::toPathValue($achievementId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteAchievementV2
+     *
+     * Delete achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteAchievementV2($achievementId, string $contentType = self::contentTypes['deleteAchievementV2'][0])
+    {
+        $this->deleteAchievementV2WithHttpInfo($achievementId, $contentType);
+    }
+
+    /**
+     * Operation deleteAchievementV2WithHttpInfo
+     *
+     * Delete achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAchievementV2WithHttpInfo($achievementId, string $contentType = self::contentTypes['deleteAchievementV2'][0])
+    {
+        $request = $this->deleteAchievementV2Request($achievementId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAchievementV2Async
+     *
+     * Delete achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAchievementV2Async($achievementId, string $contentType = self::contentTypes['deleteAchievementV2'][0])
+    {
+        return $this->deleteAchievementV2AsyncWithHttpInfo($achievementId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAchievementV2AsyncWithHttpInfo
+     *
+     * Delete achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAchievementV2AsyncWithHttpInfo($achievementId, string $contentType = self::contentTypes['deleteAchievementV2'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteAchievementV2Request($achievementId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAchievementV2'
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAchievementV2Request($achievementId, string $contentType = self::contentTypes['deleteAchievementV2'][0])
+    {
+
+        // verify the required parameter 'achievementId' is set
+        if ($achievementId === null || (is_array($achievementId) && count($achievementId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $achievementId when calling deleteAchievementV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/achievements/{achievementId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
         // path params
         if ($achievementId !== null) {
             $resourcePath = str_replace(
@@ -11656,6 +12223,321 @@ class ManagementApi
     }
 
     /**
+     * Operation exportAchievementV2
+     *
+     * Export achievement customer data
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function exportAchievementV2($achievementId, string $contentType = self::contentTypes['exportAchievementV2'][0])
+    {
+        list($response) = $this->exportAchievementV2WithHttpInfo($achievementId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation exportAchievementV2WithHttpInfo
+     *
+     * Export achievement customer data
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function exportAchievementV2WithHttpInfo($achievementId, string $contentType = self::contentTypes['exportAchievementV2'][0])
+    {
+        $request = $this->exportAchievementV2Request($achievementId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'string',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'string',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation exportAchievementV2Async
+     *
+     * Export achievement customer data
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportAchievementV2Async($achievementId, string $contentType = self::contentTypes['exportAchievementV2'][0])
+    {
+        return $this->exportAchievementV2AsyncWithHttpInfo($achievementId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation exportAchievementV2AsyncWithHttpInfo
+     *
+     * Export achievement customer data
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportAchievementV2AsyncWithHttpInfo($achievementId, string $contentType = self::contentTypes['exportAchievementV2'][0])
+    {
+        $returnType = 'string';
+        $request = $this->exportAchievementV2Request($achievementId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'exportAchievementV2'
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function exportAchievementV2Request($achievementId, string $contentType = self::contentTypes['exportAchievementV2'][0])
+    {
+
+        // verify the required parameter 'achievementId' is set
+        if ($achievementId === null || (is_array($achievementId) && count($achievementId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $achievementId when calling exportAchievementV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/achievements/{achievementId}/export';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($achievementId !== null) {
+            $resourcePath = str_replace(
+                '{achievementId}',
+                ObjectSerializer::toPathValue($achievementId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/csv', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation exportAchievements
      *
      * Export achievement customer data
@@ -11668,6 +12550,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @deprecated
      */
     public function exportAchievements($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['exportAchievements'][0])
     {
@@ -11688,6 +12571,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function exportAchievementsWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['exportAchievements'][0])
     {
@@ -11816,6 +12700,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function exportAchievementsAsync($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['exportAchievements'][0])
     {
@@ -11839,6 +12724,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function exportAchievementsAsyncWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['exportAchievements'][0])
     {
@@ -11891,6 +12777,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function exportAchievementsRequest($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['exportAchievements'][0])
     {
@@ -20243,6 +21130,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @deprecated
      */
     public function getAchievement($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['getAchievement'][0])
     {
@@ -20263,6 +21151,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getAchievementWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['getAchievement'][0])
     {
@@ -20377,6 +21266,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAchievementAsync($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['getAchievement'][0])
     {
@@ -20400,6 +21290,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAchievementAsyncWithHttpInfo($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['getAchievement'][0])
     {
@@ -20452,6 +21343,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getAchievementRequest($applicationId, $campaignId, $achievementId, string $contentType = self::contentTypes['getAchievement'][0])
     {
@@ -20503,6 +21395,307 @@ class ManagementApi
                 $resourcePath
             );
         }
+        // path params
+        if ($achievementId !== null) {
+            $resourcePath = str_replace(
+                '{achievementId}',
+                ObjectSerializer::toPathValue($achievementId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAchievementV2
+     *
+     * Get achievement
+     *
+     * @param  int $achievementId The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function getAchievementV2($achievementId, string $contentType = self::contentTypes['getAchievementV2'][0])
+    {
+        list($response) = $this->getAchievementV2WithHttpInfo($achievementId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAchievementV2WithHttpInfo
+     *
+     * Get achievement
+     *
+     * @param  int $achievementId The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAchievementV2WithHttpInfo($achievementId, string $contentType = self::contentTypes['getAchievementV2'][0])
+    {
+        $request = $this->getAchievementV2Request($achievementId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\AchievementV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAchievementV2Async
+     *
+     * Get achievement
+     *
+     * @param  int $achievementId The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAchievementV2Async($achievementId, string $contentType = self::contentTypes['getAchievementV2'][0])
+    {
+        return $this->getAchievementV2AsyncWithHttpInfo($achievementId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAchievementV2AsyncWithHttpInfo
+     *
+     * Get achievement
+     *
+     * @param  int $achievementId The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAchievementV2AsyncWithHttpInfo($achievementId, string $contentType = self::contentTypes['getAchievementV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\AchievementV2';
+        $request = $this->getAchievementV2Request($achievementId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAchievementV2'
+     *
+     * @param  int $achievementId The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAchievementV2Request($achievementId, string $contentType = self::contentTypes['getAchievementV2'][0])
+    {
+
+        // verify the required parameter 'achievementId' is set
+        if ($achievementId === null || (is_array($achievementId) && count($achievementId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $achievementId when calling getAchievementV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/achievements/{achievementId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
         // path params
         if ($achievementId !== null) {
             $resourcePath = str_replace(
@@ -47161,6 +48354,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\ListAchievements200Response
+     * @deprecated
      */
     public function listAchievements($applicationId, $campaignId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listAchievements'][0])
     {
@@ -47183,6 +48377,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\ListAchievements200Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listAchievementsWithHttpInfo($applicationId, $campaignId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listAchievements'][0])
     {
@@ -47271,6 +48466,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAchievementsAsync($applicationId, $campaignId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listAchievements'][0])
     {
@@ -47296,6 +48492,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAchievementsAsyncWithHttpInfo($applicationId, $campaignId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listAchievements'][0])
     {
@@ -47350,6 +48547,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listAchievementsRequest($applicationId, $campaignId, $pageSize = 50, $skip = null, $title = null, string $contentType = self::contentTypes['listAchievements'][0])
     {
@@ -47430,6 +48628,368 @@ class ManagementApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAchievementsV2
+     *
+     * List achievements
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string|null $title Filter by the display name of the achievement. (optional)
+     * @param  int|null $applicationId Filter by the ID of an Application connected to the achievement. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAchievementsV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\ListAchievementsV2200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function listAchievementsV2($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    {
+        list($response) = $this->listAchievementsV2WithHttpInfo($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAchievementsV2WithHttpInfo
+     *
+     * List achievements
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string|null $title Filter by the display name of the achievement. (optional)
+     * @param  int|null $applicationId Filter by the ID of an Application connected to the achievement. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAchievementsV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\ListAchievementsV2200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAchievementsV2WithHttpInfo($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    {
+        $request = $this->listAchievementsV2Request($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ListAchievementsV2200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\ListAchievementsV2200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ListAchievementsV2200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAchievementsV2Async
+     *
+     * List achievements
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string|null $title Filter by the display name of the achievement. (optional)
+     * @param  int|null $applicationId Filter by the ID of an Application connected to the achievement. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAchievementsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAchievementsV2Async($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    {
+        return $this->listAchievementsV2AsyncWithHttpInfo($pageSize, $skip, $sort, $title, $applicationId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAchievementsV2AsyncWithHttpInfo
+     *
+     * List achievements
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string|null $title Filter by the display name of the achievement. (optional)
+     * @param  int|null $applicationId Filter by the ID of an Application connected to the achievement. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAchievementsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAchievementsV2AsyncWithHttpInfo($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\ListAchievementsV2200Response';
+        $request = $this->listAchievementsV2Request($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAchievementsV2'
+     *
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
+     * @param  string|null $title Filter by the display name of the achievement. (optional)
+     * @param  int|null $applicationId Filter by the ID of an Application connected to the achievement. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAchievementsV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAchievementsV2Request($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    {
+
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listAchievementsV2, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listAchievementsV2, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+
+
+        $resourcePath = '/v2/achievements';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $title,
+            'title', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $applicationId,
+            'applicationId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -57253,6 +58813,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @deprecated
      */
     public function updateAchievement($applicationId, $campaignId, $achievementId, $updateAchievement, string $contentType = self::contentTypes['updateAchievement'][0])
     {
@@ -57274,6 +58835,7 @@ class ManagementApi
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\Achievement|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function updateAchievementWithHttpInfo($applicationId, $campaignId, $achievementId, $updateAchievement, string $contentType = self::contentTypes['updateAchievement'][0])
     {
@@ -57403,6 +58965,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateAchievementAsync($applicationId, $campaignId, $achievementId, $updateAchievement, string $contentType = self::contentTypes['updateAchievement'][0])
     {
@@ -57427,6 +58990,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateAchievementAsyncWithHttpInfo($applicationId, $campaignId, $achievementId, $updateAchievement, string $contentType = self::contentTypes['updateAchievement'][0])
     {
@@ -57480,6 +59044,7 @@ class ManagementApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function updateAchievementRequest($applicationId, $campaignId, $achievementId, $updateAchievement, string $contentType = self::contentTypes['updateAchievement'][0])
     {
@@ -57561,6 +59126,340 @@ class ManagementApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($updateAchievement));
             } else {
                 $httpBody = $updateAchievement;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAchievementV2
+     *
+     * Update achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  \TalonOne\Client\Model\UpdateAchievementV2 $updateAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function updateAchievementV2($achievementId, $updateAchievementV2, string $contentType = self::contentTypes['updateAchievementV2'][0])
+    {
+        list($response) = $this->updateAchievementV2WithHttpInfo($achievementId, $updateAchievementV2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAchievementV2WithHttpInfo
+     *
+     * Update achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  \TalonOne\Client\Model\UpdateAchievementV2 $updateAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\AchievementV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAchievementV2WithHttpInfo($achievementId, $updateAchievementV2, string $contentType = self::contentTypes['updateAchievementV2'][0])
+    {
+        $request = $this->updateAchievementV2Request($achievementId, $updateAchievementV2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\AchievementV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\AchievementV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAchievementV2Async
+     *
+     * Update achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  \TalonOne\Client\Model\UpdateAchievementV2 $updateAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAchievementV2Async($achievementId, $updateAchievementV2, string $contentType = self::contentTypes['updateAchievementV2'][0])
+    {
+        return $this->updateAchievementV2AsyncWithHttpInfo($achievementId, $updateAchievementV2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAchievementV2AsyncWithHttpInfo
+     *
+     * Update achievement
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  \TalonOne\Client\Model\UpdateAchievementV2 $updateAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAchievementV2AsyncWithHttpInfo($achievementId, $updateAchievementV2, string $contentType = self::contentTypes['updateAchievementV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\AchievementV2';
+        $request = $this->updateAchievementV2Request($achievementId, $updateAchievementV2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAchievementV2'
+     *
+     * @param  int $achievementId The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. (required)
+     * @param  \TalonOne\Client\Model\UpdateAchievementV2 $updateAchievementV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAchievementV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAchievementV2Request($achievementId, $updateAchievementV2, string $contentType = self::contentTypes['updateAchievementV2'][0])
+    {
+
+        // verify the required parameter 'achievementId' is set
+        if ($achievementId === null || (is_array($achievementId) && count($achievementId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $achievementId when calling updateAchievementV2'
+            );
+        }
+
+        // verify the required parameter 'updateAchievementV2' is set
+        if ($updateAchievementV2 === null || (is_array($updateAchievementV2) && count($updateAchievementV2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $updateAchievementV2 when calling updateAchievementV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/achievements/{achievementId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($achievementId !== null) {
+            $resourcePath = str_replace(
+                '{achievementId}',
+                ObjectSerializer::toPathValue($achievementId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($updateAchievementV2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($updateAchievementV2));
+            } else {
+                $httpBody = $updateAchievementV2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

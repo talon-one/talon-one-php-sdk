@@ -63,7 +63,7 @@ class StrikethroughEffect implements ModelInterface, ArrayAccess, \JsonSerializa
         'ruleIndex' => 'int',
         'ruleName' => 'string',
         'type' => 'string',
-        'props' => '\TalonOne\Client\Model\StrikethroughEffectProps',
+        'props' => 'object',
         'startTime' => '\DateTime',
         'endTime' => '\DateTime',
         'selectedPriceType' => 'string',
@@ -523,7 +523,7 @@ class StrikethroughEffect implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets props
      *
-     * @return \TalonOne\Client\Model\StrikethroughEffectProps
+     * @return object
      */
     public function getProps()
     {
@@ -533,7 +533,7 @@ class StrikethroughEffect implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets props
      *
-     * @param \TalonOne\Client\Model\StrikethroughEffectProps $props Arbitrary properties associated with this effect type.
+     * @param object $props Arbitrary properties associated with this effect type.
      *
      * @return self
      */

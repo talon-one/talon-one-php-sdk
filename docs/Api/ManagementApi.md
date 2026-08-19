@@ -12,6 +12,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**copyCampaignToApplications()**](ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into the specified Application |
 | [**createAccountCollection()**](ManagementApi.md#createAccountCollection) | **POST** /v1/collections | Create account-level collection |
 | [**createAchievement()**](ManagementApi.md#createAchievement) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | Create achievement |
+| [**createAchievementV2()**](ManagementApi.md#createAchievementV2) | **POST** /v2/achievements | Create achievement |
 | [**createAdditionalCost()**](ManagementApi.md#createAdditionalCost) | **POST** /v1/additional_costs | Create additional cost |
 | [**createAttribute()**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Create custom attribute |
 | [**createBatchLoyaltyCards()**](ManagementApi.md#createBatchLoyaltyCards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards/batch | Create loyalty cards |
@@ -31,6 +32,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**deductLoyaltyCardPoints()**](ManagementApi.md#deductLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points | Deduct points from card |
 | [**deleteAccountCollection()**](ManagementApi.md#deleteAccountCollection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection |
 | [**deleteAchievement()**](ManagementApi.md#deleteAchievement) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Delete achievement |
+| [**deleteAchievementV2()**](ManagementApi.md#deleteAchievementV2) | **DELETE** /v2/achievements/{achievementId} | Delete achievement |
 | [**deleteCampaign()**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign |
 | [**deleteCampaignStoreBudgets()**](ManagementApi.md#deleteCampaignStoreBudgets) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Delete campaign store budgets |
 | [**deleteCollection()**](ManagementApi.md#deleteCollection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete campaign-level collection |
@@ -45,6 +47,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**disconnectCampaignStores()**](ManagementApi.md#disconnectCampaignStores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores |
 | [**excludePriceHistory()**](ManagementApi.md#excludePriceHistory) | **POST** /v1/applications/{applicationId}/price_history/exclusions | Exclude price records from price history |
 | [**exportAccountCollectionItems()**](ManagementApi.md#exportAccountCollectionItems) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items |
+| [**exportAchievementV2()**](ManagementApi.md#exportAchievementV2) | **GET** /v2/achievements/{achievementId}/export | Export achievement customer data |
 | [**exportAchievements()**](ManagementApi.md#exportAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data |
 | [**exportApplicationCampaignAnalytics()**](ManagementApi.md#exportApplicationCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaign_analytics/export | Export Application analytics aggregated by campaign |
 | [**exportAudiencesMemberships()**](ManagementApi.md#exportAudiencesMemberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members |
@@ -71,6 +74,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getAccountAnalytics()**](ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get account analytics |
 | [**getAccountCollection()**](ManagementApi.md#getAccountCollection) | **GET** /v1/collections/{collectionId} | Get account-level collection |
 | [**getAchievement()**](ManagementApi.md#getAchievement) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Get achievement |
+| [**getAchievementV2()**](ManagementApi.md#getAchievementV2) | **GET** /v2/achievements/{achievementId} | Get achievement |
 | [**getAdditionalCost()**](ManagementApi.md#getAdditionalCost) | **GET** /v1/additional_costs/{additionalCostId} | Get additional cost |
 | [**getAdditionalCosts()**](ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs |
 | [**getApplication()**](ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application |
@@ -150,6 +154,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**inviteUserExternal()**](ManagementApi.md#inviteUserExternal) | **POST** /v1/users/invite | Invite user from identity provider |
 | [**listAccountCollections()**](ManagementApi.md#listAccountCollections) | **GET** /v1/collections | List collections in account |
 | [**listAchievements()**](ManagementApi.md#listAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements |
+| [**listAchievementsV2()**](ManagementApi.md#listAchievementsV2) | **GET** /v2/achievements | List achievements |
 | [**listAllRolesV2()**](ManagementApi.md#listAllRolesV2) | **GET** /v2/roles | List roles |
 | [**listApplicationCartItemFilters()**](ManagementApi.md#listApplicationCartItemFilters) | **GET** /v1/applications/{applicationId}/cart_item_filters | List Application cart item filters |
 | [**listCampaignStoreBudgetLimits()**](ManagementApi.md#listCampaignStoreBudgetLimits) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | List campaign store budget limits |
@@ -183,6 +188,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**transferLoyaltyCard()**](ManagementApi.md#transferLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer | Transfer card data |
 | [**updateAccountCollection()**](ManagementApi.md#updateAccountCollection) | **PUT** /v1/collections/{collectionId} | Update account-level collection |
 | [**updateAchievement()**](ManagementApi.md#updateAchievement) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Update achievement |
+| [**updateAchievementV2()**](ManagementApi.md#updateAchievementV2) | **PUT** /v2/achievements/{achievementId} | Update achievement |
 | [**updateAdditionalCost()**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update additional cost |
 | [**updateAttribute()**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update custom attribute |
 | [**updateCampaign()**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update campaign |
@@ -567,6 +573,68 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\Achievement**](../Model/Achievement.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAchievementV2()`
+
+```php
+createAchievementV2($createAchievementV2): \TalonOne\Client\Model\AchievementV2
+```
+
+Create achievement
+
+Create a new account-level achievement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$createAchievementV2 = new \TalonOne\Client\Model\CreateAchievementV2(); // \TalonOne\Client\Model\CreateAchievementV2 | body
+
+try {
+    $result = $apiInstance->createAchievementV2($createAchievementV2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->createAchievementV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **createAchievementV2** | [**\TalonOne\Client\Model\CreateAchievementV2**](../Model/CreateAchievementV2.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\AchievementV2**](../Model/AchievementV2.md)
 
 ### Authorization
 
@@ -1796,6 +1864,67 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteAchievementV2()`
+
+```php
+deleteAchievementV2($achievementId)
+```
+
+Delete achievement
+
+Delete a specific achievement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$achievementId = 56; // int | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+
+try {
+    $apiInstance->deleteAchievementV2($achievementId);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->deleteAchievementV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **achievementId** | **int**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCampaign()`
 
 ```php
@@ -2686,6 +2815,68 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **collectionId** | **int**| The ID of the collection. You can get it with the [List collections in account](#tag/Collections/operation/listAccountCollections) endpoint. | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/csv`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `exportAchievementV2()`
+
+```php
+exportAchievementV2($achievementId): string
+```
+
+Export achievement customer data
+
+Download a CSV file containing a list of all the customers who have participated in and are currently participating in the given achievement.  The CSV file contains the following columns: - `profileIntegrationID`: The integration ID of the customer profile participating in the achievement. - `title`: The display name of the achievement in the Campaign Manager. - `target`: The required number of actions or the transactional milestone to complete the achievement. - `progress`: The current progress of the customer in the achievement. - `status`: The status of the achievement. Can be one of: ['inprogress', 'completed', 'expired']. - `startDate`: The date on which the customer profile started the achievement in RFC3339. - `endDate`: The date on which the achievement ends and resets for the customer profile in RFC3339. - `completionDate`: The date on which the customer profile completed the achievement in RFC3339.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$achievementId = 56; // int | The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+
+try {
+    $result = $apiInstance->exportAchievementV2($achievementId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->exportAchievementV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **achievementId** | **int**| The ID of the achievement. You can get this ID with the [List achievements](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. | |
 
 ### Return type
 
@@ -4466,6 +4657,68 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\Achievement**](../Model/Achievement.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAchievementV2()`
+
+```php
+getAchievementV2($achievementId): \TalonOne\Client\Model\AchievementV2
+```
+
+Get achievement
+
+Retrieve the details of a specific achievement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$achievementId = 56; // int | The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+
+try {
+    $result = $apiInstance->getAchievementV2($achievementId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->getAchievementV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **achievementId** | **int**| The ID of the achievement.  You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. | |
+
+### Return type
+
+[**\TalonOne\Client\Model\AchievementV2**](../Model/AchievementV2.md)
 
 ### Authorization
 
@@ -8081,7 +8334,7 @@ getLoyaltyStatistics($loyaltyProgramId): \TalonOne\Client\Model\LoyaltyDashboard
 
 Get loyalty program statistics
 
-> [warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points.
+> [!warning] This endpoint is deprecated.  To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points.
 
 ### Example
 
@@ -9938,6 +10191,76 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\ListAchievements200Response**](../Model/ListAchievements200Response.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAchievementsV2()`
+
+```php
+listAchievementsV2($pageSize, $skip, $sort, $title, $applicationId): \TalonOne\Client\Model\ListAchievementsV2200Response
+```
+
+List achievements
+
+List all achievements.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pageSize = 50; // int | The number of items in the response.
+$skip = 56; // int | The number of items to skip when paging through large result sets.
+$sort = 'sort_example'; // string | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.
+$title = 'title_example'; // string | Filter by the display name of the achievement.
+$applicationId = 56; // int | Filter by the ID of an Application connected to the achievement.
+
+try {
+    $result = $apiInstance->listAchievementsV2($pageSize, $skip, $sort, $title, $applicationId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->listAchievementsV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
+| **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **sort** | **string**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. | [optional] |
+| **title** | **string**| Filter by the display name of the achievement. | [optional] |
+| **applicationId** | **int**| Filter by the ID of an Application connected to the achievement. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\ListAchievementsV2200Response**](../Model/ListAchievementsV2200Response.md)
 
 ### Authorization
 
@@ -12108,6 +12431,70 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\Achievement**](../Model/Achievement.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAchievementV2()`
+
+```php
+updateAchievementV2($achievementId, $updateAchievementV2): \TalonOne\Client\Model\AchievementV2
+```
+
+Update achievement
+
+Update the details of a specific achievement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$achievementId = 56; // int | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint.
+$updateAchievementV2 = new \TalonOne\Client\Model\UpdateAchievementV2(); // \TalonOne\Client\Model\UpdateAchievementV2 | body
+
+try {
+    $result = $apiInstance->updateAchievementV2($achievementId, $updateAchievementV2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->updateAchievementV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **achievementId** | **int**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievementsV2) endpoint. | |
+| **updateAchievementV2** | [**\TalonOne\Client\Model\UpdateAchievementV2**](../Model/UpdateAchievementV2.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\AchievementV2**](../Model/AchievementV2.md)
 
 ### Authorization
 

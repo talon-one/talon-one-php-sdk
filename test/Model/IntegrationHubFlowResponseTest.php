@@ -152,15 +152,6 @@ class IntegrationHubFlowResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "integrationHubFlowUrl"
-     */
-    public function testPropertyIntegrationHubFlowUrl()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "config"
      */
     public function testPropertyConfig()
