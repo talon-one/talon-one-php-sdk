@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **storeInSession** | **bool** | When &#x60;true&#x60;, the coupon is stored in the session. |
 **usageLimit** | [**\TalonOne\Client\Model\CreateCouponBlock1UsageLimit**](CreateCouponBlock1UsageLimit.md) |  | [optional]
 **discountLimit** | [**\TalonOne\Client\Model\CreateCouponBlock1DiscountLimit**](CreateCouponBlock1DiscountLimit.md) |  | [optional]
-**startDate** | **mixed** |  | [optional]
-**expiryDate** | **mixed** |  | [optional]
-**attributes** | **mixed** |  | [optional]
+**startDate** | **mixed** | Timestamp at which point the coupon becomes valid. | [optional]
+**expiryDate** | **mixed** | Expiration date of the coupon. Coupon never expires if this is omitted. | [optional]
+**attributes** | **mixed** | Custom attributes associated with this coupon code. | [optional]
 **validCharacters** | **string** | Characters used to generate the random parts of a code. | [optional]
 **pattern** | **string** | The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. | [optional]
 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **campaignId** | **int** | The ID of the campaign that owns this entity. | [optional]
 **templateId** | **int** | The ID of the campaign template that owns this entity. | [optional]
 **activatedAt** | **\DateTime** | Timestamp indicating when this ruleset was activated. | [optional]
-**promotionRules** | [**\TalonOne\Client\Model\PromotionRuleV2[]**](PromotionRuleV2.md) | Set of promotion rules. |
-**strikethroughRules** | [**\TalonOne\Client\Model\StrikethroughRuleV2[]**](StrikethroughRuleV2.md) | Set of strikethrough rules. |
+**promotionRules** | [**\TalonOne\Client\Model\RuleV2[]**](RuleV2.md) | Set of promotion rules. |
+**strikethroughRules** | [**\TalonOne\Client\Model\RuleV2[]**](RuleV2.md) | Set of strikethrough rules. |
 **selectors** | [**\TalonOne\Client\Model\Selector[]**](Selector.md) | Variable bindings of type selector. | [optional]
 **bundles** | [**\TalonOne\Client\Model\Bundle[]**](Bundle.md) | Variable bindings of type bundle. | [optional]
 **parameters** | [**\TalonOne\Client\Model\TemplateParameter[]**](TemplateParameter.md) | Variable bindings of type template parameter. | [optional]

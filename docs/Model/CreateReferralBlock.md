@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **friendId** | **string** | An optional integration ID of the friend&#39;s profile. |
 **storeInSession** | **bool** | When &#x60;true&#x60;, the referral code is stored in the session. |
 **usageLimit** | [**\TalonOne\Client\Model\CreateReferralBlock1UsageLimit**](CreateReferralBlock1UsageLimit.md) |  | [optional]
-**startDate** | **mixed** |  | [optional]
-**expiryDate** | **mixed** |  | [optional]
-**attributes** | **mixed** |  | [optional]
+**startDate** | **mixed** | Timestamp at which point the referral code becomes valid. | [optional]
+**expiryDate** | **mixed** | Expiration date of the referral code. Referral code never expires if this is omitted. | [optional]
+**attributes** | **mixed** | Custom attributes associated with this referral code. | [optional]
 **validCharacters** | **string** | Characters used to generate the random parts of a code. | [optional]
 **pattern** | **string** | The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. | [optional]
 
