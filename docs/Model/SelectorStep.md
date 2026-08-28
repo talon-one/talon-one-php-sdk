@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | A step discriminator of type &#x60;filter&#x60;. |
-**predicate** | [**\TalonOne\Client\Model\SelectorBlock**](SelectorBlock.md) |  |
+**predicate** | [**\TalonOne\Client\Model\Block**](Block.md) |  |
 **fields** | [**\TalonOne\Client\Model\SortSelectorStepField[]**](SortSelectorStepField.md) | One or more fields to sort by, applied in order. Each field has its own direction. |
 **operator** | **string** | The aggregation operator applied to the items produced by the preceding step: - &#x60;max&#x60;, &#x60;min&#x60;, and &#x60;sum&#x60; operate on numeric values. - &#x60;count&#x60; returns the number of items. - &#x60;empty&#x60; reports whether the list is empty. |
 **from** | [**\TalonOne\Client\Model\SelectSelectorStepFrom**](SelectSelectorStepFrom.md) |  | [optional]

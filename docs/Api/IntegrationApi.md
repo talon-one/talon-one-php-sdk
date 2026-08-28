@@ -31,6 +31,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**getLoyaltyProgramProfileTransactions()**](IntegrationApi.md#getLoyaltyProgramProfileTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions |
 | [**getReservedCustomers()**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved |
 | [**integrationGetAllCampaigns()**](IntegrationApi.md#integrationGetAllCampaigns) | **GET** /v1/integration/campaigns | List all running campaigns |
+| [**integrationRewardsCatalog()**](IntegrationApi.md#integrationRewardsCatalog) | **GET** /v1/rewards/catalog | List rewards in the catalog |
 | [**joinLoyaltyProgram()**](IntegrationApi.md#joinLoyaltyProgram) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/join | Join customer profile to loyalty program |
 | [**linkLoyaltyCardToProfile()**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card |
 | [**reopenCustomerSession()**](IntegrationApi.md#reopenCustomerSession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session |
@@ -39,6 +40,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**trackEventV2()**](IntegrationApi.md#trackEventV2) | **POST** /v2/events | Track event |
 | [**trackEventV3()**](IntegrationApi.md#trackEventV3) | **POST** /v3/events | Track advanced event |
 | [**unlinkLoyaltyCardFromProfile()**](IntegrationApi.md#unlinkLoyaltyCardFromProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/unlink_profile | Unlink customer profile from a loyalty card |
+| [**unlockReward()**](IntegrationApi.md#unlockReward) | **POST** /v1/rewards/{rewardId}/unlock | Unlock a reward |
 | [**updateAudienceCustomersAttributes()**](IntegrationApi.md#updateAudienceCustomersAttributes) | **PUT** /v2/audience_customers/{audienceId}/attributes | Update profile attributes for all customers in audience |
 | [**updateAudienceV2()**](IntegrationApi.md#updateAudienceV2) | **PUT** /v2/audiences/{audienceId} | Update audience name |
 | [**updateCustomerProfileAudiences()**](IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update multiple customer profiles&#39; audiences |
@@ -951,7 +953,7 @@ try {
 ## `getCustomerInventory()`
 
 ```php
-getCustomerInventory($integrationId, $profile, $referrals, $coupons, $loyalty, $giveaways, $achievements): \TalonOne\Client\Model\CustomerInventory
+getCustomerInventory($integrationId, $profile, $referrals, $coupons, $loyalty, $giveaways, $achievements, $unlockedRewards): \TalonOne\Client\Model\CustomerInventory
 ```
 
 List customer data
@@ -984,9 +986,10 @@ $coupons = True; // bool | Set to `true` to include coupon information in the re
 $loyalty = True; // bool | Set to `true` to include loyalty information in the response.
 $giveaways = True; // bool | Set to `true` to include giveaways information in the response.
 $achievements = True; // bool | Set to `true` to include achievement information in the response.
+$unlockedRewards = True; // bool | Set to `true` to include `unlocked` rewards that have not been `used` in the response.
 
 try {
-    $result = $apiInstance->getCustomerInventory($integrationId, $profile, $referrals, $coupons, $loyalty, $giveaways, $achievements);
+    $result = $apiInstance->getCustomerInventory($integrationId, $profile, $referrals, $coupons, $loyalty, $giveaways, $achievements, $unlockedRewards);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->getCustomerInventory: ', $e->getMessage(), PHP_EOL;
@@ -1004,6 +1007,7 @@ try {
 | **loyalty** | **bool**| Set to &#x60;true&#x60; to include loyalty information in the response. | [optional] |
 | **giveaways** | **bool**| Set to &#x60;true&#x60; to include giveaways information in the response. | [optional] |
 | **achievements** | **bool**| Set to &#x60;true&#x60; to include achievement information in the response. | [optional] |
+| **unlockedRewards** | **bool**| Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. | [optional] |
 
 ### Return type
 
@@ -1746,6 +1750,84 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `integrationRewardsCatalog()`
+
+```php
+integrationRewardsCatalog($pageSize, $skip, $pointsFrom, $pointsTo, $includeFree, $loyaltyProgramId, $subledgerId, $profileIntegrationId, $loyaltyCardId): \TalonOne\Client\Model\IntegrationRewardsCatalog200Response
+```
+
+List rewards in the catalog
+
+Retrieve the rewards catalog for the Application. Returns a paginated list of rewards.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pageSize = 1000; // int | The number of items in the response.
+$skip = 56; // int | The number of items to skip when paging through large result sets.
+$pointsFrom = 3.4; // float | Return only rewards whose points required is greater than or equal to this value.
+$pointsTo = 3.4; // float | Return only rewards whose points required is less than or equal to this value.
+$includeFree = true; // bool | Whether to include rewards that have no `pointsRequired`. These rewards are treated as free and available to all customers.
+$loyaltyProgramId = 56; // int | Return only rewards available in this loyalty program.
+$subledgerId = 'subledgerId_example'; // string | Return only rewards available in this subledger. Must be combined with `loyaltyProgramId`. To specify the main ledger, provide an empty string (\"\").
+$profileIntegrationId = 'profileIntegrationId_example'; // string | The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when `loyaltyProgramId` is also provided.  **Note:** `profileIntegrationId` and `loyaltyCardId` are mutually exclusive. Do not send both in the same request.
+$loyaltyCardId = 'loyaltyCardId_example'; // string | The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when `loyaltyProgramId` is also provided.  **Note:** `profileIntegrationId` and `loyaltyCardId` are mutually exclusive. Do not send both in the same request.
+
+try {
+    $result = $apiInstance->integrationRewardsCatalog($pageSize, $skip, $pointsFrom, $pointsTo, $includeFree, $loyaltyProgramId, $subledgerId, $profileIntegrationId, $loyaltyCardId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->integrationRewardsCatalog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **int**| The number of items in the response. | [optional] [default to 1000] |
+| **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
+| **pointsFrom** | **float**| Return only rewards whose points required is greater than or equal to this value. | [optional] |
+| **pointsTo** | **float**| Return only rewards whose points required is less than or equal to this value. | [optional] |
+| **includeFree** | **bool**| Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. | [optional] [default to true] |
+| **loyaltyProgramId** | **int**| Return only rewards available in this loyalty program. | [optional] |
+| **subledgerId** | **string**| Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). | [optional] |
+| **profileIntegrationId** | **string**| The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. | [optional] |
+| **loyaltyCardId** | **string**| The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\IntegrationRewardsCatalog200Response**](../Model/IntegrationRewardsCatalog200Response.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `joinLoyaltyProgram()`
 
 ```php
@@ -2257,6 +2339,72 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\LoyaltyCard**](../Model/LoyaltyCard.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unlockReward()`
+
+```php
+unlockReward($rewardId, $integrationUnlockRewardRequest, $dry): \TalonOne\Client\Model\IntegrationStateV2
+```
+
+Unlock a reward
+
+Unlock a reward for a customer. If the reward has `pointsRequired` configured, the corresponding loyalty points are deducted from the customer's balance.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\IntegrationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rewardId = 56; // int | The ID of the reward. You can get the ID with the [List rewards](#tag/Rewards/operation/listRewards) endpoint.
+$integrationUnlockRewardRequest = new \TalonOne\Client\Model\IntegrationUnlockRewardRequest(); // \TalonOne\Client\Model\IntegrationUnlockRewardRequest
+$dry = True; // bool | When set to `true`, the rule evaluation is performed but no changes are persisted. Use this to preview the outcome of an unlocking.
+
+try {
+    $result = $apiInstance->unlockReward($rewardId, $integrationUnlockRewardRequest, $dry);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IntegrationApi->unlockReward: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rewardId** | **int**| The ID of the reward. You can get the ID with the [List rewards](#tag/Rewards/operation/listRewards) endpoint. | |
+| **integrationUnlockRewardRequest** | [**\TalonOne\Client\Model\IntegrationUnlockRewardRequest**](../Model/IntegrationUnlockRewardRequest.md)|  | |
+| **dry** | **bool**| When set to &#x60;true&#x60;, the rule evaluation is performed but no changes are persisted. Use this to preview the outcome of an unlocking. | [optional] |
+
+### Return type
+
+[**\TalonOne\Client\Model\IntegrationStateV2**](../Model/IntegrationStateV2.md)
 
 ### Authorization
 

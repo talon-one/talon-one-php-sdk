@@ -1,0 +1,10 @@
+# GeoJSONPoint
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**type** | **string** | The geometry type discriminator. |
+**coordinates** | **float[]** | The longitude and latitude coordinates of the point, optionally followed by altitude. |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

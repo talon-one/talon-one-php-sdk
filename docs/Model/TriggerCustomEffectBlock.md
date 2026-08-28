@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **customEffect** | [**\TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect**](TriggerCustomEffectBlock1CustomEffect.md) |  |
 **params** | **array<string,mixed>** | The custom effect&#39;s parameters, in configured order. Each property name is the parameter&#39;s title, lowercased with spaces replaced by underscores (for example, &#x60;Order ID&#x60; becomes &#x60;order_id&#x60;); falls back to &#x60;param_0&#x60;, &#x60;param_1&#x60;, and so on if a title is blank or collides with another. | [optional]
 **target** | [**\TalonOne\Client\Model\TriggerCustomEffectBlock1Target**](TriggerCustomEffectBlock1Target.md) |  |
-**onError** | **array<string,\TalonOne\Client\Model\PromotionBlock[]>** | Named error handlers evaluated when a specific error occurs. | [optional]
+**onError** | **array<string,\TalonOne\Client\Model\Block[]>** | Named error handlers evaluated when a specific error occurs. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **createdReferrals** | [**\TalonOne\Client\Model\Referral[]**](Referral.md) | The referrals that were created during the event processing. |
 **awardedGiveaways** | [**\TalonOne\Client\Model\Giveaway[]**](Giveaway.md) | The giveaways that were awarded during the event processing. | [optional]
 **achievements** | [**\TalonOne\Client\Model\CustomerAchievement[]**](CustomerAchievement.md) | The achievements progress of the customer. | [optional]
+**rewards** | [**\TalonOne\Client\Model\RewardWithUnlocks[]**](RewardWithUnlocks.md) | The unlocked rewards for the customer profile. | [optional]
 **referral** | [**\TalonOne\Client\Model\InventoryReferral**](InventoryReferral.md) | The referral that was processed. | [optional]
 **coupons** | [**\TalonOne\Client\Model\IntegrationCoupon[]**](IntegrationCoupon.md) | The coupons that were processed. | [optional]
 **event** | [**\TalonOne\Client\Model\Event**](Event.md) | The event that was processed. | [optional]

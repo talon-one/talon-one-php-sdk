@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **status** | **string** | The status of the achievement.                                                                                               - &#x60;active&#x60;: The achievement is available to customers. - &#x60;scheduled&#x60;: The achievement has a &#x60;fixedStartDate&#x60; set in the future. - &#x60;expired&#x60;: The achievement&#39;s &#x60;endDate&#x60; is in the past. | [optional]
 **sandbox** | **bool** | Indicates if this achievement is a live or sandbox achievement. Achievements of a given type can only be connected to Applications of the same type. |
 **timezone** | **string** | A string containing an IANA timezone descriptor. |
-**campaignId** | **int** | This property is **deprecated**. Use &#x60;referencedByCampaigns&#x60; instead. The ID of the first campaign in &#x60;referencedByCampaigns&#x60;. Only returned when &#x60;referencedByCampaigns&#x60; is not empty. | [optional]
+**campaignId** | **int** | This property is **deprecated**. Use &#x60;referencedByCampaigns&#x60; instead. This field contains the first campaign ID from the related &#x60;referencedByCampaigns&#x60;, and is omitted when &#x60;referencedByCampaigns&#x60; is empty. | [optional]
 **referencedByCampaigns** | [**\TalonOne\Client\Model\CampaignReference[]**](CampaignReference.md) | The campaigns that reference this achievement. They are sorted in ascending order by their id. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
