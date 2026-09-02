@@ -108,7 +108,6 @@ docs/Model/AwardDiscountGlobalFilterTarget.md
 docs/Model/AwardDiscountSelectorTarget.md
 docs/Model/AwardDiscountTarget.md
 docs/Model/AwardGiveawayBlock.md
-docs/Model/AwardGiveawayBlock1GiveawayPool.md
 docs/Model/AwardGiveawayEffectProps.md
 docs/Model/AwardItemBlock.md
 docs/Model/BaseBlock.md
@@ -419,6 +418,7 @@ docs/Model/GetWebhooks200Response.md
 docs/Model/Giveaway.md
 docs/Model/GiveawayPoolNotification.md
 docs/Model/GiveawayPoolNotificationData.md
+docs/Model/GiveawayPoolReference.md
 docs/Model/GiveawaysPool.md
 docs/Model/GroupBlock.md
 docs/Model/HiddenConditionsEffects.md
@@ -990,7 +990,6 @@ lib/Model/AwardDiscountGlobalFilterTarget.php
 lib/Model/AwardDiscountSelectorTarget.php
 lib/Model/AwardDiscountTarget.php
 lib/Model/AwardGiveawayBlock.php
-lib/Model/AwardGiveawayBlock1GiveawayPool.php
 lib/Model/AwardGiveawayEffectProps.php
 lib/Model/AwardItemBlock.php
 lib/Model/BaseBlock.php
@@ -1301,6 +1300,7 @@ lib/Model/GetWebhooks200Response.php
 lib/Model/Giveaway.php
 lib/Model/GiveawayPoolNotification.php
 lib/Model/GiveawayPoolNotificationData.php
+lib/Model/GiveawayPoolReference.php
 lib/Model/GiveawaysPool.php
 lib/Model/GroupBlock.php
 lib/Model/HiddenConditionsEffects.php
@@ -1868,7 +1868,6 @@ test/Model/AwardDiscountCartTargetTest.php
 test/Model/AwardDiscountGlobalFilterTargetTest.php
 test/Model/AwardDiscountSelectorTargetTest.php
 test/Model/AwardDiscountTargetTest.php
-test/Model/AwardGiveawayBlock1GiveawayPoolTest.php
 test/Model/AwardGiveawayBlockTest.php
 test/Model/AwardGiveawayEffectPropsTest.php
 test/Model/AwardItemBlockTest.php
@@ -2179,6 +2178,7 @@ test/Model/GetUsers200ResponseTest.php
 test/Model/GetWebhooks200ResponseTest.php
 test/Model/GiveawayPoolNotificationDataTest.php
 test/Model/GiveawayPoolNotificationTest.php
+test/Model/GiveawayPoolReferenceTest.php
 test/Model/GiveawayTest.php
 test/Model/GiveawaysPoolTest.php
 test/Model/GroupBlockTest.php

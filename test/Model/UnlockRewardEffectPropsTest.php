@@ -123,4 +123,13 @@ class UnlockRewardEffectPropsTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "cardIdentifier"
+     */
+    public function testPropertyCardIdentifier()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

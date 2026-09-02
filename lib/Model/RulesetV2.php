@@ -345,20 +345,8 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
-        if ($this->container['userId'] === null) {
-            $invalidProperties[] = "'userId' can't be null";
-        }
         if ($this->container['promotionRules'] === null) {
             $invalidProperties[] = "'promotionRules' can't be null";
-        }
-        if ($this->container['strikethroughRules'] === null) {
-            $invalidProperties[] = "'strikethroughRules' can't be null";
         }
         return $invalidProperties;
     }
@@ -378,7 +366,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int
+     * @return int|null
      */
     public function getId()
     {
@@ -388,7 +376,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id Internal ID of this entity.
+     * @param int|null $id Internal ID of this entity.
      *
      * @return self
      */
@@ -405,7 +393,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreated()
     {
@@ -415,7 +403,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \DateTime $created The time this entity was created.
+     * @param \DateTime|null $created The time this entity was created.
      *
      * @return self
      */
@@ -432,7 +420,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets userId
      *
-     * @return int
+     * @return int|null
      */
     public function getUserId()
     {
@@ -442,7 +430,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets userId
      *
-     * @param int $userId The ID of the user that created this ruleset.
+     * @param int|null $userId The ID of the user that created this ruleset.
      *
      * @return self
      */
@@ -567,7 +555,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets strikethroughRules
      *
-     * @return \TalonOne\Client\Model\RuleV2[]
+     * @return \TalonOne\Client\Model\RuleV2[]|null
      */
     public function getStrikethroughRules()
     {
@@ -577,7 +565,7 @@ class RulesetV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets strikethroughRules
      *
-     * @param \TalonOne\Client\Model\RuleV2[] $strikethroughRules Set of strikethrough rules.
+     * @param \TalonOne\Client\Model\RuleV2[]|null $strikethroughRules Set of strikethrough rules.
      *
      * @return self
      */

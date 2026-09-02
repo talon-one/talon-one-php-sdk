@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **campaignId** | [**\TalonOne\Client\Model\CreateCouponBlock1CampaignId**](CreateCouponBlock1CampaignId.md) |  |
 **recipientId** | **string** | The integration ID of the customer that is allowed to redeem this coupon. |
 **storeInSession** | **bool** | When &#x60;true&#x60;, the coupon is stored in the session. |

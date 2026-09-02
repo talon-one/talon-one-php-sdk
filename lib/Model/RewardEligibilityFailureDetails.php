@@ -236,6 +236,9 @@ class RewardEligibilityFailureDetails implements ModelInterface, ArrayAccess, \J
     }
 
     public const FAILURE_CODE_CONDITION_NOT_MET = 'CONDITION_NOT_MET';
+    public const FAILURE_CODE_INSUFFICIENT_BALANCE = 'INSUFFICIENT_BALANCE';
+    public const FAILURE_CODE_CARD_REQUIRED = 'CARD_REQUIRED';
+    public const FAILURE_CODE_PROFILE_REQUIRED = 'PROFILE_REQUIRED';
 
     /**
      * Gets allowable values of the enum
@@ -246,6 +249,9 @@ class RewardEligibilityFailureDetails implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::FAILURE_CODE_CONDITION_NOT_MET,
+            self::FAILURE_CODE_INSUFFICIENT_BALANCE,
+            self::FAILURE_CODE_CARD_REQUIRED,
+            self::FAILURE_CODE_PROFILE_REQUIRED,
         ];
     }
 
@@ -372,7 +378,7 @@ class RewardEligibilityFailureDetails implements ModelInterface, ArrayAccess, \J
     /**
      * Sets conditionIndex
      *
-     * @param int|null $conditionIndex The index of the eligibility condition that the customer did not meet.
+     * @param int|null $conditionIndex The index of the eligibility condition that the customer did not meet. Only applicable when `failureCode` is `CONDITION_NOT_MET`.
      *
      * @return self
      */

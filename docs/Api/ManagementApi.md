@@ -26,6 +26,7 @@ All URIs are relative to https://yourbaseurl.talon.one, except if the operation 
 | [**createInviteEmail()**](ManagementApi.md#createInviteEmail) | **POST** /v1/invite_emails | Resend invitation email |
 | [**createInviteV2()**](ManagementApi.md#createInviteV2) | **POST** /v2/invites | Invite user |
 | [**createPasswordRecoveryEmail()**](ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset |
+| [**createRulesetV2()**](ManagementApi.md#createRulesetV2) | **POST** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create ruleset (V2) |
 | [**createSession()**](ManagementApi.md#createSession) | **POST** /v1/sessions | Create session |
 | [**createStore()**](ManagementApi.md#createStore) | **POST** /v1/applications/{applicationId}/stores | Create store |
 | [**deactivateUserByEmail()**](ManagementApi.md#deactivateUserByEmail) | **POST** /v1/users/deactivate | Disable user by email address |
@@ -1472,6 +1473,72 @@ try {
 ### Return type
 
 [**\TalonOne\Client\Model\NewPasswordEmail**](../Model/NewPasswordEmail.md)
+
+### Authorization
+
+[api_key_v1](../../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createRulesetV2()`
+
+```php
+createRulesetV2($applicationId, $campaignId, $rulesetV2): \TalonOne\Client\Model\RulesetV2
+```
+
+Create ruleset (V2)
+
+Create a ruleset from promotion and strikethrough rules in the V2 JSON block format. A ruleset is a revision of all the rules of a campaign.  Only `group` and `passthrough` blocks are currently writable, with optional `onFailure` blocks. A payload containing any other block type is rejected. Each rule's `blocks` array may contain at most one block.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key_v1
+$config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = TalonOne\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new TalonOne\Client\Api\ManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
+$campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+$rulesetV2 = new \TalonOne\Client\Model\RulesetV2(); // \TalonOne\Client\Model\RulesetV2 | body
+
+try {
+    $result = $apiInstance->createRulesetV2($applicationId, $campaignId, $rulesetV2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ManagementApi->createRulesetV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
+| **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
+| **rulesetV2** | [**\TalonOne\Client\Model\RulesetV2**](../Model/RulesetV2.md)| body | |
+
+### Return type
+
+[**\TalonOne\Client\Model\RulesetV2**](../Model/RulesetV2.md)
 
 ### Authorization
 
@@ -8391,7 +8458,7 @@ try {
 ## `getMessageLogs()`
 
 ```php
-getMessageLogs($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs): \TalonOne\Client\Model\MessageLogEntries
+getMessageLogs($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs): \TalonOne\Client\Model\MessageLogEntries
 ```
 
 List message log entries
@@ -8424,6 +8491,7 @@ $notificationIDs = 'notificationIDs_example'; // string | Filter results by noti
 $createdBefore = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time.
 $createdAfter = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time.
 $cursor = 'cursor_example'; // string | A specific unique value in the database. If this value is not given, the server fetches results starting with the first record.
+$pageSize = 50; // int | The maximum number of message log entries to return.
 $period = 'period_example'; // string | Filter results by time period. Choose between the available relative time frames.
 $isSuccessful = True; // bool | Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to`true`, only log entries with `2xx` response codes are returned. When set to `false`, only log entries with `4xx` and `5xx` response codes are returned.
 $applicationId = 3.4; // float | Filter results by Application ID.
@@ -8433,7 +8501,7 @@ $responseCode = 56; // int | Filter results by response status code.
 $webhookIDs = 'webhookIDs_example'; // string | Filter results by webhook ID (include up to 30 values, separated by a comma).
 
 try {
-    $result = $apiInstance->getMessageLogs($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs);
+    $result = $apiInstance->getMessageLogs($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->getMessageLogs: ', $e->getMessage(), PHP_EOL;
@@ -8451,6 +8519,7 @@ try {
 | **createdBefore** | **\DateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. | [optional] |
 | **createdAfter** | **\DateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. | [optional] |
 | **cursor** | **string**| A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. | [optional] |
+| **pageSize** | **int**| The maximum number of message log entries to return. | [optional] [default to 50] |
 | **period** | **string**| Filter results by time period. Choose between the available relative time frames. | [optional] |
 | **isSuccessful** | **bool**| Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. | [optional] |
 | **applicationId** | **float**| Filter results by Application ID. | [optional] |

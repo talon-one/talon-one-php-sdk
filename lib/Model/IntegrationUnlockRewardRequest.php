@@ -35,7 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * IntegrationUnlockRewardRequest Class Doc Comment
  *
  * @category Class
- * @description The request body for unlocking a reward for a customer profile.
+ * @description The request body for unlocking a reward for a customer profile, optionally using the balance of one of the customer&#39;s loyalty cards.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'integrationId' => 'string',
         'profileIntegrationId' => 'string',
+        'cardIdentifier' => 'string',
         'loyaltyProgramId' => 'int',
         'subledgerId' => 'string',
         'responseContent' => 'string[]'
@@ -75,6 +76,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'integrationId' => null,
         'profileIntegrationId' => null,
+        'cardIdentifier' => null,
         'loyaltyProgramId' => 'int64',
         'subledgerId' => null,
         'responseContent' => null
@@ -88,6 +90,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'integrationId' => false,
         'profileIntegrationId' => false,
+        'cardIdentifier' => false,
         'loyaltyProgramId' => false,
         'subledgerId' => false,
         'responseContent' => false
@@ -181,6 +184,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'integrationId' => 'integrationId',
         'profileIntegrationId' => 'profileIntegrationId',
+        'cardIdentifier' => 'cardIdentifier',
         'loyaltyProgramId' => 'loyaltyProgramId',
         'subledgerId' => 'subledgerId',
         'responseContent' => 'responseContent'
@@ -194,6 +198,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'integrationId' => 'setIntegrationId',
         'profileIntegrationId' => 'setProfileIntegrationId',
+        'cardIdentifier' => 'setCardIdentifier',
         'loyaltyProgramId' => 'setLoyaltyProgramId',
         'subledgerId' => 'setSubledgerId',
         'responseContent' => 'setResponseContent'
@@ -207,6 +212,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'integrationId' => 'getIntegrationId',
         'profileIntegrationId' => 'getProfileIntegrationId',
+        'cardIdentifier' => 'getCardIdentifier',
         'loyaltyProgramId' => 'getLoyaltyProgramId',
         'subledgerId' => 'getSubledgerId',
         'responseContent' => 'getResponseContent'
@@ -253,6 +259,25 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const RESPONSE_CONTENT_CUSTOMER_PROFILE = 'customerProfile';
+    public const RESPONSE_CONTENT_EFFECTS = 'effects';
+    public const RESPONSE_CONTENT_RULE_FAILURE_REASONS = 'ruleFailureReasons';
+    public const RESPONSE_CONTENT_LOYALTY = 'loyalty';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getResponseContentAllowableValues()
+    {
+        return [
+            self::RESPONSE_CONTENT_CUSTOMER_PROFILE,
+            self::RESPONSE_CONTENT_EFFECTS,
+            self::RESPONSE_CONTENT_RULE_FAILURE_REASONS,
+            self::RESPONSE_CONTENT_LOYALTY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -271,6 +296,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('profileIntegrationId', $data ?? [], null);
+        $this->setIfExists('cardIdentifier', $data ?? [], null);
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
         $this->setIfExists('subledgerId', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
@@ -309,6 +335,18 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['profileIntegrationId'] === null) {
             $invalidProperties[] = "'profileIntegrationId' can't be null";
         }
+        if (!is_null($this->container['cardIdentifier']) && (mb_strlen($this->container['cardIdentifier']) > 108)) {
+            $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be smaller than or equal to 108.";
+        }
+
+        if (!is_null($this->container['cardIdentifier']) && (mb_strlen($this->container['cardIdentifier']) < 4)) {
+            $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be bigger than or equal to 4.";
+        }
+
+        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['cardIdentifier'])) {
+            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -374,6 +412,43 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable profileIntegrationId cannot be null');
         }
         $this->container['profileIntegrationId'] = $profileIntegrationId;
+
+        return $this;
+    }
+
+    /**
+     * Gets cardIdentifier
+     *
+     * @return string|null
+     */
+    public function getCardIdentifier()
+    {
+        return $this->container['cardIdentifier'];
+    }
+
+    /**
+     * Sets cardIdentifier
+     *
+     * @param string|null $cardIdentifier The identifier of the loyalty card unlocking the reward. When provided, the required points are deducted from the card's balance and the unlocked reward belongs to the card, which makes it available to all customer profiles linked to that card. The customer profile given in `profileIntegrationId` must be linked to the card, and the card must be active.
+     *
+     * @return self
+     */
+    public function setCardIdentifier($cardIdentifier)
+    {
+        if (is_null($cardIdentifier)) {
+            throw new \InvalidArgumentException('non-nullable cardIdentifier cannot be null');
+        }
+        if ((mb_strlen($cardIdentifier) > 108)) {
+            throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling IntegrationUnlockRewardRequest., must be smaller than or equal to 108.');
+        }
+        if ((mb_strlen($cardIdentifier) < 4)) {
+            throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling IntegrationUnlockRewardRequest., must be bigger than or equal to 4.');
+        }
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($cardIdentifier)))) {
+            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling IntegrationUnlockRewardRequest., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
+        }
+
+        $this->container['cardIdentifier'] = $cardIdentifier;
 
         return $this;
     }
@@ -445,7 +520,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets responseContent
      *
-     * @param string[]|null $responseContent Determines which data is included in the response. Add any of the following optional values to the array to get that data in the response: `customerProfile`, `effects`, `ruleFailureReasons`, `loyalty`.
+     * @param string[]|null $responseContent Determines which data is included in the response. Add any of the following optional values to the array to get that data in the response: `customerProfile`, `ruleFailureReasons`, `loyalty`. `effects` is always returned regardless of whether it is included here.
      *
      * @return self
      */
@@ -453,6 +528,15 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     {
         if (is_null($responseContent)) {
             throw new \InvalidArgumentException('non-nullable responseContent cannot be null');
+        }
+        $allowedValues = $this->getResponseContentAllowableValues();
+        if (array_diff($responseContent, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'responseContent', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['responseContent'] = $responseContent;
 

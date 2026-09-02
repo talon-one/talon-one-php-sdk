@@ -496,7 +496,7 @@ deleteAudienceV2($audienceId)
 
 Delete audience
 
-Delete an audience.  > [!warning] This endpoint also removes any associations recorded between a customer profile and this audience.  > [!note] Audiences can also be deleted via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience).
+Delete an audience.  > [!warning] This endpoint also removes any associations recorded between a customer profile and this audience.  > [!note] Audiences can also be deleted via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience).  The audience isn't deleted if any experiment variant uses it. The response identifies each blocking experiment by its Campaign Manager path.
 
 ### Example
 
@@ -1483,11 +1483,11 @@ $loyaltyProgramId = 56; // int | Identifier of the profile-based loyalty program
 $integrationId = 'integrationId_example'; // string | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.
 $status = 'active'; // string | Filter points based on their status.
 $subledgerId = array('subledgerId_example'); // string[] | Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, `?subledgerId=id1&subledgerId=id2`.  The response contains only data associated with the specified subledgers.
-$customerSessionIDs = array('customerSessionIDs_example'); // string[] | Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  `?customerSessionIDs=id1&customerSessionIDs=id2`.  The response contains only data associated with the specified sessions.
-$transactionUUIDs = array('transactionUUIDs_example'); // string[] | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions.
+$customerSessionIDs = array('customerSessionIDs_example'); // string[] | Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, `?customerSessionIDs=id1&customerSessionIDs=id2`.  The response contains only data associated with the specified sessions.
+$transactionUUIDs = array('transactionUUIDs_example'); // string[] | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions.
 $pageSize = 50; // int | The number of items in the response.
 $skip = 56; // int | The number of items to skip when paging through large result sets.
-$sort = 'sort_example'; // string | The field by which results should be sorted. You can enter one of the following values:  - `startDate`: Sorts the results by the start date of the points. - `expiryDate`: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with `-`.  **Note:** You can only sort by one field at a time.
+$sort = 'sort_example'; // string | The field by which results should be sorted. You can enter one of the following values:  - `startDate`: Sorts the results by the start date of the points. - `expiryDate`: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You can only sort by one field at a time.
 
 try {
     $result = $apiInstance->getLoyaltyProgramProfilePoints($loyaltyProgramId, $integrationId, $status, $subledgerId, $customerSessionIDs, $transactionUUIDs, $pageSize, $skip, $sort);
@@ -1505,11 +1505,11 @@ try {
 | **integrationId** | **string**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. | |
 | **status** | **string**| Filter points based on their status. | [optional] [default to &#39;active&#39;] |
 | **subledgerId** | [**string[]**](../Model/string.md)| Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. | [optional] |
-| **customerSessionIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. | [optional] |
-| **transactionUUIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. | [optional] |
+| **customerSessionIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. | [optional] |
+| **transactionUUIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. | [optional] |
 | **pageSize** | **int**| The number of items in the response. | [optional] [default to 50] |
 | **skip** | **int**| The number of items to skip when paging through large result sets. | [optional] |
-| **sort** | **string**| The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. | [optional] |
+| **sort** | **string**| The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. | [optional] |
 
 ### Return type
 
@@ -1561,7 +1561,7 @@ $loyaltyProgramId = 56; // int | Identifier of the profile-based loyalty program
 $integrationId = 'integrationId_example'; // string | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.
 $customerSessionIDs = array('customerSessionIDs_example'); // string[] | Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, `?customerSessionIDs=id1&customerSessionIDs=id2`.  The response contains only data associated with the specified sessions.
 $transactionUUIDs = array('transactionUUIDs_example'); // string[] | Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, `?transactionUUIDs=uuid1&transactionUUIDs=uuid2`.  The response contains only data associated with the specified transactions.
-$subledgerId = 'subledgerId_example'; // string | The ID of the subledger by which we filter the data.
+$subledgerId = array('subledgerId_example'); // string[] | Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, `?subledgerId=id1&subledgerId=id2`.  The response contains only data associated with the specified subledgers.
 $loyaltyTransactionType = 'loyaltyTransactionType_example'; // string | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file.
 $startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  > [!note] **Note** > - This must be an RFC3339 timestamp string. > - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting >   considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
 $endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  > [!note] **Note** > - This must be an RFC3339 timestamp string. > - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting >   considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
@@ -1585,7 +1585,7 @@ try {
 | **integrationId** | **string**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. | |
 | **customerSessionIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. | [optional] |
 | **transactionUUIDs** | [**string[]**](../Model/string.md)| Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. | [optional] |
-| **subledgerId** | **string**| The ID of the subledger by which we filter the data. | [optional] |
+| **subledgerId** | [**string[]**](../Model/string.md)| Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. | [optional] |
 | **loyaltyTransactionType** | **string**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. | [optional] |
 | **startDate** | **\DateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
 | **endDate** | **\DateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. | [optional] |
@@ -1639,7 +1639,7 @@ $apiInstance = new TalonOne\Client\Api\IntegrationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$couponValue = 'couponValue_example'; // string | The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode `SUMMER25%OFF` as `SUMMER25%25OFF`.
+$couponValue = 'couponValue_example'; // string | The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode `SUMMER25%OFF` as `SUMMER25%25OFF`.
 
 try {
     $result = $apiInstance->getReservedCustomers($couponValue);
@@ -1653,7 +1653,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **couponValue** | **string**| The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. | |
+| **couponValue** | **string**| The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. | |
 
 ### Return type
 
@@ -1960,7 +1960,7 @@ try {
 ## `reopenCustomerSession()`
 
 ```php
-reopenCustomerSession($customerSessionId): \TalonOne\Client\Model\ReopenSessionResponse
+reopenCustomerSession($customerSessionId, $idempotencyKey): \TalonOne\Client\Model\ReopenSessionResponse
 ```
 
 Reopen customer session
@@ -1987,9 +1987,10 @@ $apiInstance = new TalonOne\Client\Api\IntegrationApi(
     $config
 );
 $customerSessionId = 'customerSessionId_example'; // string | The `integration ID` of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager's **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->reopenCustomerSession($customerSessionId);
+    $result = $apiInstance->reopenCustomerSession($customerSessionId, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->reopenCustomerSession: ', $e->getMessage(), PHP_EOL;
@@ -2001,6 +2002,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **customerSessionId** | **string**| The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. | |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 
@@ -2022,7 +2024,7 @@ try {
 ## `returnCartItems()`
 
 ```php
-returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine): \TalonOne\Client\Model\IntegrationStateV2
+returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey): \TalonOne\Client\Model\IntegrationStateV2
 ```
 
 Return cart items
@@ -2052,9 +2054,10 @@ $customerSessionId = 'customerSessionId_example'; // string | The `integration I
 $returnIntegrationRequest = new \TalonOne\Client\Model\ReturnIntegrationRequest(); // \TalonOne\Client\Model\ReturnIntegrationRequest | body
 $dry = True; // bool | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
 $runRuleEngine = True; // bool | When set to `true`, reevaluates the updated session after items are returned. Only reevaluates campaigns where `reevaluateOnReturn` is set to `true` and which produced an effect when the session was closed.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine);
+    $result = $apiInstance->returnCartItems($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->returnCartItems: ', $e->getMessage(), PHP_EOL;
@@ -2069,6 +2072,7 @@ try {
 | **returnIntegrationRequest** | [**\TalonOne\Client\Model\ReturnIntegrationRequest**](../Model/ReturnIntegrationRequest.md)| body | |
 | **dry** | **bool**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional] |
 | **runRuleEngine** | **bool**| When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. | [optional] |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 
@@ -2154,7 +2158,7 @@ try {
 ## `trackEventV2()`
 
 ```php
-trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation): \TalonOne\Client\Model\IntegrationEventV2Response
+trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey): \TalonOne\Client\Model\IntegrationEventV2Response
 ```
 
 Track event
@@ -2184,9 +2188,10 @@ $integrationEventV2Request = {profileId=customer-123, type=newsletter_signup, at
 $silent = 'yes'; // string | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles.
 $dry = True; // bool | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
 $forceCompleteEvaluation = false; // bool | Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires `dry=true`.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation);
+    $result = $apiInstance->trackEventV2($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->trackEventV2: ', $e->getMessage(), PHP_EOL;
@@ -2201,6 +2206,7 @@ try {
 | **silent** | **string**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. | [optional] [default to &#39;yes&#39;] |
 | **dry** | **bool**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional] |
 | **forceCompleteEvaluation** | **bool**| Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. | [optional] [default to false] |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 
@@ -2361,7 +2367,7 @@ unlockReward($rewardId, $integrationUnlockRewardRequest, $dry): \TalonOne\Client
 
 Unlock a reward
 
-Unlock a reward for a customer. If the reward has `pointsRequired` configured, the corresponding loyalty points are deducted from the customer's balance.
+Unlock a reward for a customer. If the reward has `pointsRequired` configured, the corresponding loyalty points are deducted from the customer's balance.  To unlock a reward with the points of a loyalty card, provide the card in `cardIdentifier`. The points are then deducted from the card, and the unlocked reward belongs to the card, which makes it available to all customer profiles linked to that card.
 
 ### Example
 
@@ -2610,7 +2616,7 @@ void (empty response body)
 ## `updateCustomerProfileV2()`
 
 ```php
-updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry): \TalonOne\Client\Model\CustomerProfileIntegrationResponseV2
+updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey): \TalonOne\Client\Model\CustomerProfileIntegrationResponseV2
 ```
 
 Update customer profile
@@ -2640,9 +2646,10 @@ $integrationId = 'integrationId_example'; // string | The integration identifier
 $customerProfileIntegrationRequestV2 = {"attributes":{"Name":"Chris Taylor","Email":"chris.taylor@example.com","SignupDate":"2026-01-21T15:04:05+07:00","PaymentMethod":"Bank transfer"}}; // \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 | body
 $runRuleEngine = false; // bool | Indicates whether to run the Rule Engine.  If `true`, the response includes: - The effects generated by the triggered campaigns are returned in the `effects` property. - The created coupons and referral objects.  If `false`: - The rules are not executed and the `effects` property is always empty. - The response time improves. - You cannot use `responseContent` in the body.
 $dry = True; // bool | (Only works when `runRuleEngine=true`) Indicates whether to persist the changes. Changes are ignored when `dry=true`.  When set to `true`, you can use the `evaluableCampaignIds` body property to select specific campaigns to run.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry);
+    $result = $apiInstance->updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->updateCustomerProfileV2: ', $e->getMessage(), PHP_EOL;
@@ -2657,6 +2664,7 @@ try {
 | **customerProfileIntegrationRequestV2** | [**\TalonOne\Client\Model\CustomerProfileIntegrationRequestV2**](../Model/CustomerProfileIntegrationRequestV2.md)| body | |
 | **runRuleEngine** | **bool**| Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. | [optional] [default to false] |
 | **dry** | **bool**| (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. | [optional] |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 
@@ -2678,7 +2686,7 @@ try {
 ## `updateCustomerProfilesV2()`
 
 ```php
-updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent): \TalonOne\Client\Model\MultipleCustomerProfileIntegrationResponseV2
+updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey): \TalonOne\Client\Model\MultipleCustomerProfileIntegrationResponseV2
 ```
 
 Update multiple customer profiles
@@ -2706,9 +2714,10 @@ $apiInstance = new TalonOne\Client\Api\IntegrationApi(
 );
 $multipleCustomerProfileIntegrationRequest = new \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest(); // \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest | body
 $silent = 'yes'; // string | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent);
+    $result = $apiInstance->updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->updateCustomerProfilesV2: ', $e->getMessage(), PHP_EOL;
@@ -2721,6 +2730,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **multipleCustomerProfileIntegrationRequest** | [**\TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest**](../Model/MultipleCustomerProfileIntegrationRequest.md)| body | |
 | **silent** | **string**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. | [optional] [default to &#39;yes&#39;] |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 
@@ -2742,12 +2752,12 @@ try {
 ## `updateCustomerSessionV2()`
 
 ```php
-updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry, $now): \TalonOne\Client\Model\IntegrationStateV2
+updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey): \TalonOne\Client\Model\IntegrationStateV2
 ```
 
 Update customer session
 
-Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).  The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart.  For example, use this endpoint to share the contents of a customer's cart with Talon.One.  > [!note] **Note** > - The currency for the session and the cart items in it is the currency set for the Application linked to this session. > - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  > [!note] To make request processing idempotent for this endpoint, include the `Idempotency-Key` header with an idempotency key in requests. Learn more about [idempotency](https://docs.talon.one/integration-api#description/idempotency).  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the `state` parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the `profileId` parameter in the request body to a customer profile's `integrationId`.  - While you can create an anonymous session with `profileId=\"\"`, we recommend you use a guest ID instead.  - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  > [!note] **Note** > - If the specified profile does not exist, an empty profile is **created automatically**. >   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2). > - Updating a customer session returns a response with the new integration state. Use the `responseContent` property to save yourself extra API calls. >   For example, you can get the customer profile details directly without extra requests. > - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  For more information, see:  - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one).
+Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).  The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart.  For example, use this endpoint to share the contents of a customer's cart with Talon.One.  > [!note] **Note** > - The currency for the session and the cart items in it is the currency set for the Application linked to this session. > - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the `state` parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the `profileId` parameter in the request body to a customer profile's `integrationId`.  - While you can create an anonymous session with `profileId=\"\"`, we recommend you use a guest ID instead.  - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  > [!note] **Note** > - If the specified profile does not exist, an empty profile is **created automatically**. >   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2). > - Updating a customer session returns a response with the new integration state. Use the `responseContent` property to save yourself extra API calls. >   For example, you can get the customer profile details directly without extra requests. > - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  For more information, see:  - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one).  > [!note] To make request processing idempotent for this endpoint, include the `Idempotency-Key` header with an idempotency key in requests. Learn more about [idempotency](https://docs.talon.one/integration-api#description/idempotency).
 
 ### Example
 
@@ -2772,9 +2782,10 @@ $customerSessionId = 'customerSessionId_example'; // string | The `integration I
 $integrationRequest = {"customerSession":{"profileId":"382370BKDB946","cartItems":[{"name":"Wireless Bluetooth Headphones","sku":"AUDIO-WH350","quantity":1,"price":79.99,"weight":310},{"name":"USB-C Charging Cable","sku":"CABLE-USBC-2M","quantity":2,"price":15.99,"weight":40}]},"responseContent":["customerSession","customerProfile"]}; // \TalonOne\Client\Model\IntegrationRequest | body
 $dry = True; // bool | Indicates whether to persist the changes. Changes are ignored when `dry=true`.  When set to `true`: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the `dry` parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the `evaluableCampaignIds` body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).
 $now = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  > [!note] **Note** > - It must be an RFC3339 timestamp string. > - It can **only** be a date in the future. > - It can **only** be used if the `dry` parameter in the query is set to `true`.
+$idempotencyKey = 'idempotencyKey_example'; // string | A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times.
 
 try {
-    $result = $apiInstance->updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry, $now);
+    $result = $apiInstance->updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->updateCustomerSessionV2: ', $e->getMessage(), PHP_EOL;
@@ -2789,6 +2800,7 @@ try {
 | **integrationRequest** | [**\TalonOne\Client\Model\IntegrationRequest**](../Model/IntegrationRequest.md)| body | |
 | **dry** | **bool**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). | [optional] |
 | **now** | **\DateTime**| A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. | [optional] |
+| **idempotencyKey** | **string**| A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. | [optional] |
 
 ### Return type
 

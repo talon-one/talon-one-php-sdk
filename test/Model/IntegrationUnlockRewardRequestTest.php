@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * IntegrationUnlockRewardRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request body for unlocking a reward for a customer profile.
+ * @description The request body for unlocking a reward for a customer profile, optionally using the balance of one of the customer&#39;s loyalty cards.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
@@ -92,6 +92,15 @@ class IntegrationUnlockRewardRequestTest extends TestCase
      * Test attribute "profileIntegrationId"
      */
     public function testPropertyProfileIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cardIdentifier"
+     */
+    public function testPropertyCardIdentifier()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

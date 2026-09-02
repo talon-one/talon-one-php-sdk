@@ -242,6 +242,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**createInviteEmail**](docs/Api/ManagementApi.md#createinviteemail) | **POST** /v1/invite_emails | Resend invitation email
 *ManagementApi* | [**createInviteV2**](docs/Api/ManagementApi.md#createinvitev2) | **POST** /v2/invites | Invite user
 *ManagementApi* | [**createPasswordRecoveryEmail**](docs/Api/ManagementApi.md#createpasswordrecoveryemail) | **POST** /v1/password_recovery_emails | Request a password reset
+*ManagementApi* | [**createRulesetV2**](docs/Api/ManagementApi.md#createrulesetv2) | **POST** /v2/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create ruleset (V2)
 *ManagementApi* | [**createSession**](docs/Api/ManagementApi.md#createsession) | **POST** /v1/sessions | Create session
 *ManagementApi* | [**createStore**](docs/Api/ManagementApi.md#createstore) | **POST** /v1/applications/{applicationId}/stores | Create store
 *ManagementApi* | [**deactivateUserByEmail**](docs/Api/ManagementApi.md#deactivateuserbyemail) | **POST** /v1/users/deactivate | Disable user by email address
@@ -513,7 +514,6 @@ Class | Method | HTTP request | Description
 - [AwardDiscountSelectorTarget](docs/Model/AwardDiscountSelectorTarget.md)
 - [AwardDiscountTarget](docs/Model/AwardDiscountTarget.md)
 - [AwardGiveawayBlock](docs/Model/AwardGiveawayBlock.md)
-- [AwardGiveawayBlock1GiveawayPool](docs/Model/AwardGiveawayBlock1GiveawayPool.md)
 - [AwardGiveawayEffectProps](docs/Model/AwardGiveawayEffectProps.md)
 - [AwardItemBlock](docs/Model/AwardItemBlock.md)
 - [BaseBlock](docs/Model/BaseBlock.md)
@@ -824,6 +824,7 @@ Class | Method | HTTP request | Description
 - [Giveaway](docs/Model/Giveaway.md)
 - [GiveawayPoolNotification](docs/Model/GiveawayPoolNotification.md)
 - [GiveawayPoolNotificationData](docs/Model/GiveawayPoolNotificationData.md)
+- [GiveawayPoolReference](docs/Model/GiveawayPoolReference.md)
 - [GiveawaysPool](docs/Model/GiveawaysPool.md)
 - [GroupBlock](docs/Model/GroupBlock.md)
 - [HiddenConditionsEffects](docs/Model/HiddenConditionsEffects.md)

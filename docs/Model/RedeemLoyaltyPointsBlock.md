@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **program** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program**](RedeemLoyaltyPointsBlock1Program.md) |  |
 **subledger** | **string** | The name of the subledger to deduct points from. Can be empty if this block deducts from the loyalty program&#39;s main ledger instead of a subledger. |
 **value** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value**](RedeemLoyaltyPointsBlock1Value.md) |  |

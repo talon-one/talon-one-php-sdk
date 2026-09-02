@@ -75,7 +75,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'body' => 'string',
         'sku' => 'string',
         'quantity' => 'string',
-        'giveawayPool' => '\TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool',
+        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolReference',
         'profile' => 'string',
         'audience' => '\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience',
         'program' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program',
@@ -667,9 +667,6 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -814,7 +811,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -824,7 +821,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Unique identifier for this block.
+     * @param string|null $id Unique identifier for this block.
      *
      * @return self
      */
@@ -1283,7 +1280,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets giveawayPool
      *
-     * @return \TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool
+     * @return \TalonOne\Client\Model\GiveawayPoolReference
      */
     public function getGiveawayPool()
     {
@@ -1293,7 +1290,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets giveawayPool
      *
-     * @param \TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool $giveawayPool giveawayPool
+     * @param \TalonOne\Client\Model\GiveawayPoolReference $giveawayPool The giveaway pool from which an item is awarded.
      *
      * @return self
      */

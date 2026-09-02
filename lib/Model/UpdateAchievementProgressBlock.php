@@ -322,9 +322,6 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -364,7 +361,7 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -374,7 +371,7 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string $id Unique identifier for this block.
+     * @param string|null $id Unique identifier for this block.
      *
      * @return self
      */

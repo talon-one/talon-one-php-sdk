@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **operator** | **string** | An indicator of how the block compares its elements. |
 **onFailure** | [**\TalonOne\Client\Model\Block[]**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional]
 

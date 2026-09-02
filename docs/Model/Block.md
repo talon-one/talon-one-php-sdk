@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **operator** | **string** | An indicator of how the block compares its elements. |
 **blocks** | [**\TalonOne\Client\Model\Block[]**](Block.md) | Child blocks evaluated according to the operator. |
 **onFailure** | [**\TalonOne\Client\Model\Block[]**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional]
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **body** | **string** | The notification body text. Supports template placeholders (e.g. \&quot;{{$Session.Total}}\&quot;) evaluated at rule execution time. | [optional]
 **sku** | **string** | The stock keeping unit of the item to award. |
 **quantity** | **string** | The number of items to award. Supports template placeholders (e.g. \&quot;{{$Session.Total / 2}}\&quot;) for dynamic quantities. |
-**giveawayPool** | [**\TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool**](AwardGiveawayBlock1GiveawayPool.md) |  |
+**giveawayPool** | [**\TalonOne\Client\Model\GiveawayPoolReference**](GiveawayPoolReference.md) | The giveaway pool from which an item is awarded. |
 **profile** | **string** | The customer profile to add or remove from the audience. &#x60;Current&#x60; targets the customer in the current session; &#x60;Advocate&#x60; targets the person who invited their friend via referral program. |
 **audience** | [**\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience**](UpdateAudienceMembershipBlock1Audience.md) |  |
 **program** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program**](RedeemLoyaltyPointsBlock1Program.md) |  |

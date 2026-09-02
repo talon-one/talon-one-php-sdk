@@ -350,9 +350,6 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -401,7 +398,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -411,7 +408,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string $id Unique identifier for this block.
+     * @param string|null $id Unique identifier for this block.
      *
      * @return self
      */

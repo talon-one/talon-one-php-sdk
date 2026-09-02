@@ -60,7 +60,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'type' => 'string',
         'tags' => 'string[]',
-        'giveawayPool' => '\TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool',
+        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolReference',
         'profile' => 'string',
         'onFailure' => '\TalonOne\Client\Model\Block[]',
         'onError' => 'array<string,\TalonOne\Client\Model\Block[]>'
@@ -331,9 +331,6 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -370,7 +367,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -380,7 +377,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string $id Unique identifier for this block.
+     * @param string|null $id Unique identifier for this block.
      *
      * @return self
      */
@@ -451,7 +448,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets giveawayPool
      *
-     * @return \TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool
+     * @return \TalonOne\Client\Model\GiveawayPoolReference
      */
     public function getGiveawayPool()
     {
@@ -461,7 +458,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets giveawayPool
      *
-     * @param \TalonOne\Client\Model\AwardGiveawayBlock1GiveawayPool $giveawayPool giveawayPool
+     * @param \TalonOne\Client\Model\GiveawayPoolReference $giveawayPool The giveaway pool from which an item is awarded.
      *
      * @return self
      */
