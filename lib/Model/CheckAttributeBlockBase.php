@@ -456,9 +456,6 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -495,7 +492,7 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -505,7 +502,7 @@ class CheckAttributeBlockBase implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string $id Unique identifier for this block.
+     * @param string|null $id Unique identifier for this block.
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional]
 **operator** | **string** | The update operation applied to the attribute. |

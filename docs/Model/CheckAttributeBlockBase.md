@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **operator** | **string** | The comparison operator applied to the attribute. |
 **attribute** | **mixed** | The attribute path identifier (e.g. \&quot;$Session.Total\&quot;). |
 **value** | **mixed** | The comparison value for scalar operators. | [optional]

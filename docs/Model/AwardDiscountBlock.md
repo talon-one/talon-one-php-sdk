@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique identifier for this block. |
+**id** | **string** | Unique identifier for this block. | [optional] [readonly]
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
-**tags** | **string[]** | Semantic labels attached to this block. | [optional]
+**tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **name** | **string** | The human-readable label attached to the discount. |
 **value** | [**\TalonOne\Client\Model\AwardDiscountBlock1Value**](AwardDiscountBlock1Value.md) |  |
 **partial** | **bool** | Whether to apply a partial discount when the requested value exceeds the configured budget. |

@@ -1,6 +1,6 @@
 <?php
 /**
- * AwardGiveawayBlock1GiveawayPoolTest
+ * GiveawayPoolReferenceTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AwardGiveawayBlock1GiveawayPoolTest Class Doc Comment
+ * GiveawayPoolReferenceTest Class Doc Comment
  *
  * @category    Class
- * @description The giveaway pool from which an item is awarded.
+ * @description GiveawayPoolReference
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class AwardGiveawayBlock1GiveawayPoolTest extends TestCase
+class GiveawayPoolReferenceTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class AwardGiveawayBlock1GiveawayPoolTest extends TestCase
     }
 
     /**
-     * Test "AwardGiveawayBlock1GiveawayPool"
+     * Test "GiveawayPoolReference"
      */
-    public function testAwardGiveawayBlock1GiveawayPool()
+    public function testGiveawayPoolReference()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

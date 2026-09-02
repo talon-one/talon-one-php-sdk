@@ -134,6 +134,9 @@ class ManagementApi
         'createPasswordRecoveryEmail' => [
             'application/json',
         ],
+        'createRulesetV2' => [
+            'application/json',
+        ],
         'createSession' => [
             'application/json',
         ],
@@ -6733,6 +6736,340 @@ class ManagementApi
                 }
             } else {
                 $httpBody = $newPasswordEmail;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createRulesetV2
+     *
+     * Create ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\RulesetV2 $rulesetV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\RulesetV2|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function createRulesetV2($applicationId, $campaignId, $rulesetV2, string $contentType = self::contentTypes['createRulesetV2'][0])
+    {
+        list($response) = $this->createRulesetV2WithHttpInfo($applicationId, $campaignId, $rulesetV2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createRulesetV2WithHttpInfo
+     *
+     * Create ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\RulesetV2 $rulesetV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\RulesetV2|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createRulesetV2WithHttpInfo($applicationId, $campaignId, $rulesetV2, string $contentType = self::contentTypes['createRulesetV2'][0])
+    {
+        $request = $this->createRulesetV2Request($applicationId, $campaignId, $rulesetV2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\RulesetV2',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\RulesetV2',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\RulesetV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createRulesetV2Async
+     *
+     * Create ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\RulesetV2 $rulesetV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRulesetV2Async($applicationId, $campaignId, $rulesetV2, string $contentType = self::contentTypes['createRulesetV2'][0])
+    {
+        return $this->createRulesetV2AsyncWithHttpInfo($applicationId, $campaignId, $rulesetV2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createRulesetV2AsyncWithHttpInfo
+     *
+     * Create ruleset (V2)
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\RulesetV2 $rulesetV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRulesetV2AsyncWithHttpInfo($applicationId, $campaignId, $rulesetV2, string $contentType = self::contentTypes['createRulesetV2'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\RulesetV2';
+        $request = $this->createRulesetV2Request($applicationId, $campaignId, $rulesetV2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createRulesetV2'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\RulesetV2 $rulesetV2 body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRulesetV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRulesetV2Request($applicationId, $campaignId, $rulesetV2, string $contentType = self::contentTypes['createRulesetV2'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling createRulesetV2'
+            );
+        }
+
+        // verify the required parameter 'campaignId' is set
+        if ($campaignId === null || (is_array($campaignId) && count($campaignId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaignId when calling createRulesetV2'
+            );
+        }
+
+        // verify the required parameter 'rulesetV2' is set
+        if ($rulesetV2 === null || (is_array($rulesetV2) && count($rulesetV2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rulesetV2 when calling createRulesetV2'
+            );
+        }
+
+
+        $resourcePath = '/v2/applications/{applicationId}/campaigns/{campaignId}/rulesets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{applicationId}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($campaignId !== null) {
+            $resourcePath = str_replace(
+                '{campaignId}',
+                ObjectSerializer::toPathValue($campaignId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rulesetV2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                try {
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($rulesetV2), JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                $httpBody = $rulesetV2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -40444,6 +40781,7 @@ class ManagementApi
      * @param  \DateTime|null $createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  \DateTime|null $createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  string|null $cursor A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. (optional)
+     * @param  int|null $pageSize The maximum number of message log entries to return. (optional, default to 50)
      * @param  string|null $period Filter results by time period. Choose between the available relative time frames. (optional)
      * @param  bool|null $isSuccessful Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. (optional)
      * @param  float|null $applicationId Filter results by Application ID. (optional)
@@ -40457,9 +40795,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\MessageLogEntries
      */
-    public function getMessageLogs($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
+    public function getMessageLogs($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $pageSize = 50, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
     {
-        list($response) = $this->getMessageLogsWithHttpInfo($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
+        list($response) = $this->getMessageLogsWithHttpInfo($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
         return $response;
     }
 
@@ -40475,6 +40813,7 @@ class ManagementApi
      * @param  \DateTime|null $createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  \DateTime|null $createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  string|null $cursor A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. (optional)
+     * @param  int|null $pageSize The maximum number of message log entries to return. (optional, default to 50)
      * @param  string|null $period Filter results by time period. Choose between the available relative time frames. (optional)
      * @param  bool|null $isSuccessful Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. (optional)
      * @param  float|null $applicationId Filter results by Application ID. (optional)
@@ -40488,9 +40827,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\MessageLogEntries, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMessageLogsWithHttpInfo($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
+    public function getMessageLogsWithHttpInfo($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $pageSize = 50, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
     {
-        $request = $this->getMessageLogsRequest($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
+        $request = $this->getMessageLogsRequest($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -40573,6 +40912,7 @@ class ManagementApi
      * @param  \DateTime|null $createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  \DateTime|null $createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  string|null $cursor A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. (optional)
+     * @param  int|null $pageSize The maximum number of message log entries to return. (optional, default to 50)
      * @param  string|null $period Filter results by time period. Choose between the available relative time frames. (optional)
      * @param  bool|null $isSuccessful Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. (optional)
      * @param  float|null $applicationId Filter results by Application ID. (optional)
@@ -40585,9 +40925,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMessageLogsAsync($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
+    public function getMessageLogsAsync($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $pageSize = 50, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
     {
-        return $this->getMessageLogsAsyncWithHttpInfo($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType)
+        return $this->getMessageLogsAsyncWithHttpInfo($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -40607,6 +40947,7 @@ class ManagementApi
      * @param  \DateTime|null $createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  \DateTime|null $createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  string|null $cursor A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. (optional)
+     * @param  int|null $pageSize The maximum number of message log entries to return. (optional, default to 50)
      * @param  string|null $period Filter results by time period. Choose between the available relative time frames. (optional)
      * @param  bool|null $isSuccessful Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. (optional)
      * @param  float|null $applicationId Filter results by Application ID. (optional)
@@ -40619,10 +40960,10 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMessageLogsAsyncWithHttpInfo($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
+    public function getMessageLogsAsyncWithHttpInfo($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $pageSize = 50, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
     {
         $returnType = '\TalonOne\Client\Model\MessageLogEntries';
-        $request = $this->getMessageLogsRequest($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
+        $request = $this->getMessageLogsRequest($entityType, $messageID, $changeType, $notificationIDs, $createdBefore, $createdAfter, $cursor, $pageSize, $period, $isSuccessful, $applicationId, $campaignId, $loyaltyProgramId, $responseCode, $webhookIDs, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -40670,6 +41011,7 @@ class ManagementApi
      * @param  \DateTime|null $createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  \DateTime|null $createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. Use UTC time. (optional)
      * @param  string|null $cursor A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. (optional)
+     * @param  int|null $pageSize The maximum number of message log entries to return. (optional, default to 50)
      * @param  string|null $period Filter results by time period. Choose between the available relative time frames. (optional)
      * @param  bool|null $isSuccessful Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned. (optional)
      * @param  float|null $applicationId Filter results by Application ID. (optional)
@@ -40682,7 +41024,7 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMessageLogsRequest($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
+    public function getMessageLogsRequest($entityType, $messageID = null, $changeType = null, $notificationIDs = null, $createdBefore = null, $createdAfter = null, $cursor = null, $pageSize = 50, $period = null, $isSuccessful = null, $applicationId = null, $campaignId = null, $loyaltyProgramId = null, $responseCode = null, $webhookIDs = null, string $contentType = self::contentTypes['getMessageLogs'][0])
     {
 
         // verify the required parameter 'entityType' is set
@@ -40698,6 +41040,13 @@ class ManagementApi
 
 
 
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getMessageLogs, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getMessageLogs, must be bigger than or equal to 1.');
+        }
+        
 
 
 
@@ -40763,6 +41112,15 @@ class ManagementApi
             $cursor,
             'cursor', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

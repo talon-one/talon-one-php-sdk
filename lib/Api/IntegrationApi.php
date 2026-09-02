@@ -2488,6 +2488,14 @@ class IntegrationApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -7361,11 +7369,11 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $status Filter points based on their status. (optional, default to 'active')
      * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
-     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
-     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
+     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
+     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
+     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfilePoints'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7387,11 +7395,11 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $status Filter points based on their status. (optional, default to 'active')
      * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
-     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
-     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
+     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
+     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
+     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfilePoints'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7522,11 +7530,11 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $status Filter points based on their status. (optional, default to 'active')
      * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
-     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
-     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
+     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
+     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
+     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfilePoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7551,11 +7559,11 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $status Filter points based on their status. (optional, default to 'active')
      * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
-     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
-     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
+     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
+     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
+     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfilePoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7609,11 +7617,11 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $status Filter points based on their status. (optional, default to 'active')
      * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
-     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.   To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
-     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example,  &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
+     * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
+     * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
-     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order.  To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
+     * @param  string|null $sort The field by which results should be sorted. You can enter one of the following values:  - &#x60;startDate&#x60;: Sorts the results by the start date of the points. - &#x60;expiryDate&#x60;: Sorts the results by the expiry date of the points.  By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You can only sort by one field at a time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfilePoints'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7811,7 +7819,7 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
      * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
-     * @param  string|null $subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
      * @param  string|null $loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. (optional)
      * @param  \DateTime|null $startDate Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
@@ -7839,7 +7847,7 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
      * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
-     * @param  string|null $subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
      * @param  string|null $loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. (optional)
      * @param  \DateTime|null $startDate Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
@@ -7976,7 +7984,7 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
      * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
-     * @param  string|null $subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
      * @param  string|null $loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. (optional)
      * @param  \DateTime|null $startDate Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
@@ -8007,7 +8015,7 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
      * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
-     * @param  string|null $subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
      * @param  string|null $loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. (optional)
      * @param  \DateTime|null $startDate Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
@@ -8067,7 +8075,7 @@ class IntegrationApi
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string[]|null $customerSessionIDs Filter the results by a list of customer session IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?customerSessionIDs&#x3D;id1&amp;customerSessionIDs&#x3D;id2&#x60;.  The response contains only data associated with the specified sessions. (optional)
      * @param  string[]|null $transactionUUIDs Filter the results by a list of transaction UUIDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?transactionUUIDs&#x3D;uuid1&amp;transactionUUIDs&#x3D;uuid2&#x60;.  The response contains only data associated with the specified transactions. (optional)
-     * @param  string|null $subledgerId The ID of the subledger by which we filter the data. (optional)
+     * @param  string[]|null $subledgerId Filter the results by a list of subledger IDs.  To include multiple IDs, repeat the parameter for each one, for example, &#x60;?subledgerId&#x3D;id1&amp;subledgerId&#x3D;id2&#x60;.  The response contains only data associated with the specified subledgers. (optional)
      * @param  string|null $loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file. (optional)
      * @param  \DateTime|null $startDate Date and time from which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
@@ -8141,7 +8149,7 @@ class IntegrationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $subledgerId,
             'subledgerId', // param base name
-            'string', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -8287,7 +8295,7 @@ class IntegrationApi
      *
      * List customers that have this coupon reserved
      *
-     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
+     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReservedCustomers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8305,7 +8313,7 @@ class IntegrationApi
      *
      * List customers that have this coupon reserved
      *
-     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
+     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReservedCustomers'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8432,7 +8440,7 @@ class IntegrationApi
      *
      * List customers that have this coupon reserved
      *
-     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
+     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReservedCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8453,7 +8461,7 @@ class IntegrationApi
      *
      * List customers that have this coupon reserved
      *
-     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
+     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReservedCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8503,7 +8511,7 @@ class IntegrationApi
     /**
      * Create request for operation 'getReservedCustomers'
      *
-     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp)  if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
+     * @param  string $couponValue The code of the coupon.  **Important:** The coupon code requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;SUMMER25%OFF&#x60; as &#x60;SUMMER25%25OFF&#x60;. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReservedCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10132,15 +10140,16 @@ class IntegrationApi
      * Reopen customer session
      *
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reopenCustomerSession'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\ReopenSessionResponse|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function reopenCustomerSession($customerSessionId, string $contentType = self::contentTypes['reopenCustomerSession'][0])
+    public function reopenCustomerSession($customerSessionId, $idempotencyKey = null, string $contentType = self::contentTypes['reopenCustomerSession'][0])
     {
-        list($response) = $this->reopenCustomerSessionWithHttpInfo($customerSessionId, $contentType);
+        list($response) = $this->reopenCustomerSessionWithHttpInfo($customerSessionId, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -10150,15 +10159,16 @@ class IntegrationApi
      * Reopen customer session
      *
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reopenCustomerSession'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\ReopenSessionResponse|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function reopenCustomerSessionWithHttpInfo($customerSessionId, string $contentType = self::contentTypes['reopenCustomerSession'][0])
+    public function reopenCustomerSessionWithHttpInfo($customerSessionId, $idempotencyKey = null, string $contentType = self::contentTypes['reopenCustomerSession'][0])
     {
-        $request = $this->reopenCustomerSessionRequest($customerSessionId, $contentType);
+        $request = $this->reopenCustomerSessionRequest($customerSessionId, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10263,14 +10273,15 @@ class IntegrationApi
      * Reopen customer session
      *
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reopenCustomerSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reopenCustomerSessionAsync($customerSessionId, string $contentType = self::contentTypes['reopenCustomerSession'][0])
+    public function reopenCustomerSessionAsync($customerSessionId, $idempotencyKey = null, string $contentType = self::contentTypes['reopenCustomerSession'][0])
     {
-        return $this->reopenCustomerSessionAsyncWithHttpInfo($customerSessionId, $contentType)
+        return $this->reopenCustomerSessionAsyncWithHttpInfo($customerSessionId, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10284,15 +10295,16 @@ class IntegrationApi
      * Reopen customer session
      *
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reopenCustomerSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reopenCustomerSessionAsyncWithHttpInfo($customerSessionId, string $contentType = self::contentTypes['reopenCustomerSession'][0])
+    public function reopenCustomerSessionAsyncWithHttpInfo($customerSessionId, $idempotencyKey = null, string $contentType = self::contentTypes['reopenCustomerSession'][0])
     {
         $returnType = '\TalonOne\Client\Model\ReopenSessionResponse';
-        $request = $this->reopenCustomerSessionRequest($customerSessionId, $contentType);
+        $request = $this->reopenCustomerSessionRequest($customerSessionId, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10334,12 +10346,13 @@ class IntegrationApi
      * Create request for operation 'reopenCustomerSession'
      *
      * @param  string $customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. (required)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reopenCustomerSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function reopenCustomerSessionRequest($customerSessionId, string $contentType = self::contentTypes['reopenCustomerSession'][0])
+    public function reopenCustomerSessionRequest($customerSessionId, $idempotencyKey = null, string $contentType = self::contentTypes['reopenCustomerSession'][0])
     {
 
         // verify the required parameter 'customerSessionId' is set
@@ -10350,6 +10363,7 @@ class IntegrationApi
         }
 
 
+
         $resourcePath = '/v2/customer_sessions/{customerSessionId}/reopen';
         $formParams = [];
         $queryParams = [];
@@ -10358,6 +10372,10 @@ class IntegrationApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
         // path params
         if ($customerSessionId !== null) {
@@ -10440,15 +10458,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function returnCartItems($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItems($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, $idempotencyKey = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        list($response) = $this->returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
+        list($response) = $this->returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -10461,15 +10480,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, $idempotencyKey = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
+        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10577,14 +10597,15 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function returnCartItemsAsync($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsAsync($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, $idempotencyKey = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
-        return $this->returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType)
+        return $this->returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10601,15 +10622,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsAsyncWithHttpInfo($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, $idempotencyKey = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
         $returnType = '\TalonOne\Client\Model\IntegrationStateV2';
-        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $contentType);
+        $request = $this->returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry, $runRuleEngine, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10654,12 +10676,13 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\ReturnIntegrationRequest $returnIntegrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $runRuleEngine When set to &#x60;true&#x60;, reevaluates the updated session after items are returned. Only reevaluates campaigns where &#x60;reevaluateOnReturn&#x60; is set to &#x60;true&#x60; and which produced an effect when the session was closed. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['returnCartItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, string $contentType = self::contentTypes['returnCartItems'][0])
+    public function returnCartItemsRequest($customerSessionId, $returnIntegrationRequest, $dry = null, $runRuleEngine = null, $idempotencyKey = null, string $contentType = self::contentTypes['returnCartItems'][0])
     {
 
         // verify the required parameter 'customerSessionId' is set
@@ -10675,6 +10698,7 @@ class IntegrationApi
                 'Missing the required parameter $returnIntegrationRequest when calling returnCartItems'
             );
         }
+
 
 
 
@@ -10705,6 +10729,10 @@ class IntegrationApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
         // path params
         if ($customerSessionId !== null) {
@@ -11140,15 +11168,16 @@ class IntegrationApi
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. (optional, default to false)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEventV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\IntegrationEventV2Response|string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerProfileV2409Response
      */
-    public function trackEventV2($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, string $contentType = self::contentTypes['trackEventV2'][0])
+    public function trackEventV2($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, $idempotencyKey = null, string $contentType = self::contentTypes['trackEventV2'][0])
     {
-        list($response) = $this->trackEventV2WithHttpInfo($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $contentType);
+        list($response) = $this->trackEventV2WithHttpInfo($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -11161,15 +11190,16 @@ class IntegrationApi
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. (optional, default to false)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEventV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\IntegrationEventV2Response|string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerProfileV2409Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackEventV2WithHttpInfo($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, string $contentType = self::contentTypes['trackEventV2'][0])
+    public function trackEventV2WithHttpInfo($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, $idempotencyKey = null, string $contentType = self::contentTypes['trackEventV2'][0])
     {
-        $request = $this->trackEventV2Request($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $contentType);
+        $request = $this->trackEventV2Request($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11305,14 +11335,15 @@ class IntegrationApi
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. (optional, default to false)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEventV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function trackEventV2Async($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, string $contentType = self::contentTypes['trackEventV2'][0])
+    public function trackEventV2Async($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, $idempotencyKey = null, string $contentType = self::contentTypes['trackEventV2'][0])
     {
-        return $this->trackEventV2AsyncWithHttpInfo($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $contentType)
+        return $this->trackEventV2AsyncWithHttpInfo($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11329,15 +11360,16 @@ class IntegrationApi
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. (optional, default to false)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEventV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function trackEventV2AsyncWithHttpInfo($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, string $contentType = self::contentTypes['trackEventV2'][0])
+    public function trackEventV2AsyncWithHttpInfo($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, $idempotencyKey = null, string $contentType = self::contentTypes['trackEventV2'][0])
     {
         $returnType = '\TalonOne\Client\Model\IntegrationEventV2Response';
-        $request = $this->trackEventV2Request($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $contentType);
+        $request = $this->trackEventV2Request($integrationEventV2Request, $silent, $dry, $forceCompleteEvaluation, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11382,12 +11414,13 @@ class IntegrationApi
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param  bool|null $forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;. (optional, default to false)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEventV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function trackEventV2Request($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, string $contentType = self::contentTypes['trackEventV2'][0])
+    public function trackEventV2Request($integrationEventV2Request, $silent = 'yes', $dry = null, $forceCompleteEvaluation = false, $idempotencyKey = null, string $contentType = self::contentTypes['trackEventV2'][0])
     {
 
         // verify the required parameter 'integrationEventV2Request' is set
@@ -11396,6 +11429,7 @@ class IntegrationApi
                 'Missing the required parameter $integrationEventV2Request when calling trackEventV2'
             );
         }
+
 
 
 
@@ -11436,6 +11470,10 @@ class IntegrationApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
 
 
@@ -13503,15 +13541,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 $customerProfileIntegrationRequestV2 body (required)
      * @param  bool|null $runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. (optional, default to false)
      * @param  bool|null $dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfileV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\CustomerProfileIntegrationResponseV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerProfileV2409Response
      */
-    public function updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
+    public function updateCustomerProfileV2($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
     {
-        list($response) = $this->updateCustomerProfileV2WithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $contentType);
+        list($response) = $this->updateCustomerProfileV2WithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -13524,15 +13563,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 $customerProfileIntegrationRequestV2 body (required)
      * @param  bool|null $runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. (optional, default to false)
      * @param  bool|null $dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfileV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\CustomerProfileIntegrationResponseV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerProfileV2409Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerProfileV2WithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
+    public function updateCustomerProfileV2WithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
     {
-        $request = $this->updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $contentType);
+        $request = $this->updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13654,14 +13694,15 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 $customerProfileIntegrationRequestV2 body (required)
      * @param  bool|null $runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. (optional, default to false)
      * @param  bool|null $dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfileV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerProfileV2Async($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
+    public function updateCustomerProfileV2Async($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
     {
-        return $this->updateCustomerProfileV2AsyncWithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $contentType)
+        return $this->updateCustomerProfileV2AsyncWithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13678,15 +13719,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 $customerProfileIntegrationRequestV2 body (required)
      * @param  bool|null $runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. (optional, default to false)
      * @param  bool|null $dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfileV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerProfileV2AsyncWithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
+    public function updateCustomerProfileV2AsyncWithHttpInfo($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
     {
         $returnType = '\TalonOne\Client\Model\CustomerProfileIntegrationResponseV2';
-        $request = $this->updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $contentType);
+        $request = $this->updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine, $dry, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13731,12 +13773,13 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\CustomerProfileIntegrationRequestV2 $customerProfileIntegrationRequestV2 body (required)
      * @param  bool|null $runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body. (optional, default to false)
      * @param  bool|null $dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfileV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
+    public function updateCustomerProfileV2Request($integrationId, $customerProfileIntegrationRequestV2, $runRuleEngine = false, $dry = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfileV2'][0])
     {
 
         // verify the required parameter 'integrationId' is set
@@ -13752,6 +13795,7 @@ class IntegrationApi
                 'Missing the required parameter $customerProfileIntegrationRequestV2 when calling updateCustomerProfileV2'
             );
         }
+
 
 
 
@@ -13782,6 +13826,10 @@ class IntegrationApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
         // path params
         if ($integrationId !== null) {
@@ -13873,15 +13921,16 @@ class IntegrationApi
      *
      * @param  \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest $multipleCustomerProfileIntegrationRequest body (required)
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfilesV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\MultipleCustomerProfileIntegrationResponseV2|string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent = 'yes', string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
+    public function updateCustomerProfilesV2($multipleCustomerProfileIntegrationRequest, $silent = 'yes', $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
     {
-        list($response) = $this->updateCustomerProfilesV2WithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent, $contentType);
+        list($response) = $this->updateCustomerProfilesV2WithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -13892,15 +13941,16 @@ class IntegrationApi
      *
      * @param  \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest $multipleCustomerProfileIntegrationRequest body (required)
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfilesV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\MultipleCustomerProfileIntegrationResponseV2|string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerProfilesV2WithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent = 'yes', string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
+    public function updateCustomerProfilesV2WithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent = 'yes', $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
     {
-        $request = $this->updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent, $contentType);
+        $request = $this->updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14020,14 +14070,15 @@ class IntegrationApi
      *
      * @param  \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest $multipleCustomerProfileIntegrationRequest body (required)
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfilesV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerProfilesV2Async($multipleCustomerProfileIntegrationRequest, $silent = 'yes', string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
+    public function updateCustomerProfilesV2Async($multipleCustomerProfileIntegrationRequest, $silent = 'yes', $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
     {
-        return $this->updateCustomerProfilesV2AsyncWithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent, $contentType)
+        return $this->updateCustomerProfilesV2AsyncWithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14042,15 +14093,16 @@ class IntegrationApi
      *
      * @param  \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest $multipleCustomerProfileIntegrationRequest body (required)
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfilesV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerProfilesV2AsyncWithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent = 'yes', string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
+    public function updateCustomerProfilesV2AsyncWithHttpInfo($multipleCustomerProfileIntegrationRequest, $silent = 'yes', $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
     {
         $returnType = '\TalonOne\Client\Model\MultipleCustomerProfileIntegrationResponseV2';
-        $request = $this->updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent, $contentType);
+        $request = $this->updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14093,12 +14145,13 @@ class IntegrationApi
      *
      * @param  \TalonOne\Client\Model\MultipleCustomerProfileIntegrationRequest $multipleCustomerProfileIntegrationRequest body (required)
      * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerProfilesV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent = 'yes', string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
+    public function updateCustomerProfilesV2Request($multipleCustomerProfileIntegrationRequest, $silent = 'yes', $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerProfilesV2'][0])
     {
 
         // verify the required parameter 'multipleCustomerProfileIntegrationRequest' is set
@@ -14107,6 +14160,7 @@ class IntegrationApi
                 'Missing the required parameter $multipleCustomerProfileIntegrationRequest when calling updateCustomerProfilesV2'
             );
         }
+
 
 
 
@@ -14127,6 +14181,10 @@ class IntegrationApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
 
 
@@ -14212,15 +14270,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\IntegrationRequest $integrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). (optional)
      * @param  \DateTime|null $now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerSessionV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerSessionV2409Response
      */
-    public function updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry = null, $now = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
+    public function updateCustomerSessionV2($customerSessionId, $integrationRequest, $dry = null, $now = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
     {
-        list($response) = $this->updateCustomerSessionV2WithHttpInfo($customerSessionId, $integrationRequest, $dry, $now, $contentType);
+        list($response) = $this->updateCustomerSessionV2WithHttpInfo($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey, $contentType);
         return $response;
     }
 
@@ -14233,15 +14292,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\IntegrationRequest $integrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). (optional)
      * @param  \DateTime|null $now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerSessionV2'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponse|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\UpdateCustomerSessionV2409Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerSessionV2WithHttpInfo($customerSessionId, $integrationRequest, $dry = null, $now = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
+    public function updateCustomerSessionV2WithHttpInfo($customerSessionId, $integrationRequest, $dry = null, $now = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
     {
-        $request = $this->updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry, $now, $contentType);
+        $request = $this->updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14363,14 +14423,15 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\IntegrationRequest $integrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). (optional)
      * @param  \DateTime|null $now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerSessionV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerSessionV2Async($customerSessionId, $integrationRequest, $dry = null, $now = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
+    public function updateCustomerSessionV2Async($customerSessionId, $integrationRequest, $dry = null, $now = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
     {
-        return $this->updateCustomerSessionV2AsyncWithHttpInfo($customerSessionId, $integrationRequest, $dry, $now, $contentType)
+        return $this->updateCustomerSessionV2AsyncWithHttpInfo($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14387,15 +14448,16 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\IntegrationRequest $integrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). (optional)
      * @param  \DateTime|null $now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerSessionV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerSessionV2AsyncWithHttpInfo($customerSessionId, $integrationRequest, $dry = null, $now = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
+    public function updateCustomerSessionV2AsyncWithHttpInfo($customerSessionId, $integrationRequest, $dry = null, $now = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
     {
         $returnType = '\TalonOne\Client\Model\IntegrationStateV2';
-        $request = $this->updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry, $now, $contentType);
+        $request = $this->updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry, $now, $idempotencyKey, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14440,12 +14502,13 @@ class IntegrationApi
      * @param  \TalonOne\Client\Model\IntegrationRequest $integrationRequest body (required)
      * @param  bool|null $dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests). (optional)
      * @param  \DateTime|null $now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  &gt; [!note] **Note** &gt; - It must be an RFC3339 timestamp string. &gt; - It can **only** be a date in the future. &gt; - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;. (optional)
+     * @param  string|null $idempotencyKey A unique identifier that enables idempotent processing. Include it to ensure that the request is processed only once, even if you send it several times. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerSessionV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry = null, $now = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
+    public function updateCustomerSessionV2Request($customerSessionId, $integrationRequest, $dry = null, $now = null, $idempotencyKey = null, string $contentType = self::contentTypes['updateCustomerSessionV2'][0])
     {
 
         // verify the required parameter 'customerSessionId' is set
@@ -14461,6 +14524,7 @@ class IntegrationApi
                 'Missing the required parameter $integrationRequest when calling updateCustomerSessionV2'
             );
         }
+
 
 
 
@@ -14491,6 +14555,10 @@ class IntegrationApi
             false // required
         ) ?? []);
 
+        // header params
+        if ($idempotencyKey !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotencyKey);
+        }
 
         // path params
         if ($customerSessionId !== null) {

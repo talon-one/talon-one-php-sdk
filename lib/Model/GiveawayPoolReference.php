@@ -1,6 +1,6 @@
 <?php
 /**
- * AwardGiveawayBlock1GiveawayPool
+ * GiveawayPoolReference
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * AwardGiveawayBlock1GiveawayPool Class Doc Comment
+ * GiveawayPoolReference Class Doc Comment
  *
  * @category Class
- * @description The giveaway pool from which an item is awarded.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AwardGiveawayBlock1GiveawayPool implements ModelInterface, ArrayAccess, \JsonSerializable
+class GiveawayPoolReference implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class AwardGiveawayBlock1GiveawayPool implements ModelInterface, ArrayAccess, \J
      *
      * @var string
      */
-    protected static $openAPIModelName = 'AwardGiveawayBlock_1_giveawayPool';
+    protected static $openAPIModelName = 'GiveawayPoolReference';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
