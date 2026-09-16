@@ -61,7 +61,7 @@ class UpdateAttributeValueBlock implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'string',
         'tags' => 'string[]',
         'operator' => 'string',
-        'attribute' => '\TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute',
+        'attribute' => '\TalonOne\Client\Model\AttributeBlockReference',
         'value' => 'mixed',
         'target' => '\TalonOne\Client\Model\UpdateAttributeValueBlock1Target'
     ];
@@ -500,7 +500,7 @@ class UpdateAttributeValueBlock implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets attribute
      *
-     * @return \TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute
+     * @return \TalonOne\Client\Model\AttributeBlockReference
      */
     public function getAttribute()
     {
@@ -510,7 +510,7 @@ class UpdateAttributeValueBlock implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets attribute
      *
-     * @param \TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute $attribute attribute
+     * @param \TalonOne\Client\Model\AttributeBlockReference $attribute The attribute being updated.
      *
      * @return self
      */

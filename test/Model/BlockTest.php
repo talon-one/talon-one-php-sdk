@@ -467,9 +467,45 @@ class BlockTest extends TestCase
     }
 
     /**
+     * Test attribute "recipient"
+     */
+    public function testPropertyRecipient()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "tier"
      */
     public function testPropertyTier()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "awaitsActivation"
+     */
+    public function testPropertyAwaitsActivation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "validityDuration"
+     */
+    public function testPropertyValidityDuration()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pendingDuration"
+     */
+    public function testPropertyPendingDuration()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

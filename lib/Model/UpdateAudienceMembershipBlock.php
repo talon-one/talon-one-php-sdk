@@ -62,7 +62,7 @@ class UpdateAudienceMembershipBlock implements ModelInterface, ArrayAccess, \Jso
         'tags' => 'string[]',
         'operator' => 'string',
         'profile' => 'string',
-        'audience' => '\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience'
+        'audience' => '\TalonOne\Client\Model\AudienceBlockReference'
     ];
 
     /**
@@ -542,7 +542,7 @@ class UpdateAudienceMembershipBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets audience
      *
-     * @return \TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience
+     * @return \TalonOne\Client\Model\AudienceBlockReference
      */
     public function getAudience()
     {
@@ -552,7 +552,7 @@ class UpdateAudienceMembershipBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets audience
      *
-     * @param \TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience $audience audience
+     * @param \TalonOne\Client\Model\AudienceBlockReference $audience The audience to add the customer to or remove them from.
      *
      * @return self
      */

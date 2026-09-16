@@ -60,7 +60,7 @@ class TriggerWebhookBlock implements ModelInterface, ArrayAccess, \JsonSerializa
         'id' => 'string',
         'type' => 'string',
         'tags' => 'string[]',
-        'webhook' => '\TalonOne\Client\Model\TriggerWebhookBlock1Webhook',
+        'webhook' => '\TalonOne\Client\Model\WebhookBlockReference',
         'params' => 'array<string,mixed>',
         'onError' => 'array<string,\TalonOne\Client\Model\Block[]>'
     ];
@@ -414,7 +414,7 @@ class TriggerWebhookBlock implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets webhook
      *
-     * @return \TalonOne\Client\Model\TriggerWebhookBlock1Webhook
+     * @return \TalonOne\Client\Model\WebhookBlockReference
      */
     public function getWebhook()
     {
@@ -424,7 +424,7 @@ class TriggerWebhookBlock implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets webhook
      *
-     * @param \TalonOne\Client\Model\TriggerWebhookBlock1Webhook $webhook webhook
+     * @param \TalonOne\Client\Model\WebhookBlockReference $webhook The webhook to trigger.
      *
      * @return self
      */

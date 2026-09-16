@@ -119,6 +119,9 @@ class IntegrationApi
         'getCustomerInventory' => [
             'application/json',
         ],
+        'getCustomerRewards' => [
+            'application/json',
+        ],
         'getCustomerSession' => [
             'application/json',
         ],
@@ -1200,7 +1203,7 @@ class IntegrationApi
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \TalonOne\Client\Model\Coupon|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @return \TalonOne\Client\Model\CouponWithReservations|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
     public function createCouponReservation($couponValue, $couponReservations, string $contentType = self::contentTypes['createCouponReservation'][0])
     {
@@ -1219,7 +1222,7 @@ class IntegrationApi
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \TalonOne\Client\Model\Coupon|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \TalonOne\Client\Model\CouponWithReservations|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCouponReservationWithHttpInfo($couponValue, $couponReservations, string $contentType = self::contentTypes['createCouponReservation'][0])
     {
@@ -1251,7 +1254,7 @@ class IntegrationApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\TalonOne\Client\Model\Coupon',
+                        '\TalonOne\Client\Model\CouponWithReservations',
                         $request,
                         $response,
                     );
@@ -1291,7 +1294,7 @@ class IntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\TalonOne\Client\Model\Coupon',
+                '\TalonOne\Client\Model\CouponWithReservations',
                 $request,
                 $response,
             );
@@ -1300,7 +1303,7 @@ class IntegrationApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\TalonOne\Client\Model\Coupon',
+                        '\TalonOne\Client\Model\CouponWithReservations',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1372,7 +1375,7 @@ class IntegrationApi
      */
     public function createCouponReservationAsyncWithHttpInfo($couponValue, $couponReservations, string $contentType = self::contentTypes['createCouponReservation'][0])
     {
-        $returnType = '\TalonOne\Client\Model\Coupon';
+        $returnType = '\TalonOne\Client\Model\CouponWithReservations';
         $request = $this->createCouponReservationRequest($couponValue, $couponReservations, $contentType);
 
         return $this->client
@@ -4969,6 +4972,391 @@ class IntegrationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $unlockedRewards,
             'unlockedRewards', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($integrationId !== null) {
+            $resourcePath = str_replace(
+                '{integrationId}',
+                ObjectSerializer::toPathValue($integrationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCustomerRewards
+     *
+     * List customer&#39;s rewards
+     *
+     * @param  string $integrationId The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. (required)
+     * @param  string[]|null $status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. (optional)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerRewards'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\GetCustomerRewards200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function getCustomerRewards($integrationId, $status = null, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getCustomerRewards'][0])
+    {
+        list($response) = $this->getCustomerRewardsWithHttpInfo($integrationId, $status, $pageSize, $skip, $withTotalResultSize, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCustomerRewardsWithHttpInfo
+     *
+     * List customer&#39;s rewards
+     *
+     * @param  string $integrationId The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. (required)
+     * @param  string[]|null $status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. (optional)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerRewards'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\GetCustomerRewards200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCustomerRewardsWithHttpInfo($integrationId, $status = null, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getCustomerRewards'][0])
+    {
+        $request = $this->getCustomerRewardsRequest($integrationId, $status, $pageSize, $skip, $withTotalResultSize, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\GetCustomerRewards200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\GetCustomerRewards200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\GetCustomerRewards200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCustomerRewardsAsync
+     *
+     * List customer&#39;s rewards
+     *
+     * @param  string $integrationId The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. (required)
+     * @param  string[]|null $status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. (optional)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerRewards'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCustomerRewardsAsync($integrationId, $status = null, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getCustomerRewards'][0])
+    {
+        return $this->getCustomerRewardsAsyncWithHttpInfo($integrationId, $status, $pageSize, $skip, $withTotalResultSize, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCustomerRewardsAsyncWithHttpInfo
+     *
+     * List customer&#39;s rewards
+     *
+     * @param  string $integrationId The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. (required)
+     * @param  string[]|null $status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. (optional)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerRewards'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCustomerRewardsAsyncWithHttpInfo($integrationId, $status = null, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getCustomerRewards'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\GetCustomerRewards200Response';
+        $request = $this->getCustomerRewardsRequest($integrationId, $status, $pageSize, $skip, $withTotalResultSize, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCustomerRewards'
+     *
+     * @param  string $integrationId The integration identifier for this customer profile. Must be:  - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID. (required)
+     * @param  string[]|null $status Filter results by one or more customer reward statuses.  **Note:** If no status is specified, rewards of all statuses are returned. (optional)
+     * @param  int|null $pageSize The number of items in the response. (optional, default to 1000)
+     * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $withTotalResultSize When this flag is set, the result includes the total number of results for this query. This might decrease performance on large data sets.   - When &#x60;true&#x60;: &#x60;totalResultSize&#x60; contains the total number of results for this query.  - When &#x60;false&#x60;: Only &#x60;hasMore&#x60; is returned, and it is set to &#x60;true&#x60; when there are more results than shown on the page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerRewards'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCustomerRewardsRequest($integrationId, $status = null, $pageSize = 1000, $skip = null, $withTotalResultSize = null, string $contentType = self::contentTypes['getCustomerRewards'][0])
+    {
+
+        // verify the required parameter 'integrationId' is set
+        if ($integrationId === null || (is_array($integrationId) && count($integrationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $integrationId when calling getCustomerRewards'
+            );
+        }
+
+
+        if ($pageSize !== null && $pageSize > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling IntegrationApi.getCustomerRewards, must be smaller than or equal to 1000.');
+        }
+        if ($pageSize !== null && $pageSize < 1) {
+            throw new \InvalidArgumentException('invalid value for "$pageSize" when calling IntegrationApi.getCustomerRewards, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/customer_profiles/{integrationId}/rewards';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pageSize,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $withTotalResultSize,
+            'withTotalResultSize', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -9061,8 +9449,8 @@ class IntegrationApi
      * @param  bool|null $includeFree Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. (optional, default to true)
      * @param  int|null $loyaltyProgramId Return only rewards available in this loyalty program. (optional)
      * @param  string|null $subledgerId Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
-     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
-     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
+     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. (optional)
+     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationRewardsCatalog'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9087,8 +9475,8 @@ class IntegrationApi
      * @param  bool|null $includeFree Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. (optional, default to true)
      * @param  int|null $loyaltyProgramId Return only rewards available in this loyalty program. (optional)
      * @param  string|null $subledgerId Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
-     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
-     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
+     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. (optional)
+     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationRewardsCatalog'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9222,8 +9610,8 @@ class IntegrationApi
      * @param  bool|null $includeFree Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. (optional, default to true)
      * @param  int|null $loyaltyProgramId Return only rewards available in this loyalty program. (optional)
      * @param  string|null $subledgerId Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
-     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
-     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
+     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. (optional)
+     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationRewardsCatalog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9251,8 +9639,8 @@ class IntegrationApi
      * @param  bool|null $includeFree Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. (optional, default to true)
      * @param  int|null $loyaltyProgramId Return only rewards available in this loyalty program. (optional)
      * @param  string|null $subledgerId Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
-     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
-     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
+     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. (optional)
+     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationRewardsCatalog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9309,8 +9697,8 @@ class IntegrationApi
      * @param  bool|null $includeFree Whether to include rewards that have no &#x60;pointsRequired&#x60;. These rewards are treated as free and available to all customers. (optional, default to true)
      * @param  int|null $loyaltyProgramId Return only rewards available in this loyalty program. (optional)
      * @param  string|null $subledgerId Return only rewards available in this subledger. Must be combined with &#x60;loyaltyProgramId&#x60;. To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
-     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
-     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  **Note:** &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60; are mutually exclusive. Do not send both in the same request. (optional)
+     * @param  string|null $profileIntegrationId The integration ID of the customer profile whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The required points are then checked against the card&#39;s balance. (optional)
+     * @param  string|null $loyaltyCardId The identifier of the loyalty card whose loyalty balances to include in the response. Balances are returned only when &#x60;loyaltyProgramId&#x60; is also provided.  For a reward with &#x60;pointsRequired&#x60; configured for a card-based loyalty program, eligibility can be evaluated based on both &#x60;profileIntegrationId&#x60; and &#x60;loyaltyCardId&#x60;, if both are provided. The card must also be linked to that customer profile. - If &#x60;loyaltyCardId&#x60; is not provided, the reward returns the &#x60;CARD_REQUIRED&#x60; failure code, because there is no card balance to compare &#x60;pointsRequired&#x60; against. - If &#x60;profileIntegrationId&#x60; is not provided, the reward returns the &#x60;PROFILE_REQUIRED&#x60; failure code, because its eligibility cannot be evaluated without a customer profile. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationRewardsCatalog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12297,7 +12685,7 @@ class IntegrationApi
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\RewardUnlockRejection
+     * @return \TalonOne\Client\Model\IntegrationUnlockRewardResponse|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\RewardUnlockRejection
      */
     public function unlockReward($rewardId, $integrationUnlockRewardRequest, $dry = null, string $contentType = self::contentTypes['unlockReward'][0])
     {
@@ -12317,7 +12705,7 @@ class IntegrationApi
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \TalonOne\Client\Model\IntegrationStateV2|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\RewardUnlockRejection, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \TalonOne\Client\Model\IntegrationUnlockRewardResponse|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\RewardUnlockRejection, HTTP status code, HTTP response headers (array of strings)
      */
     public function unlockRewardWithHttpInfo($rewardId, $integrationUnlockRewardRequest, $dry = null, string $contentType = self::contentTypes['unlockReward'][0])
     {
@@ -12349,7 +12737,7 @@ class IntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\TalonOne\Client\Model\IntegrationStateV2',
+                        '\TalonOne\Client\Model\IntegrationUnlockRewardResponse',
                         $request,
                         $response,
                     );
@@ -12407,7 +12795,7 @@ class IntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\TalonOne\Client\Model\IntegrationStateV2',
+                '\TalonOne\Client\Model\IntegrationUnlockRewardResponse',
                 $request,
                 $response,
             );
@@ -12416,7 +12804,7 @@ class IntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\TalonOne\Client\Model\IntegrationStateV2',
+                        '\TalonOne\Client\Model\IntegrationUnlockRewardResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12514,7 +12902,7 @@ class IntegrationApi
      */
     public function unlockRewardAsyncWithHttpInfo($rewardId, $integrationUnlockRewardRequest, $dry = null, string $contentType = self::contentTypes['unlockReward'][0])
     {
-        $returnType = '\TalonOne\Client\Model\IntegrationStateV2';
+        $returnType = '\TalonOne\Client\Model\IntegrationUnlockRewardResponse';
         $request = $this->unlockRewardRequest($rewardId, $integrationUnlockRewardRequest, $dry, $contentType);
 
         return $this->client

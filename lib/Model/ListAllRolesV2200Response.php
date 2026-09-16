@@ -315,7 +315,7 @@ class ListAllRolesV2200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets totalResultSize
      *
-     * @param int $totalResultSize totalResultSize
+     * @param int $totalResultSize The total number of roles returned.
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class ListAllRolesV2200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \TalonOne\Client\Model\RoleV2[] $data data
+     * @param \TalonOne\Client\Model\RoleV2[] $data The list of roles.
      *
      * @return self
      */

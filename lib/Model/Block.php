@@ -68,25 +68,25 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'value' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value',
         'partial' => 'bool',
-        'target' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1Target',
+        'target' => '\TalonOne\Client\Model\AwardLoyaltyPointsTarget',
         'expression' => 'mixed[]',
         'notificationType' => 'string',
         'title' => 'string',
         'body' => 'string',
         'sku' => 'string',
         'quantity' => 'string',
-        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolReference',
+        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolBlockReference',
         'profile' => 'string',
-        'audience' => '\TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience',
+        'audience' => '\TalonOne\Client\Model\AudienceBlockReference',
         'program' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Program',
         'subledger' => 'string',
         'balance' => 'string',
         'redeem' => 'bool',
-        'achievement' => '\TalonOne\Client\Model\CheckAchievementBlock1Achievement',
-        'attribute' => '\TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute',
-        'webhook' => '\TalonOne\Client\Model\TriggerWebhookBlock1Webhook',
+        'achievement' => '\TalonOne\Client\Model\AchievementBlockReference',
+        'attribute' => '\TalonOne\Client\Model\AttributeBlockReference',
+        'webhook' => '\TalonOne\Client\Model\WebhookBlockReference',
         'params' => 'array<string,mixed>',
-        'customEffect' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect',
+        'customEffect' => '\TalonOne\Client\Model\CustomEffectBlockReference',
         'eventType' => 'string',
         'matchers' => '\TalonOne\Client\Model\Block[]',
         'action' => 'string',
@@ -101,7 +101,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => 'string',
         'pattern' => 'string',
         'friendId' => 'string',
-        'tier' => '\TalonOne\Client\Model\CheckTierBlock1Tier'
+        'recipient' => 'string',
+        'tier' => '\TalonOne\Client\Model\TierBlockReference',
+        'awaitsActivation' => 'bool',
+        'validityDuration' => 'string',
+        'pendingDuration' => 'string'
     ];
 
     /**
@@ -155,7 +159,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => null,
         'pattern' => null,
         'friendId' => null,
-        'tier' => null
+        'recipient' => null,
+        'tier' => null,
+        'awaitsActivation' => null,
+        'validityDuration' => null,
+        'pendingDuration' => null
     ];
 
     /**
@@ -207,7 +215,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => false,
         'pattern' => false,
         'friendId' => false,
-        'tier' => false
+        'recipient' => false,
+        'tier' => false,
+        'awaitsActivation' => false,
+        'validityDuration' => false,
+        'pendingDuration' => false
     ];
 
     /**
@@ -339,7 +351,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => 'validCharacters',
         'pattern' => 'pattern',
         'friendId' => 'friendId',
-        'tier' => 'tier'
+        'recipient' => 'recipient',
+        'tier' => 'tier',
+        'awaitsActivation' => 'awaitsActivation',
+        'validityDuration' => 'validityDuration',
+        'pendingDuration' => 'pendingDuration'
     ];
 
     /**
@@ -391,7 +407,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => 'setValidCharacters',
         'pattern' => 'setPattern',
         'friendId' => 'setFriendId',
-        'tier' => 'setTier'
+        'recipient' => 'setRecipient',
+        'tier' => 'setTier',
+        'awaitsActivation' => 'setAwaitsActivation',
+        'validityDuration' => 'setValidityDuration',
+        'pendingDuration' => 'setPendingDuration'
     ];
 
     /**
@@ -443,7 +463,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'validCharacters' => 'getValidCharacters',
         'pattern' => 'getPattern',
         'friendId' => 'getFriendId',
-        'tier' => 'getTier'
+        'recipient' => 'getRecipient',
+        'tier' => 'getTier',
+        'awaitsActivation' => 'getAwaitsActivation',
+        'validityDuration' => 'getValidityDuration',
+        'pendingDuration' => 'getPendingDuration'
     ];
 
     /**
@@ -509,6 +533,8 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ACTION_ADD_FREE_ITEM_EFFECT = 'addFreeItemEffect';
     public const ACTION_CUSTOM_EFFECT = 'customEffect';
     public const ACTION_CALL_API = 'callApi';
+    public const RECIPIENT_CURRENT = 'Current';
+    public const RECIPIENT_ADVOCATE = 'Advocate';
 
     /**
      * Gets allowable values of the enum
@@ -577,6 +603,19 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRecipientAllowableValues()
+    {
+        return [
+            self::RECIPIENT_CURRENT,
+            self::RECIPIENT_ADVOCATE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -634,7 +673,11 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('validCharacters', $data ?? [], null);
         $this->setIfExists('pattern', $data ?? [], null);
         $this->setIfExists('friendId', $data ?? [], null);
+        $this->setIfExists('recipient', $data ?? [], null);
         $this->setIfExists('tier', $data ?? [], null);
+        $this->setIfExists('awaitsActivation', $data ?? [], null);
+        $this->setIfExists('validityDuration', $data ?? [], null);
+        $this->setIfExists('pendingDuration', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -790,6 +833,18 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['friendId'] === null) {
             $invalidProperties[] = "'friendId' can't be null";
         }
+        if ($this->container['recipient'] === null) {
+            $invalidProperties[] = "'recipient' can't be null";
+        }
+        $allowedValues = $this->getRecipientAllowableValues();
+        if (!is_null($this->container['recipient']) && !in_array($this->container['recipient'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'recipient', must be one of '%s'",
+                $this->container['recipient'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['tier'] === null) {
             $invalidProperties[] = "'tier' can't be null";
         }
@@ -1074,7 +1129,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets partial
      *
-     * @param bool $partial When set to `true`, applies a partial item reward if the remaining budget is insufficient to award the full reward.
+     * @param bool $partial When `true`, applies a partial points reward when the requested value exceeds the configured budget.
      *
      * @return self
      */
@@ -1091,7 +1146,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets target
      *
-     * @return \TalonOne\Client\Model\TriggerCustomEffectBlock1Target
+     * @return \TalonOne\Client\Model\AwardLoyaltyPointsTarget
      */
     public function getTarget()
     {
@@ -1101,7 +1156,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target
      *
-     * @param \TalonOne\Client\Model\TriggerCustomEffectBlock1Target $target target
+     * @param \TalonOne\Client\Model\AwardLoyaltyPointsTarget $target target
      *
      * @return self
      */
@@ -1280,7 +1335,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets giveawayPool
      *
-     * @return \TalonOne\Client\Model\GiveawayPoolReference
+     * @return \TalonOne\Client\Model\GiveawayPoolBlockReference
      */
     public function getGiveawayPool()
     {
@@ -1290,7 +1345,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets giveawayPool
      *
-     * @param \TalonOne\Client\Model\GiveawayPoolReference $giveawayPool The giveaway pool from which an item is awarded.
+     * @param \TalonOne\Client\Model\GiveawayPoolBlockReference $giveawayPool The giveaway pool from which an item is awarded.
      *
      * @return self
      */
@@ -1344,7 +1399,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets audience
      *
-     * @return \TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience
+     * @return \TalonOne\Client\Model\AudienceBlockReference
      */
     public function getAudience()
     {
@@ -1354,7 +1409,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets audience
      *
-     * @param \TalonOne\Client\Model\UpdateAudienceMembershipBlock1Audience $audience audience
+     * @param \TalonOne\Client\Model\AudienceBlockReference $audience The audience to add the customer to or remove them from.
      *
      * @return self
      */
@@ -1489,7 +1544,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets achievement
      *
-     * @return \TalonOne\Client\Model\CheckAchievementBlock1Achievement
+     * @return \TalonOne\Client\Model\AchievementBlockReference
      */
     public function getAchievement()
     {
@@ -1499,7 +1554,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets achievement
      *
-     * @param \TalonOne\Client\Model\CheckAchievementBlock1Achievement $achievement achievement
+     * @param \TalonOne\Client\Model\AchievementBlockReference $achievement The achievement to check for.
      *
      * @return self
      */
@@ -1516,7 +1571,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attribute
      *
-     * @return \TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute
+     * @return \TalonOne\Client\Model\AttributeBlockReference
      */
     public function getAttribute()
     {
@@ -1526,7 +1581,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attribute
      *
-     * @param \TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute $attribute attribute
+     * @param \TalonOne\Client\Model\AttributeBlockReference $attribute The attribute being updated.
      *
      * @return self
      */
@@ -1543,7 +1598,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets webhook
      *
-     * @return \TalonOne\Client\Model\TriggerWebhookBlock1Webhook
+     * @return \TalonOne\Client\Model\WebhookBlockReference
      */
     public function getWebhook()
     {
@@ -1553,7 +1608,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets webhook
      *
-     * @param \TalonOne\Client\Model\TriggerWebhookBlock1Webhook $webhook webhook
+     * @param \TalonOne\Client\Model\WebhookBlockReference $webhook The webhook to trigger.
      *
      * @return self
      */
@@ -1597,7 +1652,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customEffect
      *
-     * @return \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect
+     * @return \TalonOne\Client\Model\CustomEffectBlockReference
      */
     public function getCustomEffect()
     {
@@ -1607,7 +1662,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customEffect
      *
-     * @param \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect $customEffect customEffect
+     * @param \TalonOne\Client\Model\CustomEffectBlockReference $customEffect The custom effect to trigger.
      *
      * @return self
      */
@@ -1860,7 +1915,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets startDate
      *
-     * @param mixed|null $startDate Timestamp at which point the referral code becomes valid.
+     * @param mixed|null $startDate Timestamp at which the awarded points become active. Mutually exclusive with `awaitsActivation`.
      *
      * @return self
      */
@@ -1894,7 +1949,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiryDate
      *
-     * @param mixed|null $expiryDate Expiration date of the referral code. Referral code never expires if this is omitted.
+     * @param mixed|null $expiryDate Timestamp at which the awarded points expire. Mutually exclusive with `validityDuration`.
      *
      * @return self
      */
@@ -2031,9 +2086,46 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets recipient
+     *
+     * @return string
+     */
+    public function getRecipient()
+    {
+        return $this->container['recipient'];
+    }
+
+    /**
+     * Sets recipient
+     *
+     * @param string $recipient The customer profile that receives the points. `Current` targets the customer in the current session; `Advocate` targets the person who invited their friend via referral program.
+     *
+     * @return self
+     */
+    public function setRecipient($recipient)
+    {
+        if (is_null($recipient)) {
+            throw new \InvalidArgumentException('non-nullable recipient cannot be null');
+        }
+        $allowedValues = $this->getRecipientAllowableValues();
+        if (!in_array($recipient, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'recipient', must be one of '%s'",
+                    $recipient,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
      * Gets tier
      *
-     * @return \TalonOne\Client\Model\CheckTierBlock1Tier
+     * @return \TalonOne\Client\Model\TierBlockReference
      */
     public function getTier()
     {
@@ -2043,7 +2135,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tier
      *
-     * @param \TalonOne\Client\Model\CheckTierBlock1Tier $tier tier
+     * @param \TalonOne\Client\Model\TierBlockReference $tier The tier to check for.
      *
      * @return self
      */
@@ -2053,6 +2145,87 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tier cannot be null');
         }
         $this->container['tier'] = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets awaitsActivation
+     *
+     * @return bool|null
+     */
+    public function getAwaitsActivation()
+    {
+        return $this->container['awaitsActivation'];
+    }
+
+    /**
+     * Sets awaitsActivation
+     *
+     * @param bool|null $awaitsActivation When `true`, the awarded points require manual or delayed activation before becoming active. Mutually exclusive with `startDate`.
+     *
+     * @return self
+     */
+    public function setAwaitsActivation($awaitsActivation)
+    {
+        if (is_null($awaitsActivation)) {
+            throw new \InvalidArgumentException('non-nullable awaitsActivation cannot be null');
+        }
+        $this->container['awaitsActivation'] = $awaitsActivation;
+
+        return $this;
+    }
+
+    /**
+     * Gets validityDuration
+     *
+     * @return string|null
+     */
+    public function getValidityDuration()
+    {
+        return $this->container['validityDuration'];
+    }
+
+    /**
+     * Sets validityDuration
+     *
+     * @param string|null $validityDuration Relative duration (e.g. `30D`) after which the awarded points expire. Mutually exclusive with `expiryDate`.
+     *
+     * @return self
+     */
+    public function setValidityDuration($validityDuration)
+    {
+        if (is_null($validityDuration)) {
+            throw new \InvalidArgumentException('non-nullable validityDuration cannot be null');
+        }
+        $this->container['validityDuration'] = $validityDuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets pendingDuration
+     *
+     * @return string|null
+     */
+    public function getPendingDuration()
+    {
+        return $this->container['pendingDuration'];
+    }
+
+    /**
+     * Sets pendingDuration
+     *
+     * @param string|null $pendingDuration Relative duration (e.g. `3D`) the awarded points remain pending before activation.
+     *
+     * @return self
+     */
+    public function setPendingDuration($pendingDuration)
+    {
+        if (is_null($pendingDuration)) {
+            throw new \InvalidArgumentException('non-nullable pendingDuration cannot be null');
+        }
+        $this->container['pendingDuration'] = $pendingDuration;
 
         return $this;
     }

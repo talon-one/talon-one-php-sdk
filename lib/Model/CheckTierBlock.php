@@ -62,7 +62,7 @@ class CheckTierBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'string[]',
         'operator' => 'string',
         'subledger' => 'string',
-        'tier' => '\TalonOne\Client\Model\CheckTierBlock1Tier',
+        'tier' => '\TalonOne\Client\Model\TierBlockReference',
         'onFailure' => '\TalonOne\Client\Model\Block[]'
     ];
 
@@ -515,7 +515,7 @@ class CheckTierBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tier
      *
-     * @return \TalonOne\Client\Model\CheckTierBlock1Tier
+     * @return \TalonOne\Client\Model\TierBlockReference
      */
     public function getTier()
     {
@@ -525,7 +525,7 @@ class CheckTierBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tier
      *
-     * @param \TalonOne\Client\Model\CheckTierBlock1Tier $tier tier
+     * @param \TalonOne\Client\Model\TierBlockReference $tier The tier to check for.
      *
      * @return self
      */

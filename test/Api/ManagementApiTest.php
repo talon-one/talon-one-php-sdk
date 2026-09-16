@@ -192,6 +192,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for createCampaign
+     *
+     * Create campaign.
+     *
+     */
+    public function testCreateCampaign()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for createCampaignFromTemplate
      *
      * Create campaign from campaign template.

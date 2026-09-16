@@ -63,7 +63,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'string',
         'attributes' => 'object',
         'responseContent' => 'string[]',
-        'loyaltyCards' => 'string[]'
+        'loyaltyCards' => 'string[]',
+        'rewardIntegrationIds' => 'string[]'
     ];
 
     /**
@@ -80,7 +81,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => null,
         'attributes' => null,
         'responseContent' => null,
-        'loyaltyCards' => null
+        'loyaltyCards' => null,
+        'rewardIntegrationIds' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => false,
         'attributes' => false,
         'responseContent' => false,
-        'loyaltyCards' => false
+        'loyaltyCards' => false,
+        'rewardIntegrationIds' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'type',
         'attributes' => 'attributes',
         'responseContent' => 'responseContent',
-        'loyaltyCards' => 'loyaltyCards'
+        'loyaltyCards' => 'loyaltyCards',
+        'rewardIntegrationIds' => 'rewardIntegrationIds'
     ];
 
     /**
@@ -205,7 +209,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'setType',
         'attributes' => 'setAttributes',
         'responseContent' => 'setResponseContent',
-        'loyaltyCards' => 'setLoyaltyCards'
+        'loyaltyCards' => 'setLoyaltyCards',
+        'rewardIntegrationIds' => 'setRewardIntegrationIds'
     ];
 
     /**
@@ -220,7 +225,8 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'getType',
         'attributes' => 'getAttributes',
         'responseContent' => 'getResponseContent',
-        'loyaltyCards' => 'getLoyaltyCards'
+        'loyaltyCards' => 'getLoyaltyCards',
+        'rewardIntegrationIds' => 'getRewardIntegrationIds'
     ];
 
     /**
@@ -316,6 +322,7 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
         $this->setIfExists('loyaltyCards', $data ?? [], null);
+        $this->setIfExists('rewardIntegrationIds', $data ?? [], null);
     }
 
     /**
@@ -588,6 +595,33 @@ class IntegrationEventV2Request implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('invalid value for $loyaltyCards when calling IntegrationEventV2Request., number of items must be less than or equal to 1.');
         }
         $this->container['loyaltyCards'] = $loyaltyCards;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardIntegrationIds
+     *
+     * @return string[]|null
+     */
+    public function getRewardIntegrationIds()
+    {
+        return $this->container['rewardIntegrationIds'];
+    }
+
+    /**
+     * Sets rewardIntegrationIds
+     *
+     * @param string[]|null $rewardIntegrationIds The integration IDs of the unlocked rewards that can be used in this event.
+     *
+     * @return self
+     */
+    public function setRewardIntegrationIds($rewardIntegrationIds)
+    {
+        if (is_null($rewardIntegrationIds)) {
+            throw new \InvalidArgumentException('non-nullable rewardIntegrationIds cannot be null');
+        }
+        $this->container['rewardIntegrationIds'] = $rewardIntegrationIds;
 
         return $this;
     }

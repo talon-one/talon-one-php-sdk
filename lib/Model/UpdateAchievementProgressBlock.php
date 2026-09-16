@@ -62,7 +62,7 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
         'tags' => 'string[]',
         'operator' => 'string',
         'value' => 'string',
-        'achievement' => '\TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement'
+        'achievement' => '\TalonOne\Client\Model\AchievementBlockReference'
     ];
 
     /**
@@ -506,7 +506,7 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets achievement
      *
-     * @return \TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement
+     * @return \TalonOne\Client\Model\AchievementBlockReference
      */
     public function getAchievement()
     {
@@ -516,7 +516,7 @@ class UpdateAchievementProgressBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets achievement
      *
-     * @param \TalonOne\Client\Model\UpdateAchievementProgressBlock1Achievement $achievement achievement
+     * @param \TalonOne\Client\Model\AchievementBlockReference $achievement The achievement to update.
      *
      * @return self
      */

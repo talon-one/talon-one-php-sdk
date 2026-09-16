@@ -346,7 +346,7 @@ class RoleV2PermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets logicalOperations
      *
-     * @param string[] $logicalOperations List of logical operations in the permission set. Each logical operation must be shown under the `x-permission` tag on an endpoint level.
+     * @param string[] $logicalOperations List of logical operations in the permission set.
      *
      * @return self
      */

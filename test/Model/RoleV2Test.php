@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * RoleV2Test Class Doc Comment
  *
  * @category    Class
- * @description RoleV2
+ * @description Represents a role with its associated permissions and members.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
