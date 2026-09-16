@@ -35,6 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * Effect Class Doc Comment
  *
  * @category Class
+ * @description A generic effect that is fired by a triggered campaign. The &#x60;effectType&#x60; field selects the concrete effect variant and the shape of &#x60;props&#x60;.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -42,7 +43,7 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'effectType';
 
     /**
      * The original name of the model.
@@ -74,7 +75,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         'selectedPrice' => 'float',
         'adjustmentReferenceId' => 'string',
         'rewardId' => 'int',
-        'props' => 'mixed'
+        'props' => '\TalonOne\Client\Model\WillAwardGiveawayEffectProps'
     ];
 
     /**
@@ -128,7 +129,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         'selectedPrice' => false,
         'adjustmentReferenceId' => false,
         'rewardId' => false,
-        'props' => true
+        'props' => false
     ];
 
     /**
@@ -330,6 +331,19 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const EFFECT_TYPE_WILL_AWARD_GIVEAWAY = 'willAwardGiveaway';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEffectTypeAllowableValues()
+    {
+        return [
+            self::EFFECT_TYPE_WILL_AWARD_GIVEAWAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -364,6 +378,9 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('adjustmentReferenceId', $data ?? [], null);
         $this->setIfExists('rewardId', $data ?? [], null);
         $this->setIfExists('props', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['effectType'] = static::$openAPIModelName;
     }
 
     /**
@@ -408,8 +425,17 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['effectType'] === null) {
             $invalidProperties[] = "'effectType' can't be null";
         }
-        if ($this->container['props'] === null && !$this->isNullableSetToNull('props')) {
-            $invalidProperties[] = "'props' is required";
+        $allowedValues = $this->getEffectTypeAllowableValues();
+        if (!is_null($this->container['effectType']) && !in_array($this->container['effectType'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'effectType', must be one of '%s'",
+                $this->container['effectType'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['props'] === null) {
+            $invalidProperties[] = "'props' can't be null";
         }
         return $invalidProperties;
     }
@@ -574,7 +600,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets effectType
      *
-     * @param string $effectType The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+     * @param string $effectType An effect discriminator of type `willAwardGiveaway`.
      *
      * @return self
      */
@@ -582,6 +608,16 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($effectType)) {
             throw new \InvalidArgumentException('non-nullable effectType cannot be null');
+        }
+        $allowedValues = $this->getEffectTypeAllowableValues();
+        if (!in_array($effectType, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'effectType', must be one of '%s'",
+                    $effectType,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['effectType'] = $effectType;
 
@@ -888,7 +924,7 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets props
      *
-     * @return mixed|null
+     * @return \TalonOne\Client\Model\WillAwardGiveawayEffectProps
      */
     public function getProps()
     {
@@ -898,21 +934,14 @@ class Effect implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets props
      *
-     * @param mixed|null $props props
+     * @param \TalonOne\Client\Model\WillAwardGiveawayEffectProps $props The properties of the `willAwardGiveaway` effect.
      *
      * @return self
      */
     public function setProps($props)
     {
         if (is_null($props)) {
-            array_push($this->openAPINullablesSetToNull, 'props');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('props', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable props cannot be null');
         }
         $this->container['props'] = $props;
 

@@ -104,6 +104,9 @@ class ManagementApi
         'createBatchLoyaltyCards' => [
             'application/json',
         ],
+        'createCampaign' => [
+            'application/json',
+        ],
         'createCampaignFromTemplate' => [
             'application/json',
         ],
@@ -3680,6 +3683,306 @@ class ManagementApi
                 }
             } else {
                 $httpBody = $loyaltyCardBatch;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createCampaign
+     *
+     * Create campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\NewCampaign $newCampaign body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaign'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\Campaign
+     */
+    public function createCampaign($applicationId, $newCampaign, string $contentType = self::contentTypes['createCampaign'][0])
+    {
+        list($response) = $this->createCampaignWithHttpInfo($applicationId, $newCampaign, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createCampaignWithHttpInfo
+     *
+     * Create campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\NewCampaign $newCampaign body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaign'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\Campaign, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createCampaignWithHttpInfo($applicationId, $newCampaign, string $contentType = self::contentTypes['createCampaign'][0])
+    {
+        $request = $this->createCampaignRequest($applicationId, $newCampaign, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\Campaign',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\Campaign',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\Campaign',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createCampaignAsync
+     *
+     * Create campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\NewCampaign $newCampaign body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCampaignAsync($applicationId, $newCampaign, string $contentType = self::contentTypes['createCampaign'][0])
+    {
+        return $this->createCampaignAsyncWithHttpInfo($applicationId, $newCampaign, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createCampaignAsyncWithHttpInfo
+     *
+     * Create campaign
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\NewCampaign $newCampaign body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCampaignAsyncWithHttpInfo($applicationId, $newCampaign, string $contentType = self::contentTypes['createCampaign'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\Campaign';
+        $request = $this->createCampaignRequest($applicationId, $newCampaign, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createCampaign'
+     *
+     * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
+     * @param  \TalonOne\Client\Model\NewCampaign $newCampaign body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createCampaignRequest($applicationId, $newCampaign, string $contentType = self::contentTypes['createCampaign'][0])
+    {
+
+        // verify the required parameter 'applicationId' is set
+        if ($applicationId === null || (is_array($applicationId) && count($applicationId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $applicationId when calling createCampaign'
+            );
+        }
+
+        // verify the required parameter 'newCampaign' is set
+        if ($newCampaign === null || (is_array($newCampaign) && count($newCampaign) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $newCampaign when calling createCampaign'
+            );
+        }
+
+
+        $resourcePath = '/v1/applications/{applicationId}/campaigns';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($applicationId !== null) {
+            $resourcePath = str_replace(
+                '{applicationId}',
+                ObjectSerializer::toPathValue($applicationId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($newCampaign)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                try {
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($newCampaign), JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                $httpBody = $newCampaign;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -17466,15 +17769,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  \DateTime|null $endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export. (optional)
      * @param  string|null $balances Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list. (optional)
+     * @param  string[]|null $subledgerIds Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyBalances'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function exportLoyaltyBalances($loyaltyProgramId, $endDate = null, $balances = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
+    public function exportLoyaltyBalances($loyaltyProgramId, $endDate = null, $balances = null, $subledgerIds = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
     {
-        list($response) = $this->exportLoyaltyBalancesWithHttpInfo($loyaltyProgramId, $endDate, $balances, $contentType);
+        list($response) = $this->exportLoyaltyBalancesWithHttpInfo($loyaltyProgramId, $endDate, $balances, $subledgerIds, $contentType);
         return $response;
     }
 
@@ -17486,15 +17790,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  \DateTime|null $endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export. (optional)
      * @param  string|null $balances Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list. (optional)
+     * @param  string[]|null $subledgerIds Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyBalances'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function exportLoyaltyBalancesWithHttpInfo($loyaltyProgramId, $endDate = null, $balances = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
+    public function exportLoyaltyBalancesWithHttpInfo($loyaltyProgramId, $endDate = null, $balances = null, $subledgerIds = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
     {
-        $request = $this->exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate, $balances, $contentType);
+        $request = $this->exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate, $balances, $subledgerIds, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17601,14 +17906,15 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  \DateTime|null $endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export. (optional)
      * @param  string|null $balances Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list. (optional)
+     * @param  string[]|null $subledgerIds Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyBalances'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyBalancesAsync($loyaltyProgramId, $endDate = null, $balances = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
+    public function exportLoyaltyBalancesAsync($loyaltyProgramId, $endDate = null, $balances = null, $subledgerIds = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
     {
-        return $this->exportLoyaltyBalancesAsyncWithHttpInfo($loyaltyProgramId, $endDate, $balances, $contentType)
+        return $this->exportLoyaltyBalancesAsyncWithHttpInfo($loyaltyProgramId, $endDate, $balances, $subledgerIds, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17624,15 +17930,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  \DateTime|null $endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export. (optional)
      * @param  string|null $balances Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list. (optional)
+     * @param  string[]|null $subledgerIds Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyBalances'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyBalancesAsyncWithHttpInfo($loyaltyProgramId, $endDate = null, $balances = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
+    public function exportLoyaltyBalancesAsyncWithHttpInfo($loyaltyProgramId, $endDate = null, $balances = null, $subledgerIds = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
     {
         $returnType = 'string';
-        $request = $this->exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate, $balances, $contentType);
+        $request = $this->exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate, $balances, $subledgerIds, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17676,12 +17983,13 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  \DateTime|null $endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. &gt; - This parameter does not affect the &#x60;currentTier&#x60; field in the CSV file, which shows the customer&#39;s tier at the time of export. (optional)
      * @param  string|null $balances Filters which balance fields are included in the CSV export. &#x60;currentBalance&#x60; is always returned.  By default, all balance fields are included. When this parameter is provided, only the listed fields contain values and the rest are returned empty.  Accepted values: - &#x60;currentBalance&#x60; - &#x60;pendingBalance&#x60; - &#x60;expiredBalance&#x60; - &#x60;spentBalance&#x60; - &#x60;negativeBalance&#x60;  Multiple values must be provided as a comma-separated list. (optional)
+     * @param  string[]|null $subledgerIds Filter results by an array of subledger IDs. If no value is provided, the export includes all subledgers and main ledger data for the specified loyalty program.  To specify the main ledger, provide an empty string (\&quot;\&quot;). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyBalances'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate = null, $balances = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
+    public function exportLoyaltyBalancesRequest($loyaltyProgramId, $endDate = null, $balances = null, $subledgerIds = null, string $contentType = self::contentTypes['exportLoyaltyBalances'][0])
     {
 
         // verify the required parameter 'loyaltyProgramId' is set
@@ -17690,6 +17998,7 @@ class ManagementApi
                 'Missing the required parameter $loyaltyProgramId when calling exportLoyaltyBalances'
             );
         }
+
 
 
 
@@ -17717,6 +18026,15 @@ class ManagementApi
             'string', // openApiType
             'form', // style
             true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subledgerIds,
+            'subledgerIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
             false // required
         ) ?? []);
 
@@ -49768,6 +50086,7 @@ class ManagementApi
      * List achievements
      *
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int[]|null $campaignId Filter results by one or more campaign IDs.  To include multiple IDs, repeat the parameter for each one, for example,&#x60;?campaignId&#x3D;123&amp;campaignId&#x3D;456&#x60;. The response contains only achievements associated with the specified campaigns. (optional)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $title Filter by the display name of the achievement. (optional)
@@ -49778,9 +50097,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \TalonOne\Client\Model\ListAchievementsV2200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function listAchievementsV2($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    public function listAchievementsV2($pageSize = 50, $campaignId = null, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
     {
-        list($response) = $this->listAchievementsV2WithHttpInfo($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+        list($response) = $this->listAchievementsV2WithHttpInfo($pageSize, $campaignId, $skip, $sort, $title, $applicationId, $contentType);
         return $response;
     }
 
@@ -49790,6 +50109,7 @@ class ManagementApi
      * List achievements
      *
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int[]|null $campaignId Filter results by one or more campaign IDs.  To include multiple IDs, repeat the parameter for each one, for example,&#x60;?campaignId&#x3D;123&amp;campaignId&#x3D;456&#x60;. The response contains only achievements associated with the specified campaigns. (optional)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $title Filter by the display name of the achievement. (optional)
@@ -49800,9 +50120,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return array of \TalonOne\Client\Model\ListAchievementsV2200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAchievementsV2WithHttpInfo($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    public function listAchievementsV2WithHttpInfo($pageSize = 50, $campaignId = null, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
     {
-        $request = $this->listAchievementsV2Request($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+        $request = $this->listAchievementsV2Request($pageSize, $campaignId, $skip, $sort, $title, $applicationId, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -49907,6 +50227,7 @@ class ManagementApi
      * List achievements
      *
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int[]|null $campaignId Filter results by one or more campaign IDs.  To include multiple IDs, repeat the parameter for each one, for example,&#x60;?campaignId&#x3D;123&amp;campaignId&#x3D;456&#x60;. The response contains only achievements associated with the specified campaigns. (optional)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $title Filter by the display name of the achievement. (optional)
@@ -49916,9 +50237,9 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAchievementsV2Async($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    public function listAchievementsV2Async($pageSize = 50, $campaignId = null, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
     {
-        return $this->listAchievementsV2AsyncWithHttpInfo($pageSize, $skip, $sort, $title, $applicationId, $contentType)
+        return $this->listAchievementsV2AsyncWithHttpInfo($pageSize, $campaignId, $skip, $sort, $title, $applicationId, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -49932,6 +50253,7 @@ class ManagementApi
      * List achievements
      *
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int[]|null $campaignId Filter results by one or more campaign IDs.  To include multiple IDs, repeat the parameter for each one, for example,&#x60;?campaignId&#x3D;123&amp;campaignId&#x3D;456&#x60;. The response contains only achievements associated with the specified campaigns. (optional)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $title Filter by the display name of the achievement. (optional)
@@ -49941,10 +50263,10 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAchievementsV2AsyncWithHttpInfo($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    public function listAchievementsV2AsyncWithHttpInfo($pageSize = 50, $campaignId = null, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
     {
         $returnType = '\TalonOne\Client\Model\ListAchievementsV2200Response';
-        $request = $this->listAchievementsV2Request($pageSize, $skip, $sort, $title, $applicationId, $contentType);
+        $request = $this->listAchievementsV2Request($pageSize, $campaignId, $skip, $sort, $title, $applicationId, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -49986,6 +50308,7 @@ class ManagementApi
      * Create request for operation 'listAchievementsV2'
      *
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
+     * @param  int[]|null $campaignId Filter results by one or more campaign IDs.  To include multiple IDs, repeat the parameter for each one, for example,&#x60;?campaignId&#x3D;123&amp;campaignId&#x3D;456&#x60;. The response contains only achievements associated with the specified campaigns. (optional)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
      * @param  string|null $sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. (optional)
      * @param  string|null $title Filter by the display name of the achievement. (optional)
@@ -49995,7 +50318,7 @@ class ManagementApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAchievementsV2Request($pageSize = 50, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
+    public function listAchievementsV2Request($pageSize = 50, $campaignId = null, $skip = null, $sort = null, $title = null, $applicationId = null, string $contentType = self::contentTypes['listAchievementsV2'][0])
     {
 
         if ($pageSize !== null && $pageSize > 1000) {
@@ -50005,6 +50328,7 @@ class ManagementApi
             throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.listAchievementsV2, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -50022,6 +50346,15 @@ class ManagementApi
             $pageSize,
             'pageSize', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaignId,
+            'campaignId', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

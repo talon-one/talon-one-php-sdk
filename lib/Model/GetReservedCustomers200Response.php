@@ -58,7 +58,7 @@ class GetReservedCustomers200Response implements ModelInterface, ArrayAccess, \J
      */
     protected static $openAPITypes = [
         'totalResultSize' => 'int',
-        'data' => '\TalonOne\Client\Model\CustomerProfile[]'
+        'data' => '\TalonOne\Client\Model\CustomerReservation[]'
     ];
 
     /**
@@ -332,7 +332,7 @@ class GetReservedCustomers200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets data
      *
-     * @return \TalonOne\Client\Model\CustomerProfile[]
+     * @return \TalonOne\Client\Model\CustomerReservation[]
      */
     public function getData()
     {
@@ -342,7 +342,7 @@ class GetReservedCustomers200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets data
      *
-     * @param \TalonOne\Client\Model\CustomerProfile[] $data data
+     * @param \TalonOne\Client\Model\CustomerReservation[] $data data
      *
      * @return self
      */

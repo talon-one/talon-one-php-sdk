@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional] [readonly]
 **operator** | **string** | The comparison operator applied to the achievement. |
-**achievement** | [**\TalonOne\Client\Model\CheckAchievementBlock1Achievement**](CheckAchievementBlock1Achievement.md) |  |
+**achievement** | [**\TalonOne\Client\Model\AchievementBlockReference**](AchievementBlockReference.md) | The achievement to check for. |
 **onFailure** | [**\TalonOne\Client\Model\Block[]**](Block.md) | Promotion blocks evaluated when this block fails or returns false. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

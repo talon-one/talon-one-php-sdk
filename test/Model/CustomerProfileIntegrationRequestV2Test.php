@@ -114,4 +114,13 @@ class CustomerProfileIntegrationRequestV2Test extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "rewardIntegrationIds"
+     */
+    public function testPropertyRewardIntegrationIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

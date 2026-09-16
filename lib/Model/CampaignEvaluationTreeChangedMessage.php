@@ -240,7 +240,7 @@ class CampaignEvaluationTreeChangedMessage implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-    public const NOTIFICATION_TYPE_CAMPAIGN_NOTIFICATION = 'CampaignNotification';
+    public const NOTIFICATION_TYPE_CAMPAIGN_EVALUATION_TREE_CHANGED = 'CampaignEvaluationTreeChanged';
 
     /**
      * Gets allowable values of the enum
@@ -250,7 +250,7 @@ class CampaignEvaluationTreeChangedMessage implements ModelInterface, ArrayAcces
     public function getNotificationTypeAllowableValues()
     {
         return [
-            self::NOTIFICATION_TYPE_CAMPAIGN_NOTIFICATION,
+            self::NOTIFICATION_TYPE_CAMPAIGN_EVALUATION_TREE_CHANGED,
         ];
     }
 
@@ -315,6 +315,9 @@ class CampaignEvaluationTreeChangedMessage implements ModelInterface, ArrayAcces
 
         if ($this->container['totalResultSize'] === null) {
             $invalidProperties[] = "'totalResultSize' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
         return $invalidProperties;
     }
@@ -398,7 +401,7 @@ class CampaignEvaluationTreeChangedMessage implements ModelInterface, ArrayAcces
     /**
      * Gets data
      *
-     * @return \TalonOne\Client\Model\CampaignEvaluationTreeChangedNotification[]|null
+     * @return \TalonOne\Client\Model\CampaignEvaluationTreeChangedNotification[]
      */
     public function getData()
     {
@@ -408,7 +411,7 @@ class CampaignEvaluationTreeChangedMessage implements ModelInterface, ArrayAcces
     /**
      * Sets data
      *
-     * @param \TalonOne\Client\Model\CampaignEvaluationTreeChangedNotification[]|null $data The array of changes.
+     * @param \TalonOne\Client\Model\CampaignEvaluationTreeChangedNotification[] $data The array of changes.
      *
      * @return self
      */

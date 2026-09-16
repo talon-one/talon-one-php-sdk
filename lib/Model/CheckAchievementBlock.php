@@ -61,7 +61,7 @@ class CheckAchievementBlock implements ModelInterface, ArrayAccess, \JsonSeriali
         'type' => 'string',
         'tags' => 'string[]',
         'operator' => 'string',
-        'achievement' => '\TalonOne\Client\Model\CheckAchievementBlock1Achievement',
+        'achievement' => '\TalonOne\Client\Model\AchievementBlockReference',
         'onFailure' => '\TalonOne\Client\Model\Block[]'
     ];
 
@@ -488,7 +488,7 @@ class CheckAchievementBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets achievement
      *
-     * @return \TalonOne\Client\Model\CheckAchievementBlock1Achievement
+     * @return \TalonOne\Client\Model\AchievementBlockReference
      */
     public function getAchievement()
     {
@@ -498,7 +498,7 @@ class CheckAchievementBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets achievement
      *
-     * @param \TalonOne\Client\Model\CheckAchievementBlock1Achievement $achievement achievement
+     * @param \TalonOne\Client\Model\AchievementBlockReference $achievement The achievement to check for.
      *
      * @return self
      */

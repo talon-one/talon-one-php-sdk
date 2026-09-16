@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * EffectTest Class Doc Comment
  *
  * @category    Class
- * @description Effect
+ * @description A generic effect that is fired by a triggered campaign. The &#x60;effectType&#x60; field selects the concrete effect variant and the shape of &#x60;props&#x60;.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

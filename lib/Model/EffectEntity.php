@@ -565,7 +565,7 @@ class EffectEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets effectType
      *
-     * @param string $effectType The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+     * @param string $effectType See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
      *
      * @return self
      */

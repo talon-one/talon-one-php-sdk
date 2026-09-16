@@ -252,6 +252,19 @@ class CheckCouponBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_CHECK_COUPON = 'checkCoupon';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_CHECK_COUPON,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -305,6 +318,15 @@ class CheckCouponBlock implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['redeem'] === null) {
             $invalidProperties[] = "'redeem' can't be null";
         }
@@ -363,7 +385,7 @@ class CheckCouponBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type Identifies the block variant and determines which additional properties are present in it.
+     * @param string $type A block discriminator of type `checkCoupon`.
      *
      * @return self
      */
@@ -371,6 +393,16 @@ class CheckCouponBlock implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['type'] = $type;
 

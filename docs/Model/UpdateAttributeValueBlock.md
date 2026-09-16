@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** | Identifies the block variant and determines which additional properties are present in it. |
 **tags** | **string[]** | Semantic labels attached to this block. | [optional]
 **operator** | **string** | The update operation applied to the attribute. |
-**attribute** | [**\TalonOne\Client\Model\UpdateAttributeValueBlock1Attribute**](UpdateAttributeValueBlock1Attribute.md) |  |
+**attribute** | [**\TalonOne\Client\Model\AttributeBlockReference**](AttributeBlockReference.md) | The attribute being updated. |
 **value** | **mixed** | The value of the attribute. Omitted when operator is set to &#x60;toggle&#x60;. | [optional]
 **target** | [**\TalonOne\Client\Model\UpdateAttributeValueBlock1Target**](UpdateAttributeValueBlock1Target.md) |  |
 

@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **evaluableCampaignIds** | **int[]** | When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. | [optional]
 **responseContent** | **string[]** | Extends the response with the chosen data entities. Use this property to get as much data back as needed from one request instead of sending extra requests to other endpoints. | [optional]
 **audiencesChanges** | [**\TalonOne\Client\Model\ProfileAudiencesChanges**](ProfileAudiencesChanges.md) | Audiences memberships changes for this profile. | [optional]
+**rewardIntegrationIds** | **string[]** | The integration IDs of the unlocked rewards that can be used in this request. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

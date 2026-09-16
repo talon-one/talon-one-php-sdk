@@ -62,7 +62,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'tags' => 'string[]',
         'operator' => 'string',
         'profile' => 'string',
-        'audience' => '\TalonOne\Client\Model\CheckAudienceBlock1Audience',
+        'audience' => '\TalonOne\Client\Model\AudienceBlockReference',
         'onFailure' => '\TalonOne\Client\Model\Block[]'
     ];
 
@@ -553,7 +553,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets audience
      *
-     * @return \TalonOne\Client\Model\CheckAudienceBlock1Audience
+     * @return \TalonOne\Client\Model\AudienceBlockReference
      */
     public function getAudience()
     {
@@ -563,7 +563,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets audience
      *
-     * @param \TalonOne\Client\Model\CheckAudienceBlock1Audience $audience audience
+     * @param \TalonOne\Client\Model\AudienceBlockReference $audience The audience to check the profile against.
      *
      * @return self
      */

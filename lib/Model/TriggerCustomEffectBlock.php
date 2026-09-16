@@ -60,7 +60,7 @@ class TriggerCustomEffectBlock implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'string',
         'type' => 'string',
         'tags' => 'string[]',
-        'customEffect' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect',
+        'customEffect' => '\TalonOne\Client\Model\CustomEffectBlockReference',
         'params' => 'array<string,mixed>',
         'target' => '\TalonOne\Client\Model\TriggerCustomEffectBlock1Target',
         'onError' => 'array<string,\TalonOne\Client\Model\Block[]>'
@@ -424,7 +424,7 @@ class TriggerCustomEffectBlock implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets customEffect
      *
-     * @return \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect
+     * @return \TalonOne\Client\Model\CustomEffectBlockReference
      */
     public function getCustomEffect()
     {
@@ -434,7 +434,7 @@ class TriggerCustomEffectBlock implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets customEffect
      *
-     * @param \TalonOne\Client\Model\TriggerCustomEffectBlock1CustomEffect $customEffect customEffect
+     * @param \TalonOne\Client\Model\CustomEffectBlockReference $customEffect The custom effect to trigger.
      *
      * @return self
      */

@@ -60,7 +60,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => 'array<string,mixed>',
         'evaluableCampaignIds' => 'int[]',
         'responseContent' => 'string[]',
-        'audiencesChanges' => '\TalonOne\Client\Model\ProfileAudiencesChanges'
+        'audiencesChanges' => '\TalonOne\Client\Model\ProfileAudiencesChanges',
+        'rewardIntegrationIds' => 'string[]'
     ];
 
     /**
@@ -74,7 +75,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => null,
         'evaluableCampaignIds' => 'int64',
         'responseContent' => null,
-        'audiencesChanges' => null
+        'audiencesChanges' => null,
+        'rewardIntegrationIds' => null
     ];
 
     /**
@@ -86,7 +88,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => false,
         'evaluableCampaignIds' => false,
         'responseContent' => false,
-        'audiencesChanges' => false
+        'audiencesChanges' => false,
+        'rewardIntegrationIds' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => 'attributes',
         'evaluableCampaignIds' => 'evaluableCampaignIds',
         'responseContent' => 'responseContent',
-        'audiencesChanges' => 'audiencesChanges'
+        'audiencesChanges' => 'audiencesChanges',
+        'rewardIntegrationIds' => 'rewardIntegrationIds'
     ];
 
     /**
@@ -190,7 +194,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => 'setAttributes',
         'evaluableCampaignIds' => 'setEvaluableCampaignIds',
         'responseContent' => 'setResponseContent',
-        'audiencesChanges' => 'setAudiencesChanges'
+        'audiencesChanges' => 'setAudiencesChanges',
+        'rewardIntegrationIds' => 'setRewardIntegrationIds'
     ];
 
     /**
@@ -202,7 +207,8 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         'attributes' => 'getAttributes',
         'evaluableCampaignIds' => 'getEvaluableCampaignIds',
         'responseContent' => 'getResponseContent',
-        'audiencesChanges' => 'getAudiencesChanges'
+        'audiencesChanges' => 'getAudiencesChanges',
+        'rewardIntegrationIds' => 'getRewardIntegrationIds'
     ];
 
     /**
@@ -295,6 +301,7 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
         $this->setIfExists('evaluableCampaignIds', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
         $this->setIfExists('audiencesChanges', $data ?? [], null);
+        $this->setIfExists('rewardIntegrationIds', $data ?? [], null);
     }
 
     /**
@@ -452,6 +459,33 @@ class CustomerProfileIntegrationRequestV2 implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable audiencesChanges cannot be null');
         }
         $this->container['audiencesChanges'] = $audiencesChanges;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardIntegrationIds
+     *
+     * @return string[]|null
+     */
+    public function getRewardIntegrationIds()
+    {
+        return $this->container['rewardIntegrationIds'];
+    }
+
+    /**
+     * Sets rewardIntegrationIds
+     *
+     * @param string[]|null $rewardIntegrationIds The integration IDs of the unlocked rewards that can be used in this request.
+     *
+     * @return self
+     */
+    public function setRewardIntegrationIds($rewardIntegrationIds)
+    {
+        if (is_null($rewardIntegrationIds)) {
+            throw new \InvalidArgumentException('non-nullable rewardIntegrationIds cannot be null');
+        }
+        $this->container['rewardIntegrationIds'] = $rewardIntegrationIds;
 
         return $this;
     }

@@ -60,7 +60,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'type' => 'string',
         'tags' => 'string[]',
-        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolReference',
+        'giveawayPool' => '\TalonOne\Client\Model\GiveawayPoolBlockReference',
         'profile' => 'string',
         'onFailure' => '\TalonOne\Client\Model\Block[]',
         'onError' => 'array<string,\TalonOne\Client\Model\Block[]>'
@@ -448,7 +448,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets giveawayPool
      *
-     * @return \TalonOne\Client\Model\GiveawayPoolReference
+     * @return \TalonOne\Client\Model\GiveawayPoolBlockReference
      */
     public function getGiveawayPool()
     {
@@ -458,7 +458,7 @@ class AwardGiveawayBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets giveawayPool
      *
-     * @param \TalonOne\Client\Model\GiveawayPoolReference $giveawayPool The giveaway pool from which an item is awarded.
+     * @param \TalonOne\Client\Model\GiveawayPoolBlockReference $giveawayPool The giveaway pool from which an item is awarded.
      *
      * @return self
      */

@@ -66,6 +66,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => 'string',
         'referralCode' => 'string',
         'loyaltyCards' => 'string[]',
+        'rewardIntegrationIds' => 'string[]',
         'responseContent' => 'string[]'
     ];
 
@@ -86,6 +87,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => null,
         'referralCode' => null,
         'loyaltyCards' => null,
+        'rewardIntegrationIds' => null,
         'responseContent' => null
     ];
 
@@ -104,6 +106,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => false,
         'referralCode' => false,
         'loyaltyCards' => false,
+        'rewardIntegrationIds' => false,
         'responseContent' => false
     ];
 
@@ -202,6 +205,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => 'connectedSessionId',
         'referralCode' => 'referralCode',
         'loyaltyCards' => 'loyaltyCards',
+        'rewardIntegrationIds' => 'rewardIntegrationIds',
         'responseContent' => 'responseContent'
     ];
 
@@ -220,6 +224,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => 'setConnectedSessionId',
         'referralCode' => 'setReferralCode',
         'loyaltyCards' => 'setLoyaltyCards',
+        'rewardIntegrationIds' => 'setRewardIntegrationIds',
         'responseContent' => 'setResponseContent'
     ];
 
@@ -238,6 +243,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         'connectedSessionId' => 'getConnectedSessionId',
         'referralCode' => 'getReferralCode',
         'loyaltyCards' => 'getLoyaltyCards',
+        'rewardIntegrationIds' => 'getRewardIntegrationIds',
         'responseContent' => 'getResponseContent'
     ];
 
@@ -289,6 +295,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
     public const RESPONSE_CONTENT_REFERRAL = 'referral';
     public const RESPONSE_CONTENT_RULE_FAILURE_REASONS = 'ruleFailureReasons';
     public const RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS = 'triggeredCampaigns';
+    public const RESPONSE_CONTENT_UNLOCKED_REWARDS = 'unlockedRewards';
 
     /**
      * Gets allowable values of the enum
@@ -305,6 +312,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
             self::RESPONSE_CONTENT_REFERRAL,
             self::RESPONSE_CONTENT_RULE_FAILURE_REASONS,
             self::RESPONSE_CONTENT_TRIGGERED_CAMPAIGNS,
+            self::RESPONSE_CONTENT_UNLOCKED_REWARDS,
         ];
     }
 
@@ -332,6 +340,7 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('connectedSessionId', $data ?? [], null);
         $this->setIfExists('referralCode', $data ?? [], null);
         $this->setIfExists('loyaltyCards', $data ?? [], null);
+        $this->setIfExists('rewardIntegrationIds', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
     }
 
@@ -682,6 +691,33 @@ class IntegrationEventV3Request implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('invalid value for $loyaltyCards when calling IntegrationEventV3Request., number of items must be less than or equal to 1.');
         }
         $this->container['loyaltyCards'] = $loyaltyCards;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardIntegrationIds
+     *
+     * @return string[]|null
+     */
+    public function getRewardIntegrationIds()
+    {
+        return $this->container['rewardIntegrationIds'];
+    }
+
+    /**
+     * Sets rewardIntegrationIds
+     *
+     * @param string[]|null $rewardIntegrationIds The integration IDs of the unlocked rewards that can be used in this event.
+     *
+     * @return self
+     */
+    public function setRewardIntegrationIds($rewardIntegrationIds)
+    {
+        if (is_null($rewardIntegrationIds)) {
+            throw new \InvalidArgumentException('non-nullable rewardIntegrationIds cannot be null');
+        }
+        $this->container['rewardIntegrationIds'] = $rewardIntegrationIds;
 
         return $this;
     }

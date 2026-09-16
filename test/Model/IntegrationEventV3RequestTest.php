@@ -161,6 +161,15 @@ class IntegrationEventV3RequestTest extends TestCase
     }
 
     /**
+     * Test attribute "rewardIntegrationIds"
+     */
+    public function testPropertyRewardIntegrationIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "responseContent"
      */
     public function testPropertyResponseContent()
