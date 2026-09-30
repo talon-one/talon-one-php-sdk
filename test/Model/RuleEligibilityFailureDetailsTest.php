@@ -143,6 +143,24 @@ class RuleEligibilityFailureDetailsTest extends TestCase
     }
 
     /**
+     * Test attribute "ruleIndex"
+     */
+    public function testPropertyRuleIndex()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rulesetId"
+     */
+    public function testPropertyRulesetId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "details"
      */
     public function testPropertyDetails()

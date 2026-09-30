@@ -60,7 +60,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => 'int',
         'name' => 'string',
         'ruleset' => '\TalonOne\Client\Model\NewRuleset',
-        'weight' => 'int'
+        'weight' => 'int',
+        'audienceId' => 'int'
     ];
 
     /**
@@ -74,7 +75,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => 'int64',
         'name' => null,
         'ruleset' => null,
-        'weight' => 'int64'
+        'weight' => 'int64',
+        'audienceId' => 'int64'
     ];
 
     /**
@@ -86,7 +88,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => false,
         'name' => false,
         'ruleset' => false,
-        'weight' => false
+        'weight' => false,
+        'audienceId' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => 'id',
         'name' => 'name',
         'ruleset' => 'ruleset',
-        'weight' => 'weight'
+        'weight' => 'weight',
+        'audienceId' => 'audienceId'
     ];
 
     /**
@@ -190,7 +194,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => 'setId',
         'name' => 'setName',
         'ruleset' => 'setRuleset',
-        'weight' => 'setWeight'
+        'weight' => 'setWeight',
+        'audienceId' => 'setAudienceId'
     ];
 
     /**
@@ -202,7 +207,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => 'getId',
         'name' => 'getName',
         'ruleset' => 'getRuleset',
-        'weight' => 'getWeight'
+        'weight' => 'getWeight',
+        'audienceId' => 'getAudienceId'
     ];
 
     /**
@@ -266,6 +272,7 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('ruleset', $data ?? [], null);
         $this->setIfExists('weight', $data ?? [], null);
+        $this->setIfExists('audienceId', $data ?? [], null);
     }
 
     /**
@@ -319,8 +326,8 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
             $invalidProperties[] = "invalid value for 'weight', must be smaller than or equal to 99.";
         }
 
-        if (($this->container['weight'] < 1)) {
-            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 1.";
+        if (($this->container['weight'] < 0)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -439,7 +446,7 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets weight
      *
-     * @param int $weight The percentage split of this variant. The sum of all variant percentages must be 100.
+     * @param int $weight The percentage split of this variant. For `random` assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for `audience` and `external` assignment.
      *
      * @return self
      */
@@ -451,11 +458,38 @@ class UpdateExperimentVariant implements ModelInterface, ArrayAccess, \JsonSeria
         if (($weight > 99)) {
             throw new \InvalidArgumentException('invalid value for $weight when calling UpdateExperimentVariant., must be smaller than or equal to 99.');
         }
-        if (($weight < 1)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling UpdateExperimentVariant., must be bigger than or equal to 1.');
+        if (($weight < 0)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling UpdateExperimentVariant., must be bigger than or equal to 0.');
         }
 
         $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets audienceId
+     *
+     * @return int|null
+     */
+    public function getAudienceId()
+    {
+        return $this->container['audienceId'];
+    }
+
+    /**
+     * Sets audienceId
+     *
+     * @param int|null $audienceId The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`.
+     *
+     * @return self
+     */
+    public function setAudienceId($audienceId)
+    {
+        if (is_null($audienceId)) {
+            throw new \InvalidArgumentException('non-nullable audienceId cannot be null');
+        }
+        $this->container['audienceId'] = $audienceId;
 
         return $this;
     }

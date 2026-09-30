@@ -63,7 +63,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => 'int',
         'ruleset' => '\TalonOne\Client\Model\Ruleset',
         'weight' => 'int',
-        'isPrimary' => 'bool'
+        'isPrimary' => 'bool',
+        'audienceId' => 'int'
     ];
 
     /**
@@ -80,7 +81,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => 'int64',
         'ruleset' => null,
         'weight' => 'int64',
-        'isPrimary' => null
+        'isPrimary' => null,
+        'audienceId' => 'int64'
     ];
 
     /**
@@ -95,7 +97,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => false,
         'ruleset' => false,
         'weight' => false,
-        'isPrimary' => false
+        'isPrimary' => false,
+        'audienceId' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => 'experimentId',
         'ruleset' => 'ruleset',
         'weight' => 'weight',
-        'isPrimary' => 'isPrimary'
+        'isPrimary' => 'isPrimary',
+        'audienceId' => 'audienceId'
     ];
 
     /**
@@ -205,7 +209,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => 'setExperimentId',
         'ruleset' => 'setRuleset',
         'weight' => 'setWeight',
-        'isPrimary' => 'setIsPrimary'
+        'isPrimary' => 'setIsPrimary',
+        'audienceId' => 'setAudienceId'
     ];
 
     /**
@@ -220,7 +225,8 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         'experimentId' => 'getExperimentId',
         'ruleset' => 'getRuleset',
         'weight' => 'getWeight',
-        'isPrimary' => 'getIsPrimary'
+        'isPrimary' => 'getIsPrimary',
+        'audienceId' => 'getAudienceId'
     ];
 
     /**
@@ -287,6 +293,7 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('ruleset', $data ?? [], null);
         $this->setIfExists('weight', $data ?? [], null);
         $this->setIfExists('isPrimary', $data ?? [], null);
+        $this->setIfExists('audienceId', $data ?? [], null);
     }
 
     /**
@@ -528,6 +535,33 @@ class ExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable isPrimary cannot be null');
         }
         $this->container['isPrimary'] = $isPrimary;
+
+        return $this;
+    }
+
+    /**
+     * Gets audienceId
+     *
+     * @return int|null
+     */
+    public function getAudienceId()
+    {
+        return $this->container['audienceId'];
+    }
+
+    /**
+     * Sets audienceId
+     *
+     * @param int|null $audienceId The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`.
+     *
+     * @return self
+     */
+    public function setAudienceId($audienceId)
+    {
+        if (is_null($audienceId)) {
+            throw new \InvalidArgumentException('non-nullable audienceId cannot be null');
+        }
+        $this->container['audienceId'] = $audienceId;
 
         return $this;
     }

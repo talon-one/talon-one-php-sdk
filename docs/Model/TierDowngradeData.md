@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **oldTier** | **string** | The name of the customer&#39;s previous tier. |
 **tierExpirationDate** | **\DateTime** | The exact date and time the tier expires. | [optional]
 **timestampOfTierChange** | **\DateTime** | The exact date and time the tier was changed. |
+**source** | **string** | The source of the tier change, whether from a points change or boost. | [optional] [default to 'points']
+**reason** | **string** | The reason for the tier change. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

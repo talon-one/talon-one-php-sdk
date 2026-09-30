@@ -1428,6 +1428,18 @@ class ManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for getGiveawaysPool
+     *
+     * Get giveaway pool.
+     *
+     */
+    public function testGetGiveawaysPool()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getLoyaltyCard
      *
      * Get loyalty card.

@@ -365,9 +365,6 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        if ($this->container['profile'] === null) {
-            $invalidProperties[] = "'profile' can't be null";
-        }
         $allowedValues = $this->getProfileAllowableValues();
         if (!is_null($this->container['profile']) && !in_array($this->container['profile'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -516,7 +513,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets profile
      *
-     * @return string
+     * @return string|null
      */
     public function getProfile()
     {
@@ -526,7 +523,7 @@ class CheckAudienceBlock implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets profile
      *
-     * @param string $profile The customer profile to check against the audience. `Current` targets the customer in the current session; `Advocate` targets the person who invited their friend via referral program.
+     * @param string|null $profile The customer profile to check against the audience. `Current` targets the customer in the current session; `Advocate` targets the person who invited their friend via referral program. Only applies to the `member` and `not(member)` operators; ignored for `justJoined` and `justLeft`.
      *
      * @return self
      */

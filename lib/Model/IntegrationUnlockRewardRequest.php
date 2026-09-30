@@ -60,7 +60,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'integrationId' => 'string',
         'profileIntegrationId' => 'string',
-        'cardIdentifier' => 'string',
+        'loyaltyCardId' => 'string',
         'loyaltyProgramId' => 'int',
         'subledgerId' => 'string',
         'responseContent' => 'string[]'
@@ -76,7 +76,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'integrationId' => null,
         'profileIntegrationId' => null,
-        'cardIdentifier' => null,
+        'loyaltyCardId' => null,
         'loyaltyProgramId' => 'int64',
         'subledgerId' => null,
         'responseContent' => null
@@ -90,7 +90,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'integrationId' => false,
         'profileIntegrationId' => false,
-        'cardIdentifier' => false,
+        'loyaltyCardId' => false,
         'loyaltyProgramId' => false,
         'subledgerId' => false,
         'responseContent' => false
@@ -184,7 +184,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'integrationId' => 'integrationId',
         'profileIntegrationId' => 'profileIntegrationId',
-        'cardIdentifier' => 'cardIdentifier',
+        'loyaltyCardId' => 'loyaltyCardId',
         'loyaltyProgramId' => 'loyaltyProgramId',
         'subledgerId' => 'subledgerId',
         'responseContent' => 'responseContent'
@@ -198,7 +198,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'integrationId' => 'setIntegrationId',
         'profileIntegrationId' => 'setProfileIntegrationId',
-        'cardIdentifier' => 'setCardIdentifier',
+        'loyaltyCardId' => 'setLoyaltyCardId',
         'loyaltyProgramId' => 'setLoyaltyProgramId',
         'subledgerId' => 'setSubledgerId',
         'responseContent' => 'setResponseContent'
@@ -212,7 +212,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'integrationId' => 'getIntegrationId',
         'profileIntegrationId' => 'getProfileIntegrationId',
-        'cardIdentifier' => 'getCardIdentifier',
+        'loyaltyCardId' => 'getLoyaltyCardId',
         'loyaltyProgramId' => 'getLoyaltyProgramId',
         'subledgerId' => 'getSubledgerId',
         'responseContent' => 'getResponseContent'
@@ -296,7 +296,7 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('profileIntegrationId', $data ?? [], null);
-        $this->setIfExists('cardIdentifier', $data ?? [], null);
+        $this->setIfExists('loyaltyCardId', $data ?? [], null);
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
         $this->setIfExists('subledgerId', $data ?? [], null);
         $this->setIfExists('responseContent', $data ?? [], null);
@@ -335,16 +335,16 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['profileIntegrationId'] === null) {
             $invalidProperties[] = "'profileIntegrationId' can't be null";
         }
-        if (!is_null($this->container['cardIdentifier']) && (mb_strlen($this->container['cardIdentifier']) > 108)) {
-            $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be smaller than or equal to 108.";
+        if (!is_null($this->container['loyaltyCardId']) && (mb_strlen($this->container['loyaltyCardId']) > 108)) {
+            $invalidProperties[] = "invalid value for 'loyaltyCardId', the character length must be smaller than or equal to 108.";
         }
 
-        if (!is_null($this->container['cardIdentifier']) && (mb_strlen($this->container['cardIdentifier']) < 4)) {
-            $invalidProperties[] = "invalid value for 'cardIdentifier', the character length must be bigger than or equal to 4.";
+        if (!is_null($this->container['loyaltyCardId']) && (mb_strlen($this->container['loyaltyCardId']) < 4)) {
+            $invalidProperties[] = "invalid value for 'loyaltyCardId', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['cardIdentifier']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['cardIdentifier'])) {
-            $invalidProperties[] = "invalid value for 'cardIdentifier', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
+        if (!is_null($this->container['loyaltyCardId']) && !preg_match("/^[A-Za-z0-9._%+@-]+$/", $this->container['loyaltyCardId'])) {
+            $invalidProperties[] = "invalid value for 'loyaltyCardId', must be conform to the pattern /^[A-Za-z0-9._%+@-]+$/.";
         }
 
         return $invalidProperties;
@@ -417,38 +417,38 @@ class IntegrationUnlockRewardRequest implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets cardIdentifier
+     * Gets loyaltyCardId
      *
      * @return string|null
      */
-    public function getCardIdentifier()
+    public function getLoyaltyCardId()
     {
-        return $this->container['cardIdentifier'];
+        return $this->container['loyaltyCardId'];
     }
 
     /**
-     * Sets cardIdentifier
+     * Sets loyaltyCardId
      *
-     * @param string|null $cardIdentifier The identifier of the loyalty card unlocking the reward. When provided, the required points are deducted from the card's balance and the unlocked reward belongs to the card, which makes it available to all customer profiles linked to that card. The customer profile given in `profileIntegrationId` must be linked to the card, and the card must be active.
+     * @param string|null $loyaltyCardId The identifier of the loyalty card unlocking the reward. When provided, the required points are deducted from the card's balance and the unlocked reward belongs to the card, which makes it available to all customer profiles linked to that card. The customer profile given in `profileIntegrationId` must be linked to the card, and the card must be active.
      *
      * @return self
      */
-    public function setCardIdentifier($cardIdentifier)
+    public function setLoyaltyCardId($loyaltyCardId)
     {
-        if (is_null($cardIdentifier)) {
-            throw new \InvalidArgumentException('non-nullable cardIdentifier cannot be null');
+        if (is_null($loyaltyCardId)) {
+            throw new \InvalidArgumentException('non-nullable loyaltyCardId cannot be null');
         }
-        if ((mb_strlen($cardIdentifier) > 108)) {
-            throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling IntegrationUnlockRewardRequest., must be smaller than or equal to 108.');
+        if ((mb_strlen($loyaltyCardId) > 108)) {
+            throw new \InvalidArgumentException('invalid length for $loyaltyCardId when calling IntegrationUnlockRewardRequest., must be smaller than or equal to 108.');
         }
-        if ((mb_strlen($cardIdentifier) < 4)) {
-            throw new \InvalidArgumentException('invalid length for $cardIdentifier when calling IntegrationUnlockRewardRequest., must be bigger than or equal to 4.');
+        if ((mb_strlen($loyaltyCardId) < 4)) {
+            throw new \InvalidArgumentException('invalid length for $loyaltyCardId when calling IntegrationUnlockRewardRequest., must be bigger than or equal to 4.');
         }
-        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($cardIdentifier)))) {
-            throw new \InvalidArgumentException("invalid value for \$cardIdentifier when calling IntegrationUnlockRewardRequest., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
+        if ((!preg_match("/^[A-Za-z0-9._%+@-]+$/", ObjectSerializer::toString($loyaltyCardId)))) {
+            throw new \InvalidArgumentException("invalid value for \$loyaltyCardId when calling IntegrationUnlockRewardRequest., must conform to the pattern /^[A-Za-z0-9._%+@-]+$/.");
         }
 
-        $this->container['cardIdentifier'] = $cardIdentifier;
+        $this->container['loyaltyCardId'] = $loyaltyCardId;
 
         return $this;
     }

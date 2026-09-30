@@ -61,7 +61,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'startDate' => '\DateTime',
         'expiryDate' => '\DateTime',
-        'downgradePolicy' => 'string'
+        'downgradePolicy' => 'string',
+        'source' => 'string',
+        'reason' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'startDate' => 'date-time',
         'expiryDate' => 'date-time',
-        'downgradePolicy' => null
+        'downgradePolicy' => null,
+        'source' => null,
+        'reason' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'startDate' => false,
         'expiryDate' => false,
-        'downgradePolicy' => false
+        'downgradePolicy' => false,
+        'source' => false,
+        'reason' => false
     ];
 
     /**
@@ -182,7 +188,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'startDate' => 'startDate',
         'expiryDate' => 'expiryDate',
-        'downgradePolicy' => 'downgradePolicy'
+        'downgradePolicy' => 'downgradePolicy',
+        'source' => 'source',
+        'reason' => 'reason'
     ];
 
     /**
@@ -195,7 +203,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'startDate' => 'setStartDate',
         'expiryDate' => 'setExpiryDate',
-        'downgradePolicy' => 'setDowngradePolicy'
+        'downgradePolicy' => 'setDowngradePolicy',
+        'source' => 'setSource',
+        'reason' => 'setReason'
     ];
 
     /**
@@ -208,7 +218,9 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'startDate' => 'getStartDate',
         'expiryDate' => 'getExpiryDate',
-        'downgradePolicy' => 'getDowngradePolicy'
+        'downgradePolicy' => 'getDowngradePolicy',
+        'source' => 'getSource',
+        'reason' => 'getReason'
     ];
 
     /**
@@ -254,6 +266,8 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
 
     public const DOWNGRADE_POLICY_ONE_DOWN = 'one_down';
     public const DOWNGRADE_POLICY_BALANCE_BASED = 'balance_based';
+    public const SOURCE_BOOST = 'boost';
+    public const SOURCE_POINTS = 'points';
 
     /**
      * Gets allowable values of the enum
@@ -265,6 +279,19 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::DOWNGRADE_POLICY_ONE_DOWN,
             self::DOWNGRADE_POLICY_BALANCE_BASED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_BOOST,
+            self::SOURCE_POINTS,
         ];
     }
 
@@ -288,6 +315,8 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('startDate', $data ?? [], null);
         $this->setIfExists('expiryDate', $data ?? [], null);
         $this->setIfExists('downgradePolicy', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], 'points');
+        $this->setIfExists('reason', $data ?? [], null);
     }
 
     /**
@@ -328,6 +357,15 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'downgradePolicy', must be one of '%s'",
                 $this->container['downgradePolicy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
                 implode("', '", $allowedValues)
             );
         }
@@ -488,6 +526,70 @@ class Tier implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['downgradePolicy'] = $downgradePolicy;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source Indicates whether the customer's current tier was determined based on their points balance or a temporary boost.  - `points`: The tier reflects the customer's current point balance. - `boost`: A temporary tier boost is in effect where the customer is in a higher tier than their points-based tier. The boost expires after a set duration and the customer returns to their points-based tier.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason The reason for the tier assignment.
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
 
         return $this;
     }

@@ -314,9 +314,6 @@ class UpdateExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['isVariantAssignmentExternal'] === null) {
-            $invalidProperties[] = "'isVariantAssignmentExternal' can't be null";
-        }
         if ($this->container['campaign'] === null) {
             $invalidProperties[] = "'campaign' can't be null";
         }
@@ -347,7 +344,8 @@ class UpdateExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets isVariantAssignmentExternal
      *
-     * @return bool
+     * @return bool|null
+     * @deprecated
      */
     public function getIsVariantAssignmentExternal()
     {
@@ -357,9 +355,10 @@ class UpdateExperiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets isVariantAssignmentExternal
      *
-     * @param bool $isVariantAssignmentExternal The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally.
+     * @param bool|null $isVariantAssignmentExternal Deprecated and ignored. The assignment type is set at experiment creation and cannot be changed. Use `assignmentType` when creating an experiment instead.
      *
      * @return self
+     * @deprecated
      */
     public function setIsVariantAssignmentExternal($isVariantAssignmentExternal)
     {

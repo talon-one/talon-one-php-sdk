@@ -329,7 +329,7 @@ class NewGiveawaysPool implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The name of this giveaways pool.
+     * @param string $name The name of this giveaway pool.
      *
      * @return self
      */
@@ -356,7 +356,7 @@ class NewGiveawaysPool implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The description of this giveaways pool.
+     * @param string|null $description The description of this giveaway pool.
      *
      * @return self
      */
@@ -383,7 +383,7 @@ class NewGiveawaysPool implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscribedApplicationsIds
      *
-     * @param int[]|null $subscribedApplicationsIds A list of the IDs of the applications that this giveaways pool is enabled for.
+     * @param int[]|null $subscribedApplicationsIds A list of the IDs of the Applications that this giveaway pool is enabled for.
      *
      * @return self
      */

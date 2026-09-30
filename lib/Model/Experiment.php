@@ -60,6 +60,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'created' => '\DateTime',
         'applicationId' => 'int',
+        'assignmentType' => 'string',
         'isVariantAssignmentExternal' => 'bool',
         'campaign' => '\TalonOne\Client\Model\Campaign',
         'activated' => '\DateTime',
@@ -81,6 +82,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int64',
         'created' => 'date-time',
         'applicationId' => 'int64',
+        'assignmentType' => null,
         'isVariantAssignmentExternal' => null,
         'campaign' => null,
         'activated' => 'date-time',
@@ -100,6 +102,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'created' => false,
         'applicationId' => false,
+        'assignmentType' => false,
         'isVariantAssignmentExternal' => false,
         'campaign' => false,
         'activated' => false,
@@ -199,6 +202,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'created' => 'created',
         'applicationId' => 'applicationId',
+        'assignmentType' => 'assignmentType',
         'isVariantAssignmentExternal' => 'isVariantAssignmentExternal',
         'campaign' => 'campaign',
         'activated' => 'activated',
@@ -218,6 +222,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'created' => 'setCreated',
         'applicationId' => 'setApplicationId',
+        'assignmentType' => 'setAssignmentType',
         'isVariantAssignmentExternal' => 'setIsVariantAssignmentExternal',
         'campaign' => 'setCampaign',
         'activated' => 'setActivated',
@@ -237,6 +242,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'created' => 'getCreated',
         'applicationId' => 'getApplicationId',
+        'assignmentType' => 'getAssignmentType',
         'isVariantAssignmentExternal' => 'getIsVariantAssignmentExternal',
         'campaign' => 'getCampaign',
         'activated' => 'getActivated',
@@ -288,6 +294,9 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const ASSIGNMENT_TYPE_RANDOM = 'random';
+    public const ASSIGNMENT_TYPE_EXTERNAL = 'external';
+    public const ASSIGNMENT_TYPE_AUDIENCE = 'audience';
     public const STATE_ENABLED = 'enabled';
     public const STATE_DISABLED = 'disabled';
     public const STATE_ARCHIVED = 'archived';
@@ -295,6 +304,20 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
     public const GOAL_TYPE_MAXIMIZE_REVENUE = 'maximize_revenue';
     public const GOAL_TYPE_OPTIMIZE_DISCOUNT_EFFICIENCY = 'optimize_discount_efficiency';
     public const GOAL_TYPE_MAXIMIZE_ITEMS_SOLD = 'maximize_items_sold';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAssignmentTypeAllowableValues()
+    {
+        return [
+            self::ASSIGNMENT_TYPE_RANDOM,
+            self::ASSIGNMENT_TYPE_EXTERNAL,
+            self::ASSIGNMENT_TYPE_AUDIENCE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -343,6 +366,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('applicationId', $data ?? [], null);
+        $this->setIfExists('assignmentType', $data ?? [], null);
         $this->setIfExists('isVariantAssignmentExternal', $data ?? [], null);
         $this->setIfExists('campaign', $data ?? [], null);
         $this->setIfExists('activated', $data ?? [], null);
@@ -389,6 +413,15 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['applicationId'] === null) {
             $invalidProperties[] = "'applicationId' can't be null";
         }
+        $allowedValues = $this->getAssignmentTypeAllowableValues();
+        if (!is_null($this->container['assignmentType']) && !in_array($this->container['assignmentType'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'assignmentType', must be one of '%s'",
+                $this->container['assignmentType'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
@@ -510,9 +543,47 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets assignmentType
+     *
+     * @return string|null
+     */
+    public function getAssignmentType()
+    {
+        return $this->container['assignmentType'];
+    }
+
+    /**
+     * Sets assignmentType
+     *
+     * @param string|null $assignmentType Controls how customers are assigned to experiment variants. - `random`: Talon.One assigns customers randomly based on variant weights. - `external`: Variant assignment is handled externally. - `audience`: Each variant targets a specific audience; customers are assigned based on audience membership.
+     *
+     * @return self
+     */
+    public function setAssignmentType($assignmentType)
+    {
+        if (is_null($assignmentType)) {
+            throw new \InvalidArgumentException('non-nullable assignmentType cannot be null');
+        }
+        $allowedValues = $this->getAssignmentTypeAllowableValues();
+        if (!in_array($assignmentType, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'assignmentType', must be one of '%s'",
+                    $assignmentType,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['assignmentType'] = $assignmentType;
+
+        return $this;
+    }
+
+    /**
      * Gets isVariantAssignmentExternal
      *
      * @return bool|null
+     * @deprecated
      */
     public function getIsVariantAssignmentExternal()
     {
@@ -522,9 +593,10 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets isVariantAssignmentExternal
      *
-     * @param bool|null $isVariantAssignmentExternal The source of the assignment. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally.
+     * @param bool|null $isVariantAssignmentExternal Deprecated. Use `assignmentType` instead. - false - The variant assignment is handled internally by Talon.One. - true - The variant assignment is handled externally.
      *
      * @return self
+     * @deprecated
      */
     public function setIsVariantAssignmentExternal($isVariantAssignmentExternal)
     {

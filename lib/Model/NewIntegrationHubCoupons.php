@@ -432,6 +432,14 @@ class NewIntegrationHubCoupons implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['numberOfCoupons'] === null) {
             $invalidProperties[] = "'numberOfCoupons' can't be null";
         }
+        if (($this->container['numberOfCoupons'] > 20000)) {
+            $invalidProperties[] = "invalid value for 'numberOfCoupons', must be smaller than or equal to 20000.";
+        }
+
+        if (($this->container['numberOfCoupons'] < 1)) {
+            $invalidProperties[] = "invalid value for 'numberOfCoupons', must be bigger than or equal to 1.";
+        }
+
         if (!is_null($this->container['couponPattern']) && (mb_strlen($this->container['couponPattern']) > 100)) {
             $invalidProperties[] = "invalid value for 'couponPattern', the character length must be smaller than or equal to 100.";
         }
@@ -745,6 +753,13 @@ class NewIntegrationHubCoupons implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($numberOfCoupons)) {
             throw new \InvalidArgumentException('non-nullable numberOfCoupons cannot be null');
         }
+        if (($numberOfCoupons > 20000)) {
+            throw new \InvalidArgumentException('invalid value for $numberOfCoupons when calling NewIntegrationHubCoupons., must be smaller than or equal to 20000.');
+        }
+        if (($numberOfCoupons < 1)) {
+            throw new \InvalidArgumentException('invalid value for $numberOfCoupons when calling NewIntegrationHubCoupons., must be bigger than or equal to 1.');
+        }
+
         $this->container['numberOfCoupons'] = $numberOfCoupons;
 
         return $this;

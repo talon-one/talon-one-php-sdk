@@ -413,6 +413,9 @@ class ManagementApi
         'getExports' => [
             'application/json',
         ],
+        'getGiveawaysPool' => [
+            'application/json',
+        ],
         'getLoyaltyCard' => [
             'application/json',
         ],
@@ -37437,6 +37440,283 @@ class ManagementApi
     }
 
     /**
+     * Operation getGiveawaysPool
+     *
+     * Get giveaway pool
+     *
+     * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGiveawaysPool'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\GiveawaysPool
+     */
+    public function getGiveawaysPool($poolId, string $contentType = self::contentTypes['getGiveawaysPool'][0])
+    {
+        list($response) = $this->getGiveawaysPoolWithHttpInfo($poolId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getGiveawaysPoolWithHttpInfo
+     *
+     * Get giveaway pool
+     *
+     * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGiveawaysPool'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\GiveawaysPool, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGiveawaysPoolWithHttpInfo($poolId, string $contentType = self::contentTypes['getGiveawaysPool'][0])
+    {
+        $request = $this->getGiveawaysPoolRequest($poolId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\GiveawaysPool',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\GiveawaysPool',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\GiveawaysPool',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGiveawaysPoolAsync
+     *
+     * Get giveaway pool
+     *
+     * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGiveawaysPool'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGiveawaysPoolAsync($poolId, string $contentType = self::contentTypes['getGiveawaysPool'][0])
+    {
+        return $this->getGiveawaysPoolAsyncWithHttpInfo($poolId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGiveawaysPoolAsyncWithHttpInfo
+     *
+     * Get giveaway pool
+     *
+     * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGiveawaysPool'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGiveawaysPoolAsyncWithHttpInfo($poolId, string $contentType = self::contentTypes['getGiveawaysPool'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\GiveawaysPool';
+        $request = $this->getGiveawaysPoolRequest($poolId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGiveawaysPool'
+     *
+     * @param  int $poolId The ID of the pool. You can find it in the Campaign Manager, in the **Incentives** section. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGiveawaysPool'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGiveawaysPoolRequest($poolId, string $contentType = self::contentTypes['getGiveawaysPool'][0])
+    {
+
+        // verify the required parameter 'poolId' is set
+        if ($poolId === null || (is_array($poolId) && count($poolId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $poolId when calling getGiveawaysPool'
+            );
+        }
+
+
+        $resourcePath = '/v1/giveaways/pools/{poolId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($poolId !== null) {
+            $resourcePath = str_replace(
+                '{poolId}',
+                ObjectSerializer::toPathValue($poolId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getLoyaltyCard
      *
      * Get loyalty card
@@ -39623,16 +39903,17 @@ class ManagementApi
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  bool|null $awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     * @return \TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function getLoyaltyProgramProfileLedgerTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
+    public function getLoyaltyProgramProfileLedgerTransactions($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $includeReferences = false, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
     {
-        list($response) = $this->getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation, $contentType);
+        list($response) = $this->getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $includeReferences, $awaitsActivation, $contentType);
         return $response;
     }
 
@@ -39651,16 +39932,17 @@ class ManagementApi
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  bool|null $awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
+    public function getLoyaltyProgramProfileLedgerTransactionsWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $includeReferences = false, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
     {
-        $request = $this->getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation, $contentType);
+        $request = $this->getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $includeReferences, $awaitsActivation, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -39688,7 +39970,7 @@ class ManagementApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response',
+                        '\TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response',
                         $request,
                         $response,
                     );
@@ -39728,7 +40010,7 @@ class ManagementApi
             }
 
             return $this->handleResponseWithDataType(
-                '\TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response',
+                '\TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response',
                 $request,
                 $response,
             );
@@ -39737,7 +40019,7 @@ class ManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response',
+                        '\TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -39788,15 +40070,16 @@ class ManagementApi
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  bool|null $awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLoyaltyProgramProfileLedgerTransactionsAsync($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
+    public function getLoyaltyProgramProfileLedgerTransactionsAsync($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $includeReferences = false, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
     {
-        return $this->getLoyaltyProgramProfileLedgerTransactionsAsyncWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation, $contentType)
+        return $this->getLoyaltyProgramProfileLedgerTransactionsAsyncWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $includeReferences, $awaitsActivation, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -39819,16 +40102,17 @@ class ManagementApi
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  bool|null $awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLoyaltyProgramProfileLedgerTransactionsAsyncWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
+    public function getLoyaltyProgramProfileLedgerTransactionsAsyncWithHttpInfo($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $includeReferences = false, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
     {
-        $returnType = '\TalonOne\Client\Model\GetLoyaltyProgramProfileTransactions200Response';
-        $request = $this->getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $awaitsActivation, $contentType);
+        $returnType = '\TalonOne\Client\Model\GetLoyaltyProgramProfileLedgerTransactions200Response';
+        $request = $this->getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs, $transactionUUIDs, $subledgerId, $loyaltyTransactionType, $startDate, $endDate, $pageSize, $skip, $includeReferences, $awaitsActivation, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -39879,13 +40163,14 @@ class ManagementApi
      * @param  \DateTime|null $endDate Date and time by which results are returned. Results are filtered by transaction creation date.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (optional)
      * @param  int|null $pageSize The number of items in the response. (optional, default to 50)
      * @param  int|null $skip The number of items to skip when paging through large result sets. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  bool|null $awaitsActivation If &#x60;true&#x60;: Filters results to include only point transactions that have action-based activation and have not expired.  If &#x60;false&#x60;: Returns a &#x60;400&#x60; response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
+    public function getLoyaltyProgramProfileLedgerTransactionsRequest($loyaltyProgramId, $integrationId, $customerSessionIDs = null, $transactionUUIDs = null, $subledgerId = null, $loyaltyTransactionType = null, $startDate = null, $endDate = null, $pageSize = 50, $skip = null, $includeReferences = false, $awaitsActivation = null, string $contentType = self::contentTypes['getLoyaltyProgramProfileLedgerTransactions'][0])
     {
 
         // verify the required parameter 'loyaltyProgramId' is set
@@ -39915,6 +40200,7 @@ class ManagementApi
             throw new \InvalidArgumentException('invalid value for "$pageSize" when calling ManagementApi.getLoyaltyProgramProfileLedgerTransactions, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -39993,6 +40279,15 @@ class ManagementApi
             $skip,
             'skip', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $includeReferences,
+            'includeReferences', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

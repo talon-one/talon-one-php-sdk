@@ -74,6 +74,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => 'float',
         'adjustmentReferenceId' => 'string',
         'rewardId' => 'int',
+        'rewardIntegrationId' => 'string',
         'props' => '\TalonOne\Client\Model\StartAchievementProgressEffectProps'
     ];
 
@@ -102,6 +103,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => null,
         'adjustmentReferenceId' => 'uuid',
         'rewardId' => 'int64',
+        'rewardIntegrationId' => null,
         'props' => null
     ];
 
@@ -128,6 +130,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => false,
         'adjustmentReferenceId' => false,
         'rewardId' => false,
+        'rewardIntegrationId' => false,
         'props' => false
     ];
 
@@ -234,6 +237,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => 'selectedPrice',
         'adjustmentReferenceId' => 'adjustmentReferenceId',
         'rewardId' => 'rewardId',
+        'rewardIntegrationId' => 'rewardIntegrationId',
         'props' => 'props'
     ];
 
@@ -260,6 +264,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => 'setSelectedPrice',
         'adjustmentReferenceId' => 'setAdjustmentReferenceId',
         'rewardId' => 'setRewardId',
+        'rewardIntegrationId' => 'setRewardIntegrationId',
         'props' => 'setProps'
     ];
 
@@ -286,6 +291,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         'selectedPrice' => 'getSelectedPrice',
         'adjustmentReferenceId' => 'getAdjustmentReferenceId',
         'rewardId' => 'getRewardId',
+        'rewardIntegrationId' => 'getRewardIntegrationId',
         'props' => 'getProps'
     ];
 
@@ -376,6 +382,7 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('selectedPrice', $data ?? [], null);
         $this->setIfExists('adjustmentReferenceId', $data ?? [], null);
         $this->setIfExists('rewardId', $data ?? [], null);
+        $this->setIfExists('rewardIntegrationId', $data ?? [], null);
         $this->setIfExists('props', $data ?? [], null);
     }
 
@@ -913,6 +920,33 @@ class EffectStartAchievementProgress implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable rewardId cannot be null');
         }
         $this->container['rewardId'] = $rewardId;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardIntegrationId
+     *
+     * @return string|null
+     */
+    public function getRewardIntegrationId()
+    {
+        return $this->container['rewardIntegrationId'];
+    }
+
+    /**
+     * Sets rewardIntegrationId
+     *
+     * @param string|null $rewardIntegrationId The integration ID of the specific customer reward whose usage produced this effect.
+     *
+     * @return self
+     */
+    public function setRewardIntegrationId($rewardIntegrationId)
+    {
+        if (is_null($rewardIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable rewardIntegrationId cannot be null');
+        }
+        $this->container['rewardIntegrationId'] = $rewardIntegrationId;
 
         return $this;
     }

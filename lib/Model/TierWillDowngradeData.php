@@ -64,7 +64,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => 'float',
         'pointsRequiredToRemain' => 'float',
         'nextTier' => 'string',
-        'tierExpirationDate' => '\DateTime'
+        'tierExpirationDate' => '\DateTime',
+        'source' => 'string',
+        'reason' => 'string'
     ];
 
     /**
@@ -82,7 +84,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => null,
         'pointsRequiredToRemain' => null,
         'nextTier' => null,
-        'tierExpirationDate' => 'date-time'
+        'tierExpirationDate' => 'date-time',
+        'source' => null,
+        'reason' => null
     ];
 
     /**
@@ -98,7 +102,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => false,
         'pointsRequiredToRemain' => false,
         'nextTier' => false,
-        'tierExpirationDate' => false
+        'tierExpirationDate' => false,
+        'source' => false,
+        'reason' => false
     ];
 
     /**
@@ -194,7 +200,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => 'CurrentPoints',
         'pointsRequiredToRemain' => 'PointsRequiredToRemain',
         'nextTier' => 'NextTier',
-        'tierExpirationDate' => 'TierExpirationDate'
+        'tierExpirationDate' => 'TierExpirationDate',
+        'source' => 'Source',
+        'reason' => 'Reason'
     ];
 
     /**
@@ -210,7 +218,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => 'setCurrentPoints',
         'pointsRequiredToRemain' => 'setPointsRequiredToRemain',
         'nextTier' => 'setNextTier',
-        'tierExpirationDate' => 'setTierExpirationDate'
+        'tierExpirationDate' => 'setTierExpirationDate',
+        'source' => 'setSource',
+        'reason' => 'setReason'
     ];
 
     /**
@@ -226,7 +236,9 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         'currentPoints' => 'getCurrentPoints',
         'pointsRequiredToRemain' => 'getPointsRequiredToRemain',
         'nextTier' => 'getNextTier',
-        'tierExpirationDate' => 'getTierExpirationDate'
+        'tierExpirationDate' => 'getTierExpirationDate',
+        'source' => 'getSource',
+        'reason' => 'getReason'
     ];
 
     /**
@@ -270,6 +282,21 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const SOURCE_BOOST = 'boost';
+    public const SOURCE_POINTS = 'points';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_BOOST,
+            self::SOURCE_POINTS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -294,6 +321,8 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('pointsRequiredToRemain', $data ?? [], null);
         $this->setIfExists('nextTier', $data ?? [], null);
         $this->setIfExists('tierExpirationDate', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], 'points');
+        $this->setIfExists('reason', $data ?? [], null);
     }
 
     /**
@@ -345,6 +374,15 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['pointsRequiredToRemain'] === null) {
             $invalidProperties[] = "'pointsRequiredToRemain' can't be null";
         }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -576,6 +614,70 @@ class TierWillDowngradeData implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable tierExpirationDate cannot be null');
         }
         $this->container['tierExpirationDate'] = $tierExpirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source The source of the tier change, whether from a points change or boost.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason The reason for the tier change.
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
 
         return $this;
     }
