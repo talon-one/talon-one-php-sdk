@@ -231,4 +231,13 @@ class EffectEntityTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "rewardIntegrationId"
+     */
+    public function testPropertyRewardIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

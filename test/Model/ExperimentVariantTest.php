@@ -141,4 +141,13 @@ class ExperimentVariantTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "audienceId"
+     */
+    public function testPropertyAudienceId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

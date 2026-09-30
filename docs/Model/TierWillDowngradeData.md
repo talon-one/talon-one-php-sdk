@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **pointsRequiredToRemain** | **float** | The number of points needed for a customer to remain on the same tier. |
 **nextTier** | **string** | The name of the customer&#39;s next tier. | [optional]
 **tierExpirationDate** | **\DateTime** | The date and time the tier expires. | [optional]
+**source** | **string** | The source of the tier change, whether from a points change or boost. | [optional] [default to 'points']
+**reason** | **string** | The reason for the tier change. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

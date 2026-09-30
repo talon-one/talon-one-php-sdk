@@ -21,5 +21,6 @@ Name | Type | Description | Notes
 **selectedPrice** | **float** | The value of the selected price type to apply to the SKU targeted by this effect, before any discounts are applied. | [optional]
 **adjustmentReferenceId** | **string** | The reference identifier of the selected price adjustment for this SKU. This is only returned if the &#x60;selectedPrice&#x60; resulted from a price adjustment. | [optional]
 **rewardId** | **int** | The ID of the reward that was being evaluated when this effect was triggered. | [optional]
+**rewardIntegrationId** | **string** | The integration ID of the specific customer reward whose usage produced this effect. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -233,6 +233,15 @@ class EffectRejectReferralTest extends TestCase
     }
 
     /**
+     * Test attribute "rewardIntegrationId"
+     */
+    public function testPropertyRewardIntegrationId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "props"
      */
     public function testPropertyProps()

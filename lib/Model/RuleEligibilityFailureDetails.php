@@ -65,6 +65,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => 'string',
         'conditionIndex' => 'int',
         'effectIndex' => 'int',
+        'ruleIndex' => 'int',
+        'rulesetId' => 'int',
         'details' => 'string'
     ];
 
@@ -83,6 +85,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => null,
         'conditionIndex' => 'int64',
         'effectIndex' => 'int64',
+        'ruleIndex' => 'int64',
+        'rulesetId' => 'int64',
         'details' => null
     ];
 
@@ -99,6 +103,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => false,
         'conditionIndex' => false,
         'effectIndex' => false,
+        'ruleIndex' => false,
+        'rulesetId' => false,
         'details' => false
     ];
 
@@ -195,6 +201,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => 'referralValue',
         'conditionIndex' => 'conditionIndex',
         'effectIndex' => 'effectIndex',
+        'ruleIndex' => 'ruleIndex',
+        'rulesetId' => 'rulesetId',
         'details' => 'details'
     ];
 
@@ -211,6 +219,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => 'setReferralValue',
         'conditionIndex' => 'setConditionIndex',
         'effectIndex' => 'setEffectIndex',
+        'ruleIndex' => 'setRuleIndex',
+        'rulesetId' => 'setRulesetId',
         'details' => 'setDetails'
     ];
 
@@ -227,6 +237,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         'referralValue' => 'getReferralValue',
         'conditionIndex' => 'getConditionIndex',
         'effectIndex' => 'getEffectIndex',
+        'ruleIndex' => 'getRuleIndex',
+        'rulesetId' => 'getRulesetId',
         'details' => 'getDetails'
     ];
 
@@ -309,6 +321,8 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('referralValue', $data ?? [], null);
         $this->setIfExists('conditionIndex', $data ?? [], null);
         $this->setIfExists('effectIndex', $data ?? [], null);
+        $this->setIfExists('ruleIndex', $data ?? [], null);
+        $this->setIfExists('rulesetId', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
     }
 
@@ -564,6 +578,60 @@ class RuleEligibilityFailureDetails implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable effectIndex cannot be null');
         }
         $this->container['effectIndex'] = $effectIndex;
+
+        return $this;
+    }
+
+    /**
+     * Gets ruleIndex
+     *
+     * @return int|null
+     */
+    public function getRuleIndex()
+    {
+        return $this->container['ruleIndex'];
+    }
+
+    /**
+     * Sets ruleIndex
+     *
+     * @param int|null $ruleIndex The index of the rule that failed within the ruleset.
+     *
+     * @return self
+     */
+    public function setRuleIndex($ruleIndex)
+    {
+        if (is_null($ruleIndex)) {
+            throw new \InvalidArgumentException('non-nullable ruleIndex cannot be null');
+        }
+        $this->container['ruleIndex'] = $ruleIndex;
+
+        return $this;
+    }
+
+    /**
+     * Gets rulesetId
+     *
+     * @return int|null
+     */
+    public function getRulesetId()
+    {
+        return $this->container['rulesetId'];
+    }
+
+    /**
+     * Sets rulesetId
+     *
+     * @param int|null $rulesetId The ID of the ruleset containing the rule that failed.
+     *
+     * @return self
+     */
+    public function setRulesetId($rulesetId)
+    {
+        if (is_null($rulesetId)) {
+            throw new \InvalidArgumentException('non-nullable rulesetId cannot be null');
+        }
+        $this->container['rulesetId'] = $rulesetId;
 
         return $this;
     }

@@ -107,6 +107,15 @@ class ExperimentTest extends TestCase
     }
 
     /**
+     * Test attribute "assignmentType"
+     */
+    public function testPropertyAssignmentType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "isVariantAssignmentExternal"
      */
     public function testPropertyIsVariantAssignmentExternal()

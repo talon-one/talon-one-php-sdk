@@ -140,6 +140,7 @@ docs/Model/BetweenCheckAttributeBlock.md
 docs/Model/Binding.md
 docs/Model/Block.md
 docs/Model/Blueprint.md
+docs/Model/BoostLoyaltyTierEffectProps.md
 docs/Model/BulkApplicationNotification.md
 docs/Model/BulkOperationOnCampaigns.md
 docs/Model/Bundle.md
@@ -310,6 +311,7 @@ docs/Model/EffectAddLoyaltyPoints.md
 docs/Model/EffectAddNegativeLoyaltyPoints.md
 docs/Model/EffectAddToAudience.md
 docs/Model/EffectAwardGiveaway.md
+docs/Model/EffectBoostLoyaltyTier.md
 docs/Model/EffectCallApi.md
 docs/Model/EffectChangeLoyaltyTierLevel.md
 docs/Model/EffectCouponCreated.md
@@ -462,6 +464,7 @@ docs/Model/GetLoyaltyCardPoints200Response.md
 docs/Model/GetLoyaltyCardTransactionLogs200Response.md
 docs/Model/GetLoyaltyCardTransactions200Response.md
 docs/Model/GetLoyaltyCards200Response.md
+docs/Model/GetLoyaltyProgramProfileLedgerTransactions200Response.md
 docs/Model/GetLoyaltyProgramProfilePoints200Response.md
 docs/Model/GetLoyaltyProgramProfileTransactions200Response.md
 docs/Model/GetLoyaltyProgramTransactions200Response.md
@@ -537,6 +540,7 @@ docs/Model/LedgerEntry.md
 docs/Model/LedgerInfo.md
 docs/Model/LedgerPointsEntryIntegrationAPI.md
 docs/Model/LedgerTransactionLogEntryIntegrationAPI.md
+docs/Model/LedgerTransactionLogEntryManagementAPI.md
 docs/Model/LibraryAttribute.md
 docs/Model/LimitConfig.md
 docs/Model/LimitCounter.md
@@ -693,6 +697,14 @@ docs/Model/OktaEventPayload.md
 docs/Model/OktaEventPayloadData.md
 docs/Model/OktaEventTarget.md
 docs/Model/OneTimeCode.md
+docs/Model/OutboundLog.md
+docs/Model/OutboundLogBase.md
+docs/Model/OutboundLogRequest.md
+docs/Model/OutboundLogResponse.md
+docs/Model/OutboundLogs.md
+docs/Model/OutboundMessage.md
+docs/Model/OutboundMessageResponse.md
+docs/Model/OutboundMessages.md
 docs/Model/OutgoingIntegrationBrazePolicy.md
 docs/Model/OutgoingIntegrationCleverTapPolicy.md
 docs/Model/OutgoingIntegrationConfiguration.md
@@ -782,6 +794,7 @@ docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md
 docs/Model/RollbackDiscountEffectProps.md
 docs/Model/RollbackIncreasedAchievementProgressEffectProps.md
 docs/Model/RollbackReferralEffectProps.md
+docs/Model/RollbackTierBoostEffectProps.md
 docs/Model/RollbackUseRewardEffectProps.md
 docs/Model/Rule.md
 docs/Model/RuleEligibility.md
@@ -1079,6 +1092,7 @@ lib/Model/BetweenCheckAttributeBlock.php
 lib/Model/Binding.php
 lib/Model/Block.php
 lib/Model/Blueprint.php
+lib/Model/BoostLoyaltyTierEffectProps.php
 lib/Model/BulkApplicationNotification.php
 lib/Model/BulkOperationOnCampaigns.php
 lib/Model/Bundle.php
@@ -1249,6 +1263,7 @@ lib/Model/EffectAddLoyaltyPoints.php
 lib/Model/EffectAddNegativeLoyaltyPoints.php
 lib/Model/EffectAddToAudience.php
 lib/Model/EffectAwardGiveaway.php
+lib/Model/EffectBoostLoyaltyTier.php
 lib/Model/EffectCallApi.php
 lib/Model/EffectChangeLoyaltyTierLevel.php
 lib/Model/EffectCouponCreated.php
@@ -1401,6 +1416,7 @@ lib/Model/GetLoyaltyCardPoints200Response.php
 lib/Model/GetLoyaltyCardTransactionLogs200Response.php
 lib/Model/GetLoyaltyCardTransactions200Response.php
 lib/Model/GetLoyaltyCards200Response.php
+lib/Model/GetLoyaltyProgramProfileLedgerTransactions200Response.php
 lib/Model/GetLoyaltyProgramProfilePoints200Response.php
 lib/Model/GetLoyaltyProgramProfileTransactions200Response.php
 lib/Model/GetLoyaltyProgramTransactions200Response.php
@@ -1476,6 +1492,7 @@ lib/Model/LedgerEntry.php
 lib/Model/LedgerInfo.php
 lib/Model/LedgerPointsEntryIntegrationAPI.php
 lib/Model/LedgerTransactionLogEntryIntegrationAPI.php
+lib/Model/LedgerTransactionLogEntryManagementAPI.php
 lib/Model/LibraryAttribute.php
 lib/Model/LimitConfig.php
 lib/Model/LimitCounter.php
@@ -1633,6 +1650,14 @@ lib/Model/OktaEventPayload.php
 lib/Model/OktaEventPayloadData.php
 lib/Model/OktaEventTarget.php
 lib/Model/OneTimeCode.php
+lib/Model/OutboundLog.php
+lib/Model/OutboundLogBase.php
+lib/Model/OutboundLogRequest.php
+lib/Model/OutboundLogResponse.php
+lib/Model/OutboundLogs.php
+lib/Model/OutboundMessage.php
+lib/Model/OutboundMessageResponse.php
+lib/Model/OutboundMessages.php
 lib/Model/OutgoingIntegrationBrazePolicy.php
 lib/Model/OutgoingIntegrationCleverTapPolicy.php
 lib/Model/OutgoingIntegrationConfiguration.php
@@ -1722,6 +1747,7 @@ lib/Model/RollbackDeductedLoyaltyPointsEffectProps.php
 lib/Model/RollbackDiscountEffectProps.php
 lib/Model/RollbackIncreasedAchievementProgressEffectProps.php
 lib/Model/RollbackReferralEffectProps.php
+lib/Model/RollbackTierBoostEffectProps.php
 lib/Model/RollbackUseRewardEffectProps.php
 lib/Model/Rule.php
 lib/Model/RuleEligibility.php
@@ -2015,6 +2041,7 @@ test/Model/BetweenCheckAttributeBlockTest.php
 test/Model/BindingTest.php
 test/Model/BlockTest.php
 test/Model/BlueprintTest.php
+test/Model/BoostLoyaltyTierEffectPropsTest.php
 test/Model/BulkApplicationNotificationTest.php
 test/Model/BulkOperationOnCampaignsTest.php
 test/Model/BundleTest.php
@@ -2184,6 +2211,7 @@ test/Model/EffectAddLoyaltyPointsTest.php
 test/Model/EffectAddNegativeLoyaltyPointsTest.php
 test/Model/EffectAddToAudienceTest.php
 test/Model/EffectAwardGiveawayTest.php
+test/Model/EffectBoostLoyaltyTierTest.php
 test/Model/EffectCallApiTest.php
 test/Model/EffectChangeLoyaltyTierLevelTest.php
 test/Model/EffectCouponCreatedTest.php
@@ -2337,6 +2365,7 @@ test/Model/GetLoyaltyCardPoints200ResponseTest.php
 test/Model/GetLoyaltyCardTransactionLogs200ResponseTest.php
 test/Model/GetLoyaltyCardTransactions200ResponseTest.php
 test/Model/GetLoyaltyCards200ResponseTest.php
+test/Model/GetLoyaltyProgramProfileLedgerTransactions200ResponseTest.php
 test/Model/GetLoyaltyProgramProfilePoints200ResponseTest.php
 test/Model/GetLoyaltyProgramProfileTransactions200ResponseTest.php
 test/Model/GetLoyaltyProgramTransactions200ResponseTest.php
@@ -2412,6 +2441,7 @@ test/Model/LedgerEntryTest.php
 test/Model/LedgerInfoTest.php
 test/Model/LedgerPointsEntryIntegrationAPITest.php
 test/Model/LedgerTransactionLogEntryIntegrationAPITest.php
+test/Model/LedgerTransactionLogEntryManagementAPITest.php
 test/Model/LibraryAttributeTest.php
 test/Model/LimitConfigTest.php
 test/Model/LimitCounterTest.php
@@ -2568,6 +2598,14 @@ test/Model/OktaEventPayloadTest.php
 test/Model/OktaEventTargetTest.php
 test/Model/OktaEventTest.php
 test/Model/OneTimeCodeTest.php
+test/Model/OutboundLogBaseTest.php
+test/Model/OutboundLogRequestTest.php
+test/Model/OutboundLogResponseTest.php
+test/Model/OutboundLogTest.php
+test/Model/OutboundLogsTest.php
+test/Model/OutboundMessageResponseTest.php
+test/Model/OutboundMessageTest.php
+test/Model/OutboundMessagesTest.php
 test/Model/OutgoingIntegrationBrazePolicyTest.php
 test/Model/OutgoingIntegrationCleverTapPolicyTest.php
 test/Model/OutgoingIntegrationConfigurationPolicyTest.php
@@ -2657,6 +2695,7 @@ test/Model/RollbackDeductedLoyaltyPointsEffectPropsTest.php
 test/Model/RollbackDiscountEffectPropsTest.php
 test/Model/RollbackIncreasedAchievementProgressEffectPropsTest.php
 test/Model/RollbackReferralEffectPropsTest.php
+test/Model/RollbackTierBoostEffectPropsTest.php
 test/Model/RollbackUseRewardEffectPropsTest.php
 test/Model/RuleEligibilityFailureDetailsTest.php
 test/Model/RuleEligibilityTest.php

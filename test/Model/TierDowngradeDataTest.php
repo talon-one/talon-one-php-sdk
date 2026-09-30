@@ -150,4 +150,22 @@ class TierDowngradeDataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "source"
+     */
+    public function testPropertySource()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "reason"
+     */
+    public function testPropertyReason()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

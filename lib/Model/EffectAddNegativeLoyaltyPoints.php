@@ -73,7 +73,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => 'string',
         'selectedPrice' => 'float',
         'adjustmentReferenceId' => 'string',
-        'rewardId' => 'int'
+        'rewardId' => 'int',
+        'rewardIntegrationId' => 'string'
     ];
 
     /**
@@ -100,7 +101,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => null,
         'selectedPrice' => null,
         'adjustmentReferenceId' => 'uuid',
-        'rewardId' => 'int64'
+        'rewardId' => 'int64',
+        'rewardIntegrationId' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => false,
         'selectedPrice' => false,
         'adjustmentReferenceId' => false,
-        'rewardId' => false
+        'rewardId' => false,
+        'rewardIntegrationId' => false
     ];
 
     /**
@@ -230,7 +233,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => 'selectedPriceType',
         'selectedPrice' => 'selectedPrice',
         'adjustmentReferenceId' => 'adjustmentReferenceId',
-        'rewardId' => 'rewardId'
+        'rewardId' => 'rewardId',
+        'rewardIntegrationId' => 'rewardIntegrationId'
     ];
 
     /**
@@ -255,7 +259,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => 'setSelectedPriceType',
         'selectedPrice' => 'setSelectedPrice',
         'adjustmentReferenceId' => 'setAdjustmentReferenceId',
-        'rewardId' => 'setRewardId'
+        'rewardId' => 'setRewardId',
+        'rewardIntegrationId' => 'setRewardIntegrationId'
     ];
 
     /**
@@ -280,7 +285,8 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         'selectedPriceType' => 'getSelectedPriceType',
         'selectedPrice' => 'getSelectedPrice',
         'adjustmentReferenceId' => 'getAdjustmentReferenceId',
-        'rewardId' => 'getRewardId'
+        'rewardId' => 'getRewardId',
+        'rewardIntegrationId' => 'getRewardIntegrationId'
     ];
 
     /**
@@ -370,6 +376,7 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('selectedPrice', $data ?? [], null);
         $this->setIfExists('adjustmentReferenceId', $data ?? [], null);
         $this->setIfExists('rewardId', $data ?? [], null);
+        $this->setIfExists('rewardIntegrationId', $data ?? [], null);
     }
 
     /**
@@ -903,6 +910,33 @@ class EffectAddNegativeLoyaltyPoints implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable rewardId cannot be null');
         }
         $this->container['rewardId'] = $rewardId;
+
+        return $this;
+    }
+
+    /**
+     * Gets rewardIntegrationId
+     *
+     * @return string|null
+     */
+    public function getRewardIntegrationId()
+    {
+        return $this->container['rewardIntegrationId'];
+    }
+
+    /**
+     * Sets rewardIntegrationId
+     *
+     * @param string|null $rewardIntegrationId The integration ID of the specific customer reward whose usage produced this effect.
+     *
+     * @return self
+     */
+    public function setRewardIntegrationId($rewardIntegrationId)
+    {
+        if (is_null($rewardIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable rewardIntegrationId cannot be null');
+        }
+        $this->container['rewardIntegrationId'] = $rewardIntegrationId;
 
         return $this;
     }

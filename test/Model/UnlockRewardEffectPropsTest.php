@@ -125,9 +125,9 @@ class UnlockRewardEffectPropsTest extends TestCase
     }
 
     /**
-     * Test attribute "cardIdentifier"
+     * Test attribute "loyaltyCardId"
      */
-    public function testPropertyCardIdentifier()
+    public function testPropertyLoyaltyCardId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **usedAt** | **\DateTime** | The date and time when the reward was used. | [optional]
 **usedByProfileIntegrationId** | **string** | The integration ID of the customer profile that used the reward.   For rewards unlocked with a loyalty card, this can be any customer profile  linked to that loyalty card.   Only returned when the reward has been used. | [optional]
 **loyaltyProgramId** | **int** | The ID of the loyalty program that the loyalty card belongs to. Only returned for rewards unlocked with a loyalty card. | [optional]
-**loyaltyCardIdentifier** | **string** | The identifier of the loyalty card that the reward was unlocked with. Only returned for rewards unlocked with a loyalty card. | [optional]
+**loyaltyCardId** | **string** | The identifier of the loyalty card that the reward was unlocked with. Only returned for rewards unlocked with a loyalty card. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

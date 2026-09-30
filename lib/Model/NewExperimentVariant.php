@@ -60,7 +60,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => 'string',
         'weight' => 'int',
         'ruleset' => '\TalonOne\Client\Model\NewRuleset',
-        'isPrimary' => 'bool'
+        'isPrimary' => 'bool',
+        'audienceId' => 'int'
     ];
 
     /**
@@ -74,7 +75,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => null,
         'weight' => 'int64',
         'ruleset' => null,
-        'isPrimary' => null
+        'isPrimary' => null,
+        'audienceId' => 'int64'
     ];
 
     /**
@@ -86,7 +88,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => false,
         'weight' => false,
         'ruleset' => false,
-        'isPrimary' => false
+        'isPrimary' => false,
+        'audienceId' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => 'name',
         'weight' => 'weight',
         'ruleset' => 'ruleset',
-        'isPrimary' => 'isPrimary'
+        'isPrimary' => 'isPrimary',
+        'audienceId' => 'audienceId'
     ];
 
     /**
@@ -190,7 +194,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => 'setName',
         'weight' => 'setWeight',
         'ruleset' => 'setRuleset',
-        'isPrimary' => 'setIsPrimary'
+        'isPrimary' => 'setIsPrimary',
+        'audienceId' => 'setAudienceId'
     ];
 
     /**
@@ -202,7 +207,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => 'getName',
         'weight' => 'getWeight',
         'ruleset' => 'getRuleset',
-        'isPrimary' => 'getIsPrimary'
+        'isPrimary' => 'getIsPrimary',
+        'audienceId' => 'getAudienceId'
     ];
 
     /**
@@ -266,6 +272,7 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('weight', $data ?? [], null);
         $this->setIfExists('ruleset', $data ?? [], null);
         $this->setIfExists('isPrimary', $data ?? [], null);
+        $this->setIfExists('audienceId', $data ?? [], null);
     }
 
     /**
@@ -313,8 +320,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
             $invalidProperties[] = "invalid value for 'weight', must be smaller than or equal to 99.";
         }
 
-        if (($this->container['weight'] < 1)) {
-            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 1.";
+        if (($this->container['weight'] < 0)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.";
         }
 
         if ($this->container['ruleset'] === null) {
@@ -385,7 +392,7 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets weight
      *
-     * @param int $weight The percentage split of this variant. The sum of all variant percentages must be 100.
+     * @param int $weight The percentage split of this variant. For `random` assignment, the split must be between 1 and 99 and the sum across all variants must equal 100. Ignored for `audience` and `external` assignment.
      *
      * @return self
      */
@@ -397,8 +404,8 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
         if (($weight > 99)) {
             throw new \InvalidArgumentException('invalid value for $weight when calling NewExperimentVariant., must be smaller than or equal to 99.');
         }
-        if (($weight < 1)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling NewExperimentVariant., must be bigger than or equal to 1.');
+        if (($weight < 0)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling NewExperimentVariant., must be bigger than or equal to 0.');
         }
 
         $this->container['weight'] = $weight;
@@ -456,6 +463,33 @@ class NewExperimentVariant implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable isPrimary cannot be null');
         }
         $this->container['isPrimary'] = $isPrimary;
+
+        return $this;
+    }
+
+    /**
+     * Gets audienceId
+     *
+     * @return int|null
+     */
+    public function getAudienceId()
+    {
+        return $this->container['audienceId'];
+    }
+
+    /**
+     * Sets audienceId
+     *
+     * @param int|null $audienceId The ID of the audience this variant targets. Only used when the experiment `assignmentType` is `audience`.
+     *
+     * @return self
+     */
+    public function setAudienceId($audienceId)
+    {
+        if (is_null($audienceId)) {
+            throw new \InvalidArgumentException('non-nullable audienceId cannot be null');
+        }
+        $this->container['audienceId'] = $audienceId;
 
         return $this;
     }
