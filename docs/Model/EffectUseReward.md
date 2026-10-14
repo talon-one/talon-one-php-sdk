@@ -22,6 +22,6 @@ Name | Type | Description | Notes
 **adjustmentReferenceId** | **string** | The reference identifier of the selected price adjustment for this SKU. This is only returned if the &#x60;selectedPrice&#x60; resulted from a price adjustment. | [optional]
 **rewardId** | **int** | The ID of the reward that was being evaluated when this effect was triggered. | [optional]
 **rewardIntegrationId** | **string** | The integration ID of the specific customer reward whose usage produced this effect. | [optional]
-**props** | [**\TalonOne\Client\Model\UseRewardEffectProps**](UseRewardEffectProps.md) | The properties of the &#x60;useReward&#x60; effect. |
+**props** | [**\TalonOne\Client\Model\UseRewardEffectProps**](UseRewardEffectProps.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

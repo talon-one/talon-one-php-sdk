@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 **reevaluateOnReturn** | **bool** | Indicates whether this campaign should be reevaluated when a customer returns an item. | [optional]
 **features** | **string[]** | A list of features for the campaign. | [optional]
 **couponAttributes** | **object** | Arbitrary properties associated with coupons in this campaign. | [optional]
-**accountId** | **int** |  |
-**applicationId** | **int** |  |
-**campaignId** | **int** |  |
-**created** | **\DateTime** |  |
-**createdBy** | **int** |  |
-**revisionId** | **int** |  |
-**version** | **int** |  |
+**accountId** | **int** | The ID of the account that owns this entity. |
+**applicationId** | **int** | The ID of the Application that owns this entity. |
+**campaignId** | **int** | The ID of the campaign that the revision was created from. |
+**created** | **\DateTime** | Timestamp when the revision was created. |
+**createdBy** | **int** | The ID of the user who created this revision. |
+**revisionId** | **int** | The ID of the revision. |
+**version** | **int** | Incrementing number representing how many revisions have been activated on this campaign. Starts from &#x60;0&#x60; for a new campaign. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

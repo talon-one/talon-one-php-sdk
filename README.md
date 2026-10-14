@@ -325,6 +325,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getCollection**](docs/Api/ManagementApi.md#getcollection) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Get campaign-level collection
 *ManagementApi* | [**getCollectionItems**](docs/Api/ManagementApi.md#getcollectionitems) | **GET** /v1/collections/{collectionId}/items | Get collection items
 *ManagementApi* | [**getCouponsWithoutTotalCount**](docs/Api/ManagementApi.md#getcouponswithouttotalcount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List coupons
+*ManagementApi* | [**getCurrentRevision**](docs/Api/ManagementApi.md#getcurrentrevision) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/revisions/current | Get current revision version
 *ManagementApi* | [**getCustomerActivityReport**](docs/Api/ManagementApi.md#getcustomeractivityreport) | **GET** /v1/applications/{applicationId}/customer_activity_reports/{customerId} | Get customer&#39;s activity report
 *ManagementApi* | [**getCustomerActivityReportsWithoutTotalCount**](docs/Api/ManagementApi.md#getcustomeractivityreportswithouttotalcount) | **GET** /v1/applications/{applicationId}/customer_activity_reports/no_total | Get Activity Reports for Application Customers
 *ManagementApi* | [**getCustomerAnalytics**](docs/Api/ManagementApi.md#getcustomeranalytics) | **GET** /v1/applications/{applicationId}/customers/{customerId}/analytics | Get customer&#39;s analytics report
@@ -382,6 +383,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**listCollections**](docs/Api/ManagementApi.md#listcollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 *ManagementApi* | [**listCollectionsInApplication**](docs/Api/ManagementApi.md#listcollectionsinapplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
 *ManagementApi* | [**listExperiments**](docs/Api/ManagementApi.md#listexperiments) | **GET** /v1/applications/{applicationId}/experiments | List experiments
+*ManagementApi* | [**listGiveawaysPool**](docs/Api/ManagementApi.md#listgiveawayspool) | **GET** /v1/giveaways/pools | List giveaway pools
 *ManagementApi* | [**listStores**](docs/Api/ManagementApi.md#liststores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *ManagementApi* | [**oktaEventHandlerChallenge**](docs/Api/ManagementApi.md#oktaeventhandlerchallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
 *ManagementApi* | [**priceHistory**](docs/Api/ManagementApi.md#pricehistory) | **POST** /v1/applications/{applicationId}/price_history | Get summary of price history
@@ -626,6 +628,7 @@ Class | Method | HTTP request | Description
 - [CatalogActionRemoveMany](docs/Model/CatalogActionRemoveMany.md)
 - [CatalogItem](docs/Model/CatalogItem.md)
 - [CatalogRule](docs/Model/CatalogRule.md)
+- [CatalogRuleset](docs/Model/CatalogRuleset.md)
 - [CatalogSyncRequest](docs/Model/CatalogSyncRequest.md)
 - [CatalogsStrikethroughNotificationPolicy](docs/Model/CatalogsStrikethroughNotificationPolicy.md)
 - [Change](docs/Model/Change.md)
@@ -688,6 +691,7 @@ Class | Method | HTTP request | Description
 - [CustomEffectBlockReference](docs/Model/CustomEffectBlockReference.md)
 - [CustomEffectProps](docs/Model/CustomEffectProps.md)
 - [CustomerAchievement](docs/Model/CustomerAchievement.md)
+- [CustomerAchievementHistoryEntry](docs/Model/CustomerAchievementHistoryEntry.md)
 - [CustomerActivityReport](docs/Model/CustomerActivityReport.md)
 - [CustomerAnalytics](docs/Model/CustomerAnalytics.md)
 - [CustomerInventory](docs/Model/CustomerInventory.md)
@@ -730,6 +734,7 @@ Class | Method | HTTP request | Description
 - [EffectError](docs/Model/EffectError.md)
 - [EffectExtendLoyaltyPointsExpiryDate](docs/Model/EffectExtendLoyaltyPointsExpiryDate.md)
 - [EffectIncreaseAchievementProgress](docs/Model/EffectIncreaseAchievementProgress.md)
+- [EffectIncreaseAchievementProgressPerItem](docs/Model/EffectIncreaseAchievementProgressPerItem.md)
 - [EffectJoinLoyaltyProgram](docs/Model/EffectJoinLoyaltyProgram.md)
 - [EffectOffsetNegativeLoyaltyPoints](docs/Model/EffectOffsetNegativeLoyaltyPoints.md)
 - [EffectRedeemReferral](docs/Model/EffectRedeemReferral.md)
@@ -743,7 +748,9 @@ Class | Method | HTTP request | Description
 - [EffectRollbackDeductedLoyaltyPoints](docs/Model/EffectRollbackDeductedLoyaltyPoints.md)
 - [EffectRollbackDiscount](docs/Model/EffectRollbackDiscount.md)
 - [EffectRollbackIncreasedAchievementProgress](docs/Model/EffectRollbackIncreasedAchievementProgress.md)
+- [EffectRollbackIncreasedAchievementProgressPerItem](docs/Model/EffectRollbackIncreasedAchievementProgressPerItem.md)
 - [EffectRollbackReferral](docs/Model/EffectRollbackReferral.md)
+- [EffectRollbackTierBoost](docs/Model/EffectRollbackTierBoost.md)
 - [EffectRollbackUseReward](docs/Model/EffectRollbackUseReward.md)
 - [EffectSet](docs/Model/EffectSet.md)
 - [EffectSetDiscount](docs/Model/EffectSetDiscount.md)
@@ -781,6 +788,8 @@ Class | Method | HTTP request | Description
 - [EventV3RequestEntity](docs/Model/EventV3RequestEntity.md)
 - [ExcludePriceObservationsRequest](docs/Model/ExcludePriceObservationsRequest.md)
 - [Experiment](docs/Model/Experiment.md)
+- [ExperimentBlueprint](docs/Model/ExperimentBlueprint.md)
+- [ExperimentBlueprintVariant](docs/Model/ExperimentBlueprintVariant.md)
 - [ExperimentCampaignCopy](docs/Model/ExperimentCampaignCopy.md)
 - [ExperimentConfidenceTimeline](docs/Model/ExperimentConfidenceTimeline.md)
 - [ExperimentConfidenceTimelineDataPoint](docs/Model/ExperimentConfidenceTimelineDataPoint.md)
@@ -895,6 +904,7 @@ Class | Method | HTTP request | Description
 - [Import](docs/Model/Import.md)
 - [ImportEntity](docs/Model/ImportEntity.md)
 - [IncreaseAchievementProgressEffectProps](docs/Model/IncreaseAchievementProgressEffectProps.md)
+- [IncreaseAchievementProgressPerItemEffectProps](docs/Model/IncreaseAchievementProgressPerItemEffectProps.md)
 - [InfluencingCampaignDetails](docs/Model/InfluencingCampaignDetails.md)
 - [IntegrationCampaign](docs/Model/IntegrationCampaign.md)
 - [IntegrationCampaignBase](docs/Model/IntegrationCampaignBase.md)
@@ -964,6 +974,7 @@ Class | Method | HTTP request | Description
 - [ListCatalogItems200Response](docs/Model/ListCatalogItems200Response.md)
 - [ListCheckAttributeBlock](docs/Model/ListCheckAttributeBlock.md)
 - [ListExperiments200Response](docs/Model/ListExperiments200Response.md)
+- [ListGiveawaysPool200Response](docs/Model/ListGiveawaysPool200Response.md)
 - [ListStores200Response](docs/Model/ListStores200Response.md)
 - [ListWithCountCheckAttributeBlock](docs/Model/ListWithCountCheckAttributeBlock.md)
 - [LocationCheckAttributeBlock](docs/Model/LocationCheckAttributeBlock.md)
@@ -1061,6 +1072,7 @@ Class | Method | HTTP request | Description
 - [NewEventType](docs/Model/NewEventType.md)
 - [NewEventV3Entity](docs/Model/NewEventV3Entity.md)
 - [NewExperiment](docs/Model/NewExperiment.md)
+- [NewExperimentBlueprint](docs/Model/NewExperimentBlueprint.md)
 - [NewExperimentVariant](docs/Model/NewExperimentVariant.md)
 - [NewExperimentVariantArray](docs/Model/NewExperimentVariantArray.md)
 - [NewExternalInvitation](docs/Model/NewExternalInvitation.md)
@@ -1202,6 +1214,7 @@ Class | Method | HTTP request | Description
 - [RollbackDeductedLoyaltyPointsEffectProps](docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md)
 - [RollbackDiscountEffectProps](docs/Model/RollbackDiscountEffectProps.md)
 - [RollbackIncreasedAchievementProgressEffectProps](docs/Model/RollbackIncreasedAchievementProgressEffectProps.md)
+- [RollbackIncreasedAchievementProgressPerItemEffectProps](docs/Model/RollbackIncreasedAchievementProgressPerItemEffectProps.md)
 - [RollbackReferralEffectProps](docs/Model/RollbackReferralEffectProps.md)
 - [RollbackTierBoostEffectProps](docs/Model/RollbackTierBoostEffectProps.md)
 - [RollbackUseRewardEffectProps](docs/Model/RollbackUseRewardEffectProps.md)
@@ -1307,6 +1320,7 @@ Class | Method | HTTP request | Description
 - [UpdateAccount](docs/Model/UpdateAccount.md)
 - [UpdateAchievement](docs/Model/UpdateAchievement.md)
 - [UpdateAchievementProgressBlock](docs/Model/UpdateAchievementProgressBlock.md)
+- [UpdateAchievementProgressBlock1Value](docs/Model/UpdateAchievementProgressBlock1Value.md)
 - [UpdateAchievementV2](docs/Model/UpdateAchievementV2.md)
 - [UpdateApplication](docs/Model/UpdateApplication.md)
 - [UpdateApplicationAPIKey](docs/Model/UpdateApplicationAPIKey.md)
@@ -1331,6 +1345,7 @@ Class | Method | HTTP request | Description
 - [UpdateCustomerProfileV2409Response](docs/Model/UpdateCustomerProfileV2409Response.md)
 - [UpdateCustomerSessionV2409Response](docs/Model/UpdateCustomerSessionV2409Response.md)
 - [UpdateExperiment](docs/Model/UpdateExperiment.md)
+- [UpdateExperimentBlueprint](docs/Model/UpdateExperimentBlueprint.md)
 - [UpdateExperimentVariant](docs/Model/UpdateExperimentVariant.md)
 - [UpdateExperimentVariantArray](docs/Model/UpdateExperimentVariantArray.md)
 - [UpdateExperimentVariantName](docs/Model/UpdateExperimentVariantName.md)
