@@ -217,6 +217,7 @@ docs/Model/CatalogActionRemove.md
 docs/Model/CatalogActionRemoveMany.md
 docs/Model/CatalogItem.md
 docs/Model/CatalogRule.md
+docs/Model/CatalogRuleset.md
 docs/Model/CatalogSyncRequest.md
 docs/Model/CatalogsStrikethroughNotificationPolicy.md
 docs/Model/Change.md
@@ -279,6 +280,7 @@ docs/Model/CustomEffect.md
 docs/Model/CustomEffectBlockReference.md
 docs/Model/CustomEffectProps.md
 docs/Model/CustomerAchievement.md
+docs/Model/CustomerAchievementHistoryEntry.md
 docs/Model/CustomerActivityReport.md
 docs/Model/CustomerAnalytics.md
 docs/Model/CustomerInventory.md
@@ -321,6 +323,7 @@ docs/Model/EffectEntity.md
 docs/Model/EffectError.md
 docs/Model/EffectExtendLoyaltyPointsExpiryDate.md
 docs/Model/EffectIncreaseAchievementProgress.md
+docs/Model/EffectIncreaseAchievementProgressPerItem.md
 docs/Model/EffectJoinLoyaltyProgram.md
 docs/Model/EffectOffsetNegativeLoyaltyPoints.md
 docs/Model/EffectRedeemReferral.md
@@ -334,7 +337,9 @@ docs/Model/EffectRollbackCoupon.md
 docs/Model/EffectRollbackDeductedLoyaltyPoints.md
 docs/Model/EffectRollbackDiscount.md
 docs/Model/EffectRollbackIncreasedAchievementProgress.md
+docs/Model/EffectRollbackIncreasedAchievementProgressPerItem.md
 docs/Model/EffectRollbackReferral.md
+docs/Model/EffectRollbackTierBoost.md
 docs/Model/EffectRollbackUseReward.md
 docs/Model/EffectSet.md
 docs/Model/EffectSetDiscount.md
@@ -372,6 +377,8 @@ docs/Model/EventV3ReferralEntity.md
 docs/Model/EventV3RequestEntity.md
 docs/Model/ExcludePriceObservationsRequest.md
 docs/Model/Experiment.md
+docs/Model/ExperimentBlueprint.md
+docs/Model/ExperimentBlueprintVariant.md
 docs/Model/ExperimentCampaignCopy.md
 docs/Model/ExperimentConfidenceTimeline.md
 docs/Model/ExperimentConfidenceTimelineDataPoint.md
@@ -486,6 +493,7 @@ docs/Model/IdentifiableEntity.md
 docs/Model/Import.md
 docs/Model/ImportEntity.md
 docs/Model/IncreaseAchievementProgressEffectProps.md
+docs/Model/IncreaseAchievementProgressPerItemEffectProps.md
 docs/Model/InfluencingCampaignDetails.md
 docs/Model/IntegrationCampaign.md
 docs/Model/IntegrationCampaignBase.md
@@ -555,6 +563,7 @@ docs/Model/ListCampaignStoreBudgetsStore.md
 docs/Model/ListCatalogItems200Response.md
 docs/Model/ListCheckAttributeBlock.md
 docs/Model/ListExperiments200Response.md
+docs/Model/ListGiveawaysPool200Response.md
 docs/Model/ListStores200Response.md
 docs/Model/ListWithCountCheckAttributeBlock.md
 docs/Model/LocationCheckAttributeBlock.md
@@ -652,6 +661,7 @@ docs/Model/NewEvent.md
 docs/Model/NewEventType.md
 docs/Model/NewEventV3Entity.md
 docs/Model/NewExperiment.md
+docs/Model/NewExperimentBlueprint.md
 docs/Model/NewExperimentVariant.md
 docs/Model/NewExperimentVariantArray.md
 docs/Model/NewExternalInvitation.md
@@ -793,6 +803,7 @@ docs/Model/RollbackCouponEffectProps.md
 docs/Model/RollbackDeductedLoyaltyPointsEffectProps.md
 docs/Model/RollbackDiscountEffectProps.md
 docs/Model/RollbackIncreasedAchievementProgressEffectProps.md
+docs/Model/RollbackIncreasedAchievementProgressPerItemEffectProps.md
 docs/Model/RollbackReferralEffectProps.md
 docs/Model/RollbackTierBoostEffectProps.md
 docs/Model/RollbackUseRewardEffectProps.md
@@ -898,6 +909,7 @@ docs/Model/UnlockRewardEffectProps.md
 docs/Model/UpdateAccount.md
 docs/Model/UpdateAchievement.md
 docs/Model/UpdateAchievementProgressBlock.md
+docs/Model/UpdateAchievementProgressBlock1Value.md
 docs/Model/UpdateAchievementV2.md
 docs/Model/UpdateApplication.md
 docs/Model/UpdateApplicationAPIKey.md
@@ -922,6 +934,7 @@ docs/Model/UpdateCustomEffect.md
 docs/Model/UpdateCustomerProfileV2409Response.md
 docs/Model/UpdateCustomerSessionV2409Response.md
 docs/Model/UpdateExperiment.md
+docs/Model/UpdateExperimentBlueprint.md
 docs/Model/UpdateExperimentVariant.md
 docs/Model/UpdateExperimentVariantArray.md
 docs/Model/UpdateExperimentVariantName.md
@@ -1169,6 +1182,7 @@ lib/Model/CatalogActionRemove.php
 lib/Model/CatalogActionRemoveMany.php
 lib/Model/CatalogItem.php
 lib/Model/CatalogRule.php
+lib/Model/CatalogRuleset.php
 lib/Model/CatalogSyncRequest.php
 lib/Model/CatalogsStrikethroughNotificationPolicy.php
 lib/Model/Change.php
@@ -1231,6 +1245,7 @@ lib/Model/CustomEffect.php
 lib/Model/CustomEffectBlockReference.php
 lib/Model/CustomEffectProps.php
 lib/Model/CustomerAchievement.php
+lib/Model/CustomerAchievementHistoryEntry.php
 lib/Model/CustomerActivityReport.php
 lib/Model/CustomerAnalytics.php
 lib/Model/CustomerInventory.php
@@ -1273,6 +1288,7 @@ lib/Model/EffectEntity.php
 lib/Model/EffectError.php
 lib/Model/EffectExtendLoyaltyPointsExpiryDate.php
 lib/Model/EffectIncreaseAchievementProgress.php
+lib/Model/EffectIncreaseAchievementProgressPerItem.php
 lib/Model/EffectJoinLoyaltyProgram.php
 lib/Model/EffectOffsetNegativeLoyaltyPoints.php
 lib/Model/EffectRedeemReferral.php
@@ -1286,7 +1302,9 @@ lib/Model/EffectRollbackCoupon.php
 lib/Model/EffectRollbackDeductedLoyaltyPoints.php
 lib/Model/EffectRollbackDiscount.php
 lib/Model/EffectRollbackIncreasedAchievementProgress.php
+lib/Model/EffectRollbackIncreasedAchievementProgressPerItem.php
 lib/Model/EffectRollbackReferral.php
+lib/Model/EffectRollbackTierBoost.php
 lib/Model/EffectRollbackUseReward.php
 lib/Model/EffectSet.php
 lib/Model/EffectSetDiscount.php
@@ -1324,6 +1342,8 @@ lib/Model/EventV3ReferralEntity.php
 lib/Model/EventV3RequestEntity.php
 lib/Model/ExcludePriceObservationsRequest.php
 lib/Model/Experiment.php
+lib/Model/ExperimentBlueprint.php
+lib/Model/ExperimentBlueprintVariant.php
 lib/Model/ExperimentCampaignCopy.php
 lib/Model/ExperimentConfidenceTimeline.php
 lib/Model/ExperimentConfidenceTimelineDataPoint.php
@@ -1438,6 +1458,7 @@ lib/Model/IdentifiableEntity.php
 lib/Model/Import.php
 lib/Model/ImportEntity.php
 lib/Model/IncreaseAchievementProgressEffectProps.php
+lib/Model/IncreaseAchievementProgressPerItemEffectProps.php
 lib/Model/InfluencingCampaignDetails.php
 lib/Model/IntegrationCampaign.php
 lib/Model/IntegrationCampaignBase.php
@@ -1507,6 +1528,7 @@ lib/Model/ListCampaignStoreBudgetsStore.php
 lib/Model/ListCatalogItems200Response.php
 lib/Model/ListCheckAttributeBlock.php
 lib/Model/ListExperiments200Response.php
+lib/Model/ListGiveawaysPool200Response.php
 lib/Model/ListStores200Response.php
 lib/Model/ListWithCountCheckAttributeBlock.php
 lib/Model/LocationCheckAttributeBlock.php
@@ -1605,6 +1627,7 @@ lib/Model/NewEvent.php
 lib/Model/NewEventType.php
 lib/Model/NewEventV3Entity.php
 lib/Model/NewExperiment.php
+lib/Model/NewExperimentBlueprint.php
 lib/Model/NewExperimentVariant.php
 lib/Model/NewExperimentVariantArray.php
 lib/Model/NewExternalInvitation.php
@@ -1746,6 +1769,7 @@ lib/Model/RollbackCouponEffectProps.php
 lib/Model/RollbackDeductedLoyaltyPointsEffectProps.php
 lib/Model/RollbackDiscountEffectProps.php
 lib/Model/RollbackIncreasedAchievementProgressEffectProps.php
+lib/Model/RollbackIncreasedAchievementProgressPerItemEffectProps.php
 lib/Model/RollbackReferralEffectProps.php
 lib/Model/RollbackTierBoostEffectProps.php
 lib/Model/RollbackUseRewardEffectProps.php
@@ -1851,6 +1875,7 @@ lib/Model/UnlockRewardEffectProps.php
 lib/Model/UpdateAccount.php
 lib/Model/UpdateAchievement.php
 lib/Model/UpdateAchievementProgressBlock.php
+lib/Model/UpdateAchievementProgressBlock1Value.php
 lib/Model/UpdateAchievementV2.php
 lib/Model/UpdateApplication.php
 lib/Model/UpdateApplicationAPIKey.php
@@ -1875,6 +1900,7 @@ lib/Model/UpdateCustomEffect.php
 lib/Model/UpdateCustomerProfileV2409Response.php
 lib/Model/UpdateCustomerSessionV2409Response.php
 lib/Model/UpdateExperiment.php
+lib/Model/UpdateExperimentBlueprint.php
 lib/Model/UpdateExperimentVariant.php
 lib/Model/UpdateExperimentVariantArray.php
 lib/Model/UpdateExperimentVariantName.php
@@ -2117,6 +2143,7 @@ test/Model/CatalogActionRemoveTest.php
 test/Model/CatalogActionTest.php
 test/Model/CatalogItemTest.php
 test/Model/CatalogRuleTest.php
+test/Model/CatalogRulesetTest.php
 test/Model/CatalogSyncRequestTest.php
 test/Model/CatalogTest.php
 test/Model/CatalogsStrikethroughNotificationPolicyTest.php
@@ -2179,6 +2206,7 @@ test/Model/CreateTemplateCampaignTest.php
 test/Model/CustomEffectBlockReferenceTest.php
 test/Model/CustomEffectPropsTest.php
 test/Model/CustomEffectTest.php
+test/Model/CustomerAchievementHistoryEntryTest.php
 test/Model/CustomerAchievementTest.php
 test/Model/CustomerActivityReportTest.php
 test/Model/CustomerAnalyticsTest.php
@@ -2220,6 +2248,7 @@ test/Model/EffectDeductLoyaltyPointsTest.php
 test/Model/EffectEntityTest.php
 test/Model/EffectErrorTest.php
 test/Model/EffectExtendLoyaltyPointsExpiryDateTest.php
+test/Model/EffectIncreaseAchievementProgressPerItemTest.php
 test/Model/EffectIncreaseAchievementProgressTest.php
 test/Model/EffectJoinLoyaltyProgramTest.php
 test/Model/EffectOffsetNegativeLoyaltyPointsTest.php
@@ -2233,8 +2262,10 @@ test/Model/EffectRollbackAddedLoyaltyPointsTest.php
 test/Model/EffectRollbackCouponTest.php
 test/Model/EffectRollbackDeductedLoyaltyPointsTest.php
 test/Model/EffectRollbackDiscountTest.php
+test/Model/EffectRollbackIncreasedAchievementProgressPerItemTest.php
 test/Model/EffectRollbackIncreasedAchievementProgressTest.php
 test/Model/EffectRollbackReferralTest.php
+test/Model/EffectRollbackTierBoostTest.php
 test/Model/EffectRollbackUseRewardTest.php
 test/Model/EffectSetDiscountPerAdditionalCostPerItemTest.php
 test/Model/EffectSetDiscountPerAdditionalCostTest.php
@@ -2272,6 +2303,8 @@ test/Model/EventV3ReferralEntityTest.php
 test/Model/EventV3RequestEntityTest.php
 test/Model/EventV3Test.php
 test/Model/ExcludePriceObservationsRequestTest.php
+test/Model/ExperimentBlueprintTest.php
+test/Model/ExperimentBlueprintVariantTest.php
 test/Model/ExperimentCampaignCopyTest.php
 test/Model/ExperimentConfidenceTimelineDataPointTest.php
 test/Model/ExperimentConfidenceTimelineTest.php
@@ -2387,6 +2420,7 @@ test/Model/IdentifiableEntityTest.php
 test/Model/ImportEntityTest.php
 test/Model/ImportTest.php
 test/Model/IncreaseAchievementProgressEffectPropsTest.php
+test/Model/IncreaseAchievementProgressPerItemEffectPropsTest.php
 test/Model/InfluencingCampaignDetailsTest.php
 test/Model/IntegrationCampaignBaseTest.php
 test/Model/IntegrationCampaignTest.php
@@ -2456,6 +2490,7 @@ test/Model/ListCampaignStoreBudgetsTest.php
 test/Model/ListCatalogItems200ResponseTest.php
 test/Model/ListCheckAttributeBlockTest.php
 test/Model/ListExperiments200ResponseTest.php
+test/Model/ListGiveawaysPool200ResponseTest.php
 test/Model/ListStores200ResponseTest.php
 test/Model/ListWithCountCheckAttributeBlockTest.php
 test/Model/LocationCheckAttributeBlockTest.php
@@ -2552,6 +2587,7 @@ test/Model/NewDigitalPassTest.php
 test/Model/NewEventTest.php
 test/Model/NewEventTypeTest.php
 test/Model/NewEventV3EntityTest.php
+test/Model/NewExperimentBlueprintTest.php
 test/Model/NewExperimentTest.php
 test/Model/NewExperimentVariantArrayTest.php
 test/Model/NewExperimentVariantTest.php
@@ -2694,6 +2730,7 @@ test/Model/RollbackCouponEffectPropsTest.php
 test/Model/RollbackDeductedLoyaltyPointsEffectPropsTest.php
 test/Model/RollbackDiscountEffectPropsTest.php
 test/Model/RollbackIncreasedAchievementProgressEffectPropsTest.php
+test/Model/RollbackIncreasedAchievementProgressPerItemEffectPropsTest.php
 test/Model/RollbackReferralEffectPropsTest.php
 test/Model/RollbackTierBoostEffectPropsTest.php
 test/Model/RollbackUseRewardEffectPropsTest.php
@@ -2797,6 +2834,7 @@ test/Model/TwoFAConfigTest.php
 test/Model/UnaryCheckAttributeBlockTest.php
 test/Model/UnlockRewardEffectPropsTest.php
 test/Model/UpdateAccountTest.php
+test/Model/UpdateAchievementProgressBlock1ValueTest.php
 test/Model/UpdateAchievementProgressBlockTest.php
 test/Model/UpdateAchievementTest.php
 test/Model/UpdateAchievementV2Test.php
@@ -2822,6 +2860,7 @@ test/Model/UpdateCouponsDataTest.php
 test/Model/UpdateCustomEffectTest.php
 test/Model/UpdateCustomerProfileV2409ResponseTest.php
 test/Model/UpdateCustomerSessionV2409ResponseTest.php
+test/Model/UpdateExperimentBlueprintTest.php
 test/Model/UpdateExperimentTest.php
 test/Model/UpdateExperimentVariantArrayTest.php
 test/Model/UpdateExperimentVariantNameTest.php
