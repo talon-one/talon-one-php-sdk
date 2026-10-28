@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * OutboundMessageTest Class Doc Comment
  *
  * @category    Class
- * @description Outbound notification or webhook message with its shared request details.
+ * @description OutboundMessage
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

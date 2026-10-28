@@ -64,6 +64,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => 'string',
         'status' => 'string',
         'blockReason' => 'string',
+        'attributes' => 'object',
         'identifier' => 'string',
         'usersPerCardLimit' => 'int',
         'profiles' => '\TalonOne\Client\Model\LoyaltyCardProfileRegistration[]',
@@ -90,6 +91,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => null,
         'status' => null,
         'blockReason' => null,
+        'attributes' => null,
         'identifier' => null,
         'usersPerCardLimit' => 'int64',
         'profiles' => null,
@@ -114,6 +116,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => false,
         'status' => false,
         'blockReason' => false,
+        'attributes' => false,
         'identifier' => false,
         'usersPerCardLimit' => false,
         'profiles' => false,
@@ -218,6 +221,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => 'programTitle',
         'status' => 'status',
         'blockReason' => 'blockReason',
+        'attributes' => 'attributes',
         'identifier' => 'identifier',
         'usersPerCardLimit' => 'usersPerCardLimit',
         'profiles' => 'profiles',
@@ -242,6 +246,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => 'setProgramTitle',
         'status' => 'setStatus',
         'blockReason' => 'setBlockReason',
+        'attributes' => 'setAttributes',
         'identifier' => 'setIdentifier',
         'usersPerCardLimit' => 'setUsersPerCardLimit',
         'profiles' => 'setProfiles',
@@ -266,6 +271,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         'programTitle' => 'getProgramTitle',
         'status' => 'getStatus',
         'blockReason' => 'getBlockReason',
+        'attributes' => 'getAttributes',
         'identifier' => 'getIdentifier',
         'usersPerCardLimit' => 'getUsersPerCardLimit',
         'profiles' => 'getProfiles',
@@ -341,6 +347,7 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('programTitle', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('blockReason', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('identifier', $data ?? [], null);
         $this->setIfExists('usersPerCardLimit', $data ?? [], null);
         $this->setIfExists('profiles', $data ?? [], null);
@@ -637,6 +644,33 @@ class LoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable blockReason cannot be null');
         }
         $this->container['blockReason'] = $blockReason;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return object|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param object|null $attributes Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

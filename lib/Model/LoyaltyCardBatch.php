@@ -60,6 +60,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => 'int',
         'batchId' => 'string',
         'status' => 'string',
+        'attributes' => 'object',
         'cardCodeSettings' => '\TalonOne\Client\Model\CodeGeneratorSettings'
     ];
 
@@ -74,6 +75,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => 'int64',
         'batchId' => null,
         'status' => null,
+        'attributes' => null,
         'cardCodeSettings' => null
     ];
 
@@ -86,6 +88,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => false,
         'batchId' => false,
         'status' => false,
+        'attributes' => false,
         'cardCodeSettings' => false
     ];
 
@@ -178,6 +181,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => 'numberOfCards',
         'batchId' => 'batchId',
         'status' => 'status',
+        'attributes' => 'attributes',
         'cardCodeSettings' => 'cardCodeSettings'
     ];
 
@@ -190,6 +194,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => 'setNumberOfCards',
         'batchId' => 'setBatchId',
         'status' => 'setStatus',
+        'attributes' => 'setAttributes',
         'cardCodeSettings' => 'setCardCodeSettings'
     ];
 
@@ -202,6 +207,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         'numberOfCards' => 'getNumberOfCards',
         'batchId' => 'getBatchId',
         'status' => 'getStatus',
+        'attributes' => 'getAttributes',
         'cardCodeSettings' => 'getCardCodeSettings'
     ];
 
@@ -280,6 +286,7 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('numberOfCards', $data ?? [], null);
         $this->setIfExists('batchId', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], 'active');
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('cardCodeSettings', $data ?? [], null);
     }
 
@@ -461,6 +468,33 @@ class LoyaltyCardBatch implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return object|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param object|null $attributes Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

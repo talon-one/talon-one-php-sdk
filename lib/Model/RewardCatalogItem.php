@@ -63,7 +63,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => 'string',
         'pointsRequired' => '\TalonOne\Client\Model\RewardPointsRequired[]',
         'rule' => '\TalonOne\Client\Model\RuleMetadata',
-        'eligibility' => '\TalonOne\Client\Model\RewardEligibility'
+        'eligibility' => '\TalonOne\Client\Model\RewardEligibility',
+        'validityDuration' => 'string',
+        'expiryDate' => '\DateTime'
     ];
 
     /**
@@ -79,7 +81,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => null,
         'pointsRequired' => null,
         'rule' => null,
-        'eligibility' => null
+        'eligibility' => null,
+        'validityDuration' => null,
+        'expiryDate' => 'date-time'
     ];
 
     /**
@@ -93,7 +97,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => false,
         'pointsRequired' => false,
         'rule' => false,
-        'eligibility' => false
+        'eligibility' => false,
+        'validityDuration' => false,
+        'expiryDate' => false
     ];
 
     /**
@@ -187,7 +193,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => 'description',
         'pointsRequired' => 'pointsRequired',
         'rule' => 'rule',
-        'eligibility' => 'eligibility'
+        'eligibility' => 'eligibility',
+        'validityDuration' => 'validityDuration',
+        'expiryDate' => 'expiryDate'
     ];
 
     /**
@@ -201,7 +209,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => 'setDescription',
         'pointsRequired' => 'setPointsRequired',
         'rule' => 'setRule',
-        'eligibility' => 'setEligibility'
+        'eligibility' => 'setEligibility',
+        'validityDuration' => 'setValidityDuration',
+        'expiryDate' => 'setExpiryDate'
     ];
 
     /**
@@ -215,7 +225,9 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'description' => 'getDescription',
         'pointsRequired' => 'getPointsRequired',
         'rule' => 'getRule',
-        'eligibility' => 'getEligibility'
+        'eligibility' => 'getEligibility',
+        'validityDuration' => 'getValidityDuration',
+        'expiryDate' => 'getExpiryDate'
     ];
 
     /**
@@ -281,6 +293,8 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('pointsRequired', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('eligibility', $data ?? [], null);
+        $this->setIfExists('validityDuration', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
     }
 
     /**
@@ -319,6 +333,10 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['rule'] === null) {
             $invalidProperties[] = "'rule' can't be null";
         }
+        if (!is_null($this->container['validityDuration']) && !preg_match("/^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/", $this->container['validityDuration'])) {
+            $invalidProperties[] = "invalid value for 'validityDuration', must be conform to the pattern /^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -492,6 +510,65 @@ class RewardCatalogItem implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable eligibility cannot be null');
         }
         $this->container['eligibility'] = $eligibility;
+
+        return $this;
+    }
+
+    /**
+     * Gets validityDuration
+     *
+     * @return string|null
+     */
+    public function getValidityDuration()
+    {
+        return $this->container['validityDuration'];
+    }
+
+    /**
+     * Sets validityDuration
+     *
+     * @param string|null $validityDuration The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: `30m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  Certain units can be rounded up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field is not returned in combination with `expiryDate`. If both `validityDuration` and `expiryDate` are not returned, customer rewards have unlimited validity.
+     *
+     * @return self
+     */
+    public function setValidityDuration($validityDuration)
+    {
+        if (is_null($validityDuration)) {
+            throw new \InvalidArgumentException('non-nullable validityDuration cannot be null');
+        }
+
+        if ((!preg_match("/^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/", ObjectSerializer::toString($validityDuration)))) {
+            throw new \InvalidArgumentException("invalid value for \$validityDuration when calling RewardCatalogItem., must conform to the pattern /^[1-9][0-9]*([mh]|D(_[DU])?|[WMY](_U)?)$/.");
+        }
+
+        $this->container['validityDuration'] = $validityDuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiryDate
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiryDate()
+    {
+        return $this->container['expiryDate'];
+    }
+
+    /**
+     * Sets expiryDate
+     *
+     * @param \DateTime|null $expiryDate Expiry date of the customer rewards unlocked from this reward. Customer rewards never expire if this is omitted and `validityDuration` is not set.  **Note:** - This field is not returned in combination with `validityDuration`.
+     *
+     * @return self
+     */
+    public function setExpiryDate($expiryDate)
+    {
+        if (is_null($expiryDate)) {
+            throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
+        }
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }

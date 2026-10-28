@@ -35,7 +35,6 @@ use \TalonOne\Client\ObjectSerializer;
  * OutboundLog Class Doc Comment
  *
  * @category Class
- * @description Log of an outbound notification or webhook request.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -419,7 +418,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationId
      *
-     * @param int|null $notificationId ID of the notification that produced the outbound request.
+     * @param int|null $notificationId ID of the notification that triggered the outbound message.
      *
      * @return self
      */
@@ -446,7 +445,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationName
      *
-     * @param string|null $notificationName Name of the notification that produced the outbound request.
+     * @param string|null $notificationName Name of the notification that triggered the outbound message.
      *
      * @return self
      */
@@ -473,7 +472,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets webhookId
      *
-     * @param int|null $webhookId ID of the webhook that produced the outbound request.
+     * @param int|null $webhookId ID of the webhook that triggered the outbound message.
      *
      * @return self
      */
@@ -500,7 +499,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets webhookName
      *
-     * @param string|null $webhookName The name of the webhook that produced the outbound request.
+     * @param string|null $webhookName Name of the webhook that triggered the outbound message.
      *
      * @return self
      */
@@ -527,7 +526,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationType
      *
-     * @param string $notificationType Type of notification that produced the outbound request.
+     * @param string $notificationType Type of notification that triggered the outbound message.
      *
      * @return self
      */
@@ -554,7 +553,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets applicationId
      *
-     * @param int|null $applicationId ID of the Application associated with the outbound request.
+     * @param int|null $applicationId ID of the Application associated with the outbound message.
      *
      * @return self
      */
@@ -581,7 +580,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets loyaltyProgramId
      *
-     * @param int|null $loyaltyProgramId ID of the loyalty program associated with the outbound request.
+     * @param int|null $loyaltyProgramId ID of the loyalty program associated with the outbound message.
      *
      * @return self
      */
@@ -635,7 +634,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets createdAt
      *
-     * @param \DateTime $createdAt Timestamp when the log entry was created.
+     * @param \DateTime $createdAt Timestamp when the log was created.
      *
      * @return self
      */
@@ -662,7 +661,7 @@ class OutboundLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets processingTimeMs
      *
-     * @param int $processingTimeMs Processing time of the outbound request in milliseconds.
+     * @param int $processingTimeMs Time in milliseconds between sending the outbound request and receiving the response.
      *
      * @return self
      */

@@ -35,7 +35,6 @@ use \TalonOne\Client\ObjectSerializer;
  * OutboundMessage Class Doc Comment
  *
  * @category Class
- * @description Outbound notification or webhook message with its shared request details.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -443,7 +442,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationId
      *
-     * @param int|null $notificationId ID of the notification that produced the outbound request.
+     * @param int|null $notificationId ID of the notification that triggered the outbound message.
      *
      * @return self
      */
@@ -470,7 +469,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationName
      *
-     * @param string|null $notificationName Name of the notification that produced the outbound request.
+     * @param string|null $notificationName Name of the notification that triggered the outbound message.
      *
      * @return self
      */
@@ -497,7 +496,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets webhookId
      *
-     * @param int|null $webhookId ID of the webhook that produced the outbound request.
+     * @param int|null $webhookId ID of the webhook that triggered the outbound message.
      *
      * @return self
      */
@@ -524,7 +523,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets webhookName
      *
-     * @param string|null $webhookName The name of the webhook that produced the outbound request.
+     * @param string|null $webhookName Name of the webhook that triggered the outbound message.
      *
      * @return self
      */
@@ -551,7 +550,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notificationType
      *
-     * @param string $notificationType Type of notification that produced the outbound request.
+     * @param string $notificationType Type of notification that triggered the outbound message.
      *
      * @return self
      */
@@ -578,7 +577,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets applicationId
      *
-     * @param int|null $applicationId ID of the Application associated with the outbound request.
+     * @param int|null $applicationId ID of the Application associated with the outbound message.
      *
      * @return self
      */
@@ -605,7 +604,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets loyaltyProgramId
      *
-     * @param int|null $loyaltyProgramId ID of the loyalty program associated with the outbound request.
+     * @param int|null $loyaltyProgramId ID of the loyalty program associated with the outbound message.
      *
      * @return self
      */
@@ -794,7 +793,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets responses
      *
-     * @param \TalonOne\Client\Model\OutboundMessageResponse[]|null $responses Log entries for this message. Omitted when `includeLogs=false`.
+     * @param \TalonOne\Client\Model\OutboundMessageResponse[]|null $responses Log entries for this message. One entry per delivery attempt. Empty when `includeLogs=false`.
      *
      * @return self
      */

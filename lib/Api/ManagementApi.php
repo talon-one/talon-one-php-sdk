@@ -18465,15 +18465,16 @@ class ManagementApi
      * @param  \DateTime $rangeStart Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  \DateTime $rangeEnd Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially  when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyCardLedger'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function exportLoyaltyCardLedger($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
+    public function exportLoyaltyCardLedger($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
     {
-        list($response) = $this->exportLoyaltyCardLedgerWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $contentType);
+        list($response) = $this->exportLoyaltyCardLedgerWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $includeReferences, $contentType);
         return $response;
     }
 
@@ -18487,15 +18488,16 @@ class ManagementApi
      * @param  \DateTime $rangeStart Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  \DateTime $rangeEnd Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially  when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyCardLedger'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function exportLoyaltyCardLedgerWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
+    public function exportLoyaltyCardLedgerWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
     {
-        $request = $this->exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $contentType);
+        $request = $this->exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $includeReferences, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18604,14 +18606,15 @@ class ManagementApi
      * @param  \DateTime $rangeStart Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  \DateTime $rangeEnd Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially  when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyCardLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyCardLedgerAsync($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
+    public function exportLoyaltyCardLedgerAsync($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
     {
-        return $this->exportLoyaltyCardLedgerAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $contentType)
+        return $this->exportLoyaltyCardLedgerAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $includeReferences, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18629,15 +18632,16 @@ class ManagementApi
      * @param  \DateTime $rangeStart Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  \DateTime $rangeEnd Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially  when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyCardLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyCardLedgerAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
+    public function exportLoyaltyCardLedgerAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
     {
         $returnType = 'string';
-        $request = $this->exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $contentType);
+        $request = $this->exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat, $includeReferences, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18683,12 +18687,13 @@ class ManagementApi
      * @param  \DateTime $rangeStart Only return results from after this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  \DateTime $rangeEnd Only return results from before this timestamp.  &gt; [!note] **Note** &gt; - This must be an RFC3339 timestamp string. &gt; - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting &gt;   considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially  when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyCardLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
+    public function exportLoyaltyCardLedgerRequest($loyaltyProgramId, $loyaltyCardId, $rangeStart, $rangeEnd, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyCardLedger'][0])
     {
 
         // verify the required parameter 'loyaltyProgramId' is set
@@ -18727,6 +18732,7 @@ class ManagementApi
 
 
 
+
         $resourcePath = '/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/export_log';
         $formParams = [];
         $queryParams = [];
@@ -18757,6 +18763,15 @@ class ManagementApi
             $dateFormat,
             'dateFormat', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $includeReferences,
+            'includeReferences', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -19523,15 +19538,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyLedger'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function exportLoyaltyLedger($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
+    public function exportLoyaltyLedger($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
     {
-        list($response) = $this->exportLoyaltyLedgerWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $contentType);
+        list($response) = $this->exportLoyaltyLedgerWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $includeReferences, $contentType);
         return $response;
     }
 
@@ -19545,15 +19561,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyLedger'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function exportLoyaltyLedgerWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
+    public function exportLoyaltyLedgerWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
     {
-        $request = $this->exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $contentType);
+        $request = $this->exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $includeReferences, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -19634,14 +19651,15 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyLedgerAsync($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
+    public function exportLoyaltyLedgerAsync($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
     {
-        return $this->exportLoyaltyLedgerAsyncWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $contentType)
+        return $this->exportLoyaltyLedgerAsyncWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $includeReferences, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -19659,15 +19677,16 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportLoyaltyLedgerAsyncWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
+    public function exportLoyaltyLedgerAsyncWithHttpInfo($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
     {
         $returnType = 'string';
-        $request = $this->exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $contentType);
+        $request = $this->exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat, $includeReferences, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -19713,12 +19732,13 @@ class ManagementApi
      * @param  string $loyaltyProgramId The identifier for the loyalty program. (required)
      * @param  string $integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. (required)
      * @param  string|null $dateFormat Determines the format of dates in the export document. (optional)
+     * @param  bool|null $includeReferences Whether to include the UUIDs of transactions referenced by deductions. When set to &#x60;true&#x60;, the UUIDs are included in the &#x60;referencetransactionuuids&#x60; column of the export CSV.  **Note:** Enabling this can decrease query performance, especially when no date filter is applied to a large transaction history. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportLoyaltyLedger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
+    public function exportLoyaltyLedgerRequest($rangeStart, $rangeEnd, $loyaltyProgramId, $integrationId, $dateFormat = null, $includeReferences = false, string $contentType = self::contentTypes['exportLoyaltyLedger'][0])
     {
 
         // verify the required parameter 'rangeStart' is set
@@ -19748,6 +19768,7 @@ class ManagementApi
                 'Missing the required parameter $integrationId when calling exportLoyaltyLedger'
             );
         }
+
 
 
 
@@ -19781,6 +19802,15 @@ class ManagementApi
             $dateFormat,
             'dateFormat', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $includeReferences,
+            'includeReferences', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

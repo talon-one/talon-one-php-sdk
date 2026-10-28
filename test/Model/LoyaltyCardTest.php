@@ -143,6 +143,15 @@ class LoyaltyCardTest extends TestCase
     }
 
     /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "identifier"
      */
     public function testPropertyIdentifier()

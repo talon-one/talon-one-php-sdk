@@ -356,6 +356,7 @@ docs/Model/EffectWillAwardGiveaway.md
 docs/Model/EmailEntity.md
 docs/Model/EmbeddedAnalyticsConfiguration.md
 docs/Model/EmbeddedAnalyticsConfigurationDashboards.md
+docs/Model/EmbeddedAnalyticsToken.md
 docs/Model/EmbeddedDashboardConfiguration.md
 docs/Model/Endpoint.md
 docs/Model/Entity.md
@@ -1321,6 +1322,7 @@ lib/Model/EffectWillAwardGiveaway.php
 lib/Model/EmailEntity.php
 lib/Model/EmbeddedAnalyticsConfiguration.php
 lib/Model/EmbeddedAnalyticsConfigurationDashboards.php
+lib/Model/EmbeddedAnalyticsToken.php
 lib/Model/EmbeddedDashboardConfiguration.php
 lib/Model/Endpoint.php
 lib/Model/Entity.php
@@ -2283,6 +2285,7 @@ test/Model/EffectWillAwardGiveawayTest.php
 test/Model/EmailEntityTest.php
 test/Model/EmbeddedAnalyticsConfigurationDashboardsTest.php
 test/Model/EmbeddedAnalyticsConfigurationTest.php
+test/Model/EmbeddedAnalyticsTokenTest.php
 test/Model/EmbeddedDashboardConfigurationTest.php
 test/Model/EndpointTest.php
 test/Model/EntityTest.php

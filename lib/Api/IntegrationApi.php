@@ -155,6 +155,9 @@ class IntegrationApi
         'integrationRewardsCatalog' => [
             'application/json',
         ],
+        'integrationUpdateLoyaltyCard' => [
+            'application/json',
+        ],
         'joinLoyaltyProgram' => [
             'application/json',
         ],
@@ -9877,6 +9880,374 @@ class IntegrationApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation integrationUpdateLoyaltyCard
+     *
+     * Update loyalty card
+     *
+     * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
+     * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
+     * @param  \TalonOne\Client\Model\UpdateLoyaltyCardRequest $updateLoyaltyCardRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationUpdateLoyaltyCard'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \TalonOne\Client\Model\LoyaltyCard|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus
+     */
+    public function integrationUpdateLoyaltyCard($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, string $contentType = self::contentTypes['integrationUpdateLoyaltyCard'][0])
+    {
+        list($response) = $this->integrationUpdateLoyaltyCardWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation integrationUpdateLoyaltyCardWithHttpInfo
+     *
+     * Update loyalty card
+     *
+     * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
+     * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
+     * @param  \TalonOne\Client\Model\UpdateLoyaltyCardRequest $updateLoyaltyCardRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationUpdateLoyaltyCard'] to see the possible values for this operation
+     *
+     * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \TalonOne\Client\Model\LoyaltyCard|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function integrationUpdateLoyaltyCardWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, string $contentType = self::contentTypes['integrationUpdateLoyaltyCard'][0])
+    {
+        $request = $this->integrationUpdateLoyaltyCardRequest($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\LoyaltyCard',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\TalonOne\Client\Model\LoyaltyCard',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\LoyaltyCard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation integrationUpdateLoyaltyCardAsync
+     *
+     * Update loyalty card
+     *
+     * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
+     * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
+     * @param  \TalonOne\Client\Model\UpdateLoyaltyCardRequest $updateLoyaltyCardRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationUpdateLoyaltyCard'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function integrationUpdateLoyaltyCardAsync($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, string $contentType = self::contentTypes['integrationUpdateLoyaltyCard'][0])
+    {
+        return $this->integrationUpdateLoyaltyCardAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation integrationUpdateLoyaltyCardAsyncWithHttpInfo
+     *
+     * Update loyalty card
+     *
+     * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
+     * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
+     * @param  \TalonOne\Client\Model\UpdateLoyaltyCardRequest $updateLoyaltyCardRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationUpdateLoyaltyCard'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function integrationUpdateLoyaltyCardAsyncWithHttpInfo($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, string $contentType = self::contentTypes['integrationUpdateLoyaltyCard'][0])
+    {
+        $returnType = '\TalonOne\Client\Model\LoyaltyCard';
+        $request = $this->integrationUpdateLoyaltyCardRequest($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'integrationUpdateLoyaltyCard'
+     *
+     * @param  int $loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. (required)
+     * @param  string $loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  **Important**: The loyalty card ID requires [URL encoding](https://www.w3schools.com/tags//ref_urlencode.asp) if it contains special characters. For example, you must encode &#x60;NewCard2026%&#x60; as &#x60;NewCard2026%25&#x60;. (required)
+     * @param  \TalonOne\Client\Model\UpdateLoyaltyCardRequest $updateLoyaltyCardRequest body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['integrationUpdateLoyaltyCard'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function integrationUpdateLoyaltyCardRequest($loyaltyProgramId, $loyaltyCardId, $updateLoyaltyCardRequest, string $contentType = self::contentTypes['integrationUpdateLoyaltyCard'][0])
+    {
+
+        // verify the required parameter 'loyaltyProgramId' is set
+        if ($loyaltyProgramId === null || (is_array($loyaltyProgramId) && count($loyaltyProgramId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $loyaltyProgramId when calling integrationUpdateLoyaltyCard'
+            );
+        }
+
+        // verify the required parameter 'loyaltyCardId' is set
+        if ($loyaltyCardId === null || (is_array($loyaltyCardId) && count($loyaltyCardId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $loyaltyCardId when calling integrationUpdateLoyaltyCard'
+            );
+        }
+        if (strlen($loyaltyCardId) > 108) {
+            throw new \InvalidArgumentException('invalid length for "$loyaltyCardId" when calling IntegrationApi.integrationUpdateLoyaltyCard, must be smaller than or equal to 108.');
+        }
+        if (strlen($loyaltyCardId) < 4) {
+            throw new \InvalidArgumentException('invalid length for "$loyaltyCardId" when calling IntegrationApi.integrationUpdateLoyaltyCard, must be bigger than or equal to 4.');
+        }
+        
+        // verify the required parameter 'updateLoyaltyCardRequest' is set
+        if ($updateLoyaltyCardRequest === null || (is_array($updateLoyaltyCardRequest) && count($updateLoyaltyCardRequest) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $updateLoyaltyCardRequest when calling integrationUpdateLoyaltyCard'
+            );
+        }
+
+
+        $resourcePath = '/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($loyaltyProgramId !== null) {
+            $resourcePath = str_replace(
+                '{loyaltyProgramId}',
+                ObjectSerializer::toPathValue($loyaltyProgramId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($loyaltyCardId !== null) {
+            $resourcePath = str_replace(
+                '{loyaltyCardId}',
+                ObjectSerializer::toPathValue($loyaltyCardId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($updateLoyaltyCardRequest)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                try {
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($updateLoyaltyCardRequest), JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                $httpBody = $updateLoyaltyCardRequest;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
