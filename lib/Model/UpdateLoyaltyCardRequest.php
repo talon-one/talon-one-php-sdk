@@ -57,7 +57,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $openAPITypes = [
-        'status' => 'string'
+        'status' => 'string',
+        'attributes' => 'object'
     ];
 
     /**
@@ -68,7 +69,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'status' => null
+        'status' => null,
+        'attributes' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'status' => false
+        'status' => false,
+        'attributes' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status'
+        'status' => 'status',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -175,7 +179,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -184,7 +189,8 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -245,6 +251,7 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -312,6 +319,33 @@ class UpdateLoyaltyCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return object|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param object|null $attributes Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

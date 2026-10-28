@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * OutboundLogsTest Class Doc Comment
  *
  * @category    Class
- * @description Paginated list of outbound logs.
+ * @description OutboundLogs
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

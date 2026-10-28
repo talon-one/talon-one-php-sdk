@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **programTitle** | **string** | The Campaign Manager-displayed name of the loyalty program that owns this entity. | [optional]
 **status** | **string** | Status of the loyalty card. Can be &#x60;active&#x60; or &#x60;inactive&#x60;. |
 **blockReason** | **string** | Reason for transferring and blocking the loyalty card. | [optional]
+**attributes** | **object** | Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint. | [optional]
 **identifier** | **string** | The identifier of the loyalty card, which must match the regular expression &#x60;^[A-Za-z0-9._%+@-]+$&#x60;. |
 **usersPerCardLimit** | **int** | The max amount of customer profiles that can be linked to the card. 0 means unlimited. |
 **profiles** | [**\TalonOne\Client\Model\LoyaltyCardProfileRegistration[]**](LoyaltyCardProfileRegistration.md) | Integration IDs of the customers profiles linked to the card. | [optional]

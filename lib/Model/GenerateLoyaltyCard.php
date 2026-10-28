@@ -60,7 +60,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'status' => 'string',
         'customerProfileIds' => 'string[]',
-        'cardIdentifier' => 'string'
+        'cardIdentifier' => 'string',
+        'attributes' => 'object'
     ];
 
     /**
@@ -73,7 +74,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'status' => null,
         'customerProfileIds' => null,
-        'cardIdentifier' => null
+        'cardIdentifier' => null,
+        'attributes' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'status' => false,
         'customerProfileIds' => false,
-        'cardIdentifier' => false
+        'cardIdentifier' => false,
+        'attributes' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'status' => 'status',
         'customerProfileIds' => 'customerProfileIds',
-        'cardIdentifier' => 'cardIdentifier'
+        'cardIdentifier' => 'cardIdentifier',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -186,7 +190,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'status' => 'setStatus',
         'customerProfileIds' => 'setCustomerProfileIds',
-        'cardIdentifier' => 'setCardIdentifier'
+        'cardIdentifier' => 'setCardIdentifier',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -197,7 +202,8 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'status' => 'getStatus',
         'customerProfileIds' => 'getCustomerProfileIds',
-        'cardIdentifier' => 'getCardIdentifier'
+        'cardIdentifier' => 'getCardIdentifier',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -275,6 +281,7 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('status', $data ?? [], 'active');
         $this->setIfExists('customerProfileIds', $data ?? [], null);
         $this->setIfExists('cardIdentifier', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -437,6 +444,33 @@ class GenerateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         $this->container['cardIdentifier'] = $cardIdentifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return object|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param object|null $attributes Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

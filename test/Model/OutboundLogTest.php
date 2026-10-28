@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * OutboundLogTest Class Doc Comment
  *
  * @category    Class
- * @description Log of an outbound notification or webhook request.
+ * @description OutboundLog
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

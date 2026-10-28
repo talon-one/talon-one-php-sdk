@@ -96,4 +96,13 @@ class UpdateLoyaltyCardTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

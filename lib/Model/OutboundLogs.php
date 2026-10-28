@@ -35,7 +35,6 @@ use \TalonOne\Client\ObjectSerializer;
  * OutboundLogs Class Doc Comment
  *
  * @category Class
- * @description Paginated list of outbound logs.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

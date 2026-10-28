@@ -58,7 +58,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $openAPITypes = [
         'status' => 'string',
-        'blockReason' => 'string'
+        'blockReason' => 'string',
+        'attributes' => 'object'
     ];
 
     /**
@@ -70,7 +71,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $openAPIFormats = [
         'status' => null,
-        'blockReason' => null
+        'blockReason' => null,
+        'attributes' => null
     ];
 
     /**
@@ -80,7 +82,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static array $openAPINullables = [
         'status' => false,
-        'blockReason' => false
+        'blockReason' => false,
+        'attributes' => false
     ];
 
     /**
@@ -170,7 +173,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'blockReason' => 'blockReason'
+        'blockReason' => 'blockReason',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -180,7 +184,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'blockReason' => 'setBlockReason'
+        'blockReason' => 'setBlockReason',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -190,7 +195,8 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'blockReason' => 'getBlockReason'
+        'blockReason' => 'getBlockReason',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -252,6 +258,7 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('blockReason', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -349,6 +356,33 @@ class UpdateLoyaltyCard implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable blockReason cannot be null');
         }
         $this->container['blockReason'] = $blockReason;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return object|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param object|null $attributes Set values for the [custom attributes](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes) of a loyalty card. These attributes must be created in the Campaign Manager before their values can be updated through this endpoint.
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

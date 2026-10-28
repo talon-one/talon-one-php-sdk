@@ -370,7 +370,7 @@ class ErrorResponseWithStatus implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets statusCode
      *
-     * @param int|null $statusCode The error code
+     * @param int|null $statusCode The error code.
      *
      * @return self
      */

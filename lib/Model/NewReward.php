@@ -645,7 +645,7 @@ class NewReward implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets validityDuration
      *
-     * @param string|null $validityDuration The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: `5D`, `7W`, `10M`, `15Y`.  Available units:  - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field cannot be used in combination with `expiryDate`. If both `validityDuration` and `expiryDate` are not set, customer rewards have unlimited validity.
+     * @param string|null $validityDuration The duration for which the customer rewards unlocked from this reward remain active, relative to when the customer reward was unlocked.  The time format is an **integer** followed by one letter indicating the time unit.  Examples: `30m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  This field cannot be used in combination with `expiryDate`. If both `validityDuration` and `expiryDate` are not set, customer rewards have unlimited validity.
      *
      * @return self
      */

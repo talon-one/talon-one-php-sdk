@@ -396,6 +396,18 @@ class IntegrationApiTest extends TestCase
     }
 
     /**
+     * Test case for integrationUpdateLoyaltyCard
+     *
+     * Update loyalty card.
+     *
+     */
+    public function testIntegrationUpdateLoyaltyCard()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for joinLoyaltyProgram
      *
      * Join customer profile to loyalty program.
