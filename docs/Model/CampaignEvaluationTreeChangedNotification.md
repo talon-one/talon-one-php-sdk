@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**applicationId** | **int** | The ID of the Application whose campaign evaluation tree changed. |
-**oldEvaluationTree** | [**\TalonOne\Client\Model\CampaignSet**](CampaignSet.md) | The previous campaign evaluation tree. | [optional]
-**evaluationTree** | [**\TalonOne\Client\Model\CampaignSet**](CampaignSet.md) | The new campaign evaluation tree. |
+**notificationType** | **string** | The type of the notification |
+**totalResultSize** | **int** | The total size of the result set. |
+**data** | [**\TalonOne\Client\Model\CampaignEvaluationTreeChangedNotificationData[]**](CampaignEvaluationTreeChangedNotificationData.md) | The array of changes. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
