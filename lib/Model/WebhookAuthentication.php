@@ -35,6 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * WebhookAuthentication Class Doc Comment
  *
  * @category Class
+ * @description A webhook authentication. The &#x60;type&#x60; field selects the concrete authentication variant.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -42,10 +43,12 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /** Wire discriminator values mapped to generated model classes. */
     public const DISCRIMINATOR_MAPPING = [
+        'basic' => \TalonOne\Client\Model\WebhookAuthenticationBasic::class,
+        'custom' => \TalonOne\Client\Model\WebhookAuthenticationCustom::class,
     ];
 
     /** Shape-disjoint container/primitive alternatives of a oneOf union. */
@@ -65,15 +68,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'created' => '\DateTime',
-        'modified' => '\DateTime',
+        'name' => 'string',
+        'type' => 'string',
+        'data' => '\TalonOne\Client\Model\WebhookAuthenticationDataCustom',
         'createdBy' => 'string',
         'modifiedBy' => 'string',
         'webhooks' => '\TalonOne\Client\Model\WebhookAuthenticationWebhookRef[]',
-        'name' => 'string',
-        'type' => 'string',
-        'data' => '\TalonOne\Client\Model\WebhookAuthenticationAllOfData'
+        'id' => 'int',
+        'created' => '\DateTime',
+        'modified' => '\DateTime'
     ];
 
     /**
@@ -84,15 +87,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'created' => 'date-time',
-        'modified' => 'date-time',
+        'name' => null,
+        'type' => null,
+        'data' => null,
         'createdBy' => null,
         'modifiedBy' => null,
         'webhooks' => null,
-        'name' => null,
-        'type' => null,
-        'data' => null
+        'id' => 'int64',
+        'created' => 'date-time',
+        'modified' => 'date-time'
     ];
 
     /**
@@ -101,15 +104,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'created' => false,
-        'modified' => false,
+        'name' => false,
+        'type' => false,
+        'data' => false,
         'createdBy' => false,
         'modifiedBy' => false,
         'webhooks' => false,
-        'name' => false,
-        'type' => false,
-        'data' => false
+        'id' => false,
+        'created' => false,
+        'modified' => false
     ];
 
     /**
@@ -198,15 +201,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created' => 'created',
-        'modified' => 'modified',
+        'name' => 'name',
+        'type' => 'type',
+        'data' => 'data',
         'createdBy' => 'createdBy',
         'modifiedBy' => 'modifiedBy',
         'webhooks' => 'webhooks',
-        'name' => 'name',
-        'type' => 'type',
-        'data' => 'data'
+        'id' => 'id',
+        'created' => 'created',
+        'modified' => 'modified'
     ];
 
     /**
@@ -215,15 +218,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created' => 'setCreated',
-        'modified' => 'setModified',
+        'name' => 'setName',
+        'type' => 'setType',
+        'data' => 'setData',
         'createdBy' => 'setCreatedBy',
         'modifiedBy' => 'setModifiedBy',
         'webhooks' => 'setWebhooks',
-        'name' => 'setName',
-        'type' => 'setType',
-        'data' => 'setData'
+        'id' => 'setId',
+        'created' => 'setCreated',
+        'modified' => 'setModified'
     ];
 
     /**
@@ -232,15 +235,15 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created' => 'getCreated',
-        'modified' => 'getModified',
+        'name' => 'getName',
+        'type' => 'getType',
+        'data' => 'getData',
         'createdBy' => 'getCreatedBy',
         'modifiedBy' => 'getModifiedBy',
         'webhooks' => 'getWebhooks',
-        'name' => 'getName',
-        'type' => 'getType',
-        'data' => 'getData'
+        'id' => 'getId',
+        'created' => 'getCreated',
+        'modified' => 'getModified'
     ];
 
     /**
@@ -315,15 +318,18 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('modified', $data ?? [], null);
-        $this->setIfExists('createdBy', $data ?? [], null);
-        $this->setIfExists('modifiedBy', $data ?? [], null);
-        $this->setIfExists('webhooks', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('createdBy', $data ?? [], null);
+        $this->setIfExists('modifiedBy', $data ?? [], null);
+        $this->setIfExists('webhooks', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('modified', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -353,24 +359,6 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
-        if ($this->container['modified'] === null) {
-            $invalidProperties[] = "'modified' can't be null";
-        }
-        if ($this->container['createdBy'] === null) {
-            $invalidProperties[] = "'createdBy' can't be null";
-        }
-        if ($this->container['modifiedBy'] === null) {
-            $invalidProperties[] = "'modifiedBy' can't be null";
-        }
-        if ($this->container['webhooks'] === null) {
-            $invalidProperties[] = "'webhooks' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -389,6 +377,24 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
         }
+        if ($this->container['createdBy'] === null) {
+            $invalidProperties[] = "'createdBy' can't be null";
+        }
+        if ($this->container['modifiedBy'] === null) {
+            $invalidProperties[] = "'modifiedBy' can't be null";
+        }
+        if ($this->container['webhooks'] === null) {
+            $invalidProperties[] = "'webhooks' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
+        }
+        if ($this->container['modified'] === null) {
+            $invalidProperties[] = "'modified' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -405,82 +411,92 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets id
+     * Gets name
      *
-     * @return int
+     * @return string
      */
-    public function getId()
+    public function getName()
     {
-        return $this->container['id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets id
+     * Sets name
      *
-     * @param int $id The internal ID of this entity.
+     * @param string $name The name of the webhook authentication.
      *
      * @return self
      */
-    public function setId($id)
+    public function setName($name)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets type
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreated()
+    public function getType()
     {
-        return $this->container['created'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets created
+     * Sets type
      *
-     * @param \DateTime $created The time this entity was created.
+     * @param string $type A webhook authentication discriminator of type `basic`.
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setType($type)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['created'] = $created;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets modified
+     * Gets data
      *
-     * @return \DateTime
+     * @return \TalonOne\Client\Model\WebhookAuthenticationDataCustom
      */
-    public function getModified()
+    public function getData()
     {
-        return $this->container['modified'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets modified
+     * Sets data
      *
-     * @param \DateTime $modified The time this entity was last modified.
+     * @param \TalonOne\Client\Model\WebhookAuthenticationDataCustom $data The credentials of the webhook authentication.
      *
      * @return self
      */
-    public function setModified($modified)
+    public function setData($data)
     {
-        if (is_null($modified)) {
-            throw new \InvalidArgumentException('non-nullable modified cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['modified'] = $modified;
+        $this->container['data'] = $data;
 
         return $this;
     }
@@ -567,92 +583,82 @@ class WebhookAuthentication implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets name
+     * Gets id
      *
-     * @return string
+     * @return int
      */
-    public function getName()
+    public function getId()
     {
-        return $this->container['name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets name
+     * Sets id
      *
-     * @param string $name The name of the webhook authentication.
+     * @param int $id The internal ID of this entity.
      *
      * @return self
      */
-    public function setName($name)
+    public function setId($id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets created
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getType()
+    public function getCreated()
     {
-        return $this->container['type'];
+        return $this->container['created'];
     }
 
     /**
-     * Sets type
+     * Sets created
      *
-     * @param string $type type
+     * @param \DateTime $created The time this entity was created.
      *
      * @return self
      */
-    public function setType($type)
+    public function setCreated($created)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['created'] = $created;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets modified
      *
-     * @return \TalonOne\Client\Model\WebhookAuthenticationAllOfData
+     * @return \DateTime
      */
-    public function getData()
+    public function getModified()
     {
-        return $this->container['data'];
+        return $this->container['modified'];
     }
 
     /**
-     * Sets data
+     * Sets modified
      *
-     * @param \TalonOne\Client\Model\WebhookAuthenticationAllOfData $data data
+     * @param \DateTime $modified The time this entity was last modified.
      *
      * @return self
      */
-    public function setData($data)
+    public function setModified($modified)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($modified)) {
+            throw new \InvalidArgumentException('non-nullable modified cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['modified'] = $modified;
 
         return $this;
     }

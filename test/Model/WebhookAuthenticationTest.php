@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * WebhookAuthenticationTest Class Doc Comment
  *
  * @category    Class
- * @description WebhookAuthentication
+ * @description A webhook authentication. The &#x60;type&#x60; field selects the concrete authentication variant.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
@@ -80,27 +80,27 @@ class WebhookAuthenticationTest extends TestCase
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "name"
      */
-    public function testPropertyId()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "created"
+     * Test attribute "type"
      */
-    public function testPropertyCreated()
+    public function testPropertyType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "modified"
+     * Test attribute "data"
      */
-    public function testPropertyModified()
+    public function testPropertyData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -134,27 +134,27 @@ class WebhookAuthenticationTest extends TestCase
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "id"
      */
-    public function testPropertyName()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "created"
      */
-    public function testPropertyType()
+    public function testPropertyCreated()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "data"
+     * Test attribute "modified"
      */
-    public function testPropertyData()
+    public function testPropertyModified()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
