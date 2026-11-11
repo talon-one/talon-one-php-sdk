@@ -42,10 +42,12 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class LabelTarget implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /** Wire discriminator values mapped to generated model classes. */
     public const DISCRIMINATOR_MAPPING = [
+        'AUDIENCE' => \TalonOne\Client\Model\LabelTargetAudience::class,
+        'NONE' => \TalonOne\Client\Model\LabelTargetNone::class,
     ];
 
     /** Shape-disjoint container/primitive alternatives of a oneOf union. */
@@ -275,6 +277,9 @@ class LabelTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('audience', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**

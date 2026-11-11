@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookAuthenticationAllOfData
+ * NewMCPOAuthStaticClient
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \TalonOne\Client\ObjectSerializer;
 
 /**
- * WebhookAuthenticationAllOfData Class Doc Comment
+ * NewMCPOAuthStaticClient Class Doc Comment
  *
  * @category Class
  * @package  TalonOne\Client
@@ -40,7 +40,7 @@ use \TalonOne\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \JsonSerializable
+class NewMCPOAuthStaticClient implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +57,7 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      *
      * @var string
      */
-    protected static $openAPIModelName = 'WebhookAuthentication_allOf_data';
+    protected static $openAPIModelName = 'NewMCPOAuthStaticClient';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -65,9 +65,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $openAPITypes = [
-        'username' => 'string',
-        'password' => 'string',
-        'headers' => 'array<string,string>'
+        'clientName' => 'string',
+        'redirectUris' => 'string[]',
+        'expiryDate' => '\DateTime'
     ];
 
     /**
@@ -78,9 +78,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'username' => null,
-        'password' => null,
-        'headers' => null
+        'clientName' => null,
+        'redirectUris' => null,
+        'expiryDate' => 'date-time'
     ];
 
     /**
@@ -89,9 +89,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'username' => false,
-        'password' => false,
-        'headers' => false
+        'clientName' => false,
+        'redirectUris' => false,
+        'expiryDate' => false
     ];
 
     /**
@@ -180,9 +180,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'username' => 'username',
-        'password' => 'password',
-        'headers' => 'headers'
+        'clientName' => 'client_name',
+        'redirectUris' => 'redirect_uris',
+        'expiryDate' => 'expiry_date'
     ];
 
     /**
@@ -191,9 +191,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'username' => 'setUsername',
-        'password' => 'setPassword',
-        'headers' => 'setHeaders'
+        'clientName' => 'setClientName',
+        'redirectUris' => 'setRedirectUris',
+        'expiryDate' => 'setExpiryDate'
     ];
 
     /**
@@ -202,9 +202,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'username' => 'getUsername',
-        'password' => 'getPassword',
-        'headers' => 'getHeaders'
+        'clientName' => 'getClientName',
+        'redirectUris' => 'getRedirectUris',
+        'expiryDate' => 'getExpiryDate'
     ];
 
     /**
@@ -264,9 +264,9 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('username', $data ?? [], null);
-        $this->setIfExists('password', $data ?? [], null);
-        $this->setIfExists('headers', $data ?? [], null);
+        $this->setIfExists('clientName', $data ?? [], null);
+        $this->setIfExists('redirectUris', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
     }
 
     /**
@@ -296,15 +296,16 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['username'] === null) {
-            $invalidProperties[] = "'username' can't be null";
+        if ($this->container['clientName'] === null) {
+            $invalidProperties[] = "'clientName' can't be null";
         }
-        if ($this->container['password'] === null) {
-            $invalidProperties[] = "'password' can't be null";
+        if ($this->container['redirectUris'] === null) {
+            $invalidProperties[] = "'redirectUris' can't be null";
         }
-        if ($this->container['headers'] === null) {
-            $invalidProperties[] = "'headers' can't be null";
+        if ((count($this->container['redirectUris']) < 1)) {
+            $invalidProperties[] = "invalid value for 'redirectUris', number of items must be greater than or equal to 1.";
         }
+
         return $invalidProperties;
     }
 
@@ -321,82 +322,86 @@ class WebhookAuthenticationAllOfData implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets username
+     * Gets clientName
      *
      * @return string
      */
-    public function getUsername()
+    public function getClientName()
     {
-        return $this->container['username'];
+        return $this->container['clientName'];
     }
 
     /**
-     * Sets username
+     * Sets clientName
      *
-     * @param string $username The Basic HTTP username.
+     * @param string $clientName Human-readable name for the OAuth2 client.
      *
      * @return self
      */
-    public function setUsername($username)
+    public function setClientName($clientName)
     {
-        if (is_null($username)) {
-            throw new \InvalidArgumentException('non-nullable username cannot be null');
+        if (is_null($clientName)) {
+            throw new \InvalidArgumentException('non-nullable clientName cannot be null');
         }
-        $this->container['username'] = $username;
+        $this->container['clientName'] = $clientName;
 
         return $this;
     }
 
     /**
-     * Gets password
+     * Gets redirectUris
      *
-     * @return string
+     * @return string[]
      */
-    public function getPassword()
+    public function getRedirectUris()
     {
-        return $this->container['password'];
+        return $this->container['redirectUris'];
     }
 
     /**
-     * Sets password
+     * Sets redirectUris
      *
-     * @param string $password The Basic HTTP password.
+     * @param string[] $redirectUris List of allowed redirect URIs for the authorization code flow. At least one URI is required.
      *
      * @return self
      */
-    public function setPassword($password)
+    public function setRedirectUris($redirectUris)
     {
-        if (is_null($password)) {
-            throw new \InvalidArgumentException('non-nullable password cannot be null');
+        if (is_null($redirectUris)) {
+            throw new \InvalidArgumentException('non-nullable redirectUris cannot be null');
         }
-        $this->container['password'] = $password;
+
+        if ((count($redirectUris) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $redirectUris when calling NewMCPOAuthStaticClient., number of items must be greater than or equal to 1.');
+        }
+        $this->container['redirectUris'] = $redirectUris;
 
         return $this;
     }
 
     /**
-     * Gets headers
+     * Gets expiryDate
      *
-     * @return array<string,string>
+     * @return \DateTime|null
      */
-    public function getHeaders()
+    public function getExpiryDate()
     {
-        return $this->container['headers'];
+        return $this->container['expiryDate'];
     }
 
     /**
-     * Sets headers
+     * Sets expiryDate
      *
-     * @param array<string,string> $headers headers
+     * @param \DateTime|null $expiryDate The date the client credentials expire.
      *
      * @return self
      */
-    public function setHeaders($headers)
+    public function setExpiryDate($expiryDate)
     {
-        if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+        if (is_null($expiryDate)) {
+            throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
         }
-        $this->container['headers'] = $headers;
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }

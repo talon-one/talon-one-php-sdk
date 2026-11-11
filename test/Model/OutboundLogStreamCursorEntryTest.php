@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookAuthenticationAllOfDataTest
+ * OutboundLogStreamCursorEntryTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace TalonOne\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * WebhookAuthenticationAllOfDataTest Class Doc Comment
+ * OutboundLogStreamCursorEntryTest Class Doc Comment
  *
  * @category    Class
- * @description WebhookAuthenticationAllOfData
+ * @description The cursor for the next page, as the last entry of an &#x60;ndjson&#x60; stream. Omitted when there are no more results.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class WebhookAuthenticationAllOfDataTest extends TestCase
+class OutboundLogStreamCursorEntryTest extends TestCase
 {
 
     /**
@@ -71,36 +71,27 @@ class WebhookAuthenticationAllOfDataTest extends TestCase
     }
 
     /**
-     * Test "WebhookAuthenticationAllOfData"
+     * Test "OutboundLogStreamCursorEntry"
      */
-    public function testWebhookAuthenticationAllOfData()
+    public function testOutboundLogStreamCursorEntry()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "username"
+     * Test attribute "type"
      */
-    public function testPropertyUsername()
+    public function testPropertyType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "password"
+     * Test attribute "data"
      */
-    public function testPropertyPassword()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "headers"
-     */
-    public function testPropertyHeaders()
+    public function testPropertyData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

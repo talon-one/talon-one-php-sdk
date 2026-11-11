@@ -66,7 +66,7 @@ class OutboundLogs implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'nextCursor' => 'string',
-        'data' => '\TalonOne\Client\Model\OutboundLog[]'
+        'data' => '\TalonOne\Client\Model\OutboundLogsDataInner[]'
     ];
 
     /**
@@ -337,7 +337,7 @@ class OutboundLogs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \TalonOne\Client\Model\OutboundLog[]
+     * @return \TalonOne\Client\Model\OutboundLogsDataInner[]
      */
     public function getData()
     {
@@ -347,7 +347,7 @@ class OutboundLogs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \TalonOne\Client\Model\OutboundLog[] $data List of outbound logs.
+     * @param \TalonOne\Client\Model\OutboundLogsDataInner[] $data List of outbound logs. When an error ends the response, an `OutboundLogStreamError` is the last item and the response is incomplete.
      *
      * @return self
      */

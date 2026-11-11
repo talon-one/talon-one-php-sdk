@@ -42,10 +42,12 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class CampaignSetNode implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /** Wire discriminator values mapped to generated model classes. */
     public const DISCRIMINATOR_MAPPING = [
+        'CAMPAIGN' => \TalonOne\Client\Model\CampaignSetLeafNode::class,
+        'SET' => \TalonOne\Client\Model\CampaignSetBranchNode::class,
     ];
 
     /** Shape-disjoint container/primitive alternatives of a oneOf union. */
@@ -365,6 +367,9 @@ class CampaignSetNode implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('evaluationMode', $data ?? [], null);
         $this->setIfExists('evaluationScope', $data ?? [], null);
         $this->setIfExists('campaignId', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
