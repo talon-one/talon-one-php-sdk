@@ -42,10 +42,12 @@ use \TalonOne\Client\ObjectSerializer;
  */
 class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /** Wire discriminator values mapped to generated model classes. */
     public const DISCRIMINATOR_MAPPING = [
+        'error' => \TalonOne\Client\Model\OutboundLogStreamErrorEntry::class,
+        'log' => \TalonOne\Client\Model\OutboundLogStreamLogEntry::class,
     ];
 
     /** Shape-disjoint container/primitive alternatives of a oneOf union. */
@@ -65,20 +67,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'uuid' => 'string',
-        'notificationId' => 'int',
-        'notificationName' => 'string',
-        'webhookId' => 'int',
-        'webhookName' => 'string',
-        'notificationType' => 'string',
-        'applicationId' => 'int',
-        'loyaltyProgramId' => 'int',
-        'request' => '\TalonOne\Client\Model\OutboundLogRequest',
-        'createdAt' => '\DateTime',
-        'processingTimeMs' => 'int',
-        'response' => '\TalonOne\Client\Model\OutboundLogResponse',
-        'error' => 'string',
-        'id' => 'string'
+        'type' => '\TalonOne\Client\Model\OutboundLogStreamEntryType',
+        'data' => '\TalonOne\Client\Model\OutboundLogStreamError'
     ];
 
     /**
@@ -89,20 +79,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'uuid' => 'uuid',
-        'notificationId' => 'int64',
-        'notificationName' => null,
-        'webhookId' => 'int64',
-        'webhookName' => null,
-        'notificationType' => null,
-        'applicationId' => 'int64',
-        'loyaltyProgramId' => 'int64',
-        'request' => null,
-        'createdAt' => 'date-time',
-        'processingTimeMs' => 'int64',
-        'response' => null,
-        'error' => null,
-        'id' => 'uuid'
+        'type' => null,
+        'data' => null
     ];
 
     /**
@@ -111,20 +89,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'uuid' => false,
-        'notificationId' => false,
-        'notificationName' => false,
-        'webhookId' => false,
-        'webhookName' => false,
-        'notificationType' => false,
-        'applicationId' => false,
-        'loyaltyProgramId' => false,
-        'request' => false,
-        'createdAt' => false,
-        'processingTimeMs' => false,
-        'response' => false,
-        'error' => false,
-        'id' => false
+        'type' => false,
+        'data' => false
     ];
 
     /**
@@ -213,20 +179,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'uuid' => 'uuid',
-        'notificationId' => 'notificationId',
-        'notificationName' => 'notificationName',
-        'webhookId' => 'webhookId',
-        'webhookName' => 'webhookName',
-        'notificationType' => 'notificationType',
-        'applicationId' => 'applicationId',
-        'loyaltyProgramId' => 'loyaltyProgramId',
-        'request' => 'request',
-        'createdAt' => 'createdAt',
-        'processingTimeMs' => 'processingTimeMs',
-        'response' => 'response',
-        'error' => 'error',
-        'id' => 'id'
+        'type' => 'type',
+        'data' => 'data'
     ];
 
     /**
@@ -235,20 +189,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'uuid' => 'setUuid',
-        'notificationId' => 'setNotificationId',
-        'notificationName' => 'setNotificationName',
-        'webhookId' => 'setWebhookId',
-        'webhookName' => 'setWebhookName',
-        'notificationType' => 'setNotificationType',
-        'applicationId' => 'setApplicationId',
-        'loyaltyProgramId' => 'setLoyaltyProgramId',
-        'request' => 'setRequest',
-        'createdAt' => 'setCreatedAt',
-        'processingTimeMs' => 'setProcessingTimeMs',
-        'response' => 'setResponse',
-        'error' => 'setError',
-        'id' => 'setId'
+        'type' => 'setType',
+        'data' => 'setData'
     ];
 
     /**
@@ -257,20 +199,8 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'uuid' => 'getUuid',
-        'notificationId' => 'getNotificationId',
-        'notificationName' => 'getNotificationName',
-        'webhookId' => 'getWebhookId',
-        'webhookName' => 'getWebhookName',
-        'notificationType' => 'getNotificationType',
-        'applicationId' => 'getApplicationId',
-        'loyaltyProgramId' => 'getLoyaltyProgramId',
-        'request' => 'getRequest',
-        'createdAt' => 'getCreatedAt',
-        'processingTimeMs' => 'getProcessingTimeMs',
-        'response' => 'getResponse',
-        'error' => 'getError',
-        'id' => 'getId'
+        'type' => 'getType',
+        'data' => 'getData'
     ];
 
     /**
@@ -330,20 +260,11 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uuid', $data ?? [], null);
-        $this->setIfExists('notificationId', $data ?? [], null);
-        $this->setIfExists('notificationName', $data ?? [], null);
-        $this->setIfExists('webhookId', $data ?? [], null);
-        $this->setIfExists('webhookName', $data ?? [], null);
-        $this->setIfExists('notificationType', $data ?? [], null);
-        $this->setIfExists('applicationId', $data ?? [], null);
-        $this->setIfExists('loyaltyProgramId', $data ?? [], null);
-        $this->setIfExists('request', $data ?? [], null);
-        $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('processingTimeMs', $data ?? [], null);
-        $this->setIfExists('response', $data ?? [], null);
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -373,20 +294,11 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['uuid'] === null) {
-            $invalidProperties[] = "'uuid' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['notificationType'] === null) {
-            $invalidProperties[] = "'notificationType' can't be null";
-        }
-        if ($this->container['createdAt'] === null) {
-            $invalidProperties[] = "'createdAt' can't be null";
-        }
-        if ($this->container['processingTimeMs'] === null) {
-            $invalidProperties[] = "'processingTimeMs' can't be null";
-        }
-        if ($this->container['error'] === null) {
-            $invalidProperties[] = "'error' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
         return $invalidProperties;
     }
@@ -404,379 +316,55 @@ class OutboundLogsDataInner implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets uuid
+     * Gets type
      *
-     * @return string
+     * @return \TalonOne\Client\Model\OutboundLogStreamEntryType
      */
-    public function getUuid()
+    public function getType()
     {
-        return $this->container['uuid'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets uuid
+     * Sets type
      *
-     * @param string $uuid UUID of the outbound message.
+     * @param \TalonOne\Client\Model\OutboundLogStreamEntryType $type type
      *
      * @return self
      */
-    public function setUuid($uuid)
+    public function setType($type)
     {
-        if (is_null($uuid)) {
-            throw new \InvalidArgumentException('non-nullable uuid cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['uuid'] = $uuid;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets notificationId
+     * Gets data
      *
-     * @return int|null
+     * @return \TalonOne\Client\Model\OutboundLogStreamError
      */
-    public function getNotificationId()
+    public function getData()
     {
-        return $this->container['notificationId'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets notificationId
+     * Sets data
      *
-     * @param int|null $notificationId ID of the notification that triggered the outbound message.
+     * @param \TalonOne\Client\Model\OutboundLogStreamError $data data
      *
      * @return self
      */
-    public function setNotificationId($notificationId)
+    public function setData($data)
     {
-        if (is_null($notificationId)) {
-            throw new \InvalidArgumentException('non-nullable notificationId cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['notificationId'] = $notificationId;
-
-        return $this;
-    }
-
-    /**
-     * Gets notificationName
-     *
-     * @return string|null
-     */
-    public function getNotificationName()
-    {
-        return $this->container['notificationName'];
-    }
-
-    /**
-     * Sets notificationName
-     *
-     * @param string|null $notificationName Name of the notification that triggered the outbound message.
-     *
-     * @return self
-     */
-    public function setNotificationName($notificationName)
-    {
-        if (is_null($notificationName)) {
-            throw new \InvalidArgumentException('non-nullable notificationName cannot be null');
-        }
-        $this->container['notificationName'] = $notificationName;
-
-        return $this;
-    }
-
-    /**
-     * Gets webhookId
-     *
-     * @return int|null
-     */
-    public function getWebhookId()
-    {
-        return $this->container['webhookId'];
-    }
-
-    /**
-     * Sets webhookId
-     *
-     * @param int|null $webhookId ID of the webhook that triggered the outbound message.
-     *
-     * @return self
-     */
-    public function setWebhookId($webhookId)
-    {
-        if (is_null($webhookId)) {
-            throw new \InvalidArgumentException('non-nullable webhookId cannot be null');
-        }
-        $this->container['webhookId'] = $webhookId;
-
-        return $this;
-    }
-
-    /**
-     * Gets webhookName
-     *
-     * @return string|null
-     */
-    public function getWebhookName()
-    {
-        return $this->container['webhookName'];
-    }
-
-    /**
-     * Sets webhookName
-     *
-     * @param string|null $webhookName Name of the webhook that triggered the outbound message.
-     *
-     * @return self
-     */
-    public function setWebhookName($webhookName)
-    {
-        if (is_null($webhookName)) {
-            throw new \InvalidArgumentException('non-nullable webhookName cannot be null');
-        }
-        $this->container['webhookName'] = $webhookName;
-
-        return $this;
-    }
-
-    /**
-     * Gets notificationType
-     *
-     * @return string
-     */
-    public function getNotificationType()
-    {
-        return $this->container['notificationType'];
-    }
-
-    /**
-     * Sets notificationType
-     *
-     * @param string $notificationType Type of notification that triggered the outbound message.
-     *
-     * @return self
-     */
-    public function setNotificationType($notificationType)
-    {
-        if (is_null($notificationType)) {
-            throw new \InvalidArgumentException('non-nullable notificationType cannot be null');
-        }
-        $this->container['notificationType'] = $notificationType;
-
-        return $this;
-    }
-
-    /**
-     * Gets applicationId
-     *
-     * @return int|null
-     */
-    public function getApplicationId()
-    {
-        return $this->container['applicationId'];
-    }
-
-    /**
-     * Sets applicationId
-     *
-     * @param int|null $applicationId ID of the Application associated with the outbound message.
-     *
-     * @return self
-     */
-    public function setApplicationId($applicationId)
-    {
-        if (is_null($applicationId)) {
-            throw new \InvalidArgumentException('non-nullable applicationId cannot be null');
-        }
-        $this->container['applicationId'] = $applicationId;
-
-        return $this;
-    }
-
-    /**
-     * Gets loyaltyProgramId
-     *
-     * @return int|null
-     */
-    public function getLoyaltyProgramId()
-    {
-        return $this->container['loyaltyProgramId'];
-    }
-
-    /**
-     * Sets loyaltyProgramId
-     *
-     * @param int|null $loyaltyProgramId ID of the loyalty program associated with the outbound message.
-     *
-     * @return self
-     */
-    public function setLoyaltyProgramId($loyaltyProgramId)
-    {
-        if (is_null($loyaltyProgramId)) {
-            throw new \InvalidArgumentException('non-nullable loyaltyProgramId cannot be null');
-        }
-        $this->container['loyaltyProgramId'] = $loyaltyProgramId;
-
-        return $this;
-    }
-
-    /**
-     * Gets request
-     *
-     * @return \TalonOne\Client\Model\OutboundLogRequest|null
-     */
-    public function getRequest()
-    {
-        return $this->container['request'];
-    }
-
-    /**
-     * Sets request
-     *
-     * @param \TalonOne\Client\Model\OutboundLogRequest|null $request request
-     *
-     * @return self
-     */
-    public function setRequest($request)
-    {
-        if (is_null($request)) {
-            throw new \InvalidArgumentException('non-nullable request cannot be null');
-        }
-        $this->container['request'] = $request;
-
-        return $this;
-    }
-
-    /**
-     * Gets createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * Sets createdAt
-     *
-     * @param \DateTime $createdAt Timestamp when the log was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt)
-    {
-        if (is_null($createdAt)) {
-            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
-        }
-        $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets processingTimeMs
-     *
-     * @return int
-     */
-    public function getProcessingTimeMs()
-    {
-        return $this->container['processingTimeMs'];
-    }
-
-    /**
-     * Sets processingTimeMs
-     *
-     * @param int $processingTimeMs Time in milliseconds between sending the outbound request and receiving the response.
-     *
-     * @return self
-     */
-    public function setProcessingTimeMs($processingTimeMs)
-    {
-        if (is_null($processingTimeMs)) {
-            throw new \InvalidArgumentException('non-nullable processingTimeMs cannot be null');
-        }
-        $this->container['processingTimeMs'] = $processingTimeMs;
-
-        return $this;
-    }
-
-    /**
-     * Gets response
-     *
-     * @return \TalonOne\Client\Model\OutboundLogResponse|null
-     */
-    public function getResponse()
-    {
-        return $this->container['response'];
-    }
-
-    /**
-     * Sets response
-     *
-     * @param \TalonOne\Client\Model\OutboundLogResponse|null $response response
-     *
-     * @return self
-     */
-    public function setResponse($response)
-    {
-        if (is_null($response)) {
-            throw new \InvalidArgumentException('non-nullable response cannot be null');
-        }
-        $this->container['response'] = $response;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     *
-     * @return string
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     *
-     * @param string $error Reason the stream ended.
-     *
-     * @return self
-     */
-    public function setError($error)
-    {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
-        }
-        $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id ID of the error. Include it when reporting the error.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
+        $this->container['data'] = $data;
 
         return $this;
     }

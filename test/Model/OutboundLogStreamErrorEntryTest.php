@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * OutboundLogStreamErrorEntryTest Class Doc Comment
  *
  * @category    Class
- * @description An error that ended an &#x60;ndjson&#x60; stream, such as a log entry that couldn&#39;t be read. It is the last entry and the response is incomplete.
+ * @description An error that ended a stream of outbound logs, such as a log entry that couldn&#39;t be read. It is the last entry and the response is incomplete.
  * @package     TalonOne\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

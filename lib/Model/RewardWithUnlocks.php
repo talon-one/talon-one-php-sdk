@@ -493,7 +493,7 @@ class RewardWithUnlocks implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets unlocked
      *
-     * @param \TalonOne\Client\Model\CustomerReward[]|null $unlocked The customer profile's unlocks of this reward that are not yet `used`.
+     * @param \TalonOne\Client\Model\CustomerReward[]|null $unlocked The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned.
      *
      * @return self
      */

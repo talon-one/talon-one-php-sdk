@@ -98,9 +98,9 @@ class NewDigitalPassTest extends TestCase
     }
 
     /**
-     * Test attribute "profileId"
+     * Test attribute "profileIntegrationId"
      */
-    public function testPropertyProfileId()
+    public function testPropertyProfileIntegrationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

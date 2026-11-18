@@ -76,6 +76,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'string',
         'unlockedAt' => '\DateTime',
         'unlockedByProfileIntegrationId' => 'string',
+        'expiryDate' => '\DateTime',
         'usedAt' => '\DateTime',
         'usedByProfileIntegrationId' => 'string',
         'loyaltyProgramId' => 'int',
@@ -100,6 +101,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => null,
         'unlockedAt' => 'date-time',
         'unlockedByProfileIntegrationId' => null,
+        'expiryDate' => 'date-time',
         'usedAt' => 'date-time',
         'usedByProfileIntegrationId' => null,
         'loyaltyProgramId' => 'int64',
@@ -122,6 +124,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => false,
         'unlockedAt' => false,
         'unlockedByProfileIntegrationId' => false,
+        'expiryDate' => false,
         'usedAt' => false,
         'usedByProfileIntegrationId' => false,
         'loyaltyProgramId' => false,
@@ -224,6 +227,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'status',
         'unlockedAt' => 'unlockedAt',
         'unlockedByProfileIntegrationId' => 'unlockedByProfileIntegrationId',
+        'expiryDate' => 'expiryDate',
         'usedAt' => 'usedAt',
         'usedByProfileIntegrationId' => 'usedByProfileIntegrationId',
         'loyaltyProgramId' => 'loyaltyProgramId',
@@ -246,6 +250,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'setStatus',
         'unlockedAt' => 'setUnlockedAt',
         'unlockedByProfileIntegrationId' => 'setUnlockedByProfileIntegrationId',
+        'expiryDate' => 'setExpiryDate',
         'usedAt' => 'setUsedAt',
         'usedByProfileIntegrationId' => 'setUsedByProfileIntegrationId',
         'loyaltyProgramId' => 'setLoyaltyProgramId',
@@ -268,6 +273,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         'status' => 'getStatus',
         'unlockedAt' => 'getUnlockedAt',
         'unlockedByProfileIntegrationId' => 'getUnlockedByProfileIntegrationId',
+        'expiryDate' => 'getExpiryDate',
         'usedAt' => 'getUsedAt',
         'usedByProfileIntegrationId' => 'getUsedByProfileIntegrationId',
         'loyaltyProgramId' => 'getLoyaltyProgramId',
@@ -317,6 +323,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
 
     public const STATUS_UNLOCKED = 'unlocked';
     public const STATUS_USED = 'used';
+    public const STATUS_EXPIRED = 'expired';
 
     /**
      * Gets allowable values of the enum
@@ -328,6 +335,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         return [
             self::STATUS_UNLOCKED,
             self::STATUS_USED,
+            self::STATUS_EXPIRED,
         ];
     }
 
@@ -356,6 +364,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('unlockedAt', $data ?? [], null);
         $this->setIfExists('unlockedByProfileIntegrationId', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
         $this->setIfExists('usedAt', $data ?? [], null);
         $this->setIfExists('usedByProfileIntegrationId', $data ?? [], null);
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
@@ -648,7 +657,7 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param string $status The status of the customer reward: - `unlocked`: The reward is available for use. - `used`: The reward has been used.
+     * @param string $status The status of the customer reward: - `unlocked`: The reward is available for use. - `used`: The reward has been used. - `expired`: The reward was not used before its expiry date.
      *
      * @return self
      */
@@ -722,6 +731,33 @@ class CustomerProfileReward implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable unlockedByProfileIntegrationId cannot be null');
         }
         $this->container['unlockedByProfileIntegrationId'] = $unlockedByProfileIntegrationId;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiryDate
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiryDate()
+    {
+        return $this->container['expiryDate'];
+    }
+
+    /**
+     * Sets expiryDate
+     *
+     * @param \DateTime|null $expiryDate The date and time when the customer reward expires, based on the  `validityDuration` or `expiryDate` of the reward when the reward was  unlocked. If the reward does not specify either property, the customer reward  has unlimited validity and this field is omitted.  **Note**: The expiry date is calculated using the time zone of the  Application connected to the reward.
+     *
+     * @return self
+     */
+    public function setExpiryDate($expiryDate)
+    {
+        if (is_null($expiryDate)) {
+            throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
+        }
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }

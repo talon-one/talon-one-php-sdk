@@ -7,6 +7,7 @@
 .openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
+LICENSE
 MIGRATION.md
 Makefile
 README.md
@@ -695,6 +696,7 @@ docs/Model/NewReferralsForMultipleAdvocates.md
 docs/Model/NewReturn.md
 docs/Model/NewRevisionVersion.md
 docs/Model/NewReward.md
+docs/Model/NewRewardBudget.md
 docs/Model/NewRiskNotification.md
 docs/Model/NewRole.md
 docs/Model/NewRoleV2.md
@@ -791,11 +793,15 @@ docs/Model/RevisionActivation.md
 docs/Model/RevisionActivationRequest.md
 docs/Model/RevisionVersion.md
 docs/Model/Reward.md
+docs/Model/RewardBudget.md
+docs/Model/RewardBudgetLimitCounter.md
+docs/Model/RewardBudgetWithLimitCounter.md
 docs/Model/RewardCatalogItem.md
 docs/Model/RewardEligibility.md
 docs/Model/RewardEligibilityFailureDetails.md
 docs/Model/RewardPointsRequired.md
 docs/Model/RewardUnlockRejection.md
+docs/Model/RewardWithBudgets.md
 docs/Model/RewardWithUnlocks.md
 docs/Model/Risk.md
 docs/Model/RiskAffectedEntityItem.md
@@ -964,6 +970,7 @@ docs/Model/UpdatePriceType.md
 docs/Model/UpdateReferral.md
 docs/Model/UpdateReferralBatch.md
 docs/Model/UpdateReward.md
+docs/Model/UpdateRewardBudget.md
 docs/Model/UpdateRiskNotification.md
 docs/Model/UpdateRole.md
 docs/Model/UpdateStore.md
@@ -1678,6 +1685,7 @@ lib/Model/NewReferralsForMultipleAdvocates.php
 lib/Model/NewReturn.php
 lib/Model/NewRevisionVersion.php
 lib/Model/NewReward.php
+lib/Model/NewRewardBudget.php
 lib/Model/NewRiskNotification.php
 lib/Model/NewRole.php
 lib/Model/NewRoleV2.php
@@ -1774,11 +1782,15 @@ lib/Model/RevisionActivation.php
 lib/Model/RevisionActivationRequest.php
 lib/Model/RevisionVersion.php
 lib/Model/Reward.php
+lib/Model/RewardBudget.php
+lib/Model/RewardBudgetLimitCounter.php
+lib/Model/RewardBudgetWithLimitCounter.php
 lib/Model/RewardCatalogItem.php
 lib/Model/RewardEligibility.php
 lib/Model/RewardEligibilityFailureDetails.php
 lib/Model/RewardPointsRequired.php
 lib/Model/RewardUnlockRejection.php
+lib/Model/RewardWithBudgets.php
 lib/Model/RewardWithUnlocks.php
 lib/Model/Risk.php
 lib/Model/RiskAffectedEntityItem.php
@@ -1947,6 +1959,7 @@ lib/Model/UpdatePriceType.php
 lib/Model/UpdateReferral.php
 lib/Model/UpdateReferralBatch.php
 lib/Model/UpdateReward.php
+lib/Model/UpdateRewardBudget.php
 lib/Model/UpdateRiskNotification.php
 lib/Model/UpdateRole.php
 lib/Model/UpdateStore.php
@@ -2655,6 +2668,7 @@ test/Model/NewReferralTest.php
 test/Model/NewReferralsForMultipleAdvocatesTest.php
 test/Model/NewReturnTest.php
 test/Model/NewRevisionVersionTest.php
+test/Model/NewRewardBudgetTest.php
 test/Model/NewRewardTest.php
 test/Model/NewRiskNotificationTest.php
 test/Model/NewRoleTest.php
@@ -2751,12 +2765,16 @@ test/Model/RevisionActivationRequestTest.php
 test/Model/RevisionActivationTest.php
 test/Model/RevisionTest.php
 test/Model/RevisionVersionTest.php
+test/Model/RewardBudgetLimitCounterTest.php
+test/Model/RewardBudgetTest.php
+test/Model/RewardBudgetWithLimitCounterTest.php
 test/Model/RewardCatalogItemTest.php
 test/Model/RewardEligibilityFailureDetailsTest.php
 test/Model/RewardEligibilityTest.php
 test/Model/RewardPointsRequiredTest.php
 test/Model/RewardTest.php
 test/Model/RewardUnlockRejectionTest.php
+test/Model/RewardWithBudgetsTest.php
 test/Model/RewardWithUnlocksTest.php
 test/Model/RiskAffectedEntityItemTest.php
 test/Model/RiskCriticalityUpdateTest.php
@@ -2924,6 +2942,7 @@ test/Model/UpdatePicklistTest.php
 test/Model/UpdatePriceTypeTest.php
 test/Model/UpdateReferralBatchTest.php
 test/Model/UpdateReferralTest.php
+test/Model/UpdateRewardBudgetTest.php
 test/Model/UpdateRewardTest.php
 test/Model/UpdateRiskNotificationTest.php
 test/Model/UpdateRoleTest.php

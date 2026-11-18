@@ -273,6 +273,8 @@ class CheckAchievementBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     public const OPERATOR_NOT_IN_PROGRESS = 'not(inProgress)';
     public const OPERATOR_COMPLETED = 'completed';
     public const OPERATOR_NOT_COMPLETED = 'not(completed)';
+    public const OPERATOR_EXPIRED = 'expired';
+    public const OPERATOR_NOT_EXPIRED = 'not(expired)';
 
     /**
      * Gets allowable values of the enum
@@ -289,6 +291,8 @@ class CheckAchievementBlock implements ModelInterface, ArrayAccess, \JsonSeriali
             self::OPERATOR_NOT_IN_PROGRESS,
             self::OPERATOR_COMPLETED,
             self::OPERATOR_NOT_COMPLETED,
+            self::OPERATOR_EXPIRED,
+            self::OPERATOR_NOT_EXPIRED,
         ];
     }
 

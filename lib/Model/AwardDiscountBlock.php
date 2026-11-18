@@ -71,7 +71,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'string',
         'value' => '\TalonOne\Client\Model\AwardDiscountBlock1Value',
         'partial' => 'bool',
-        'target' => '\TalonOne\Client\Model\AwardDiscountTarget'
+        'target' => '\TalonOne\Client\Model\AwardDiscountTarget',
+        'excludedFromPriceHistory' => 'bool'
     ];
 
     /**
@@ -88,7 +89,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => null,
         'value' => null,
         'partial' => null,
-        'target' => null
+        'target' => null,
+        'excludedFromPriceHistory' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => false,
         'value' => false,
         'partial' => false,
-        'target' => false
+        'target' => false,
+        'excludedFromPriceHistory' => false
     ];
 
     /**
@@ -198,7 +201,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'name',
         'value' => 'value',
         'partial' => 'partial',
-        'target' => 'target'
+        'target' => 'target',
+        'excludedFromPriceHistory' => 'excludedFromPriceHistory'
     ];
 
     /**
@@ -213,7 +217,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'setName',
         'value' => 'setValue',
         'partial' => 'setPartial',
-        'target' => 'setTarget'
+        'target' => 'setTarget',
+        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory'
     ];
 
     /**
@@ -228,7 +233,8 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'getName',
         'value' => 'getValue',
         'partial' => 'getPartial',
-        'target' => 'getTarget'
+        'target' => 'getTarget',
+        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory'
     ];
 
     /**
@@ -295,6 +301,7 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('partial', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
     }
 
     /**
@@ -539,6 +546,33 @@ class AwardDiscountBlock implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludedFromPriceHistory
+     *
+     * @return bool|null
+     */
+    public function getExcludedFromPriceHistory()
+    {
+        return $this->container['excludedFromPriceHistory'];
+    }
+
+    /**
+     * Sets excludedFromPriceHistory
+     *
+     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history).
+     *
+     * @return self
+     */
+    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    {
+        if (is_null($excludedFromPriceHistory)) {
+            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        }
+        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }

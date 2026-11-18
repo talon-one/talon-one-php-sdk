@@ -35,7 +35,7 @@ use \TalonOne\Client\ObjectSerializer;
  * OutboundLogStreamLogEntry Class Doc Comment
  *
  * @category Class
- * @description An outbound log entry in an &#x60;ndjson&#x60; stream.
+ * @description An outbound log entry in a stream of outbound logs.
  * @package  TalonOne\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

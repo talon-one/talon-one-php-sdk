@@ -104,6 +104,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value',
         'partial' => 'bool',
         'target' => '\TalonOne\Client\Model\AwardLoyaltyPointsTarget',
+        'excludedFromPriceHistory' => 'bool',
         'expression' => 'mixed[]',
         'notificationType' => 'string',
         'title' => 'string',
@@ -162,6 +163,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => null,
         'partial' => null,
         'target' => null,
+        'excludedFromPriceHistory' => null,
         'expression' => null,
         'notificationType' => null,
         'title' => null,
@@ -218,6 +220,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => false,
         'partial' => false,
         'target' => false,
+        'excludedFromPriceHistory' => false,
         'expression' => false,
         'notificationType' => false,
         'title' => false,
@@ -354,6 +357,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'value',
         'partial' => 'partial',
         'target' => 'target',
+        'excludedFromPriceHistory' => 'excludedFromPriceHistory',
         'expression' => 'expression',
         'notificationType' => 'notificationType',
         'title' => 'title',
@@ -410,6 +414,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'setValue',
         'partial' => 'setPartial',
         'target' => 'setTarget',
+        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory',
         'expression' => 'setExpression',
         'notificationType' => 'setNotificationType',
         'title' => 'setTitle',
@@ -466,6 +471,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'getValue',
         'partial' => 'getPartial',
         'target' => 'getTarget',
+        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory',
         'expression' => 'getExpression',
         'notificationType' => 'getNotificationType',
         'title' => 'getTitle',
@@ -676,6 +682,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('partial', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
         $this->setIfExists('expression', $data ?? [], null);
         $this->setIfExists('notificationType', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
@@ -1204,6 +1211,33 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludedFromPriceHistory
+     *
+     * @return bool|null
+     */
+    public function getExcludedFromPriceHistory()
+    {
+        return $this->container['excludedFromPriceHistory'];
+    }
+
+    /**
+     * Sets excludedFromPriceHistory
+     *
+     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history).
+     *
+     * @return self
+     */
+    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    {
+        if (is_null($excludedFromPriceHistory)) {
+            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        }
+        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }
