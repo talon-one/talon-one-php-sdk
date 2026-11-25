@@ -347,7 +347,7 @@ class OutboundLogs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \TalonOne\Client\Model\OutboundLogsDataInner[] $data List of outbound logs. When an error ends the response, an `OutboundLogStreamError` is the last item and the response is incomplete.
+     * @param \TalonOne\Client\Model\OutboundLogsDataInner[] $data List of outbound log entries. The `type` field determines the kind of entry. When an error ends the response, an `OutboundLogStreamErrorEntry` is the last item and the response is incomplete.
      *
      * @return self
      */

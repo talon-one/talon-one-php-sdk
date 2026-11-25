@@ -78,6 +78,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => 'int[]',
         'referencedByCampaigns' => '\TalonOne\Client\Model\CampaignReference[]',
         'target' => 'float',
+        'achievementPeriod' => 'string',
         'achievementRecurrencePolicy' => 'string',
         'achievementActivationPolicy' => 'string',
         'achievementFixedStartDate' => '\DateTime',
@@ -106,6 +107,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => 'int64',
         'referencedByCampaigns' => null,
         'target' => null,
+        'achievementPeriod' => null,
         'achievementRecurrencePolicy' => null,
         'achievementActivationPolicy' => null,
         'achievementFixedStartDate' => 'date-time',
@@ -132,6 +134,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => false,
         'referencedByCampaigns' => false,
         'target' => false,
+        'achievementPeriod' => false,
         'achievementRecurrencePolicy' => false,
         'achievementActivationPolicy' => false,
         'achievementFixedStartDate' => false,
@@ -238,6 +241,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => 'campaignIds',
         'referencedByCampaigns' => 'referencedByCampaigns',
         'target' => 'target',
+        'achievementPeriod' => 'achievementPeriod',
         'achievementRecurrencePolicy' => 'achievementRecurrencePolicy',
         'achievementActivationPolicy' => 'achievementActivationPolicy',
         'achievementFixedStartDate' => 'achievementFixedStartDate',
@@ -264,6 +268,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => 'setCampaignIds',
         'referencedByCampaigns' => 'setReferencedByCampaigns',
         'target' => 'setTarget',
+        'achievementPeriod' => 'setAchievementPeriod',
         'achievementRecurrencePolicy' => 'setAchievementRecurrencePolicy',
         'achievementActivationPolicy' => 'setAchievementActivationPolicy',
         'achievementFixedStartDate' => 'setAchievementFixedStartDate',
@@ -290,6 +295,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         'campaignIds' => 'getCampaignIds',
         'referencedByCampaigns' => 'getReferencedByCampaigns',
         'target' => 'getTarget',
+        'achievementPeriod' => 'getAchievementPeriod',
         'achievementRecurrencePolicy' => 'getAchievementRecurrencePolicy',
         'achievementActivationPolicy' => 'getAchievementActivationPolicy',
         'achievementFixedStartDate' => 'getAchievementFixedStartDate',
@@ -418,6 +424,7 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
         $this->setIfExists('campaignIds', $data ?? [], null);
         $this->setIfExists('referencedByCampaigns', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('achievementPeriod', $data ?? [], null);
         $this->setIfExists('achievementRecurrencePolicy', $data ?? [], null);
         $this->setIfExists('achievementActivationPolicy', $data ?? [], null);
         $this->setIfExists('achievementFixedStartDate', $data ?? [], null);
@@ -905,6 +912,33 @@ class AchievementProgressWithDefinition implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets achievementPeriod
+     *
+     * @return string|null
+     */
+    public function getAchievementPeriod()
+    {
+        return $this->container['achievementPeriod'];
+    }
+
+    /**
+     * Sets achievementPeriod
+     *
+     * @param string|null $achievementPeriod The relative duration after which the achievement ends and resets for a particular customer profile. This property is omitted for on-completion achievements which have no specified period.  The period is a positive real number followed by one letter indicating the time unit, and an optional rounding suffix.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`, `30D_D`, `1W_U`.  The letters indicate the following time units:  - `s`: Seconds.  - `m`: Minutes.  - `h`: Hours.  - `D`: Days.  - `W`: Weeks.  - `M`: Months.  - `Y`: Years.  If a suffix is present, it indicates the following rounding:  - `_D`: Rounds down, to the start of the day. It applies to days only. For example, `30D_D` ends at the start of the day, 30 days after the customer starts the achievement.  - `_U`: Rounds up, to the end of the day, week, month or year. It applies to days, weeks, months and years. For example, `1W_U` ends at the end of the week in which the one-week period would end.
+     *
+     * @return self
+     */
+    public function setAchievementPeriod($achievementPeriod)
+    {
+        if (is_null($achievementPeriod)) {
+            throw new \InvalidArgumentException('non-nullable achievementPeriod cannot be null');
+        }
+        $this->container['achievementPeriod'] = $achievementPeriod;
 
         return $this;
     }

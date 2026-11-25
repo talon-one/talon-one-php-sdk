@@ -478,6 +478,9 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['applicationId'] === null) {
             $invalidProperties[] = "'applicationId' can't be null";
         }
+        if ($this->container['profileId'] === null) {
+            $invalidProperties[] = "'profileId' can't be null";
+        }
         if (!is_null($this->container['storeIntegrationId']) && (mb_strlen($this->container['storeIntegrationId']) > 1000)) {
             $invalidProperties[] = "invalid value for 'storeIntegrationId', the character length must be smaller than or equal to 1000.";
         }
@@ -494,6 +497,9 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             $invalidProperties[] = "invalid value for 'loyaltyCards', number of items must be less than or equal to 1.";
         }
 
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
         $allowedValues = $this->getStateAllowableValues();
         if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -503,10 +509,16 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
 
+        if ($this->container['cartItems'] === null) {
+            $invalidProperties[] = "'cartItems' can't be null";
+        }
         if (!is_null($this->container['identifiers']) && (count($this->container['identifiers']) > 5)) {
             $invalidProperties[] = "invalid value for 'identifiers', number of items must be less than or equal to 5.";
         }
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         if ($this->container['firstSession'] === null) {
             $invalidProperties[] = "'firstSession' can't be null";
         }
@@ -658,7 +670,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets profileId
      *
-     * @return string|null
+     * @return string
      */
     public function getProfileId()
     {
@@ -668,7 +680,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets profileId
      *
-     * @param string|null $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+     * @param string $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
      *
      * @return self
      */
@@ -861,7 +873,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets state
      *
-     * @return string|null
+     * @return string
      */
     public function getState()
     {
@@ -871,7 +883,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets state
      *
-     * @param string|null $state Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. Either:    - `closed` -> `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` -> `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` -> `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * @param string $state Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. Either:    - `closed` -> `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` -> `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` -> `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
      *
      * @return self
      */
@@ -898,7 +910,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets cartItems
      *
-     * @return \TalonOne\Client\Model\CartItem[]|null
+     * @return \TalonOne\Client\Model\CartItem[]
      */
     public function getCartItems()
     {
@@ -908,7 +920,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets cartItems
      *
-     * @param \TalonOne\Client\Model\CartItem[]|null $cartItems The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item's `quantity` **does not exceed 10.000** per request.
+     * @param \TalonOne\Client\Model\CartItem[] $cartItems The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item's `quantity` **does not exceed 10.000** per request.
      *
      * @return self
      */
@@ -1009,7 +1021,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets attributes
      *
-     * @return array<string,mixed>|null
+     * @return array<string,mixed>
      */
     public function getAttributes()
     {
@@ -1019,7 +1031,7 @@ class CustomerSessionV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets attributes
      *
-     * @param array<string,mixed>|null $attributes Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property.
+     * @param array<string,mixed> $attributes Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property.
      *
      * @return self
      */

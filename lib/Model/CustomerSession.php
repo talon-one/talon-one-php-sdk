@@ -412,14 +412,26 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['applicationId'] === null) {
             $invalidProperties[] = "'applicationId' can't be null";
         }
-        if (!is_null($this->container['coupon']) && (mb_strlen($this->container['coupon']) > 100)) {
+        if ($this->container['profileId'] === null) {
+            $invalidProperties[] = "'profileId' can't be null";
+        }
+        if ($this->container['coupon'] === null) {
+            $invalidProperties[] = "'coupon' can't be null";
+        }
+        if ((mb_strlen($this->container['coupon']) > 100)) {
             $invalidProperties[] = "invalid value for 'coupon', the character length must be smaller than or equal to 100.";
         }
 
-        if (!is_null($this->container['referral']) && (mb_strlen($this->container['referral']) > 100)) {
+        if ($this->container['referral'] === null) {
+            $invalidProperties[] = "'referral' can't be null";
+        }
+        if ((mb_strlen($this->container['referral']) > 100)) {
             $invalidProperties[] = "invalid value for 'referral', the character length must be smaller than or equal to 100.";
         }
 
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
         $allowedValues = $this->getStateAllowableValues();
         if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -429,10 +441,19 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['cartItems'] === null) {
+            $invalidProperties[] = "'cartItems' can't be null";
+        }
         if (!is_null($this->container['identifiers']) && (count($this->container['identifiers']) > 5)) {
             $invalidProperties[] = "invalid value for 'identifiers', number of items must be less than or equal to 5.";
         }
 
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
+        }
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         if ($this->container['firstSession'] === null) {
             $invalidProperties[] = "'firstSession' can't be null";
         }
@@ -548,7 +569,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets profileId
      *
-     * @return string|null
+     * @return string
      */
     public function getProfileId()
     {
@@ -558,7 +579,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profileId
      *
-     * @param string|null $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+     * @param string $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
      *
      * @return self
      */
@@ -575,7 +596,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets coupon
      *
-     * @return string|null
+     * @return string
      */
     public function getCoupon()
     {
@@ -585,7 +606,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets coupon
      *
-     * @param string|null $coupon Any coupon code entered.
+     * @param string $coupon Any coupon code entered.
      *
      * @return self
      */
@@ -606,7 +627,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets referral
      *
-     * @return string|null
+     * @return string
      */
     public function getReferral()
     {
@@ -616,7 +637,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets referral
      *
-     * @param string|null $referral Any referral code entered.
+     * @param string $referral Any referral code entered.
      *
      * @return self
      */
@@ -637,7 +658,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets state
      *
-     * @return string|null
+     * @return string
      */
     public function getState()
     {
@@ -647,7 +668,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param string|null $state Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. `closed` -> `cancelled` or `partially_returned` 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * @param string $state Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` -> `closed` 2. `open` -> `cancelled` 3. `closed` -> `cancelled` or `partially_returned` 4. `partially_returned` -> `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
      *
      * @return self
      */
@@ -674,7 +695,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cartItems
      *
-     * @return \TalonOne\Client\Model\CartItem[]|null
+     * @return \TalonOne\Client\Model\CartItem[]
      */
     public function getCartItems()
     {
@@ -684,7 +705,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cartItems
      *
-     * @param \TalonOne\Client\Model\CartItem[]|null $cartItems Serialized JSON representation.
+     * @param \TalonOne\Client\Model\CartItem[] $cartItems Serialized JSON representation.
      *
      * @return self
      */
@@ -731,7 +752,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total
      *
-     * @return float|null
+     * @return float
      */
     public function getTotal()
     {
@@ -741,7 +762,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total
      *
-     * @param float|null $total The total sum of the cart in one session.
+     * @param float $total The total sum of the cart in one session.
      *
      * @return self
      */
@@ -758,7 +779,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return object|null
+     * @return object
      */
     public function getAttributes()
     {
@@ -768,7 +789,7 @@ class CustomerSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param object|null $attributes A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
+     * @param object $attributes A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
      *
      * @return self
      */

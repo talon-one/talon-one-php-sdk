@@ -251,6 +251,15 @@ class RiskDetailTest extends TestCase
     }
 
     /**
+     * Test attribute "applicationName"
+     */
+    public function testPropertyApplicationName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "affectedEntities"
      */
     public function testPropertyAffectedEntities()

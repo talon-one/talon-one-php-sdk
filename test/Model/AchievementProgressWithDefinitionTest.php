@@ -197,6 +197,15 @@ class AchievementProgressWithDefinitionTest extends TestCase
     }
 
     /**
+     * Test attribute "achievementPeriod"
+     */
+    public function testPropertyAchievementPeriod()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "achievementRecurrencePolicy"
      */
     public function testPropertyAchievementRecurrencePolicy()

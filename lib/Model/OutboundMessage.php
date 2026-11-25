@@ -386,6 +386,9 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['notificationType'] === null) {
             $invalidProperties[] = "'notificationType' can't be null";
         }
+        if ($this->container['request'] === null) {
+            $invalidProperties[] = "'request' can't be null";
+        }
         if ($this->container['firstLogAt'] === null) {
             $invalidProperties[] = "'firstLogAt' can't be null";
         }
@@ -629,7 +632,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request
      *
-     * @return \TalonOne\Client\Model\OutboundLogRequest|null
+     * @return \TalonOne\Client\Model\OutboundLogRequest
      */
     public function getRequest()
     {
@@ -639,7 +642,7 @@ class OutboundMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request
      *
-     * @param \TalonOne\Client\Model\OutboundLogRequest|null $request request
+     * @param \TalonOne\Client\Model\OutboundLogRequest $request request
      *
      * @return self
      */

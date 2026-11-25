@@ -351,6 +351,9 @@ class LedgerEntry implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
+        if ($this->container['profileId'] === null) {
+            $invalidProperties[] = "'profileId' can't be null";
+        }
         if ($this->container['accountId'] === null) {
             $invalidProperties[] = "'accountId' can't be null";
         }
@@ -441,7 +444,7 @@ class LedgerEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets profileId
      *
-     * @return string|null
+     * @return string
      */
     public function getProfileId()
     {
@@ -451,7 +454,7 @@ class LedgerEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profileId
      *
-     * @param string|null $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
+     * @param string $profileId ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`.
      *
      * @return self
      */

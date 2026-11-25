@@ -438,15 +438,21 @@ class Coupon implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['campaignId'] === null) {
             $invalidProperties[] = "'campaignId' can't be null";
         }
-        if (!is_null($this->container['value']) && (mb_strlen($this->container['value']) < 4)) {
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ((mb_strlen($this->container['value']) < 4)) {
             $invalidProperties[] = "invalid value for 'value', the character length must be bigger than or equal to 4.";
         }
 
-        if (!is_null($this->container['usageLimit']) && ($this->container['usageLimit'] > 999999)) {
+        if ($this->container['usageLimit'] === null) {
+            $invalidProperties[] = "'usageLimit' can't be null";
+        }
+        if (($this->container['usageLimit'] > 999999)) {
             $invalidProperties[] = "invalid value for 'usageLimit', must be smaller than or equal to 999999.";
         }
 
-        if (!is_null($this->container['usageLimit']) && ($this->container['usageLimit'] < 0)) {
+        if (($this->container['usageLimit'] < 0)) {
             $invalidProperties[] = "invalid value for 'usageLimit', must be bigger than or equal to 0.";
         }
 
@@ -572,7 +578,7 @@ class Coupon implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return string|null
+     * @return string
      */
     public function getValue()
     {
@@ -582,7 +588,7 @@ class Coupon implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string|null $value The coupon code.
+     * @param string $value The coupon code.
      *
      * @return self
      */
@@ -604,7 +610,7 @@ class Coupon implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets usageLimit
      *
-     * @return int|null
+     * @return int
      */
     public function getUsageLimit()
     {
@@ -614,7 +620,7 @@ class Coupon implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets usageLimit
      *
-     * @param int|null $usageLimit The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply.
+     * @param int $usageLimit The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply.
      *
      * @return self
      */

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **notificationType** | **string** | Type of notification that triggered the outbound message. |
 **applicationId** | **int** | ID of the Application associated with the outbound message. | [optional]
 **loyaltyProgramId** | **int** | ID of the loyalty program associated with the outbound message. | [optional]
-**request** | [**\TalonOne\Client\Model\OutboundLogRequest**](OutboundLogRequest.md) |  | [optional]
+**request** | [**\TalonOne\Client\Model\OutboundLogRequest**](OutboundLogRequest.md) |  |
 **firstLogAt** | **\DateTime** | Timestamp of the first log entry for this message. |
 **lastLogAt** | **\DateTime** | Timestamp of the last log entry for this message. |
 **lastResponseCode** | **int** | HTTP status code from the latest response. | [optional]

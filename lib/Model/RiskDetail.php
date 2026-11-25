@@ -85,6 +85,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => 'int',
         'statusChangedAt' => '\DateTime',
         'modified' => '\DateTime',
+        'applicationName' => 'string',
         'affectedEntities' => '\TalonOne\Client\Model\RiskAffectedEntityItem[]'
     ];
 
@@ -115,6 +116,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => 'int64',
         'statusChangedAt' => 'date-time',
         'modified' => 'date-time',
+        'applicationName' => null,
         'affectedEntities' => null
     ];
 
@@ -143,6 +145,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => false,
         'statusChangedAt' => false,
         'modified' => false,
+        'applicationName' => false,
         'affectedEntities' => false
     ];
 
@@ -251,6 +254,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => 'statusChangedBy',
         'statusChangedAt' => 'statusChangedAt',
         'modified' => 'modified',
+        'applicationName' => 'applicationName',
         'affectedEntities' => 'affectedEntities'
     ];
 
@@ -279,6 +283,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => 'setStatusChangedBy',
         'statusChangedAt' => 'setStatusChangedAt',
         'modified' => 'setModified',
+        'applicationName' => 'setApplicationName',
         'affectedEntities' => 'setAffectedEntities'
     ];
 
@@ -307,6 +312,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'statusChangedBy' => 'getStatusChangedBy',
         'statusChangedAt' => 'getStatusChangedAt',
         'modified' => 'getModified',
+        'applicationName' => 'getApplicationName',
         'affectedEntities' => 'getAffectedEntities'
     ];
 
@@ -486,6 +492,7 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('statusChangedBy', $data ?? [], null);
         $this->setIfExists('statusChangedAt', $data ?? [], null);
         $this->setIfExists('modified', $data ?? [], null);
+        $this->setIfExists('applicationName', $data ?? [], null);
         $this->setIfExists('affectedEntities', $data ?? [], null);
     }
 
@@ -1196,6 +1203,33 @@ class RiskDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable modified cannot be null');
         }
         $this->container['modified'] = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Gets applicationName
+     *
+     * @return string|null
+     */
+    public function getApplicationName()
+    {
+        return $this->container['applicationName'];
+    }
+
+    /**
+     * Sets applicationName
+     *
+     * @param string|null $applicationName The current name of the Application this risk belongs to. Shown even if the user does not have access to that Application. Omitted if the Application has been deleted or the risk is not associated with an Application.
+     *
+     * @return self
+     */
+    public function setApplicationName($applicationName)
+    {
+        if (is_null($applicationName)) {
+            throw new \InvalidArgumentException('non-nullable applicationName cannot be null');
+        }
+        $this->container['applicationName'] = $applicationName;
 
         return $this;
     }

@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **value** | [**\TalonOne\Client\Model\AwardDiscountBlock1Value**](AwardDiscountBlock1Value.md) |  |
 **partial** | **bool** | Whether to apply a partial discount when the requested value exceeds the configured budget. |
 **target** | [**\TalonOne\Client\Model\AwardDiscountTarget**](AwardDiscountTarget.md) |  |
+**excludedFromPriceHistory** | **bool** | When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

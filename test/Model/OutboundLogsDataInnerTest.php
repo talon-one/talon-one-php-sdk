@@ -80,126 +80,18 @@ class OutboundLogsDataInnerTest extends TestCase
     }
 
     /**
-     * Test attribute "uuid"
+     * Test attribute "type"
      */
-    public function testPropertyUuid()
+    public function testPropertyType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notificationId"
+     * Test attribute "data"
      */
-    public function testPropertyNotificationId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notificationName"
-     */
-    public function testPropertyNotificationName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "webhookId"
-     */
-    public function testPropertyWebhookId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "webhookName"
-     */
-    public function testPropertyWebhookName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notificationType"
-     */
-    public function testPropertyNotificationType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "applicationId"
-     */
-    public function testPropertyApplicationId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "loyaltyProgramId"
-     */
-    public function testPropertyLoyaltyProgramId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "request"
-     */
-    public function testPropertyRequest()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "createdAt"
-     */
-    public function testPropertyCreatedAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "processingTimeMs"
-     */
-    public function testPropertyProcessingTimeMs()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "response"
-     */
-    public function testPropertyResponse()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "error"
-     */
-    public function testPropertyError()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
+    public function testPropertyData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

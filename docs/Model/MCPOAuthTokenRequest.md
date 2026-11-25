@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **grantType** | **string** | OAuth2 grant type. |
 **code** | **string** | Authorization code. Required for &#x60;authorization_code&#x60; grant. | [optional]
 **clientId** | **string** | Client ID. Required for &#x60;authorization_code&#x60; grant. | [optional]
+**clientSecret** | **string** | Client secret for confidential (static) clients. May also be supplied via HTTP Basic authentication. Public clients registered via dynamic client registration omit it. | [optional]
 **redirectUri** | **string** | Redirect URI. Required for &#x60;authorization_code&#x60; grant. | [optional]
 **codeVerifier** | **string** | PKCE code verifier. Required for &#x60;authorization_code&#x60; grant. | [optional]
 **refreshToken** | **string** | Refresh token. Required for &#x60;refresh_token&#x60; grant. | [optional]

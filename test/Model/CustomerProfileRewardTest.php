@@ -170,6 +170,15 @@ class CustomerProfileRewardTest extends TestCase
     }
 
     /**
+     * Test attribute "expiryDate"
+     */
+    public function testPropertyExpiryDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "usedAt"
      */
     public function testPropertyUsedAt()

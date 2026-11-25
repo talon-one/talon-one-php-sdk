@@ -487,7 +487,7 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets achievements
      *
-     * @param \TalonOne\Client\Model\AchievementProgressWithDefinition[]|null $achievements achievements
+     * @param \TalonOne\Client\Model\AchievementProgressWithDefinition[]|null $achievements The customer's progress in each achievement they have participated in.  Only achievements the customer has started are included, whether they  are in progress, completed, or expired. Recurring achievements can appear  more than once, once per iteration.
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class CustomerInventory implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rewards
      *
-     * @param \TalonOne\Client\Model\RewardWithUnlocks[]|null $rewards The customer rewards that are `unlocked` and not yet `used`.
+     * @param \TalonOne\Client\Model\RewardWithUnlocks[]|null $rewards The rewards that the customer has unlocked but not used. Expired customer rewards are not returned.
      *
      * @return self
      */

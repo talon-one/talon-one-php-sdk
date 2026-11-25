@@ -67,7 +67,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'loyaltyProgramId' => 'int',
         'passTemplateId' => 'string',
-        'profileId' => 'string',
+        'profileIntegrationId' => 'string',
         'loyaltyCardId' => 'string',
         'platform' => 'string',
         'attributes' => 'array<string,string>'
@@ -82,8 +82,8 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'loyaltyProgramId' => 'int64',
-        'passTemplateId' => null,
-        'profileId' => null,
+        'passTemplateId' => 'uuid',
+        'profileIntegrationId' => null,
         'loyaltyCardId' => null,
         'platform' => null,
         'attributes' => null
@@ -97,7 +97,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'loyaltyProgramId' => false,
         'passTemplateId' => false,
-        'profileId' => false,
+        'profileIntegrationId' => false,
         'loyaltyCardId' => false,
         'platform' => false,
         'attributes' => false
@@ -191,7 +191,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'loyaltyProgramId' => 'loyaltyProgramId',
         'passTemplateId' => 'passTemplateId',
-        'profileId' => 'profileId',
+        'profileIntegrationId' => 'profileIntegrationId',
         'loyaltyCardId' => 'loyaltyCardId',
         'platform' => 'platform',
         'attributes' => 'attributes'
@@ -205,7 +205,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'loyaltyProgramId' => 'setLoyaltyProgramId',
         'passTemplateId' => 'setPassTemplateId',
-        'profileId' => 'setProfileId',
+        'profileIntegrationId' => 'setProfileIntegrationId',
         'loyaltyCardId' => 'setLoyaltyCardId',
         'platform' => 'setPlatform',
         'attributes' => 'setAttributes'
@@ -219,7 +219,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'loyaltyProgramId' => 'getLoyaltyProgramId',
         'passTemplateId' => 'getPassTemplateId',
-        'profileId' => 'getProfileId',
+        'profileIntegrationId' => 'getProfileIntegrationId',
         'loyaltyCardId' => 'getLoyaltyCardId',
         'platform' => 'getPlatform',
         'attributes' => 'getAttributes'
@@ -299,7 +299,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('loyaltyProgramId', $data ?? [], null);
         $this->setIfExists('passTemplateId', $data ?? [], null);
-        $this->setIfExists('profileId', $data ?? [], null);
+        $this->setIfExists('profileIntegrationId', $data ?? [], null);
         $this->setIfExists('loyaltyCardId', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
@@ -342,15 +342,11 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['passTemplateId'] === null) {
             $invalidProperties[] = "'passTemplateId' can't be null";
         }
-        if ((mb_strlen($this->container['passTemplateId']) < 1)) {
-            $invalidProperties[] = "invalid value for 'passTemplateId', the character length must be bigger than or equal to 1.";
+        if ($this->container['profileIntegrationId'] === null) {
+            $invalidProperties[] = "'profileIntegrationId' can't be null";
         }
-
-        if ($this->container['profileId'] === null) {
-            $invalidProperties[] = "'profileId' can't be null";
-        }
-        if ((mb_strlen($this->container['profileId']) < 1)) {
-            $invalidProperties[] = "invalid value for 'profileId', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['profileIntegrationId']) < 1)) {
+            $invalidProperties[] = "invalid value for 'profileIntegrationId', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['platform'] === null) {
@@ -433,44 +429,39 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($passTemplateId)) {
             throw new \InvalidArgumentException('non-nullable passTemplateId cannot be null');
         }
-
-        if ((mb_strlen($passTemplateId) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $passTemplateId when calling NewDigitalPass., must be bigger than or equal to 1.');
-        }
-
         $this->container['passTemplateId'] = $passTemplateId;
 
         return $this;
     }
 
     /**
-     * Gets profileId
+     * Gets profileIntegrationId
      *
      * @return string
      */
-    public function getProfileId()
+    public function getProfileIntegrationId()
     {
-        return $this->container['profileId'];
+        return $this->container['profileIntegrationId'];
     }
 
     /**
-     * Sets profileId
+     * Sets profileIntegrationId
      *
-     * @param string $profileId The integration ID of the customer profile the pass is issued for.
+     * @param string $profileIntegrationId The integration ID of the customer profile the pass is issued for.
      *
      * @return self
      */
-    public function setProfileId($profileId)
+    public function setProfileIntegrationId($profileIntegrationId)
     {
-        if (is_null($profileId)) {
-            throw new \InvalidArgumentException('non-nullable profileId cannot be null');
+        if (is_null($profileIntegrationId)) {
+            throw new \InvalidArgumentException('non-nullable profileIntegrationId cannot be null');
         }
 
-        if ((mb_strlen($profileId) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $profileId when calling NewDigitalPass., must be bigger than or equal to 1.');
+        if ((mb_strlen($profileIntegrationId) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $profileIntegrationId when calling NewDigitalPass., must be bigger than or equal to 1.');
         }
 
-        $this->container['profileId'] = $profileId;
+        $this->container['profileIntegrationId'] = $profileIntegrationId;
 
         return $this;
     }
@@ -552,7 +543,7 @@ class NewDigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param array<string,string>|null $attributes A map of placeholder values that you provide to fill in the pass template. These values are not validated against the template.
+     * @param array<string,string>|null $attributes A map of placeholder values that you provide to fill in the pass template. Pass templates reference each value as `CustomerProfile.Attributes.<key>`.  Each key must start with a letter or an underscore and can contain only letters, digits, and underscores. If the template requires a value that is missing, the request fails with a `422` error.
      *
      * @return self
      */

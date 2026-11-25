@@ -531,10 +531,31 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['subscribedApplications'] === null) {
+            $invalidProperties[] = "'subscribedApplications' can't be null";
+        }
+        if ($this->container['defaultValidity'] === null) {
+            $invalidProperties[] = "'defaultValidity' can't be null";
+        }
+        if ($this->container['defaultPending'] === null) {
+            $invalidProperties[] = "'defaultPending' can't be null";
+        }
+        if ($this->container['allowSubledger'] === null) {
+            $invalidProperties[] = "'allowSubledger' can't be null";
+        }
         if (!is_null($this->container['usersPerCardLimit']) && ($this->container['usersPerCardLimit'] < 0)) {
             $invalidProperties[] = "invalid value for 'usersPerCardLimit', must be bigger than or equal to 0.";
         }
 
+        if ($this->container['sandbox'] === null) {
+            $invalidProperties[] = "'sandbox' can't be null";
+        }
         $allowedValues = $this->getProgramJoinPolicyAllowableValues();
         if (!is_null($this->container['programJoinPolicy']) && !in_array($this->container['programJoinPolicy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -659,7 +680,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets title
      *
-     * @return string|null
+     * @return string
      */
     public function getTitle()
     {
@@ -669,7 +690,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The display title for the Loyalty Program.
+     * @param string $title The display title for the Loyalty Program.
      *
      * @return self
      */
@@ -686,7 +707,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -696,7 +717,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Description of our Loyalty Program.
+     * @param string $description Description of our Loyalty Program.
      *
      * @return self
      */
@@ -713,7 +734,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subscribedApplications
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getSubscribedApplications()
     {
@@ -723,7 +744,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscribedApplications
      *
-     * @param int[]|null $subscribedApplications A list containing the IDs of all applications that are subscribed to this Loyalty Program.
+     * @param int[] $subscribedApplications A list containing the IDs of all applications that are subscribed to this Loyalty Program.
      *
      * @return self
      */
@@ -740,7 +761,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets defaultValidity
      *
-     * @return string|null
+     * @return string
      */
     public function getDefaultValidity()
     {
@@ -750,7 +771,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets defaultValidity
      *
-     * @param string|null $defaultValidity The default duration after which new loyalty points should expire. Can be 'unlimited' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
+     * @param string $defaultValidity The default duration after which new loyalty points should expire. Can be 'unlimited' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
      *
      * @return self
      */
@@ -767,7 +788,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets defaultPending
      *
-     * @return string|null
+     * @return string
      */
     public function getDefaultPending()
     {
@@ -777,7 +798,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets defaultPending
      *
-     * @param string|null $defaultPending The default duration of the pending time after which points should be valid. Accepted values: 'immediate', 'on_action' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
+     * @param string $defaultPending The default duration of the pending time after which points should be valid. Accepted values: 'immediate', 'on_action' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
      *
      * @return self
      */
@@ -794,7 +815,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets allowSubledger
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAllowSubledger()
     {
@@ -804,7 +825,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets allowSubledger
      *
-     * @param bool|null $allowSubledger Indicates if this program supports subledgers inside the program.
+     * @param bool $allowSubledger Indicates if this program supports subledgers inside the program.
      *
      * @return self
      */
@@ -852,7 +873,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sandbox
      *
-     * @return bool|null
+     * @return bool
      */
     public function getSandbox()
     {
@@ -862,7 +883,7 @@ class LoyaltyProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sandbox
      *
-     * @param bool|null $sandbox Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.
+     * @param bool $sandbox Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.
      *
      * @return self
      */
