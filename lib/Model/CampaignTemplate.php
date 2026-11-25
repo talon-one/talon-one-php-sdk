@@ -575,6 +575,9 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['applicationsIds'] === null) {
             $invalidProperties[] = "'applicationsIds' can't be null";
         }
+        if ($this->container['campaignType'] === null) {
+            $invalidProperties[] = "'campaignType' can't be null";
+        }
         $allowedValues = $this->getCampaignTypeAllowableValues();
         if (!is_null($this->container['campaignType']) && !in_array($this->container['campaignType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -1226,7 +1229,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets campaignType
      *
-     * @return string|null
+     * @return string
      */
     public function getCampaignType()
     {
@@ -1236,7 +1239,7 @@ class CampaignTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaignType
      *
-     * @param string|null $campaignType The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items.
+     * @param string $campaignType The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items.
      *
      * @return self
      */

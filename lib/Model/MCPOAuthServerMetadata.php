@@ -71,7 +71,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => 'string',
         'responseTypesSupported' => 'string[]',
         'grantTypesSupported' => 'string[]',
-        'codeChallengeMethodsSupported' => 'string[]'
+        'codeChallengeMethodsSupported' => 'string[]',
+        'tokenEndpointAuthMethodsSupported' => 'string[]'
     ];
 
     /**
@@ -88,7 +89,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => null,
         'responseTypesSupported' => null,
         'grantTypesSupported' => null,
-        'codeChallengeMethodsSupported' => null
+        'codeChallengeMethodsSupported' => null,
+        'tokenEndpointAuthMethodsSupported' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => false,
         'responseTypesSupported' => false,
         'grantTypesSupported' => false,
-        'codeChallengeMethodsSupported' => false
+        'codeChallengeMethodsSupported' => false,
+        'tokenEndpointAuthMethodsSupported' => false
     ];
 
     /**
@@ -198,7 +201,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => 'registration_endpoint',
         'responseTypesSupported' => 'response_types_supported',
         'grantTypesSupported' => 'grant_types_supported',
-        'codeChallengeMethodsSupported' => 'code_challenge_methods_supported'
+        'codeChallengeMethodsSupported' => 'code_challenge_methods_supported',
+        'tokenEndpointAuthMethodsSupported' => 'token_endpoint_auth_methods_supported'
     ];
 
     /**
@@ -213,7 +217,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => 'setRegistrationEndpoint',
         'responseTypesSupported' => 'setResponseTypesSupported',
         'grantTypesSupported' => 'setGrantTypesSupported',
-        'codeChallengeMethodsSupported' => 'setCodeChallengeMethodsSupported'
+        'codeChallengeMethodsSupported' => 'setCodeChallengeMethodsSupported',
+        'tokenEndpointAuthMethodsSupported' => 'setTokenEndpointAuthMethodsSupported'
     ];
 
     /**
@@ -228,7 +233,8 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         'registrationEndpoint' => 'getRegistrationEndpoint',
         'responseTypesSupported' => 'getResponseTypesSupported',
         'grantTypesSupported' => 'getGrantTypesSupported',
-        'codeChallengeMethodsSupported' => 'getCodeChallengeMethodsSupported'
+        'codeChallengeMethodsSupported' => 'getCodeChallengeMethodsSupported',
+        'tokenEndpointAuthMethodsSupported' => 'getTokenEndpointAuthMethodsSupported'
     ];
 
     /**
@@ -295,6 +301,7 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('responseTypesSupported', $data ?? [], null);
         $this->setIfExists('grantTypesSupported', $data ?? [], null);
         $this->setIfExists('codeChallengeMethodsSupported', $data ?? [], null);
+        $this->setIfExists('tokenEndpointAuthMethodsSupported', $data ?? [], null);
     }
 
     /**
@@ -545,6 +552,33 @@ class MCPOAuthServerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable codeChallengeMethodsSupported cannot be null');
         }
         $this->container['codeChallengeMethodsSupported'] = $codeChallengeMethodsSupported;
+
+        return $this;
+    }
+
+    /**
+     * Gets tokenEndpointAuthMethodsSupported
+     *
+     * @return string[]|null
+     */
+    public function getTokenEndpointAuthMethodsSupported()
+    {
+        return $this->container['tokenEndpointAuthMethodsSupported'];
+    }
+
+    /**
+     * Sets tokenEndpointAuthMethodsSupported
+     *
+     * @param string[]|null $tokenEndpointAuthMethodsSupported List of supported client authentication methods at the token endpoint. Public clients use `none`; confidential clients use `client_secret_post` or `client_secret_basic`.
+     *
+     * @return self
+     */
+    public function setTokenEndpointAuthMethodsSupported($tokenEndpointAuthMethodsSupported)
+    {
+        if (is_null($tokenEndpointAuthMethodsSupported)) {
+            throw new \InvalidArgumentException('non-nullable tokenEndpointAuthMethodsSupported cannot be null');
+        }
+        $this->container['tokenEndpointAuthMethodsSupported'] = $tokenEndpointAuthMethodsSupported;
 
         return $this;
     }

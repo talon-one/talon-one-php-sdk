@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **created** | **\DateTime** | The time this entity was created. |
 **applicationId** | **int** | The ID of the Application that owns this entity. |
 **title** | **string** | Campaigner-friendly name for the template that will be shown in the rule editor. |
-**description** | **string** | A short description of the template that will be shown in the rule editor. | [optional]
-**help** | **string** | Extended help text for the template. | [optional]
+**description** | **string** | A short description of the template that will be shown in the rule editor. |
+**help** | **string** | Extended help text for the template. |
 **category** | **string** | Used for grouping templates in the rule editor sidebar. |
 **expr** | **mixed[]** | A Talang expression that contains variable bindings referring to args. |
 **args** | [**\TalonOne\Client\Model\TemplateArgDef[]**](TemplateArgDef.md) | An array of argument definitions. |

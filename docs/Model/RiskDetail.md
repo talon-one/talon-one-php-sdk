@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **statusChangedBy** | **int** | The ID of the user who performed the latest reclassification action. | [optional]
 **statusChangedAt** | **\DateTime** | The time of the latest reclassification action. | [optional]
 **modified** | **\DateTime** | Timestamp of the most recent update. |
+**applicationName** | **string** | The current name of the Application this risk belongs to. Shown even if the user does not have access to that Application. Omitted if the Application has been deleted or the risk is not associated with an Application. | [optional]
 **affectedEntities** | [**\TalonOne\Client\Model\RiskAffectedEntityItem[]**](RiskAffectedEntityItem.md) | The affected entities with the highest severity ratios, in descending order. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

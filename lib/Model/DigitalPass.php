@@ -79,8 +79,8 @@ class DigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'passId' => null,
-        'passTemplateId' => null,
+        'passId' => 'uuid',
+        'passTemplateId' => 'uuid',
         'status' => null,
         'passUrl' => 'uri'
     ];
@@ -456,7 +456,7 @@ class DigitalPass implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets passUrl
      *
-     * @param string $passUrl The URL you can use to let the customer add the digital pass to their wallet.
+     * @param string $passUrl The URL you can use to let the customer add the digital pass to their wallet.  **Note**: For Google Wallet, the URL is valid for 30 days. After 30 days, create the pass again to get a new URL.
      *
      * @return self
      */

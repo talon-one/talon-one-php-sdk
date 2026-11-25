@@ -141,4 +141,13 @@ class MCPOAuthServerMetadataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "tokenEndpointAuthMethodsSupported"
+     */
+    public function testPropertyTokenEndpointAuthMethodsSupported()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

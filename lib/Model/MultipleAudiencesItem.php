@@ -347,11 +347,14 @@ class MultipleAudiencesItem implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['integrationId']) && (mb_strlen($this->container['integrationId']) > 1000)) {
+        if ($this->container['integrationId'] === null) {
+            $invalidProperties[] = "'integrationId' can't be null";
+        }
+        if ((mb_strlen($this->container['integrationId']) > 1000)) {
             $invalidProperties[] = "invalid value for 'integrationId', the character length must be smaller than or equal to 1000.";
         }
 
-        if (!is_null($this->container['integrationId']) && (mb_strlen($this->container['integrationId']) < 1)) {
+        if ((mb_strlen($this->container['integrationId']) < 1)) {
             $invalidProperties[] = "invalid value for 'integrationId', the character length must be bigger than or equal to 1.";
         }
 
@@ -499,7 +502,7 @@ class MultipleAudiencesItem implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets integrationId
      *
-     * @return string|null
+     * @return string
      */
     public function getIntegrationId()
     {
@@ -509,7 +512,7 @@ class MultipleAudiencesItem implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets integrationId
      *
-     * @param string|null $integrationId The ID of this audience in the third-party integration.
+     * @param string $integrationId The ID of this audience in the third-party integration.
      *
      * @return self
      */

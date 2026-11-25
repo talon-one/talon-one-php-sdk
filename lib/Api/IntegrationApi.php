@@ -4781,8 +4781,8 @@ class IntegrationApi
      * @param  bool|null $coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
      * @param  bool|null $loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
      * @param  bool|null $giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param  bool|null $achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param  bool|null $unlockedRewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. (optional)
+     * @param  bool|null $achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. (optional)
+     * @param  bool|null $unlockedRewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInventory'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4806,8 +4806,8 @@ class IntegrationApi
      * @param  bool|null $coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
      * @param  bool|null $loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
      * @param  bool|null $giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param  bool|null $achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param  bool|null $unlockedRewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. (optional)
+     * @param  bool|null $achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. (optional)
+     * @param  bool|null $unlockedRewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInventory'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4927,8 +4927,8 @@ class IntegrationApi
      * @param  bool|null $coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
      * @param  bool|null $loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
      * @param  bool|null $giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param  bool|null $achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param  bool|null $unlockedRewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. (optional)
+     * @param  bool|null $achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. (optional)
+     * @param  bool|null $unlockedRewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInventory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4955,8 +4955,8 @@ class IntegrationApi
      * @param  bool|null $coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
      * @param  bool|null $loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
      * @param  bool|null $giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param  bool|null $achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param  bool|null $unlockedRewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. (optional)
+     * @param  bool|null $achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. (optional)
+     * @param  bool|null $unlockedRewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInventory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5020,8 +5020,8 @@ class IntegrationApi
      * @param  bool|null $coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
      * @param  bool|null $loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
      * @param  bool|null $giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param  bool|null $achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param  bool|null $unlockedRewards Set to &#x60;true&#x60; to include &#x60;unlocked&#x60; rewards that have not been &#x60;used&#x60; in the response. (optional)
+     * @param  bool|null $achievements Set to &#x60;true&#x60; to include the customer&#39;s progress in achievements in the  response. Only achievements the customer has started are returned, whether  they are in progress, completed, or expired.  Recurring achievements can appear more than once, once per iteration. The  achievements cannot be filtered or paginated. (optional)
+     * @param  bool|null $unlockedRewards The instances of this reward that the customer has unlocked but not used. Expired customer rewards are not returned. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInventory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

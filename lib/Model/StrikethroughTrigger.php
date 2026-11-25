@@ -84,7 +84,7 @@ class StrikethroughTrigger implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => 'int64',
         'type' => null,
         'triggeredAt' => 'date-time',
-        'totalAffectedItems' => 'date-time',
+        'totalAffectedItems' => 'int64',
         'payload' => null
     ];
 

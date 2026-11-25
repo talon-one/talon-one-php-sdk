@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **value** | [**\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value**](RedeemLoyaltyPointsBlock1Value.md) |  |
 **partial** | **bool** | When &#x60;true&#x60;, applies a partial points reward when the requested value exceeds the configured budget. |
 **target** | [**\TalonOne\Client\Model\AwardLoyaltyPointsTarget**](AwardLoyaltyPointsTarget.md) |  |
+**excludedFromPriceHistory** | **bool** | When set to &#x60;true&#x60;, the applied discount is excluded from the item&#39;s [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history). | [optional]
 **expression** | **mixed[]** | The raw Talang expression as an array. For a function call, the first element is the function name and subsequent elements are its arguments. For any other expression (for example a bare attribute path or a literal value), this is a single-element array containing that value. |
 **notificationType** | **string** | The type of notification to display. |
 **title** | **string** | The notification heading shown to the customer. |
@@ -48,6 +49,7 @@ Name | Type | Description | Notes
 **pattern** | **string** | The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. | [optional]
 **friendId** | **string** | An optional integration ID of the friend&#39;s profile. |
 **recipient** | **string** | The customer profile that receives the points. &#x60;Current&#x60; targets the customer in the current session; &#x60;Advocate&#x60; targets the person who invited their friend via referral program. |
+**joinDate** | **mixed** | The date and time the customer joins the program. Cannot be in the future. Accepts one of: - An absolute timestamp in RFC 3339 format (e.g. &#x60;2026-01-15T10:00:00Z&#x60;). - A reference to a value, such as &#x60;{{$Now}}&#x60; or an attribute. - A relative time: an object with a &#x60;baseline&#x60; time, a &#x60;duration&#x60;, and an &#x60;operator&#x60;   that is &#x60;laterBy&#x60; or &#x60;earlierBy&#x60;. - A rounded time: an object with a &#x60;baseline&#x60; time, a &#x60;unit&#x60; (such as &#x60;day&#x60;, &#x60;hour&#x60; or   &#x60;month&#x60;), and a &#x60;direction&#x60; that is &#x60;start&#x60; or &#x60;end&#x60;. The baseline must be a relative   time whose duration uses the same unit.  See the examples for each form. |
 **tier** | [**\TalonOne\Client\Model\TierBlockReference**](TierBlockReference.md) | The tier to check for. |
 **awaitsActivation** | **bool** | When &#x60;true&#x60;, the awarded points require manual or delayed activation before becoming active. Mutually exclusive with &#x60;startDate&#x60;. | [optional]
 **validityDuration** | **string** | Relative duration (e.g. &#x60;30D&#x60;) after which the awarded points expire. Mutually exclusive with &#x60;expiryDate&#x60;. | [optional]

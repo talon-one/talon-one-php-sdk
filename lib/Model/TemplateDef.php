@@ -368,6 +368,12 @@ class TemplateDef implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'title', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['help'] === null) {
+            $invalidProperties[] = "'help' can't be null";
+        }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
         }
@@ -519,7 +525,7 @@ class TemplateDef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -529,7 +535,7 @@ class TemplateDef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description A short description of the template that will be shown in the rule editor.
+     * @param string $description A short description of the template that will be shown in the rule editor.
      *
      * @return self
      */
@@ -546,7 +552,7 @@ class TemplateDef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets help
      *
-     * @return string|null
+     * @return string
      */
     public function getHelp()
     {
@@ -556,7 +562,7 @@ class TemplateDef implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets help
      *
-     * @param string|null $help Extended help text for the template.
+     * @param string $help Extended help text for the template.
      *
      * @return self
      */

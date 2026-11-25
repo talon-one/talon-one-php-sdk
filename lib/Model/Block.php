@@ -74,6 +74,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'updateAttributeValue' => \TalonOne\Client\Model\UpdateAttributeValueBlock::class,
         'updateAudienceMembership' => \TalonOne\Client\Model\UpdateAudienceMembershipBlock::class,
         'updateLoyaltyPointsExpiry' => \TalonOne\Client\Model\UpdateLoyaltyPointsExpiryBlock::class,
+        'updateLoyaltyProgramMembership' => \TalonOne\Client\Model\UpdateLoyaltyProgramMembershipBlock::class,
     ];
 
     /** Shape-disjoint container/primitive alternatives of a oneOf union. */
@@ -104,6 +105,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => '\TalonOne\Client\Model\RedeemLoyaltyPointsBlock1Value',
         'partial' => 'bool',
         'target' => '\TalonOne\Client\Model\AwardLoyaltyPointsTarget',
+        'excludedFromPriceHistory' => 'bool',
         'expression' => 'mixed[]',
         'notificationType' => 'string',
         'title' => 'string',
@@ -137,6 +139,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => 'string',
         'friendId' => 'string',
         'recipient' => 'string',
+        'joinDate' => 'mixed',
         'tier' => '\TalonOne\Client\Model\TierBlockReference',
         'awaitsActivation' => 'bool',
         'validityDuration' => 'string',
@@ -162,6 +165,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => null,
         'partial' => null,
         'target' => null,
+        'excludedFromPriceHistory' => null,
         'expression' => null,
         'notificationType' => null,
         'title' => null,
@@ -195,6 +199,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => null,
         'friendId' => null,
         'recipient' => null,
+        'joinDate' => null,
         'tier' => null,
         'awaitsActivation' => null,
         'validityDuration' => null,
@@ -218,6 +223,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => false,
         'partial' => false,
         'target' => false,
+        'excludedFromPriceHistory' => false,
         'expression' => false,
         'notificationType' => false,
         'title' => false,
@@ -251,6 +257,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => false,
         'friendId' => false,
         'recipient' => false,
+        'joinDate' => true,
         'tier' => false,
         'awaitsActivation' => false,
         'validityDuration' => false,
@@ -354,6 +361,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'value',
         'partial' => 'partial',
         'target' => 'target',
+        'excludedFromPriceHistory' => 'excludedFromPriceHistory',
         'expression' => 'expression',
         'notificationType' => 'notificationType',
         'title' => 'title',
@@ -387,6 +395,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => 'pattern',
         'friendId' => 'friendId',
         'recipient' => 'recipient',
+        'joinDate' => 'joinDate',
         'tier' => 'tier',
         'awaitsActivation' => 'awaitsActivation',
         'validityDuration' => 'validityDuration',
@@ -410,6 +419,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'setValue',
         'partial' => 'setPartial',
         'target' => 'setTarget',
+        'excludedFromPriceHistory' => 'setExcludedFromPriceHistory',
         'expression' => 'setExpression',
         'notificationType' => 'setNotificationType',
         'title' => 'setTitle',
@@ -443,6 +453,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => 'setPattern',
         'friendId' => 'setFriendId',
         'recipient' => 'setRecipient',
+        'joinDate' => 'setJoinDate',
         'tier' => 'setTier',
         'awaitsActivation' => 'setAwaitsActivation',
         'validityDuration' => 'setValidityDuration',
@@ -466,6 +477,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'value' => 'getValue',
         'partial' => 'getPartial',
         'target' => 'getTarget',
+        'excludedFromPriceHistory' => 'getExcludedFromPriceHistory',
         'expression' => 'getExpression',
         'notificationType' => 'getNotificationType',
         'title' => 'getTitle',
@@ -499,6 +511,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         'pattern' => 'getPattern',
         'friendId' => 'getFriendId',
         'recipient' => 'getRecipient',
+        'joinDate' => 'getJoinDate',
         'tier' => 'getTier',
         'awaitsActivation' => 'getAwaitsActivation',
         'validityDuration' => 'getValidityDuration',
@@ -676,6 +689,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('partial', $data ?? [], null);
         $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('excludedFromPriceHistory', $data ?? [], null);
         $this->setIfExists('expression', $data ?? [], null);
         $this->setIfExists('notificationType', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
@@ -709,6 +723,7 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('pattern', $data ?? [], null);
         $this->setIfExists('friendId', $data ?? [], null);
         $this->setIfExists('recipient', $data ?? [], null);
+        $this->setIfExists('joinDate', $data ?? [], null);
         $this->setIfExists('tier', $data ?? [], null);
         $this->setIfExists('awaitsActivation', $data ?? [], null);
         $this->setIfExists('validityDuration', $data ?? [], null);
@@ -883,6 +898,9 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['joinDate'] === null && !$this->isNullableSetToNull('joinDate')) {
+            $invalidProperties[] = "'joinDate' is required";
+        }
         if ($this->container['tier'] === null) {
             $invalidProperties[] = "'tier' can't be null";
         }
@@ -1204,6 +1222,33 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Gets excludedFromPriceHistory
+     *
+     * @return bool|null
+     */
+    public function getExcludedFromPriceHistory()
+    {
+        return $this->container['excludedFromPriceHistory'];
+    }
+
+    /**
+     * Sets excludedFromPriceHistory
+     *
+     * @param bool|null $excludedFromPriceHistory When set to `true`, the applied discount is excluded from the item's [price history](https://docs.talon.one/docs/dev/integration-guides/best-prior-price#price-history).
+     *
+     * @return self
+     */
+    public function setExcludedFromPriceHistory($excludedFromPriceHistory)
+    {
+        if (is_null($excludedFromPriceHistory)) {
+            throw new \InvalidArgumentException('non-nullable excludedFromPriceHistory cannot be null');
+        }
+        $this->container['excludedFromPriceHistory'] = $excludedFromPriceHistory;
 
         return $this;
     }
@@ -2156,6 +2201,40 @@ class Block implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Gets joinDate
+     *
+     * @return mixed|null
+     */
+    public function getJoinDate()
+    {
+        return $this->container['joinDate'];
+    }
+
+    /**
+     * Sets joinDate
+     *
+     * @param mixed|null $joinDate The date and time the customer joins the program. Cannot be in the future. Accepts one of: - An absolute timestamp in RFC 3339 format (e.g. `2026-01-15T10:00:00Z`). - A reference to a value, such as `{{$Now}}` or an attribute. - A relative time: an object with a `baseline` time, a `duration`, and an `operator`   that is `laterBy` or `earlierBy`. - A rounded time: an object with a `baseline` time, a `unit` (such as `day`, `hour` or   `month`), and a `direction` that is `start` or `end`. The baseline must be a relative   time whose duration uses the same unit.  See the examples for each form.
+     *
+     * @return self
+     */
+    public function setJoinDate($joinDate)
+    {
+        if (is_null($joinDate)) {
+            array_push($this->openAPINullablesSetToNull, 'joinDate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('joinDate', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['joinDate'] = $joinDate;
 
         return $this;
     }

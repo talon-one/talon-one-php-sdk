@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **responseTypesSupported** | **string[]** | List of supported OAuth2 response types. |
 **grantTypesSupported** | **string[]** | List of supported OAuth2 grant types. |
 **codeChallengeMethodsSupported** | **string[]** | List of supported PKCE code challenge methods. |
+**tokenEndpointAuthMethodsSupported** | **string[]** | List of supported client authentication methods at the token endpoint. Public clients use &#x60;none&#x60;; confidential clients use &#x60;client_secret_post&#x60; or &#x60;client_secret_basic&#x60;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

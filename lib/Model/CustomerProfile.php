@@ -365,6 +365,9 @@ class CustomerProfile implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'integrationId', the character length must be smaller than or equal to 1000.";
         }
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         if ($this->container['accountId'] === null) {
             $invalidProperties[] = "'accountId' can't be null";
         }
@@ -480,7 +483,7 @@ class CustomerProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return array<string,mixed>|null
+     * @return array<string,mixed>
      */
     public function getAttributes()
     {
@@ -490,7 +493,7 @@ class CustomerProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param array<string,mixed>|null $attributes Arbitrary properties associated with this item.
+     * @param array<string,mixed> $attributes Arbitrary properties associated with this item.
      *
      * @return self
      */

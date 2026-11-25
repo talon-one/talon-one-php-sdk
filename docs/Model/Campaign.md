@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **applicationId** | **int** | The ID of the Application that owns this entity. |
 **userId** | **int** | The ID of the user associated with this entity. |
 **name** | **string** | A user-facing name for this campaign. |
-**description** | **string** | A detailed description of the campaign. | [optional]
+**description** | **string** | A detailed description of the campaign. |
 **startTime** | **\DateTime** | Timestamp when the campaign will become active. | [optional]
 **endTime** | **\DateTime** | Timestamp when the campaign will become inactive. | [optional]
 **attributes** | **object** | Arbitrary properties associated with this campaign. | [optional]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **referralSettings** | [**\TalonOne\Client\Model\CodeGeneratorSettings**](CodeGeneratorSettings.md) |  | [optional]
 **limits** | [**\TalonOne\Client\Model\LimitConfig[]**](LimitConfig.md) | The set of [budget limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets) for this campaign. |
 **campaignGroups** | **int[]** | The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to. | [optional]
-**type** | **string** | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. | [optional] [default to 'advanced']
+**type** | **string** | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. | [default to 'advanced']
 **linkedStoreIds** | **int[]** | A list of store IDs that you want to link to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. | [optional]
 **couponAttributes** | **object** | Arbitrary properties associated with coupons in this campaign. | [optional]
 **budgets** | [**\TalonOne\Client\Model\CampaignBudget[]**](CampaignBudget.md) | A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. | [optional]

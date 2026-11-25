@@ -366,7 +366,7 @@ class CatalogActionFilter implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets attr
      *
-     * @param string $attr The name of the attribute to filter on.
+     * @param string $attr The name of the attribute to filter on. The attribute must exist in the catalog. For the `LT`, `LE`, `GT`, and `GE` comparison operators, the attribute must be of type `number`.
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class CatalogActionFilter implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets value
      *
-     * @param mixed|null $value The value to filter for.
+     * @param mixed|null $value The value to filter for. For the `LT`, `LE`, `GT`, and `GE` comparison operators, the value must be a number or a numeric string.
      *
      * @return self
      */

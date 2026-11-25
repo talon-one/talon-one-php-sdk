@@ -345,11 +345,14 @@ class NewCouponsForMultipleRecipients implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['usageLimit']) && ($this->container['usageLimit'] > 999999)) {
+        if ($this->container['usageLimit'] === null) {
+            $invalidProperties[] = "'usageLimit' can't be null";
+        }
+        if (($this->container['usageLimit'] > 999999)) {
             $invalidProperties[] = "invalid value for 'usageLimit', must be smaller than or equal to 999999.";
         }
 
-        if (!is_null($this->container['usageLimit']) && ($this->container['usageLimit'] < 0)) {
+        if (($this->container['usageLimit'] < 0)) {
             $invalidProperties[] = "invalid value for 'usageLimit', must be bigger than or equal to 0.";
         }
 
@@ -406,7 +409,7 @@ class NewCouponsForMultipleRecipients implements ModelInterface, ArrayAccess, \J
     /**
      * Gets usageLimit
      *
-     * @return int|null
+     * @return int
      */
     public function getUsageLimit()
     {
@@ -416,7 +419,7 @@ class NewCouponsForMultipleRecipients implements ModelInterface, ArrayAccess, \J
     /**
      * Sets usageLimit
      *
-     * @param int|null $usageLimit The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply.
+     * @param int $usageLimit The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply.
      *
      * @return self
      */

@@ -760,6 +760,9 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
@@ -787,6 +790,9 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['limits'] === null) {
             $invalidProperties[] = "'limits' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
@@ -979,7 +985,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -989,7 +995,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description A detailed description of the campaign.
+     * @param string $description A detailed description of the campaign.
      *
      * @return self
      */
@@ -1352,7 +1358,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -1362,7 +1368,7 @@ class Campaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items.
+     * @param string $type The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items.
      *
      * @return self
      */

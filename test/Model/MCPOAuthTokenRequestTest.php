@@ -107,6 +107,15 @@ class MCPOAuthTokenRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "clientSecret"
+     */
+    public function testPropertyClientSecret()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "redirectUri"
      */
     public function testPropertyRedirectUri()

@@ -1104,7 +1104,7 @@ try {
 ## `createCoupons()`
 
 ```php
-createCoupons($applicationId, $campaignId, $newCoupons, $silent): \TalonOne\Client\Model\CreateCoupons200Response
+createCoupons($applicationId, $campaignId, $newCoupons, $silent, $full): \TalonOne\Client\Model\CreateCoupons200Response
 ```
 
 Create coupons
@@ -1133,10 +1133,11 @@ $apiInstance = new TalonOne\Client\Api\ManagementApi(
 $applicationId = 56; // int | The ID of the Application. It is displayed in your Talon.One deployment URL.
 $campaignId = 56; // int | The ID of the campaign. It is displayed in your Talon.One deployment URL.
 $newCoupons = new \TalonOne\Client\Model\NewCoupons(); // \TalonOne\Client\Model\NewCoupons | body
-$silent = 'yes'; // string | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles.
+$silent = 'no'; // string | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. Requires `full` to be `no`; otherwise a 400 error is returned. - `no`: Returns a 200 response that contains the created coupons.
+$full = 'no'; // string | Possible values: `yes` or `no`. - `yes`: Returns all created coupons. Requires `silent` to be `no`; otherwise a 400 error is returned. - `no`: Returns at most 1000 created coupons.
 
 try {
-    $result = $apiInstance->createCoupons($applicationId, $campaignId, $newCoupons, $silent);
+    $result = $apiInstance->createCoupons($applicationId, $campaignId, $newCoupons, $silent, $full);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ManagementApi->createCoupons: ', $e->getMessage(), PHP_EOL;
@@ -1150,7 +1151,8 @@ try {
 | **applicationId** | **int**| The ID of the Application. It is displayed in your Talon.One deployment URL. | |
 | **campaignId** | **int**| The ID of the campaign. It is displayed in your Talon.One deployment URL. | |
 | **newCoupons** | [**\TalonOne\Client\Model\NewCoupons**](../Model/NewCoupons.md)| body | |
-| **silent** | **string**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. | [optional] [default to &#39;yes&#39;] |
+| **silent** | **string**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. | [optional] [default to &#39;no&#39;] |
+| **full** | **string**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. | [optional] [default to &#39;no&#39;] |
 
 ### Return type
 

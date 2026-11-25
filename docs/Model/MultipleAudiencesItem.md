@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created** | **\DateTime** | The time this entity was created. |
 **name** | **string** | The human-friendly display name for this audience. |
 **subscribedApplicationsIds** | **int[]** | A list of the IDs of the Applications that are connected to this audience. | [optional]
-**integrationId** | **string** | The ID of this audience in the third-party integration. | [optional]
+**integrationId** | **string** | The ID of this audience in the third-party integration. |
 **status** | **string** | Indicates whether the audience is new, updated or unmodified by the request. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

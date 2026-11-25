@@ -68,6 +68,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => 'string',
         'code' => 'string',
         'clientId' => 'string',
+        'clientSecret' => 'string',
         'redirectUri' => 'string',
         'codeVerifier' => 'string',
         'refreshToken' => 'string'
@@ -84,6 +85,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => null,
         'code' => null,
         'clientId' => null,
+        'clientSecret' => null,
         'redirectUri' => null,
         'codeVerifier' => null,
         'refreshToken' => null
@@ -98,6 +100,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => false,
         'code' => false,
         'clientId' => false,
+        'clientSecret' => false,
         'redirectUri' => false,
         'codeVerifier' => false,
         'refreshToken' => false
@@ -192,6 +195,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => 'grant_type',
         'code' => 'code',
         'clientId' => 'client_id',
+        'clientSecret' => 'client_secret',
         'redirectUri' => 'redirect_uri',
         'codeVerifier' => 'code_verifier',
         'refreshToken' => 'refresh_token'
@@ -206,6 +210,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => 'setGrantType',
         'code' => 'setCode',
         'clientId' => 'setClientId',
+        'clientSecret' => 'setClientSecret',
         'redirectUri' => 'setRedirectUri',
         'codeVerifier' => 'setCodeVerifier',
         'refreshToken' => 'setRefreshToken'
@@ -220,6 +225,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'grantType' => 'getGrantType',
         'code' => 'getCode',
         'clientId' => 'getClientId',
+        'clientSecret' => 'getClientSecret',
         'redirectUri' => 'getRedirectUri',
         'codeVerifier' => 'getCodeVerifier',
         'refreshToken' => 'getRefreshToken'
@@ -300,6 +306,7 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('grantType', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('clientId', $data ?? [], null);
+        $this->setIfExists('clientSecret', $data ?? [], null);
         $this->setIfExists('redirectUri', $data ?? [], null);
         $this->setIfExists('codeVerifier', $data ?? [], null);
         $this->setIfExists('refreshToken', $data ?? [], null);
@@ -446,6 +453,33 @@ class MCPOAuthTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable clientId cannot be null');
         }
         $this->container['clientId'] = $clientId;
+
+        return $this;
+    }
+
+    /**
+     * Gets clientSecret
+     *
+     * @return string|null
+     */
+    public function getClientSecret()
+    {
+        return $this->container['clientSecret'];
+    }
+
+    /**
+     * Sets clientSecret
+     *
+     * @param string|null $clientSecret Client secret for confidential (static) clients. May also be supplied via HTTP Basic authentication. Public clients registered via dynamic client registration omit it.
+     *
+     * @return self
+     */
+    public function setClientSecret($clientSecret)
+    {
+        if (is_null($clientSecret)) {
+            throw new \InvalidArgumentException('non-nullable clientSecret cannot be null');
+        }
+        $this->container['clientSecret'] = $clientSecret;
 
         return $this;
     }

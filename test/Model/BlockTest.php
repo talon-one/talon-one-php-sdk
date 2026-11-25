@@ -179,6 +179,15 @@ class BlockTest extends TestCase
     }
 
     /**
+     * Test attribute "excludedFromPriceHistory"
+     */
+    public function testPropertyExcludedFromPriceHistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "expression"
      */
     public function testPropertyExpression()
@@ -470,6 +479,15 @@ class BlockTest extends TestCase
      * Test attribute "recipient"
      */
     public function testPropertyRecipient()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "joinDate"
+     */
+    public function testPropertyJoinDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

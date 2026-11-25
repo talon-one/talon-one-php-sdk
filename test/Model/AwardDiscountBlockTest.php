@@ -141,4 +141,13 @@ class AwardDiscountBlockTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "excludedFromPriceHistory"
+     */
+    public function testPropertyExcludedFromPriceHistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

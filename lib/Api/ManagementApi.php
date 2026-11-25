@@ -5088,16 +5088,17 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  \TalonOne\Client\Model\NewCoupons $newCoupons body (required)
-     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. (optional, default to 'no')
+     * @param  string|null $full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. (optional, default to 'no')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \TalonOne\Client\Model\CreateCoupons200Response
+     * @return \TalonOne\Client\Model\CreateCoupons200Response|\TalonOne\Client\Model\ErrorResponseWithStatus
      */
-    public function createCoupons($applicationId, $campaignId, $newCoupons, $silent = 'yes', string $contentType = self::contentTypes['createCoupons'][0])
+    public function createCoupons($applicationId, $campaignId, $newCoupons, $silent = 'no', $full = 'no', string $contentType = self::contentTypes['createCoupons'][0])
     {
-        list($response) = $this->createCouponsWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent, $contentType);
+        list($response) = $this->createCouponsWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent, $full, $contentType);
         return $response;
     }
 
@@ -5109,16 +5110,17 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  \TalonOne\Client\Model\NewCoupons $newCoupons body (required)
-     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. (optional, default to 'no')
+     * @param  string|null $full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. (optional, default to 'no')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCoupons'] to see the possible values for this operation
      *
      * @throws \TalonOne\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \TalonOne\Client\Model\CreateCoupons200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \TalonOne\Client\Model\CreateCoupons200Response|\TalonOne\Client\Model\ErrorResponseWithStatus, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCouponsWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent = 'yes', string $contentType = self::contentTypes['createCoupons'][0])
+    public function createCouponsWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent = 'no', $full = 'no', string $contentType = self::contentTypes['createCoupons'][0])
     {
-        $request = $this->createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent, $contentType);
+        $request = $this->createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent, $full, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5148,6 +5150,12 @@ class ManagementApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\TalonOne\Client\Model\CreateCoupons200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
                         $request,
                         $response,
                     );
@@ -5183,6 +5191,14 @@ class ManagementApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\TalonOne\Client\Model\ErrorResponseWithStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -5198,15 +5214,16 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  \TalonOne\Client\Model\NewCoupons $newCoupons body (required)
-     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. (optional, default to 'no')
+     * @param  string|null $full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. (optional, default to 'no')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCouponsAsync($applicationId, $campaignId, $newCoupons, $silent = 'yes', string $contentType = self::contentTypes['createCoupons'][0])
+    public function createCouponsAsync($applicationId, $campaignId, $newCoupons, $silent = 'no', $full = 'no', string $contentType = self::contentTypes['createCoupons'][0])
     {
-        return $this->createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent, $contentType)
+        return $this->createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent, $full, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5222,16 +5239,17 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  \TalonOne\Client\Model\NewCoupons $newCoupons body (required)
-     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. (optional, default to 'no')
+     * @param  string|null $full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. (optional, default to 'no')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent = 'yes', string $contentType = self::contentTypes['createCoupons'][0])
+    public function createCouponsAsyncWithHttpInfo($applicationId, $campaignId, $newCoupons, $silent = 'no', $full = 'no', string $contentType = self::contentTypes['createCoupons'][0])
     {
         $returnType = '\TalonOne\Client\Model\CreateCoupons200Response';
-        $request = $this->createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent, $contentType);
+        $request = $this->createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent, $full, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5283,13 +5301,14 @@ class ManagementApi
      * @param  int $applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
      * @param  int $campaignId The ID of the campaign. It is displayed in your Talon.One deployment URL. (required)
      * @param  \TalonOne\Client\Model\NewCoupons $newCoupons body (required)
-     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles. (optional, default to 'yes')
+     * @param  string|null $silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. Requires &#x60;full&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns a 200 response that contains the created coupons. (optional, default to 'no')
+     * @param  string|null $full Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Returns all created coupons. Requires &#x60;silent&#x60; to be &#x60;no&#x60;; otherwise a 400 error is returned. - &#x60;no&#x60;: Returns at most 1000 created coupons. (optional, default to 'no')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCoupons'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent = 'yes', string $contentType = self::contentTypes['createCoupons'][0])
+    public function createCouponsRequest($applicationId, $campaignId, $newCoupons, $silent = 'no', $full = 'no', string $contentType = self::contentTypes['createCoupons'][0])
     {
 
         // verify the required parameter 'applicationId' is set
@@ -5315,6 +5334,7 @@ class ManagementApi
 
 
 
+
         $resourcePath = '/v1/applications/{applicationId}/campaigns/{campaignId}/coupons';
         $formParams = [];
         $queryParams = [];
@@ -5326,6 +5346,15 @@ class ManagementApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $silent,
             'silent', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $full,
+            'full', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

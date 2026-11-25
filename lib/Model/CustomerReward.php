@@ -70,6 +70,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => 'string',
         'integrationId' => 'string',
         'unlockedAt' => '\DateTime',
+        'expiryDate' => '\DateTime',
         'usedAt' => '\DateTime'
     ];
 
@@ -85,6 +86,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => null,
         'integrationId' => null,
         'unlockedAt' => 'date-time',
+        'expiryDate' => 'date-time',
         'usedAt' => 'date-time'
     ];
 
@@ -98,6 +100,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => false,
         'integrationId' => false,
         'unlockedAt' => false,
+        'expiryDate' => false,
         'usedAt' => false
     ];
 
@@ -191,6 +194,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => 'profileIntegrationId',
         'integrationId' => 'integrationId',
         'unlockedAt' => 'unlockedAt',
+        'expiryDate' => 'expiryDate',
         'usedAt' => 'usedAt'
     ];
 
@@ -204,6 +208,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => 'setProfileIntegrationId',
         'integrationId' => 'setIntegrationId',
         'unlockedAt' => 'setUnlockedAt',
+        'expiryDate' => 'setExpiryDate',
         'usedAt' => 'setUsedAt'
     ];
 
@@ -217,6 +222,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         'profileIntegrationId' => 'getProfileIntegrationId',
         'integrationId' => 'getIntegrationId',
         'unlockedAt' => 'getUnlockedAt',
+        'expiryDate' => 'getExpiryDate',
         'usedAt' => 'getUsedAt'
     ];
 
@@ -281,6 +287,7 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('profileIntegrationId', $data ?? [], null);
         $this->setIfExists('integrationId', $data ?? [], null);
         $this->setIfExists('unlockedAt', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
         $this->setIfExists('usedAt', $data ?? [], null);
     }
 
@@ -442,6 +449,33 @@ class CustomerReward implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable unlockedAt cannot be null');
         }
         $this->container['unlockedAt'] = $unlockedAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiryDate
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiryDate()
+    {
+        return $this->container['expiryDate'];
+    }
+
+    /**
+     * Sets expiryDate
+     *
+     * @param \DateTime|null $expiryDate The date and time when the customer reward expires, based on the  `validityDuration` or `expiryDate` of the reward when the reward was  unlocked. If the reward does not specify either property, the customer reward  has unlimited validity and this field is omitted.  **Note**: The expiry date is calculated using the time zone of the  Application connected to the reward.
+     *
+     * @return self
+     */
+    public function setExpiryDate($expiryDate)
+    {
+        if (is_null($expiryDate)) {
+            throw new \InvalidArgumentException('non-nullable expiryDate cannot be null');
+        }
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }
